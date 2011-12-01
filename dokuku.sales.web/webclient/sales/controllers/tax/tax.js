@@ -21,8 +21,9 @@ init: function () {
 },
 load: function () {
     var currandtaxRepo = new CurrencyandTaxRepository()
-    currandtaxRepo.getAllTax();
+    var data = currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
+    this.requestAllCustomerSuccess(data);
 },
 viewAddTax: function () {
     this.element.html(this.view('//sales/controllers/tax/views/addtax.ejs'));
@@ -34,7 +35,7 @@ viewAddTax: function () {
     var persentase = $("#inputText_Persentage").val();
     var tax = new Object();
     tax.Name = name;
-    tax.persentase = persentase;
+    tax.Value = persentase;
     if (currandtaxRepo.SaveTax(tax)) {
         $("#body").sales_tax("load");
     }
@@ -62,4 +63,4 @@ requestAllCustomerSuccess: function (data) {
 }
 })
 
-	});
+});
