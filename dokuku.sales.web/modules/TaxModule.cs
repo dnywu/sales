@@ -4,7 +4,6 @@ using Nancy.Security;
 using dokuku.security.model;
 using System.Collections;
 using System.Collections.Generic;
-using dokuku.security.model;
 using dokuku.sales.taxes.model;
 namespace dokuku.sales.web.modules
 {

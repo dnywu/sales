@@ -6,7 +6,7 @@
     init: function () {
     },
     getAllTax: function () {
-        var dataTax;
+        var dataTax = null;
         $.ajax({
             type: 'GET',
             url: '/GetAllTax',
