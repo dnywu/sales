@@ -1,6 +1,7 @@
 steal('jquery/controller',
       'jquery/view/ejs',
-      'jquery/controller/view')
+      'jquery/controller/view',
+      './ItemsCreate.css')
 .then('./views/init.ejs', function ($) {
           $.Controller('Sales.Items.Create',
 {
