@@ -1,5 +1,5 @@
 steal( 'jquery/controller','jquery/view/ejs',
-        'jquery/controller/view'
+        'jquery/controller/view','./Home.css'
      )
 	.then( './views/home.ejs', function($){
     $.Controller('sales.controllers.home',
