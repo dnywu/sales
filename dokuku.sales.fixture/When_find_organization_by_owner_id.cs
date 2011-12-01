@@ -7,7 +7,7 @@ using dokuku.sales.organization;
 namespace dokuku.sales.fixture
 {
     [Subject("Creating organization")]
-    public class When_create_organization
+    public class When_find_organization_by_owner_id
     {
         private static IOrganizationRepository orgRepo;
         private static Organization org;
@@ -24,15 +24,15 @@ namespace dokuku.sales.fixture
                 orgRepo.Save(new Organization(id, "oetawan@inforsys.co.id", "Inforsys Indonesia, PT", "IDR", 1));
             };
 
-        It should_create_organization = () =>
+        It should_return_organization = () =>
             {
-                org = orgRepo.Get(id);
+                Organization org = orgRepo.FindByOwnerId("oetawan@inforsys.co.id");
                 org.ShouldNotBeNull();
             };
 
         Cleanup cleanup = () =>
             {
-                orgRepo.Delete(org._id);
+                orgRepo.Delete(id);
             };
     }
 }
