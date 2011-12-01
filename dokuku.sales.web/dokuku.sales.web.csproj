@@ -1101,6 +1101,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs" />
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs" />
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -1225,6 +1229,10 @@
     <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
       <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
       <Name>dokuku.sales.payment.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.paymentmode\dokuku.sales.paymentmode.csproj">
+      <Project>{596F49BE-C0F4-437F-B927-94E946EC0C38}</Project>
+      <Name>dokuku.sales.paymentmode</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
       <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>

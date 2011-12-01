@@ -8,6 +8,6 @@ namespace dokuku.sales.paymentmode.query
         PaymentModes Get(Guid id, string ownerId);
         PaymentModes FindByName(string name,string ownerId);
         PaymentModes FindByNameAndId(string name, Guid id,string ownerId);
-        IEnumerable<PaymentModes> FindAll(string ownerId);
+        PaymentModes[] FindAll(string ownerId);
     }
 }

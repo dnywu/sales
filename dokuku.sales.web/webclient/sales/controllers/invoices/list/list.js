@@ -81,7 +81,11 @@ steal('jquery/controller',
                 '.ApproveContextMenuInvoive click': function (el) {
                     var id = el.attr('id');
                     result = inv.ApproveInvoiceByID(id);
-                    //$("#body").sales_invoices_list('load');
+                    if (result.error == false) {
+                        $this.load();
+                    } else {
+                        $("#errorListInv").text(result.message).show("slow");
+                    }
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
@@ -105,15 +109,19 @@ steal('jquery/controller',
                         var index = $(this).attr("id");
                         var no = $("#invoiceId_" + index).val();
                         result = inv.DeleteInvoice(no);
+
+                        if (result.error == true) {
+                            $(".BodyConfirmMassage").empty();
+                            var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                            $(".BodyConfirmMassage").append(message);
+                            return false;
+                        }
                     });
+
                     if (result == "OK") {
                         $(".DeleteConfirmation").remove();
                         $this.load();
-                    } else {
-                        $(".BodyConfirmMassage").empty();
-                        var message = $("<div>" + result.message + "</div>" +
-                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
-                        $(".BodyConfirmMassage").append(message);
                     }
                 },
                 '.ButtonConfirmClose click': function () {
@@ -128,7 +136,36 @@ steal('jquery/controller',
                         return 0;
                     }
                     return countChecked;
+                },
+                '#approveinvoice click': function () {
+                    var checkList = $this.IsCheckListNull();
+                    if (checkList != 0) {
+                        var message = $("<div>Apakah anda yakin akan menerbitkan faktur ini</div>" +
+                                    "<div class='ButtonApproveYes'>Ya</div>" +
+                                    "<div class='ButtonConfirmClose'>Tidak</div>");
+                        $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                        $(".BodyConfirmMassage").append(message);
+                    }
+                },
+                '.ButtonApproveYes click': function () {
+                    var result;
+                    $(".selectInvoice:checked").each(function (index) {
+                        var index = $(this).attr("id");
+                        var no = $("#invoiceId_" + index).val();
+                        result = inv.ApproveInvoiceByID(no);
+                        if (result.error == true) {
+                            $(".BodyConfirmMassage").empty();
+                            var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                            $(".BodyConfirmMassage").append(message);
+                            return false;
+                        }
+                    });
+
+                    if (result.error == false) {
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
+                    }
                 }
             });
-
        });

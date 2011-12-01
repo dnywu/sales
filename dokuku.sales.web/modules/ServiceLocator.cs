@@ -20,6 +20,8 @@ using dokuku.sales.taxes.service;
 using dokuku.sales.taxes.query;
 using dokuku.sales.currency.service;
 using dokuku.sales.currency.report;
+using dokuku.sales.paymentmode.query;
+using dokuku.sales.paymentmode.service;
 
 namespace dokuku.sales.web.modules
 {
@@ -93,6 +95,14 @@ namespace dokuku.sales.web.modules
         public static ICurrencyQueryRepository CurencyQueryRepo(this NancyModule mod)
         {
             return ObjectFactory.GetInstance<ICurrencyQueryRepository>();
+        }
+        public static IPaymentModeQuery PaymentModeQuery(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<IPaymentModeQuery>();
+        }
+        public static IPaymentModeService PaymentModeService(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<IPaymentModeService>();
         }
     }
 }
