@@ -45,9 +45,6 @@
   <ItemGroup>
     <Compile Include="PaymentRevised.cs" />
     <Compile Include="InvoicePaid.cs" />
-    <Compile Include="PaymentModeCreated.cs" />
-    <Compile Include="PaymentModeDeleted.cs" />
-    <Compile Include="PaymentModeUpdated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

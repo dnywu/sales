@@ -23,9 +23,8 @@
         var response = false;
         $.ajax({
             type: 'POST',
-            url: '/SaveTax',
+            url: '/SaveTax/' + taxModel,
             dataType: 'json',
-            data: { 'data': JSON.stringify(tax) },
             async: false,
             success: function (data) {
                 response = true;

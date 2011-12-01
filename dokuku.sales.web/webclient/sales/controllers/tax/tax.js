@@ -18,13 +18,11 @@ init: function () {
     var data = currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
     this.requestAllCustomerSuccess(data);
-
 },
 load: function () {
     var currandtaxRepo = new CurrencyandTaxRepository()
-    var data = currandtaxRepo.getAllTax();
+    currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
-    this.requestAllCustomerSuccess(data);
 },
 viewAddTax: function () {
     this.element.html(this.view('//sales/controllers/tax/views/addtax.ejs'));
@@ -36,7 +34,7 @@ viewAddTax: function () {
     var persentase = $("#inputText_Persentage").val();
     var tax = new Object();
     tax.Name = name;
-    tax.Value = persentase;
+    tax.persentase = persentase;
     if (currandtaxRepo.SaveTax(tax)) {
         $("#body").sales_tax("load");
     }

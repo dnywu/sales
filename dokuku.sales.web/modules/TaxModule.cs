@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Nancy;
 using Nancy.Security;
 using dokuku.security.model;
