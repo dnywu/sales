@@ -1,20 +1,22 @@
-steal('jquery/controller', 'jquery/view/ejs')
-	.then('./views/init.ejs', function ($) {
-
-	    /**
-	    * @class Sales.Controllers.Items.Create
-	    */
-	    $.Controller('Sales.Items.Create',
-	    /** @Static */
+steal('jquery/controller',
+      'jquery/view/ejs',
+      'jquery/controller/view')
+.then('./views/init.ejs', function ($) {
+          $.Controller('Sales.Items.Create',
 {
-defaults: {}
+    defaults: {}
 },
-	    /** @Prototype */
 {
-init: function () {
-    $('#section').empty();
-    this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
-}
+    init: function () {
+        $('#section').empty();
+        this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
+    },
+    "#createTaxLink click": function (el, ev) {
+        this.createTaxDialog();
+        ev.preventDefault();
+    },
+    createTaxDialog: function () {
+        alert("bikin pajak baru");
+    }
 })
-
-	});
+});

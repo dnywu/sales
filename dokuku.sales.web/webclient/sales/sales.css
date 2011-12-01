@@ -68,21 +68,6 @@ ul.top-nav a:hover {
 	color: #4183C4;
 }
 
-ul.menu-nav{
-	list-style : none;
-	line-height: 26px;
-	float: left!important;
-	padding: 10px 0;
-	margin: 0 0 0 20px;
-}
-ul.menu-nav li{
-	float: left;
-	padding: 0 0 0 20px;
-}
-ul.menu-nav li ul{z-index: 9999;position:absolute;left:-999em;height:auto;width:140px;margin:0;padding:0;}
-ul.menu-nav li ul a{width: 104px;}
-ul.menu-nav li ul ul{margin:-75px 0 0 171px; }
-
 div.mainFrame
 {
 	width:988px;
