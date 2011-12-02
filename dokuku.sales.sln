@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.web", "dokuku.sales.web\dokuku.sales.web.csproj", "{7722DE26-7C0C-4DF3-9A05-C791575D171B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.organization", "dokuku.sales.organization\dokuku.sales.organization.csproj", "{2C0F3BC7-ED13-400D-8D03-61E053748F7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.fixture", "dokuku.sales.fixture\dokuku.sales.fixture.csproj", "{711872FE-E8BA-4996-ACBF-BEB3ACDB5884}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.config", "dokuku.sales.config\dokuku.sales.config.csproj", "{C1E3A522-9F44-48ED-8855-B78EC12A6C17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +19,18 @@ Global
 		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C0F3BC7-ED13-400D-8D03-61E053748F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0F3BC7-ED13-400D-8D03-61E053748F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0F3BC7-ED13-400D-8D03-61E053748F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0F3BC7-ED13-400D-8D03-61E053748F7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{711872FE-E8BA-4996-ACBF-BEB3ACDB5884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{711872FE-E8BA-4996-ACBF-BEB3ACDB5884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{711872FE-E8BA-4996-ACBF-BEB3ACDB5884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{711872FE-E8BA-4996-ACBF-BEB3ACDB5884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1E3A522-9F44-48ED-8855-B78EC12A6C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E3A522-9F44-48ED-8855-B78EC12A6C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E3A522-9F44-48ED-8855-B78EC12A6C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E3A522-9F44-48ED-8855-B78EC12A6C17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
