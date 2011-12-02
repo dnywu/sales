@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using dokuku.sales.item;
 
 namespace dokuku.sales.invoices.model
 {
@@ -27,7 +26,7 @@ namespace dokuku.sales.invoices.model
         public string Currency { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
-        public InvoiceItems[] Items { get; set; }
+        public InvoiceItem[] Items { get; set; }
         public Guid _id { get; set; }
         public string OwnerId { get; set; }
         public string Status { get; private set; }
@@ -54,34 +53,5 @@ namespace dokuku.sales.invoices.model
             this.Status = InvoiceStatus.BATAL;
             this.CancelNote = note;
         }
-    }
-
-    public class InvoiceItems
-    {
-        public Guid ItemId { get; set; }
-        public string PartName { get; set; }
-        public string Description { get; set; }
-        public decimal Qty { get; set; }
-        public decimal BaseRate { get; set; }
-        public decimal Rate { get; set; }
-        public decimal Discount { get; set; }
-        public Tax Tax { get; set; }
-        public decimal Amount { get; set; }     
-    }
-
-    public class Term
-    {
-        public string Name { get; set; }
-        public decimal Value { get; set; }
-    }
-
-    public class InvoiceStatus
-    {
-        public const string DRAFT = "Draft";
-        public const string BELUM_BAYAR = "Belum Bayar";
-        public const string BELUM_LUNAS = "Belum Lunas";
-        public const string SUDAH_LUNAS = "Sudah Lunas";
-        public const string VOID = "Void";
-        public const string BATAL = "Batal";
     }
 }
