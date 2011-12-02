@@ -88,21 +88,23 @@ steal('jquery/controller',
         $('#body').sales_currency('viewEditCurrency');
     },
          '#EditCurrency click': function (el, ev) {
-             ev.preventDefault();
-                     var name = $("#editName").val();
-                     var symbol = $("#editSymbol").val();
-                     var format = $("#editFormat").val();
-                     var currency = new Object();
-                     currency.Name = name;
-                     currency.Code = symbol;
-                     currency.Rounding = format;
-                    $.ajax({
-                        type: 'POST',
-                        url: '/UpdateDataCurrency',
-                        data: { 'data': JSON.stringify(currency) },
-                        datatype: 'json',
-                        success: function (data) { $("#body").sales_currency('load') }
-                    })
+                ev.preventDefault();
+                var id = el.attr('id');
+                var name = $("#editName").val();
+                var symbol = $("#editSymbol").val();
+                var format = $("#editFormat").val();
+                var currency = new Object();
+                currency._id
+                currency.Name = name;
+                currency.Code = symbol;
+                currency.Rounding = format;
+                $.ajax({
+                    type: 'POST',
+                    url: '/UpdateDataCurrency',
+                    data: { 'data': JSON.stringify(currency) },
+                    datatype: 'json',
+                    success: function (data) { $("#body").sales_currency('load') }
+                })
                     },
 
     requestAllCurrencySuccess: function (data) {
