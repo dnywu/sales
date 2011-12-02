@@ -188,8 +188,11 @@ steal('jquery/controller',
             '.discount change': function (el) {
                 this.CalculateItem(el);
             },
-            '#formNewIvoice submit': function (el, ev) {
-                ev.preventDefault();
+            //            '#formNewIvoice submit': function (el, ev) {
+            //                ev.preventDefault();
+            //                inv.CreateNewInvoice();
+            //            },
+            '#NewInvoiceSave click': function () {
                 inv.CreateNewInvoice();
             },
             '#btnCancelInvoice click': function () {
@@ -297,9 +300,15 @@ steal('jquery/controller',
             '#selectcust keyup': function (el, ev) {
                 var limit = 0;
                 if (ev.keyCode == "13") {
+                    var iname = el.val();
                     this.CheckNameCutomer(el.val());
                     $('.DivSearchCustomer').hide();
-                    return;
+                    var fields = el.parents('form:eq(0),body').find('button, input, textarea, select');
+                    var index = fields.index(el);
+                    if (index > -1 && (index + 1) < fields.length) {
+                        fields.eq(index + 1).focus();
+                    }
+                    return false;
                 } else {
                     var key = $('#selectcust').val();
                     if (key == "") {
@@ -397,6 +406,48 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            },
+            "input keypress": function (el, ev) {
+                if (el.not($(":button"))) {
+                    if (el.attr("id") != "selectcust") {
+                        if (el.attr("class") != "partname") {
+                            if (ev.keyCode == 13) {
+                                var iname = el.val();
+                                if (iname !== 'Simpan') {
+                                    var fields = el.parents('form:eq(0),body').find('button, input[type!=hidden], textarea, select');
+                                    var index = fields.index(el);
+                                    if (index > -1 && (index + 1) < fields.length) {
+                                        fields.eq(index + 1).focus();
+                                    }
+                                    return false;
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "select keypress": function (el, ev) {
+                if (ev.keyCode == 13) {
+                    var iname = el.val();
+                    if (iname !== 'Simpan') {
+                        var fields = el.parents('form:eq(0),body').find('button, input[type!=hidden], textarea, select');
+                        var index = fields.index(el);
+                        if (index > -1 && (index + 1) < fields.length) {
+                            fields.eq(index + 1).focus();
+                        }
+                        return false;
+                    }
+                }
+            },
+            "#latefee keyup": function (el, ev) {
+                if (ev.keyCode == 13) {
+                    if ($("divExchangeRate").is(":visible")) {
+                        $("#custRate").focus();
+                    } else {
+                        $("#part_0").focus();
+                    }
+                    return;
+                }
             }
         })
           });

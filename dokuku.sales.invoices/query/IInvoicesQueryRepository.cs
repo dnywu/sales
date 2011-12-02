@@ -12,5 +12,7 @@ namespace dokuku.sales.invoices.query
         IEnumerable<Invoices> AllInvoices(string OwnerId);
         Invoices FindById(Guid id, string ownerId);
         Invoices FindById(Guid guid);
+        int CountInvoice(string OwnerId);
+        IEnumerable<Invoices> GetDataInvoiceToPaging(string ownerId, int start, int limit);
     }
 }
