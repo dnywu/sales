@@ -4,22 +4,26 @@
       <td valign="top" class="bodyBgCenter">
         <div class="invoicesContainer">
           <div class="topBandHeaderDIV">
-            <div id="TitleSpan" class="HeaderDIVLeft">Invoices</div>
+            <div id="TitleSpan" class="HeaderDIVLeft">Faktur</div>
           </div>
           <div class="error" id="errorListInv"></div>
           <div class="invoiceContain">
             <div class="ActionButtonDiv">
-              <table id ="tblMenuInvoice" width="900px">
+              <table id ="tblMenuInvoice" width="1000px">
                 <tr id ="trMenuInvoice">
-                  <td id="tdMenuInvoiceLeft" width="450px">
-                    <input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />
+                  <td id="tdMenuInvoiceLeft" width="700px">
+                    <!--<input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />-->
+                    <div class="menuDelete" id="deleteinvoice">
+                      <div class="floatLeft">Hapus</div>
+                      <div class="iconHapus"></div>
+                    </div>
                     <input type="button" id="approveinvoice" value="Terbitkan Faktur" style="height:20px;" />
                   </td>
-                  <td id="tdMenuInvoiceRight" width="450px">
+                  <td id="tdMenuInvoiceRight" width="300px">
                     <table id="subMenuInvoiceRight" width="100%">
                       <tr id="trsubMenuInvoiceRight">
                         <td id="tdsubMenuInvoiceRight" width="30%">
-                          <div class="floatLeft" id="titelMenuInvoice">Show:</div>
+                          <div class="floatLeft" id="titelMenuInvoice"></div>
                         </td>
                         <td id="tdsubMenuInvoiceRight" width="70%">
                           <div class=" floatLeft">
@@ -40,15 +44,15 @@
               <thead>
                 <tr>
                   <td class="tblCheck"><input type="checkbox" id="selectall"></input></td>
-                  <td class="tblCheck" style="width:35px"></td>
-                  <td class="tblNoInv">Invoice#</td>
-                  <td class="tblPO">P.O.#</td>
+                  <td class="tblCheck" style="width:30px"></td>
+                  <td class="tblNoInv">Nomor Faktur</td>
+                  <td class="tblPO">Nomor PO</td>
                   <td class="tblNamaPelanggan">Nama Pelanggan</td>
-                  <td class="tblTanggal">Tanggal</td>
+                  <td class="tblTanggal center">Tanggal</td>
                   <td class="tblTotal right">Total</td>
-                  <td class="tblDue">Sampai</td>
-                  <td class="tblBalance right">Balance Due</td>
-                  <td class="tblStatus">Status</td>
+                  <td class="tblDue center">Jatuh Tempo</td>
+                  <td class="tblBalance right">Sisa Tagihan</td>
+                  <td class="tblStatus center">Status</td>
                 </tr>
               </thead>
               <tbody class ="bodyDataInvoice">
@@ -88,11 +92,11 @@
                     </td>
                     <td><%=this[i].PONo%></td>
                     <td><%=this[i].Customer%></td>
-                    <td><%=this[i].InvoiceDate%></td>
+                    <td class="center"><%=this[i].InvoiceDate%></td>
                     <td class="right"><%=this[i].Total%></td>
-                    <td><%=this[i].DueDate%></td>
+                    <td class="center"><%=this[i].DueDate%></td>
                     <td class="right"><%=this[i].name%></td>
-                    <td><%=this[i].Status%></td>
+                    <td class="center"><%=this[i].Status%></td>
                   </tr>
                 <%}%>
                 
@@ -102,7 +106,7 @@
         </div>
       </td>
       <td class="bodyBgRight" valign='top'>
-        <div class='BtnNew' id='newinvoices'>Invoice Baru</div>
+        <div class='BtnNew' id='newinvoices'>Faktur Baru</div>
       </td>
     </tr>
   </tbody>

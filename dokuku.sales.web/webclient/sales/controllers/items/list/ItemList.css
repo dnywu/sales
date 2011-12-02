@@ -41,8 +41,9 @@ th.headerList
 	border: solid 0 #EBEBEB;
 	border-width: 1px 0;
 	vertical-align: middle;
-	color: #999;
-	font-weight: normal;
+	color: #000;
+	font-weight: bolder;
+	font-size:13px;
 	height: 32px;
 }
 
@@ -60,7 +61,6 @@ th.headerItems
 {
 	width:730px;
 	text-align:left;
-	color:#DC682F;
 }
 th.headerPrice
 {
