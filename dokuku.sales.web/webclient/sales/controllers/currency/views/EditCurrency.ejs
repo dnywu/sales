@@ -1,6 +1,6 @@
 ﻿<div class='mainFrame'>
   <div class="topBandHeaderDIV">
-    <div class="HeaderDIVLeft" id="TambahMU">Tambah Mata Uang</div>
+    <div class="HeaderDIVLeft" id="TambahMU">Ubah Mata Uang</div>
   </div>
   <div class="error" id="errorCreateItemDiv"></div>
   <div class="mainDivWidth">
@@ -14,7 +14,7 @@
               </td>
               <td class="field">
                 <select id="editName" name="mataUang">
-                  <option value="IDR" selected="selected">IDR</option>
+                  <option value="IDR">IDR</option>
                   <option value="USD">USD</option>
                 </select>                
               </td>
@@ -24,7 +24,8 @@
                 <span class="requiredFieldLabel">Lambang Mata Uang</span>
               </td>
               <td class="field">
-                <input type="text" name="lambang" id="editSymbol" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Lambang mata uang tidak boleh kosong')" required="required"/>
+                <input type="hidden" name="_id" id="_id" hidden="hidden" value="<%= this._id %>"/>
+                <input type="text" name="lambang" id="editSymbol" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Lambang mata uang tidak boleh kosong')" required="required" value="<%= this.Code %>"/>
               </td>
               <td>
                 <div class="messageVerify "></div>
@@ -36,7 +37,7 @@
               </td>
               <td class="field">
                 <select id="editFormat">
-                  <option value="0" selected="selected">0</option>
+                  <option value="0">0</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>

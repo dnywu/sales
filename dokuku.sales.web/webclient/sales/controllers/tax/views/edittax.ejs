@@ -1,0 +1,40 @@
+﻿
+  <div class='FormNewTax'>
+    <div class="topBandHeaderDIV">
+      <div id="TitleSpan" class="HeaderDIVLeft">Ubah Pajak</div>
+    </div>
+    <div class = 'CreateNewTax'>
+      <table class="FormNewTax">
+        <tbody>
+          <tr>
+            <td>
+              <div class="mandatoryTxt">Nama Pajak</div>
+            </td>
+            <td class="td_field">
+              <input type="hidden" name="_id" id="_id" hidden="hidden" value="<%= this._id %>"/>
+              <input type="text" name="Pajak" id="inputText_PajakName" placeholder="Nama Pajak" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pajak tidak Boleh Kosong')" value="<%= this.Name %>"/>
+            </td>
+            <td class="error"></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mandatoryTxt">Persentase (%)</div>
+            </td>
+            <td class="td_field">
+              <input type="text" name="Persentase" id="inputText_Persentage" placeholder="Persentase" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Persentase tidak Boleh Kosong')" value="<%= this.Value %>"/>
+            </td>
+            <td class="error"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:30px">
+      <p align="center" style="font-size:11px">
+        <input type="hidden" id="keywords" name="keywords"></input>
+        <input id="EditTax" type="submit" class="CreateTaxBtn" name="save" value="Simpan"/>
+        atau
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="Canceltax">Batal</span>
+      </p>
+    </div>
+  </div>

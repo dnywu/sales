@@ -24,8 +24,10 @@ steal('jquery/controller',
     viewAddCurrency: function () {
         this.element.html(this.view("//sales/controllers/currency/create/views/AddCurrency.ejs"));
     },
-    viewEditCurrency: function () {
-        this.element.html(this.view("//sales/controllers/currency/views/EditCurrency.ejs"));
+    viewEditCurrency: function (item) {
+        this.element.html("//sales/controllers/currency/views/EditCurrency.ejs", item);
+        $('#editName option[value="' + item.Name + '"]').attr('selected', 'selected');
+        $('#editFormat option[value="' + item.Rounding + '"]').attr('selected', 'selected');
     },
     "#CurrencySave click": function (el, ev) {
         ev.preventDefault();
@@ -85,27 +87,27 @@ steal('jquery/controller',
     '.EditContextMenuCurrency click': function (el) {
         var id = el.attr('id');
         var currency = currandtaxRepo.GetCurrencyById(id);
-        $('#body').sales_currency('viewEditCurrency');
+        $('#body').sales_currency('viewEditCurrency', currency);
     },
-         '#EditCurrency click': function (el, ev) {
-                ev.preventDefault();
-                var id = el.attr('id');
-                var name = $("#editName").val();
-                var symbol = $("#editSymbol").val();
-                var format = $("#editFormat").val();
-                var currency = new Object();
-                currency._id
-                currency.Name = name;
-                currency.Code = symbol;
-                currency.Rounding = format;
-                $.ajax({
-                    type: 'POST',
-                    url: '/UpdateDataCurrency',
-                    data: { 'data': JSON.stringify(currency) },
-                    datatype: 'json',
-                    success: function (data) { $("#body").sales_currency('load') }
-                })
-                    },
+    '#EditCurrency click': function (el, ev) {
+        ev.preventDefault();
+        var id = $("#_id").val();
+        var name = $("#editName").val();
+        var symbol = $("#editSymbol").val();
+        var format = $("#editFormat").val();
+        var currency = new Object();
+        currency._id = id;
+        currency.Name = name;
+        currency.Code = symbol;
+        currency.Rounding = format;
+        $.ajax({
+            type: 'POST',
+            url: '/UpdateDataCurrency',
+            data: { 'data': JSON.stringify(currency) },
+            datatype: 'json',
+            success: function (data) { $("#body").sales_currency('load') }
+        })
+    },
 
     requestAllCurrencySuccess: function (data) {
         $("table.dataCurrency tbody").empty();

@@ -30,7 +30,7 @@ namespace dokuku.sales.web.modules
                 }
 
             };
-            Get["/DeleteTax/{id}"] = p =>
+            Delete["/DeleteTax/{id}"] = p =>
                 {
                     try
                     {
@@ -43,6 +43,25 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsJson("OK");
                 };
+            Get["/GetTaxById/{id}"] = p =>
+            {
+                Guid id = p.id;
+                return Response.AsJson(this.TaxQueryRepository().GetTaxById(id, this.CurrentAccount().OwnerId));
+            };
+            Post["/UpdateTax"] = p =>
+            {
+                string Data = this.Request.Form.data;
+                try
+                {
+                    this.ServiceTax().Update(Data, this.CurrentAccount().OwnerId);
+                }
+                catch (Exception ex)
+                {
+
+                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                }
+                return Response.AsJson("OK");
+            };
         }
     }
 }

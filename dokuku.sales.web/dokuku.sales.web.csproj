@@ -603,7 +603,9 @@
     <Content Include="webclient\sales\controllers\currency\images\find.png" />
     <Content Include="webclient\sales\controllers\currency\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\currency\images\setting.png" />
-    <None Include="webclient\sales\controllers\currency\views\EditCurrency.ejs" />
+    <None Include="webclient\sales\controllers\currency\views\EditCurrency.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="webclient\sales\controllers\customers\customer.css" />
     <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />
@@ -703,6 +705,10 @@
     <Content Include="webclient\sales\controllers\tax\tax.html" />
     <Content Include="webclient\sales\controllers\tax\tax.js" />
     <Content Include="webclient\sales\controllers\tax\tax_test.js" />
+    <None Include="webclient\sales\controllers\tax\views\contextMenuTax.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\tax\views\edittax.ejs" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
@@ -1143,7 +1149,6 @@
     <None Include="webclient\sales\controllers\tax\views\addtax.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\tax\views\init.ejs" />
     <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
       <SubType>Designer</SubType>
     </None>
