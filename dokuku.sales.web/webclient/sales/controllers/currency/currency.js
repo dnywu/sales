@@ -2,7 +2,7 @@ steal('jquery/controller',
       'jquery/view/ejs',
        './currency.css',
         'sales/repository/CurrencyandTaxRepository.js')
-	.then('./views/listcurrency.ejs', './create/views/AddCurrency.ejs', './views/EditCurrency.ejs', function ($) {
+	.then('./views/listcurrency.ejs', './views/AddCurrency.ejs', './views/EditCurrency.ejs', function ($) {
 	    $.Controller('Sales.Controllers.Currency',
 {
     defaults: (currandtaxRepo = new CurrencyandTaxRepository())
@@ -22,7 +22,7 @@ steal('jquery/controller',
         this.requestAllCurrencySuccess(dataCurrency);
     },
     viewAddCurrency: function () {
-        this.element.html(this.view("//sales/controllers/currency/create/views/AddCurrency.ejs"));
+        this.element.html(this.view("//sales/controllers/currency/views/AddCurrency.ejs"));
     },
     viewEditCurrency: function (item) {
         this.element.html("//sales/controllers/currency/views/EditCurrency.ejs", item);

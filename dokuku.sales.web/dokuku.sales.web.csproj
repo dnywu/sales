@@ -583,7 +583,6 @@
     <None Include="webclient\funcunit\syn\dist\.tmp_test.html.60900~" />
     <None Include="webclient\funcunit\syn\README" />
     <None Include="webclient\funcunit\update" />
-    <None Include="webclient\sales\controllers\currencyandtax\views\init.ejs" />
     <None Include="webclient\sales\controllers\currencyandtax\views\listcurrencyandtax.ejs" />
     <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs">
       <SubType>Designer</SubType>
@@ -592,6 +591,9 @@
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
     <Content Include="webclient\sales\controllers\currency\funcunit.html" />
+    <None Include="webclient\sales\controllers\currency\views\AddCurrency.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\currency\views\contextMenuCurrency.ejs">
       <SubType>Designer</SubType>
     </None>
