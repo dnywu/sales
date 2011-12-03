@@ -8,7 +8,8 @@ steal('jquery/controller', 'jquery/view/ejs',
         'sales/controllers/home',
         'sales/controllers/invoices/list',
         'sales/controllers/setupautonumbering',
-        'sales/controllers/currencyandtax'
+        'sales/controllers/currencyandtax',
+        'sales/controllers/payment'
      )
 	.then('./views/nav.ejs', function ($) {
 	    $.Controller('sales.controllers.nav',
@@ -72,6 +73,11 @@ steal('jquery/controller', 'jquery/view/ejs',
                 this.ClearContain();
                 this.SetBoldActivePage(el);
                 $("#body").sales_currencyandtax('load');
+            },
+            '#paymentreceived click': function (el) {
+                this.ClearContain();
+                this.SetBoldActivePage(el);
+                $("#body").sales_payment('load');
             },
             CustomerSubMenu: function () {
                 var submenu = $('#subtabs');

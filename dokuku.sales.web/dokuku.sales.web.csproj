@@ -680,6 +680,11 @@
     <Content Include="webclient\sales\controllers\nav\nav.js" />
     <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
     <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\payment\payment.css" />
+    <Content Include="webclient\sales\controllers\payment\funcunit.html" />
+    <Content Include="webclient\sales\controllers\payment\payment.html" />
+    <Content Include="webclient\sales\controllers\payment\payment.js" />
+    <Content Include="webclient\sales\controllers\payment\payment_test.js" />
     <Content Include="webclient\sales\controllers\restrictuser\funcunit.html" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.html" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.js" />
@@ -717,6 +722,7 @@
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
+    <Content Include="webclient\sales\repository\PaymentRepository.js" />
     <Content Include="webclient\sales\repository\CurrencyandTaxRepository.js" />
     <Content Include="webclient\sales\repository\CustomerRepository.js" />
     <Content Include="webclient\sales\repository\InvoiceRepository.js" />
@@ -1136,6 +1142,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\nav\views\nav.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\payment\views\init.ejs" />
+    <None Include="webclient\sales\controllers\payment\views\recordpayment.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
