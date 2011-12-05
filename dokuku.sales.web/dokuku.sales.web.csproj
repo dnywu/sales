@@ -559,11 +559,6 @@
     <Content Include="webclient\sales\controllers\currencyandtax\funcunit.html" />
     <Content Include="webclient\sales\controllers\currencyandtax\image\currency.gif" />
     <Content Include="webclient\sales\controllers\currencyandtax\image\taxes.gif" />
-    <Content Include="webclient\sales\controllers\currency\create\addcurrency.css" />
-    <Content Include="webclient\sales\controllers\currency\create\create.html" />
-    <Content Include="webclient\sales\controllers\currency\create\create.js" />
-    <Content Include="webclient\sales\controllers\currency\create\create_test.js" />
-    <Content Include="webclient\sales\controllers\currency\create\funcunit.html" />
     <None Include="webclient\funcunit\dependencies.json" />
     <None Include="webclient\funcunit\pages\actions.md" />
     <None Include="webclient\funcunit\pages\assertions.md" />
@@ -584,9 +579,6 @@
     <None Include="webclient\funcunit\syn\README" />
     <None Include="webclient\funcunit\update" />
     <None Include="webclient\sales\controllers\currencyandtax\views\listcurrencyandtax.ejs" />
-    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="webclient\sales\controllers\currency\currency.html" />
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
