@@ -110,6 +110,9 @@ steal('jquery/controller', 'jquery/view/ejs',
         if (IsStatus == "Batal") {
             $("#menuItemRightBatal").remove();
         }
+        if(IsStatus != "Belum Bayar" && IsStatus == "Batal" && IsStatus != "Draft") {
+            $("#menuItemRightBatalPaksa").remove();
+        }
     },
     GetDetailCustomer: function (invoice) {
         $.ajax({
