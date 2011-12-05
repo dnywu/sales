@@ -23,7 +23,8 @@ steal('jquery/controller', 'jquery/view/ejs',
         $('#body').sales_invoices_edit('load', id);
     },
     '#menuItemRightBatal click': function () {
-            var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
+        var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
+                                    "<div>Catatan: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea' required='required'></textarea></div>" +
                                     "<div class='ButtonBatalYes'>Ya</div>" +
                                     "<div class='ButtonBatalClose'>Tidak</div>");
             $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
