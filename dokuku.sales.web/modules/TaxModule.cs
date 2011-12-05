@@ -14,15 +14,14 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication();
             Get["/GetAllTax"] = p =>
                 {
-                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(this.TaxQueryRepository().GetAllTaxes(account.OwnerId));
+                    return Response.AsJson(this.TaxQueryRepository().GetAllTaxes(this.CurrentAccount().OwnerId));
                 };
             Post["/SaveTax"] = p =>
             {
                 try
                 {
                     string data = this.Request.Form.data;
-                    return Response.AsJson(this.ServiceTax().Create(data, this.Context.CurrentUser.UserName));
+                    return Response.AsJson(this.ServiceTax().Create(data, this.CurrentAccount().OwnerId));
                 }
                 catch (Exception ex)
                 {
