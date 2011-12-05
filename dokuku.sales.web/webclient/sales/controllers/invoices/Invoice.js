@@ -239,11 +239,6 @@
             async: false,
             success: function (data) {
                 result = data;
-                //if (data.error == true) {
-                //    $("#errorListInv").text(data.message).show("slow");
-                //    return;
-                //}
-
             }
         });
         return result;
@@ -262,6 +257,34 @@
         });
         return listCustomer;
     },
+    CancelInvoiceByID: function (invoiceID, Note) {
+        var result;
+        $.ajax({
+            type: 'POST',
+            url: '/cancelinvoice/' + invoiceID,
+            data: { 'Note': Note },
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    },
+    ForceCancelInvoiceByID: function (invoiceID) {
+        var result;
+        $.ajax({
+            type: 'POST',
+            url: '/forcecancelinvoice/' + invoiceID,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    },
+
 })
     });
  

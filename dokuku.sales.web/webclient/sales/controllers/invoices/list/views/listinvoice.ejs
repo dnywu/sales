@@ -16,7 +16,18 @@
                       <div class="hapusCaption">Hapus</div>
                       <div class="iconHapusinvoice"></div>
                     </div>
-                    <div class="leftMenu menuApproveInvoice" id="approveinvoice">Setujui Faktur</div>
+                    <div class="leftMenu menuApproveInvoice" id="approveinvoice">
+                      <div class="hapusCaption">Setujui</div>
+                      <div class="iconSetujuiinvoice"></div>
+                    </div>
+                    <div class="leftMenu menuCancelInvoice" id="cancelinvoice">
+                      <div class="hapusCaption">Batal</div>
+                      <div class="iconBatalinvoice"></div>
+                    </div>
+                    <div class="leftMenu menuForceCancelInvoice" id="forceCancelinvoice">
+                      <div class="hapusCaption">Batal Paksa</div>
+                      <div class="iconBatalPaksainvoice"></div>
+                    </div>
                   </td>
                   <td id="tdMenuInvoiceRight" width="300px">
                     <table id="subMenuInvoiceRight" width="100%">
@@ -75,15 +86,26 @@
                           <span class="ApproveContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Setujui</span>
                         </div>
 
-                        <div class="itemContextMenuInvoice" id="actionDelete">
+                        <div class="itemContextMenuInvoice" id="actionCancel">
                           <div class="DeleteImagContextMenu invoiceImgContextMenu"></div>
-                          <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Hapus</span>
+                          <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Cancel</span>
+                        </div>
+                        
+                        <div class="itemContextMenuInvoice" id="actionForceCancel">
+                          <div class="DeleteImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Force Cancel
+                          </span>
+                        </div>
+
+                        <div class="itemContextMenuInvoice" id="actionUndo">
+                          <div class="DeleteImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Undo
+                          </span>
                         </div>
                         <div class="itemContextMenuInvoice">
                           <div class="RecordPaymentImagContextMenu invoiceImgContextMenu"></div>
                           <span class="RecordPaymentContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Catat Pembayaran
                           </span>
-                           
                         </div>
                       </div>
                     </td>
