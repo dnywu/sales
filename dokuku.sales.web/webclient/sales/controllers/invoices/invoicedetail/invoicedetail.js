@@ -28,45 +28,49 @@ steal('jquery/controller', 'jquery/view/ejs',
         $('#body').sales_invoices_edit('load', id);
     },
     '#menuItemRightBatal click': function () {
+        var InvID = $(".idIvoDetil").attr("id");
+        $(".BodyConfirmMassage").remove();
         var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
-                                    "<div>Catatan: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
-                                    "<div class='buttonDIV'><div class='ButtonConfirm CancelYes'>Ya</div>" +
-                                    "<div class='ButtonConfirm CancelNo' id='Close'>Tidak</div></div>");
-            $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
-            $(".BodyConfirmMassage").append(message);
-        },
-        '.CancelYes click': function () {
-            var result;
-            var Note = $("#NoteCancel").val().trim();
+                                    "<div><input type='hidden' id='invID' value='" + InvID + "'/></div>" +
+                                    "<div><br>Catatan: <textarea name='NoteCancel' id='NoteCancelDetail' class='NoteCancelTxtArea'></textarea></div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm CancelYesDetail'>Ya</div>" +
+                                    "<div class='ButtonConfirm CancelNoDetail' id='Close'>Tidak</div></div>");
+        $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
+        $(".BodyConfirmMassage").append(message);
+    },
 
-            if (Note.length < 1) {
-                $("#errorCancelInv").text("Catatan Batal harus diisi").show();
-                return false;
-            }
+    '.CancelYesDetail click': function () {
+        var result;
+        var Note = $("#NoteCancelDetail").val().trim();
+        var no = $("#invID").val();
 
-            $(".selectInvoice:checked").each(function (index) {
-                var index = $(this).attr("id");
-                var no = $("#invoiceId_" + index).val();
-                result = inv.CancelInvoiceByID(no, Note);
+        if (Note.length < 1) {
+            $("#errorCancelInv").text("Catatan Batal harus diisi").show();
+            return false;
+        }
+        result = inv.CancelInvoiceByID(no, Note);
 
-                if (result.error == true) {
-                    $(".BodyConfirmMassage").empty();
-                    var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
+        if (result.error == true) {
+            $(".BodyConfirmMassage").empty();
+            var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
-                    $(".BodyConfirmMassage").append(message);
-                    return false;
-                }
-            });
+            $(".BodyConfirmMassage").append(message);
+            return false;
+        }
 
-            if (result.error == false) {
-                $(".DeleteConfirmation").remove();
-                $this.load();
-            }
-        },
+
+        if (result.error == false) {
+            $(".DeleteConfirmation").remove();
+            $("#body").sales_invoices_list('load');
+        }
+    },
     GetStatusInvoice: function (status) {
         var IsStatus = status;
         if (IsStatus != "Draft") {
-            $("#menuItemRightSetujui").remove();            
+            $("#menuItemRightSetujui").remove();
+        }
+        if (IsStatus == "Batal") {
+            $("#menuItemRightBatal").remove();
         }
     },
     GetDetailCustomer: function (invoice) {

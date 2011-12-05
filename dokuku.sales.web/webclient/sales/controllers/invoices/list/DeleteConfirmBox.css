@@ -115,6 +115,12 @@ div.textDeleteConfirmHeader
 {
     width:55px;
 }
+
+.CancelYesDetail, .CancelNoDetail
+{
+    width:55px;
+}
+
 .Close
 {
 	width:100px;

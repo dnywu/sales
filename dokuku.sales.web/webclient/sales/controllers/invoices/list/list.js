@@ -281,7 +281,7 @@ steal('jquery/controller',
                     $(".BodyConfirmMassage").remove();
                     if (checkList != 0) {
                         var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
-                                    "<div>Note: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
+                                    "<div><br><br>Catatan: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm CancelYes'>Ya</div>" +
                                     "<div class='ButtonConfirm CancelNo' id='Close'>Tidak</div></div>");
                         $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
