@@ -1,7 +1,7 @@
 steal('jquery/controller', 'jquery/view/ejs',
       'jquery/controller/view',
       'sales/controllers/invoices/invoicedetail/invoicedetail.css')
-	.then('./views/invoicedetail.ejs', function ($) {
+	.then('./views/invoicedetail.ejs', 'sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs', function ($) {
 	    $.Controller('sales.Controllers.invoices.invoicedetail',
 {
     defaults: {}
@@ -21,6 +21,13 @@ steal('jquery/controller', 'jquery/view/ejs',
     '#menuItemRightUbah click': function () {
         var id = $(".idIvoDetil").attr("id");
         $('#body').sales_invoices_edit('load', id);
+    },
+    '#menuItemRightBatal click': function () {
+            var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
+                                    "<div class='ButtonBatalYes'>Ya</div>" +
+                                    "<div class='ButtonBatalClose'>Tidak</div>");
+            $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+            $(".BodyConfirmMassage").append(message);
     },
     GetStatusInvoice: function (status) {
         var IsStatus = status;
