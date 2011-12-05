@@ -277,6 +277,7 @@
             type: 'POST',
             url: '/forcecancelinvoice/' + invoiceID,
             dataType: 'json',
+            data: { 'Note': Note },
             async: false,
             success: function (data) {
                 result = data;
