@@ -184,9 +184,10 @@ steal('jquery/controller',
                 '.RecordPaymentContextMenuInvoive click': function (el) {
                     var Pay = new PaymentRepository();
                     var id = el.attr('id');
+                    var invoice = invRepo.GetInvoiceById(id);                 
                     result = Pay.PaymentByIdInvoice(id);
                     //                    if (result.error == false) {
-                    $('#body').sales_payment('load');
+                    $('#body').sales_payment('load',invoice);
                     //                    } else {
                     //                        $("#errorListInv").text(result.message).show("slow");
                     //                    }
