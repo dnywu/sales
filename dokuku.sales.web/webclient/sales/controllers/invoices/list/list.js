@@ -49,12 +49,10 @@ steal('jquery/controller',
                     $('#idInputPageInvoice').val(1);
                     $this.CheckButtonPaging();
                 },
-
                 initPagination: function () {
                     totalPage = Math.ceil(jumlahdata / limit);
                     $('#totalPageInvoice').text(totalPage);
                 },
-
                 CheckButtonPaging: function () {
                     var startPage = parseInt($('#idInputPageInvoice').val());
                     if (isNaN(startPage) || startPage <= 1) {
@@ -108,7 +106,6 @@ steal('jquery/controller',
                 '#limitDataInvoice change': function () {
                     $this.ChangePage();
                 },
-
                 ChangePage: function () {
                     $this.initPagination();
                     var startPage = parseInt($('#idInputPageInvoice').val());
@@ -181,13 +178,14 @@ steal('jquery/controller',
                         $("#errorListInv").text(result.message).show("slow");
                     }
                 },
+
                 '.RecordPaymentContextMenuInvoive click': function (el) {
                     var Pay = new PaymentRepository();
                     var id = el.attr('id');
-                    var invoice = invRepo.GetInvoiceById(id);                 
+                    var invoice = invRepo.GetInvoiceById(id);
                     result = Pay.PaymentByIdInvoice(id);
                     //                    if (result.error == false) {
-                    $('#body').sales_payment('load',invoice);
+                    $('#body').sales_payment('load', invoice);
                     //                    } else {
                     //                        $("#errorListInv").text(result.message).show("slow");
                     //                    }
@@ -272,6 +270,41 @@ steal('jquery/controller',
                     });
 
                     if (result.error == false) {
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
+                    }
+                },
+                '.CancelContextMenuInvoive click': function (el) {
+                    var id = el.attr('id');
+                    $(".BodyConfirmMassage").remove();
+
+                    var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
+                                    "<div><input type='hidden' id='invoID' value='" + id + "'></div>" +
+                                    "<div>Note: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm CancelOneYes'>Ya</div>" +
+                                    "<div class='ButtonConfirm CancelNo' id='Close'>Tidak</div></div>");
+                    $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
+                    $(".BodyConfirmMassage").append(message);
+                },
+                '.CancelOneYes click': function () {
+                    var result;
+                    var Note = $("#NoteCancel").val().trim();
+                    var no = $("#invoID").val();
+
+                    if (Note.length < 1) {
+                        $("#errorCancelInv").text("Catatan Batal harus diisi").show();
+                        return false;
+                    }
+
+                    result = inv.CancelInvoiceByID(no, Note);
+
+                    if (result.error == true) {
+                        $(".BodyConfirmMassage").empty();
+                        var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
+                        $(".BodyConfirmMassage").append(message);
+                        return false;
+                    } else {
                         $(".DeleteConfirmation").remove();
                         $this.load();
                     }
