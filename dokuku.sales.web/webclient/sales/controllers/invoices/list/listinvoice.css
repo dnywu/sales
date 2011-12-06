@@ -138,15 +138,6 @@ margin-bottom: 0px;
     margin-top: 4px;
     background-size: 267px 936px;
 }
-.UndoImagContextMenu{
-    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
-    background-position: -468px -446px;
-    height: 21px;
-    width: 19px;
-    float: left;
-    margin-right: 20px;
-    margin-top: 4px;
-}
 .leftMenu
 {
 	list-style: none;

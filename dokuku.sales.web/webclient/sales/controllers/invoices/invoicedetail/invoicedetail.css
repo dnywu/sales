@@ -51,12 +51,6 @@ table tr.headerTableItem{font-weight:bold;}
     background-position: -205px -75px;
     background-size: 267px 936px;
 }
-.divInvoiceDetailRightMenuUndoFaktur
-{
-    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
-    background-position: -471px -450px;
-   
-}
 .divInvoiceDetailRightMenuPrintKePDF
 {
     background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;

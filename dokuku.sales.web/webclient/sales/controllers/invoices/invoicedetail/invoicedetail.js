@@ -145,9 +145,6 @@ steal('jquery/controller', 'jquery/view/ejs',
                 if (IsStatus != "Belum Lunas") {
                     $("#menuItemRightBatalPaksa").remove();
                 }
-                if (IsStatus != "Batal") {
-                    $("#menuItemRightUndo").remove();
-                }
     },
     GetDetailCustomer: function (invoice) {
         $.ajax({

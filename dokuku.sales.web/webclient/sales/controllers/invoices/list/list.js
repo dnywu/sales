@@ -163,15 +163,15 @@ steal('jquery/controller',
                 },
                 HideList: function (Status, index) {
                     if (Status == "Draft") {
-                        this.HideActionList("fffftt", index);
+                        this.HideActionList("fffft", index);
                     } else if (Status == "Belum Bayar") {
-                        this.HideActionList("ftfftt", index);
+                        this.HideActionList("ftfft", index);
                     } else if (Status == "Belum Lunas") {
-                        this.HideActionList("ttfttt", index);
+                        this.HideActionList("ttftt", index);
                     } else if (Status == "Sudah Lunas") {
-                        this.HideActionList("tttftt", index);
+                        this.HideActionList("tttft", index);
                     } else if (Status == "Batal") {
-                        this.HideActionList("tttttf", index);
+                        this.HideActionList("ttttt", index);
                     }
                 },
                 HideActionList: function (srcPattern, index) {
@@ -191,10 +191,6 @@ steal('jquery/controller',
 
                     if (str.substring(4, 5) == "t") {
                         this.Menu("div#actionForceCancel", index);
-                    }
-
-                    if (str.substring(5, 6) == "t") {
-                        this.Menu("div#actionUndo", index);
                     }
                 },
                 Menu: function (Name, index) {
