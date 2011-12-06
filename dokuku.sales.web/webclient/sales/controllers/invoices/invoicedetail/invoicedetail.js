@@ -136,8 +136,9 @@ steal('jquery/controller', 'jquery/view/ejs',
                 if (IsStatus != "Draft") {
                     $("#menuItemRightSetujui").remove();
                     $("#menuItemRightHapus").remove();
+                    $("#menuItemRightUbah").remove();
                 }
-                if (IsStatus != "Belum Bayar" && IsStatus != "Draft") {
+                if (IsStatus != "Belum Bayar") {
                     $("#menuItemRightBatal").remove();
                     $("#menuItemRightUbah").remove();
                 }

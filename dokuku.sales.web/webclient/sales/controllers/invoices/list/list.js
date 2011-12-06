@@ -165,7 +165,7 @@ steal('jquery/controller',
                     if (Status == "Draft") {
                         this.HideActionList("fffttt", index);
                     } else if (Status == "Belum Bayar") {
-                        this.HideActionList("ftfttt", index);
+                        this.HideActionList("ftfftt", index);
                     } else if (Status == "Belum Lunas") {
                         this.HideActionList("ttfttt", index);
                     } else if (Status == "Sudah Lunas") {
