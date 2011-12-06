@@ -93,10 +93,6 @@
       <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
       <Name>dokuku.sales.item.messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
-      <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
-      <Name>dokuku.sales.payment.events</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.taxes.messages\dokuku.sales.taxes.messages.csproj">
       <Project>{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}</Project>
       <Name>dokuku.sales.taxes.messages</Name>
