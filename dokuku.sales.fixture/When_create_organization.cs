@@ -11,25 +11,28 @@ namespace dokuku.sales.fixture
     {
         private static IOrganizationRepository orgRepo;
         private static Organization org;
+        private static Guid id;
 
         Establish context = () =>
             {
-                orgRepo = new OrganizationRepository(); 
+                orgRepo = new OrganizationRepository();
+                id = Guid.NewGuid();
             };
 
         Because of = () =>
             {
-                org = orgRepo.Create(new Organization("oetawan@inforsys.co.id", "Inforsys Indonesia, PT", "IDR", 1));
+                orgRepo.Save(new Organization(id, "oetawan@inforsys.co.id", "Inforsys Indonesia, PT", "IDR", 1));
             };
 
         It should_create_organization = () =>
             {
+                org = orgRepo.Get(id);
                 org.ShouldNotBeNull();
             };
 
         Cleanup cleanup = () =>
             {
-                orgRepo.Delete(org);
+                orgRepo.Delete(org._id);
             };
     }
 }

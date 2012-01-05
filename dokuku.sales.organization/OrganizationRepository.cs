@@ -17,16 +17,23 @@ namespace dokuku.sales.organization
             couchClient = new CouchClient(cfg.Server, cfg.Port, cfg.Username, cfg.Password, false, AuthenticationType.Basic);
         }
 
-        public Organization Create(Organization org)
+        public void Save(Organization org)
         {
             Document<Organization> doc = new Document<Organization>(org);
-            DB.CreateDocument(doc);
-            return DB.GetDocument<Organization>(org._id);
+            DB.SaveDocument(doc);
         }
 
-        public void Delete(Organization org)
+        public void Delete(Guid id)
         {
-            DB.DeleteDocument(org._id, org._rev);
+            Organization orgRecord = DB.GetDocument<Organization>(id);
+            if (orgRecord == null)
+                return;
+            DB.DeleteDocument(orgRecord._id.ToString(), orgRecord._rev);
+        }
+
+        public Organization Get(Guid id)
+        {
+            return DB.GetDocument<Organization>(id);
         }
 
         private CouchDatabase DB 

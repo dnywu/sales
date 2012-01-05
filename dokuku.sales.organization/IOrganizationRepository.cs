@@ -6,7 +6,8 @@ namespace dokuku.sales.organization
 {
     public interface IOrganizationRepository
     {
-        Organization Create(Organization org);
-        void Delete(Organization org);
+        void Save(Organization org);
+        void Delete(Guid id);
+        Organization Get(Guid id);
     }
 }
