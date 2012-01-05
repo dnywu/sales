@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{711872FE-E8BA-4996-ACBF-BEB3ACDB5884}</ProjectGuid>
+    <ProjectGuid>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.fixture</RootNamespace>
-    <AssemblyName>dokuku.sales.fixture</AssemblyName>
+    <RootNamespace>dokuku.sales.item</RootNamespace>
+    <AssemblyName>dokuku.sales.item</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,16 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LoveSeat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="LoveSeat">
       <HintPath>..\packages\LoveSeat\LoveSeat.dll</HintPath>
     </Reference>
-    <Reference Include="LoveSeat.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="LoveSeat.Interfaces">
       <HintPath>..\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Machine.Specifications">
-      <HintPath>..\packages\Machine.Specifications-Signed.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -55,32 +50,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="When_get_all_items.cs" />
-    <Compile Include="When_create_item.cs" />
-    <Compile Include="When_get_all_customer.cs" />
-    <Compile Include="When_create_customer.cs" />
-    <Compile Include="When_find_organization_by_owner_id.cs" />
+    <Compile Include="ItemRepository.cs" />
+    <Compile Include="IItemRepository.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="When_create_organization.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
-      <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
-      <Name>dokuku.sales.customer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
-      <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
-      <Name>dokuku.sales.item</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
-      <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
-      <Name>dokuku.sales.organization</Name>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
