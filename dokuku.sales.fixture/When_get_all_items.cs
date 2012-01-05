@@ -6,7 +6,7 @@ using Machine.Specifications;
 using dokuku.sales.item;
 namespace dokuku.sales.fixture
 {
-    [Subject("Creating customer")]
+    [Subject("Get all items")]
     public class When_get_all_item
     {
         private static IItemRepository itemRepo;

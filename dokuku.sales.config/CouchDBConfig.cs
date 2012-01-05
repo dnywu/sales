@@ -20,6 +20,21 @@ namespace dokuku.sales.config
             set
             { this["server"] = value; }
         }
+
+        [ConfigurationProperty("database",
+                               DefaultValue = "dokuku",
+                               IsRequired = true)]
+        public string Database
+        {
+            get
+            {
+                return (String)this["database"];
+            }
+            set
+            {
+                this["database"] = value;
+            }
+        }
         
         [ConfigurationProperty("port", DefaultValue=5984, IsRequired = true)]
         public int Port
