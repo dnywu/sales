@@ -1,39 +1,9 @@
 body {
 	font: 13.34px helvetica,arial,freesans,clean,sans-serif;
-	margin:0;
-	line-height:1.4;
-	min-width: 1000px;
+	margin:0px;
+	padding:0px;
+	min-width: 950px;
 }
-h1 {
-	padding:30px 0 10px;
-	margin-top:0;
-	line-height:30px;
-}
-
-ul{
-	padding:0 0 0 15px; 
-	list-style : none;
-}
-
-a{
-	text-decoration: none;
-	color: Black;
-	font-weight: bold;
-}
-
-hr {
-	border:none;
-	border-top:1px dotted #000;
-}
-
-.error {
-	border: solid 1px red;
-}
-.error_text { 
-	color: red; 
-	font-size: 10px;
-}
-
 div#header{
 	height: 47px;
 	width: 100%;
@@ -79,10 +49,6 @@ ul.menu-nav li{
 	float: left;
 	padding: 0 0 0 20px;
 }
-ul.menu-nav li ul{z-index: 9999;position:absolute;left:-999em;height:auto;width:140px;margin:0;padding:0;}
-ul.menu-nav li ul a{width: 104px;}
-ul.menu-nav li ul ul{margin:-75px 0 0 171px; }
-
 div.mainFrame
 {
 	width:988px;
