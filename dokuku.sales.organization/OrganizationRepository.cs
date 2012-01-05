@@ -2,6 +2,7 @@
 using dokuku.sales.config;
 using System.Configuration;
 using System;
+using System.Linq;
 namespace dokuku.sales.organization
 {
     public class OrganizationRepository : IOrganizationRepository
@@ -34,6 +35,12 @@ namespace dokuku.sales.organization
         public Organization Get(Guid id)
         {
             return DB.GetDocument<Organization>(id);
+        }
+
+        public Organization FindByOwnerId(string email)
+        {
+            ViewResult<Organization> result = DB.View<Organization>("all_docs", "view_organizations");
+            return result.Items.Where(o => o.OwnerId == email).FirstOrDefault();
         }
 
         private CouchDatabase DB 

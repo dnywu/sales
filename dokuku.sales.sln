@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.fixture", "dok
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.config", "dokuku.sales.config\dokuku.sales.config.csproj", "{C1E3A522-9F44-48ED-8855-B78EC12A6C17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.customer", "dokuku.sales.customer\dokuku.sales.customer.csproj", "{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{C1E3A522-9F44-48ED-8855-B78EC12A6C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1E3A522-9F44-48ED-8855-B78EC12A6C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1E3A522-9F44-48ED-8855-B78EC12A6C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

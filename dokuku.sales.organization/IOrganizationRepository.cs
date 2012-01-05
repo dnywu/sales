@@ -9,5 +9,6 @@ namespace dokuku.sales.organization
         void Save(Organization org);
         void Delete(Guid id);
         Organization Get(Guid id);
+        Organization FindByOwnerId(string email);
     }
 }
