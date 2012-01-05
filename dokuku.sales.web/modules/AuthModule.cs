@@ -36,12 +36,6 @@ namespace dokuku.sales.web.modules
                 return Response.AsJs("webclient/sales/" + path);
             };
 
-            Get["/sales/{file}"] = p =>
-            {
-                string filename = p.file.ToString();
-                return Response.AsJs("webclient/sales/" + filename);
-            };
-
             Get["/css/{file}"] = p =>
             {
                 string filename = p.file.ToString();
