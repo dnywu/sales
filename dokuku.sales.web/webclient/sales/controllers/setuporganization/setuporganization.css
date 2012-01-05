@@ -1,0 +1,110 @@
+div.container{
+	width: 960px;
+	margin: 30px auto;
+}
+div.divorganization{
+	width:80%;
+	margin:auto;
+	border: 1px Solid #CACACA;
+	box-shadow: 0 2px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
+	height:500px;
+}
+div.divheaderorganization{
+	padding: 20px 0 20px 0;
+	background: -webkit-gradient(linear,left top,left bottom,from(#FAFAFA),to(#EAEAEA));
+	background: -moz-linear-gradient(top,#FAFAFA,#EAEAEA);
+	border-bottom: 1px solid #CACACA;
+	box-shadow: 0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
+}
+div.divheaderorganization label.title{
+	font-size: 18px;
+	margin-left: 20px;
+	color: #666;
+}
+div.divcontain{
+	margin: 20px 50px 50px 50px;
+}
+div#welcomemessage{
+	color:#666;
+	font-weight:bold;
+	padding-bottom: 10px;
+}
+div.text{
+	padding-bottom: 20px;
+	color: #666;
+}
+label.divfieldheader{
+	display:block;
+	font-size:13px;
+}
+.red{
+	font-size: 12px;
+	color:#9C0000;
+	font-weight:bold;
+}
+div.formgroup{
+	width:97%;
+	background-color: #F7F7F7;
+	padding: 10px;
+	border: 1px solid #ECECEC;
+	margin-bottom: 20px;
+	color: #666;
+	font-size:12px;
+}
+td.left{
+	width: 170px;
+	text-align: right;
+	font-weight: bold;
+}
+td.right{
+	padding-left: 20px;
+	float:left;
+	text-align:left;
+}
+input[type="text"]{
+	width:260px;
+}
+select{
+	width:265px;
+}
+div.divBtn{
+	text-align:center;
+}
+label.warning{
+	color: #666;
+	font-size: 11px;
+}
+div#error{
+	display:none;
+	color:#fff;
+	padding: 2px;
+	padding-left: 10px;
+	width: 100%;
+	background-color:#FF6A6A;
+	border: 1px Solid #E00;
+}
+/* The hint to Hide and Show */
+.hint {
+   	display: none;
+    position: absolute;
+    width: 152px;
+    margin-left: 280px;
+    margin-top: -30px;
+    border: 1px solid #c93;
+    padding: 10px 12px;
+    /* to fix IE6, I can't just declare a background-color,
+    I must do a bg image, too!  So I'm duplicating the pointer.gif
+    image, and positioning it so that it doesn't show up
+    within the box */
+    background: #ffc url(images/pointerballoon.gif) no-repeat -10px 5px;
+}
+
+/* The pointer image is hadded by using another span */
+.hint .hint-pointer {
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    width: 10px;
+    height: 19px;
+    background: url(images/pointerballoon.gif) left top no-repeat;
+}

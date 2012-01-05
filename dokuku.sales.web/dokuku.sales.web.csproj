@@ -32,9 +32,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\Dokuku\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net">
+      <HintPath>..\..\Dokuku\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\Bonastoco-v2\external-lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="LoveSeat">
+      <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.dll</HintPath>
+    </Reference>
+    <Reference Include="LoveSeat.Interfaces">
+      <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.0.9.0\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Authentication.Forms">
+      <HintPath>..\packages\Nancy.Authentication.Forms.0.9.0\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Hosting.Aspnet">
+      <HintPath>..\packages\Nancy.Hosting.Aspnet.0.9.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.ViewEngines.Razor">
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.9.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\Dokuku\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -44,6 +71,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.9.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -53,6 +84,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\css\login.css" />
+    <Content Include="Views\scripts\GetParameter.js" />
+    <Content Include="Views\scripts\jquery-1.7.1.min.js" />
+    <Content Include="Views\scripts\login.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -279,28 +314,34 @@
     <Content Include="webclient\jquery\view\tmpl\tmpl_test.js" />
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
-    <Content Include="webclient\sales\controllers\home\Home.css" />
+    <Content Include="Views\login.html" />
+    <Content Include="webclient\sales\controllers\home\funcunit.html" />
     <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
+    <Content Include="webclient\sales\controllers\home\home_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
-    <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
+    <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
+    <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization.css" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization.html" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
     <Content Include="webclient\sales\sales.css" />
-    <Content Include="webclient\sales\sales.html" />
     <Content Include="webclient\sales\sales.js" />
     <Content Include="webclient\sales\scripts\build.html" />
     <Content Include="webclient\sales\scripts\build.js" />
     <Content Include="webclient\sales\scripts\clean.js" />
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
-    <Content Include="webclient\sales\scripts\ModalDialog.js" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
@@ -510,9 +551,14 @@
     <Content Include="webclient\steal\test\two.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="models\LogHelper.cs" />
+    <Compile Include="models\LoginResponse.cs" />
+    <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\MainModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net.config" />
     <None Include="webclient\jquery\controller\pages\listening.md" />
     <None Include="webclient\jquery\controller\pages\plugin.md" />
     <None Include="webclient\jquery\controller\view\test\qunit\views\init.micro" />
@@ -619,6 +665,8 @@
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs" />
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
@@ -660,6 +708,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="webclient\sales\docs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
+      <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>
+      <Name>dokuku.security</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
