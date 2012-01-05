@@ -279,14 +279,14 @@
     <Content Include="webclient\jquery\view\tmpl\tmpl_test.js" />
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
+    <Content Include="webclient\sales\controllers\home\Home.css" />
+    <Content Include="webclient\sales\controllers\home\home.html" />
+    <Content Include="webclient\sales\controllers\home\home.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
-    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
-    <Content Include="webclient\sales\controllers\nav\nav.html" />
-    <Content Include="webclient\sales\controllers\nav\nav.js" />
-    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
@@ -300,6 +300,7 @@
     <Content Include="webclient\sales\scripts\clean.js" />
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
+    <Content Include="webclient\sales\scripts\ModalDialog.js" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
@@ -616,8 +617,8 @@
     <None Include="webclient\jquery\view\test\qunit\template.micro" />
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
+    <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
-    <None Include="webclient\sales\controllers\nav\views\init.ejs" />
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
