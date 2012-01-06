@@ -7,13 +7,38 @@ steal(
     'sales/controllers/customers',
     'sales/controllers/home',
 	function () {					// configure your application
-	    var invoice = 1;
-	    if (invoice == 0) {
-	        $('body').empty();
-	        $('body').sales_setuporganization();
+	    $.ajax({
+	        type: 'GET',
+	        url: '/getuser',
+	        dataType: 'json',
+	        success: GetUserCallback
+	    });
+	    $.ajax({
+	        type: 'GET',
+	        url: '/getorganization',
+	        dataType: 'json',
+	        success: GetOrganizationCallback
+	    });
+	    function GetOrganizationCallback(data) {
+	        if (data == null) {
+	            $('body').empty();
+	            $('body').sales_setuporganization();
+	        }
+	        else {
+	            $('body').sales_home();
+	            $('#section').sales_items_create();
+	        }
 	    }
+<<<<<<< HEAD
 	    else {
 	        $('body').sales_home();
 	        $('#section').sales_customers();
+=======
+	    function GetUserCallback(data) {
+	        new Sales.Models.Companyprofile({
+	            id: '1',
+	            name: data
+	        }).save();
+>>>>>>> origin/master
 	    }
 	})

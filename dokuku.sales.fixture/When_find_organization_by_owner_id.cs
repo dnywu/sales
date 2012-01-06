@@ -6,7 +6,7 @@ using Machine.Specifications;
 using dokuku.sales.organization;
 namespace dokuku.sales.fixture
 {
-    [Subject("Creating organization")]
+    [Subject("Find organization by owner id")]
     public class When_find_organization_by_owner_id
     {
         private static IOrganizationRepository orgRepo;

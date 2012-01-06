@@ -7,7 +7,7 @@ using dokuku.sales.organization;
 using dokuku.sales.customer;
 namespace dokuku.sales.fixture
 {
-    [Subject("Creating customer")]
+    [Subject("Get all customers")]
     public class When_get_all_customer
     {
         private static ICustomerRepository csRepo;

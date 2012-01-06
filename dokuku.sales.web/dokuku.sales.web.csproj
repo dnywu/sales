@@ -339,6 +339,7 @@
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
+    <Content Include="webclient\sales\models\companyprofile.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
     <Content Include="webclient\sales\sales.css" />
@@ -717,6 +718,10 @@
     <Folder Include="webclient\sales\docs\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
+      <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
+      <Name>dokuku.sales.organization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
       <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>
       <Name>dokuku.security</Name>
