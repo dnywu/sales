@@ -10,12 +10,6 @@ steal('jquery/controller', 'jquery/view/ejs',
 	    init: function () {
 	        this.element.html(this.view("//sales/controllers/setuporganization/views/setuporganization.ejs", Sales.Models.Companyprofile.findOne({ id: '1' })));
 	    },
-	    load: function () {
-	        if (getParameterByName('error') == 'true') {
-	            alert(getParameterByName('message'));
-	            $('<li>', { 'class': 'errserver', text: getParameterByName('message') }).appendTo($("#error").show());
-	        }
-        },
 	    '#name focus': function () {
 	        $('.hint').css('display', 'inline');
 	    },

@@ -39,8 +39,7 @@ namespace dokuku.sales.web.modules
                         int starts = (int)this.Request.Form.starts;
                         Guid id = Guid.NewGuid();
                         string owner = this.Context.CurrentUser.UserName;
-                        throw new Exception("Error Cuy");
-                        //orgRepo.Save(new Organization(id, owner, name, curr, starts));
+                        orgRepo.Save(new Organization(id, owner, name, curr, starts));
                     }
                     catch (Exception ex)
                     {
