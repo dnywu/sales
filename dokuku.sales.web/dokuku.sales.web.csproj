@@ -50,6 +50,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\css\login.css" />
+    <Content Include="Views\login.html" />
+    <Content Include="Views\scripts\GetParameter.js" />
+    <Content Include="Views\scripts\jquery-1.7.1.min.js" />
+    <Content Include="Views\scripts\login.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -284,13 +289,19 @@
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
+    <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
+    <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization.css" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization.html" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
+    <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
     <Content Include="webclient\sales\sales.css" />
-    <Content Include="webclient\sales\sales.html" />
     <Content Include="webclient\sales\sales.js" />
     <Content Include="webclient\sales\scripts\build.html" />
     <Content Include="webclient\sales\scripts\build.js" />
@@ -508,9 +519,15 @@
     <Content Include="webclient\steal\test\two.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="models\LogHelper.cs" />
+    <Compile Include="models\LoginResponse.cs" />
+    <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\MainModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net.config" />
+    <Content Include="packages.config" />
     <None Include="webclient\jquery\controller\pages\listening.md" />
     <None Include="webclient\jquery\controller\pages\plugin.md" />
     <None Include="webclient\jquery\controller\view\test\qunit\views\init.micro" />
@@ -618,6 +635,8 @@
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs" />
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />

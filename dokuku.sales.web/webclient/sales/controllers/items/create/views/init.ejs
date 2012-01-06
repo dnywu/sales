@@ -2,6 +2,7 @@
 	<div class="topBandHeaderDIV">
 		<div class="HeaderDIVLeft" id="TitleSpan">New Item</div>
 	</div>
+	<div id="error"></div>
 	<div class="mainDivWidth">
 		<form name="ProductForm" id="createItemsForm">
 			<div class="ie-form ProductFormDiv">
@@ -18,7 +19,7 @@
 							<br />
 							<span class="f11 ffva lightGrey  lineHeight" style="font-weight:normal;">(Maks 500 karakter)</span>
 							</td>
-							<td class="field"><textarea class="textAreaField" row="4" style="height:60px; width:266px;" /></td>
+							<td class="field"><textarea class="textAreaField" row="4" style="height:60px; width:266px;" id="description" /></td>
 						</tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Harga</span></td>
@@ -27,7 +28,7 @@
 						</tr>
 						<tr>
 							<td class="labelLeft">Pajak</td>
-							<td class="field"><select style="margin-bottom:0;"><option></option></select></td>
+							<td class="field"><select id="tax" style="margin-bottom:0;"><option></option></select></td>
 						</tr>
 						<tr>
 							<td class="labelLeft" height="5"> </td>
