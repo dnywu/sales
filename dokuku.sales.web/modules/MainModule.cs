@@ -39,14 +39,14 @@ namespace dokuku.sales.web.modules
                         int starts = (int)this.Request.Form.starts;
                         Guid id = Guid.NewGuid();
                         string owner = this.Context.CurrentUser.UserName;
-
-                        orgRepo.Save(new Organization(id, owner, name, curr, starts));
+                        throw new Exception("Error Cuy");
+                        //orgRepo.Save(new Organization(id, owner, name, curr, starts));
                     }
                     catch (Exception ex)
                     {
-                        return Context.GetRedirect("webclient/sales/index?error=true&message=" + ex.Message);
+                        return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
-                    return View["webclient/sales/index"];
+                    return Response.AsRedirect("/");
                 };
         }
     }
