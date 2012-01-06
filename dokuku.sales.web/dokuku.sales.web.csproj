@@ -343,6 +343,7 @@
     <Content Include="webclient\sales\scripts\clean.js" />
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
+    <Content Include="webclient\sales\scripts\GetParameter.js" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
