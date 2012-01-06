@@ -9,10 +9,11 @@ namespace dokuku.sales.organization
     {
         CouchClient couchClient;
         CouchDatabase db;
-        
+        CouchDBConfig cfg;
+
         public OrganizationRepository()
         {
-            CouchDBConfig cfg = (CouchDBConfig)ConfigurationManager.GetSection("CouchDBConfig");
+            cfg = (CouchDBConfig)ConfigurationManager.GetSection("CouchDBConfig");
             if (cfg == null)
                 throw new ApplicationException("CouchDBConfig tidak di temukan dalam app config"); 
             couchClient = new CouchClient(cfg.Server, cfg.Port, cfg.Username, cfg.Password, false, AuthenticationType.Basic);
@@ -48,7 +49,7 @@ namespace dokuku.sales.organization
             get
             {
                 if (db == null)
-                    db = couchClient.GetDatabase("dokuku");
+                    db = couchClient.GetDatabase(cfg.Database);
                 return db;
             }
         }

@@ -1,0 +1,11 @@
+E:\Bonastoco\Dokuku\Sales\dokuku.security\obj\Debug\ResolveAssemblyReference.cache
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\dokuku.security.dll
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\dokuku.security.pdb
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\LoveSeat.dll
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\LoveSeat.Interfaces.dll
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\Nancy.Authentication.Forms.dll
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\Nancy.dll
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\Newtonsoft.Json.dll
+E:\Bonastoco\Dokuku\Sales\dokuku.security\bin\Debug\Newtonsoft.Json.xml
+E:\Bonastoco\Dokuku\Sales\dokuku.security\obj\Debug\dokuku.security.dll
+E:\Bonastoco\Dokuku\Sales\dokuku.security\obj\Debug\dokuku.security.pdb
