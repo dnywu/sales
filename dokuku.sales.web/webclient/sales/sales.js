@@ -22,23 +22,18 @@ steal(
 	    function GetOrganizationCallback(data) {
 	        if (data == null) {
 	            $('body').empty();
-	            $('body').sales_setuporganization();
+	            $('body').sales_customers();
+//	            $('body').sales_setuporganization();
 	        }
 	        else {
 	            $('body').sales_home();
-	            $('#section').sales_items_create();
+	            $('#section').sales_customers();
 	        }
 	    }
-<<<<<<< HEAD
-	    else {
-	        $('body').sales_home();
-	        $('#section').sales_customers();
-=======
 	    function GetUserCallback(data) {
 	        new Sales.Models.Companyprofile({
 	            id: '1',
 	            name: data
 	        }).save();
->>>>>>> origin/master
 	    }
 	})

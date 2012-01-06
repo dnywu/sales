@@ -9,6 +9,12 @@ steal('jquery/controller',
             init: function () {
                 this.element.html(this.view('//sales/controllers/customers/views/customer.ejs'));
             },
+            '#inputText_CustomerName focus': function () {
+                $('.hint_namaPelanggan').css('display', 'inline');
+            },
+            '#inputText_CustomerName blur': function () {
+                $('.hint_namaPelanggan').css('display', 'none');
+            },
             '#seperateShipping change': function () {
                 if ($('#seperateShipping').attr('checked')) {
                     $("#address").show();
@@ -21,24 +27,12 @@ steal('jquery/controller',
                 $("#CustomField").show();
                 $("#DivCustomField").hide();
             },
-            submit: function (el, ev) {
-                var form = $("#setuporganization");
-                var err = $("#error");
-                var defaults = {
-                    name: $("#name").val(),
-                    timezone: $("#timezone").val(),
-                    curr: $("#curr").val(),
-                    starts: $("#starts").val()
-                };
-                err.empty();
-                if (defaults.name !== "" && defaults.curr != 0)
-                    form.submit();
-                if (defaults.name == "")
-                    $('<li>', { 'class': 'name', text: "Nama Organisasi harus di isi" }).appendTo(err.show());
-                if (defaults.curr == 0)
-                    $('<li>', { 'class': 'curr', text: "Mata Uang harus di pilih" }).appendTo(err.show());
-                ev.preventDefault();
-                return;
+            '#copyField click': function () {
+                $('#inputTextarea_NewCust_BillingAddress').val($('#inputTextarea_BillingAddress').val());
+                $('#inputText_NewCust_City').val($('#inputText_City').val());
+                $('#inputText_NewCust_StateProvince').val($('#inputText_StateProvince').val());
+                $('#inputText_NewCust_ZIPPostalCode').val($('#inputText_ZIPPostalCode').val());
+                $('#inputText_NewCust_Fax').val($('#inputText_Fax').val());
             }
         })
 

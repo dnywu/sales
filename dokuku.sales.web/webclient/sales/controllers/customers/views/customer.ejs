@@ -1,4 +1,4 @@
-<form method='POST' id='setuporganization'>
+<form method='POST' action='/customer' id='AddCustomers' name='AddCustomers'>
 <div class='FormNewCustomer'>
 	<div class="topBandHeaderDIV">
 	<div id="TitleSpan" class="HeaderDIVLeft">Tambah Pelanggan</div>
@@ -7,16 +7,18 @@
 	<table class="FormNewCuscotmer">
 		<tbody>
 			<tr>
-				<td> <div class="mandatoryTxt">Nama Pelanggan</div> </td>
-				<td class="td_field"> <input type="text" id="inputText_CustomerName" required placeholder="Nama Pelanggan"/></td>
+				<td> <div class="mandatoryTxt">Nama Pelanggan</div>
+            
+        </td>
+				<td class="td_field"> <input type="text" name="nama" id="inputText_CustomerName" placeholder="Nama Pelanggan" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+        </td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td > <div class="mandatoryTxt">Mata Uang</div> </td>
 				<td class="td_field">
 				<select class="td_field_customer"  id="inputSelect_CustomerCurrency">
-					<option value ="None"> None </option>
-          <option value ="IDR"> IDR - Rupiah </option>
+          <option value ="IDR" selected="selected"> IDR - Rupiah </option>
           <option value ="USD"> USD - US Dollar </option>
 				</select></td>
 				<td class="error"></td>
@@ -25,8 +27,7 @@
 				<td class="labelLeft">Jangka Pembayaran </td>
 				<td class="td_field">
 				<select class="td_field_customer" id="inputSelect_PaymentsTerms">
-					<option value="None"> None </option>
-          <option value="15 hari"> 15 hari </option>
+          <option value="15 hari" selected="selected"> 15 hari </option>
           <option value="30 hari"> 30 hari</option>
           <option value="45 hari"> 45 hari</option>
           <option value="60 hari"> 60 hari</option>
@@ -41,41 +42,41 @@
 	<table class="FormNewCuscotmer">
 		<tbody>
 			<tr>
-				<td class="labelLeft">Billing Address <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
-				<td class="td_field"><textarea rows = "3" cols="28" id="inputTextarea_BillingAddress"></textarea></td>
+				<td class="labelLeft"> Alamat Pembayaran <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
+				<td class="td_field"><textarea rows = "3" cols="28" id="inputTextarea_BillingAddress" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Alamat Pembayaran tidak Boleh Kosong')"></textarea></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">City</td>
-				<td class="td_field"><input type="text" id="inputText_City"/></td>
+				<td class="labelLeft">Kota</td>
+				<td class="td_field"><input type="text" id="inputText_City" placeholder="Nama Kota" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Kota tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">State/Province</td>
-				<td class="td_field"><input type="text" id="inputText_StateProvince"/></td>
+				<td class="labelLeft">Provinsi</td>
+				<td class="td_field"><input type="text" id="inputText_StateProvince" placeholder="Provinsi" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Provinsi tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">ZIP/Postal Code</td>
-				<td class="td_field"><input type="text" id="inputText_ZIPPostalCode"/></td>
+				<td class="labelLeft">Kode Pos</td>
+				<td class="td_field"><input type="text" id="inputText_ZIPPostalCode" placeholder="Kode Pos" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode Pos tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">Country</td>
-				<td class="td_field"><input type="text" id="inputText_Country"/></td>
+				<td class="labelLeft">Negara</td>
+				<td class="td_field"><input type="text" id="inputText_Country" value = "Indonesia" readonly="readonly"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Fax</td>
-				<td class="td_field"><input type="text"  id="inputText_Fax"/></td>
+				<td class="td_field"><input type="text"  id="inputText_Fax" placeholder="Fax" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Fax tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">Shipping Address</td>
+				<td class="labelLeft">Alamat Pengiriman</td>
 				<td class="td_field" colspan="2">
 					<div class="checkboxLabelDiv">
 							<input type="checkbox" id="seperateShipping"/>
-							<label for="seperateShipping" class="labelStyle">I would like to specify the shipping address separately</label>
+							<label for="seperateShipping" class="labelStyle">Saya Mau Alamat Pengirimannya Terpisah</label>
 					</div>
 				</td>
 			</tr>
@@ -85,34 +86,42 @@
 	<div class = 'CreateNewCustomer' id='address'>
 	<table class="FormNewCuscotmer">
 		<tbody>
+      <tr>
+        <td class="labelLeft"></td>
+        <td class="td_field">
+          <img class = "copyField"/>
+          <span id = "copyField" style="text-decoration:underline; cursor:pointer; color:blue; font-size : 11px">Menyalin data Alamat Pembayaran di atas</span>
+        </td>
+        <td class="error"></td>
+      </tr>
 			<tr>
-				<td class="labelLeft">Billing Address <br><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
-				<td class="td_field"><textarea rows = "3" cols="25" id="inputTextarea_NewCust_BillingAddress"></textarea></td>
+				<td class="labelLeft">Alamat Pengiriman <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
+				<td class="td_field"><textarea rows = "3" cols="28" id="inputTextarea_NewCust_BillingAddress"></textarea></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">City</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_City"/></td>
+				<td class="labelLeft">Kota</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_City" placeholder="Kota"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">State/Province</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_StateProvince"/></td>
+				<td class="labelLeft">Provinsi</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_StateProvince" placeholder="Provinsi"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">ZIP/Postal Code</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_ZIPPostalCode"/></td>
+				<td class="labelLeft">Kode Pos</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_ZIPPostalCode" placeholder="Kode Pos"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">Country</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_Country"/></td>
+				<td class="labelLeft">Negara</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_Country" value = "Indonesia" readonly="readonly"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Fax</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_Fax"/></td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_Fax" placeholder="Fax"/></td>
 				<td class="error"></td>
 			</tr>
 		</tbody>
@@ -123,22 +132,24 @@
 	<table class="FormNewCuscotmer">
 		<tbody>
 			<tr>
-				<td class="labelLeft">Person Name</td>
+				<td class="labelLeft">Nama Anda</td>
 				<td class="td_field">
 					<select class="field_select" id="inputSelect_PersonName">
-						<option> None </option>
+            <option value ="" selected="selected"></option>
+            <option value ="Bapak"> Bapak </option>
+            <option value ="Ibu"> Ibu. </option>
 					</select>
-					<input type="text" class="text" id="inputText_PersonName"/></td>
-				<td class="error"><input type="text" class="text"/></td>
+					<input type="text" class="text" id="inputText_FirstName" placeholder="Nama Awal" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Awal Customer tidak Boleh Kosong')"/></td>
+				<td class="error"><input type="text" class="text" id="inputText_LastName" placeholder="Nama Akhir"/></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">Phone#</td>
-				<td class="td_field"><input type="text" id="inputText_Phone"/></td>
-				<td class="error"><input type="text" class="text"/></td>
+				<td class="labelLeft">Telpon#</td>
+				<td class="td_field"><input type="text" id="inputText_Seluler" placeholder="Seluler"/></td>
+				<td class="error"><input type="text" class="text" id="inputText_Phone" placeholder="Telpon"/></td>
 			</tr>
 			<tr>
-				<td class="labelLeft">Email</td>
-				<td class="td_field"><input type="text" id="inputText_Email"/></td>
+				<td class="labelLeft">E-mail</td>
+				<td class="td_field"><input type="text" id="inputText_Email" placeholder="E-mail"/></td>
 				<td class="error"></td>
 			</tr>
 		</tbody>
@@ -146,7 +157,7 @@
 	</div>
 	<div class = 'CreateNewCustomer' id='DivCustomField'>
 		<img class = "add"/>
-		<span id = "addCustomField" style="text-decoration:underline; cursor:pointer; color:blue; font-size : 11px"> Add Additional Custom Fields</span>
+		<span id = "addCustomField" style="text-decoration:underline; cursor:pointer; color:blue; font-size : 11px">Tambah Informasi</span>
 	</div>
 	<div class = 'CreateNewCustomer' id="CustomField">
 	<table class="FormNewCuscotmer">
@@ -154,10 +165,8 @@
 			<tr>
 				<td>
 					<div>
-					<h3>Additional Fields</h3>
-					<span style="font-size : 12px;">Additional details like Customer's Company ID, VAT ID, etc. 
-					that you like to appear on the invoices or estimates can be specified as custom fields. 
-					They will appear on the invoices as shown in the image</span>
+					<h3>Menambah Rincian</h3>
+					<span style="font-size : 12px;">Tambahan Informasi Pelanggan Perusahaan Seperti No PPN, No Perusahaan dll</span>
 					</div>
 				</td>
 			</tr>
@@ -193,7 +202,7 @@
 				<td>
 					<div class="checkboxLabelDiv">
 							<input type="checkbox" id="inputCheckbox_SpecifyShippingAddress"/>
-							<label for="inputCheckbox_SpecifyShippingAddress" class="labelStyle">I would like to specify the shipping address separately</label>
+							<label for="inputCheckbox_SpecifyShippingAddress" class="labelStyle"> Jadi Informasi Tambahan Ini Untuk Digunakan Di Perusahaan Ini </label>
 					</div>
 				</td>
 			</tr>
