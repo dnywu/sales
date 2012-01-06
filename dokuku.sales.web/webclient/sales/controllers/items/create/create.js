@@ -1,8 +1,10 @@
 steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
-      './ItemsCreate.css')
-.then('./views/init.ejs', function ($) {
+      './ItemsCreate.css',
+      '//sales/scripts/ModalDialog.js')
+.then('./views/init.ejs',
+      './views/createTaxDialog.ejs', function ($) {
           $.Controller('Sales.Items.Create',
 {
     defaults: {}
@@ -13,11 +15,20 @@ steal('jquery/controller',
         this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
     },
     "#createTaxLink click": function (el, ev) {
+        //        new ModalDialog("Pajak Baru");
         this.createTaxDialog();
         ev.preventDefault();
     },
     createTaxDialog: function () {
-        alert("bikin pajak baru");
+        new ModalDialog("Pajak Baru");
+        $("#dialogContent").append("//sales/controllers/items/create/views/createTaxDialog.ejs", {});
+    },
+    "createItemsForm submit": function (el, ev) {
+        this.validationCheck();
+
+    },
+    validationCheck: function () {
+        
     }
 })
 });

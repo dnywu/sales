@@ -94,3 +94,7 @@ div.submitFormDiv a.cancelSubmitLink
 	text-decoration: underline;
 	color: red;
 }
+#submitNewTax
+{
+	border-top: 1px dashed #DBDBDB;
+}

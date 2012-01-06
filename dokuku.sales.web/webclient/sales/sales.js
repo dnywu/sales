@@ -3,8 +3,8 @@ steal(
 	'./models/models.js', 	// steals all your models
 	'./fixtures/fixtures.js', // sets up fixtures for your models
     'sales/controllers/items/create',
-    'sales/controllers/setuporganization',
     'sales/controllers/home',
+    './style/ModalDialog.css',
 	function () {					// configure your application
 	    var invoice = 0;
 	    if (invoice > 0) {

@@ -3,13 +3,14 @@
 		<div class="HeaderDIVLeft" id="TitleSpan">New Item</div>
 	</div>
 	<div class="mainDivWidth">
-		<form name="ProductForm">
+		<form name="ProductForm" id="createItemsForm">
 			<div class="ie-form ProductFormDiv">
 				<table>
 					<tbody>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
-							<td class="field"><input type="text" id="itemName" /></td>
+							<td class="field"><input type="text" id="itemName" required /></td>
+							<td id="errorItemName"></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">
@@ -21,7 +22,8 @@
 						</tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Harga</span></td>
-							<td class="field"><input type="text" id="itemPrice" /></td>
+							<td class="field"><input type="text" id="itemPrice" required /></td>
+							<td id="errorPrice"></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">Pajak</td>
@@ -38,7 +40,7 @@
 			</div>
 			<div class="submitFormDiv">
 				<input type="submit" Value="Simpan" />
-				<span>or</span>
+				<span>atau</span>
 				<a class="cancelSubmitLink">Batal</a>
 			</div>	
 		</form>

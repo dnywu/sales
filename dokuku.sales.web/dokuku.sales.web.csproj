@@ -298,6 +298,7 @@
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
+    <Content Include="webclient\sales\style\ModalDialog.css" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
@@ -615,6 +616,7 @@
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
+    <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
