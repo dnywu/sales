@@ -315,6 +315,12 @@
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
     <Content Include="Views\login.html" />
+    <Content Include="webclient\sales\controllers\customers\customer.css" />
+    <Content Include="webclient\sales\controllers\customers\customers.html" />
+    <Content Include="webclient\sales\controllers\customers\customers.js" />
+    <Content Include="webclient\sales\controllers\customers\customers_test.js" />
+    <Content Include="webclient\sales\controllers\customers\funcunit.html" />
+    <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\home\funcunit.html" />
     <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
@@ -663,6 +669,7 @@
     <None Include="webclient\jquery\view\test\qunit\template.micro" />
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
+    <None Include="webclient\sales\controllers\customers\views\customer.ejs" />
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />

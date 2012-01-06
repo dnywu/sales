@@ -1,0 +1,211 @@
+<form method='POST' id='setuporganization'>
+<div class='FormNewCustomer'>
+	<div class="topBandHeaderDIV">
+	<div id="TitleSpan" class="HeaderDIVLeft">Tambah Pelanggan</div>
+	</div>
+	<div class = 'CreateNewCustomer'>
+	<table class="FormNewCuscotmer">
+		<tbody>
+			<tr>
+				<td> <div class="mandatoryTxt">Nama Pelanggan</div> </td>
+				<td class="td_field"> <input type="text" id="inputText_CustomerName" required placeholder="Nama Pelanggan"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td > <div class="mandatoryTxt">Mata Uang</div> </td>
+				<td class="td_field">
+				<select class="td_field_customer"  id="inputSelect_CustomerCurrency">
+					<option value ="None"> None </option>
+          <option value ="IDR"> IDR - Rupiah </option>
+          <option value ="USD"> USD - US Dollar </option>
+				</select></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Jangka Pembayaran </td>
+				<td class="td_field">
+				<select class="td_field_customer" id="inputSelect_PaymentsTerms">
+					<option value="None"> None </option>
+          <option value="15 hari"> 15 hari </option>
+          <option value="30 hari"> 30 hari</option>
+          <option value="45 hari"> 45 hari</option>
+          <option value="60 hari"> 60 hari</option>
+          <option value="Saat Menerima Kuitansi"> Saat Menerima Kuitansi </option>
+				</select></td>
+				<td class="error"></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class = 'CreateNewCustomer'>
+	<table class="FormNewCuscotmer">
+		<tbody>
+			<tr>
+				<td class="labelLeft">Billing Address <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
+				<td class="td_field"><textarea rows = "3" cols="28" id="inputTextarea_BillingAddress"></textarea></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">City</td>
+				<td class="td_field"><input type="text" id="inputText_City"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">State/Province</td>
+				<td class="td_field"><input type="text" id="inputText_StateProvince"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">ZIP/Postal Code</td>
+				<td class="td_field"><input type="text" id="inputText_ZIPPostalCode"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Country</td>
+				<td class="td_field"><input type="text" id="inputText_Country"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Fax</td>
+				<td class="td_field"><input type="text"  id="inputText_Fax"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Shipping Address</td>
+				<td class="td_field" colspan="2">
+					<div class="checkboxLabelDiv">
+							<input type="checkbox" id="seperateShipping"/>
+							<label for="seperateShipping" class="labelStyle">I would like to specify the shipping address separately</label>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class = 'CreateNewCustomer' id='address'>
+	<table class="FormNewCuscotmer">
+		<tbody>
+			<tr>
+				<td class="labelLeft">Billing Address <br><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
+				<td class="td_field"><textarea rows = "3" cols="25" id="inputTextarea_NewCust_BillingAddress"></textarea></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">City</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_City"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">State/Province</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_StateProvince"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">ZIP/Postal Code</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_ZIPPostalCode"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Country</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_Country"/></td>
+				<td class="error"></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Fax</td>
+				<td class="td_field"><input type="text" id="inputText_NewCust_Fax"/></td>
+				<td class="error"></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	
+<div class = 'CreateNewCustomer'>
+	<table class="FormNewCuscotmer">
+		<tbody>
+			<tr>
+				<td class="labelLeft">Person Name</td>
+				<td class="td_field">
+					<select class="field_select" id="inputSelect_PersonName">
+						<option> None </option>
+					</select>
+					<input type="text" class="text" id="inputText_PersonName"/></td>
+				<td class="error"><input type="text" class="text"/></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Phone#</td>
+				<td class="td_field"><input type="text" id="inputText_Phone"/></td>
+				<td class="error"><input type="text" class="text"/></td>
+			</tr>
+			<tr>
+				<td class="labelLeft">Email</td>
+				<td class="td_field"><input type="text" id="inputText_Email"/></td>
+				<td class="error"></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class = 'CreateNewCustomer' id='DivCustomField'>
+		<img class = "add"/>
+		<span id = "addCustomField" style="text-decoration:underline; cursor:pointer; color:blue; font-size : 11px"> Add Additional Custom Fields</span>
+	</div>
+	<div class = 'CreateNewCustomer' id="CustomField">
+	<table class="FormNewCuscotmer">
+		<tbody>
+			<tr>
+				<td>
+					<div>
+					<h3>Additional Fields</h3>
+					<span style="font-size : 12px;">Additional details like Customer's Company ID, VAT ID, etc. 
+					that you like to appear on the invoices or estimates can be specified as custom fields. 
+					They will appear on the invoices as shown in the image</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<table class="Field">
+						<tbody>
+							<tr>
+								<td class = "fieldCustom"><div>Field Name</div></td>
+								<td class = "space"></td>
+								<td class="value"><div>Value</div></td>
+							</tr>
+							<tr>
+								<td class = "fieldCustom"> <input type="text" id="inputText_FieldName1"/> </td>
+								<td class = "space"></td>
+								<td class="value"> <input type="text" id="inputText_ValueName1"/> </td>
+							</tr><tr>
+								<td class = "fieldCustom"> <input type="text" id="inputText_FieldName2"/> </td>
+								<td class = "space"></td>
+								<td class="value"> <input type="text"  id="inputText_ValueName2"/> </td>
+							</tr>
+							<tr>
+								<td class = "fieldCustom"> <input type="text"  id="inputText_FieldName3"/> </td>
+								<td class = "space"></td>
+								<td class="value"> <input type="text"  id="inputText_ValueName3"/> </td>
+							</tr>
+
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="checkboxLabelDiv">
+							<input type="checkbox" id="inputCheckbox_SpecifyShippingAddress"/>
+							<label for="inputCheckbox_SpecifyShippingAddress" class="labelStyle">I would like to specify the shipping address separately</label>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div style="margin-top:30px">
+		<p align="center" style="font-size:11px">
+			<input id="EditCustomerSave" type="submit" class="CreateCustomerBtn" name="save" value="Save"/>
+			or
+			<span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Cancel</span>
+		</p>
+	</div>
+</div>
+ </form>

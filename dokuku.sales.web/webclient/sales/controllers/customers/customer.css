@@ -1,0 +1,155 @@
+﻿div.FormNewCustomer{
+	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
+	margin:50px;
+	height : 100%;
+	width : 900px;
+	border : 1px solid #ECECEC;
+	box-shadow: 0 0 4px 0 #999;
+	border-radius: 6px;
+}
+div.CreateNewCustomer{
+	margin:20px;
+	padding:20px;
+	border-top : 1px solid #ECECEC;
+	border-bottom : 1px solid #ECECEC;
+	background: #F7F7F7;
+	box-shadow: 0 0 4px 0 #999;
+}
+div.topBandHeaderDIV {
+padding: 20px 25px;
+background: #F7F7F7;
+
+}
+div.mandatoryTxt{
+	color: #9C0000;
+	font-size : 12px;
+	font-weight:bold;
+	text-align : right;
+	padding-right : 10px;
+}
+.HeaderDIVLeft{
+	font-size: 21px;
+	font-family: arial, verdana;
+}
+td.td_field{
+	width:30%;
+}
+td.labelLeft{
+	width:18%;
+}
+td.error{
+	width:52%;
+}
+.labelLeft{
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+	padding-right : 10px;
+	color: #666;
+}
+input[type="checkbox"]{
+	display: inline-block;
+	font-size: 15px;
+	padding: 0;
+	width: 1.05em;
+	height: 1.05em;
+	-webkit-border-radius: 0.25em;
+	vertical-align: text-top;
+	-webkit-appearance: none;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -126px -453px;
+	margin-top: 2px;
+}
+input[type="checkbox"]:checked{
+	display: inline-block;
+	font-size: 15px;
+	padding: 0;
+	width: 1.05em;
+	height: 1.05em;
+	-webkit-border-radius: 0.25em;
+	vertical-align: text-top;
+	-webkit-appearance: none;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -141px -453px;
+	margin-top: 2px;
+}
+.checkboxLabelDiv {
+	float: left;
+	margin: 5px 0 0 2px;
+}
+.checkboxLabelDiv label{
+	font-size:12px;
+}
+label.labelStyle{
+	margin-left: 3px;
+	margin-bottom : 2px;
+}
+input[type="text"] { 
+	width:98%; 
+}
+.text{
+	width:70% ! important;
+}
+table.FormNewCuscotmer{
+	width:100%;
+	border:0px solid black;
+	cellspacing:0;
+	cellpadding:0;
+}
+table.Field{
+	width : 40%;
+}
+td.fieldCustom{
+	width:13.5%;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	color: #666;
+}
+td.value{
+	width:14.5%;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	color: #666;
+}
+td.space{
+	width:0.5%;
+}
+#address{
+	display:none;
+}
+.add{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -194px -110px;
+	width: 12px;
+	height: 12px;
+	border: 0px;
+	cursor: pointer;
+	margin-top:7px;
+	vertical-align: top;
+}
+#CustomField{
+	display:none;
+}
+.CreateCustomerBtn{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") repeat-x;
+	background-position: -0px -1458px;
+	border-color: #CFCECE #CFCECE #B5B4B4;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	color: #444;
+	font: bold 11px Arial,Helvetica,sans-serif;
+	margin: 0;
+	padding: 5px 15px;
+	text-shadow: 0 2px 0 white;
+	cursor:pointer;
+}
+.field_select{
+	width: 63px ! important;
+}
+.td_field_customer{
+	width:100%;
+}

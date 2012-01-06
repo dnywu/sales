@@ -4,6 +4,7 @@ steal(
 	'./fixtures/fixtures.js', // sets up fixtures for your models
     'sales/controllers/items/create',
     'sales/controllers/setuporganization',
+    'sales/controllers/customers',
     'sales/controllers/home',
 	function () {					// configure your application
 	    var invoice = 1;
@@ -13,6 +14,6 @@ steal(
 	    }
 	    else {
 	        $('body').sales_home();
-	        $('#section').sales_items_create();
+	        $('#section').sales_customers();
 	    }
 	})
