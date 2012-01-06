@@ -4,6 +4,7 @@ steal(
 	'./fixtures/fixtures.js', // sets up fixtures for your models
     'sales/controllers/items/create',
     'sales/controllers/home',
+    'sales/controllers/setuporganization',
     './style/ModalDialog.css',
 	function () {					// configure your application
 	    $.ajax({
