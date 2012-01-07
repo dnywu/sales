@@ -1,6 +1,7 @@
 steal('jquery/controller', 'jquery/view/ejs',
 		'jquery/controller/view',
         'sales/models',
+        'sales/scripts/GetParameter.js',
 		'sales/controllers/setuporganization/setuporganization.css'
 	)
 	.then('./views/setuporganization.ejs', function ($) {
