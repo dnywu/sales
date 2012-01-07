@@ -323,6 +323,7 @@
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\home\funcunit.html" />
+    <Content Include="webclient\sales\controllers\home\Home.css" />
     <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
     <Content Include="webclient\sales\controllers\home\home_test.js" />
@@ -330,6 +331,7 @@
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
