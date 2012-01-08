@@ -21,6 +21,7 @@
         header.appendTo('#dialogHeaderPlace');
         $("#dialogTitle").text(title);
         $("#btnClose").click(this.DestroyModalDialog);
+        modalDialog.show();
     },
     DestroyModalDialog: function () {
         $(".ModalDialog").remove();

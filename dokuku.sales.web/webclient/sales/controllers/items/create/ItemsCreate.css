@@ -98,7 +98,7 @@ div.submitFormDiv a.cancelSubmitLink
 {
 	border-top: 1px dashed #DBDBDB;
 }
-div#error{
+div.error{
 	display:none;
 	color:#fff;
 	padding: 2px;

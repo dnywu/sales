@@ -3,8 +3,8 @@ steal('jquery/controller',
       'jquery/controller/view',
       './ItemsCreate.css',
       '//sales/scripts/ModalDialog.js')
-.then('./views/init.ejs',
-      './views/createTaxDialog.ejs', function ($) {
+.then('./views/createTaxDialog.ejs',
+      './views/init.ejs', function ($) {
           $.Controller('Sales.Items.Create',
 {
     defaults: {}
@@ -15,17 +15,20 @@ steal('jquery/controller',
         this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
     },
     "#createTaxLink click": function (el, ev) {
-        //        new ModalDialog("Pajak Baru");
         this.createTaxDialog();
         ev.preventDefault();
+        this.triggerNewEvent();
     },
     createTaxDialog: function () {
         new ModalDialog("Pajak Baru");
-        $("#dialogContent").append("//sales/controllers/items/create/views/createTaxDialog.ejs", {});
+        $("#dialogContent").html(this.view("//sales/controllers/items/create/views/createTaxDialog.ejs"));
     },
-    "createItemsForm submit": function (el, ev) {
+    triggerNewEvent: function () {
+        $(".submitTax").click(this.submitTax);
+    },
+    "#createItemsForm submit": function (el, ev) {
         var form = $("#createItemsForm");
-        var err = $("#error");
+        var err = $("#errorCreateItemDiv");
         var defaults = {
             name: $("#itemName").val(),
             description: $("#description").val(),
@@ -42,9 +45,9 @@ steal('jquery/controller',
         ev.preventDefault();
         return;
     },
-    "createTaxForm submit": function (el, ev) {
-        var form = $("#createTaxForm");
-        var err = $("#error");
+    submitTax: function (el, ev) {
+        var form = $("#taxForm");
+        var err = $("#errorCreateTaxDiv");
         var defaults = {
             name: $("#taxName").val(),
             percent: $("#percentTax").val()
@@ -54,12 +57,33 @@ steal('jquery/controller',
             form.submit();
         if (defaults.name == "")
             $('<li>', { 'class': 'name', text: "Nama Pajak harus di isi" }).appendTo(err.show());
-        if (defaults.price == "")
+        if (defaults.percent == "")
             $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus di diisi" }).appendTo(err.show());
-        if (defaults.price <= 0)
+        if (defaults.percent <= 0)
             $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus lebih besar dari nol" }).appendTo(err.show());
         ev.preventDefault();
         return;
+    },
+    "#itemName keypress": function () {
+        $('li.name').remove();
+        if ($("#error").is(':empty'))
+            $("#error").hide();
+    },
+    "#itemPrice keypress": function () {
+        $('li.price').remove();
+        if ($("#error").is(':empty'))
+            $("#error").hide();
+    },
+    "#taxName keypress": function () {
+        alert("test");
+        $('li.name').remove();
+        if ($("#error").is(':empty'))
+            $("#error").hide();
+    },
+    "#percentTax keypress": function () {
+        $('li.percenttax').remove();
+        if ($("#error").is(':empty'))
+            $("#error").hide();
     }
 })
-});
+      });

@@ -2,15 +2,15 @@
 	<div class="topBandHeaderDIV">
 		<div class="HeaderDIVLeft" id="TitleSpan">New Item</div>
 	</div>
-	<div id="error"></div>
+	<div class="error" id="errorCreateItemDiv"></div>
 	<div class="mainDivWidth">
-		<form name="ProductForm" id="createItemsForm">
+		<form id="createItemsForm">
 			<div class="ie-form ProductFormDiv">
 				<table>
 					<tbody>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
-							<td class="field"><input type="text" id="itemName" required /></td>
+							<td class="field"><input type="text" id="itemName" /></td>
 							<td id="errorItemName"></td>
 						</tr>
 						<tr>
@@ -22,8 +22,8 @@
 							<td class="field"><textarea class="textAreaField" row="4" style="height:60px; width:266px;" id="description" /></td>
 						</tr>
 						<tr>
-							<td class="labelLeft"><span class="requiredFieldLabel">Harga</span></td>
-							<td class="field"><input type="text" id="itemPrice" required /></td>
+							<td class="labelLeft"><span class="requiredFieldLabel">Harga(Rp.)</span></td>
+							<td class="field"><input type="text" id="itemPrice" /></td>
 							<td id="errorPrice"></td>
 						</tr>
 						<tr>

@@ -1,19 +1,29 @@
-﻿<div id="error"></div>
-<form id="createTaxForm">
-	<table>
-		<tbody>
-			<tr>
-				<td class="labelLeft"><span class="requiredFieldLabel">Pajak</span></td>
-				<td class="field"><input type="text" id="taxName" required /></td>
-			</tr>
-			<tr>
-				<td class="labelLeft"><span class="requiredFieldLabel">Persentase(%)</span></td>
-				<td class="field"><input type="text" id="percentTax" required /></td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="submitFormDiv" id="submitNewTax">
-		<input type="submit" Value="Simpan" />
-		<input type="button" Value="Batal" />
-	</div>	
-</form>
+﻿<div>
+  <div class="error" id="errorCreateTaxDiv"></div>
+  <form id="taxForm">
+    <table>
+      <tbody>
+        <tr>
+          <td class="labelLeft">
+            <span class="requiredFieldLabel">Pajak</span>
+          </td>
+          <td class="field">
+            <input type="text" id="taxName" />
+          </td>
+        </tr>
+        <tr>
+          <td class="labelLeft">
+            <span class="requiredFieldLabel">Persentase(%)</span>
+          </td>
+          <td class="field">
+            <input type="text" id="percentTax" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="submitFormDiv">
+      <input type="button" class="submitTax" Value="Simpan" />
+      <input type="button" Value="Batal" />
+    </div>
+  </form>
+</div>
