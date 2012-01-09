@@ -705,6 +705,10 @@
     <Folder Include="webclient\sales\docs\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
+      <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
+      <Name>dokuku.sales.item</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
