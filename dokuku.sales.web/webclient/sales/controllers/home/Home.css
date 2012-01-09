@@ -11,10 +11,14 @@
 	margin-bottom: 20px;
 	position:fixed;
 }
+<<<<<<< HEAD
 div.container{
 	width: 1000px;
 	margin: auto;
 }
+=======
+
+>>>>>>> origin/master
 ul.top-nav{
 	list-style : none;
 	line-height: 26px;

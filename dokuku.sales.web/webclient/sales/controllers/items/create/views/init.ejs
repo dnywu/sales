@@ -4,13 +4,13 @@
 	</div>
 	<div class="error" id="errorCreateItemDiv"></div>
 	<div class="mainDivWidth">
-		<form id="createItemsForm">
+		<form method="POST" id="createItemsForm" action="/createnewitem">
 			<div class="ie-form ProductFormDiv">
 				<table>
 					<tbody>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
-							<td class="field"><input type="text" id="itemName" /></td>
+							<td class="field"><input type="text" id="itemName" name="itemName"/></td>
 							<td id="errorItemName"></td>
 						</tr>
 						<tr>
@@ -19,16 +19,16 @@
 							<br />
 							<span class="f11 ffva lightGrey  lineHeight" style="font-weight:normal;">(Maks 500 karakter)</span>
 							</td>
-							<td class="field"><textarea class="textAreaField" row="4" style="height:80px;" id="description" /></td>
+							<td class="field"><textarea class="textAreaField" row="4" style="height:80px;" id="description" name="description" /></td>
 						</tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Harga(Rp.)</span></td>
-							<td class="field"><input type="text" id="itemPrice" /></td>
+							<td class="field"><input type="text" id="itemPrice" name="itemPrice" /></td>
 							<td id="errorPrice"></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">Pajak</td>
-							<td class="field"><select id="tax" style="margin-bottom:0;"><option></option></select></td>
+							<td class="field"><select id="tax" style="margin-bottom:0;" name="tax"><option value="PPn">PPn</option></select></td>
 						</tr>
 						<tr>
 							<td class="labelLeft" height="5"> </td>
