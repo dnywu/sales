@@ -14,7 +14,7 @@ namespace dokuku.sales.web.modules
     {
         public MainModule()
         {
-            this.RequiresAuthentication();
+            this.RequiresAuthentication(); 
             IOrganizationRepository orgRepo = new OrganizationRepository();
             Get["/"] = p =>
                 {
