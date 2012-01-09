@@ -1,23 +1,29 @@
-<div id='header'>
-	<div class="container">
-    <div class="logo">
-      <img src="sales/controllers/home/images/Dokuku-Logo.gif" width="150px"/>
-    </div>
-		<ul class="top-nav">
-      <li class="home">
-        <a href="" id='login'><%= this.name %></a>
-      </li>
-      <ul class='setting'>
-        <li>
-          <a href='' original-title='Account Setting'>
-            <span class='icon'>Account Setting</span>
-          </a>
-          </li>
-        <li>U</li>
+<div>
+  <div id='header'>
+	  <div class="container">
+      <div class="logo">
+        <a href="/"> <img src="sales/controllers/home/images/Dokuku-Logo.gif" height="35px"/></a>
+      </div>
+		  <ul class="top-nav">
+      <li class="home"><a href="" id='login'><%= this.name %></a></li>
+        <ul id='setting'>
+          <li><a href='' title='Pengaturan Akun'><span class='iconaccount'>Account Setting</span></a></li>
+          <li><a href='/logout' title='Keluar'><span class='iconlogout'>Keluar</span></a></li>
+        </ul>
+		  </ul>
+	  </div>
+  </div>
+  <div id='tabs'>
+    <div class="containertabs">
+      <ul class="ultabs">
+        <li><span>Home</span></li>
+        <li id="InvoiceLink"><span>Invoices</span></li>
+        <li id="CustomerLink"><span>Customers</span></li>
+        <li><span>Setting</span></li>
       </ul>
-		</ul>
-	</div>
-</div>
-<div id="section">
-	<div id='body' class="container"></div>
+    </div>
+  </div>
+  <div id="section">
+	  <div id='body' class="container"></div>
+  </div>
 </div>
