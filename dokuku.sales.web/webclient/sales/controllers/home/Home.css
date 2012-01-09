@@ -7,10 +7,11 @@
 	border-bottom: 1px solid #CACACA;
 	z-index: 10;
 	box-shadow: 0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
+	padding-bottom:2px;
 	margin-bottom: 20px;
 }
 div.container{
-	width: 960px;
+	width: 1000px;
 	margin: auto;
 }
 ul.top-nav{
@@ -30,4 +31,19 @@ ul.top-nav li.login a {
 ul.top-nav a:hover {
 	text-decoration: none;
 	color: #4183C4;
+}
+div.logo
+{
+    float:left;
+    border-right:1px solid #dddcdc;
+    padding: 12px 0;
+    padding-right:5px;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    font-family:Tahoma;
+}
+div.logo:hover
+{
+    color:#4183C4;
 }
