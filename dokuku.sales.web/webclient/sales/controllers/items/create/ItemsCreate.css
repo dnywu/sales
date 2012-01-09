@@ -1,6 +1,6 @@
 ﻿div.mainFrame
 {
-	width:988px;
+	width:70%;
 	border-color:#999;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -8,7 +8,9 @@
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
-	margin-left:30px;
+	margin-left:auto;
+	margin-right:auto;
+	padding-bottom:15px;
 }
 
 div.topBandHeaderDIV {
@@ -58,15 +60,15 @@ div.ProductFormDiv
 }
 .field
 {
-	width: 272px;
+	width: 350px;
 }
 
-.field input, .field textarea, .field select
+.field input[type="text"], .field textarea, .field select
 {
+	width:100%;
 	margin-bottom: 15px;
 	border: 1px solid #ACD2E7;
 	border-image: initial;
-	width:100%;
 }
 
 #createTaxLink
@@ -78,8 +80,13 @@ div.ProductFormDiv
 
 div.submitFormDiv
 {
-	margin-top:30px;
+	margin-top: 20px;
 	text-align: -webkit-center;
+}
+#submitTaxForm
+{
+	padding-top:10px;
+	border-top: 1px dashed #DBDBDB;
 }
 div.submitFormDiv span
 {
@@ -93,4 +100,27 @@ div.submitFormDiv a.cancelSubmitLink
 	cursor: pointer;
 	text-decoration: underline;
 	color: red;
+}
+
+div.mainCreateTaxDialog
+{
+	padding-top:10px;
+}
+
+div.error{
+	display:none;
+	color:#fff;
+	padding: 2px;
+	padding-left: 10px;
+	background-color:#FF6A6A;
+	border: 1px Solid #E00;
+}
+
+#saveTax
+{
+	height: 25px;
+}
+#cancelCreateTax
+{
+	height: 25px;
 }

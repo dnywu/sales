@@ -1,15 +1,17 @@
 <div class='mainFrame'>
 	<div class="topBandHeaderDIV">
-		<div class="HeaderDIVLeft" id="TitleSpan">New Item</div>
+		<div class="HeaderDIVLeft" id="TitleSpan">Barang Baru</div>
 	</div>
+	<div class="error" id="errorCreateItemDiv"></div>
 	<div class="mainDivWidth">
-		<form name="ProductForm">
+		<form id="createItemsForm">
 			<div class="ie-form ProductFormDiv">
 				<table>
 					<tbody>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
 							<td class="field"><input type="text" id="itemName" /></td>
+							<td id="errorItemName"></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">
@@ -17,15 +19,16 @@
 							<br />
 							<span class="f11 ffva lightGrey  lineHeight" style="font-weight:normal;">(Maks 500 karakter)</span>
 							</td>
-							<td class="field"><textarea class="textAreaField" row="4" style="height:60px; width:266px;" /></td>
+							<td class="field"><textarea class="textAreaField" row="4" style="height:80px;" id="description" /></td>
 						</tr>
 						<tr>
-							<td class="labelLeft"><span class="requiredFieldLabel">Harga</span></td>
+							<td class="labelLeft"><span class="requiredFieldLabel">Harga(Rp.)</span></td>
 							<td class="field"><input type="text" id="itemPrice" /></td>
+							<td id="errorPrice"></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">Pajak</td>
-							<td class="field"><select style="margin-bottom:0;"><option></option></select></td>
+							<td class="field"><select id="tax" style="margin-bottom:0;"><option></option></select></td>
 						</tr>
 						<tr>
 							<td class="labelLeft" height="5"> </td>
@@ -38,8 +41,7 @@
 			</div>
 			<div class="submitFormDiv">
 				<input type="submit" Value="Simpan" />
-				<span>or</span>
-				<a class="cancelSubmitLink">Batal</a>
+				<input type="button" value="Batal" id="cancelCreateItem" />
 			</div>	
 		</form>
 	</div>
