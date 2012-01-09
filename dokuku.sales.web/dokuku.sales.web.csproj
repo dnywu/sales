@@ -33,7 +33,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
-      <HintPath>..\..\..\BonaStoco\Bonastoco-v2\external-lib\Common.Logging.dll</HintPath>
+      <HintPath>..\..\Dokuku\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net">
+      <HintPath>..\..\Dokuku\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\Bonastoco-v2\external-lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="LoveSeat">
+      <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.dll</HintPath>
+    </Reference>
+    <Reference Include="LoveSeat.Interfaces">
+      <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nancy">
@@ -47,6 +59,9 @@
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.9.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\Dokuku\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -70,7 +85,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\css\login.css" />
-    <Content Include="Views\login.html" />
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
@@ -300,12 +314,25 @@
     <Content Include="webclient\jquery\view\tmpl\tmpl_test.js" />
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
+    <Content Include="Views\login.html" />
+    <Content Include="webclient\sales\controllers\customers\customer.css" />
+    <Content Include="webclient\sales\controllers\customers\customers.html" />
+    <Content Include="webclient\sales\controllers\customers\customers.js" />
+    <Content Include="webclient\sales\controllers\customers\customers_test.js" />
+    <Content Include="webclient\sales\controllers\customers\funcunit.html" />
+    <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\home\funcunit.html" />
     <Content Include="webclient\sales\controllers\home\Home.css" />
     <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
+<<<<<<< HEAD
     <Content Include="webclient\sales\controllers\home\images\bar_background.png" />
     <Content Include="webclient\sales\controllers\home\images\Dokuku-Logo.gif" />
     <Content Include="webclient\sales\controllers\home\images\icon.png" />
+=======
+    <Content Include="webclient\sales\controllers\home\home_test.js" />
+>>>>>>> origin/master
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
@@ -321,6 +348,7 @@
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
+    <Content Include="webclient\sales\models\companyprofile.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
     <Content Include="webclient\sales\sales.css" />
@@ -330,8 +358,12 @@
     <Content Include="webclient\sales\scripts\clean.js" />
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
+<<<<<<< HEAD
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
+=======
+    <Content Include="webclient\sales\scripts\GetParameter.js" />
+>>>>>>> origin/master
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
@@ -549,7 +581,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="log4net.config" />
-    <Content Include="packages.config" />
     <None Include="webclient\jquery\controller\pages\listening.md" />
     <None Include="webclient\jquery\controller\pages\plugin.md" />
     <None Include="webclient\jquery\controller\view\test\qunit\views\init.micro" />
@@ -654,13 +685,11 @@
     <None Include="webclient\jquery\view\test\qunit\template.micro" />
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
+    <None Include="webclient\sales\controllers\customers\views\customer.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
-    <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="webclient\sales\controllers\items\create\views\init.ejs">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
@@ -708,9 +737,9 @@
     <Folder Include="webclient\sales\docs\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
-      <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
-      <Name>dokuku.sales.item</Name>
+    <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
+      <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
+      <Name>dokuku.sales.customer</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>

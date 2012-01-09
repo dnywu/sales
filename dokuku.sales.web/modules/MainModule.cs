@@ -8,7 +8,7 @@ using System;
 using Common.Logging;
 using dokuku.sales.web.models;
 using dokuku.sales.organization;
-using dokuku.sales.item;
+using dokuku.sales.customer;
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -17,7 +17,7 @@ namespace dokuku.sales.web.modules
         {
             this.RequiresAuthentication(); 
             IOrganizationRepository orgRepo = new OrganizationRepository();
-            IItemRepository itemRepo = new ItemRepository();
+            ICustomerRepository cusRepo = new CustomerRepository();
             Get["/"] = p =>
                 {
                     return View["webclient/sales/index"];
@@ -49,31 +49,69 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsRedirect("/");
                 };
-            Post["/createnewitem"] = p =>
+            Post["/customer"] = p =>
                 {
+                    string CustomerName = (string)this.Request.Form.CustomerName;
+                    string CustomerCcy = (string)this.Request.Form.CustomerCcy;
+                    string Term = (string)this.Request.Form.term;
+                    string BillingAddress = (string)this.Request.Form.billingAddress;
+                    string City = (string)this.Request.Form.city;
+                    string Province = (string)this.Request.Form.province;
+                    string zip = (string)this.Request.Form.Zip;
+                    string Country = (string)this.Request.Form.country;
+                    string Fax = (string)this.Request.Form.fax;
+                    string ShipmentAddress = (string)this.Request.Form.shipmentAddress;
+                    string ShipmentCity = (string)this.Request.Form.shipmentCity;
+                    string ShipmentStateProvince = (string)this.Request.Form.shipmentStateProvince;
+                    string ShipmentZIPPostalCode = (string)this.Request.Form.shipmentZIPPostalCode;
+                    string ShipmentCountry = (string)this.Request.Form.shipmentCountry;
+                    string ShipmentFax = (string)this.Request.Form.shipmentFax;
+                    string Salutation = (string)this.Request.Form.salutation;
+                    string FirstName = (string)this.Request.Form.firstName;
+                    string LastName = (string)this.Request.Form.lastName;
+                    string Cellular = (string)this.Request.Form.cellular;
+                    string Telephone = (string)this.Request.Form.telephone;
+                    string Email = (string)this.Request.Form.email;
+                    string AddFieldCustID1 = (string)this.Request.Form.add_fieldCustID1;
+                    string AddValueCustID1 = (string)this.Request.Form.add_valueCustID1;
+                    string AddFieldCustID2 = (string)this.Request.Form.add_fieldCustID2;
+                    string AddValueCustID2 = (string)this.Request.Form.add_valueCustID2;
+                    string AddFieldCustID3 = (string)this.Request.Form.add_fieldCustID3;
+                    string AddValueCustID3 = (string)this.Request.Form.add_valueCustID3;
                     try
                     {
-                        string itemName = (string)this.Request.Form.itemName;
-                        string itemDesc = (string)this.Request.Form.description;
-                        decimal itemPrice = (decimal)this.Request.Form.itemPrice;
-                        string taxName = (string)this.Request.Form.tax;
-                        decimal taxValue = 0;
-                        Guid id = Guid.NewGuid();
-                        string owner = this.Context.CurrentUser.UserName;
-                        if (taxName == "PPn")
+                        cusRepo.Save(new Customer()
                         {
-                            taxValue = 0.1m;
-                        }
-                        itemRepo.Save(new Item()
-                        {
-                            _id = id,
-                            OwnerId = owner,
-                            Name = itemName,
-                            Description = itemDesc,
-                            Rate = itemPrice,
-                            Tax = new Tax() { Name = taxName, Value = taxValue }
-                        }
-                        );
+                            Name = CustomerName,
+                            Currency = CustomerCcy,
+                            Term = Term,
+                            BillingAddress = BillingAddress,
+                            City = City,
+                            Province = Province,
+                            PostalCode = zip,
+                            State = Country,
+                            Fax = Fax,
+                            ShipmentAddress = ShipmentAddress,
+                            ShipmentCity = ShipmentCity,
+                            ShipmentCountry = ShipmentCountry,
+                            ShipmentFax = ShipmentFax,
+                            ShipmentStateProvince = ShipmentStateProvince,
+                            ShipmentZIPPostalCode = ShipmentZIPPostalCode,
+                            FirstName = FirstName,
+                            LastName = LastName,
+                            Salutation = Salutation,
+                            Phone = Telephone,
+                            MobilePhone = Cellular,
+                            Email = Email,
+                            AddFieldCustID1 = AddFieldCustID1,
+                            AddFieldCustID2 = AddFieldCustID2,
+                            AddFieldCustID3 = AddFieldCustID3,
+                            AddValueCustID1 = AddValueCustID1,
+                            AddValueCustID2 = AddValueCustID2,
+                            AddValueCustID3 = AddValueCustID3,
+                            _id = Guid.NewGuid(),
+                            OwnerId = this.Context.CurrentUser.UserName
+                        });
                     }
                     catch (Exception ex)
                     {
