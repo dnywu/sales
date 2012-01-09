@@ -6,6 +6,9 @@ steal('jquery/controller',
 
 	    $.Controller('sales.Controllers.customers',
         {
+            onDocument: true
+        },
+        {
             init: function () {
                 this.element.html(this.view('//sales/controllers/customers/views/customer.ejs'));
             },

@@ -6,7 +6,10 @@ steal('jquery/controller',
       'sales/styles/ModalDialog.css')
 .then('./views/createTaxDialog.ejs',
       './views/init.ejs', function ($) {
-        $.Controller('sales.Controllers.items.create',
+          $.Controller('sales.Controllers.items.create',
+        {
+            onDocument: true
+        },
         {
             init: function () {
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
