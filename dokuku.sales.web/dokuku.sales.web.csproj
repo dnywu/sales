@@ -652,10 +652,16 @@
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
-    <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs" />
-    <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
+    <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\items\create\views\init.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
-    <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />

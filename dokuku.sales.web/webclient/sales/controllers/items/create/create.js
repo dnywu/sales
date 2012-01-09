@@ -25,6 +25,9 @@ steal('jquery/controller',
     },
     triggerNewEvent: function () {
         $(".submitTax").click(this.submitTax);
+        $("#cancelCreateTax").click(this.cancelCreateTaxClick);
+        $("#taxName").keypress(this.taxNameKeypress);
+        $("#percentTax").keypress(this.percentTaxKeypress);
     },
     "#createItemsForm submit": function (el, ev) {
         var form = $("#createItemsForm");
@@ -42,6 +45,8 @@ steal('jquery/controller',
             $('<li>', { 'class': 'name', text: "Nama Barang harus di isi" }).appendTo(err.show());
         if (defaults.price == "")
             $('<li>', { 'class': 'price', text: "Harga harus di diisi" }).appendTo(err.show());
+        if (defaults.description.length>500)
+            $('<li>', { 'class': 'description', text: "Deskripsi barang tidak boleh lebih dari 500 karakter" }).appendTo(err.show());
         ev.preventDefault();
         return;
     },
@@ -71,19 +76,29 @@ steal('jquery/controller',
     },
     "#itemPrice keypress": function () {
         $('li.price').remove();
-        if ($("#error").is(':empty'))
-            $("#error").hide();
+        if ($("#errorCreateItemDiv").is(':empty'))
+            $("#errorCreateItemDiv").hide();
     },
-    "#taxName keypress": function () {
-        alert("test");
+    taxNameKeypress: function () {
         $('li.name').remove();
-        if ($("#error").is(':empty'))
-            $("#error").hide();
+        if ($("#errorCreateTaxDiv").is(':empty'))
+            $("#errorCreateTaxDiv").hide();
     },
-    "#percentTax keypress": function () {
+    percentTaxKeypress: function () {
         $('li.percenttax').remove();
-        if ($("#error").is(':empty'))
-            $("#error").hide();
+        if ($("#errorCreateTaxDiv").is(':empty'))
+            $("#errorCreateTaxDiv").hide();
+    },
+    cancelCreateTaxClick: function () {
+        $("#taxName").val("");
+        $("#percentTax").val("");
+        $(".ModalDialog").remove();
+    },
+    "#cancelCreateItem click": function () {
+        $("#itemName").val("");
+        $("#description").val("");
+        $("#itemPrice").val("");
+        $("#tax").val("");
     }
 })
-      });
+});

@@ -4,7 +4,7 @@ body {
 	padding:0px;
 	min-width: 950px;
 }
-input[type="submit"] {
+input[type="submit"], input[type="button"] {
 	display: inline-block;
 	height: 34px;
 	padding: 0;
@@ -35,4 +35,16 @@ input[type="submit"] {
 	padding: 0 13px;
 	-webkit-font-smoothing: subpixel-antialiased!important;
 	border-image: initial;
+}
+
+#btnClose
+{
+	background: white;
+	height: 20px;
+	outline: none;
+	border-image: initial;
+	-webkit-box-shadow: 0 0 0 #fff;
+	-moz-box-shadow: 0 0 0 #fff;
+	box-shadow: 0 0 0 #fff;
+	border-bottom: 0 solid #fff;
 }

@@ -15,7 +15,6 @@ div.ModalDialog div.Detail{
 	width: 450px;
 	background-color:#FFFFFF;
 	margin-bottom:20px;
-	height: 250px;
 	overflow:hidden;
 	resize: none;
 	padding: 3px 3px 7px 3px;
@@ -24,7 +23,7 @@ div.ModalDialog div.Detail{
 	position:absolute;
 	z-index:750;
 	top: 23%;
-	left: 23%;
+	left: 35%;
 }
 
 .DialogBox
