@@ -308,6 +308,11 @@
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
+    <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
+    <Content Include="webclient\sales\controllers\items\list\list.html" />
+    <Content Include="webclient\sales\controllers\items\list\list.js" />
+    <Content Include="webclient\sales\controllers\items\list\list_test.js" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
@@ -658,6 +663,7 @@
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>

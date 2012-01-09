@@ -79,7 +79,11 @@ namespace dokuku.sales.web.modules
                     {
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
-                    return Response.AsRedirect("/");
+                    return Response.AsRedirect("/Items");
+                };
+            Get["/Items"] = p =>
+                {
+                    return Response.AsJson(itemRepo.AllItems());
                 };
         }
     }

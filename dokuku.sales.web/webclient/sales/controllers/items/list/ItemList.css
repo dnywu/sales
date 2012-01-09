@@ -1,0 +1,70 @@
+﻿div.ListItemDiv
+{
+	width:70%;
+	border-color:#999;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	margin-left:auto;
+	margin-right:auto;
+	padding-bottom:15px;
+}
+div.HeaderListDiv
+{
+	padding: 20px 25px;
+	margin: 0;
+	background: #F7F7F7;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+	font-size: 21px;
+}
+div.ItemListContentDiv
+{
+	min-height:300px;
+	margin: 0 25px 30px 25px;
+	padding-top: 35px;
+}
+table.ItemList
+{
+	border-spacing: 0;
+	width:100%;
+}
+table.ItemList thead tr
+{
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+}
+th.headerList
+{
+	padding: 6px 10px 6px 0;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	color: #999;
+	font-weight: normal;
+	height: 32px;
+}
+
+th.headerMark
+{
+	width: 5px;
+	text-align:center;
+}
+th.headerEvent
+{
+	
+}
+th.headerItems
+{
+	text-align:left;
+	color:#DC682F; ;
+}
+th.headerPrice
+{
+	width:100px;
+	text-align:right;
+}
