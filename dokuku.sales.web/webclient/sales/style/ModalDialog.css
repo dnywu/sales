@@ -58,3 +58,14 @@ div#DialogHeader
 {
 	float:right;
 }
+#btnClose
+{
+	background: white;
+	height: 20px;
+	outline: none;
+	border-image: initial;
+	-webkit-box-shadow: 0 0 0 #fff;
+	-moz-box-shadow: 0 0 0 #fff;
+	box-shadow: 0 0 0 #fff;
+	border-bottom: 0 solid #fff;
+}

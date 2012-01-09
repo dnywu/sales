@@ -303,11 +303,6 @@
     <Content Include="webclient\sales\controllers\home\Home.css" />
     <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
-<<<<<<< HEAD
-    <Content Include="webclient\sales\controllers\home\home_test.js" />
-    <Content Include="webclient\sales\controllers\home\images\Dokuku-Logo.gif" />
-=======
->>>>>>> origin/master
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />

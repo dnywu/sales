@@ -5,7 +5,7 @@ steal( 'jquery/controller','jquery/view/ejs',
     $.Controller('sales.controllers.home',
     {
 	    init : function(){
-		    this.element.html(this.view("//sales/controllers/home/views/home.ejs"));
+	        this.element.html(this.view("//sales/controllers/home/views/home.ejs", Sales.Models.Companyprofile.findOne({ id: '1' })));
 	    }
     })
 });

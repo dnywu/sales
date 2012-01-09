@@ -1,5 +1,5 @@
 ﻿div#header{
-	height: 47px;
+	height: 35px;
 	width: 100%;
 	background: -webkit-gradient(linear,left top,left bottom,from(#FAFAFA),to(#EAEAEA));
 	background: -moz-linear-gradient(top,#FAFAFA,#EAEAEA);
@@ -9,6 +9,7 @@
 	box-shadow: 0 1px 0 rgba(255,255,255,0.4),0 0 10px rgba(0,0,0,0.1);
 	padding-bottom:2px;
 	margin-bottom: 20px;
+	position:fixed;
 }
 div.container{
 	width: 1000px;
@@ -18,7 +19,7 @@ ul.top-nav{
 	list-style : none;
 	line-height: 26px;
 	float: right!important;
-	padding: 10px 0;
+	padding: 6px 0;
 	margin: 0 0 0 20px;
 }
 ul.top-nav li{
@@ -36,7 +37,7 @@ div.logo
 {
     float:left;
     border-right:1px solid #dddcdc;
-    padding: 12px 0;
+    padding: 5px 0;
     padding-right:5px;
     font-size:22px;
     font-weight:bold;
@@ -46,4 +47,8 @@ div.logo
 div.logo:hover
 {
     color:#4183C4;
+}
+div#section
+{
+    height:800px;
 }
