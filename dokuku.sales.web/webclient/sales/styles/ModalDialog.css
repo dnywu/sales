@@ -57,6 +57,12 @@ div#DialogHeader
 #btnClose
 {
 	float:right;
+<<<<<<< HEAD
+}
+#btnClose
+{
+=======
+>>>>>>> origin/master
 	background: white;
 	height: 20px;
 	outline: none;
