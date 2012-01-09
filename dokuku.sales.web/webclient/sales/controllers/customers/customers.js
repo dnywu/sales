@@ -9,6 +9,9 @@ steal('jquery/controller',
             init: function () {
                 this.element.html(this.view('//sales/controllers/customers/views/customer.ejs'));
             },
+            load: function () {
+                this.element.html(this.view('//sales/controllers/customers/views/customer.ejs'));
+            },
             '#inputText_CustomerName focus': function () {
                 $('.hint_namaPelanggan').css('display', 'inline');
             },

@@ -2,7 +2,7 @@ steal('jquery/controller', 'jquery/view/ejs',
         'jquery/controller/view',
         './Home.css',
         'sales/controllers/items/create',
-        'sales/controllers/setuporganization'
+        'sales/controllers/customers'
      )
 	.then('./views/home.ejs', function ($) {
 	    $.Controller('sales.controllers.home',
@@ -12,13 +12,11 @@ steal('jquery/controller', 'jquery/view/ejs',
         },
         '#CustomerLink click': function () {
             $("#body").empty();
-            $("#body").removeClass();
-            $("#body").sales_items_create().GetView();
+            $("#body").sales_customers('load');
         },
         '#InvoiceLink click': function () {
             $("#body").empty();
-            $("#body").removeClass();
-            alert('test');
+            $("#body").sales_items_create('load');
         }
     })
 	});

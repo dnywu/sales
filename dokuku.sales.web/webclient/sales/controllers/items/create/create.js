@@ -11,6 +11,9 @@ steal('jquery/controller',
             init: function () {
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
             },
+            load: function () {
+                this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
+            },
             "#createTaxLink click": function (el, ev) {
                 this.createTaxDialog();
                 ev.preventDefault();
