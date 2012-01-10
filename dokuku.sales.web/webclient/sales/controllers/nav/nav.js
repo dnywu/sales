@@ -2,7 +2,7 @@ steal('jquery/controller', 'jquery/view/ejs',
         'jquery/controller/view',
         './Nav.css',
         './NavSubMenu.css',
-        'sales/controllers/items/create',
+        'sales/controllers/items/list',
         'sales/controllers/customers',
         'sales/controllers/home'
      )
@@ -31,7 +31,7 @@ steal('jquery/controller', 'jquery/view/ejs',
                 this.ClearContain();
                 this.InvoiceSubMenu();
                 this.SetActivePage(el);
-                $("#body").sales_items_create('load');
+                //$("#body").sales_items_create('load');
             },
             '#customers click': function (el) {
                 this.ClearContain();
@@ -42,6 +42,11 @@ steal('jquery/controller', 'jquery/view/ejs',
                 this.ClearContain();
                 this.SetBoldActivePage(el);
                 $("#body").sales_items_create('load');
+            },
+            '#items click': function(el){
+                this.ClearContain();
+                this.SetBoldActivePage(el);
+                $("#body").sales_items_list('load');
             },
             CustomerSubMenu: function () {
                 var submenu = $('#subtabs');
