@@ -14,6 +14,8 @@ steal('jquery/controller', 'jquery/view/ejs',
         {
             init: function () {
                 this.element.html(this.view("//sales/controllers/nav/views/nav.ejs", Sales.Models.Companyprofile.findOne({ id: '1' })));
+                //this.element.html(this.view('//sales/controllers/home/views/home.ejs'));
+                //$('#body').load('//sales/controllers/home/views/home.ejs');
             },
             '#HomeLink click': function (el) {
                 this.ClearContain();
