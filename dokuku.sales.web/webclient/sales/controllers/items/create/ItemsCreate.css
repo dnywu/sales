@@ -1,6 +1,6 @@
 ﻿div.mainFrame
 {
-	width:70%;
+	width:75%;
 	border-color:#999;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -8,8 +8,6 @@
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
-	margin-left:auto;
-	margin-right:auto;
 	padding-bottom:15px;
 }
 

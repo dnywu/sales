@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.web", "dokuku.sales.web\dokuku.sales.web.csproj", "{7722DE26-7C0C-4DF3-9A05-C791575D171B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.organization", "dokuku.sales.organization\dokuku.sales.organization.csproj", "{2C0F3BC7-ED13-400D-8D03-61E053748F7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.fixture", "dokuku.sales.fixture\dokuku.sales.fixture.csproj", "{711872FE-E8BA-4996-ACBF-BEB3ACDB5884}"
@@ -15,16 +13,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.item", "dokuku
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.security", "dokuku.security\dokuku.security.csproj", "{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.web", "dokuku.sales.web\dokuku.sales.web.csproj", "{7722DE26-7C0C-4DF3-9A05-C791575D171B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C0F3BC7-ED13-400D-8D03-61E053748F7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2C0F3BC7-ED13-400D-8D03-61E053748F7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C0F3BC7-ED13-400D-8D03-61E053748F7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,6 +45,10 @@ Global
 		{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7722DE26-7C0C-4DF3-9A05-C791575D171B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

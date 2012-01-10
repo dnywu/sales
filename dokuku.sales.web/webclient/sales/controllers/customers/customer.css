@@ -1,9 +1,12 @@
 ﻿div.FormNewCustomer{
 	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
-	margin:50px;
 	height : 100%;
-	width : 900px;
+	width : 75%;
 	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
 }
 div.CreateNewCustomer{
 	margin:20px;

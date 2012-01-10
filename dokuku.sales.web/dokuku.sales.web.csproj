@@ -326,6 +326,8 @@
     <Content Include="webclient\sales\controllers\home\Home.css" />
     <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
+    <Content Include="webclient\sales\controllers\home\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\home\images\Dokuku-Logo.gif" />
     <Content Include="webclient\sales\controllers\home\home_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
@@ -352,6 +354,8 @@
     <Content Include="webclient\sales\scripts\clean.js" />
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
+    <Content Include="webclient\sales\scripts\ModalDialog.js" />
+    <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
     <Content Include="webclient\sales\style\ModalDialog.css" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
