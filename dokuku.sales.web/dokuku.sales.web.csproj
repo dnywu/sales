@@ -313,13 +313,14 @@
     <Content Include="webclient\sales\controllers\customers\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\home\funcunit.html" />
-    <Content Include="webclient\sales\controllers\home\Home.css" />
-    <Content Include="webclient\sales\controllers\home\home.html" />
-    <Content Include="webclient\sales\controllers\home\home.js" />
-    <Content Include="webclient\sales\controllers\home\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\home\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\home\home_test.js" />
+    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
+    <Content Include="webclient\sales\controllers\nav\Nav.css" />
+    <Content Include="webclient\sales\controllers\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\nav\nav.js" />
+    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
+    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
@@ -354,6 +355,7 @@
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
+    <Content Include="webclient\sales\style\ModalDialog.css" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
@@ -678,9 +680,13 @@
     <None Include="webclient\sales\controllers\customers\views\customer.ejs">
       <SubType>Designer</SubType>
     </None>
+<<<<<<< HEAD
     <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
+=======
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
+>>>>>>> origin/master
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">

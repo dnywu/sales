@@ -2,9 +2,8 @@ steal(
 	'./sales.css', 			// application CSS file
 	'./models/models.js', 	// steals all your models
 	'./fixtures/fixtures.js', // sets up fixtures for your models
-    'sales/controllers/home',
+    'sales/controllers/nav',
     'sales/controllers/setuporganization',
-    'sales/controllers/home',
 	function () {					// configure your application
 	    $.ajax({
 	        type: 'GET',
@@ -23,7 +22,7 @@ steal(
 	            $('body').sales_setuporganization();
 	        }
 	        else {
-	            $('body').sales_home();
+	            $('body').sales_nav();
 	        }
 	    }
 	    function GetUserCallback(data) {
