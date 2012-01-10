@@ -1,22 +1,20 @@
-steal('jquery/controller', 'jquery/view/ejs',
+steal(  'jquery/controller',
+        'jquery/view/ejs',
         'jquery/controller/view',
-        './Home.css',
-        'sales/controllers/items/list',
-        'sales/controllers/customers'
-     )
-	.then('./views/home.ejs', function ($) {
-	    $.Controller('sales.controllers.home',
+        'sales/controllers/home/home.css')
+         
+	.then( './views/home.ejs', function($){
+    $.Controller('Sales.Controllers.Home',
     {
-        init: function () {
-            this.element.html(this.view("//sales/controllers/home/views/home.ejs", Sales.Models.Companyprofile.findOne({ id: '1' })));
-        },
-        '#CustomerLink click': function () {
-            $("#body").empty();
-            $("#body").sales_customers('load');
-        },
-        '#InvoiceLink click': function () {
-            $("#body").empty();
-            $("#body").sales_items_list('load');
+        onDocument: true
+    },
+    {
+	    init : function(){
+            this.element.html(this.view('//sales/controllers/home/views/home.ejs'));
+	    },
+        load: function () {
+            this.element.html(this.view('//sales/controllers/home/views/home.ejs'));
         }
     })
-	});
+
+});

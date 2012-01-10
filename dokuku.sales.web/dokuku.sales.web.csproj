@@ -313,6 +313,11 @@
     <Content Include="webclient\sales\controllers\customers\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\home\funcunit.html" />
+    <Content Include="webclient\sales\controllers\home\home.css" />
+    <Content Include="webclient\sales\controllers\home\home.html" />
+    <Content Include="webclient\sales\controllers\home\home.js" />
+    <Content Include="webclient\sales\controllers\home\home_test.js" />
     <Content Include="webclient\sales\controllers\nav\funcunit.html" />
     <Content Include="webclient\sales\controllers\nav\Nav.css" />
     <Content Include="webclient\sales\controllers\nav\nav.html" />
@@ -680,8 +685,11 @@
     <None Include="webclient\sales\controllers\customers\views\customer.ejs">
       <SubType>Designer</SubType>
     </None>
+<<<<<<< HEAD
     <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
+=======
+>>>>>>> origin/master
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
