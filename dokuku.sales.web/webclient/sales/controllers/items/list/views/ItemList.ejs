@@ -1,0 +1,36 @@
+<table style="width:100%">
+  <tr>
+    <td>
+      <div class="ListItemDiv">
+        <div class="HeaderListDiv">Barang</div>
+        <div class="ItemListContentDiv">
+          <div class="ActionButtonDiv"><input type="button" id="createEstimation" value="Buat Estimasi" style="height:20px;" />
+            <input type="button" id="createinvoice" value="Buat Faktur Penjualan" style="height:20px;" />
+            <input type="button" id="deleteItem" value="Hapus" style="height:20px;" />
+            <input type="button" id="searchItem" value="Cari Barang" style="height:20px; float:right;" />
+          </div>
+          <table class="ItemList">
+            <thead>
+              <tr>
+                <th class="headerList headerMark">
+                  <input type="checkbox" id="checkBoxAllList" value="" />
+                </th>
+                <th class="headerList headerEvent"></th>
+                <th class="headerList headerItems" >Nama Barang</th>
+                <th class="headerList headerPrice" >Harga</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </td>
+    <td style="width:20%;vertical-align:top; padding:30px 0 0 10px;">
+      <button type="button" id="gotoCreateItem" >
+        <img style="width:15px;height:15px;" src="/sales/controllers/items/list/images/add.png"/> Tambah Barang
+      </button>
+    </td>
+  </tr>
+</table>

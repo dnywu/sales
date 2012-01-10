@@ -13,6 +13,7 @@ steal('jquery/controller',
         {
             init: function () {
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
+
             },
             load: function () {
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
@@ -43,15 +44,21 @@ steal('jquery/controller',
                 };
                 err.empty();
                 if (defaults.name !== "" && defaults.price != 0)
-                    form.submit();
+                    $.ajax({
+                        type: "POST",
+                        url: "/createnewitem",
+                        data: form.serialize(),
+                        dataType: "json",
+                        success: function () { $("#body").sales_items_list("load"); }
+                    });
                 if (defaults.name == "")
                     $('<li>', { 'class': 'name', text: "Nama Barang harus di isi" }).appendTo(err.show());
                 if (defaults.price == "")
                     $('<li>', { 'class': 'price', text: "Harga harus di diisi" }).appendTo(err.show());
-                if (defaults.description.length>500)
+                if (defaults.description.length > 500)
                     $('<li>', { 'class': 'description', text: "Deskripsi barang tidak boleh lebih dari 500 karakter" }).appendTo(err.show());
                 ev.preventDefault();
-                return;
+
             },
             submitTax: function (el, ev) {
                 var form = $("#taxForm");
@@ -104,4 +111,4 @@ steal('jquery/controller',
                 $("#tax").val("");
             }
         })
-});
+      });
