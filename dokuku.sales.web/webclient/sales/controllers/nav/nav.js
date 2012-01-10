@@ -9,22 +9,28 @@ steal('jquery/controller', 'jquery/view/ejs',
 	.then('./views/nav.ejs', function ($) {
 	    $.Controller('sales.controllers.nav',
         {
+            onDocument: true
+        },
+        {
             init: function () {
                 this.element.html(this.view("//sales/controllers/nav/views/nav.ejs", Sales.Models.Companyprofile.findOne({ id: '1' })));
             },
-            '#HomeLink click': function () {
+            '#HomeLink click': function (el) {
                 this.ClearContain();
                 $("#subtabs").empty();
+                this.SetActivePage(el);
                 $("#body").sales_home('load');
             },
-            '#CustomerLink click': function () {
+            '#CustomerLink click': function (el) {
                 this.ClearContain();
                 this.CustomerSubMenu();
+                this.SetActivePage(el);
                 $("#body").sales_customers('load');
             },
-            '#InvoiceLink click': function () {
+            '#InvoiceLink click': function (el) {
                 this.ClearContain();
                 this.InvoiceSubMenu();
+                this.SetActivePage(el);
                 $("#body").sales_items_create('load');
             },
             '#customers click': function (el) {
@@ -75,6 +81,10 @@ steal('jquery/controller', 'jquery/view/ejs',
             SetBoldActivePage: function (el) {
                 $("#subtabs li").removeClass('bold');
                 el.addClass('bold');
+            },
+            SetActivePage: function (el) {
+                $("ul.ultabs li").removeClass('active');
+                el.addClass('active');
             }
         })
 	});
