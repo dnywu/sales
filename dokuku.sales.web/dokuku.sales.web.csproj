@@ -322,13 +322,14 @@
     <Content Include="webclient\sales\controllers\customers\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\home\funcunit.html" />
-    <Content Include="webclient\sales\controllers\home\Home.css" />
-    <Content Include="webclient\sales\controllers\home\home.html" />
-    <Content Include="webclient\sales\controllers\home\home.js" />
-    <Content Include="webclient\sales\controllers\home\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\home\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\home\home_test.js" />
+    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
+    <Content Include="webclient\sales\controllers\nav\Nav.css" />
+    <Content Include="webclient\sales\controllers\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\nav\nav.js" />
+    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
+    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
@@ -681,7 +682,7 @@
     <None Include="webclient\sales\controllers\customers\views\customer.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\home\views\home.ejs" />
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
