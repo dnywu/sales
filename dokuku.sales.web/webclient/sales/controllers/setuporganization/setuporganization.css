@@ -1,6 +1,5 @@
 div.container{
 	width: 960px;
-	margin: 30px auto;
 }
 div.divorganization{
 	width:80%;
@@ -67,6 +66,7 @@ input[type="text"]{
 select{
 	width:265px;
 }
+
 div.divBtn{
 	text-align:center;
 }
