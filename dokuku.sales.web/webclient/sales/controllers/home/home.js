@@ -1,7 +1,7 @@
 steal('jquery/controller', 'jquery/view/ejs',
         'jquery/controller/view',
         './Home.css',
-        'sales/controllers/items/create',
+        'sales/controllers/items/list',
         'sales/controllers/customers'
      )
 	.then('./views/home.ejs', function ($) {
@@ -16,7 +16,7 @@ steal('jquery/controller', 'jquery/view/ejs',
         },
         '#InvoiceLink click': function () {
             $("#body").empty();
-            $("#body").sales_items_create('load');
+            $("#body").sales_items_list('load');
         }
     })
 	});

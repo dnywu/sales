@@ -1,6 +1,5 @@
 ﻿div.ListItemDiv
 {
-	width:70%;
 	border-color:#999;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -8,8 +7,6 @@
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
-	margin-left:auto;
-	margin-right:auto;
 	padding-bottom:15px;
 }
 div.HeaderListDiv
@@ -56,15 +53,34 @@ th.headerMark
 }
 th.headerEvent
 {
-	
+	width: 20px;
+	text-align:center;
 }
 th.headerItems
 {
 	text-align:left;
-	color:#DC682F; ;
+	color:#DC682F;
 }
 th.headerPrice
 {
 	width:100px;
 	text-align:right;
+}
+td.itemList{
+	border-bottom: 1px solid #DFDFDF;
+	padding-bottom: 7px;
+	padding-top: 10px;
+}
+td.itemPrice
+{
+	text-align:right;
+}
+table.ItemList tbody tr:hover
+{
+	cursor:pointer;
+	background-color:#FAFAFA;
+}
+div.settingButton
+{
+	display:none;
 }

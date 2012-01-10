@@ -326,6 +326,7 @@
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
     <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
     <Content Include="webclient\sales\controllers\items\list\list.html" />
     <Content Include="webclient\sales\controllers\items\list\list.js" />
@@ -677,12 +678,10 @@
     <None Include="webclient\sales\controllers\customers\views\customer.ejs">
       <SubType>Designer</SubType>
     </None>
-<<<<<<< HEAD
+    <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
-=======
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
->>>>>>> origin/master
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
@@ -733,6 +732,10 @@
     <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
+      <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
+      <Name>dokuku.sales.item</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
