@@ -680,13 +680,10 @@
     <None Include="webclient\sales\controllers\customers\views\customer.ejs">
       <SubType>Designer</SubType>
     </None>
-<<<<<<< HEAD
     <None Include="webclient\sales\controllers\items\create\views\createTaxDialog.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
-=======
     <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
->>>>>>> origin/master
     <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">

@@ -4,7 +4,7 @@ body {
 	padding:0px;
 	min-width: 950px;
 }
-input[type="submit"], input[type="button"] {
+input[type="submit"], input[type="button"], button {
 	display: inline-block;
 	height: 34px;
 	padding: 0;
