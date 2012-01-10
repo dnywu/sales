@@ -21,6 +21,11 @@ steal('jquery/controller',
                 }
                 else {
                     $("#address").hide();
+                    $('#inputTextarea_NewCust_ShipmentAddress').val('');
+                    $('#inputText_NewCust_City').val('');
+                    $('#inputText_NewCust_StateProvince').val('');
+                    $('#inputText_NewCust_ZIPPostalCode').val('');
+                    $('#inputText_NewCust_Fax').val('');
                 }
             },
             '#addCustomField click': function () {
@@ -28,7 +33,7 @@ steal('jquery/controller',
                 $("#DivCustomField").hide();
             },
             '#copyField click': function () {
-                $('#inputTextarea_NewCust_BillingAddress').val($('#inputTextarea_BillingAddress').val());
+                $('#inputTextarea_NewCust_ShipmentAddress').val($('#inputTextarea_BillingAddress').val());
                 $('#inputText_NewCust_City').val($('#inputText_City').val());
                 $('#inputText_NewCust_StateProvince').val($('#inputText_StateProvince').val());
                 $('#inputText_NewCust_ZIPPostalCode').val($('#inputText_ZIPPostalCode').val());

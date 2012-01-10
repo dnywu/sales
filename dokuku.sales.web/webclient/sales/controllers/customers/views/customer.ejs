@@ -10,14 +10,14 @@
 				<td> <div class="mandatoryTxt">Nama Pelanggan</div>
             
         </td>
-				<td class="td_field"> <input type="text" name="nama" id="inputText_CustomerName" placeholder="Nama Pelanggan" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+				<td class="td_field"> <input type="text" name="CustomerName" id="inputText_CustomerName" placeholder="Nama Pelanggan" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
         </td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td > <div class="mandatoryTxt">Mata Uang</div> </td>
 				<td class="td_field">
-				<select class="td_field_customer"  id="inputSelect_CustomerCurrency">
+				<select class="td_field_customer" name="CustomerCcy"  id="inputSelect_CustomerCurrency">
           <option value ="IDR" selected="selected"> IDR - Rupiah </option>
           <option value ="USD"> USD - US Dollar </option>
 				</select></td>
@@ -26,7 +26,7 @@
 			<tr>
 				<td class="labelLeft">Jangka Pembayaran </td>
 				<td class="td_field">
-				<select class="td_field_customer" id="inputSelect_PaymentsTerms">
+				<select class="td_field_customer" name="term" id="inputSelect_PaymentsTerms">
           <option value="15 hari" selected="selected"> 15 hari </option>
           <option value="30 hari"> 30 hari</option>
           <option value="45 hari"> 45 hari</option>
@@ -43,39 +43,39 @@
 		<tbody>
 			<tr>
 				<td class="labelLeft"> Alamat Pembayaran <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
-				<td class="td_field"><textarea rows = "3" cols="28" id="inputTextarea_BillingAddress" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Alamat Pembayaran tidak Boleh Kosong')"></textarea></td>
+				<td class="td_field"><textarea rows = "3" name="billingAddress" cols="28" id="inputTextarea_BillingAddress" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Alamat Pembayaran tidak Boleh Kosong')"></textarea></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Kota</td>
-				<td class="td_field"><input type="text" id="inputText_City" placeholder="Nama Kota" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Kota tidak Boleh Kosong')"/></td>
+				<td class="td_field"><input type="text" name="city" id="inputText_City" placeholder="Nama Kota" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Kota tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Provinsi</td>
-				<td class="td_field"><input type="text" id="inputText_StateProvince" placeholder="Provinsi" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Provinsi tidak Boleh Kosong')"/></td>
+				<td class="td_field"><input type="text" name="province" id="inputText_StateProvince" placeholder="Provinsi" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Provinsi tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Kode Pos</td>
-				<td class="td_field"><input type="text" id="inputText_ZIPPostalCode" placeholder="Kode Pos" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode Pos tidak Boleh Kosong')"/></td>
+				<td class="td_field"><input type="text" name="zip" id="inputText_ZIPPostalCode" placeholder="Kode Pos" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode Pos tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Negara</td>
-				<td class="td_field"><input type="text" id="inputText_Country" value = "Indonesia" readonly="readonly"/></td>
+				<td class="td_field"><input type="text" name="country" id="inputText_Country" value = "Indonesia" readonly="readonly"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Fax</td>
-				<td class="td_field"><input type="text"  id="inputText_Fax" placeholder="Fax" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Fax tidak Boleh Kosong')"/></td>
+				<td class="td_field"><input type="text" name="fax"  id="inputText_Fax" placeholder="Fax" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Fax tidak Boleh Kosong')"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Alamat Pengiriman</td>
 				<td class="td_field" colspan="2">
 					<div class="checkboxLabelDiv">
-							<input type="checkbox" id="seperateShipping"/>
+							<input type="checkbox" name="checkbox_separateShipping" id="seperateShipping"/>
 							<label for="seperateShipping" class="labelStyle">Saya Mau Alamat Pengirimannya Terpisah</label>
 					</div>
 				</td>
@@ -96,32 +96,32 @@
       </tr>
 			<tr>
 				<td class="labelLeft">Alamat Pengiriman <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
-				<td class="td_field"><textarea rows = "3" cols="28" id="inputTextarea_NewCust_BillingAddress"></textarea></td>
+				<td class="td_field"><textarea rows = "3" cols="28" name="shipmentAddress" id="inputTextarea_NewCust_ShipmentAddress"></textarea></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Kota</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_City" placeholder="Kota"/></td>
+				<td class="td_field"><input type="text" name="shipmentCity" id="inputText_NewCust_City" placeholder="Kota"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Provinsi</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_StateProvince" placeholder="Provinsi"/></td>
+				<td class="td_field"><input type="text" name="shipmentStateProvince" id="inputText_NewCust_StateProvince" placeholder="Provinsi"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Kode Pos</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_ZIPPostalCode" placeholder="Kode Pos"/></td>
+				<td class="td_field"><input type="text" name="shipmentZIPPostalCode" id="inputText_NewCust_ZIPPostalCode" placeholder="Kode Pos"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Negara</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_Country" value = "Indonesia" readonly="readonly"/></td>
+				<td class="td_field"><input type="text" name="shipmentCountry" id="inputText_NewCust_Country" value = "Indonesia" readonly="readonly"/></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Fax</td>
-				<td class="td_field"><input type="text" id="inputText_NewCust_Fax" placeholder="Fax"/></td>
+				<td class="td_field"><input type="text" name="shipmentFax" id="inputText_NewCust_Fax" placeholder="Fax"/></td>
 				<td class="error"></td>
 			</tr>
 		</tbody>
@@ -134,22 +134,22 @@
 			<tr>
 				<td class="labelLeft">Nama Anda</td>
 				<td class="td_field">
-					<select class="field_select" id="inputSelect_PersonName">
+					<select class="field_select" name="salutation" id="inputSelect_PersonName">
             <option value ="" selected="selected"></option>
             <option value ="Bapak"> Bapak </option>
             <option value ="Ibu"> Ibu. </option>
 					</select>
-					<input type="text" class="text" id="inputText_FirstName" placeholder="Nama Awal" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Awal Customer tidak Boleh Kosong')"/></td>
-				<td class="error"><input type="text" class="text" id="inputText_LastName" placeholder="Nama Akhir"/></td>
+					<input type="text" class="text" name="firstName" id="inputText_FirstName" placeholder="Nama Awal" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Awal Customer tidak Boleh Kosong')"/></td>
+				<td class="error"><input type="text" class="text" name="lastName" id="inputText_LastName" placeholder="Nama Akhir"/></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">Telpon#</td>
-				<td class="td_field"><input type="text" id="inputText_Seluler" placeholder="Seluler"/></td>
-				<td class="error"><input type="text" class="text" id="inputText_Phone" placeholder="Telpon"/></td>
+				<td class="td_field"><input type="text" name="cellular" id="inputText_Seluler" placeholder="Seluler"/></td>
+				<td class="error"><input type="text" class="text" name="telephone" id="inputText_Phone" placeholder="Telpon"/></td>
 			</tr>
 			<tr>
 				<td class="labelLeft">E-mail</td>
-				<td class="td_field"><input type="text" id="inputText_Email" placeholder="E-mail"/></td>
+				<td class="td_field"><input type="text" name="email" id="inputText_Email" placeholder="E-mail"/></td>
 				<td class="error"></td>
 			</tr>
 		</tbody>
@@ -180,20 +180,18 @@
 								<td class="value"><div>Value</div></td>
 							</tr>
 							<tr>
-								<td class = "fieldCustom"> <input type="text" id="inputText_FieldName1"/> </td>
+								<td class = "fieldCustom"> <input type="text" name="add_fieldCustID1" id="inputText_FieldName1"/> </td>
 								<td class = "space"></td>
-								<td class="value"> <input type="text" id="inputText_ValueName1"/> </td>
+								<td class="value"> <input type="text" name="add_valueCustID1" id="inputText_ValueName1"/> </td>
 							</tr><tr>
-								<td class = "fieldCustom"> <input type="text" id="inputText_FieldName2"/> </td>
+								<td class = "fieldCustom"> <input type="text" name="add_fieldCustID2" id="inputText_FieldName2"/> </td>
 								<td class = "space"></td>
-								<td class="value"> <input type="text"  id="inputText_ValueName2"/> </td>
-							</tr>
-							<tr>
-								<td class = "fieldCustom"> <input type="text"  id="inputText_FieldName3"/> </td>
+								<td class="value"> <input type="text" name="add_valueCustID2" id="inputText_ValueName2"/> </td>
+							</tr><tr>
+								<td class = "fieldCustom"> <input type="text" name="add_fieldCustID3" id="inputText_FieldName3"/> </td>
 								<td class = "space"></td>
-								<td class="value"> <input type="text"  id="inputText_ValueName3"/> </td>
+								<td class="value"> <input type="text" name="add_valueCustID3" id="inputText_ValueName3"/> </td>
 							</tr>
-
 						</tbody>
 					</table>
 				</td>
@@ -201,7 +199,7 @@
 			<tr>
 				<td>
 					<div class="checkboxLabelDiv">
-							<input type="checkbox" id="inputCheckbox_SpecifyShippingAddress"/>
+							<input type="checkbox" name="checkbox_specifyShippingAddress" id="inputCheckbox_SpecifyShippingAddress"/>
 							<label for="inputCheckbox_SpecifyShippingAddress" class="labelStyle"> Jadi Informasi Tambahan Ini Untuk Digunakan Di Perusahaan Ini </label>
 					</div>
 				</td>
