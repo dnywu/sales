@@ -2,7 +2,7 @@ steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
       'sales/controllers/customers/customer.css')
-	.then('./views/customer.ejs', function ($) {
+	.then('./views/listCustomer.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.customers',
         {
@@ -10,10 +10,13 @@ steal('jquery/controller',
         },
         {
             init: function () {
-                this.element.html(this.view('//sales/controllers/customers/views/customer.ejs'));
+                this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
             },
             load: function () {
-                this.element.html(this.view('//sales/controllers/customers/views/customer.ejs'));
+                this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
+            },
+            '.BtnTambahCustomer click': function () {
+                this.element.html(this.view('//sales/controllers/customers/views/addcustomer.ejs'));
             },
             '#inputText_CustomerName focus': function () {
                 $('.hint_namaPelanggan').css('display', 'inline');

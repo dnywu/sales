@@ -680,7 +680,10 @@
     <None Include="webclient\jquery\view\test\qunit\template.micro" />
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
-    <None Include="webclient\sales\controllers\customers\views\customer.ejs">
+    <None Include="webclient\sales\controllers\customers\views\addcustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\customers\views\listCustomer.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
