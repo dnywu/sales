@@ -313,6 +313,11 @@
     <Content Include="webclient\sales\controllers\customers\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\home\funcunit.html" />
+    <Content Include="webclient\sales\controllers\home\home.css" />
+    <Content Include="webclient\sales\controllers\home\home.html" />
+    <Content Include="webclient\sales\controllers\home\home.js" />
+    <Content Include="webclient\sales\controllers\home\home_test.js" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
     <Content Include="webclient\sales\controllers\items\list\images\Search-icon.png" />
     <Content Include="webclient\sales\controllers\nav\funcunit.html" />
