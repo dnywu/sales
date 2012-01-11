@@ -9,6 +9,7 @@ using Common.Logging;
 using dokuku.sales.web.models;
 using dokuku.sales.organization;
 using dokuku.sales.customer;
+using dokuku.sales.item;
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -18,6 +19,7 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication(); 
             IOrganizationRepository orgRepo = new OrganizationRepository();
             ICustomerRepository cusRepo = new CustomerRepository();
+            IItemRepository itemRepo = new ItemRepository();
             Get["/"] = p =>
                 {
                     return View["webclient/sales/index"];
@@ -117,7 +119,47 @@ namespace dokuku.sales.web.modules
                     {
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
-                    return Response.AsRedirect("/");
+                    return Response.AsRedirect("/Items");
+                };
+            Post["/createnewitem"] = p =>
+            {
+                try
+                {
+                    string itemName = (string)this.Request.Form.itemName;
+                    string itemDesc = (string)this.Request.Form.description;
+                    decimal itemPrice = (decimal)this.Request.Form.itemPrice;
+                    string taxName = (string)this.Request.Form.tax;
+                    decimal taxValue = 0;
+                    Guid id = Guid.NewGuid();
+                    string owner = this.Context.CurrentUser.UserName;
+                    if (taxName == "PPn")
+                    {
+                        taxValue = 0.1m;
+                    }
+                    itemRepo.Save(new Item()
+                    {
+                        _id = id,
+                        OwnerId = owner,
+                        Name = itemName,
+                        Description = itemDesc,
+                        Rate = itemPrice,
+                        Tax = new Tax() { Name = taxName, Value = taxValue }
+                    }
+                    );
+                }
+                catch (Exception ex)
+                {
+                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                }
+                return Response.AsJson("OK");
+            };
+            Get["/Items"] = p =>
+            {
+                return Response.AsJson(itemRepo.AllItems());
+            };
+            Get["/ItemList"] = p =>
+                {
+                    return Response.AsRedirect("webclient/sales/controllers/items/list");
                 };
         }
     }
