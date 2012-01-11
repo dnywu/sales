@@ -40,7 +40,7 @@ namespace dokuku.sales.fixture
 
         Cleanup cleanup = () =>
             {
-                //itemRepo.Delete(id);
+                itemRepo.Delete(id);
             };
     }
 }
