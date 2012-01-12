@@ -35,10 +35,19 @@
     <Reference Include="Common.Logging">
       <HintPath>..\..\..\BonaStoco\Bonastoco-v2\external-lib\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="FluentMongo">
+      <HintPath>..\packages\FluentMongo.1.3.1\lib\FluentMongo.dll</HintPath>
+    </Reference>
     <Reference Include="LoveSeat.Interfaces">
       <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.9.0\lib\net40\Nancy.dll</HintPath>
     </Reference>

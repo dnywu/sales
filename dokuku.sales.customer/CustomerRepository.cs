@@ -5,6 +5,7 @@ using System.Text;
 using LoveSeat;
 using dokuku.sales.config;
 using System.Configuration;
+using MongoDB.Driver;
 namespace dokuku.sales.customer
 {
     public class CustomerRepository : ICustomerRepository
@@ -12,22 +13,24 @@ namespace dokuku.sales.customer
         CouchClient couchClient;
         CouchDatabase db;
         CouchDBConfig cfg;
-        
+        MongoDatabase db;
         public CustomerRepository()
         {
             cfg = (CouchDBConfig)ConfigurationManager.GetSection("CouchDBConfig");
             if (cfg == null)
-                throw new ApplicationException("CouchDBConfig tidak di temukan dalam app config"); 
+                throw new ApplicationException("CouchDBConfig tidak di temukan dalam app config");
             couchClient = new CouchClient(cfg.Server, cfg.Port, cfg.Username, cfg.Password, false, AuthenticationType.Basic);
+            MongoDatabase db = MongoConfig.Instance.MongoDatabase;
         }
 
         public void Save(Customer cs)
         {
             Document<Customer> doc = new Document<Customer>(cs);
             DB.SaveDocument(doc);
+            //db.GetCollection("dokuku");
         }
         
-        public Customer Get(Guid id)
+        public Customer Get(Guid id,string ownerId)
         {
             return DB.GetDocument<Customer>(id);
         }
