@@ -156,7 +156,7 @@ namespace dokuku.sales.web.modules
             };
             Get["/Items"] = p =>
             {
-                return Response.AsJson(itemRepo.AllItems(AuthRepository.GetUserFromUsername(this.Context.CurrentUser.UserName)));
+                return Response.AsJson(itemRepo.AllItems(AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId));
             };
             Get["/Customers"] = p =>
                 {

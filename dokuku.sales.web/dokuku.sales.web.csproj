@@ -428,7 +428,6 @@
     <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
     <Content Include="webclient\sales\controllers\home\home_test.js" />
-<<<<<<< HEAD
     <Content Include="webclient\sales\controllers\invoices\create\create.html" />
     <Content Include="webclient\sales\controllers\invoices\create\create.js" />
     <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
@@ -439,10 +438,8 @@
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
-=======
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
     <Content Include="webclient\sales\controllers\items\list\images\Search-icon.png" />
->>>>>>> origin/master
     <Content Include="webclient\sales\controllers\nav\funcunit.html" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />

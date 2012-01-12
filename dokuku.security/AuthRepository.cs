@@ -79,6 +79,8 @@
         {
             CouchDatabase db = couchClient.GetDatabase("dokuku");
             AccountUser accUser = db.GetDocument<AccountUser>(username);
+            if (accUser == null)
+                accUser.CompanyId = username;
             return accUser;
         }
 
