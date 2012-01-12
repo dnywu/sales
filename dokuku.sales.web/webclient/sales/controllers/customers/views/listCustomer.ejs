@@ -3,16 +3,18 @@
     <tbody>
       <tr>
         <td id ='formListCustomer'>
-           <div class ='ListCustomerDiv'>
-           <div class="HeaderDIVListCustomer" id="TitleSpan">Pelanggan</div>
-           <div class="classPesan"></div>
-           <div class="ClassSubMenuDataCustomer" id="idKosong">
-             <table width="100%">
-               <tr>
-                 <td width="70%">
+          <div class ='ListCustomerDiv'>
+            <div class="HeaderDIVListCustomer" id="TitleSpan">Pelanggan</div>
+            <div class="classPesan"></div>
+            <div class="ClassSubMenuDataCustomer" id="idKosong">
+              <table width="100%">
+                <tr>
+                  <td width="70%">
                     <table>
                       <tr>
-                        <td><div class="menuLeft">Menggabungkan</div></td>
+                        <td>
+                          <div class="menuLeft">Menggabungkan</div>
+                        </td>
                         <td>
                           <div class="menuLeft">Tandai</div>
                         </td>
@@ -21,52 +23,72 @@
                         </td>
                       </tr>
                     </table>
-                 </td>
-                 <td style="float: right;">
-                   <table>
-                     <tr>
-                       <td>
-                         <div style="color:grey;">Tampilkan :</div>
-                       </td>
-                       <td>
-                         <div>
-                           <div class=" floatRight menuLeft">
-                             <div class="floatRight">Aktif</div>
-                             <div class="imgFilter floatRight"></div>
-                           </div>
-                         </div>
-                       </td>
-                       <td>
-                         <div class=" floatLeft menuLeft">
-                           <div class="imgCari floatLeft"></div>
-                           <div class="floatLeft">Cari</div>
-                         </div>
-                       </td>
-                     </tr>
-                   </table>
-                 </td>
-               </tr>
-             </table>
-             
-           </div>
-          <div class='ClassListCustomer'>
-            <table class='dataCustomer' width='100%' style='border-collapse:collapse;'>
-              <thead>
-                <tr>
-                  <th class='thDataCustomer tdDataCustomerCenter' >
-                    <input type="checkbox" name="SelectAll" class="SelectAllCustomer"/>
-                  </th>
-                  <th class='thDataCustomer tdDataCustomerCenter'></th>
-                  <th class='thDataCustomer tdDataCustomerLeft' style='width: 50%;'>Name</th>
-                  <th class='thDataCustomer tdDataCustomerRight'style='width: 20%;'>Outstanding</th>
-                  <th class='thDataCustomer tdDataCustomerRight'style='width: 20%;'>Unused Credits</th>
+                  </td>
+                  <td style="float: right;">
+                    <table>
+                      <tr>
+                        <td>
+                          <div style="color:grey;">Tampilkan :</div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class=" floatRight menuLeft">
+                              <div class="floatRight">Aktif</div>
+                              <div class="imgFilter floatRight"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class=" floatLeft menuLeft">
+                            <div class="imgCari floatLeft"></div>
+                            <div class="floatLeft">Cari</div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                
-              </tbody>
-            </table>
+              </table>
+            </div>
+            <div class='ClassListCustomer'>
+              <table class='dataCustomer' width='100%' style='border-collapse:collapse;'>
+                <thead>
+                  <tr>
+                    <th class='thDataCustomer tdDataCustomerCenter' >
+                      <input type="checkbox" name="SelectAll" class="SelectAllCustomer"/>
+                    </th>
+                    <th class='thDataCustomer tdDataCustomerCenter'></th>
+                    <th class='thDataCustomer tdDataCustomerLeft' style='width: 50%;'>Name</th>
+                    <th class='thDataCustomer tdDataCustomerRight'style='width: 20%;'>Outstanding</th>
+                    <th class='thDataCustomer tdDataCustomerRight'style='width: 20%;'>Unused Credits</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
           </div>
+            <div class ='Pagging'>
+              <div class ='DivNext'>
+                <img class ='first'></img>
+                <img class ='prev'></img>
+              </div>
+              <div class ='DivPage'>
+                Page <input type='text' id='idInputPage' style="width:20px; height:14px"/> of <span id="totalPage"></span>
+              </div>
+              <div class='DivPrev'>
+                  <img class ='next'></img>
+                  <img class ='last'></img>
+              </div>
+              <div class='DivlimitData'>
+                  <select class="limit" id="limitData" style="width:50px; height:21px">
+                    <option value="1" selected="selected"> 1 </option>
+                    <option value="20"> 30 </option>
+                    <option value="30"> 40 </option>
+                    <option value="50"> 50 </option>
+                  </select>
+              </div>
+            </div>
          </div>
         </td>
         <td class='MenuFormListCustomer'>

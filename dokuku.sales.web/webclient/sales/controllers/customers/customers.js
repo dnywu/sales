@@ -6,14 +6,16 @@ steal('jquery/controller',
 
 	    $.Controller('sales.Controllers.customers',
         {
-            onDocument: true
+            defaults: (jumlahdata = 0, start = 1, limit = 1, page = 1, totalPage = 1, $this = null)
         },
         {
             init: function () {
+                $this = this;
                 this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
                 this.RequestAllCustomer();
             },
             load: function () {
+                $this = this;
                 this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
                 this.RequestAllCustomer();
             },
@@ -22,8 +24,23 @@ steal('jquery/controller',
                     type: 'GET',
                     url: '/Customers',
                     dataType: 'json',
-                    success: this.requestAllCustomerSuccess
+                    success: this.LimitData
                 });
+            },
+            LimitData: function (data) {
+                jumlahdata = data;
+                $this.initPagination();
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + start + '/limit/' + limit,
+                    dataType: 'json',
+                    success: $this.requestAllCustomerSuccess
+                });
+                $('#idInputPage').val(1);
+            },
+            initPagination: function () {
+                totalPage = Math.ceil(jumlahdata / limit);
+                $('#totalPage').text(totalPage);
             },
             '#AddCustomers submit': function (el, ev) {
                 var form = $("#AddCustomers");
@@ -79,11 +96,11 @@ steal('jquery/controller',
                 $.each(data, function (item) {
                     $("table.dataCustomer tbody").append(
                         "<tr class='trDataCustomer'>" +
-                            "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer'/></td>" +
-                            "<td class='thDataCustomer tdDataCustomerCenter'></td>" +
-                            "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
-                            "<td class='tdDataCustomerRight'>Rp. 00</td>" +
-                            "<td class='tdDataCustomerRight'>Rp. 00</td>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer'/></td>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter'></td>" +
+                        "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
+                        "<td class='tdDataCustomerRight'>Rp. 00</td>" +
+                        "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "</tr>");
                 });
             },
@@ -102,7 +119,76 @@ steal('jquery/controller',
                 else {
                     $('.SelectAllCustomer').removeAttr('checked')
                 }
+            },
+            '.prev click': function () {
+                //jumlahdata = data;
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage))
+                    startPage = 1;
+                else
+                    startPage--;
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
+                    dataType: 'json',
+                    success: $this.requestAllCustomerSuccess
+                });
+                $('#idInputPage').val(startPage);
+            },
+            '.next click': function () {
+                //jumlahdata = data;
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage))
+                    startPage = 2;
+                else
+                    startPage++;
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
+                    dataType: 'json',
+                    success: $this.requestAllCustomerSuccess
+                });
+                $('#idInputPage').val(startPage);
+            },
+            '.last click': function () {
+                //jumlahdata = data;
+                $this.initPagination();
+                var startPage = parseInt($('#totalPage').text());
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
+                    dataType: 'json',
+                    success: $this.requestAllCustomerSuccess
+                });
+                $('#idInputPage').val(startPage);
+            },
+            '.first click': function () {
+                //jumlahdata = data;
+                $this.initPagination();
+                var startPage = 1;
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
+                    dataType: 'json',
+                    success: $this.requestAllCustomerSuccess
+                });
+                $('#idInputPage').val(startPage);
+            },
+            '#idInputPage change': function () {
+                //jumlahdata = data;
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
+                    dataType: 'json',
+                    success: $this.requestAllCustomerSuccess
+                });
             }
+
         })
 
 	});

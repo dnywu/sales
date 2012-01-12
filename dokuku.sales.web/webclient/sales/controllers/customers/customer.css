@@ -209,7 +209,7 @@ td.space{
 .ClassListCustomer {
 	padding-left: 12px;
 	padding-right: 12px;
-	padding-bottom: 136px;
+	padding-bottom: 10px;
 }
 .ClassSubMenuDataCustomer {
 	padding-left: 12px;
@@ -305,4 +305,54 @@ div.menuLeft{
 }
 .floatRight{
 	float: left;
+}
+.Pagging {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 136px;
+}
+.DivNext{
+	float:left;
+	margin-right:5px
+}
+.DivPrev{
+	float:left;
+	margin-right:5px
+}
+.DivlimitData{
+	float:left;
+}
+.DivPage{
+	float:left;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin-left:5px;
+	margin-right:5px;
+	border-left:solid 2px Gray;
+	border-right:solid 2px Gray;
+}
+.prev{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
+	height: 21px;
+	width: 19px;
+}
+.next{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -257px -265px;
+	height: 21px;
+	width: 19px;
+}
+.first
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -209px -265px;
+	height: 21px;
+	width: 19px;
+}
+.last{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -283px -265px;
+	height: 21px;
+	width: 19px;
 }
