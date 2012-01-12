@@ -120,7 +120,7 @@ namespace dokuku.sales.web.modules
                     {
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
-                    return Response.AsRedirect("/Items");
+                    return Response.AsJson("OK");
                 };
             Post["/createnewitem"] = p =>
             {
@@ -158,9 +158,9 @@ namespace dokuku.sales.web.modules
             {
                 return Response.AsJson(itemRepo.AllItems(AuthRepository.GetUserFromUsername(this.Context.CurrentUser.UserName)));
             };
-            Get["/ItemList"] = p =>
+            Get["/Customers"] = p =>
                 {
-                    return Response.AsRedirect("webclient/sales/controllers/items/list");
+                    return Response.AsJson(cusRepo.AllCustomers());
                 };
         }
     }

@@ -1,4 +1,4 @@
-<form method='POST' action='/customer' id='AddCustomers' name='AddCustomers'>
+<form id='AddCustomers'>
 <div class='FormNewCustomer'>
 	<div class="topBandHeaderDIV">
 	<div id="TitleSpan" class="HeaderDIVLeft">Tambah Pelanggan</div>
@@ -43,7 +43,7 @@
 		<tbody>
 			<tr>
 				<td class="labelLeft"> Alamat Pembayaran <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span></td>
-				<td class="td_field"><textarea rows = "3" name="billingAddress" cols="28" id="inputTextarea_BillingAddress" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Alamat Pembayaran tidak Boleh Kosong')"></textarea></td>
+				<td class="td_field"><textarea rows = "3" name="billingAddress" cols="28" id="inputTextarea_BillingAddress" maxlength="3" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Alamat Pembayaran tidak Boleh Kosong')"></textarea></td>
 				<td class="error"></td>
 			</tr>
 			<tr>
@@ -216,3 +216,6 @@
 	</div>
 </div>
  </form>
+<script type="text/javascript">
+  
+</script>
