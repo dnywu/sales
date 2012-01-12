@@ -8,6 +8,26 @@
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
 }
+div.ListCustomerDiv{
+	height : 100%;
+	width : 100%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999
+}
+.topBandHeaderListCustomerDIV{
+	width: 100%;
+	margin: 0;
+	background: #F7F7F7;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+	padding: 20px 25px;
+}
+
+
 div.CreateNewCustomer{
 	margin:20px;
 	padding:20px;
@@ -31,6 +51,7 @@ div.mandatoryTxt{
 	font-size: 21px;
 	font-family: arial, verdana;
 }
+
 td.td_field{
 	width:30%;
 }
@@ -94,6 +115,21 @@ table.FormNewCuscotmer{
 	width:100%;
 	border:0px solid black;
 }
+table.CustomerTable{
+	width:100%;
+	border:0px solid black;
+}
+table.CustomerTable tbody{
+	border:0px solid black;
+}
+table.CustomerTable tbody tr td#formListCustomer{
+	border:0px solid black;
+	width:75%;
+}
+table.CustomerTable tbody tr td#MenuFormListCustomer{
+	border:0px solid black;
+	width:25%;
+}
 table.Field{
 	width : 40%;
 }
@@ -156,4 +192,167 @@ td.space{
 }
 .td_field_customer{
 	width:100%;
+}
+
+.classPesan{
+	height:35px;
+}
+
+.HeaderDIVListCustomer{
+	font-size: 21px;
+	font-family: arial, verdana;
+	background: #F7F7F7;
+	height: 34px;
+	padding: 20px;
+}
+
+.ClassListCustomer {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 10px;
+}
+.ClassSubMenuDataCustomer {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+}
+
+.thDataCustomer
+{
+	padding: 6px 10px 6px 0;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	color: #999;
+	font-weight: normal;
+	height: 32px;
+	border-image: initial;
+}
+.tdDataCustomerRight{
+	text-align:right;
+	padding: 6px 10px 6px 0;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	color: #999;
+	font-weight: normal;
+	height: 32px;
+}
+.tdDataCustomerLeft{
+	text-align:left;
+	padding: 6px 10px 6px 10;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	color: #999;
+	font-weight: normal;
+	height: 32px;
+}
+.tdDataCustomerCenter{
+	padding: 6px 10px 6px 10;
+}
+div.menuLeft{
+	list-style: none;
+	margin: 0 3px 2px 0;
+	padding: 5px 10px 5px 10px;
+	display: inline;
+	text-decoration: none;
+	color: black;
+	font: 11px verdana;
+	background: #F3F3F3;
+	border: solid 1px gainsboro;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor:pointer;
+}
+
+.MenuFormListCustomer {
+	padding: 40px 0 20px 20px;
+	vertical-align: top;
+}
+.BtnTambahCustomer{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -16px -226px;
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	padding: 9px 5px 4px 35px;
+	height: 26px;
+	width: 154px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+}
+.imgCari{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -332px -82px;
+	height: 15px;
+	width: 15px;
+
+}
+.imgFilter{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -230px -139px;
+	height: 4px;
+	width: 11px;
+	margin-top: 5px;
+
+}
+.floatLeft{
+	float: left;
+	padding-right: 5px;
+}
+.floatRight{
+	float: left;
+}
+.Pagging {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 136px;
+}
+.DivNext{
+	float:left;
+	margin-right:5px
+}
+.DivPrev{
+	float:left;
+	margin-right:5px
+}
+.DivlimitData{
+	float:left;
+}
+.DivPage{
+	float:left;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin-left:5px;
+	margin-right:5px;
+	border-left:solid 2px Gray;
+	border-right:solid 2px Gray;
+}
+.prev{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
+	height: 21px;
+	width: 19px;
+}
+.next{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -257px -265px;
+	height: 21px;
+	width: 19px;
+}
+.first
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -209px -265px;
+	height: 21px;
+	width: 19px;
+}
+.last{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -283px -265px;
+	height: 21px;
+	width: 19px;
 }
