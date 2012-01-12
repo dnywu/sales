@@ -9,6 +9,6 @@ namespace dokuku.sales.item
         void Save(Item item);
         Item Get(Guid id);
         void Delete(Guid id);
-        IEnumerable<Item> AllItems();
+        IEnumerable<Item> AllItems(string companyId);
     }
 }

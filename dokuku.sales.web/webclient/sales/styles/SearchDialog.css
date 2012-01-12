@@ -1,0 +1,5 @@
+﻿div.SearchDialog
+{
+    z-index:1000px;
+    position:absolute;
+}

@@ -9,4 +9,11 @@ steal("jquery/dom/fixture", function(){
 			description: $.fixture.rand( descriptions , 1)[0]
 		}
 	})
+	$.fixture.make("invoices",20, function(i, invoices){
+		var descriptions = ["grill fish", "make ice", "cut onions"]
+		return {
+			name: "invoices "+i,
+			description: $.fixture.rand( descriptions , 1)[0]
+		}
+	})
 })

@@ -10,6 +10,7 @@ using dokuku.sales.web.models;
 using dokuku.sales.organization;
 using dokuku.sales.customer;
 using dokuku.sales.item;
+using dokuku.security;
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -155,7 +156,7 @@ namespace dokuku.sales.web.modules
             };
             Get["/Items"] = p =>
             {
-                return Response.AsJson(itemRepo.AllItems());
+                return Response.AsJson(itemRepo.AllItems(AuthRepository.GetUserFromUsername(this.Context.CurrentUser.UserName)));
             };
             Get["/ItemList"] = p =>
                 {

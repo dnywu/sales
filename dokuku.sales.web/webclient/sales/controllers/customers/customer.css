@@ -84,9 +84,6 @@ label.labelStyle{
 	margin-left: 3px;
 	margin-bottom : 2px;
 }
-input[type="text"] { 
-	width:98%; 
-}
 .text{
 	width:70% ! important;
 }
