@@ -6,7 +6,7 @@ steal('jquery/controller',
 
 	    $.Controller('sales.Controllers.customers',
         {
-            defaults: (jumlahdata = 0, start = 1, limit = 1, page = 1, totalPage = 1, $this = null)
+            defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null)
         },
         {
             init: function () {
@@ -29,14 +29,20 @@ steal('jquery/controller',
             },
             LimitData: function (data) {
                 jumlahdata = data;
+                limit = $('#limitData').val();
                 $this.initPagination();
                 $.ajax({
                     type: 'GET',
-                    url: '/LimitCustomers/start/' + start + '/limit/' + limit,
+                    url: '/LimitCustomers/start/' + (((start - 1) * limit) + 1) + '/limit/' + limit,
                     dataType: 'json',
+                    ajaxStart: $this.LoadingListCustomer,
                     success: $this.requestAllCustomerSuccess
                 });
                 $('#idInputPage').val(1);
+                $this.CheckButtonPaging();
+            },
+            LoadingListCustomer: function () {
+                alert('Tunggu Cuy');
             },
             initPagination: function () {
                 totalPage = Math.ceil(jumlahdata / limit);
@@ -94,7 +100,7 @@ steal('jquery/controller',
             requestAllCustomerSuccess: function (data) {
                 $("table.dataCustomer tbody").empty();
                 $.each(data, function (item) {
-                    $("table.dataCustomer tbody").append(
+                    $("table.dataCustomer tbody.BodyDataCustomer").append(
                         "<tr class='trDataCustomer'>" +
                         "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer'/></td>" +
                         "<td class='thDataCustomer tdDataCustomerCenter'></td>" +
@@ -103,6 +109,7 @@ steal('jquery/controller',
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "</tr>");
                 });
+                $('.trDataCustomer:odd').addClass('odd');
             },
             '.SelectAllCustomer change': function () {
                 if ($('.SelectAllCustomer').attr('checked')) {
@@ -120,75 +127,73 @@ steal('jquery/controller',
                     $('.SelectAllCustomer').removeAttr('checked')
                 }
             },
+            CheckButtonPaging: function () {
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage) || startPage <= 1) {
+                    $('.DivPrev').hide();
+                    $('.disablePrev').show();
+                } else {
+                    $('.DivPrev').show();
+                    $('.disablePrev').hide();
+                }
+                var totalPage = parseInt($('#totalPage').text());
+                if (totalPage <= 1 || totalPage <= startPage) {
+                    $('.DivNext').hide();
+                    $('.disableNext').show();
+                } else {
+                    $('.DivNext').show();
+                    $('.disableNext').hide();
+                }
+            },
             '.prev click': function () {
-                //jumlahdata = data;
                 $this.initPagination();
                 var startPage = parseInt($('#idInputPage').val());
                 if (isNaN(startPage))
                     startPage = 1;
                 else
                     startPage--;
-
-                $.ajax({
-                    type: 'GET',
-                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
-                    dataType: 'json',
-                    success: $this.requestAllCustomerSuccess
-                });
                 $('#idInputPage').val(startPage);
+                $this.ChangePage();
             },
             '.next click': function () {
-                //jumlahdata = data;
                 $this.initPagination();
                 var startPage = parseInt($('#idInputPage').val());
                 if (isNaN(startPage))
                     startPage = 2;
                 else
                     startPage++;
-                $.ajax({
-                    type: 'GET',
-                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
-                    dataType: 'json',
-                    success: $this.requestAllCustomerSuccess
-                });
                 $('#idInputPage').val(startPage);
+                $this.ChangePage();
             },
             '.last click': function () {
-                //jumlahdata = data;
-                $this.initPagination();
-                var startPage = parseInt($('#totalPage').text());
-                $.ajax({
-                    type: 'GET',
-                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
-                    dataType: 'json',
-                    success: $this.requestAllCustomerSuccess
-                });
-                $('#idInputPage').val(startPage);
+                $('#idInputPage').val(parseInt($('#totalPage').text()));
+                $this.ChangePage();
             },
             '.first click': function () {
-                //jumlahdata = data;
                 $this.initPagination();
-                var startPage = 1;
-                $.ajax({
-                    type: 'GET',
-                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
-                    dataType: 'json',
-                    success: $this.requestAllCustomerSuccess
-                });
-                $('#idInputPage').val(startPage);
+                $('#idInputPage').val(1);
+                $this.ChangePage();
             },
             '#idInputPage change': function () {
-                //jumlahdata = data;
+                $this.ChangePage();
+            },
+            '#limitData change': function () {
+                $this.ChangePage();
+            },
+            ChangePage: function () {
                 $this.initPagination();
                 var startPage = parseInt($('#idInputPage').val());
                 $.ajax({
                     type: 'GET',
-                    url: '/LimitCustomers/start/' + startPage + '/limit/' + $('#limitData').val(),
+                    url: '/LimitCustomers/start/' + (((startPage - 1) * $('#limitData').val()) + 1) + '/limit/' + $('#limitData').val(),
                     dataType: 'json',
+                    beforSend: $this.LoadingListCustomer,
                     success: $this.requestAllCustomerSuccess
                 });
+                limit = $('#limitData').val();
+                $this.initPagination();
+                $this.CheckButtonPaging();
             }
-
         })
 
 	});
