@@ -83,8 +83,90 @@ table.ItemList tbody tr:hover
 div.settingButton
 {
 	display:none;
+	margin:0;
+	padding:0;
 }
 div.ActionButtonDiv
 {
 	margin-bottom:20px;
+}
+div.popupEventDiv
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 145px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+div.itempopup{
+	padding: 7px 5px 5px 7px;
+	color: #457BD9;
+	cursor: pointer;
+	white-space: normal;
+	text-decoration: none;
+}
+div.itempopup label
+{
+	cursor:pointer;
+}
+div.paginationDiv
+{
+	height:30px;
+}
+div.prevActive
+{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -231px -267px;
+}
+div.prevInactive
+{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -331px -267px;
+}
+div.nextActive
+{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -255px -267px;
+}
+div.nextInactive
+{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -355px -267px;
+}
+div#prevButton
+{
+	display: inline-block;
+	padding:0px;
+	margin-top:3px;
+	width: 21px;
+	height: 21px;
+	float: left;
+	cursor:pointer;
+}
+div#nextButton
+{
+	display: inline-block;
+	padding:0px;
+	margin-top:3px;
+	width: 21px;
+	height: 21px;
+	float: left;
+	cursor:pointer;
+}
+div#pageNumberDiv
+{
+	width:100px;
+	float: left;
+}
+div#pageNumberDiv select#pageNumber
+{
+	width:40px;
 }
