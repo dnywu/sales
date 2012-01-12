@@ -1,5 +1,3 @@
-var start = 0, limit = 20, totalData = 0, totalPage = 0, currentPage = 1;
-
 steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
@@ -11,31 +9,57 @@ steal('jquery/controller',
 	    $.Controller('sales.Controllers.items.list',
 
         {
-            onDocument: true
+            defaults: (totalData = 0, start = 0, limit = 1, page = 1, totalPage = 1, $this = null)
         },
         {
             init: function () {
-                $("#body").html(this.view("//sales/controllers/items/list/views/ItemList.ejs"));
-                this.RequestAllItems();
+                $this = this;
+                this.element.html(this.view("//sales/controllers/items/list/views/ItemList.ejs"));
+                this.RequestNumberOfItem();
             },
             load: function () {
-                $("#body").html(this.view("//sales/controllers/items/list/views/ItemList.ejs"));
-                this.RequestAllItems();
+                $this = this;
+                this.element.html(this.view("//sales/controllers/items/list/views/ItemList.ejs"));
+                this.RequestNumberOfItem();
             },
-            initpagination: function () {
-                totalPage = Math.round(totalData / limit);
-                 
+            initPagination: function () {
+                totalPage = Math.ceil(totalData / limit);
+                $('#idInputPage').val(page);
+                $('#totalPage').text(totalPage);
+                $('#firstButton').addClass('firstInactive');
+                $('#prevButton').addClass('prevInactive');
+                if (totalPage > page) {
+                    $('#nextButton').addClass('nextActive');
+                    $('#lastButton').addClass('lastActive');
+                }
+                else {
+                    $('#nextButton').addClass('nextInactive');
+                    $('#lastButton').addClass('lastInactive');
+                }
             },
-            RequestAllItems: function () {
+            RequestNumberOfItem: function () {
                 $.ajax({
                     type: 'GET',
                     url: '/Items',
                     dataType: 'json',
-                    success: this.requestAllItemSuccess
+                    success: this.RequestNumberOfItemSuccess
+                });
+            },
+            RequestNumberOfItemSuccess: function (data) {
+                totalData = data;
+                $this.initPagination();
+                $this.requestLimitData();
+            },
+            requestLimitData: function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitItems/start/' + start + '/limit/' + limit,
+                    dataType: 'json',
+                    success: $this.requestAllItemSuccess
                 });
             },
             requestAllItemSuccess: function (data) {
-                if (data == null) {
+                if (data == null || data.length == 0) {
                     $('#body').sales_items_create();
                 }
                 else {
@@ -50,16 +74,6 @@ steal('jquery/controller',
                         $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
                     });
                 }
-            },
-            saveDataToModel: function (data) {
-                $.each(data, function (item) {
-                    new Sales.Items({
-                        id: item,
-                        namaBarang: data[item].Name,
-                        hargaBarang: data[item].Rate
-                    }).save();
-                });
-                $("#body").html("//sales/controllers/items/list/views/ItemList.ejs", Sales.Items.findAll());
             },
             "table.ItemList tbody tr hover": function (el) {
                 var index = el.attr("tabindex");
@@ -89,8 +103,91 @@ steal('jquery/controller',
             },
             "#btnDelete click": function () {
                 alert("test button hapus");
+            },
+            ".nextActive click": function () {
+                start = start + 1;
+                page = page + 1;
+                $('#idInputPage').val(page);
+                $this.requestLimitData();
+                if (totalPage == page) {
+                    $('#nextButton').removeClass('nextActive');
+                    $('#lastButton').removeClass('lastActive');
+                    $('#nextButton').addClass('nextInactive');
+                    $('#lastButton').addClass('lastInactive');
+                }
+                $('#firstButton').removeClass('firstInactive');
+                $('#prevButton').removeClass('prevInactive');
+                $('#firstButton').addClass('firstActive');
+                $('#prevButton').addClass('prevActive');
+            },
+            ".prevActive click": function () {
+                start = start - 1;
+                page = page - 1;
+                $('#idInputPage').val(page);
+                $this.requestLimitData();
+                if (page == 1) {
+                    $('#prevButton').removeClass('nextActive');
+                    $('#firstButton').removeClass('lastActive');
+                    $('#prevButton').addClass('nextInactive');
+                    $('#firstButton').addClass('lastInactive');
+                }
+                if (totalPage == 1) {
+                    $('#lastButton').removeClass('lastActive');
+                    $('#nextButton').removeClass('nextActive');
+                    $('#lastButton').addClass('lastInactive');
+                    $('#nextButton').addClass('nextInactive');
+                }
+                if (totalPage != page) {
+                    $('#lastButton').removeClass('lastInactive');
+                    $('#nextButton').removeClass('nextInactive');
+                    $('#lastButton').addClass('lastActive');
+                    $('#nextButton').addClass('nextActive');
+                }
+            },
+            "#idInputPage blur": function () {
+                var inputPage = $("#idInputPage").val();
+                if (inputPage > totalPage) {
+                    alert("total page " + totalPage);
+                    $("#idInputPage").val(page);
+                }
+                else {
+                    start = inputPage - 1;
+                    page = inputPage;
+                    $this.requestLimitData();
+                    if (inputPage == totalPage) {
+                        $('#nextButton').removeClass('nextActive');
+                        $('#lastButton').removeClass('lastActive');
+                        $('#nextButton').addClass('nextInactive');
+                        $('#lastButton').addClass('lastInactive');
+                    }
+                    if (inputPage == 1) {
+                        $('#prevButton').removeClass('nextActive');
+                        $('#firstButton').removeClass('lastActive');
+                        $('#prevButton').addClass('nextInactive');
+                        $('#firstButton').addClass('lastInactive');
+                    }
+                    if (inputPage != totalPage && inputPage != 1) {
+                        if ($('#firstButton').hasClass('firstInactive') && $('#prevButton').hasClass('prevInactive')) {
+                            $('#firstButton').removeClass('firstInactive');
+                            $('#prevButton').removeClass('prevInactive');
+                            $('#firstButton').addClass('firstActive');
+                            $('#prevButton').addClass('prevActive');
+                        }
+                        if ($('#lastButton').hasClass('lastInactive') && $('#nextButton').hasClass('nextInactive')) {
+                            $('#nextButton').removeClass('nextInactive');
+                            $('#lastButton').removeClass('lastInactive');
+                            $('#nextButton').addClass('nextActive');
+                            $('#lastButton').addClass('lastActive');
+                        }
+                    }
+                }
+            },
+            "#limitData change": function () {
+                var limitData = $("#limitData").val();
+                limit = limitData;
+                $this.initPagination();
+                $this.RequestNumberOfItem();
             }
-
         })
 
 	});

@@ -45,6 +45,19 @@ namespace dokuku.sales.item
             return DB.View<Item>("all_items", "view_items").Items;
         }
 
+        public int CountItems(string ownerId)
+        {
+            ViewResult<Item> result = DB.View<Item>("all_items", "view_items");
+            return result.Items.Where(m => m.OwnerId == ownerId).Count();
+        }
+
+        public IEnumerable<Item> LimitItems(string ownerId, int start, int limit)
+        {
+            ViewResult<Item> result = DB.View<Item>("all_items", "view_items");
+            var filterResult =  result.Items.Where(m => m.OwnerId == ownerId).Skip(start * limit).Take(limit);
+            return filterResult;
+        }
+
         private CouchDatabase DB
         {
             get

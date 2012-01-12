@@ -159,7 +159,8 @@ namespace dokuku.sales.web.modules
             };
             Get["/Items"] = p =>
             {
-                return Response.AsJson(itemRepo.AllItems());
+                dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                return Response.AsJson(itemRepo.CountItems(userId.CompanyId));
             };
             Get["/Customers"] = p =>
                 {
@@ -172,6 +173,13 @@ namespace dokuku.sales.web.modules
                     int limit = p.limit;
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
                     return Response.AsJson(cusRepo.LimitCustomers(userId.CompanyId, start,limit));
+                };
+            Get["/LimitItems/start/{start}/limit/{limit}"] = p =>
+                {
+                    int start = p.start;
+                    int limit = p.limit;
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(itemRepo.LimitItems(userId.CompanyId, start, limit));
                 };
         }
     }

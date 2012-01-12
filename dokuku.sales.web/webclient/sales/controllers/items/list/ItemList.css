@@ -7,7 +7,6 @@
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
-	padding-bottom:15px;
 }
 div.HeaderListDiv
 {
@@ -117,56 +116,68 @@ div.itempopup label
 {
 	cursor:pointer;
 }
-div.paginationDiv
-{
-	height:30px;
+
+div.paginationDiv {
+	padding: 7px 12px 25px 35px;
+	border: solid 1px #EBEBEB;
+	background: #EBEBEB;
 }
-div.prevActive
-{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
-	background-position: -231px -267px;
+.DivNext{
+	float:left;
+	margin-right:5px
 }
-div.prevInactive
-{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
-	background-position: -331px -267px;
+.DivPrev{
+	float:left;
+	margin-right:5px
 }
-div.nextActive
-{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
-	background-position: -255px -267px;
+.DivlimitData{
+	float:left;
 }
-div.nextInactive
-{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
-	background-position: -355px -267px;
+.DivPage{
+	float:left;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin-left:5px;
+	margin-right:5px;
+	border-left:solid 0 Gray;
+	border-right:solid 0 Gray;
 }
-div#prevButton
+.paginationButton
 {
-	display: inline-block;
-	padding:0px;
-	margin-top:3px;
-	width: 21px;
 	height: 21px;
-	float: left;
+	width: 19px;
 	cursor:pointer;
 }
-div#nextButton
-{
-	display: inline-block;
-	padding:0px;
-	margin-top:3px;
-	width: 21px;
-	height: 21px;
-	float: left;
-	cursor:pointer;
+.prevActive{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
 }
-div#pageNumberDiv
-{
-	width:100px;
-	float: left;
+.nextActive{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -257px -265px;
 }
-div#pageNumberDiv select#pageNumber
-{
-	width:40px;
+.firstActive{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -209px -265px;
+}
+.lastActive{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -283px -265px;
+}
+
+.prevInactive{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -331px -265px;
+}
+.nextInactive{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -355px -265px;
+}
+.firstInactive{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -306px -265px;
+}
+.lastInactive{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -380px -265px;
 }

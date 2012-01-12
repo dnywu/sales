@@ -10,5 +10,7 @@ namespace dokuku.sales.item
         Item Get(Guid id);
         void Delete(Guid id);
         IEnumerable<Item> AllItems();
+        int CountItems(string ownerId);
+        IEnumerable<Item> LimitItems(string ownerId, int start, int limit);
     }
 }

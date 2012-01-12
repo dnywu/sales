@@ -1,4 +1,4 @@
-<table style="width:100%">
+<table style="width:100%; margin-bottom:25px">
   <tr>
     <td>
       <div class="ListItemDiv">
@@ -36,17 +36,26 @@
             </tbody>
           </table>
         </div>
-        <div class="paginationDiv">
-          <div id="prevButton"></div>
-          <div id="pageNumberDiv">
-            <select id="pageNumber" name="pageNumber">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-            <span div="totalPage">of 3 page</span>
+        <div class ="paginationDiv">
+          <div class ='DivNext'>
+            <img id='firstButton' class ='paginationButton'></img>
+            <img id='prevButton' class ='paginationButton'></img>
           </div>
-          <div id="nextButton"></div>
+          <div class ='DivPage'>
+            Page <input type='text' id='idInputPage' style="width:20px; height:14px"/> of <span id="totalPage"></span>
+          </div>
+          <div class='DivPrev'>
+            <img id='nextButton' class ='paginationButton'></img>
+            <img id='lastButton' class ='paginationButton'></img>
+          </div>
+          <div class='DivlimitData'>
+            <select class="limit" id="limitData" style="width:50px; height:21px">
+              <option value="1" selected="selected"> 1 </option>
+              <option value="2"> 2 </option>
+              <option value="3"> 3 </option>
+              <option value="5"> 5 </option>
+            </select>
+          </div>
         </div>
       </div>
     </td>
