@@ -53,7 +53,7 @@
             <div class='ClassListCustomer'>
               <table class='dataCustomer' width='100%' style='border-collapse:collapse;'>
                 <thead>
-                  <tr>
+                  <tr style='background :#F0F0F0'>
                     <th class='thDataCustomer tdDataCustomerCenter' >
                       <input type="checkbox" name="SelectAll" class="SelectAllCustomer"/>
                     </th>
@@ -63,31 +63,41 @@
                     <th class='thDataCustomer tdDataCustomerRight'style='width: 20%;'>Unused Credits</th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class='BodyDataCustomer'>
                   
                 </tbody>
               </table>
           </div>
             <div class ='Pagging'>
-              <div class ='DivNext'>
+              <div class ='DivPrev'>
                 <img class ='first'></img>
                 <img class ='prev'></img>
+              </div>
+              <div class ="disablePrev" style="display:none;">
+                <img class ='firstDisable'></img>
+                <img class ='prevDisable'></img>
               </div>
               <div class ='DivPage'>
                 Page <input type='text' id='idInputPage' style="width:20px; height:14px"/> of <span id="totalPage"></span>
               </div>
-              <div class='DivPrev'>
+              <div class='DivNext'>
                   <img class ='next'></img>
                   <img class ='last'></img>
               </div>
+              <div class ="disableNext" style="display:none;">
+                <img class ='nextDisable'></img>
+                <img class ='lastDisable'></img>
+              </div>
               <div class='DivlimitData'>
                   <select class="limit" id="limitData" style="width:50px; height:21px">
-                    <option value="1" selected="selected"> 1 </option>
-                    <option value="20"> 30 </option>
-                    <option value="30"> 40 </option>
-                    <option value="50"> 50 </option>
+                    <option value="10" selected="selected"> 10 </option>
+                    <option value="20"> 20 </option>
+                    <option value="30"> 30 </option>
+                    <option value="40"> 40 </option>
                   </select>
               </div>
+              
+              
             </div>
          </div>
         </td>

@@ -9,13 +9,13 @@
 	box-shadow: 0 0 4px 0 #999;
 }
 div.ListCustomerDiv{
-	height : 100%;
 	width : 100%;
 	border : 1px solid #ECECEC;
 	border-radius: 6px;
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
-	box-shadow: 0 0 4px 0 #999
+	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
 }
 .topBandHeaderListCustomerDIV{
 	width: 100%;
@@ -209,7 +209,7 @@ td.space{
 .ClassListCustomer {
 	padding-left: 12px;
 	padding-right: 12px;
-	padding-bottom: 10px;
+	padding-bottom: 30px;
 }
 .ClassSubMenuDataCustomer {
 	padding-left: 12px;
@@ -307,15 +307,23 @@ div.menuLeft{
 	float: left;
 }
 .Pagging {
-	padding-left: 12px;
-	padding-right: 12px;
-	padding-bottom: 136px;
+	padding: 7px 12px 25px 35px;
+	border: solid 1px #EBEBEB;
+	background: #EBEBEB;
 }
 .DivNext{
 	float:left;
 	margin-right:5px
 }
 .DivPrev{
+	float:left;
+	margin-right:5px
+}
+.disableNext{
+	float:left;
+	margin-right:5px
+}
+.disablePrev{
 	float:left;
 	margin-right:5px
 }
@@ -328,20 +336,20 @@ div.menuLeft{
 	padding-left: 4px;
 	margin-left:5px;
 	margin-right:5px;
-	border-left:solid 2px Gray;
-	border-right:solid 2px Gray;
 }
 .prev{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -233px -265px;
 	height: 21px;
 	width: 19px;
+	cursor: pointer;
 }
 .next{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -257px -265px;
 	height: 21px;
 	width: 19px;
+	cursor: pointer;
 }
 .first
 {
@@ -349,10 +357,45 @@ div.menuLeft{
 	background-position: -209px -265px;
 	height: 21px;
 	width: 19px;
+	cursor: pointer;
 }
 .last{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -283px -265px;
 	height: 21px;
 	width: 19px;
+	cursor: pointer;
+}
+.prevDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -334px -265px;
+	height: 21px;
+	width: 19px;
+}
+.nextDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -359px -265px;
+	height: 21px;
+	width: 19px;
+}
+.firstDisable
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -309px -265px;
+	height: 21px;
+	width: 19px;
+}
+.lastDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -383px -265px;
+	height: 21px;
+	width: 19px;
+}
+.BodyDataCustomer{
+	overflow : auto;
+	height : 280px;
+}
+
+.odd {
+	background: #F8F8F8;
 }
