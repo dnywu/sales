@@ -149,7 +149,7 @@
 			</tr>
 			<tr>
 				<td class="labelLeft">E-mail</td>
-				<td class="td_field"><input type="text" name="email" id="inputText_Email" placeholder="E-mail"/></td>
+				<td class="td_field"><input type="email" name="email" id="inputText_Email"  placeholder="E-mail" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Email Harus Di Isi')"/></td>
 				<td class="error"></td>
 			</tr>
 		</tbody>

@@ -179,6 +179,19 @@ namespace dokuku.sales.web.modules
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
                     return Response.AsJson(cusRepo.LimitCustomers(userId.CompanyId, start,limit));
                 };
+            Delete["/DeleteCustomer/id/{id}"] = p =>
+                {
+                    try
+                    {
+                        Guid id = p.id;
+                        cusRepo.Delete(id);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    }
+                    return Response.AsJson("OK");
+                };
             Get["/LimitItems/start/{start}/limit/{limit}"] = p =>
                 {
                     int start = p.start;
