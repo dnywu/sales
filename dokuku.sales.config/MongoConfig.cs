@@ -18,6 +18,7 @@ namespace dokuku.sales.config
             MongoServerSettings settings = new MongoServerSettings();
             settings.ConnectionMode = mongoSection.ConnectionMode;
             settings.ReplicaSetName = mongoSection.ReplicaSetName;
+            settings.SlaveOk = mongoSection.SlaveOk;
 
             if (mongoSection.ServerAddresses.Count == 0)
                 throw new ConfigurationException("No server has been define in configuration");
@@ -28,6 +29,7 @@ namespace dokuku.sales.config
                 servers.Add(new MongoServerAddress(serverAddr.Server, serverAddr.Port));
             }
             settings.Servers = servers;
+
             MongoServer = MongoServer.Create(settings);
             MongoDatabase = MongoServer.GetDatabase(mongoSection.Database, new MongoCredentials(mongoSection.UserName, mongoSection.Password, mongoSection.MongoAdmin));
         }

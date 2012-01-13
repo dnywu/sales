@@ -23,6 +23,12 @@ namespace dokuku.sales.config
             get { return (ConnectionMode)this["connectionMode"]; }
             set { this["connectionMode"] = value; }
         }
+        [ConfigurationProperty("slaveOk")]
+        public bool SlaveOk
+        {
+            get { return (bool)this["slaveOk"]; }
+            set { this["slaveOk"] = value; }
+        }
         [ConfigurationProperty("database", IsRequired = true)]
         public string Database
         {
