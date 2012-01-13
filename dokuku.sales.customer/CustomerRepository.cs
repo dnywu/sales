@@ -35,6 +35,11 @@ namespace dokuku.sales.customer
             return DB.GetDocument<Customer>(id);
         }
 
+        public Customer GetByCustName(string ownerId, string custName)
+        {
+            return DB.View<Customer>("all_customers", "view_customers").Items.Where(c => c.OwnerId == ownerId && c.Name.ToUpper() == custName.ToUpper()).FirstOrDefault();
+        }
+
         public void Delete(Guid id)
         {
             Customer cs = DB.GetDocument<Customer>(id);

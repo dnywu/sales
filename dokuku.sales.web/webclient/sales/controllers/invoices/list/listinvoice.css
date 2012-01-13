@@ -1,0 +1,56 @@
+﻿td.bodyBgCenter {
+    width: 75%;
+    background-color: white;
+}
+td.bodyBgRight {
+    width: 25%;
+    padding: 30px 0 20px 20px;
+    text-align: left;
+}
+div.invoicesContainer
+{
+	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
+	width : 100%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}
+div.HeaderTitleDIVLeft
+{
+    position:inherit;
+    width:94.6%;
+    color: #777;
+    font-size:18px;
+    background:#F7F7F7;
+    padding: 20px 25px;
+}
+div.invoiceContain
+{
+    width:95.7%;
+    min-height:380px;
+    padding:50px 20px 20px 20px;
+}
+div.rightbuttonarea
+{
+    float:right;
+    color:#666;
+    font-size:11px;
+}
+.right
+{
+    text-align:right;
+}
+table#tblListInvoice{border-collapse:collapse;}
+table#tblListInvoice thead {color:#666;}
+table#tblListInvoice .tblCheck{width:50px;}
+table#tblListInvoice .tblNoInv{width:80px;}
+table#tblListInvoice .tblPO{width:80px;}
+table#tblListInvoice .tblTanggal{width:110px;}
+table#tblListInvoice .tblTotal{width:80px;}
+table#tblListInvoice .tblDue{width:110px;}
+table#tblListInvoice .tblBalance{width:80px;}
+table#tblListInvoice .tblStatus{width:80px;}
+table#tblListInvoice tr{border-top:1px solid #EBEBEB;border-bottom:1px Solid #EBEBEB;}
+table#tblListInvoice td{padding-top:8px;padding-bottom:8px;}

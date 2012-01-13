@@ -1,13 +1,14 @@
-<table style="width:100%">
+<table style="width:100%; margin-bottom:25px">
   <tr>
     <td>
       <div class="ListItemDiv">
         <div class="HeaderListDiv">Barang</div>
         <div class="ItemListContentDiv">
-          <div class="ActionButtonDiv"><input type="button" id="createEstimation" value="Buat Estimasi" style="height:20px;" />
+          <div class="ActionButtonDiv">
+            <input type="button" id="createEstimation" value="Buat Estimasi" style="height:20px;" />
             <input type="button" id="createinvoice" value="Buat Faktur Penjualan" style="height:20px;" />
             <input type="button" id="deleteItem" value="Hapus" style="height:20px;" />
-            <input type="button" id="searchItem" value="Cari Barang" style="height:20px; float:right;" />
+            <input type="search" id="searchItem" style="height:20px; float:right;" autosave="some_unique_value" results="5" name="SearchCustomer" placeholder="Cari Barang"/>
           </div>
           <table class="ItemList">
             <thead>
@@ -20,16 +21,46 @@
                 <th class="headerList headerPrice" >Harga</th>
               </tr>
             </thead>
-            <tbody>
-
+            <tbody class="BodyDataItem">
+               
             </tbody>
           </table>
+        </div>
+        <div class ='Pagging'>
+          <div class ='DivPrev'>
+            <img class ='first'></img>
+            <img class ='prev'></img>
+          </div>
+          <div class ="disablePrev" style="display:none;">
+            <img class ='firstDisable'></img>
+            <img class ='prevDisable'></img>
+          </div>
+          <div class ='DivPage'>
+            Page <input type='text' id='idInputPage' style="width:20px; height:14px"/> of <span id="totalPage"></span>
+          </div>
+          <div class='DivNext'>
+            <img class ='next'></img>
+            <img class ='last'></img>
+          </div>
+          <div class ="disableNext" style="display:none;">
+            <img class ='nextDisable'></img>
+            <img class ='lastDisable'></img>
+          </div>
+          <div class='DivlimitData'>
+            <select class="limit" id="limitData" style="width:50px; height:21px">
+              <option value="10" selected="selected"> 10 </option>
+              <option value="20"> 20 </option>
+              <option value="30"> 30 </option>
+              <option value="40"> 40 </option>
+            </select>
+          </div>
         </div>
       </div>
     </td>
     <td style="width:20%;vertical-align:top; padding:30px 0 0 10px;">
       <button type="button" id="gotoCreateItem" >
-        <img style="width:15px;height:15px;" src="/sales/controllers/items/list/images/add.png"/> Tambah Barang
+        <img style="width:15px;height:15px;vertical-align:top;" src="/sales/controllers/items/list/images/add.png"/>
+        Tambah Barang
       </button>
     </td>
   </tr>

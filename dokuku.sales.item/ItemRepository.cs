@@ -40,9 +40,25 @@ namespace dokuku.sales.item
             DB.DeleteDocument(cs._id.ToString(), cs._rev);
         }
 
-        public IEnumerable<Item> AllItems()
+        public IEnumerable<Item> AllItems(string companyId)
         {
-            return DB.View<Item>("all_items", "view_items").Items;
+            return DB.View<Item>("all_items", "view_items").Items.Where(item =>
+                {
+                    return item.OwnerId == companyId;
+                });
+        }
+
+        public int CountItems(string ownerId)
+        {
+            ViewResult<Item> result = DB.View<Item>("all_items", "view_items");
+            return result.Items.Where(m => m.OwnerId == ownerId).Count();
+        }
+
+        public IEnumerable<Item> LimitItems(string ownerId, int start, int limit)
+        {
+            ViewResult<Item> result = DB.View<Item>("all_items", "view_items");
+            var filterResult =  result.Items.Where(m => m.OwnerId == ownerId).Skip(start).Take(limit);
+            return filterResult;
         }
 
         private CouchDatabase DB

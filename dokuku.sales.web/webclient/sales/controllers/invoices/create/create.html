@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>Sales.Invoices.Create</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+        </style>
+	</head>
+	<body>
+	    <h1>Sales.Invoices.Create Demo</h1>
+		<form id='create' action=''></form>
+		<div id='invoices'></div>
+		<script type='text/javascript' 
+                src='../../../steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('sales/invoices/create','sales/fixtures',function(){
+				
+				$('#create').sales_invoices_create();
+				Sales.Models.Invoices.bind('created', function(ev, invoices){
+					$('<div>').html("<h3>"+invoices.name+"</h3><p>"+invoices.description+"</p>")
+					        .appendTo( $('#invoices') )
+				})
+				
+			})
+		</script>
+	</body>
+</html>
