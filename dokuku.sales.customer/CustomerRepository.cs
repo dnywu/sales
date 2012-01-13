@@ -45,9 +45,20 @@ namespace dokuku.sales.customer
             DB.DeleteDocument(cs._id.ToString(), cs._rev);
         }
 
-        public IEnumerable<Customer> AllCustomers()
+        public IEnumerable<Customer> LimitCustomers(string ownerId, int start, int limit)
         {
-            return DB.View<Customer>("all_customers", "view_customers").Items;
+            ViewOptions ops = new ViewOptions();
+            ops.StartKey = new KeyOptions(new object[1] { new string[2] { ownerId, "" }});
+            ops.EndKey = new KeyOptions(new object[1] { new string[2] { ownerId + "\u9999", "" } });
+            ops.Limit = limit;
+            ops.Skip = start - (start > 0 ? 1 : 0);
+            DB.SetDefaultDesignDoc("view_customers");
+            return  DB.View<Customer>("all_customers", ops).Items;
+        }
+        public int CountCustomers(string ownerId)
+        {
+            ViewResult<Customer> result = DB.View<Customer>("all_customers", "view_customers");
+            return result.Items.Where(m => m.OwnerId == ownerId).Count();
         }
 
         private CouchDatabase DB

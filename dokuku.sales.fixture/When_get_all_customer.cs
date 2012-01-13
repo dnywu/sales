@@ -42,7 +42,7 @@ namespace dokuku.sales.fixture
 
         It should_return_all_customers = () =>
             {
-                IEnumerable<Customer> result = csRepo.AllCustomers();
+                IEnumerable<Customer> result = csRepo.LimitCustomers("",1,2);
                 result.First().ShouldNotBeNull();
             };
 

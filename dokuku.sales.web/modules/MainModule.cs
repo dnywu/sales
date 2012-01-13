@@ -11,6 +11,10 @@ using dokuku.sales.organization;
 using dokuku.sales.customer;
 using dokuku.sales.item;
 using dokuku.security;
+<<<<<<< HEAD
+=======
+using Newtonsoft.Json;
+>>>>>>> origin/master
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -21,6 +25,8 @@ namespace dokuku.sales.web.modules
             IOrganizationRepository orgRepo = new OrganizationRepository();
             ICustomerRepository cusRepo = new CustomerRepository();
             IItemRepository itemRepo = new ItemRepository();
+
+            
             Get["/"] = p =>
                 {
                     return View["webclient/sales/index"];
@@ -160,7 +166,15 @@ namespace dokuku.sales.web.modules
             };
             Get["/Customers"] = p =>
                 {
-                    return Response.AsJson(cusRepo.AllCustomers());
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(cusRepo.CountCustomers(userId.CompanyId));
+                };
+            Get["/LimitCustomers/start/{start}/limit/{limit}"] = p =>
+                {
+                    int start = p.start;
+                    int limit = p.limit;
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(cusRepo.LimitCustomers(userId.CompanyId, start,limit));
                 };
             Get["/getCustomerByCustomerName/{custName}"] = p =>
                 {

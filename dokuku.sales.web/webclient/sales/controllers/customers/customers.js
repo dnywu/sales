@@ -6,14 +6,16 @@ steal('jquery/controller',
 
 	    $.Controller('sales.Controllers.customers',
         {
-            onDocument: true
+            defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null)
         },
         {
             init: function () {
+                $this = this;
                 this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
                 this.RequestAllCustomer();
             },
             load: function () {
+                $this = this;
                 this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
                 this.RequestAllCustomer();
             },
@@ -22,8 +24,29 @@ steal('jquery/controller',
                     type: 'GET',
                     url: '/Customers',
                     dataType: 'json',
-                    success: this.requestAllCustomerSuccess
+                    success: this.LimitData
                 });
+            },
+            LimitData: function (data) {
+                jumlahdata = data;
+                limit = $('#limitData').val();
+                $this.initPagination();
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + (((start - 1) * limit) + 1) + '/limit/' + limit,
+                    dataType: 'json',
+                    ajaxStart: $this.LoadingListCustomer,
+                    success: $this.requestAllCustomerSuccess
+                });
+                $('#idInputPage').val(1);
+                $this.CheckButtonPaging();
+            },
+            LoadingListCustomer: function () {
+                alert('Tunggu Cuy');
+            },
+            initPagination: function () {
+                totalPage = Math.ceil(jumlahdata / limit);
+                $('#totalPage').text(totalPage);
             },
             '#AddCustomers submit': function (el, ev) {
                 var form = $("#AddCustomers");
@@ -77,15 +100,16 @@ steal('jquery/controller',
             requestAllCustomerSuccess: function (data) {
                 $("table.dataCustomer tbody").empty();
                 $.each(data, function (item) {
-                    $("table.dataCustomer tbody").append(
+                    $("table.dataCustomer tbody.BodyDataCustomer").append(
                         "<tr class='trDataCustomer'>" +
-                            "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer'/></td>" +
-                            "<td class='thDataCustomer tdDataCustomerCenter'></td>" +
-                            "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
-                            "<td class='tdDataCustomerRight'>Rp. 00</td>" +
-                            "<td class='tdDataCustomerRight'>Rp. 00</td>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer'/></td>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter'></td>" +
+                        "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
+                        "<td class='tdDataCustomerRight'>Rp. 00</td>" +
+                        "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "</tr>");
                 });
+                $('.trDataCustomer:odd').addClass('odd');
             },
             '.SelectAllCustomer change': function () {
                 if ($('.SelectAllCustomer').attr('checked')) {
@@ -102,6 +126,73 @@ steal('jquery/controller',
                 else {
                     $('.SelectAllCustomer').removeAttr('checked')
                 }
+            },
+            CheckButtonPaging: function () {
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage) || startPage <= 1) {
+                    $('.DivPrev').hide();
+                    $('.disablePrev').show();
+                } else {
+                    $('.DivPrev').show();
+                    $('.disablePrev').hide();
+                }
+                var totalPage = parseInt($('#totalPage').text());
+                if (totalPage <= 1 || totalPage <= startPage) {
+                    $('.DivNext').hide();
+                    $('.disableNext').show();
+                } else {
+                    $('.DivNext').show();
+                    $('.disableNext').hide();
+                }
+            },
+            '.prev click': function () {
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage))
+                    startPage = 1;
+                else
+                    startPage--;
+                $('#idInputPage').val(startPage);
+                $this.ChangePage();
+            },
+            '.next click': function () {
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage))
+                    startPage = 2;
+                else
+                    startPage++;
+                $('#idInputPage').val(startPage);
+                $this.ChangePage();
+            },
+            '.last click': function () {
+                $('#idInputPage').val(parseInt($('#totalPage').text()));
+                $this.ChangePage();
+            },
+            '.first click': function () {
+                $this.initPagination();
+                $('#idInputPage').val(1);
+                $this.ChangePage();
+            },
+            '#idInputPage change': function () {
+                $this.ChangePage();
+            },
+            '#limitData change': function () {
+                $this.ChangePage();
+            },
+            ChangePage: function () {
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitCustomers/start/' + (((startPage - 1) * $('#limitData').val()) + 1) + '/limit/' + $('#limitData').val(),
+                    dataType: 'json',
+                    beforSend: $this.LoadingListCustomer,
+                    success: $this.requestAllCustomerSuccess
+                });
+                limit = $('#limitData').val();
+                $this.initPagination();
+                $this.CheckButtonPaging();
             }
         })
 
