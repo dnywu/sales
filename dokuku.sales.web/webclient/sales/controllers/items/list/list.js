@@ -4,7 +4,7 @@ steal('jquery/controller',
       'sales/models',
       './ItemList.css',
       'sales/controllers/items/create')
-	.then('./views/ItemList.ejs', './views/popupEventDialog.ejs', function ($) {
+	.then('./views/ItemList.ejs', './views/popupEventDialog.ejs', './views/confirmBox.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.items.list',
 
@@ -82,8 +82,9 @@ steal('jquery/controller',
                 $('#body').empty();
                 $('#body').sales_items_create('load');
             },
-            ".settingButton click": function () {
-                var index = $("table.ItemList tbody tr").attr("tabindex");
+            ".settingButton click": function (el) {
+                //var index = $("table.ItemList tbody tr").attr("tabindex");
+                var index = el.attr("tabindex");
                 $("tr#itemContent" + index + " td#settingPanel" + index + " div.popupEventDiv").show();
             },
             "#checkBoxAllList change": function () {
@@ -167,16 +168,22 @@ steal('jquery/controller',
                 $this.CheckButtonPaging();
             },
             "#deleteItem click": function () {
-                var elemen = $(".checkBoxItem:checked");
+                $("#body").append(this.view("//sales/controllers/items/list/views/confirmBox.ejs"));
+
+            },
+            "#confirmYes click": function () {
+                $('.ModalDialog').remove();
                 $(".checkBoxItem:checked").each(function (index) {
-                    var id = this.val();
                     $.ajax({
                         type: 'DELETE',
-                        url: '/deleteItem/_id/' + id,
-                        dataType: 'json',
-                        success: function () { alert('delete success') }
+                        url: '/deleteItem/_id/' + $(this).val(),
+                        dataType: 'json'
                     });
                 });
+                $this.ChangePage();
+            },
+            "#confirmNo click": function () {
+                $('.ModalDialog').remove();
             }
         })
 

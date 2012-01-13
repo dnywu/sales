@@ -209,3 +209,59 @@ div.itempopup label
 .odd {
 	background: #F8F8F8;
 }
+.confirmDialogDetail
+{
+	background-color:#FFFFFF;
+	margin-bottom:20px;
+	overflow:hidden;
+	resize: none;
+	-webkit-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
+	position:absolute;
+	z-index:750;
+	top: 23%;
+	left: 35%;
+	margin:auto;
+	width:300px;
+	height:150px;
+}
+.warningIcon
+{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position:-273px -1025px;
+	height:34px;
+	width:38px;
+	float:left;
+}
+div.messageActionDiv
+{
+	text-align:center;
+}
+button#confirmYes button#confirmNo
+{
+	width:40px;
+	height:20px;
+}
+
+div.messageContentDiv div.messageActionDiv
+{
+	text-align:center;
+	vertical-align:bottom;
+}
+div#dialogTitle
+{
+	margin-top:7px;
+	padding-left:5px;
+	font-size: 16px;
+}
+.confirmHeader
+{
+	display:block;
+	background-color:#F8F8F8;
+	width:100%;
+	height:34px;
+	vertical-align:middle;
+	padding: 3px 0 0 5px;
+}
+	
+	
