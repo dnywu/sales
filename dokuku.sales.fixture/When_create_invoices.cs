@@ -14,8 +14,6 @@ namespace dokuku.sales.fixture
         private static Invoices ci;
         private static Guid id;
 
-        
-
         Establish context = () =>
         {
             ciRepo = new InvoicesRepository();
@@ -28,35 +26,19 @@ namespace dokuku.sales.fixture
                 {
                     _id = id,
                     OwnerId = "oetawan@inforsys.co.id",
-                    Customer="Randi",
-                    InvoiceNo="Invoice-00001",
-                    InvoiceDate= DateTime.Today,
-                    Terms="15 of Days",
+                    Customer = "Randi",
+                    InvoiceNo = "Inv-01",
+                    InvoiceDate = DateTime.Today,
+                    Terms = "15 of Days",
                     DueDate = DateTime.Today,
                     LateFee = "No Late Fee",
                     Note = "catatan ci Invoces",
-                    TermCondition="Not Good",
-                    SubTotal=5000,
-                    Total=5000,
-                    Items=
-
-
-
-
-                    //OwnerId = "oetawan@inforsys.co.id",
-                    //BillingAddress = "Seipana",
-                    //City = "Batam",
-                    //Currency = "IDR",
-                    //Email = "oetawan.ac@gmail.com",
-                    //Salutation = "Mr. ",
-                    //FirstName = "Oet",
-                    //LastName = "Chandra",
-                    //Fax = "472111",
-                    //MobilePhone = "082173739678",
-                    //Name = "Bulan bintang",
-                    //Phone = "0778472111",
-                    //PostalCode = "29432",
-                    //State = "Kepri"
+                    TermCondition = "Not Good",
+                    SubTotal = 5000,
+                    Total = 5000,
+                    Items = new InvoiceItems[2] {
+                        new InvoiceItems(){ PartName= "partTest", Description="Testing", Qty=1, Rate= 2500, Discount= 0, Tax=0, Amount=2500},
+                        new InvoiceItems(){ PartName= "partTest2", Description="Testing2", Qty=1, Rate= 2500, Discount= 0, Tax=0, Amount=2500}}
                 });
             };
 

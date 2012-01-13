@@ -67,3 +67,9 @@ table#itemInvoice tfoot td.graybgcolor{background-color:#F7F7F7;}
     border-image: initial;
 }
 .TermsandConditionsTxtArea {height: 86px;}
+div.clsDeleteItem
+{
+    display:none;
+    color:#d80000;
+    cursor:pointer;
+}

@@ -27,8 +27,8 @@ steal(
 	    }
 	    function GetUserCallback(data) {
 	        new Sales.Models.Companyprofile({
-                id: 1,
+	            id: 1,
 	            name: data
 	        }).save();
 	    }
-})
+	})

@@ -87,6 +87,10 @@
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
+      <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>
+      <Name>dokuku.security</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

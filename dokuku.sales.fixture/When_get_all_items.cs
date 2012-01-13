@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Machine.Specifications;
 using dokuku.sales.item;
+using dokuku.security;
 namespace dokuku.sales.fixture
 {
     [Subject("Get all items")]
@@ -33,7 +34,7 @@ namespace dokuku.sales.fixture
 
         It should_return_all_items = () =>
             {
-                IEnumerable<Item> result = itemRepo.AllItems();
+                IEnumerable<Item> result = itemRepo.AllItems("oetawan@inforsys.co.id");
                 result.First().ShouldNotBeNull();
             };
 

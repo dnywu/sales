@@ -162,6 +162,12 @@ namespace dokuku.sales.web.modules
                 {
                     return Response.AsJson(cusRepo.AllCustomers());
                 };
+            Get["/getCustomerByCustomerName/{custName}"] = p =>
+                {
+                    string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
+                    string custName = p.custName.ToString();
+                    return Response.AsJson(cusRepo.GetByCustName(ownerId, custName));
+                };
         }
     }
 }

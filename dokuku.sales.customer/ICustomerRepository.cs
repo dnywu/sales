@@ -10,5 +10,6 @@ namespace dokuku.sales.customer
         Customer Get(Guid id);
         void Delete(Guid id);
         IEnumerable<Customer> AllCustomers();
+        Customer GetByCustName(string ownerId, string custName);
     }
 }

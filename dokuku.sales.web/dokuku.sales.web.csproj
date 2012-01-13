@@ -464,6 +464,7 @@
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
+    <Content Include="webclient\sales\images\ajax-loader.gif" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\companyprofile.js" />
     <Content Include="webclient\sales\models\invoices.js" />
@@ -477,10 +478,8 @@
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
-    <Content Include="webclient\sales\scripts\SearchDialog.js" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
-    <Content Include="webclient\sales\styles\SearchDialog.css" />
     <Content Include="webclient\sales\style\ModalDialog.css" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />

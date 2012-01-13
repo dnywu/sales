@@ -8,13 +8,17 @@
         <tbody>
           <tr>
             <td class="labelLeft"><div class="mandatoryTxt">Select Customer</div></td>
-            <td class="td_field"><input type='text' name="customer"/></td>
-            <td class="error"></td>
+            <td class="td_field">
+              <input type='text' name="customer" id="selectcust"/>
+            </td>
+            <td class="error">
+              <label id="keteranganSelectCust"></label>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-
+    
     <div class='divInvoiceGroup'>
       <table width='100%'>
         <tbody>
@@ -85,31 +89,23 @@
           <td class='disc right'>Diskon(%)</td>
           <td class='tax'>Tax</td>
           <td class='amount right'>Amount</td>
+          <td ></td>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><input type='text'></input></td>
-          <td><textarea></textarea></td>
-          <td><input type='text'></input></td>
-          <td><input type='text'></input></td>
-          <td><input type='text'></input></td>
-          <td><select name='tax'>
-              <option>None</option>
-            </select>
-          </td>
-          <td></td>
-        </tr>
+        
       </tbody>
       <tfoot>
         <tr>
-          <td>Add another line</td>
-          <td colspan='3'></td>
+          <td>
+            <span id='addItemRow'>Add another line</span>
+          </td>
+          <td colspan='4'></td>
           <td colspan='2' class='right borderbottom'>Sub Total</td>
           <td class='right borderbottom'>1 Mber</td>
         </tr>
         <tr>
-          <td colspan='4'></td>
+          <td colspan='5'></td>
           <td colspan='2' class='right bold borderbottom graybgcolor'>Total</td>
           <td class='right bold borderbottom graybgcolor'>1 Mber</td>
         </tr>
