@@ -70,7 +70,9 @@ namespace dokuku.sales.item
             //var filterResult =  result.Items.Where(m => m.OwnerId == ownerId).Skip(start).Take(limit);
             //return filterResult;
             MongoCursor<Item> mongoCursor = (MongoCursor<Item>)AllItems(ownerId);
-            return mongoCursor.Skip(start).Take(limit);
+            mongoCursor.Skip = start;
+            mongoCursor = mongoCursor.SetLimit(limit);
+            return mongoCursor;
         }
 
         //private CouchDatabase DB
