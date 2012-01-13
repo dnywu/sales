@@ -47,12 +47,12 @@ div.formgroup{
 	color: #666;
 	font-size:12px;
 }
-td.left{
+#tblsetorg td.left{
 	width: 170px;
 	text-align: right;
 	font-weight: bold;
 }
-td.right{
+#tblsetorgtd .right{
 	padding-left: 20px;
 	float:left;
 	text-align:left;

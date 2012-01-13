@@ -40,9 +40,12 @@ namespace dokuku.sales.item
             DB.DeleteDocument(cs._id.ToString(), cs._rev);
         }
 
-        public IEnumerable<Item> AllItems()
+        public IEnumerable<Item> AllItems(string companyId)
         {
-            return DB.View<Item>("all_items", "view_items").Items;
+            return DB.View<Item>("all_items", "view_items").Items.Where(item =>
+                {
+                    return item.OwnerId == companyId;
+                });
         }
 
         public int CountItems(string ownerId)
