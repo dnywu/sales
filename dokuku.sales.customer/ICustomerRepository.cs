@@ -9,12 +9,9 @@ namespace dokuku.sales.customer
         void Save(Customer cs);
         Customer Get(Guid id);
         void Delete(Guid id);
-<<<<<<< HEAD
         IEnumerable<Customer> AllCustomers();
         Customer GetByCustName(string ownerId, string custName);
-=======
         IEnumerable<Customer> LimitCustomers(string ownerId, int start, int limit);
         int CountCustomers(string ownerId);
->>>>>>> origin/master
     }
 }

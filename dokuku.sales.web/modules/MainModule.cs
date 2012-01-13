@@ -11,10 +11,7 @@ using dokuku.sales.organization;
 using dokuku.sales.customer;
 using dokuku.sales.item;
 using dokuku.security;
-<<<<<<< HEAD
-=======
 using Newtonsoft.Json;
->>>>>>> origin/master
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
