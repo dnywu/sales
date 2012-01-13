@@ -459,8 +459,18 @@
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
     <Content Include="webclient\sales\controllers\items\list\images\Search-icon.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\search.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
+    <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
+    <Content Include="webclient\sales\controllers\items\list\list.html" />
+    <Content Include="webclient\sales\controllers\items\list\list.js" />
+    <Content Include="webclient\sales\controllers\items\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\test\qunit\items_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\test\qunit\qunit.js" />
     <Content Include="webclient\sales\controllers\nav\funcunit.html" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
@@ -856,6 +866,8 @@
     <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
     <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>

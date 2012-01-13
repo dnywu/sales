@@ -160,11 +160,13 @@ namespace dokuku.sales.web.modules
             Get["/Items"] = p =>
             {
                 dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
-                return Response.AsJson(itemRepo.CountItems(userId.CompanyId));
-=======
                 return Response.AsJson(itemRepo.AllItems(AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId));
->>>>>>> origin/master
             };
+            Get["/CountItem"] = p =>
+                {
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(itemRepo.CountItems(userId.CompanyId));
+                };
             Get["/Customers"] = p =>
                 {
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
@@ -183,13 +185,25 @@ namespace dokuku.sales.web.modules
                     int limit = p.limit;
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
                     return Response.AsJson(itemRepo.LimitItems(userId.CompanyId, start, limit));
-=======
+                };
             Get["/getCustomerByCustomerName/{custName}"] = p =>
                 {
                     string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
                     string custName = p.custName.ToString();
                     return Response.AsJson(cusRepo.GetByCustName(ownerId, custName));
->>>>>>> origin/master
+                };
+            Delete["/deleteItem/_id/{id}"] = p =>
+                {
+                    try
+                    {
+                        Guid id = p.id;
+                        itemRepo.Delete(id);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    }
+                    return Response.AsJson("OK");
                 };
         }
     }

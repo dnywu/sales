@@ -29,7 +29,7 @@ steal('jquery/controller',
             RequestNumberOfItem: function () {
                 $.ajax({
                     type: 'GET',
-                    url: '/Items',
+                    url: '/CountItem',
                     dataType: 'json',
                     success: this.LimitData
                 });
@@ -60,7 +60,7 @@ steal('jquery/controller',
                     $("table.ItemList tbody").empty();
                     $.each(data, function (item) {
                         $("table.ItemList tbody").append('<tr class="trDataItem" id="itemContent' + item + '" tabindex="' + item + '">' +
-                        '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="" /></td>' +
+                        '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
                         '<td class="itemList" id="settingPanel' + item + '"></td>' +
                         '<td class="itemList itemName">' + data[item].Name + '</td>' +
                         '<td class="itemList itemPrice">' + data[item].Rate + '</td></tr>');
@@ -71,6 +71,7 @@ steal('jquery/controller',
             },
             "table.ItemList tbody tr hover": function (el) {
                 var index = el.attr("tabindex");
+                $("tr#itemContent" + index + " td#settingPanel" + index + " div.settingButton").show();
             },
             "table.ItemList tbody tr mouseleave": function (el) {
                 var index = el.attr("tabindex");
@@ -164,6 +165,18 @@ steal('jquery/controller',
                 limit = $('#limitData').val();
                 $this.initPagination();
                 $this.CheckButtonPaging();
+            },
+            "#deleteItem click": function () {
+                var elemen = $(".checkBoxItem:checked");
+                $(".checkBoxItem:checked").each(function (index) {
+                    var id = this.val();
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '/deleteItem/_id/' + id,
+                        dataType: 'json',
+                        success: function () { alert('delete success') }
+                    });
+                });
             }
         })
 
