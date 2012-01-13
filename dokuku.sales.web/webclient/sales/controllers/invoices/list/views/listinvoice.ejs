@@ -1,0 +1,57 @@
+<table width="100%" cellpadding="0" border="0" id="tbllistinvoice">
+  <tbody>
+    <tr>
+      <td valign="top" class="bodyBgCenter">
+        <div class="invoicesContainer">
+          <div class="topBandHeaderDIV">
+            <div id="TitleSpan" class="HeaderDIVLeft">Invoices</div>
+          </div>
+          <div class="invoiceContain">
+            <div class="ActionButtonDiv">
+              <input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />
+              <div class="rightbuttonarea">Show: 
+                <input type="button" id="searchinvoice" value="Search" style="height:20px;" />
+              </div>
+            </div>
+            <table width="100%" cellpadding="5px" id="tblListInvoice">
+              <thead>
+                <tr>
+                  <td class="tblCheck"><input type="checkbox" id="selectall"></input></td>
+                  <td class="tblNoInv">Invoice#</td>
+                  <td class="tblPO">P.O.#</td>
+                  <td class="tblNamaPelanggan">Nama Pelanggan</td>
+                  <td class="tblTanggal">Tanggal</td>
+                  <td class="tblTotal right">Total</td>
+                  <td class="tblDue">Due On</td>
+                  <td class="tblBalance right">Balance Due</td>
+                  <td class="tblStatus">Status</td>
+                </tr>
+              </thead>
+              <tbody>
+                <%for(var i=0; i<this.length ; i++){%>
+                  <tr>
+                    <td>
+                      <input type="checkbox" class="selectInvoice"></input>
+                    </td>
+                    <td><%=this[i].name%></td>
+                    <td><%=this[i].name%></td>
+                    <td><%=this[i].name%></td>
+                    <td><%=this[i].name%></td>
+                    <td class="right"><%=this[i].name%></td>
+                    <td><%=this[i].name%></td>
+                    <td class="right"><%=this[i].name%></td>
+                    <td><%=this[i].name%></td>
+                  </tr>
+                <%}%>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </td>
+      <td class="bodyBgRight" valign='top'>
+        <button id='newinvoices'>New Invoices</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

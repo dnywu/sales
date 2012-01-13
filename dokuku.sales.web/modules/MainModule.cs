@@ -159,8 +159,14 @@ namespace dokuku.sales.web.modules
             };
             Get["/Items"] = p =>
             {
-                return Response.AsJson(itemRepo.AllItems());
+                dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                return Response.AsJson(itemRepo.AllItems(AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId));
             };
+            Get["/CountItem"] = p =>
+                {
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(itemRepo.CountItems(userId.CompanyId));
+                };
             Get["/Customers"] = p =>
                 {
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
@@ -173,6 +179,7 @@ namespace dokuku.sales.web.modules
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
                     return Response.AsJson(cusRepo.LimitCustomers(userId.CompanyId, start,limit));
                 };
+<<<<<<< HEAD
             Delete["/DeleteCustomer/id/{id}"] = p =>
                 {
                     try{
@@ -180,6 +187,29 @@ namespace dokuku.sales.web.modules
                     cusRepo.Delete(id);
                     }
                     catch(Exception ex)
+=======
+            Get["/LimitItems/start/{start}/limit/{limit}"] = p =>
+                {
+                    int start = p.start;
+                    int limit = p.limit;
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(itemRepo.LimitItems(userId.CompanyId, start, limit));
+                };
+            Get["/getCustomerByCustomerName/{custName}"] = p =>
+                {
+                    string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
+                    string custName = p.custName.ToString();
+                    return Response.AsJson(cusRepo.GetByCustName(ownerId, custName));
+                };
+            Delete["/deleteItem/_id/{id}"] = p =>
+                {
+                    try
+                    {
+                        Guid id = p.id;
+                        itemRepo.Delete(id);
+                    }
+                    catch (Exception ex)
+>>>>>>> origin/master
                     {
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
