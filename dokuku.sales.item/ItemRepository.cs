@@ -54,7 +54,7 @@ namespace dokuku.sales.item
         public IEnumerable<Item> LimitItems(string ownerId, int start, int limit)
         {
             ViewResult<Item> result = DB.View<Item>("all_items", "view_items");
-            var filterResult =  result.Items.Where(m => m.OwnerId == ownerId).Skip(start * limit).Take(limit);
+            var filterResult =  result.Items.Where(m => m.OwnerId == ownerId).Skip(start).Take(limit);
             return filterResult;
         }
 

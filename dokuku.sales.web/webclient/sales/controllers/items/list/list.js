@@ -9,7 +9,7 @@ steal('jquery/controller',
 	    $.Controller('sales.Controllers.items.list',
 
         {
-            defaults: (totalData = 0, start = 0, limit = 1, page = 1, totalPage = 1, $this = null)
+            defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null)
         },
         {
             init: function () {
@@ -23,40 +23,33 @@ steal('jquery/controller',
                 this.RequestNumberOfItem();
             },
             initPagination: function () {
-                totalPage = Math.ceil(totalData / limit);
-                $('#idInputPage').val(page);
+                totalPage = Math.ceil(jumlahdata / limit);
                 $('#totalPage').text(totalPage);
-                $('#firstButton').addClass('firstInactive');
-                $('#prevButton').addClass('prevInactive');
-                if (totalPage > page) {
-                    $('#nextButton').addClass('nextActive');
-                    $('#lastButton').addClass('lastActive');
-                }
-                else {
-                    $('#nextButton').addClass('nextInactive');
-                    $('#lastButton').addClass('lastInactive');
-                }
             },
             RequestNumberOfItem: function () {
                 $.ajax({
                     type: 'GET',
                     url: '/Items',
                     dataType: 'json',
-                    success: this.RequestNumberOfItemSuccess
+                    success: this.LimitData
                 });
             },
-            RequestNumberOfItemSuccess: function (data) {
-                totalData = data;
+            LimitData: function (data) {
+                jumlahdata = data;
+                limit = $('#limitData').val();
                 $this.initPagination();
-                $this.requestLimitData();
-            },
-            requestLimitData: function () {
                 $.ajax({
                     type: 'GET',
-                    url: '/LimitItems/start/' + start + '/limit/' + limit,
+                    url: '/LimitItems/start/' + (((start - 1) * limit)) + '/limit/' + limit,
                     dataType: 'json',
+                    ajaxStart: $this.LoadingListItem,
                     success: $this.requestAllItemSuccess
                 });
+                $('#idInputPage').val(1);
+                $this.CheckButtonPaging();
+            },
+            LoadingListItem: function () {
+                alert('Tunggu Cuy');
             },
             requestAllItemSuccess: function (data) {
                 if (data == null || data.length == 0) {
@@ -66,13 +59,14 @@ steal('jquery/controller',
                     totalData = data.length;
                     $("table.ItemList tbody").empty();
                     $.each(data, function (item) {
-                        $("table.ItemList tbody").append('<tr id="itemContent' + item + '" tabindex="' + item + '">' +
+                        $("table.ItemList tbody").append('<tr class="trDataItem" id="itemContent' + item + '" tabindex="' + item + '">' +
                         '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="" /></td>' +
                         '<td class="itemList" id="settingPanel' + item + '"></td>' +
                         '<td class="itemList itemName">' + data[item].Name + '</td>' +
                         '<td class="itemList itemPrice">' + data[item].Rate + '</td></tr>');
                         $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
                     });
+                    $('.trDataItem:odd').addClass('odd');
                 }
             },
             "table.ItemList tbody tr hover": function (el) {
@@ -104,89 +98,72 @@ steal('jquery/controller',
             "#btnDelete click": function () {
                 alert("test button hapus");
             },
-            ".nextActive click": function () {
-                start = start + 1;
-                page = page + 1;
-                $('#idInputPage').val(page);
-                $this.requestLimitData();
-                if (totalPage == page) {
-                    $('#nextButton').removeClass('nextActive');
-                    $('#lastButton').removeClass('lastActive');
-                    $('#nextButton').addClass('nextInactive');
-                    $('#lastButton').addClass('lastInactive');
+            CheckButtonPaging: function () {
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage) || startPage <= 1) {
+                    $('.DivPrev').hide();
+                    $('.disablePrev').show();
+                } else {
+                    $('.DivPrev').show();
+                    $('.disablePrev').hide();
                 }
-                $('#firstButton').removeClass('firstInactive');
-                $('#prevButton').removeClass('prevInactive');
-                $('#firstButton').addClass('firstActive');
-                $('#prevButton').addClass('prevActive');
-            },
-            ".prevActive click": function () {
-                start = start - 1;
-                page = page - 1;
-                $('#idInputPage').val(page);
-                $this.requestLimitData();
-                if (page == 1) {
-                    $('#prevButton').removeClass('nextActive');
-                    $('#firstButton').removeClass('lastActive');
-                    $('#prevButton').addClass('nextInactive');
-                    $('#firstButton').addClass('lastInactive');
-                }
-                if (totalPage == 1) {
-                    $('#lastButton').removeClass('lastActive');
-                    $('#nextButton').removeClass('nextActive');
-                    $('#lastButton').addClass('lastInactive');
-                    $('#nextButton').addClass('nextInactive');
-                }
-                if (totalPage != page) {
-                    $('#lastButton').removeClass('lastInactive');
-                    $('#nextButton').removeClass('nextInactive');
-                    $('#lastButton').addClass('lastActive');
-                    $('#nextButton').addClass('nextActive');
+                var totalPage = parseInt($('#totalPage').text());
+                if (totalPage <= 1 || totalPage <= startPage) {
+                    $('.DivNext').hide();
+                    $('.disableNext').show();
+                } else {
+                    $('.DivNext').show();
+                    $('.disableNext').hide();
                 }
             },
-            "#idInputPage blur": function () {
-                var inputPage = $("#idInputPage").val();
-                if (inputPage > totalPage) {
-                    alert("total page " + totalPage);
-                    $("#idInputPage").val(page);
-                }
-                else {
-                    start = inputPage - 1;
-                    page = inputPage;
-                    $this.requestLimitData();
-                    if (inputPage == totalPage) {
-                        $('#nextButton').removeClass('nextActive');
-                        $('#lastButton').removeClass('lastActive');
-                        $('#nextButton').addClass('nextInactive');
-                        $('#lastButton').addClass('lastInactive');
-                    }
-                    if (inputPage == 1) {
-                        $('#prevButton').removeClass('nextActive');
-                        $('#firstButton').removeClass('lastActive');
-                        $('#prevButton').addClass('nextInactive');
-                        $('#firstButton').addClass('lastInactive');
-                    }
-                    if (inputPage != totalPage && inputPage != 1) {
-                        if ($('#firstButton').hasClass('firstInactive') && $('#prevButton').hasClass('prevInactive')) {
-                            $('#firstButton').removeClass('firstInactive');
-                            $('#prevButton').removeClass('prevInactive');
-                            $('#firstButton').addClass('firstActive');
-                            $('#prevButton').addClass('prevActive');
-                        }
-                        if ($('#lastButton').hasClass('lastInactive') && $('#nextButton').hasClass('nextInactive')) {
-                            $('#nextButton').removeClass('nextInactive');
-                            $('#lastButton').removeClass('lastInactive');
-                            $('#nextButton').addClass('nextActive');
-                            $('#lastButton').addClass('lastActive');
-                        }
-                    }
-                }
-            },
-            "#limitData change": function () {
-                var limitData = $("#limitData").val();
-                limit = limitData;
+            '.prev click': function () {
                 $this.initPagination();
-                $this.RequestNumberOfItem();
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage))
+                    startPage = 1;
+                else
+                    startPage--;
+                $('#idInputPage').val(startPage);
+                $this.ChangePage();
+            },
+            '.next click': function () {
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                if (isNaN(startPage))
+                    startPage = 2;
+                else
+                    startPage++;
+                $('#idInputPage').val(startPage);
+                $this.ChangePage();
+            },
+            '.last click': function () {
+                $('#idInputPage').val(parseInt($('#totalPage').text()));
+                $this.ChangePage();
+            },
+            '.first click': function () {
+                $this.initPagination();
+                $('#idInputPage').val(1);
+                $this.ChangePage();
+            },
+            '#idInputPage change': function () {
+                $this.ChangePage();
+            },
+            '#limitData change': function () {
+                $this.ChangePage();
+            },
+            ChangePage: function () {
+                $this.initPagination();
+                var startPage = parseInt($('#idInputPage').val());
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitItems/start/' + (((startPage - 1) * $('#limitData').val())) + '/limit/' + $('#limitData').val(),
+                    dataType: 'json',
+                    beforSend: $this.LoadingListItem,
+                    success: $this.requestAllItemSuccess
+                });
+                limit = $('#limitData').val();
+                $this.initPagination();
+                $this.CheckButtonPaging();
             }
         })
 

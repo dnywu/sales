@@ -117,7 +117,7 @@ div.itempopup label
 	cursor:pointer;
 }
 
-div.paginationDiv {
+.Pagging {
 	padding: 7px 12px 25px 35px;
 	border: solid 1px #EBEBEB;
 	background: #EBEBEB;
@@ -130,6 +130,14 @@ div.paginationDiv {
 	float:left;
 	margin-right:5px
 }
+.disableNext{
+	float:left;
+	margin-right:5px
+}
+.disablePrev{
+	float:left;
+	margin-right:5px
+}
 .DivlimitData{
 	float:left;
 }
@@ -139,45 +147,65 @@ div.paginationDiv {
 	padding-left: 4px;
 	margin-left:5px;
 	margin-right:5px;
-	border-left:solid 0 Gray;
-	border-right:solid 0 Gray;
 }
-.paginationButton
-{
-	height: 21px;
-	width: 19px;
-	cursor:pointer;
-}
-.prevActive{
+.prev{
 	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
 	background-position: -233px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
 }
-.nextActive{
+.next{
 	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
 	background-position: -257px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
 }
-.firstActive{
+.first
+{
 	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
 	background-position: -209px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
 }
-.lastActive{
+.last{
 	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
 	background-position: -283px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
 }
-
-.prevInactive{
+.prevDisable{
 	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
-	background-position: -331px -265px;
+	background-position: -334px -265px;
+	height: 21px;
+	width: 19px;
 }
-.nextInactive{
+.nextDisable{
 	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
-	background-position: -355px -265px;
+	background-position: -359px -265px;
+	height: 21px;
+	width: 19px;
 }
-.firstInactive{
+.firstDisable
+{
 	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
-	background-position: -306px -265px;
+	background-position: -309px -265px;
+	height: 21px;
+	width: 19px;
 }
-.lastInactive{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
-	background-position: -380px -265px;
+.lastDisable{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -383px -265px;
+	height: 21px;
+	width: 19px;
+}
+.BodyDataItem{
+	overflow : auto;
+	height : 280px;
+}
+.odd {
+	background: #F8F8F8;
 }

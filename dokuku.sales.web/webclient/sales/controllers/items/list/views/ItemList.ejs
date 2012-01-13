@@ -8,10 +8,7 @@
             <input type="button" id="createEstimation" value="Buat Estimasi" style="height:20px;" />
             <input type="button" id="createinvoice" value="Buat Faktur Penjualan" style="height:20px;" />
             <input type="button" id="deleteItem" value="Hapus" style="height:20px;" />
-            <button type="button" id="searchItem" style="height:20px; float:right;">
-              <img style="width:15px;height:15px;vertical-align:top;" src="/sales/controllers/items/list/images/search.png"/>
-              Cari Barang
-            </button>
+            <input type="search" id="searchItem" style="height:20px; float:right;" autosave="some_unique_value" results="5" name="SearchCustomer" placeholder="Cari Barang"/>
           </div>
           <table class="ItemList">
             <thead>
@@ -24,36 +21,37 @@
                 <th class="headerList headerPrice" >Harga</th>
               </tr>
             </thead>
-            <tbody>
-                <!--<%for(var i = 0; i< this.length ; i++){%>
-                <tr id="itemContent<%= i %> " tabindex="<%= i %>">
-                  <td class="itemList"><input type="checkbox" id="checkBoxItem<%= i %>" value="" /></td>
-                  <td class="itemList"><div class="settingButton" id="settingButton<%= i %>"><img class="" src="/sales/controllers/items/list/images/setting.png"/></div></td>
-                  <td class="itemList"> <%= this[i].namaBarang %> </td>
-                  <td class="itemList"> <%= this[i].hargaBarang %></td>
-                </tr>
-                <%}%>-->
+            <tbody class="BodyDataItem">
+               
             </tbody>
           </table>
         </div>
-        <div class ="paginationDiv">
-          <div class ='DivNext'>
-            <img id='firstButton' class ='paginationButton'></img>
-            <img id='prevButton' class ='paginationButton'></img>
+        <div class ='Pagging'>
+          <div class ='DivPrev'>
+            <img class ='first'></img>
+            <img class ='prev'></img>
+          </div>
+          <div class ="disablePrev" style="display:none;">
+            <img class ='firstDisable'></img>
+            <img class ='prevDisable'></img>
           </div>
           <div class ='DivPage'>
             Page <input type='text' id='idInputPage' style="width:20px; height:14px"/> of <span id="totalPage"></span>
           </div>
-          <div class='DivPrev'>
-            <img id='nextButton' class ='paginationButton'></img>
-            <img id='lastButton' class ='paginationButton'></img>
+          <div class='DivNext'>
+            <img class ='next'></img>
+            <img class ='last'></img>
+          </div>
+          <div class ="disableNext" style="display:none;">
+            <img class ='nextDisable'></img>
+            <img class ='lastDisable'></img>
           </div>
           <div class='DivlimitData'>
             <select class="limit" id="limitData" style="width:50px; height:21px">
-              <option value="1" selected="selected"> 1 </option>
-              <option value="2"> 2 </option>
-              <option value="3"> 3 </option>
-              <option value="5"> 5 </option>
+              <option value="10" selected="selected"> 10 </option>
+              <option value="20"> 20 </option>
+              <option value="30"> 30 </option>
+              <option value="40"> 40 </option>
             </select>
           </div>
         </div>
