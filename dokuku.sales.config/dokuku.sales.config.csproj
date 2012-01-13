@@ -53,6 +53,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerAddress.cs" />
     <Compile Include="ServerAddressCollection.cs" />
+    <Compile Include="SlaveAddress.cs" />
+    <Compile Include="SlaveAddressCollections.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

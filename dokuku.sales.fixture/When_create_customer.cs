@@ -5,6 +5,8 @@ using System.Text;
 using Machine.Specifications;
 using dokuku.sales.organization;
 using dokuku.sales.customer;
+using dokuku.sales.customer.repository;
+using dokuku.sales.customer.model;
 namespace dokuku.sales.fixture
 {
     [Subject("Creating customer")]
@@ -14,11 +16,13 @@ namespace dokuku.sales.fixture
         private static Customer cs;
         private static Guid id;
         private static string OwnerId;
+        private static string custName;
         Establish context = () =>
             {
                 csRepo = new CustomerRepository();
                 id = Guid.NewGuid();
                 OwnerId = "Oetawan@inforsys.co.id";
+                custName = "Bulan Bintang";
             };
 
         Because of = () =>
@@ -44,7 +48,7 @@ namespace dokuku.sales.fixture
 
         It should_create_organization = () =>
             {
-                cs = csRepo.Get(id,OwnerId);
+                cs = csRepo.GetByCustName(OwnerId,custName);
                 cs.ShouldNotBeNull();
             };
 

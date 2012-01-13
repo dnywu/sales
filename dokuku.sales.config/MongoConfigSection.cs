@@ -60,5 +60,12 @@ namespace dokuku.sales.config
             get { return (ServerAddressCollection)this["serverAddresses"]; }
             set { this["serverAddresses"] = value; }
         }
+        [ConfigurationCollection(typeof(SlaveAddressCollections))]
+        [ConfigurationProperty("slaveAddresses")]
+        public ServerAddressCollection SlaveAddresses
+        {
+            get { return (ServerAddressCollection)this["slaveAddresses"]; }
+            set { this["slaveAddresses"] = value; }
+        }
     }
 }
