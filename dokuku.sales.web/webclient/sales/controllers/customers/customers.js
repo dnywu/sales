@@ -101,15 +101,40 @@ steal('jquery/controller',
                 $("table.dataCustomer tbody").empty();
                 $.each(data, function (item) {
                     $("table.dataCustomer tbody.BodyDataCustomer").append(
-                        "<tr class='trDataCustomer'>" +
-                        "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer'/></td>" +
-                        "<td class='thDataCustomer tdDataCustomerCenter'></td>" +
+                        "<tr class='trDataCustomer' id='trItems" + item + "' tabindex='" + item + "'>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter'><div class='settingListCustomer' id='settingListCustomer" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
                         "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "</tr>");
                 });
                 $('.trDataCustomer:odd').addClass('odd');
+            },
+            '.menuLeft click': function () {
+                $('.MessageConfirmation').show();
+            },
+            '.ButtonConfirmationMassageYa click': function () {
+                $('.SelectCustomer:checked').each(function (index) {
+                    $.ajax({
+                        type: 'Delete',
+                        url: '/DeleteCustomer/id/' + $(this).val(),
+                        dataType: 'json'
+                    });
+                })
+                $('.MessageConfirmation').hide();
+                $this.ChangePage();
+            },
+            '.ButtonConfirmationMassageTidak click': function () {
+                $('.MessageConfirmation').hide();
+            },
+            'table.dataCustomer tbody.BodyDataCustomer tr.trDataCustomer hover': function (el) {
+                var index = el.attr('tabindex');
+                $('#settingListCustomer' + index).show();
+            },
+            'table.dataCustomer tbody.BodyDataCustomer tr.trDataCustomer mouseleave': function (el) {
+                var index = el.attr('tabindex');
+                $('#settingListCustomer' + index).hide();
             },
             '.SelectAllCustomer change': function () {
                 if ($('.SelectAllCustomer').attr('checked')) {
