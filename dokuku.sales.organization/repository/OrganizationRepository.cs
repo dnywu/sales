@@ -12,7 +12,7 @@ namespace dokuku.sales.organization.repository
         MongoCollection<Organization> collection;
         public OrganizationRepository()
         {
-            db = MongoConfig.Instance.CommandDatabase;
+            db = MongoConfig.Instance.MongoDatabase;
             collection = db.GetCollection<Organization>("organizations");
         }
 

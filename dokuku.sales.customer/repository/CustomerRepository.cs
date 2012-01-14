@@ -15,7 +15,7 @@ namespace dokuku.sales.customer.repository
         MongoCollection<Customer> collection;
         public CustomerRepository()
         {
-            db = MongoConfig.Instance.CommandDatabase;
+            db = MongoConfig.Instance.MongoDatabase;
             collection = db.GetCollection<Customer>("customers");
         }
 
