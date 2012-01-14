@@ -246,7 +246,7 @@ td.space{
 	height: 32px;
 }
 .tdDataCustomerCenter{
-	padding: 6px 10px 6px 10;
+	border-bottom: solid 1px #EBEBEB;
 }
 div.menuLeft{
 	list-style: none;
@@ -483,4 +483,10 @@ div.isiConfirmationHeader{
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
+}
+
+.textAlignRight{
+	text-align:right !important;
+	margin-right:0px !important;
+	padding-right:5px;
 }

@@ -102,8 +102,8 @@ steal('jquery/controller',
                 $.each(data, function (item) {
                     $("table.dataCustomer tbody.BodyDataCustomer").append(
                         "<tr class='trDataCustomer' id='trItems" + item + "' tabindex='" + item + "'>" +
-                        "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
-                        "<td class='thDataCustomer tdDataCustomerCenter'><div class='settingListCustomer' id='settingListCustomer" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter textAlignRight' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
+                        "<td class='tdDataCustomerCenter' style='visibility:hide'><div class='settingListCustomer' id='settingListCustomer" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
                         "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
