@@ -44,7 +44,7 @@ namespace dokuku.sales.config
             MongoServer = MongoServer.Create(settings);
             MongoDatabase = MongoServer.GetDatabase(mongoSection.Database, new MongoCredentials(mongoSection.UserName, mongoSection.Password, mongoSection.MongoAdmin));
             ReportingServer = MongoServer.Create(reportingSettings);
-            MongoDatabase = ReportingServer.GetDatabase(mongoSection.Database, new MongoCredentials(mongoSection.UserName, mongoSection.Password, mongoSection.MongoAdmin));
+            ReportingDatabase = ReportingServer.GetDatabase(mongoSection.Database, new MongoCredentials(mongoSection.UserName, mongoSection.Password, mongoSection.MongoAdmin));
         }
         public MongoServer MongoServer { get; private set; }
         public MongoServer ReportingServer { get; private set; }

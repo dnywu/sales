@@ -62,9 +62,9 @@ namespace dokuku.sales.config
         }
         [ConfigurationCollection(typeof(SlaveAddressCollections))]
         [ConfigurationProperty("slaveAddresses")]
-        public ServerAddressCollection SlaveAddresses
+        public SlaveAddressCollections SlaveAddresses
         {
-            get { return (ServerAddressCollection)this["slaveAddresses"]; }
+            get { return (SlaveAddressCollections)this["slaveAddresses"]; }
             set { this["slaveAddresses"] = value; }
         }
     }

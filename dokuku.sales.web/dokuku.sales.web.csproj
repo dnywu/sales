@@ -479,6 +479,17 @@
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
+    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
+    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\controllers\nav\images\icon.png" />
+    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
+    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\controllers\nav\Nav.css" />
+    <Content Include="webclient\sales\controllers\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\nav\nav.js" />
+    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
+    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
@@ -872,6 +883,7 @@
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
