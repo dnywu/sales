@@ -48,6 +48,14 @@ namespace dokuku.sales.item
                 });
         }
 
+        public Item GetItemByName(string ownerId, string itemName)
+        {
+            return DB.View<Item>("all_items", "view_items").Items.Where(item =>
+            {
+                return item.OwnerId == ownerId && item.Name.ToUpper() == itemName.ToUpper();
+            }).FirstOrDefault();
+        }
+
         private CouchDatabase DB
         {
             get

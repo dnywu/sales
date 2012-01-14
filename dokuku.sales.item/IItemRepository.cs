@@ -10,5 +10,6 @@ namespace dokuku.sales.item
         Item Get(Guid id);
         void Delete(Guid id);
         IEnumerable<Item> AllItems(string companyId);
+        Item GetItemByName(string ownerId, string itemName);
     }
 }

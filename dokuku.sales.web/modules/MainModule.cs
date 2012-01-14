@@ -22,7 +22,6 @@ namespace dokuku.sales.web.modules
             IOrganizationRepository orgRepo = new OrganizationRepository();
             ICustomerRepository cusRepo = new CustomerRepository();
             IItemRepository itemRepo = new ItemRepository();
-
             
             Get["/"] = p =>
                 {
@@ -178,6 +177,12 @@ namespace dokuku.sales.web.modules
                     string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
                     string custName = p.custName.ToString();
                     return Response.AsJson(cusRepo.GetByCustName(ownerId, custName));
+                };
+            Get["/getItemByName/{itemName}"] = p =>
+                {
+                    string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
+                    string itemName = p.itemName.ToString();
+                    return Response.AsJson(itemRepo.GetItemByName(ownerId, itemName));
                 };
         }
     }

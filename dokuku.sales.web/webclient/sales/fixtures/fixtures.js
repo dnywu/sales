@@ -2,7 +2,7 @@
 
 steal("jquery/dom/fixture", function(){
 	
-	$.fixture.make("companyprofile", 5, function(i, companyprofile){
+	$.fixture.make("companyprofile", 2, function(i, companyprofile){
 		var descriptions = ["grill fish", "make ice", "cut onions"]
 		return {
 			name: "companyprofile "+i,
