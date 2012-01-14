@@ -7,7 +7,6 @@
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
-	padding-bottom:15px;
 }
 div.HeaderListDiv
 {
@@ -83,8 +82,186 @@ table.ItemList tbody tr:hover
 div.settingButton
 {
 	display:none;
+	margin:0;
+	padding:0;
 }
 div.ActionButtonDiv
 {
 	margin-bottom:20px;
 }
+div.popupEventDiv
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 145px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+div.itempopup{
+	padding: 7px 5px 5px 7px;
+	color: #457BD9;
+	cursor: pointer;
+	white-space: normal;
+	text-decoration: none;
+}
+div.itempopup label
+{
+	cursor:pointer;
+}
+
+.Pagging {
+	padding: 7px 12px 25px 35px;
+	border: solid 1px #EBEBEB;
+	background: #EBEBEB;
+}
+.DivNext{
+	float:left;
+	margin-right:5px
+}
+.DivPrev{
+	float:left;
+	margin-right:5px
+}
+.disableNext{
+	float:left;
+	margin-right:5px
+}
+.disablePrev{
+	float:left;
+	margin-right:5px
+}
+.DivlimitData{
+	float:left;
+}
+.DivPage{
+	float:left;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin-left:5px;
+	margin-right:5px;
+}
+.prev{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
+}
+.next{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -257px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
+}
+.first
+{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -209px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
+}
+.last{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -283px -265px;
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
+}
+.prevDisable{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -334px -265px;
+	height: 21px;
+	width: 19px;
+}
+.nextDisable{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -359px -265px;
+	height: 21px;
+	width: 19px;
+}
+.firstDisable
+{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -309px -265px;
+	height: 21px;
+	width: 19px;
+}
+.lastDisable{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position: -383px -265px;
+	height: 21px;
+	width: 19px;
+}
+.BodyDataItem{
+	overflow : auto;
+	height : 280px;
+}
+.odd {
+	background: #F8F8F8;
+}
+.confirmDialogDetail
+{
+	background-color:#FFFFFF;
+	margin-bottom:20px;
+	overflow:hidden;
+	resize: none;
+	-webkit-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
+	position:absolute;
+	z-index:750;
+	top: 23%;
+	left: 35%;
+	margin:auto;
+	width:300px;
+	height:150px;
+}
+.warningIcon
+{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position:-273px -1025px;
+	height:34px;
+	width:38px;
+	float:left;
+}
+div.messageActionDiv
+{
+	text-align:center;
+}
+button#confirmYes button#confirmNo
+{
+	width:40px;
+	height:20px;
+}
+
+div.messageContentDiv div.messageActionDiv
+{
+	text-align:center;
+	vertical-align:bottom;
+}
+div#dialogTitle
+{
+	margin-top:7px;
+	padding-left:5px;
+	font-size: 16px;
+}
+.confirmHeader
+{
+	display:block;
+	background-color:#F8F8F8;
+	width:100%;
+	height:34px;
+	vertical-align:middle;
+	padding: 3px 0 0 5px;
+}
+	
+	

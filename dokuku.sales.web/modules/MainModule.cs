@@ -12,6 +12,11 @@ using dokuku.sales.customer;
 using dokuku.sales.item;
 using dokuku.security;
 using Newtonsoft.Json;
+using dokuku.sales.organization.repository;
+using dokuku.sales.customer.repository;
+using dokuku.sales.organization.report;
+using dokuku.sales.organization.model;
+using dokuku.sales.customer.model;
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -21,6 +26,8 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication(); 
             IOrganizationRepository orgRepo = new OrganizationRepository();
             ICustomerRepository cusRepo = new CustomerRepository();
+            IOrganizationReportRepository orgReportRepo = new OrganizationReportRepository();
+            ICustomerReportRepository cusReportRepo = new CustomerReportRepository();
             IItemRepository itemRepo = new ItemRepository();
             
             Get["/"] = p =>
@@ -30,7 +37,7 @@ namespace dokuku.sales.web.modules
             Get["/getorganization"] = p =>
                 {
                     
-                    return Response.AsJson(orgRepo.FindByOwnerId(this.Context.CurrentUser.UserName));
+                    return Response.AsJson(orgReportRepo.FindByOwnerId(this.Context.CurrentUser.UserName));
                 };
             Get["/getuser"] = p =>
                 {
@@ -158,25 +165,64 @@ namespace dokuku.sales.web.modules
             };
             Get["/Items"] = p =>
             {
+                dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
                 return Response.AsJson(itemRepo.AllItems(AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId));
             };
+            Get["/CountItem"] = p =>
+                {
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(itemRepo.CountItems(userId.CompanyId));
+                };
             Get["/Customers"] = p =>
                 {
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(cusRepo.CountCustomers(userId.CompanyId));
+                    return Response.AsJson(cusReportRepo.CountCustomers(userId.CompanyId));
                 };
             Get["/LimitCustomers/start/{start}/limit/{limit}"] = p =>
                 {
                     int start = p.start;
                     int limit = p.limit;
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(cusRepo.LimitCustomers(userId.CompanyId, start,limit));
+                    return Response.AsJson(cusReportRepo.LimitCustomers(userId.CompanyId, start, limit));
+                };
+            Delete["/DeleteCustomer/id/{id}"] = p =>
+                {
+                    try
+                    {
+                        Guid id = p.id;
+                        cusRepo.Delete(id);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    }
+                    return Response.AsJson("OK");
+                };
+            Get["/LimitItems/start/{start}/limit/{limit}"] = p =>
+                {
+                    int start = p.start;
+                    int limit = p.limit;
+                    dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(itemRepo.LimitItems(userId.CompanyId, start, limit));
                 };
             Get["/getCustomerByCustomerName/{custName}"] = p =>
                 {
                     string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
                     string custName = p.custName.ToString();
-                    return Response.AsJson(cusRepo.GetByCustName(ownerId, custName));
+                    return Response.AsJson(cusReportRepo.GetByCustName(ownerId, custName));
+                };
+            Delete["/deleteItem/_id/{id}"] = p =>
+                {
+                    try
+                    {
+                        Guid id = p.id;
+                        itemRepo.Delete(id);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    }
+                    return Response.AsJson("OK");
                 };
             Get["/getItemByName/{itemName}"] = p =>
                 {

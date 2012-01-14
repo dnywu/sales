@@ -44,10 +44,19 @@
     <Reference Include="LoveSeat">
       <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.dll</HintPath>
     </Reference>
+    <Reference Include="FluentMongo">
+      <HintPath>..\packages\FluentMongo.1.3.1\lib\FluentMongo.dll</HintPath>
+    </Reference>
     <Reference Include="LoveSeat.Interfaces">
       <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.9.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
@@ -416,34 +425,18 @@
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
     <Content Include="Views\login.html" />
-    <Content Include="webclient\sales\controllers\customers\css\jquery-ui-1.8.17.custom.css" />
-    <Content Include="webclient\sales\controllers\customers\css\ui.jqgrid.css" />
     <Content Include="webclient\sales\controllers\customers\customer.css" />
     <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />
     <Content Include="webclient\sales\controllers\customers\customers_test.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_flat_55_fbec88_40x100.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_glass_75_d0e5f5_1x400.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_glass_85_dfeffc_1x400.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_glass_95_fef1ec_1x400.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-icons_217bc0_256x240.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-icons_2e83ff_256x240.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-icons_469bdd_256x240.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-icons_6da8d5_256x240.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-icons_cd0a0a_256x240.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-icons_d8e7f3_256x240.png" />
-    <Content Include="webclient\sales\controllers\customers\images\ui-icons_f9bd01_256x240.png" />
-    <Content Include="webclient\sales\controllers\customers\script\grid.locale-en.js" />
-    <Content Include="webclient\sales\controllers\customers\script\jquery-1.7.1.min.js" />
-    <Content Include="webclient\sales\controllers\customers\script\jquery-ui-1.8.17.custom.min.js" />
-    <Content Include="webclient\sales\controllers\customers\script\jquery.jqGrid.min.js" />
+    <Content Include="webclient\sales\controllers\customers\images\setting.png" />
     <Content Include="webclient\sales\controllers\home\funcunit.html" />
     <Content Include="webclient\sales\controllers\home\home.css" />
     <Content Include="webclient\sales\controllers\home\home.html" />
@@ -460,23 +453,44 @@
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
     <Content Include="webclient\sales\controllers\items\list\images\Search-icon.png" />
-    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
-    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
-    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
-    <Content Include="webclient\sales\controllers\nav\Nav.css" />
-    <Content Include="webclient\sales\controllers\nav\nav.html" />
-    <Content Include="webclient\sales\controllers\nav\nav.js" />
-    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
-    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\images\search.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
+    <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
+    <Content Include="webclient\sales\controllers\items\list\list.html" />
+    <Content Include="webclient\sales\controllers\items\list\list.js" />
+    <Content Include="webclient\sales\controllers\items\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\test\qunit\items_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\test\qunit\qunit.js" />
+    <Content Include="webclient\sales\controllers\items\list\nav\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.jpg" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\controllers\items\list\nav\Nav.css" />
+    <Content Include="webclient\sales\controllers\items\list\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\items\list\nav\nav.js" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\controllers\items\list\nav\NavSubMenu.css" />
+    <Content Include="webclient\sales\controllers\items\list\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
+    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
+    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\controllers\nav\images\icon.png" />
+    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
+    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\controllers\nav\Nav.css" />
+    <Content Include="webclient\sales\controllers\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\nav\nav.js" />
+    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
+    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
@@ -843,7 +857,13 @@
     <None Include="webclient\jquery\view\test\qunit\template.micro" />
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
+    <None Include="webclient\sales\controllers\customers\edit\views\editCustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\customers\views\addcustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\customers\views\contextMenuCustomer.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\customers\views\listCustomer.ejs">
@@ -857,10 +877,14 @@
     <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
+    <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>

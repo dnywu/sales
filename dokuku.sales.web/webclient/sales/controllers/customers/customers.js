@@ -1,6 +1,7 @@
 steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
+      'sales/controllers/customers/edit',
       'sales/controllers/customers/customer.css')
 	.then('./views/listCustomer.ejs', function ($) {
 
@@ -101,15 +102,50 @@ steal('jquery/controller',
                 $("table.dataCustomer tbody").empty();
                 $.each(data, function (item) {
                     $("table.dataCustomer tbody.BodyDataCustomer").append(
-                        "<tr class='trDataCustomer'>" +
-                        "<td class='thDataCustomer tdDataCustomerCenter' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer'/></td>" +
-                        "<td class='thDataCustomer tdDataCustomerCenter'></td>" +
+                        "<tr class='trDataCustomer' id='trCustomerList" + item + "' tabindex='" + item + "'>" +
+                        "<td class='thDataCustomer tdDataCustomerCenter textAlignRight' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
+                        "<td class='tdDataCustomerCenter' id='tdDataCustomer" + item + "'><div class='settingListCustomer' id='settingListCustomer" + item + "' tabindex='" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
                         "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "</tr>");
+                    $("td#tdDataCustomer" + item).append("//sales/controllers/customers/views/contextMenuCustomer.ejs", { index: item }, { id: data[item]._id });
                 });
                 $('.trDataCustomer:odd').addClass('odd');
+            },
+            '.menuLeft click': function () {
+                $('.MessageConfirmation').show();
+            },
+            '.ButtonConfirmationMassageYa click': function () {
+                $('.SelectCustomer:checked').each(function (index) {
+                    $.ajax({
+                        type: 'Delete',
+                        url: '/DeleteCustomer/id/' + $(this).val(),
+                        dataType: 'json'
+                    });
+                })
+                $('.MessageConfirmation').hide();
+                $this.ChangePage();
+            },
+            '.ButtonConfirmationMassageTidak click': function () {
+                $('.MessageConfirmation').hide();
+            },
+            'table.dataCustomer tbody.BodyDataCustomer tr.trDataCustomer hover': function (el) {
+                var index = el.attr('tabindex');
+                $('#settingListCustomer' + index).show();
+                $("tr#trCustomerList" + index + " td#tdDataCustomer" + index + " div.ContextMenuCustomer").hide();
+            },
+            'table.dataCustomer tbody.BodyDataCustomer tr.trDataCustomer mouseleave': function (el) {
+                var index = el.attr('tabindex');
+                $('#settingListCustomer' + index).hide();
+                $("tr#trCustomerList" + index + " td#tdDataCustomer" + index + " div.ContextMenuCustomer").hide();
+            },
+            '#EditContextMenuCustomer click': function (el) {
+                $('#body').sales_customers_edit();
+            },
+            '.settingListCustomer click': function (el) {
+                var index = el.attr('tabindex');
+                $("tr#trCustomerList" + index + " td#tdDataCustomer" + index + " div.ContextMenuCustomer").show();
             },
             '.SelectAllCustomer change': function () {
                 if ($('.SelectAllCustomer').attr('checked')) {

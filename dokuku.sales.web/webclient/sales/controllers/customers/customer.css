@@ -246,7 +246,7 @@ td.space{
 	height: 32px;
 }
 .tdDataCustomerCenter{
-	padding: 6px 10px 6px 10;
+	border-bottom: solid 1px #EBEBEB;
 }
 div.menuLeft{
 	list-style: none;
@@ -334,59 +334,44 @@ div.menuLeft{
 	margin-left:5px;
 	margin-right:5px;
 }
-.prev{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
-	background-position: -233px -265px;
+.pagingSize{
 	height: 21px;
 	width: 19px;
 	cursor: pointer;
 }
+.prev{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
+}
 .next{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -257px -265px;
-	height: 21px;
-	width: 19px;
-	cursor: pointer;
 }
 .first
 {
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -209px -265px;
-	height: 21px;
-	width: 19px;
-	cursor: pointer;
 }
 .last{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -283px -265px;
-	height: 21px;
-	width: 19px;
-	cursor: pointer;
 }
 .prevDisable{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -334px -265px;
-	height: 21px;
-	width: 19px;
 }
 .nextDisable{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -359px -265px;
-	height: 21px;
-	width: 19px;
 }
 .firstDisable
 {
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -309px -265px;
-	height: 21px;
-	width: 19px;
 }
 .lastDisable{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -383px -265px;
-	height: 21px;
-	width: 19px;
 }
 .BodyDataCustomer{
 	overflow : auto;
@@ -395,4 +380,135 @@ div.menuLeft{
 
 .odd {
 	background: #F8F8F8;
+}
+div.settingListCustomer
+{
+	display:none;
+}
+div.MessageConfirmation{
+	width : 23%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
+	position: absolute;
+	top: 245px;
+	left: 337px;
+	display:none;
+}
+.imagesConfirm{
+	
+	background-position: -273px -1025px;
+	margin: 10px 15px 10px 5px;
+	height: 34px;
+	width: 38px;
+	float : left;
+}
+div.isiConfirmationHeader{
+	margin: 20px 5px 10px 5px;
+}
+.ConfirmationHeader{
+	font-size: 18px;
+	font-family: arial, verdana;
+	background: #F0F0F0;
+	height: 52px;
+	padding: 2px;
+}
+.BodyConfirmationMassage{
+	font-size: 14px;
+	background: #F8F8F8;
+	height: 81px;
+	padding: 8px;
+}
+.ButtonConfirmationMassageYa{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 72px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	
+}
+.ButtonConfirmationMassageTidak{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 4px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}
+
+.textAlignRight{
+	text-align:right !important;
+	margin-right:0px !important;
+	padding-right:5px;
+}
+
+div.ContextMenuCustomer
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 145px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+div.itemContextMenuCustomer{
+	padding: 7px 5px 5px 7px;
+	color: #457BD9;
+	cursor: pointer;
+	white-space: normal;
+	text-decoration: none;
+}
+div.itemContextMenuCustomer span
+{
+	cursor:pointer;
+}
+div.itemContextMenuCustomer span:hover{
+	color:Red;
+	text-decoration:underline;
+}
+.EditImagContextMenu{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -382px -53px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
 }
