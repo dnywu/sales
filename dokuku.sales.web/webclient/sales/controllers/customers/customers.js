@@ -34,7 +34,7 @@ steal('jquery/controller',
                 $this.initPagination();
                 $.ajax({
                     type: 'GET',
-                    url: '/LimitCustomers/start/' + (((start - 1) * limit) + 1) + '/limit/' + limit,
+                    url: '/LimitCustomers/start/' + (((start - 1) * limit)) + '/limit/' + limit,
                     dataType: 'json',
                     ajaxStart: $this.LoadingListCustomer,
                     success: $this.requestAllCustomerSuccess
@@ -221,7 +221,7 @@ steal('jquery/controller',
                 var startPage = parseInt($('#idInputPage').val());
                 $.ajax({
                     type: 'GET',
-                    url: '/LimitCustomers/start/' + (((startPage - 1) * $('#limitData').val()) + 1) + '/limit/' + $('#limitData').val(),
+                    url: '/LimitCustomers/start/' + (((startPage - 1) * $('#limitData').val())) + '/limit/' + $('#limitData').val(),
                     dataType: 'json',
                     beforSend: $this.LoadingListCustomer,
                     success: $this.requestAllCustomerSuccess
