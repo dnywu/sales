@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Machine.Specifications;
 using dokuku.sales.organization;
+using dokuku.sales.organization.repository;
+using dokuku.sales.organization.model;
 namespace dokuku.sales.fixture
 {
     [Subject("Creating organization")]

@@ -5,17 +5,21 @@ using System.Text;
 using Machine.Specifications;
 using dokuku.sales.organization;
 using dokuku.sales.customer;
+using dokuku.sales.customer.repository;
+using dokuku.sales.customer.model;
 namespace dokuku.sales.fixture
 {
     [Subject("Get all customers")]
     public class When_get_all_customer
     {
         private static ICustomerRepository csRepo;
+        private static ICustomerReportRepository csReportRepo;
         private static Guid id;
 
         Establish context = () =>
             {
                 csRepo = new CustomerRepository();
+                csReportRepo = new CustomerReportRepository();
                 id = Guid.NewGuid();
             };
 
@@ -42,7 +46,7 @@ namespace dokuku.sales.fixture
 
         It should_return_all_customers = () =>
             {
-                IEnumerable<Customer> result = csRepo.LimitCustomers("",1,2);
+                IEnumerable<Customer> result = csReportRepo.LimitCustomers("", 1, 2);
                 result.First().ShouldNotBeNull();
             };
 
