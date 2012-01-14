@@ -439,6 +439,11 @@
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\items\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\items\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\items\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\items\edit\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
@@ -846,6 +851,7 @@
     <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />

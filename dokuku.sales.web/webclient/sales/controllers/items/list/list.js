@@ -3,7 +3,8 @@ steal('jquery/controller',
       'jquery/controller/view',
       'sales/models',
       './ItemList.css',
-      'sales/controllers/items/create')
+      'sales/controllers/items/create',
+      'sales/controllers/items/edit')
 	.then('./views/ItemList.ejs', './views/popupEventDialog.ejs', './views/confirmBox.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.items.list',
@@ -83,7 +84,6 @@ steal('jquery/controller',
                 $('#body').sales_items_create('load');
             },
             ".settingButton click": function (el) {
-                //var index = $("table.ItemList tbody tr").attr("tabindex");
                 var index = el.attr("tabindex");
                 $("tr#itemContent" + index + " td#settingPanel" + index + " div.popupEventDiv").show();
             },
@@ -94,11 +94,16 @@ steal('jquery/controller',
                     $(".checkBoxItem").removeAttr('checked');
                 }
             },
-            "#btnEdit click": function () {
-                alert("test button edit");
+            "#btnEdit click": function (el) {
+                var index = el.attr("tabindex");
+                var id = $("#checkBoxItem" + index).val();
+                $('#body').sales_items_edit();
+//                alert("index: " + index + "id: " + id);
             },
-            "#btnDelete click": function () {
-                alert("test button hapus");
+            "#btnDelete click": function (el) {
+                var index = el.attr("tabindex");
+                var id = $("#checkBoxItem" + index).val();
+                //$("#deleteItem").click();
             },
             CheckButtonPaging: function () {
                 var startPage = parseInt($('#idInputPage').val());
@@ -169,7 +174,6 @@ steal('jquery/controller',
             },
             "#deleteItem click": function () {
                 $("#body").append(this.view("//sales/controllers/items/list/views/confirmBox.ejs"));
-
             },
             "#confirmYes click": function () {
                 $('.ModalDialog').remove();
