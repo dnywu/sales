@@ -1,6 +1,7 @@
 steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
+      'sales/controllers/customers/edit',
       'sales/controllers/customers/customer.css')
 	.then('./views/listCustomer.ejs', function ($) {
 
@@ -101,13 +102,14 @@ steal('jquery/controller',
                 $("table.dataCustomer tbody").empty();
                 $.each(data, function (item) {
                     $("table.dataCustomer tbody.BodyDataCustomer").append(
-                        "<tr class='trDataCustomer' id='trItems" + item + "' tabindex='" + item + "'>" +
+                        "<tr class='trDataCustomer' id='trCustomerList" + item + "' tabindex='" + item + "'>" +
                         "<td class='thDataCustomer tdDataCustomerCenter textAlignRight' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
-                        "<td class='tdDataCustomerCenter' style='visibility:hide'><div class='settingListCustomer' id='settingListCustomer" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
+                        "<td class='tdDataCustomerCenter' id='tdDataCustomer" + item + "'><div class='settingListCustomer' id='settingListCustomer" + item + "' tabindex='" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
                         "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "</tr>");
+                    $("td#tdDataCustomer" + item).append("//sales/controllers/customers/views/contextMenuCustomer.ejs", { index: item }, { id: data[item]._id });
                 });
                 $('.trDataCustomer:odd').addClass('odd');
             },
@@ -131,10 +133,19 @@ steal('jquery/controller',
             'table.dataCustomer tbody.BodyDataCustomer tr.trDataCustomer hover': function (el) {
                 var index = el.attr('tabindex');
                 $('#settingListCustomer' + index).show();
+                $("tr#trCustomerList" + index + " td#tdDataCustomer" + index + " div.ContextMenuCustomer").hide();
             },
             'table.dataCustomer tbody.BodyDataCustomer tr.trDataCustomer mouseleave': function (el) {
                 var index = el.attr('tabindex');
                 $('#settingListCustomer' + index).hide();
+                $("tr#trCustomerList" + index + " td#tdDataCustomer" + index + " div.ContextMenuCustomer").hide();
+            },
+            '#EditContextMenuCustomer click': function (el) {
+                $('#body').sales_customers_edit();
+            },
+            '.settingListCustomer click': function (el) {
+                var index = el.attr('tabindex');
+                $("tr#trCustomerList" + index + " td#tdDataCustomer" + index + " div.ContextMenuCustomer").show();
             },
             '.SelectAllCustomer change': function () {
                 if ($('.SelectAllCustomer').attr('checked')) {

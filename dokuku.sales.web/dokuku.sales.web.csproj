@@ -420,6 +420,10 @@
     <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />
     <Content Include="webclient\sales\controllers\customers\customers_test.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
@@ -451,16 +455,16 @@
     <Content Include="webclient\sales\controllers\items\list\list_test.js" />
     <Content Include="webclient\sales\controllers\items\list\test\qunit\items_test.js" />
     <Content Include="webclient\sales\controllers\items\list\test\qunit\qunit.js" />
-    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
-    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
-    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
-    <Content Include="webclient\sales\controllers\nav\Nav.css" />
-    <Content Include="webclient\sales\controllers\nav\nav.html" />
-    <Content Include="webclient\sales\controllers\nav\nav.js" />
-    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
-    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\nav\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.jpg" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\controllers\items\list\nav\Nav.css" />
+    <Content Include="webclient\sales\controllers\items\list\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\items\list\nav\nav.js" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\items\list\nav\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\controllers\items\list\nav\NavSubMenu.css" />
+    <Content Include="webclient\sales\controllers\items\list\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
@@ -832,7 +836,13 @@
     <None Include="webclient\jquery\view\test\qunit\template.micro" />
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
+    <None Include="webclient\sales\controllers\customers\edit\views\editCustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\customers\views\addcustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\customers\views\contextMenuCustomer.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\customers\views\listCustomer.ejs">
@@ -849,7 +859,7 @@
     <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
-    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
+    <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
