@@ -846,6 +846,7 @@
     <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
     <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
