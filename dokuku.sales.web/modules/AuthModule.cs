@@ -5,7 +5,7 @@ using System;
 using Nancy;
 using Nancy.Responses;
 using dokuku.sales.web.models;
-using dokuku.security;
+using dokuku.security.repository;
 namespace dokuku.sales.web.modules
 {
     public class AuthModule : Nancy.NancyModule
@@ -55,8 +55,7 @@ namespace dokuku.sales.web.modules
 
             Post["/login"] = x =>
             {
-                var userGuid = AuthRepository.ValidateUser((string)this.Request.Form.Username, (string)this.Request.Form.Password);
-
+                var userGuid = ServiceLocator.GetAuthenticationService(this).Login((string)this.Request.Form.Username, (string)this.Request.Form.Password);
                 if (userGuid == null)
                 {
                     return Context.GetRedirect("~/login?error=true&username=" + (string)this.Request.Form.Username);

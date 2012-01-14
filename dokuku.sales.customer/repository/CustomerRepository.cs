@@ -11,12 +11,10 @@ namespace dokuku.sales.customer.repository
 {
     public class CustomerRepository : ICustomerRepository
     {
-        MongoDatabase db;
-        MongoCollection<Customer> collection;
-        public CustomerRepository()
+        MongoConfig mongo;
+        public CustomerRepository(MongoConfig mongoconfig)
         {
-            db = MongoConfig.Instance.MongoDatabase;
-            collection = db.GetCollection<Customer>("customers");
+            mongo = mongoconfig;
         }
 
         public void Save(Customer cs)
@@ -36,6 +34,14 @@ namespace dokuku.sales.customer.repository
                                     {"_id",id},
                                     {"OwnerId",ownerId}};
             return collection.Find(qry).FirstOrDefault();
+        }
+        private MongoCollection<Customer> collection
+        {
+            get { return db.GetCollection<Customer>("customers"); }
+        }
+        private MongoDatabase db
+        {
+            get { return mongo.MongoDatabase; }
         }
     }
 }

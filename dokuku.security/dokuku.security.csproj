@@ -37,6 +37,12 @@
     <Reference Include="LoveSeat.Interfaces">
       <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.9.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
@@ -56,14 +62,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthRepository.cs" />
-    <Compile Include="DokukuKeyGenerator.cs" />
-    <Compile Include="FormsAuthBootstrapper.cs" />
+    <Compile Include="model\DokukuKeyGenerator.cs" />
+    <Compile Include="model\Account.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserIdentity.cs" />
+    <Compile Include="repository\AuthRepository.cs" />
+    <Compile Include="repository\IAuthRepository.cs" />
+    <Compile Include="service\AuthService.cs" />
+    <Compile Include="service\IAuthService.cs" />
+    <Compile Include="model\UserIdentity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

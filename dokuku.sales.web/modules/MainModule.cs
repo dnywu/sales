@@ -24,12 +24,6 @@ namespace dokuku.sales.web.modules
         public MainModule()
         {
             this.RequiresAuthentication(); 
-            IOrganizationRepository orgRepo = new OrganizationRepository();
-            ICustomerRepository cusRepo = new CustomerRepository();
-            IOrganizationReportRepository orgReportRepo = new OrganizationReportRepository();
-            ICustomerReportRepository cusReportRepo = new CustomerReportRepository();
-            IItemRepository itemRepo = new ItemRepository();
-
             
             Get["/"] = p =>
                 {
@@ -37,8 +31,8 @@ namespace dokuku.sales.web.modules
                 };
             Get["/getorganization"] = p =>
                 {
-                    
-                    return Response.AsJson(orgReportRepo.FindByOwnerId(this.Context.CurrentUser.UserName));
+
+                    return Response.AsJson(this.OrganizationReportRepository().FindByOwnerId(this.Context.CurrentUser.UserName));
                 };
             Get["/getuser"] = p =>
                 {
@@ -54,7 +48,7 @@ namespace dokuku.sales.web.modules
                         int starts = (int)this.Request.Form.starts;
                         Guid id = Guid.NewGuid();
                         string owner = this.Context.CurrentUser.UserName;
-                        orgRepo.Save(new Organization(id, owner, name, curr, starts));
+                        this.OrganizationRepository().Save(new Organization(id, owner, name, curr, starts));
                     }
                     catch (Exception ex)
                     {
@@ -93,7 +87,7 @@ namespace dokuku.sales.web.modules
                     string AddValueCustID3 = (string)this.Request.Form.add_valueCustID3;
                     try
                     {
-                        cusRepo.Save(new Customer()
+                        this.CustomerRepository().Save(new Customer()
                         {
                             Name = CustomerName,
                             Currency = CustomerCcy,
@@ -147,7 +141,7 @@ namespace dokuku.sales.web.modules
                     {
                         taxValue = 0.1m;
                     }
-                    itemRepo.Save(new Item()
+                    this.ItemRepository().Save(new Item()
                     {
                         _id = id,
                         OwnerId = owner,

@@ -12,14 +12,12 @@ namespace dokuku.sales.item
 {
     public class ItemRepository : IItemRepository
     {
-        //CouchClient couchClient;
-        //CouchDatabase db;
-        //CouchDBConfig cfg;
         MongoCollection<BsonDocument> _document;
-
-        public ItemRepository()
+        MongoConfig mongo;
+        public ItemRepository(MongoConfig mongoConfig)
         {
-            _document = MongoConfig.Instance.MongoDatabase.GetCollection(typeof(Item).Name);
+            mongo = mongoConfig;
+            _document = mongo.MongoDatabase.GetCollection(typeof(Item).Name);
             //cfg = (CouchDBConfig)ConfigurationManager.GetSection("CouchDBConfig");
             //if (cfg == null)
             //    throw new ApplicationException("CouchDBConfig tidak di temukan dalam app config"); 

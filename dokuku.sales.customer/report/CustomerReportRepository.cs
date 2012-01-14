@@ -10,12 +10,10 @@ namespace dokuku.sales.customer.repository
 {
     public class CustomerReportRepository : ICustomerReportRepository
     {
-        MongoDatabase reportingDB;
-        MongoCollection<Customer> reportCollections;
-        public CustomerReportRepository()
+        MongoConfig mongo;
+        public CustomerReportRepository(MongoConfig mongoConfig)
         {
-            reportingDB = MongoConfig.Instance.ReportingDatabase;
-            reportCollections = reportingDB.GetCollection<Customer>("customers");
+            mongo = mongoConfig;
         }
 
         public IEnumerable<Customer> LimitCustomers(string ownerId, int start, int limit)
@@ -45,6 +43,14 @@ namespace dokuku.sales.customer.repository
                                     {"OwnerId",ownerId},
                                     {"Name",custName}};
             return reportCollections.FindOneAs<Customer>(qry);
+        }
+        private MongoDatabase reportDatabase
+        {
+            get { return mongo.ReportingDatabase; }
+        }
+        private MongoCollection<Customer> reportCollections
+        {
+            get { return reportDatabase.GetCollection<Customer>("customers"); }
         }
     }
 }
