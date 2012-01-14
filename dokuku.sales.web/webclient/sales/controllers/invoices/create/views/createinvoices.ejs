@@ -89,7 +89,7 @@
           <td class='disc right'>Diskon(%)</td>
           <td class='tax'>Tax</td>
           <td class='amount right'>Amount</td>
-          <td ></td>
+          <td class='dltItem'></td>
         </tr>
       </thead>
       <tbody>
@@ -100,14 +100,19 @@
           <td>
             <span id='addItemRow'>Add another line</span>
           </td>
-          <td colspan='4'></td>
+          <td colspan='3'></td>
           <td colspan='2' class='right borderbottom'>Sub Total</td>
-          <td class='right borderbottom'>1 Mber</td>
+          <td class='right borderbottom'>
+            <span id='subtotal'></span></td>
+          <td></td>
         </tr>
         <tr>
-          <td colspan='5'></td>
+          <td colspan='4'></td>
           <td colspan='2' class='right bold borderbottom graybgcolor'>Total</td>
-          <td class='right bold borderbottom graybgcolor'>1 Mber</td>
+          <td class='right bold borderbottom graybgcolor'>
+            <span id='total'></span>
+          </td>
+          <td></td>
         </tr>
       </tfoot>
     </table>

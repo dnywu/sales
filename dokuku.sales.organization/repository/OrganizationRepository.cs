@@ -11,7 +11,12 @@ namespace dokuku.sales.organization.repository
         MongoConfig mongo;
         public OrganizationRepository(MongoConfig mongoConfig)
         {
+<<<<<<< HEAD
             mongo = mongoConfig;
+=======
+            db = MongoConfig.Instance.CommandDatabase;
+            collection = db.GetCollection<Organization>("organizations");
+>>>>>>> e8a8d296f06a23bbb10a177812d54e35f1e49448
         }
 
         public void Save(Organization org)

@@ -14,7 +14,12 @@ namespace dokuku.sales.customer.repository
         MongoConfig mongo;
         public CustomerRepository(MongoConfig mongoconfig)
         {
+<<<<<<< HEAD
             mongo = mongoconfig;
+=======
+            db = MongoConfig.Instance.CommandDatabase;
+            collection = db.GetCollection<Customer>("customers");
+>>>>>>> e8a8d296f06a23bbb10a177812d54e35f1e49448
         }
 
         public void Save(Customer cs)

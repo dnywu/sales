@@ -39,14 +39,14 @@ namespace dokuku.sales.config
             }
             reportingSettings.Servers = reportingServers;
 
-            MongoServer = MongoServer.Create(settings);
-            MongoDatabase = MongoServer.GetDatabase(mongoSection.Database, new MongoCredentials(mongoSection.UserName, mongoSection.Password, mongoSection.MongoAdmin));
+            CommandServer = MongoServer.Create(settings);
+            CommandDatabase = CommandServer.GetDatabase(mongoSection.Database, new MongoCredentials(mongoSection.UserName, mongoSection.Password, mongoSection.MongoAdmin));
             ReportingServer = MongoServer.Create(reportingSettings);
             ReportingDatabase = ReportingServer.GetDatabase(mongoSection.Database, new MongoCredentials(mongoSection.UserName, mongoSection.Password, mongoSection.MongoAdmin));
         }
-        public MongoServer MongoServer { get; private set; }
+        public MongoServer CommandServer { get; private set; }
         public MongoServer ReportingServer { get; private set; }
-        public MongoDatabase MongoDatabase { get; private set; }
+        public MongoDatabase CommandDatabase { get; private set; }
         public MongoDatabase ReportingDatabase { get; private set; }
     }
 }

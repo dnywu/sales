@@ -8,6 +8,7 @@ using LoveSeat;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using System.Text.RegularExpressions;
 namespace dokuku.sales.item
 {
     public class ItemRepository : IItemRepository
@@ -53,6 +54,12 @@ namespace dokuku.sales.item
             //        return item.OwnerId == companyId;
             //    });
             return _document.FindAs<Item>(Query.EQ("OwnerId", companyId));
+        }
+
+        public Item GetItemByName(string ownerId, string itemName)
+        {
+            var query = Query.And(Query.EQ("OwnerId", ownerId), Query.EQ("Name", BsonValue.Create(new Regex("^" + itemName + "$", RegexOptions.IgnoreCase)))); 
+            return _document.FindOneAs<Item>(query);
         }
 
         public int CountItems(string ownerId)

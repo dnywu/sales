@@ -48,13 +48,16 @@ table#itemInvoice td.qty{width:70px;}
 table#itemInvoice td.rate{width:70px;}
 table#itemInvoice td.disc{width:70px;}
 table#itemInvoice td.tax{width:100px;}
+table#itemInvoice td.dltItem{width:10px;}
 table#itemInvoice td input,table#itemInvoice td textarea,table#itemInvoice td select
 {
     width:100%;
     border:1px Solid #a2ddff;
     font-size:11px;
 }
+table#itemInvoice tbody{font-size:12px;color:#777;}
 table#itemInvoice tbody tr td{vertical-align:top;border-bottom:1px solid #eaeaea;}
+table#itemInvoice tbody tr:hover{background-color:#FAFAFA;}
 table#itemInvoice tfoot{font-size:11px;}
 table#itemInvoice tfoot td.borderbottom{border-bottom:1px Solid #eaeaea;}
 table#itemInvoice tfoot td.graybgcolor{background-color:#F7F7F7;}
@@ -66,10 +69,9 @@ table#itemInvoice tfoot td.graybgcolor{background-color:#F7F7F7;}
     border: 1px solid #ACD2E7;
     border-image: initial;
 }
+span#addItemRow{cursor:pointer;color:#777;font-weight:bold;}
+span#addItemRow:hover{color:#4183C4;}
 .TermsandConditionsTxtArea {height: 86px;}
-div.clsDeleteItem
-{
-    display:none;
-    color:#d80000;
-    cursor:pointer;
-}
+div.clsDeleteItem{display:none;color:#d80000;cursor:pointer;font-weight:bold;}
+span.amount{text-align:right;float:right;}
+tr.errItemNotFound{background-color:#fff5f5;}

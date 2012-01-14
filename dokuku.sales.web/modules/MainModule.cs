@@ -13,10 +13,10 @@ using dokuku.sales.item;
 using dokuku.security;
 using Newtonsoft.Json;
 using dokuku.sales.organization.repository;
-using dokuku.sales.customer.repository;
 using dokuku.sales.organization.report;
 using dokuku.sales.organization.model;
 using dokuku.sales.customer.model;
+using dokuku.sales.customer.repository;
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -24,6 +24,9 @@ namespace dokuku.sales.web.modules
         public MainModule()
         {
             this.RequiresAuthentication(); 
+            IItemCommand itemCommand = new ItemCommand();
+            IItemQuery itemQuery = new ItemQuery();
+
             
             Get["/"] = p =>
                 {
@@ -142,6 +145,7 @@ namespace dokuku.sales.web.modules
                         taxValue = 0.1m;
                     }
                     this.ItemRepository().Save(new Item()
+                    itemCommand.Save(new Item()
                     {
                         _id = id,
                         OwnerId = owner,
@@ -161,12 +165,12 @@ namespace dokuku.sales.web.modules
             Get["/Items"] = p =>
             {
                 dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
-                return Response.AsJson(itemRepo.AllItems(AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId));
+                return Response.AsJson(itemQuery.AllItems(AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId));
             };
             Get["/CountItem"] = p =>
                 {
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(itemRepo.CountItems(userId.CompanyId));
+                    return Response.AsJson(itemQuery.CountItems(userId.CompanyId));
                 };
             Get["/Customers"] = p =>
                 {
@@ -198,7 +202,7 @@ namespace dokuku.sales.web.modules
                     int start = p.start;
                     int limit = p.limit;
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(itemRepo.LimitItems(userId.CompanyId, start, limit));
+                    return Response.AsJson(itemQuery.LimitItems(userId.CompanyId, start, limit));
                 };
             Get["/getCustomerByCustomerName/{custName}"] = p =>
                 {
@@ -211,13 +215,20 @@ namespace dokuku.sales.web.modules
                     try
                     {
                         Guid id = p.id;
-                        itemRepo.Delete(id);
+                        itemCommand.Delete(id);
                     }
                     catch (Exception ex)
                     {
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
                     return Response.AsJson("OK");
+                };
+            Get["/getItemByName/{itemName}"] = p =>
+                {
+                    string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
+                    string itemName = p.itemName.ToString();
+                    var a = itemRepo.GetItemByName(ownerId, itemName);
+                    return Response.AsJson(a);
                 };
         }
     }
