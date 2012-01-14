@@ -210,7 +210,7 @@ namespace dokuku.sales.web.modules
                 {
                     string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
                     string custName = p.custName.ToString();
-                    return Response.AsJson(cusRepo.GetByCustName(ownerId, custName));
+                    return Response.AsJson(cusReportRepo.GetByCustName(ownerId, custName));
                 };
             Delete["/deleteItem/_id/{id}"] = p =>
                 {

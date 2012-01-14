@@ -20,7 +20,7 @@ namespace dokuku.sales.organization.report
         {
             QueryDocument qry = new QueryDocument(){
                                     {"OwnerId",email}};
-            return reportCollections.Find(qry).FirstOrDefault();
+            return reportCollections.FindOneAs<Organization>(qry);
         }
     }
 }

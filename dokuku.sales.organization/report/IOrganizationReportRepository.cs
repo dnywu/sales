@@ -5,7 +5,7 @@ using System.Text;
 using dokuku.sales.organization.model;
 namespace dokuku.sales.organization.report
 {
-    public class IOrganizationReportRepository
+    public interface IOrganizationReportRepository
     {
         Organization FindByOwnerId(string email);
     }

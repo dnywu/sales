@@ -38,5 +38,13 @@ namespace dokuku.sales.customer.repository
             MongoCursor<Customer> docs = reportCollections.Find(qry);
             return Int32.Parse(docs.Count().ToString());
         }
+
+        public Customer GetByCustName(string ownerId, string custName)
+        {
+            QueryDocument qry = new QueryDocument() {
+                                    {"OwnerId",ownerId},
+                                    {"Name",custName}};
+            return reportCollections.FindOneAs<Customer>(qry);
+        }
     }
 }

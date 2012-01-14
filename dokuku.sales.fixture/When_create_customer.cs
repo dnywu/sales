@@ -13,6 +13,7 @@ namespace dokuku.sales.fixture
     public class When_create_customer
     {
         private static ICustomerRepository csRepo;
+        private static ICustomerReportRepository csReportRepo;
         private static Customer cs;
         private static Guid id;
         private static string OwnerId;
@@ -20,6 +21,7 @@ namespace dokuku.sales.fixture
         Establish context = () =>
             {
                 csRepo = new CustomerRepository();
+                csReportRepo = new CustomerReportRepository();
                 id = Guid.NewGuid();
                 OwnerId = "Oetawan@inforsys.co.id";
                 custName = "Bulan Bintang";
@@ -48,7 +50,7 @@ namespace dokuku.sales.fixture
 
         It should_create_organization = () =>
             {
-                cs = csRepo.GetByCustName(OwnerId,custName);
+                cs = csReportRepo.GetByCustName(OwnerId, custName);
                 cs.ShouldNotBeNull();
             };
 
