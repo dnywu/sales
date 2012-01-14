@@ -4,16 +4,24 @@ steal('jquery/controller',
 	   'jquery/controller/view',
        './createinvoices.css',
        'sales/controllers/invoices/Invoice.js',
+       'sales/repository/ItemRepository.js',
+       'sales/repository/CustomerRepository.js',
 	   'sales/models')
 	.then('./views/createinvoices.ejs', function ($) {
 	    $.Controller('Sales.Invoices.Create',
         {
-            defaults: (custid = 0, tabIndexTr = 0, subtotal = 0, total = 0, tax = 0, $this = null, inv = null)
+            defaults: (custid = 0, tabIndexTr = 0,
+                        $this = null,
+                        inv = null,
+                        itmRepo = null,
+                        custRepo = null)
         },
         {
             init: function () {
                 $this = this;
                 inv = new Invoice();
+                itmRepo = new ItemRepository();
+                custRepo = new CustomerRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
                 this.CreateListItem(3);
             },
@@ -24,19 +32,13 @@ steal('jquery/controller',
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
-                var custName = el.val();
-                if (custName == "") {
-                    $("#keteranganSelectCust").text("Pelanggan harus di pilih");
-                    $("#selectcust").focus().select();
+                var dataCust = custRepo.GetCustomerByName(el.val());
+                if (dataCust != null) {
+                    $("#keteranganSelectCust").text(dataCust.Currency);
+                    custid = dataCust._id;
                 }
-                else {
-                    if (inv.GetCustomer(custName) != null) {
-                        $("#keteranganSelectCust").text(data.Currency);
-                        custid = data._id;
-                    }
-                    $("#keteranganSelectCust").text("Pelanggan ini tidak ditemukan");
-                    $("#selectcust").focus().select();
-                }
+                $("#keteranganSelectCust").text("Pelanggan ini tidak ditemukan");
+                $("#selectcust").focus().select();
             },
             '#addItemRow click': function () {
                 this.CreateListItem(1);
@@ -50,59 +52,48 @@ steal('jquery/controller',
                 $("#deleteItem_" + index).hide();
             },
             ".clsDeleteItem click": function (el) {
-                if ($("#itemInvoice > tbody > tr").size() == 1) {
+                if ($("#itemInvoice > tbody > tr").size() == 1)
                     return;
-                }
                 var index = el.attr('id').split('_')[1];
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
+                $this.GetSubTotal();
             },
             '.partname change': function (el) {
-                var value = el.val();
+                var partName = el.val();
                 var index = el.attr("id").split('_')[1];
-                $.ajax({
-                    type: 'GET',
-                    url: '/getItemByName/' + value,
-                    dataType: 'json',
-                    success: function (data) {
-                        if (data != null) {
-                            $("#part_" + index).val(data.Name);
-                            $("#desc_" + index).text(data.Description);
-                            $("#qty_" + index).val('1.00');
-                            $("#rate_" + index).val(data.Rate);
-                            $("#disc_" + index).val('0.00');
-                            $("#amount_" + index).text(data.Rate);
-                            $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
+                var part = itmRepo.GetItemByName(partName);
 
-                            subtotals = $this.GetGridTotal;
-                            $("#subtotal").text(subtotals);
-
-                            //subtotal += data.Rate;
-                            //$("#subtotal").text(subtotal);
-                            return;
-                        }
-                        $this.ClearItemField;
-                        $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
-                    }
-                });
+                if (part != null) {
+                    $("#part_" + index).val(part.Name);
+                    $("#desc_" + index).text(part.Description);
+                    $("#qty_" + index).val('1.00');
+                    $("#rate_" + index).val(part.Rate);
+                    $("#disc_" + index).val('0.00');
+                    $("#amount_" + index).text(part.Rate);
+                    $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
+                    $this.GetSubTotal();
+                    return;
+                }
+                $this.ClearItemField;
+                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
             '.qty change': function (el) {
-                var index = el.attr("id").split('_')[1];
-                this.CalculateItem(index);
+                this.CalculateItem(el);
             },
             '.rate change': function (el) {
-                var index = el.attr("id").split('_')[1];
-                this.CalculateItem(index);
+                this.CalculateItem(el);
             },
             '.disc change': function (el) {
-                var index = el.attr("id").split('_')[1];
-                this.CalculateItem(index);
+                this.CalculateItem(el);
             },
-            CalculateItem: function (index) {
+            CalculateItem: function (element) {
+                var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).text(amount);
+                $this.GetSubTotal();
             },
             ClearItemField: function () {
                 $("#desc_" + index).empty();
@@ -111,10 +102,8 @@ steal('jquery/controller',
                 $("#disc_" + index).empty();
                 $("#amount_" + index).empty();
             },
-
             LoadTax: function (index) {
-                $("#taxed_" + index).append("<option value=1>None</option><option value=1>1</option>" +
-                                "<option value=2>2</option>");
+                $("#taxed_" + index).append("<option value=1>None</option>");
             },
             CreateListItem: function (count) {
                 while (count > 0) {
@@ -133,16 +122,8 @@ steal('jquery/controller',
                     tabIndexTr++;
                 }
             },
-            GetGridTotal: function () {
-                var length = $("#itemInvoice > tbody > tr").size();
-                var total = 0;
-                for (var i = 0; i < length; i++) {
-                    if ($("#part_" + i).val() != "") {
-                        total = total + $("#amount_" + i).val();
-                    }
-                }
-
-                return total
+            GetSubTotal: function () {
+                $("#subtotal").text(inv.CalculateSubTotal);
             },
             '#NewInvoiceSave click': function () {
                 var length = $("#itemInvoice > tbody > tr").size();

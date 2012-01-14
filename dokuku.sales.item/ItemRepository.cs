@@ -8,6 +8,7 @@ using LoveSeat;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using System.Text.RegularExpressions;
 namespace dokuku.sales.item
 {
     public class ItemRepository : IItemRepository
@@ -57,19 +58,13 @@ namespace dokuku.sales.item
             return _document.FindAs<Item>(Query.EQ("OwnerId", companyId));
         }
 
-<<<<<<< HEAD
         public Item GetItemByName(string ownerId, string itemName)
         {
-            return DB.View<Item>("all_items", "view_items").Items.Where(item =>
-            {
-                return item.OwnerId == ownerId && item.Name.ToUpper() == itemName.ToUpper();
-            }).FirstOrDefault();
+            var query = Query.And(Query.EQ("OwnerId", ownerId), Query.EQ("Name", BsonValue.Create(new Regex("^" + itemName + "$", RegexOptions.IgnoreCase)))); 
+            return _document.FindOneAs<Item>(query);
         }
 
-        private CouchDatabase DB
-=======
         public int CountItems(string ownerId)
->>>>>>> origin/master
         {
             //ViewResult<Item> result = DB.View<Item>("all_items", "view_items");
             //return result.Items.Where(m => m.OwnerId == ownerId).Count();

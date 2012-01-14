@@ -13,10 +13,10 @@ using dokuku.sales.item;
 using dokuku.security;
 using Newtonsoft.Json;
 using dokuku.sales.organization.repository;
-using dokuku.sales.customer.repository;
 using dokuku.sales.organization.report;
 using dokuku.sales.organization.model;
 using dokuku.sales.customer.model;
+using dokuku.sales.customer.repository;
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -228,7 +228,8 @@ namespace dokuku.sales.web.modules
                 {
                     string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
                     string itemName = p.itemName.ToString();
-                    return Response.AsJson(itemRepo.GetItemByName(ownerId, itemName));
+                    var a = itemRepo.GetItemByName(ownerId, itemName);
+                    return Response.AsJson(a);
                 };
         }
     }
