@@ -8,12 +8,19 @@ namespace dokuku.sales.organization.repository
 {
     public class OrganizationRepository : IOrganizationRepository
     {
-        MongoDatabase db;
-        MongoCollection<Organization> collection;
-        public OrganizationRepository()
+        MongoConfig mongo;
+        public OrganizationRepository(MongoConfig mongoConfig)
         {
+<<<<<<< HEAD
             db = MongoConfig.Instance.MongoDatabase;
+=======
+<<<<<<< HEAD
+            mongo = mongoConfig;
+=======
+            db = MongoConfig.Instance.CommandDatabase;
+>>>>>>> b189af16892553ace3026bd9b49b35c9457d8d9e
             collection = db.GetCollection<Organization>("organizations");
+>>>>>>> e8a8d296f06a23bbb10a177812d54e35f1e49448
         }
 
         public void Save(Organization org)
@@ -33,6 +40,14 @@ namespace dokuku.sales.organization.repository
             QueryDocument qry = new QueryDocument() {
                                     {"_id",id}};
             return collection.Find(qry).FirstOrDefault();
+        }
+        private MongoDatabase db
+        {
+            get { return mongo.MongoDatabase; }
+        }
+        private MongoCollection<Organization> collection
+        {
+            get { return db.GetCollection<Organization>("organizations"); }
         }
 
         

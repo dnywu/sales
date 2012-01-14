@@ -13,10 +13,10 @@ using dokuku.sales.item;
 using dokuku.security;
 using Newtonsoft.Json;
 using dokuku.sales.organization.repository;
-using dokuku.sales.customer.repository;
 using dokuku.sales.organization.report;
 using dokuku.sales.organization.model;
 using dokuku.sales.customer.model;
+using dokuku.sales.customer.repository;
 namespace dokuku.sales.web.modules
 {
     public class MainModule : Nancy.NancyModule
@@ -38,8 +38,8 @@ namespace dokuku.sales.web.modules
                 };
             Get["/getorganization"] = p =>
                 {
-                    
-                    return Response.AsJson(orgReportRepo.FindByOwnerId(this.Context.CurrentUser.UserName));
+
+                    return Response.AsJson(this.OrganizationReportRepository().FindByOwnerId(this.Context.CurrentUser.UserName));
                 };
             Get["/getuser"] = p =>
                 {
@@ -55,7 +55,7 @@ namespace dokuku.sales.web.modules
                         int starts = (int)this.Request.Form.starts;
                         Guid id = Guid.NewGuid();
                         string owner = this.Context.CurrentUser.UserName;
-                        orgRepo.Save(new Organization(id, owner, name, curr, starts));
+                        this.OrganizationRepository().Save(new Organization(id, owner, name, curr, starts));
                     }
                     catch (Exception ex)
                     {
@@ -94,7 +94,7 @@ namespace dokuku.sales.web.modules
                     string AddValueCustID3 = (string)this.Request.Form.add_valueCustID3;
                     try
                     {
-                        cusRepo.Save(new Customer()
+                        this.CustomerRepository().Save(new Customer()
                         {
                             Name = CustomerName,
                             Currency = CustomerCcy,
@@ -148,7 +148,12 @@ namespace dokuku.sales.web.modules
                     {
                         taxValue = 0.1m;
                     }
+<<<<<<< HEAD
                     itemCmd.Save(new Item()
+=======
+                    this.ItemRepository().Save(new Item()
+                    itemCommand.Save(new Item()
+>>>>>>> b189af16892553ace3026bd9b49b35c9457d8d9e
                     {
                         _id = id,
                         OwnerId = owner,
@@ -225,6 +230,13 @@ namespace dokuku.sales.web.modules
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
                     return Response.AsJson("OK");
+                };
+            Get["/getItemByName/{itemName}"] = p =>
+                {
+                    string ownerId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId;
+                    string itemName = p.itemName.ToString();
+                    var a = itemRepo.GetItemByName(ownerId, itemName);
+                    return Response.AsJson(a);
                 };
         }
     }

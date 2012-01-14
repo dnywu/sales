@@ -33,13 +33,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Common.Logging">
-      <HintPath>..\..\Dokuku\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging.Log4Net">
-      <HintPath>..\..\Dokuku\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
+      <HintPath>..\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\Bonastoco-v2\external-lib\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="LoveSeat">
       <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.dll</HintPath>
@@ -71,6 +72,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Dokuku\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -447,6 +451,7 @@
     <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
     <Content Include="webclient\sales\controllers\invoices\create\create_test.js" />
     <Content Include="webclient\sales\controllers\invoices\create\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
     <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
@@ -499,12 +504,12 @@
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
-    <Content Include="webclient\sales\images\ajax-loader.gif" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\companyprofile.js" />
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
+    <Content Include="webclient\sales\repository\CustomerRepository.js" />
     <Content Include="webclient\sales\sales.css" />
     <Content Include="webclient\sales\sales.js" />
     <Content Include="webclient\sales\scripts\build.html" />
@@ -512,10 +517,10 @@
     <Content Include="webclient\sales\scripts\clean.js" />
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
+    <Content Include="webclient\sales\repository\ItemRepository.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
-    <Content Include="webclient\sales\style\ModalDialog.css" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
@@ -728,7 +733,9 @@
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
     <Compile Include="modules\MainModule.cs" />
+    <Compile Include="modules\ServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -927,10 +934,12 @@
     <None Include="webclient\steal\test\map\foo\template.ejs" />
     <None Include="webclient\steal\update" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="webclient\sales\docs\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
