@@ -31,11 +31,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LoveSeat">
-      <HintPath>..\packages\LoveSeat\LoveSeat.dll</HintPath>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="LoveSeat.Interfaces">
-      <HintPath>..\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
@@ -50,10 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IInvoicesRepository.cs" />
-    <Compile Include="Invoices.cs" />
-    <Compile Include="InvoicesRepository.cs" />
+    <Compile Include="command\IInvoicesRepository.cs" />
+    <Compile Include="model\Invoices.cs" />
+    <Compile Include="command\InvoicesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="query\IInvoicesQueryRepository.cs" />
+    <Compile Include="query\InvoicesQueryRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
@@ -61,6 +63,10 @@
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

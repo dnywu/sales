@@ -7,6 +7,7 @@ using dokuku.sales.organization;
 using dokuku.sales.customer;
 using dokuku.sales.customer.repository;
 using dokuku.sales.customer.model;
+using dokuku.sales.config;
 namespace dokuku.sales.fixture
 {
     [Subject("Get all customers")]
@@ -15,11 +16,11 @@ namespace dokuku.sales.fixture
         private static ICustomerRepository csRepo;
         private static ICustomerReportRepository csReportRepo;
         private static Guid id;
-
+        static MongoConfig mongo;
         Establish context = () =>
             {
-                csRepo = new CustomerRepository();
-                csReportRepo = new CustomerReportRepository();
+                csRepo = new CustomerRepository(mongo);
+                csReportRepo = new CustomerReportRepository(mongo);
                 id = Guid.NewGuid();
             };
 

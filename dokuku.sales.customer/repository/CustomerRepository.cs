@@ -11,31 +11,33 @@ namespace dokuku.sales.customer.repository
 {
     public class CustomerRepository : ICustomerRepository
     {
-        MongoDatabase db;
-        MongoCollection<Customer> collection;
-        public CustomerRepository()
+        MongoConfig mongo;
+        public CustomerRepository(MongoConfig mongo)
         {
-            db = MongoConfig.Instance.MongoDatabase;
-            collection = db.GetCollection<Customer>("customers");
+            this.mongo = mongo;
         }
 
         public void Save(Customer cs)
         {
-            collection.Save<Customer>(cs);
+            Collections.Save<Customer>(cs);
         }
 
         public void Delete(Guid id)
         {
             QueryDocument qryDoc = new QueryDocument();
             qryDoc["_id"] = id;
-            collection.Remove(qryDoc);
+            Collections.Remove(qryDoc);
         }
         public Customer Get(Guid id, string ownerId)
         {
             QueryDocument qry = new QueryDocument() {
                                     {"_id",id},
                                     {"OwnerId",ownerId}};
-            return collection.Find(qry).FirstOrDefault();
+            return Collections.Find(qry).FirstOrDefault();
+        }
+        private MongoCollection<Customer> Collections
+        {
+            get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
         }
     }
 }

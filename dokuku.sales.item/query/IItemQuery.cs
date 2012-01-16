@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 namespace dokuku.sales.item
 {
-    public interface IItemRepository
+    public interface IItemQuery
     {
-        void Save(Item item);
-        void Update(Item item);
         Item Get(Guid id);
-        void Delete(Guid id);
-        int CountItems(string ownerId);
+        long CountItems(string ownerId);
         IEnumerable<Item> LimitItems(string ownerId, int start, int limit);
         IEnumerable<Item> AllItems(string companyId);
+        Item GetItemByName(string ownerId, string itemName);
     }
 }

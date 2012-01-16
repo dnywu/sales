@@ -1,7 +1,7 @@
 steal('jquery/controller',
       'jquery/view/ejs',
-      'jquery/controller/view',
-      'sales/controllers/customers/customer.css')
+      'jquery/controller/view')
+      //'sales/controllers/customers/customer.css')
 	.then('./views/editCustomer.ejs', function ($) {
 
 	    $.Controller('Sales.Controllers.Customers.Edit',

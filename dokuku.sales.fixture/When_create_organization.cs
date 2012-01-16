@@ -6,6 +6,7 @@ using Machine.Specifications;
 using dokuku.sales.organization;
 using dokuku.sales.organization.repository;
 using dokuku.sales.organization.model;
+using dokuku.sales.config;
 namespace dokuku.sales.fixture
 {
     [Subject("Creating organization")]
@@ -14,10 +15,10 @@ namespace dokuku.sales.fixture
         private static IOrganizationRepository orgRepo;
         private static Organization org;
         private static Guid id;
-
+        static MongoConfig mongo;
         Establish context = () =>
             {
-                orgRepo = new OrganizationRepository();
+                orgRepo = new OrganizationRepository(mongo);
                 id = Guid.NewGuid();
             };
 
