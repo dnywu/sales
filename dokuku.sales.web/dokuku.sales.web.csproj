@@ -43,7 +43,7 @@
     </Reference>
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\BonaStoco-v2\external-lib\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MongoDB.Bson">
@@ -95,7 +95,9 @@
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
