@@ -9,9 +9,7 @@ namespace dokuku.sales.config
 {
     public class MongoConfig
     {
-        static readonly MongoConfig instance = Nested.instance;
-
-        private MongoConfig()
+        public MongoConfig()
         {
             MongoConfigSection mongoSection = (MongoConfigSection)ConfigurationManager.GetSection(MongoConfigSection.DefaultSectionName);
 
@@ -50,12 +48,5 @@ namespace dokuku.sales.config
         public MongoServer ReportingServer { get; private set; }
         public MongoDatabase MongoDatabase { get; private set; }
         public MongoDatabase ReportingDatabase { get; private set; }
-        public static MongoConfig Instance { get { return instance; } }
-
-        class Nested
-        {
-            static Nested() { }
-            internal static readonly MongoConfig instance = new MongoConfig();
-        }
     }
 }

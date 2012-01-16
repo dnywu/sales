@@ -9,18 +9,24 @@ namespace dokuku.sales.organization.report
 {
     public class OrganizationReportRepository : IOrganizationReportRepository
     {
-        MongoDatabase reportingDB;
-        MongoCollection<Organization> reportCollections;
-        public OrganizationReportRepository()
+        MongoConfig mongo;
+        public OrganizationReportRepository(MongoConfig mongoConfig)
         {
-            reportingDB = MongoConfig.Instance.ReportingDatabase;
-            reportCollections = reportingDB.GetCollection<Organization>("organizations");
+            mongo = mongoConfig;
         }
         public Organization FindByOwnerId(string email)
         {
             QueryDocument qry = new QueryDocument(){
                                     {"OwnerId",email}};
             return reportCollections.FindOneAs<Organization>(qry);
+        }
+        private MongoDatabase db
+        {
+            get { return mongo.MongoDatabase; }
+        }
+        private MongoCollection<Organization> reportCollections
+        {
+            get { return db.GetCollection<Organization>("organizations"); }
         }
     }
 }
