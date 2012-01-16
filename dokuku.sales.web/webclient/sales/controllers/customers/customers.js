@@ -66,7 +66,7 @@ steal('jquery/controller',
 
             },
             '.BtnTambahCustomer click': function () {
-                this.element.html(this.view('//sales/controllers/customers/views/addcustomer.ejs'));
+                $("#body").sales_customers_edit('load');
             },
             '#inputText_CustomerName focus': function () {
                 $('.hint_namaPelanggan').css('display', 'inline');
@@ -140,8 +140,9 @@ steal('jquery/controller',
                 $('#settingListCustomer' + index).hide();
                 $("tr#trCustomerList" + index + " td#tdDataCustomer" + index + " div.ContextMenuCustomer").hide();
             },
-            '#EditContextMenuCustomer click': function (el) {
-                $('#body').sales_customers_edit();
+            '.EditContextMenuCustomer click': function (el) {
+                var id = el.attr('id');
+                $('#body').sales_customers_edit('load',id);
             },
             '.settingListCustomer click': function (el) {
                 var index = el.attr('tabindex');

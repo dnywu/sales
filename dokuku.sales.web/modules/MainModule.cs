@@ -225,6 +225,11 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsJson("OK");
                 };
+            Get["/GetDataCustomer/id/{id}"] = p =>
+                {
+                    Guid id = p.id;
+                    return Response.AsJson(cusReportRepo.GetCustomerById(id));
+                };
         }
     }
 }

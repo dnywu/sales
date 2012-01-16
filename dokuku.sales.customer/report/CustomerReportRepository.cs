@@ -46,5 +46,11 @@ namespace dokuku.sales.customer.repository
                                     {"Name",custName}};
             return reportCollections.FindOneAs<Customer>(qry);
         }
+
+        public Customer GetCustomerById(Guid id)
+        {
+            QueryDocument qry = new QueryDocument() { {"_id",id}};
+            return reportCollections.FindOneAs<Customer>(qry);
+        }
     }
 }
