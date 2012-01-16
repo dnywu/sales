@@ -82,6 +82,12 @@ namespace dokuku.sales.web.modules
                 }
                 return Response.AsJson("OK");
             };
+            Get["/Items/_id/{id}"] = p =>
+            {
+                Guid id = p.id;
+                var item = this.ItemQuery().Get(id);
+                return Response.AsJson(item);
+            };
         }
     }
 }
