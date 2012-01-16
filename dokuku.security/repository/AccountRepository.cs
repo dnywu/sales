@@ -5,7 +5,10 @@ using System.Text;
 using dokuku.security.model;
 using MongoDB.Driver;
 using dokuku.sales.config;
-
+using MongoDB.Driver.Builders;
+using MongoDB.Bson;
+using System.Dynamic;
+using Newtonsoft.Json.Bson;
 namespace dokuku.security.repository
 {
     public class AccountRepository : IAccountRepository
@@ -18,15 +21,12 @@ namespace dokuku.security.repository
 
         public Account FindAccountByName(string userName)
         {
-            QueryDocument qry = new QueryDocument(){{"_id", userName}};
-            return Collections.FindOneAs<Account>(qry);
+            return Collections.FindOneAs<Account>(Query.EQ("_id",BsonValue.Create(userName)));
         }
 
         public Account FindAccountByGuid(Guid guid)
         {
-            QueryDocument qryDoc = new QueryDocument();
-            qryDoc["Guid"] = guid;
-            return Collections.FindOneAs<Account>(qryDoc);
+            return Collections.FindOneAs<Account>(Query.EQ("Guid", BsonValue.Create(guid)));
         }
 
         private MongoCollection<Account> Collections
