@@ -61,6 +61,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="When_create_organization.cs" />
     <Compile Include="When_list_customer_with_paging.cs" />
+    <Compile Include="When_update_item.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
