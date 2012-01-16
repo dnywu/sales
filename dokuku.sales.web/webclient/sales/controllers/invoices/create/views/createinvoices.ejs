@@ -34,21 +34,21 @@
           <tr>
             <td class="labelLeft">P.O.#</td>
             <td class="td_field">
-              <input type='text' name='po'/>
+              <input type='text' name='po' id='po'/>
             </td>
             <td class='error'></td>
           </tr>
           <tr>
             <td class="labelLeft">Invoice Date</td>
             <td class="td_field">
-              <input type="date" name='invoiceDate'/>
+              <input type="date" name='invoiceDate' id='invDate'/>
             </td>
             <td class='error'></td>
           </tr>
           <tr>
             <td class="labelLeft">Terms</td>
             <td class="td_field">
-              <select name='terms'>
+              <select name='terms' id='terms'>
                 <option value="15">Net 15</option>
                 <option value="30">Net 30</option>
                 <option value="45">Net 45</option>
@@ -62,14 +62,14 @@
           <tr>
             <td class="labelLeft">Due Date</td>
             <td class="td_field">
-              <input type='date' name='dueDate'/>
+              <input type='date' name='dueDate' id='dueDate'/>
             </td>
             <td class='error'></td>
           </tr>
           <tr>
             <td class="labelLeft">Late Fee</td>
             <td class="td_field">
-              <select name='latefee'>
+              <select name='latefee' id='latefee'>
                 <option value="15">No Late Fee</option>
               </select>
             </td>
@@ -88,7 +88,7 @@
           <td class='rate right'>Rate</td>
           <td class='disc right'>Diskon(%)</td>
           <td class='tax'>Tax</td>
-          <td class='amount right'>Amount</td>
+          <td class='amounthd right'>Amount</td>
           <td class='dltItem'></td>
         </tr>
       </thead>
@@ -124,8 +124,8 @@
           <td width='60%'><b class='boldlabel'>Term and Conditions</b></td>
         </tr>
         <tr>
-          <td><textarea class="CustomerMessageTxtArea">Thanks for your business.</textarea></td>
-          <td><textarea class="TermsandConditionsTxtArea"></textarea></td>
+          <td><textarea name='custMsg' id='custMsg' class="CustomerMessageTxtArea">Thanks for your business.</textarea></td>
+          <td><textarea name="termAndCond" id="termAndCond" class="TermsandConditionsTxtArea"></textarea></td>
         </tr>
       </table>
     </div>
