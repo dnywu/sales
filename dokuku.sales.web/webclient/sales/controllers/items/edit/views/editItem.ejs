@@ -1,0 +1,42 @@
+<div class='mainFrame'>
+	<div class="topBandHeaderDIV">
+		<div class="HeaderDIVLeft" id="TitleSpan">Edit Barang</div>
+	</div>
+	<div class="error" id="errorEditItemDiv"></div>
+	<div class="mainDivWidth">
+		<form id="editItemsForm">
+			<div class="ie-form ProductFormDiv">
+				<table>
+					<tbody>
+						<tr>
+							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
+							<td class="field"><input type="text" id="itemName" name="itemName" value="<%= this.Name %>"/></td>
+							<td id="errorItemName"></td>
+						</tr>
+						<tr>
+							<td class="labelLeft">
+							Deskripsi Barang
+							<br />
+							<span class="f11 ffva lightGrey  lineHeight" style="font-weight:normal;">(Maks 500 karakter)</span>
+							</td>
+							<td class="field"><textarea class="textAreaField" row="4" style="height:80px;" id="description" name="description"><%= this.Description %></textarea></td>
+						</tr>
+						<tr>
+							<td class="labelLeft"><span class="requiredFieldLabel">Harga(Rp.)</span></td>
+							<td class="field"><input type="text" id="itemPrice" name="itemPrice" value="<%= this.Rate %>" /></td>
+							<td id="errorPrice"></td>
+						</tr>
+						<tr>
+							<td class="labelLeft">Pajak</td>
+							<td class="field"><select id="tax" style="margin-bottom:0;" name="tax"><option value="PPn">PPn</option></select></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="submitFormDiv">
+				<input type="submit" Value="Simpan" />
+				<input type="button" value="Batal" id="cancelEditItem" />
+			</div>	
+		</form>
+	</div>
+</div>
