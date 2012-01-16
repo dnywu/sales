@@ -21,10 +21,7 @@ namespace dokuku.sales.item
         {
             _document.Insert(item.ToBsonDocument());
         }
-        public void Update(Item item)
-        {
-            _document.Save(item.ToBsonDocument());
-        }
+
         public void Delete(Guid id)
         {
             _document.Remove(Query.EQ("_id", id));

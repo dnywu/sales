@@ -14,11 +14,11 @@ namespace dokuku.sales.fixture
         private static IItemQuery itemQry;
         private static Item item;
         private static Guid id;
+        static MongoConfig mongo;
         Establish context = () =>
             {
-                MongoConfig mongoCfg = new MongoConfig();
-                itemCmd = new ItemCommand(mongoCfg);
-                itemQry = new ItemQuery(mongoCfg);
+                itemCmd = new ItemCommand(mongo);
+                itemQry = new ItemQuery(mongo);
                 id = Guid.NewGuid();
             };
 
@@ -38,11 +38,7 @@ namespace dokuku.sales.fixture
         It should_create_item = () =>
             {
                 item = itemQry.Get(id);
-                item.OwnerId.ShouldEqual<string>("oetawan@inforsys.co.id");
-                item.Name.ShouldEqual("Honda Jazz");
                 item.ShouldNotBeNull();
-
-                item.Tax.Name.ShouldEqual("PPN");
             };
 
         Cleanup cleanup = () =>
