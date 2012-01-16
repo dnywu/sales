@@ -16,6 +16,8 @@
     using dokuku.sales.customer.repository;
     using dokuku.sales.organization.repository;
     using dokuku.sales.organization.report;
+    using dokuku.sales.invoices.command;
+    using dokuku.sales.invoices.query;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -32,8 +34,9 @@
             // Here we register our user mapper as a per-request singleton.
             // As this is now per-request we could inject a request scoped
             // database "context" or other request scoped services.
-            container.Register<IUserMapper, UserMapper>();
-            AppBootstrapper.Bootstrap();
+            BootstrapStructureMap();
+            IAccountRepository accRepo = ObjectFactory.GetInstance<IAccountRepository>();
+            container.Register<IUserMapper, UserMapper>(new UserMapper(accRepo));
         }
 
         protected override void RequestStartup(TinyIoCContainer requestContainer, IPipelines pipelines)
@@ -72,22 +75,22 @@
                 cookie.Domain = domainName;
             }
         }
-    }
-    public static class AppBootstrapper
-    {
-        public static void Bootstrap()
-        {
+
+        private void BootstrapStructureMap(){
             // Initialize the static ObjectFactory container
             ObjectFactory.Initialize(x =>
             {
-                x.For<IAuthRepository>().TheDefaultIsConcreteType<AuthRepository>();
-                x.For<IItemRepository>().TheDefaultIsConcreteType<ItemRepository>();
-                x.For<ICustomerRepository>().TheDefaultIsConcreteType<CustomerRepository>();
-                x.For<ICustomerReportRepository>().TheDefaultIsConcreteType<CustomerReportRepository>();
-                x.For<IOrganizationRepository>().TheDefaultIsConcreteType<OrganizationRepository>();
-                x.For<IOrganizationReportRepository>().TheDefaultIsConcreteType<OrganizationReportRepository>();
-                x.For<IAuthService>().TheDefaultIsConcreteType<AuthService>();
+                x.For<IAccountRepository>().Use<AccountRepository>();
+                x.For<IItemCommand>().Use<ItemCommand>();
+                x.For<IItemQuery>().Use<ItemQuery>();
+                x.For<ICustomerRepository>().Use<CustomerRepository>();
+                x.For<ICustomerReportRepository>().Use<CustomerReportRepository>();
+                x.For<IOrganizationRepository>().Use<OrganizationRepository>();
+                x.For<IOrganizationReportRepository>().Use<OrganizationReportRepository>();
+                x.For<IAuthService>().Use<AuthService>();
                 x.ForSingletonOf<MongoConfig>().Use<MongoConfig>();
+                x.For<IInvoicesRepository>().Use<InvoicesRepository>();
+                x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
             });
         }
     }

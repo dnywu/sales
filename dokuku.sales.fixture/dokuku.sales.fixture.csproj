@@ -31,12 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LoveSeat">
-      <HintPath>..\packages\LoveSeat\LoveSeat.dll</HintPath>
-    </Reference>
-    <Reference Include="LoveSeat.Interfaces">
-      <HintPath>..\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\packages\Machine.Specifications-Signed.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
     </Reference>
@@ -59,7 +53,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="When_database_and_collection.cs" />
     <Compile Include="When_get_all_items.cs" />
     <Compile Include="When_create_item.cs" />
     <Compile Include="When_get_all_customer.cs" />

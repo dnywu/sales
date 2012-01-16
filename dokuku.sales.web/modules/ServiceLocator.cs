@@ -8,6 +8,9 @@ using dokuku.sales.organization.repository;
 using dokuku.sales.organization.report;
 using dokuku.sales.customer.repository;
 using dokuku.sales.item;
+using dokuku.security.repository;
+using dokuku.sales.invoices.command;
+using dokuku.sales.invoices.query;
 
 namespace dokuku.sales.web.modules
 {
@@ -33,13 +36,25 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IOrganizationReportRepository>();
         }
-        public static IItemCommand ItemRepository(this Nancy.NancyModule mod)
+        public static IItemCommand ItemCommand(this Nancy.NancyModule mod)
         {
             return ObjectFactory.GetInstance<IItemCommand>();
         }
-        public static IItemQuery ItemRepository(this Nancy.NancyModule mod)
+        public static IItemQuery ItemQuery(this Nancy.NancyModule mod)
         {
             return ObjectFactory.GetInstance<IItemQuery>();
+        }
+        public static IAccountRepository AccountRepository(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IAccountRepository>();
+        }
+        public static IInvoicesRepository InvoicesRepository(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IInvoicesRepository>();
+        }
+        public static IInvoicesQueryRepository InvoicesQueryRepository(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IInvoicesQueryRepository>();
         }
     }
 }

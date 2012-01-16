@@ -4,21 +4,23 @@ using System.Linq;
 using System.Text;
 using dokuku.security.repository;
 using dokuku.security.model;
-
 namespace dokuku.security.service
 {
     public class AuthService : IAuthService
     {
-        IAuthRepository _authRepo;
-        public AuthService(IAuthRepository authrepository)
+        IAccountRepository accRepo;
+        public AuthService(IAccountRepository accRepo)
         {
-            _authRepo = authrepository;
+            this.accRepo = accRepo;
         }
         public Guid Login(string userName, string password)
         {
-            if (_authRepo == null)
+            if (accRepo == null)
                 throw new ApplicationException("Repository Account tidak ditemukan dalam container");
-            return _authRepo.Login(userName, password);
+            Account account = accRepo.FindAccountByName(userName);
+            if(account == null || account.Password != password)
+                throw new ApplicationException("Username atau password anda salah");
+            return account.Guid;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace dokuku.sales.config
 {
     public class MongoConfig
     {
-        private MongoConfig()
+        public MongoConfig()
         {
             MongoConfigSection mongoSection = (MongoConfigSection)ConfigurationManager.GetSection(MongoConfigSection.DefaultSectionName);
 

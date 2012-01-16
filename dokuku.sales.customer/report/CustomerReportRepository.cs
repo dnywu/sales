@@ -10,19 +10,17 @@ namespace dokuku.sales.customer.repository
 {
     public class CustomerReportRepository : ICustomerReportRepository
     {
-        MongoDatabase reportingDB;
-        MongoCollection<Customer> reportCollections;
-        public CustomerReportRepository()
+        MongoConfig mongo;
+        public CustomerReportRepository(MongoConfig mongo)
         {
-            reportingDB = MongoConfig.Instance.ReportingDatabase;
-            reportCollections = reportingDB.GetCollection<Customer>("customers");
+            this.mongo = mongo;
         }
 
         public IEnumerable<Customer> LimitCustomers(string ownerId, int start, int limit)
         {
             QueryDocument qry = new QueryDocument();
             qry["OwnerId"] = ownerId;
-            MongoCursor<Customer> docs = reportCollections.Find(qry).SetSkip(start).SetLimit(limit);
+            MongoCursor<Customer> docs = Collections.Find(qry).SetSkip(start).SetLimit(limit);
             IList<Customer> customers = new List<Customer>();
             foreach (Customer cust in docs)
             {
@@ -35,7 +33,7 @@ namespace dokuku.sales.customer.repository
         {
             QueryDocument qry = new QueryDocument();
             qry["OwnerId"] = ownerId;
-            MongoCursor<Customer> docs = reportCollections.Find(qry);
+            MongoCursor<Customer> docs = Collections.Find(qry);
             return Int32.Parse(docs.Count().ToString());
         }
 
@@ -44,7 +42,12 @@ namespace dokuku.sales.customer.repository
             QueryDocument qry = new QueryDocument() {
                                     {"OwnerId",ownerId},
                                     {"Name",custName}};
-            return reportCollections.FindOneAs<Customer>(qry);
+            return Collections.FindOneAs<Customer>(qry);
+        }
+
+        private MongoCollection<Customer> Collections
+        {
+            get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
         }
     }
 }

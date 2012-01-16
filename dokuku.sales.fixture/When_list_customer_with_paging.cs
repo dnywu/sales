@@ -5,6 +5,7 @@ using System.Text;
 using Machine.Specifications;
 using dokuku.sales.customer.repository;
 using dokuku.sales.customer.model;
+using dokuku.sales.config;
 
 namespace dokuku.sales.fixture
 {
@@ -14,11 +15,11 @@ namespace dokuku.sales.fixture
         private static ICustomerRepository csRepo;
         private static ICustomerReportRepository csReportRepo;
         static Customer[] result;
-
+        static MongoConfig mongo;
         Establish context = () =>
         {
-            csRepo = new CustomerRepository();
-            csReportRepo = new CustomerReportRepository();
+            csRepo = new CustomerRepository(mongo);
+            csReportRepo = new CustomerReportRepository(mongo);
         };
         Because of = () =>
         {

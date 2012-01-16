@@ -10,5 +10,6 @@ namespace dokuku.sales.item
         long CountItems(string ownerId);
         IEnumerable<Item> LimitItems(string ownerId, int start, int limit);
         IEnumerable<Item> AllItems(string companyId);
+        Item GetItemByName(string ownerId, string itemName);
     }
 }

@@ -7,6 +7,7 @@ using dokuku.sales.organization;
 using dokuku.sales.organization.repository;
 using dokuku.sales.organization.model;
 using dokuku.sales.organization.report;
+using dokuku.sales.config;
 namespace dokuku.sales.fixture
 {
     [Subject("Find organization by owner id")]
@@ -16,11 +17,11 @@ namespace dokuku.sales.fixture
         private static IOrganizationReportRepository orgReportRepo;
         private static Organization org;
         private static Guid id;
-
+        static MongoConfig mongo;
         Establish context = () =>
             {
-                orgRepo = new OrganizationRepository();
-                orgReportRepo = new OrganizationReportRepository();
+                orgRepo = new OrganizationRepository(mongo);
+                orgReportRepo = new OrganizationReportRepository(mongo);
                 id = Guid.NewGuid();
             };
 

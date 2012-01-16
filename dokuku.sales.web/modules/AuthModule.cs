@@ -67,7 +67,7 @@ namespace dokuku.sales.web.modules
                     expiry = DateTime.Now.AddDays(7);
                 }
 
-                return this.LoginAndRedirect(userGuid.Value, expiry);
+                return this.LoginAndRedirect(userGuid, expiry);
             };
 
             Get["/logout"] = x =>

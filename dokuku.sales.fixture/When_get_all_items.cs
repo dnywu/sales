@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Machine.Specifications;
 using dokuku.sales.item;
-using dokuku.security;
+using dokuku.sales.config;
 namespace dokuku.sales.fixture
 {
     [Subject("Get all items")]
@@ -13,11 +13,11 @@ namespace dokuku.sales.fixture
         private static IItemCommand itemCmd;
         private static IItemQuery itemQry;
         private static Guid id;
-
+        static MongoConfig mongo;
         Establish context = () =>
             {
-                itemCmd = new ItemCommand();
-                itemQry = new ItemQuery();
+                itemCmd = new ItemCommand(mongo);
+                itemQry = new ItemQuery(mongo);
                 id = Guid.NewGuid();
             };
 
