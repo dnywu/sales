@@ -17,9 +17,9 @@ namespace dokuku.sales.item
         //CouchDBConfig cfg;
         MongoCollection<BsonDocument> _document;
 
-        public ItemCommand()
+        public ItemCommand(MongoConfig mongoConfig)
         {
-            _document = MongoConfig.Instance.MongoDatabase.GetCollection(typeof(Item).Name);
+            _document = mongoConfig.MongoDatabase.GetCollection(typeof(Item).Name);
             //cfg = (CouchDBConfig)ConfigurationManager.GetSection("CouchDBConfig");
             //if (cfg == null)
             //    throw new ApplicationException("CouchDBConfig tidak di temukan dalam app config"); 
