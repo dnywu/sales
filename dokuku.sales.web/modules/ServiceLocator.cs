@@ -33,9 +33,13 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IOrganizationReportRepository>();
         }
-        public static IItemRepository ItemRepository(this Nancy.NancyModule mod)
+        public static IItemCommand ItemRepository(this Nancy.NancyModule mod)
         {
-            return ObjectFactory.GetInstance<IItemRepository>();
+            return ObjectFactory.GetInstance<IItemCommand>();
+        }
+        public static IItemQuery ItemRepository(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IItemQuery>();
         }
     }
 }
