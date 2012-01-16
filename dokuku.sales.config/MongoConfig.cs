@@ -19,7 +19,6 @@ namespace dokuku.sales.config
             settings.ReplicaSetName = mongoSection.ReplicaSetName;
             reportingSettings.ConnectionMode = mongoSection.ConnectionMode;
             reportingSettings.ReplicaSetName = mongoSection.ReplicaSetName;
-            settings.SlaveOk = mongoSection.SlaveOk;
             reportingSettings.SlaveOk = mongoSection.SlaveOk;
 
             if (mongoSection.ServerAddresses.Count == 0)
