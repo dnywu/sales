@@ -528,6 +528,7 @@
     <Content Include="webclient\sales\scripts\GetParameter.js" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
+    <Content Include="webclient\sales\test\Invoice.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
     <Content Include="webclient\sales\test\qunit\sales_test.js" />
     <Content Include="webclient\steal\browser\browser.js" />
@@ -740,6 +741,7 @@
     <Compile Include="modules\AuthModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
     <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
+    <Compile Include="modules\InvoiceModule.cs" />
     <Compile Include="modules\ItemModule.cs" />
     <Compile Include="modules\MainModule.cs" />
     <Compile Include="modules\OrganizationModule.cs" />
