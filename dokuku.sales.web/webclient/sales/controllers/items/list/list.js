@@ -98,7 +98,7 @@ steal('jquery/controller',
                 var index = el.attr("tabindex");
                 var id = $("#checkBoxItem" + index).val();
                 $('#body').sales_items_edit();
-//                alert("index: " + index + "id: " + id);
+                $('#body').sales_items_edit("load",id);
             },
             "#btnDelete click": function (el) {
                 var index = el.attr("tabindex");

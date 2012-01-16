@@ -33,6 +33,11 @@ namespace dokuku.sales.item
             //DB.SaveDocument(doc);
         }
 
+        public void Update(Item item)
+        {
+            UpdateDocument doc = new UpdateDocument { { "$set", item.ToBsonDocument() } };
+            _document.Update(Query.EQ("_id", item._id), doc);
+        }
         public Item Get(Guid id)
         {
             //return DB.GetDocument<Item>(id);

@@ -169,6 +169,12 @@ namespace dokuku.sales.web.modules
                 dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
                 return Response.AsJson(itemRepo.AllItems(AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName).CompanyId));
             };
+            Get["/Items/_id/{id}"] = p =>
+                {
+                    Guid id = p.id;
+                    var item = itemRepo.Get(id);
+                    return Response.AsJson(item);
+                };
             Get["/CountItem"] = p =>
                 {
                     dokuku.security.AuthRepository.AccountUser userId = AuthRepository.GetAccountByUsername(this.Context.CurrentUser.UserName);
@@ -218,6 +224,19 @@ namespace dokuku.sales.web.modules
                     {
                         Guid id = p.id;
                         itemRepo.Delete(id);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    }
+                    return Response.AsJson("OK");
+                };
+            Post["/editItem/item/{item}"] = p =>
+                {
+                    var item = p.item;
+                    try
+                    {
+                        itemRepo.Update(item);
                     }
                     catch (Exception ex)
                     {
