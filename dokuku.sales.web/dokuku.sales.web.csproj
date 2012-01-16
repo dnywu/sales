@@ -43,7 +43,7 @@
     </Reference>
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\BonaStoco-v2\external-lib\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MongoDB.Bson">
@@ -95,7 +95,9 @@
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -451,6 +453,11 @@
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\items\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\items\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\items\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\items\edit\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
@@ -880,6 +887,7 @@
     <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
