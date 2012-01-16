@@ -23,8 +23,8 @@ namespace dokuku.sales.config
 
             if (mongoSection.ServerAddresses.Count == 0)
                 throw new ConfigurationErrorsException("No server has been define in configuration");
-            if (mongoSection.SlaveOk && mongoSection.SlaveAddresses.Count == 0)
-                throw new ConfigurationErrorsException("No slave server has been define in configuration");
+            if (mongoSection.SlaveAddresses.Count == 0)
+                throw new ConfigurationErrorsException("No server has been define in configuration");
             var servers = new List<MongoServerAddress>();
             foreach (ServerAddress serverAddr in mongoSection.ServerAddresses)
             {
