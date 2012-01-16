@@ -18,7 +18,7 @@ namespace dokuku.security.repository
 
         public Account FindAccountByName(string userName)
         {
-            QueryDocument qry = new QueryDocument(){{"OwnerId", userName}};
+            QueryDocument qry = new QueryDocument(){{"_id", userName}};
             return Collections.FindOneAs<Account>(qry);
         }
 
