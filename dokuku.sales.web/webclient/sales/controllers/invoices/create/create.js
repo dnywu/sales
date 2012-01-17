@@ -36,6 +36,7 @@ steal('jquery/controller',
                 if (dataCust != null) {
                     $("#keteranganSelectCust").text(dataCust.Currency);
                     custid = dataCust._id;
+                    return;
                 }
                 $("#keteranganSelectCust").text("Pelanggan ini tidak ditemukan");
                 $("#selectcust").focus().select();
@@ -56,6 +57,7 @@ steal('jquery/controller',
                     return;
                 var index = el.attr('id').split('_')[1];
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
+                //var t = $(".amount");
                 $this.GetSubTotal();
             },
             '.partname change': function (el) {
@@ -72,18 +74,19 @@ steal('jquery/controller',
                     $("#amount_" + index).text(part.Rate);
                     $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
                     $this.GetSubTotal();
+                    $this.GetTotal();
                     return;
                 }
                 $this.ClearItemField;
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
-            '.qty change': function (el) {
+            '.quantity change': function (el) {
                 this.CalculateItem(el);
             },
-            '.rate change': function (el) {
+            '.price change': function (el) {
                 this.CalculateItem(el);
             },
-            '.disc change': function (el) {
+            '.discount change': function (el) {
                 this.CalculateItem(el);
             },
             CalculateItem: function (element) {
@@ -94,6 +97,7 @@ steal('jquery/controller',
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).text(amount);
                 $this.GetSubTotal();
+                $this.GetTotal();
             },
             ClearItemField: function () {
                 $("#desc_" + index).empty();
@@ -109,10 +113,10 @@ steal('jquery/controller',
                 while (count > 0) {
                     $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
                                     "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/></td>" +
-                                    "<td><textarea name='desc' id='desc_" + tabIndexTr + "'></textarea></td>" +
-                                    "<td><input type='text' name='qty' class='qty right' id='qty_" + tabIndexTr + "'></input></td>" +
-                                    "<td><input type='text' name='rate' class='rate right' id='rate_" + tabIndexTr + "'></input></td>" +
-                                    "<td><input type='text' name='disc' class='disc right' id='disc_" + tabIndexTr + "'></input></td>" +
+                                    "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
+                                    "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
+                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input></td>" +
+                                    "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
                                     "<td><span class='amount' id='amount_" + tabIndexTr + "'></span></td>" +
@@ -125,21 +129,12 @@ steal('jquery/controller',
             GetSubTotal: function () {
                 $("#subtotal").text(inv.CalculateSubTotal);
             },
-            '#NewInvoiceSave click': function () {
-                var length = $("#itemInvoice > tbody > tr").size();
-                var JSONObject = new Object;
-                JSONObject.custname = $("#selectcust").val();
-                JSONObject.po = $("#po").val();
-                JSONObject.items = new Array;
-
-                for (var i = 0; i < length; i++) {
-                    if ($("#part" + i).val() != "" && $("#desc" + i).val() != "") {
-                        JSONObject.items[i] = new Object;
-                        JSONObject.items[i].part = $("#part" + i).val();
-                        JSONObject.items[i].desc = $("#desc" + i).val();
-                    }
-                }
-                JSONstring = JSON.stringify(JSONObject);
+            GetTotal: function () {
+                $("#total").text(inv.CalculateTotal);
+            },
+            '#formNewIvoice submit': function (el, ev) {
+                ev.preventDefault();
+                inv.CreateNewInvoice();
             }
         })
 	});
