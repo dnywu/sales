@@ -3,7 +3,7 @@ steal('jquery/controller',
       'jquery/controller/view',
       'sales/controllers/customers/edit',
       'sales/controllers/customers/customer.css')
-	.then('./views/listCustomer.ejs', function ($) {
+	.then('./views/listCustomer.ejs', './views/addcustomer.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.customers',
         {
@@ -50,12 +50,13 @@ steal('jquery/controller',
                 $('#totalPage').text(totalPage);
             },
             '#AddCustomers submit': function (el, ev) {
-                var form = $("#AddCustomers");
+                var form = $("#AddCustomers").formParams() ;
+                var data = JSON.stringify(form);
                 ev.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "/customer",
-                    data: form.serialize(),
+                    url: "/customer/data",
+                    data: { 'data': data },
                     dataType: "json",
                     success: function (data) {
                         if (data == "OK") {
@@ -63,10 +64,9 @@ steal('jquery/controller',
                         }
                     }
                 });
-
             },
             '.BtnTambahCustomer click': function () {
-                $("#body").sales_customers_edit('load');
+                $("#body").html(this.view('//sales/controllers/customers/views/addcustomer.ejs'));
             },
             '#inputText_CustomerName focus': function () {
                 $('.hint_namaPelanggan').css('display', 'inline');
@@ -113,7 +113,7 @@ steal('jquery/controller',
                 });
                 $('.trDataCustomer:odd').addClass('odd');
             },
-            '.menuLeft click': function () {
+            '#hapus click': function () {
                 $('.MessageConfirmation').show();
             },
             '.ButtonConfirmationMassageYa click': function () {
@@ -142,7 +142,7 @@ steal('jquery/controller',
             },
             '.EditContextMenuCustomer click': function (el) {
                 var id = el.attr('id');
-                $('#body').sales_customers_edit('load',id);
+                $('#body').sales_customers_edit('load', id);
             },
             '.settingListCustomer click': function (el) {
                 var index = el.attr('tabindex');

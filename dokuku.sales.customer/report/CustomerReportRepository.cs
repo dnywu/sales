@@ -5,6 +5,7 @@ using System.Text;
 using MongoDB.Driver;
 using dokuku.sales.customer.model;
 using dokuku.sales.config;
+using MongoDB.Driver.Builders;
 
 namespace dokuku.sales.customer.repository
 {
@@ -53,7 +54,11 @@ namespace dokuku.sales.customer.repository
         public Customer GetCustomerById(Guid id)
         {
             QueryDocument qry = new QueryDocument() { {"_id",id}};
-            return reportCollections.FindOneAs<Customer>(qry);
+            return Collections.FindOneAs<Customer>(qry);
+        }
+        public void UpdateCustomer(Customer item)
+        {
+            Collections.Save<Customer>(item);
         }
     }
 }

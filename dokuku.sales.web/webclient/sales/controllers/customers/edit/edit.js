@@ -1,7 +1,6 @@
 steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view')
-//'sales/controllers/customers/customer.css')
 	.then('./views/editCustomer.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.customers.edit',
@@ -26,6 +25,18 @@ steal('jquery/controller',
                     }
                 });
                 return item;
+            },
+            '#EditCustomers submit': function (el, ev) {
+                ev.preventDefault();
+                var form = $('#EditCustomers').formParams();
+                var data = JSON.stringify(form);
+                $.ajax({
+                    type: 'POST',
+                    url: '/UpdateDataCustomer/data',
+                    data: { 'data': data },
+                    datatype: 'json',
+                    success: function (data) { $("#body").sales_customers('load') }
+                });
             }
         })
 	});
