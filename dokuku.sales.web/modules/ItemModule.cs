@@ -54,13 +54,14 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
+
                     string itemName = (string)this.Request.Form.itemName;
                     string itemDesc = (string)this.Request.Form.description;
                     decimal itemPrice = (decimal)this.Request.Form.itemPrice;
                     string taxName = (string)this.Request.Form.tax;
                     decimal taxValue = 0;
                     Guid id = Guid.NewGuid();
-                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    string owner = this.Context.CurrentUser.UserName;
                     if (taxName == "PPn")
                     {
                         taxValue = 0.1m;
@@ -68,7 +69,7 @@ namespace dokuku.sales.web.modules
                     this.ItemCommand().Save(new Item()
                     {
                         _id = id,
-                        OwnerId = account.OwnerId,
+                        OwnerId = owner,
                         Name = itemName,
                         Description = itemDesc,
                         Rate = itemPrice,
