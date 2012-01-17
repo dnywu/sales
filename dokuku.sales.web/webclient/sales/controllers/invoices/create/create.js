@@ -132,7 +132,8 @@ steal('jquery/controller',
             GetTotal: function () {
                 $("#total").text(inv.CalculateTotal);
             },
-            '#NewInvoiceSave click': function () {
+            '#formNewIvoice submit': function (el, ev) {
+                ev.preventDefault();
                 inv.CreateNewInvoice();
             }
         })

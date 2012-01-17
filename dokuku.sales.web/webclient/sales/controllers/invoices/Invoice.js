@@ -55,7 +55,6 @@
             }
         });
         var newInv = JSON.stringify(objInv);
-
         $.ajax({
             type: 'POST',
             url: '/createinvoice',
