@@ -18,6 +18,7 @@
     using dokuku.sales.organization.report;
     using dokuku.sales.invoices.command;
     using dokuku.sales.invoices.query;
+    using dokuku.sales.item.service;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -91,6 +92,7 @@
                 x.ForSingletonOf<MongoConfig>().Use<MongoConfig>();
                 x.For<IInvoicesRepository>().Use<InvoicesRepository>();
                 x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
+                x.For<IInsertItemService>().Use<InsertItemService>();
             });
         }
     }
