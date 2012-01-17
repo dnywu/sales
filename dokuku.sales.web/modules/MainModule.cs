@@ -6,17 +6,17 @@ namespace dokuku.sales.web.modules
     {
         public MainModule()
         {
-            this.RequiresAuthentication(); 
-            
+            this.RequiresAuthentication();
+
             Get["/"] = p =>
-                {
-                    return View["webclient/sales/index"];
-                };
-            
+            {
+                return View["webclient/sales/index"];
+            };
+
             Get["/getuser"] = p =>
-                {
-                    return Response.AsJson(this.Context.CurrentUser.UserName);
-                };
+            {
+                return Response.AsJson(this.Context.CurrentUser.UserName);
+            };
         }
     }
 }

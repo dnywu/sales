@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using dokuku.security.repository;
 using dokuku.security.model;
-using dokuku.security.models;
 namespace dokuku.security.service
 {
     public class AuthService : IAuthService
@@ -20,7 +19,7 @@ namespace dokuku.security.service
                 throw new ApplicationException("Repository Account tidak ditemukan dalam container");
             Account account = accRepo.FindAccountByName(userName);
             if(account == null || account.Password != password)
-                throw new InvalidUsernameOrPasswordException();
+                throw new ApplicationException("Username atau password anda salah");
             return account.Guid;
         }
     }

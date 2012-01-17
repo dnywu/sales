@@ -2,14 +2,18 @@
 using Nancy.Security;
 using System;
 using dokuku.sales.organization.model;
-using dokuku.security.model;
 namespace dokuku.sales.web.modules
 {
     public class OrganizationModule : Nancy.NancyModule
     {
         public OrganizationModule()
         {
-            this.RequiresClaims(new string[1] {Account.OWNER});
+            this.RequiresAuthentication();
+
+            Get["/getorganization"] = p =>
+            {
+                return Response.AsJson(this.OrganizationReportRepository().FindByOwnerId(this.Context.CurrentUser.UserName));
+            };
 
             Post["/setuporganization"] = p =>
             {
@@ -19,8 +23,9 @@ namespace dokuku.sales.web.modules
                     string timezone = (string)this.Request.Form.timezone;
                     string curr = (string)this.Request.Form.curr;
                     int starts = (int)this.Request.Form.starts;
+                    Guid id = Guid.NewGuid();
                     string owner = this.Context.CurrentUser.UserName;
-                    this.OrganizationRepository().Save(new Organization(owner, name, curr, starts));
+                    this.OrganizationRepository().Save(new Organization(id, owner, name, curr, starts));
                 }
                 catch (Exception ex)
                 {

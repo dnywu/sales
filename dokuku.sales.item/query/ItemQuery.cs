@@ -14,10 +14,10 @@ namespace dokuku.sales.item
 {
     public class ItemQuery : IItemQuery
     {
-        MongoCollection<Item> _document;
+        MongoCollection<BsonDocument> _document;
         public ItemQuery(MongoConfig mongoConfig)
         {
-            _document = mongoConfig.MongoDatabase.GetCollection<Item>(typeof(Item).Name);
+            _document = mongoConfig.MongoDatabase.GetCollection(typeof(Item).Name);
         }
 
         public Item Get(Guid id)

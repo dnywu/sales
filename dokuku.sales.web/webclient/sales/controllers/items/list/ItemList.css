@@ -225,6 +225,7 @@ div.itempopup label
 	left: 35%;
 	margin:auto;
 	width:300px;
+	height:150px;
 }
 .warningIcon
 {
@@ -244,7 +245,7 @@ button#confirmYes, button#confirmNo
 	height:25px;
 }
 
-div.messageContentDiv
+div.messageContentDiv, div.messageActionDiv
 {
 	text-align:center;
 	margin: 7px 0 15px 7px;

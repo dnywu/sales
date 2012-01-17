@@ -40,5 +40,15 @@ namespace dokuku.sales.customer.repository
         {
             get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
         }
+
+        public Customer GetCustomerById(Guid id)
+        {
+            QueryDocument qry = new QueryDocument() { {"_id",id}};
+            return Collections.FindOneAs<Customer>(qry);
+        }
+        public void UpdateCustomer(Customer item)
+        {
+            Collections.Save<Customer>(item);
+        }
     }
 }

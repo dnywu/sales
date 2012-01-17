@@ -6,9 +6,6 @@ using Nancy;
 using Nancy.Responses;
 using dokuku.sales.web.models;
 using dokuku.security.repository;
-using dokuku.security.models;
-using dokuku.security.model;
-using dokuku.sales.organization.model;
 namespace dokuku.sales.web.modules
 {
     public class AuthModule : Nancy.NancyModule
@@ -58,48 +55,24 @@ namespace dokuku.sales.web.modules
 
             Post["/login"] = x =>
             {
-                try
-                {
-                    var userGuid = ServiceLocator.GetAuthenticationService(this).Login((string)this.Request.Form.Username, (string)this.Request.Form.Password);
-                    if (userGuid == null)
-                    {
-                        return Context.GetRedirect("~/login?error=true&username=" + (string)this.Request.Form.Username);
-                    }
-
-                    DateTime? expiry = null;
-                    if (this.Request.Form.RememberMe.HasValue)
-                    {
-                        expiry = DateTime.Now.AddDays(7);
-                    }
-
-                    return this.LoginAndRedirect(userGuid, expiry);
-                }
-                catch (InvalidUsernameOrPasswordException ex)
+                var userGuid = ServiceLocator.GetAuthenticationService(this).Login((string)this.Request.Form.Username, (string)this.Request.Form.Password);
+                if (userGuid == null)
                 {
                     return Context.GetRedirect("~/login?error=true&username=" + (string)this.Request.Form.Username);
                 }
-                catch (Exception ex)
+
+                DateTime? expiry = null;
+                if (this.Request.Form.RememberMe.HasValue)
                 {
-                    throw ex;
+                    expiry = DateTime.Now.AddDays(7);
                 }
+
+                return this.LoginAndRedirect(userGuid, expiry);
             };
 
             Get["/logout"] = x =>
             {
                 return this.LogoutAndRedirect("~/");
-            };
-
-            Get["/getorganization"] = p =>
-            {
-                Account acc = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                var org = this.OrganizationReportRepository().FindByOwnerId(acc.OwnerId);
-                return Response.AsJson(org);
-            };
-
-            Get["/allowsetuporg"] = p =>
-            {
-                Account acc = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(new { isAllowed = acc.IsOwner()  });
             };
         }
     }
