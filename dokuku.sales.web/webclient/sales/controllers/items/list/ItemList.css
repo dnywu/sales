@@ -223,6 +223,7 @@ div.itempopup label
 	left: 35%;
 	margin:auto;
 	width:300px;
+	height:150px;
 }
 .warningIcon
 {
@@ -236,16 +237,16 @@ div.messageActionDiv
 {
 	text-align:center;
 }
-button#confirmYes, button#confirmNo
+button#confirmYes button#confirmNo
 {
-	width:70px;
-	height:25px;
+	width:40px;
+	height:20px;
 }
 
-div.messageContentDiv
+div.messageContentDiv div.messageActionDiv
 {
 	text-align:center;
-	margin: 7px 0 15px 7px;
+	vertical-align:bottom;
 }
 div#dialogTitle
 {
@@ -261,11 +262,6 @@ div#dialogTitle
 	height:34px;
 	vertical-align:middle;
 	padding: 3px 0 0 5px;
-}
-div.messageActionDiv
-{
-	text-align:center;
-	margin-bottom: 10px;
 }
 	
 	

@@ -1,4 +1,4 @@
-<form id='AddCustomers'>
+<form id='EditCustomers'>
   <div class='FormNewCustomer'>
     <div class="topBandHeaderDIV">
       <div id="TitleSpan" class="HeaderDIVLeft">Ubah Pelanggan</div>
@@ -12,8 +12,11 @@
 
             </td>
             <td class="td_field">
-              <input type="text" name="CustomerName" id="inputText_CustomerName" placeholder="Nama Pelanggan" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
-            </td>
+                <input type="hidden" name="_id" id="_id" hidden="hidden" value="<%= item._id %>"/>
+                <input type="hidden" name="_rev" id="_rev" hidden="hidden" value="<%= item._rev %>"/>
+                  <input type="hidden" name="OwnerId" id="OwnerId" hidden="hidden" value="<%= item.OwnerId %>"/>
+                    <input type="text" name="Name" id="inputText_CustomerName" value="<%= item.Name %>"/>
+                </td>
             <td class="error"></td>
           </tr>
           <tr>
@@ -21,7 +24,7 @@
               <div class="mandatoryTxt">Mata Uang</div>
             </td>
             <td class="td_field">
-              <select class="td_field_customer" name="CustomerCcy"  id="inputSelect_CustomerCurrency">
+              <select class="td_field_customer" name="Currency"  id="inputSelect_CustomerCurrency">
                 <option value ="IDR" selected="selected"> IDR - Rupiah </option>
                 <option value ="USD"> USD - US Dollar </option>
               </select>
@@ -31,7 +34,7 @@
           <tr>
             <td class="labelLeft">Jangka Pembayaran </td>
             <td class="td_field">
-              <select class="td_field_customer" name="term" id="inputSelect_PaymentsTerms">
+              <select class="td_field_customer" name="Term" id="inputSelect_PaymentsTerms">
                 <option value="15 hari" selected="selected"> 15 hari </option>
                 <option value="30 hari"> 30 hari</option>
                 <option value="45 hari"> 45 hari</option>
@@ -52,110 +55,98 @@
               Alamat Pembayaran <br /><span style="font-weight: normal; line-height: 10px;">(Max 200 chars)</span>
             </td>
             <td class="td_field">
-              <textarea rows = "4" name="billingAddress" cols="40" id="inputTextarea_BillingAddress" maxlength="200" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Alamat Pembayaran tidak Boleh Kosong')"></textarea>
+              <textarea rows = "4" name="BillingAddress" cols="40" id="inputTextarea_BillingAddress" maxlength="200"><%= item.BillingAddress%></textarea>
             </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Kota</td>
             <td class="td_field">
-              <input type="text" name="city" id="inputText_City" placeholder="Nama Kota" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Kota tidak Boleh Kosong')"/>
-            </td>
+              <input type="text" name="City" id="inputText_City" value="<%= item.City%>"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Provinsi</td>
             <td class="td_field">
-              <input type="text" name="province" id="inputText_StateProvince" placeholder="Provinsi" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Provinsi tidak Boleh Kosong')"/>
-            </td>
+              <input type="text" name="Province" id="inputText_StateProvince" value="<%= item.Province%>"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Kode Pos</td>
             <td class="td_field">
-              <input type="text" name="zip" id="inputText_ZIPPostalCode" placeholder="Kode Pos" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode Pos tidak Boleh Kosong')"/>
-            </td>
+              <input type="text" name="PostalCode" id="inputText_ZIPPostalCode" value="<%= item.PostalCode%>"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Negara</td>
             <td class="td_field">
-              <input type="text" name="country" id="inputText_Country" value = "Indonesia" readonly="readonly"/>
-            </td>
+              <input type="text" name="State" id="inputText_Country" value="<%= item.State%>" readonly="readonly"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Fax</td>
             <td class="td_field">
-              <input type="text" name="fax"  id="inputText_Fax" placeholder="Fax" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Fax tidak Boleh Kosong')"/>
+              <input type="text" name="Fax"  id="inputText_Fax" value="<%= item.Fax%>"/>
             </td>
             <td class="error"></td>
-          </tr>
-          <tr>
-            <td class="labelLeft">Alamat Pengiriman</td>
-            <td class="td_field" colspan="2">
-              <div class="checkboxLabelDiv">
-                <input type="checkbox" name="checkbox_separateShipping" id="seperateShipping" class="seperateShipping"/>
-                <label for="seperateShipping" class="labelStyle">Saya Mau Alamat Pengirimannya Terpisah</label>
-              </div>
-            </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class = 'CreateNewCustomer' id='address'>
+    <div class = 'CreateNewCustomer' id='Editaddress'>
       <table class="FormNewCuscotmer">
         <tbody>
           <tr>
-            <td class="labelLeft"></td>
-            <td class="td_field">
-              <img class = "copyField"/>
-              <span id = "copyField" style="text-decoration:underline; cursor:pointer; color:blue; font-size : 11px">Menyalin data Alamat Pembayaran di atas</span>
+            <td colspan="3">
+              <div class="judulAlamatPengiriman">Alamat Pengiriman</div>
             </td>
-            <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">
               Alamat Pengiriman <br /><span style="font-weight: normal; line-height: 10px;">(Max 500 chars)</span>
             </td>
             <td class="td_field">
-              <textarea rows = "4" cols="40" name="shipmentAddress" id="inputTextarea_NewCust_ShipmentAddress"></textarea>
+              <textarea rows = "4" cols="40" name="ShipmentAddress" id="inputTextarea_NewCust_ShipmentAddress"><%= item.ShipmentAddress%></textarea>
             </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Kota</td>
             <td class="td_field">
-              <input type="text" name="shipmentCity" id="inputText_NewCust_City" placeholder="Kota"/>
-            </td>
+              <input type="text" name="ShipmentCity" id="inputText_NewCust_City" value="<%= item.ShipmentCity%>"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Provinsi</td>
             <td class="td_field">
-              <input type="text" name="shipmentStateProvince" id="inputText_NewCust_StateProvince" placeholder="Provinsi"/>
-            </td>
+              <input type="text" name="ShipmentStateProvince" id="inputText_NewCust_StateProvince" value="<%= item.ShipmentStateProvince%>"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Kode Pos</td>
             <td class="td_field">
-              <input type="text" name="shipmentZIPPostalCode" id="inputText_NewCust_ZIPPostalCode" placeholder="Kode Pos"/>
-            </td>
+              <input type="text" name="ShipmentZIPPostalCode" id="inputText_NewCust_ZIPPostalCode" value="<%= item.ShipmentZIPPostalCode%>"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Negara</td>
             <td class="td_field">
-              <input type="text" name="shipmentCountry" id="inputText_NewCust_Country" value = "Indonesia" readonly="readonly"/>
-            </td>
+              <input type="text" name="ShipmentCountry" id="inputText_NewCust_Country" value = "Indonesia" value="<%= item.ShipmentCountry%>"/>
+              </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td class="labelLeft">Fax</td>
             <td class="td_field">
-              <input type="text" name="shipmentFax" id="inputText_NewCust_Fax" placeholder="Fax"/>
-            </td>
+              <input type="text" name="ShipmentFax" id="inputText_NewCust_Fax" value="<%= item.ShipmentFax%>"/>
+              </td>
             <td class="error"></td>
           </tr>
         </tbody>
@@ -168,30 +159,30 @@
           <tr>
             <td class="labelLeft">Nama Anda</td>
             <td class="td_field">
-              <select class="field_select" name="salutation" id="inputSelect_PersonName">
+              <select class="field_select" name="Salutation" id="inputSelect_PersonName">
                 <option value ="" selected="selected"></option>
                 <option value ="Bapak"> Bapak </option>
                 <option value ="Ibu"> Ibu. </option>
               </select>
-              <input type="text" class="text" name="firstName" id="inputText_FirstName" placeholder="Nama Awal" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Awal Customer tidak Boleh Kosong')"/>
-            </td>
+              <input type="text" class="text" name="FirstName" id="inputText_FirstName" value="<%= item.FirstName%>"/>
+              </td>
             <td class="error">
-              <input type="text" class="text" name="lastName" id="inputText_LastName" placeholder="Nama Akhir"/>
-            </td>
+              <input type="text" class="text" name="LastName" id="inputText_LastName" value="<%= item.LastName%>"/>
+              </td>
           </tr>
           <tr>
             <td class="labelLeft">Telpon#</td>
             <td class="td_field">
-              <input type="text" name="cellular" id="inputText_Seluler" placeholder="Seluler"/>
-            </td>
+              <input type="text" name="MobilePhone" id="inputText_Seluler" value="<%= item.MobilePhone%>"/>
+              </td>
             <td class="error">
-              <input type="text" class="text" name="telephone" id="inputText_Phone" placeholder="Telpon"/>
-            </td>
+              <input type="text" class="text" name="Phone" id="inputText_Phone" value="<%= item.Phone%>"/>
+              </td>
           </tr>
           <tr>
             <td class="labelLeft">E-mail</td>
             <td class="td_field">
-              <input style="width:99%" type="email" name="email" id="inputText_Email"  placeholder="E-mail" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Email Harus Di Isi')"/>
+              <input style="width:99%" type="email" name="Email" id="inputText_Email"  value="<%= item.Email%>"/>
             </td>
             <td class="error"></td>
           </tr>
@@ -228,29 +219,29 @@
                   </tr>
                   <tr>
                     <td class = "fieldCustom">
-                      <input type="text" name="add_fieldCustID1" id="inputText_FieldName1"/>
+                      <input type="text" name="AddFieldCustID1" id="inputText_FieldName1" value="<%= item.AddFieldCustID1%>"/>
+                      </td>
+                    <td class = "space"></td>
+                    <td class="value">
+                      <input type="text" name="AddValueCustID1" id="inputText_ValueName1" value="<%= item.AddValueCustID1%>"/>
+                      </td>
+                  </tr>
+                  <tr>
+                    <td class = "fieldCustom">
+                      <input type="text" name="AddFieldCustID2" id="inputText_FieldName2" value="<%= item.AddFieldCustID2%>"/>
                     </td>
                     <td class = "space"></td>
                     <td class="value">
-                      <input type="text" name="add_valueCustID1" id="inputText_ValueName1"/>
+                      <input type="text" name="AddValueCustID2" id="inputText_ValueName2"  value="<%= item.AddValueCustID3%>"/>
                     </td>
                   </tr>
                   <tr>
                     <td class = "fieldCustom">
-                      <input type="text" name="add_fieldCustID2" id="inputText_FieldName2"/>
+                      <input type="text" name="AddFieldCustID3" id="inputText_FieldName3" value=""<%= item.AddFieldCustID3%>"/>
                     </td>
                     <td class = "space"></td>
                     <td class="value">
-                      <input type="text" name="add_valueCustID2" id="inputText_ValueName2"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class = "fieldCustom">
-                      <input type="text" name="add_fieldCustID3" id="inputText_FieldName3"/>
-                    </td>
-                    <td class = "space"></td>
-                    <td class="value">
-                      <input type="text" name="add_valueCustID3" id="inputText_ValueName3"/>
+                      <input type="text" name="AddValueCustID3" id="inputText_ValueName3"  value="<%= item.AddValueCustID3%>"/>
                     </td>
                   </tr>
                 </tbody>

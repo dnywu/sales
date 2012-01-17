@@ -453,11 +453,6 @@
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
-    <Content Include="webclient\sales\controllers\items\edit\edit.html" />
-    <Content Include="webclient\sales\controllers\items\edit\edit.js" />
-    <Content Include="webclient\sales\controllers\items\edit\edit_test.js" />
-    <Content Include="webclient\sales\controllers\items\edit\funcunit.html" />
-    <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
@@ -496,10 +491,6 @@
     <Content Include="webclient\sales\controllers\nav\nav.js" />
     <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
     <Content Include="webclient\sales\controllers\nav\nav_test.js" />
-    <Content Include="webclient\sales\controllers\restrictuser\funcunit.html" />
-    <Content Include="webclient\sales\controllers\restrictuser\restrictuser.html" />
-    <Content Include="webclient\sales\controllers\restrictuser\restrictuser.js" />
-    <Content Include="webclient\sales\controllers\restrictuser\restrictuser_test.js" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
@@ -531,7 +522,6 @@
     <Content Include="webclient\sales\scripts\GetParameter.js" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
-    <Content Include="webclient\sales\test\Invoice.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
     <Content Include="webclient\sales\test\qunit\sales_test.js" />
     <Content Include="webclient\steal\browser\browser.js" />
@@ -744,7 +734,6 @@
     <Compile Include="modules\AuthModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
     <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
-    <Compile Include="modules\InvoiceModule.cs" />
     <Compile Include="modules\ItemModule.cs" />
     <Compile Include="modules\MainModule.cs" />
     <Compile Include="modules\OrganizationModule.cs" />
@@ -898,7 +887,6 @@
     <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
@@ -907,7 +895,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
-    <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>

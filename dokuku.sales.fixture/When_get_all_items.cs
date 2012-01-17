@@ -12,44 +12,21 @@ namespace dokuku.sales.fixture
     {
         private static IItemCommand itemCmd;
         private static IItemQuery itemQry;
-        private static Guid id1;
-        private static Guid id2;
-        private static Guid id3;
+        private static Guid id;
         static MongoConfig mongo;
         Establish context = () =>
             {
-                mongo = new MongoConfig();
                 itemCmd = new ItemCommand(mongo);
                 itemQry = new ItemQuery(mongo);
-                id1 = Guid.NewGuid();
-                id2 = Guid.NewGuid();
-                id3 = Guid.NewGuid();
+                id = Guid.NewGuid();
             };
 
         Because of = () =>
             {
                 itemCmd.Save(new Item()
                 {
-                    _id = id1,
+                    _id = id,
                     OwnerId = "oetawan@inforsys.co.id",
-                    Name = "Honda Jazz",
-                    Description = "All new honda jazz",
-                    Rate = 200000000,
-                    Tax = new Tax() { Name = "PPN", Value = 0.1m }
-                });
-                itemCmd.Save(new Item()
-                {
-                    _id = id2,
-                    OwnerId = "oetawan@inforsys.co.id",
-                    Name = "Avanza",
-                    Description = "All new avanza",
-                    Rate = 150000000,
-                    Tax = new Tax() { Name = "PPN", Value = 0.1m }
-                });
-                itemCmd.Save(new Item()
-                {
-                    _id = id3,
-                    OwnerId = "martin@inforsys.co.id",
                     Name = "Honda Jazz",
                     Description = "All new honda jazz",
                     Rate = 200000000,
@@ -61,15 +38,11 @@ namespace dokuku.sales.fixture
             {
                 IEnumerable<Item> result = itemQry.AllItems("oetawan@inforsys.co.id");
                 result.First().ShouldNotBeNull();
-                result.ToArray().Length.ShouldEqual(2);
             };
 
         Cleanup cleanup = () =>
             {
-                System.Threading.Thread.Sleep(3000);
-                itemCmd.Delete(id1);
-                itemCmd.Delete(id2);
-                itemCmd.Delete(id3);
+                itemCmd.Delete(id);
             };
     }
 }
