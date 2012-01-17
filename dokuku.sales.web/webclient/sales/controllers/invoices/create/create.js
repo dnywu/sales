@@ -4,6 +4,8 @@ steal('jquery/controller',
 	   'jquery/controller/view',
        './createinvoices.css',
        'sales/controllers/invoices/Invoice.js',
+       'sales/scripts/jquery-ui-1.8.11.min.js',
+       'sales/styles/jquery-ui-1.8.14.custom.css',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
 	   'sales/models')

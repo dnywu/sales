@@ -54,8 +54,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="When_count_customer.cs" />
-    <Compile Include="When_count_items_by_owner.cs" />
-    <Compile Include="When_get_item_by_id.cs" />
     <Compile Include="When_get_all_items.cs" />
     <Compile Include="When_create_item.cs" />
     <Compile Include="When_create_customer.cs" />
