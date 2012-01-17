@@ -13,5 +13,4 @@ namespace dokuku.sales.customer.repository
         Customer GetCustomerById(Guid id);
         void UpdateCustomer(Customer item);
     }
-
 }
