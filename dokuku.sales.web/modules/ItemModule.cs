@@ -60,7 +60,7 @@ namespace dokuku.sales.web.modules
                     string taxName = (string)this.Request.Form.tax;
                     decimal taxValue = 0;
                     Guid id = Guid.NewGuid();
-                    string owner = this.Context.CurrentUser.UserName;
+                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                     if (taxName == "PPn")
                     {
                         taxValue = 0.1m;
@@ -68,7 +68,7 @@ namespace dokuku.sales.web.modules
                     this.ItemCommand().Save(new Item()
                     {
                         _id = id,
-                        OwnerId = owner,
+                        OwnerId = account.OwnerId,
                         Name = itemName,
                         Description = itemDesc,
                         Rate = itemPrice,
