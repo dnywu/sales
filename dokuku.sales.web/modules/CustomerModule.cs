@@ -72,6 +72,7 @@ namespace dokuku.sales.web.modules
                 string AddValueCustID3 = (string)this.Request.Form.add_valueCustID3;
                 try
                 {
+                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                     this.CustomerRepository().Save(new Customer()
                     {
                         Name = CustomerName,
@@ -102,7 +103,7 @@ namespace dokuku.sales.web.modules
                         AddValueCustID2 = AddValueCustID2,
                         AddValueCustID3 = AddValueCustID3,
                         _id = Guid.NewGuid(),
-                        OwnerId = this.Context.CurrentUser.UserName
+                        OwnerId = account.OwnerId
                     });
                 }
                 catch (Exception ex)

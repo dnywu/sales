@@ -15,26 +15,23 @@ namespace dokuku.sales.fixture
     {
         private static ICustomerRepository csRepo;
         private static ICustomerReportRepository csReportRepo;
-        private static Customer cs;
         private static Guid id;
-        private static string OwnerId;
-        private static string custName;
         static MongoConfig mongo;
+        static string ownerId = "oetawan@inforsys.co.id";
+
         Establish context = () =>
             {
                 mongo = new MongoConfig();
                 csRepo = new CustomerRepository(mongo);
                 csReportRepo = new CustomerReportRepository(mongo);
                 id = Guid.NewGuid();
-                OwnerId = "Oetawan@inforsys.co.id";
-                custName = "Bulan Bintang";
             };
 
         Because of = () =>
             {
                 csRepo.Save(new Customer() { 
                     _id =id,
-                    OwnerId = OwnerId,
+                    OwnerId = ownerId,
                     BillingAddress = "Seipana",
                     City = "Batam",
                     Currency = "IDR",
@@ -53,7 +50,7 @@ namespace dokuku.sales.fixture
 
         It should_create_organization = () =>
             {
-                cs = csReportRepo.GetByCustName(OwnerId, custName);
+                Customer cs = csRepo.Get(id, ownerId);
                 cs.ShouldNotBeNull();
             };
 
