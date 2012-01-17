@@ -2,6 +2,9 @@ steal(
 	'./sales.css', 			// application CSS file
 	'./models/models.js', 	// steals all your models
 	'./fixtures/fixtures.js', // sets up fixtures for your models
+    'jquery',
+    'sales/scripts/jquery-ui-1.8.11.min.js',
+    'sales/styles/jquery-ui-1.8.14.custom.css',
     'sales/controllers/nav',
     'sales/controllers/setuporganization',
     'sales/controllers/restrictuser',

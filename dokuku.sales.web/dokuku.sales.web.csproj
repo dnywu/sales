@@ -523,7 +523,10 @@
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
     <Content Include="webclient\sales\repository\ItemRepository.js" />
+    <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.js" />
+    <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
+    <Content Include="webclient\sales\styles\jquery-ui-1.8.14.custom.css" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
@@ -886,7 +889,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
-    <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs" />
+    <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>
