@@ -9,12 +9,14 @@ steal('jquery/controller',
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
-           /** @Static */
             {
-            defaults: {}
-        },
+                defaults: ($this = null,
+                           inv = null)
+            },
             {
                 init: function () {
+                    $this = this;
+                    inv = new Invoice();
                     var invoices = this.GetInvoices();
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices));
                 },
@@ -23,7 +25,7 @@ steal('jquery/controller',
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices))
                 },
                 GetInvoices: function () {
-                    var invoices = new Array({ name: 'a', des: 'a' }, { name: 'b', des: 'b' });
+                    var invoices = inv.GetDataInvoice();
                     return invoices;
                 },
                 '#selectall change': function () {
