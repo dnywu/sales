@@ -7,12 +7,6 @@ namespace dokuku.sales.invoices.model
 {
     public class Invoices
     {
-        public Invoices()
-        {
-            Type = "invoice";
-        }
-
-
         public string Customer { get; set; }
         public string InvoiceNo { get; set; }
         public DateTime InvoiceDate { get; set; }
