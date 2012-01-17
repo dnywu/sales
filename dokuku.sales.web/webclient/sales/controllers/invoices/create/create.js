@@ -144,7 +144,7 @@ steal('jquery/controller',
                     changeMonth: true,
                     numberOfMonths: 1,
                     onSelect: function (selectedDate) {
-                        var option = this.id == "dari" ? "minDate" : "maxDate",
+                        var option = this.id == "dari" ? "" : "",
 					instance = $(this).data("datepicker"),
 					date = $.datepicker.parseDate(
 						instance.settings.dateFormat ||
