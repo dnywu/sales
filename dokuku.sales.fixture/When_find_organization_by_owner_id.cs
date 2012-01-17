@@ -16,16 +16,19 @@ namespace dokuku.sales.fixture
         private static IOrganizationRepository orgRepo;
         private static IOrganizationReportRepository orgReportRepo;
         private static Organization org;
+        private static Guid id;
+        static MongoConfig mongo;
         Establish context = () =>
             {
-                MongoConfig mongo = new MongoConfig();
+                mongo = new MongoConfig();
                 orgRepo = new OrganizationRepository(mongo);
                 orgReportRepo = new OrganizationReportRepository(mongo);
+                id = Guid.NewGuid();
             };
 
         Because of = () =>
             {
-                orgRepo.Save(new Organization("oetawan@inforsys.co.id", "Inforsys Indonesia, PT", "IDR", 1));
+                orgRepo.Save(new Organization(id, "oetawan@inforsys.co.id", "Inforsys Indonesia, PT", "IDR", 1));
             };
 
         It should_return_organization = () =>
@@ -36,7 +39,7 @@ namespace dokuku.sales.fixture
 
         Cleanup cleanup = () =>
             {
-                orgRepo.Delete("oetawan@inforsys.co.id");
+                orgRepo.Delete(id);
             };
     }
 }

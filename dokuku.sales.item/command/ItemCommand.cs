@@ -11,25 +11,20 @@ namespace dokuku.sales.item
 {
     public class ItemCommand : IItemCommand
     {
-        MongoConfig mongo;
+        MongoCollection<BsonDocument> _document;
         public ItemCommand(MongoConfig mongoConfig)
         {
-            mongo = mongoConfig;
+            _document = mongoConfig.MongoDatabase.GetCollection(typeof(Item).Name);
         }
 
         public void Save(Item item)
         {
-            Collections.Save<Item>(item);
+            _document.Insert(item.ToBsonDocument());
         }
 
         public void Delete(Guid id)
         {
-            Collections.Remove(Query.EQ("_id", id));
-        }
-
-        public MongoCollection<Item> Collections
-        {
-            get { return mongo.MongoDatabase.GetCollection<Item>(typeof(Item).Name); }
+            _document.Remove(Query.EQ("_id", id));
         }
     }
 }

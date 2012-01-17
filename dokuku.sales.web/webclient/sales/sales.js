@@ -4,7 +4,6 @@ steal(
 	'./fixtures/fixtures.js', // sets up fixtures for your models
     'sales/controllers/nav',
     'sales/controllers/setuporganization',
-    'sales/controllers/restrictuser',
 	function () {					// configure your application
 	    $.ajax({
 	        type: 'GET',
@@ -20,13 +19,7 @@ steal(
 	    });
 	    function GetOrganizationCallback(data) {
 	        if (data == null) {
-	            $.ajax({
-	                type: 'GET',
-	                url: '/allowsetuporg',
-	                dataType: 'json',
-	                async: false,
-	                success: GetRoleCallback
-	            });
+	            $('body').sales_setuporganization();
 	        }
 	        else {
 	            $('body').sales_nav();
@@ -37,11 +30,5 @@ steal(
 	            id: 1,
 	            name: data
 	        }).save();
-	    }
-	    function GetRoleCallback(data) {
-	        if (data.isAllowed === true)
-	            $(document.body).sales_setuporganization();
-	        else
-	            $(document.body).sales_restrictuser();
 	    }
 	})
