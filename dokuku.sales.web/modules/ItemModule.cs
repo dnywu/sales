@@ -105,7 +105,7 @@ namespace dokuku.sales.web.modules
                     {
                         taxValue = 0.1m;
                     }
-                    this.ItemCommand().Update(new Item()
+                    this.ItemCommand().Save(new Item()
                     {
                         _id = id,
                         OwnerId = owner,
