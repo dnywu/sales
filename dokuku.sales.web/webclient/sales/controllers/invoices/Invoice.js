@@ -71,8 +71,8 @@
             type: 'GET',
             url: '/GetDataInvoice',
             data: 'json',
-            success: function (data) { 
-            
+            success: function (data) {
+
             }
         });
     }

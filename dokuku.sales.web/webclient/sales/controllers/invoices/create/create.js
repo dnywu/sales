@@ -9,8 +9,9 @@ steal('jquery/controller',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
 	   'sales/models')
-	.then('./views/createinvoices.ejs', function ($) {
-	    $.Controller('Sales.Invoices.Create',
+	.then('./views/createinvoices.ejs',
+          './views/AddCustomer.ejs', function ($) {
+              $.Controller('Sales.Invoices.Create',
         {
             defaults: (custid = 0, tabIndexTr = 0,
                         $this = null,
@@ -38,6 +39,9 @@ steal('jquery/controller',
                 var dueDate = new Date(invDate);
                 dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
+            },
+            '#tambahPelanggan click': function () {
+                
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
@@ -175,6 +179,22 @@ steal('jquery/controller',
                 $("#invDate").val($.datepicker.formatDate('dd M yy', currdate));
                 dueDate.setDate(dueDate.getDate() + parseInt(term));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
+            },
+            TriggerAddCustEvent: function () {
+                $("#moreFieldCustomer").click(this.MoreFieldAddCust);
+                $("#btnCancelAddCust").click(this.CloseAddCustDialog);
+                $("#formAddCustDialog").submit(this.AddCust);
+            },
+            MoreFieldAddCust: function () {
+                $("tr#trmoreFieldCustomer").remove();
+                $("table.hiddenTable").show();
+            },
+            CloseAddCustDialog: function () {
+                $(".ModalDialog").remove();
+            },
+            AddCust: function (el, ev) {
+                ev.preventDefault();
+                alert(JSON.stringify(el.formParams()));
             }
         })
-	});
+          });
