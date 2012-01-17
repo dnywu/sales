@@ -54,6 +54,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
+
                     string itemName = (string)this.Request.Form.itemName;
                     string itemDesc = (string)this.Request.Form.description;
                     decimal itemPrice = (decimal)this.Request.Form.itemPrice;
@@ -66,6 +67,45 @@ namespace dokuku.sales.web.modules
                         taxValue = 0.1m;
                     }
                     this.ItemCommand().Save(new Item()
+                    {
+                        _id = id,
+                        OwnerId = owner,
+                        Name = itemName,
+                        Description = itemDesc,
+                        Rate = itemPrice,
+                        Tax = new Tax() { Name = taxName, Value = taxValue }
+                    }
+                    );
+                }
+                catch (Exception ex)
+                {
+                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                }
+                return Response.AsJson("OK");
+            };
+            Get["/Items/_id/{id}"] = p =>
+            {
+                Guid id = p.id;
+                var item = this.ItemQuery().Get(id);
+                return Response.AsJson(item);
+            };
+            Post["/editItem"] = p =>
+            {
+                try
+                {
+
+                    string itemName = (string)this.Request.Form.itemName;
+                    string itemDesc = (string)this.Request.Form.description;
+                    decimal itemPrice = (decimal)this.Request.Form.itemPrice;
+                    string taxName = (string)this.Request.Form.tax;
+                    decimal taxValue = 0;
+                    Guid id = Guid.Parse((string)this.Request.Form.itemId);
+                    string owner = this.Context.CurrentUser.UserName;
+                    if (taxName == "PPn")
+                    {
+                        taxValue = 0.1m;
+                    }
+                    this.ItemCommand().Update(new Item()
                     {
                         _id = id,
                         OwnerId = owner,

@@ -8,10 +8,25 @@
 			<div class="ie-form ProductFormDiv">
 				<table>
 					<tbody>
+            <tr>
+              <td class="labelLeft">
+                <span>Kode Barang</span>
+              </td>
+              <td class="field">
+                <input type="text" id="itemCode" name="itemCode" />
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span>Barcode</span>
+              </td>
+              <td class="field">
+                <input type="text" id="barcode" name="barcode" />
+              </td>
+            </tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
-							<td class="field"><input type="text" id="itemName" name="itemName"/></td>
-							<td id="errorItemName"></td>
+							<td class="field"><input type="text" id="itemName" name="itemName" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama barang tidak Boleh Kosong')"/></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">
@@ -23,8 +38,7 @@
 						</tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Harga(Rp.)</span></td>
-							<td class="field"><input type="text" id="itemPrice" name="itemPrice" /></td>
-							<td id="errorPrice"></td>
+							<td class="field"><input type="text" id="itemPrice" name="itemPrice" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Harga barang tidak Boleh Kosong')" /></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">Pajak</td>

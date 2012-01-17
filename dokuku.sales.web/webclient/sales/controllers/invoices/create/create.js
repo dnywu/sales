@@ -24,11 +24,13 @@ steal('jquery/controller',
                 custRepo = new CustomerRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
                 this.CreateListItem(3);
+                this.SetDatePicker();
             },
             load: function () {
                 tabIndexTr = 0;
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
                 this.CreateListItem(3);
+                this.SetDatePicker();
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
@@ -135,6 +137,22 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
+            },
+            SetDatePicker: function () {
+                var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'yy-mm-dd',
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1,
+                    onSelect: function (selectedDate) {
+                        var option = this.id == "dari" ? "minDate" : "maxDate",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                        dates.not(this).datepicker("option", option, date);
+                    }
+                });
             }
         })
 	});

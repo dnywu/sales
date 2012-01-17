@@ -3,7 +3,8 @@ steal('jquery/controller',
       'jquery/controller/view',
       'sales/models',
       './ItemList.css',
-      'sales/controllers/items/create')
+      'sales/controllers/items/create',
+      'sales/controllers/items/edit')
 	.then('./views/ItemList.ejs', './views/popupEventDialog.ejs', './views/confirmBox.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.items.list',
@@ -63,7 +64,7 @@ steal('jquery/controller',
                         '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
                         '<td class="itemList" id="settingPanel' + item + '"></td>' +
                         '<td class="itemList itemName">' + data[item].Name + '</td>' +
-                        '<td class="itemList itemPrice">' + data[item].Rate + '</td></tr>');
+                        '<td class="itemList itemPrice">Rp. ' + $this.rupiahFormat(data[item].Rate) + '</td></tr>');
                         $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
                     });
                     $('.trDataItem:odd').addClass('odd');
@@ -83,7 +84,6 @@ steal('jquery/controller',
                 $('#body').sales_items_create('load');
             },
             ".settingButton click": function (el) {
-                //var index = $("table.ItemList tbody tr").attr("tabindex");
                 var index = el.attr("tabindex");
                 $("tr#itemContent" + index + " td#settingPanel" + index + " div.popupEventDiv").show();
             },
@@ -94,11 +94,11 @@ steal('jquery/controller',
                     $(".checkBoxItem").removeAttr('checked');
                 }
             },
-            "#btnEdit click": function () {
-                alert("test button edit");
-            },
-            "#btnDelete click": function () {
-                alert("test button hapus");
+            "#btnEdit click": function (el) {
+                var index = el.attr("tabindex");
+                var id = $("#checkBoxItem" + index).val();
+                $('#body').sales_items_edit();
+                $('#body').sales_items_edit("load", id);
             },
             CheckButtonPaging: function () {
                 var startPage = parseInt($('#idInputPage').val());
@@ -168,11 +168,18 @@ steal('jquery/controller',
                 $this.CheckButtonPaging();
             },
             "#deleteItem click": function () {
+                var countChecked = 0;
+                $(".checkBoxItem:checked").each(function (index) {
+                    countChecked++;
+                });
+                if (countChecked==0) {
+                    return;
+                }
                 $("#body").append(this.view("//sales/controllers/items/list/views/confirmBox.ejs"));
-
             },
             "#confirmYes click": function () {
-                $('.ModalDialog').remove();
+                $(".ModalDialog").remove();
+                $(".checkBoxItem")
                 $(".checkBoxItem:checked").each(function (index) {
                     $.ajax({
                         type: 'DELETE',
@@ -184,6 +191,16 @@ steal('jquery/controller',
             },
             "#confirmNo click": function () {
                 $('.ModalDialog').remove();
+            },
+            rupiahFormat: function (number) {
+                if (isNaN(number)) return "";
+                var str = new String(number);
+                var result = "", len = str.length;
+                for (var i = len - 1; i >= 0; i--) {
+                    if ((i + 1) % 3 == 0 && i + 1 != len) result += ",";
+                    result += str.charAt(len - 1 - i);
+                }
+                return result;
             }
         })
 
