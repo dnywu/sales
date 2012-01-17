@@ -27,12 +27,20 @@ steal('jquery/controller',
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
                 this.CreateListItem(3);
                 this.SetDatePicker();
+                this.SetDefaultDate();
             },
             load: function () {
                 tabIndexTr = 0;
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
                 this.CreateListItem(3);
                 this.SetDatePicker();
+                this.SetDefaultDate();
+            },
+            '#terms change': function (el) {
+                var invDate = $("#invDate").val();
+                var dueDate = new Date(invDate);
+                dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
+                $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
@@ -146,15 +154,28 @@ steal('jquery/controller',
                     changeMonth: true,
                     numberOfMonths: 1,
                     onSelect: function (selectedDate) {
-                        var option = this.id == "dari" ? "" : "",
+                        var option = this.id == "invDate" ? "" : "",
 					instance = $(this).data("datepicker"),
 					date = $.datepicker.parseDate(
 						instance.settings.dateFormat ||
 						$.datepicker._defaults.dateFormat,
 						selectedDate, instance.settings);
-                        dates.not(this).datepicker("option", option, date);
+                        if (this.id == "invDate") {
+                            var currdate = new Date(date);
+                            var term = $("#terms").val();
+                            currdate.setDate(currdate.getDate() + parseInt(term));
+                            dates.not(this).val($.datepicker.formatDate('dd M yy', currdate));
+                        }
                     }
                 });
+            },
+            SetDefaultDate: function () {
+                var currdate = new Date();
+                var term = $("#terms").val();
+                var dueDate = currdate;
+                $("#invDate").val($.datepicker.formatDate('dd M yy', currdate));
+                dueDate.setDate(dueDate.getDate() + parseInt(term));
+                $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             }
         })
 	});
