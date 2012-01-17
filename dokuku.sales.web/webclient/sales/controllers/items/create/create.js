@@ -35,28 +35,13 @@ steal('jquery/controller',
             },
             "#createItemsForm submit": function (el, ev) {
                 var form = $("#createItemsForm");
-                var err = $("#errorCreateItemDiv");
-                var defaults = {
-                    name: $("#itemName").val(),
-                    description: $("#description").val(),
-                    price: $("#itemPrice").val(),
-                    tax: $("#tax").val()
-                };
-                err.empty();
-                if (defaults.name !== "" && defaults.price != 0)
-                    $.ajax({
-                        type: "POST",
-                        url: "/createnewitem",
-                        data: form.serialize(),
-                        dataType: "json",
-                        success: function () { $("#body").sales_items_list("load"); }
-                    });
-                if (defaults.name == "")
-                    $('<li>', { 'class': 'name', text: "Nama Barang harus di isi" }).appendTo(err.show());
-                if (defaults.price == "")
-                    $('<li>', { 'class': 'price', text: "Harga harus di diisi" }).appendTo(err.show());
-                if (defaults.description.length > 500)
-                    $('<li>', { 'class': 'description', text: "Deskripsi barang tidak boleh lebih dari 500 karakter" }).appendTo(err.show());
+                $.ajax({
+                    type: "POST",
+                    url: "/createnewitem",
+                    data: form.serialize(),
+                    dataType: "json",
+                    success: function () { $("#body").sales_items_list("load"); }
+                });
                 ev.preventDefault();
 
             },

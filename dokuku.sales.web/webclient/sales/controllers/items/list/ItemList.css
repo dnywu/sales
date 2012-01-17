@@ -33,6 +33,7 @@ table.ItemList thead tr
 {
 	border: solid 0 #EBEBEB;
 	border-width: 1px 0;
+	
 }
 th.headerList
 {
@@ -52,7 +53,7 @@ th.headerMark
 }
 th.headerEvent
 {
-	width: 20px;
+	width: 30px;
 	text-align:center;
 }
 th.headerItems
@@ -73,6 +74,7 @@ td.itemList{
 td.itemPrice
 {
 	text-align:right;
+	padding-right:10px;
 }
 table.ItemList tbody tr:hover
 {
@@ -237,16 +239,16 @@ div.messageActionDiv
 {
 	text-align:center;
 }
-button#confirmYes button#confirmNo
+button#confirmYes, button#confirmNo
 {
-	width:40px;
-	height:20px;
+	width:70px;
+	height:25px;
 }
 
-div.messageContentDiv div.messageActionDiv
+div.messageContentDiv, div.messageActionDiv
 {
 	text-align:center;
-	vertical-align:bottom;
+	margin: 7px 0 15px 7px;
 }
 div#dialogTitle
 {
@@ -263,5 +265,13 @@ div#dialogTitle
 	vertical-align:middle;
 	padding: 3px 0 0 5px;
 }
-	
+div.messageActionDiv
+{
+	text-align:center;
+	margin-bottom: 10px;
+}
+img.settingButtonImage
+{
+	height:17px;
+}	
 	
