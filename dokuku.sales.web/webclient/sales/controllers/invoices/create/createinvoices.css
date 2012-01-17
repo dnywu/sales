@@ -75,3 +75,15 @@ span#addItemRow:hover{color:#4183C4;}
 div.clsDeleteItem{display:none;color:#d80000;cursor:pointer;font-weight:bold;}
 span.amount{text-align:right;float:right;}
 tr.errItemNotFound{background-color:#fff5f5;}
+label#currency
+{
+    display:none;
+    background-color:#8BC464;
+    color:#fff;
+    padding: 2px 3px 2px 3px;
+}
+label#keteranganSelectCust
+{
+    color:Red;
+    font-size:11px;
+}

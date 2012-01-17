@@ -40,7 +40,8 @@ namespace dokuku.sales.web.modules
             {
                 Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                 string custName = p.custName.ToString();
-                return Response.AsJson(this.CustomerReportRepository().GetByCustName(account.OwnerId, custName));
+                var a = this.CustomerReportRepository().GetByCustName(account.OwnerId, custName);
+                return Response.AsJson(a);
             };
             Post["/customer/data"] = p =>
             {

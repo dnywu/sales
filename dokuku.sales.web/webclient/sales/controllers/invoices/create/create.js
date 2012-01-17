@@ -24,10 +24,7 @@ steal('jquery/controller',
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
-                this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
-                this.CreateListItem(3);
-                this.SetDatePicker();
-                this.SetDefaultDate();
+                this.load();
             },
             load: function () {
                 tabIndexTr = 0;
@@ -46,11 +43,13 @@ steal('jquery/controller',
                 $("#keteranganSelectCust").empty();
                 var dataCust = custRepo.GetCustomerByName(el.val());
                 if (dataCust != null) {
-                    $("#keteranganSelectCust").text(dataCust.Currency);
+                    $("#selectcust").val(dataCust.Name);
+                    $("#currency").text(dataCust.Currency).show();
                     custid = dataCust._id;
                     return;
                 }
-                $("#keteranganSelectCust").text("Pelanggan ini tidak ditemukan");
+                $("#currency").hide();
+                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
                 $("#selectcust").focus().select();
             },
             '#addItemRow click': function () {
@@ -149,7 +148,7 @@ steal('jquery/controller',
                 inv.CreateNewInvoice();
             },
             SetDatePicker: function () {
-                var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'yy-mm-dd',
+                var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
                     defaultDate: "+1w",
                     changeMonth: true,
                     numberOfMonths: 1,
