@@ -67,7 +67,7 @@ namespace dokuku.sales.web.modules
                     {
                         taxValue = 0.1m;
                     }
-                    this.ItemCommand().Save(new Item()
+                    this.InsertItemService().Insert(new Item()
                     {
                         _id = id,
                         OwnerId = owner,
