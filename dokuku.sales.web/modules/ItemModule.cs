@@ -54,7 +54,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-
+                    string itemCode = (string)this.Request.Form.itemCode;
+                    string barcode = (string)this.Request.Form.barcode;
                     string itemName = (string)this.Request.Form.itemName;
                     string itemDesc = (string)this.Request.Form.description;
                     decimal itemPrice = (decimal)this.Request.Form.itemPrice;
@@ -70,6 +71,8 @@ namespace dokuku.sales.web.modules
                     {
                         _id = id,
                         OwnerId = owner,
+                        Code = itemCode,
+                        Barcode = barcode,
                         Name = itemName,
                         Description = itemDesc,
                         Rate = itemPrice,
@@ -93,7 +96,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-
+                    string itemCode = (string)this.Request.Form.itemCode;
+                    string barcode = (string)this.Request.Form.barcode;
                     string itemName = (string)this.Request.Form.itemName;
                     string itemDesc = (string)this.Request.Form.description;
                     decimal itemPrice = (decimal)this.Request.Form.itemPrice;
@@ -109,6 +113,8 @@ namespace dokuku.sales.web.modules
                     {
                         _id = id,
                         OwnerId = owner,
+                        Code = itemCode,
+                        Barcode = barcode,
                         Name = itemName,
                         Description = itemDesc,
                         Rate = itemPrice,

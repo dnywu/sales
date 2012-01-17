@@ -9,6 +9,22 @@
         <input type="hidden" id="itemId" name="itemId" value="<%= this._id %>" />
         <table>
 					<tbody>
+            <tr>
+              <td class="labelLeft">
+                <span>Kode Barang</span>
+              </td>
+              <td class="field">
+                <input type="text" id="itemCode" name="itemCode" value=""<%= this.Code %>" />
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span>Barcode</span>
+              </td>
+              <td class="field">
+                <input type="text" id="barcode" name="barcode" value=""<%= this.Barcode %>" />
+                </td>
+            </tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
 							<td class="field"><input type="text" id="itemName" name="itemName" value="<%= this.Name %>" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama barang tidak Boleh Kosong')"/></td>
