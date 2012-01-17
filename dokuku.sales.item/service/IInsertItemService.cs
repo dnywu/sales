@@ -8,5 +8,7 @@ namespace dokuku.sales.item.service
     public interface IInsertItemService
     {
         void Insert(Item item);
+
+        void Update(Item item);
     }
 }

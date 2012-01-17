@@ -6,12 +6,14 @@ steal('jquery/controller',
 
 	    $.Controller('sales.Controllers.items.edit',
             {
-        },
+                defaults: ($this = null)
+            },
             {
                 init: function () {
-
+                    
                 },
                 load: function (id) {
+                    $this = this;
                     var item = this.getItem(id);
                     this.element.html("//sales/controllers/items/edit/views/editItem.ejs", item);
                 },
@@ -35,9 +37,23 @@ steal('jquery/controller',
                         url: "/editItem",
                         data: form.serialize(),
                         dataType: "json",
-                        success: function () { $("#body").sales_items_list("load"); }
+                        success: function (data) {
+                            if (data.error) {
+                                $this.onErrorRequestData(data.message);
+                                return;
+                            }
+                            $("#body").sales_items_list("load");
+                        }
                     });
                     ev.preventDefault();
+                },
+                onErrorRequestData: function (msg) {
+                    var err = $("#errorEditItemDiv");
+                    err.empty();
+                    $('<li>', { text: msg }).appendTo(err.show());
+                },
+                "#cancelEditItem click": function () {
+                    $("#body").sales_items_list("load");
                 }
             })
 	});

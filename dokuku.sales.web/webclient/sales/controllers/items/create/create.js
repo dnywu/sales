@@ -8,14 +8,17 @@ steal('jquery/controller',
       './views/init.ejs', function ($) {
           $.Controller('sales.Controllers.items.create',
         {
-            onDocument: true
+            defaults: ($this = null)
+            //    onDocument: true
         },
         {
             init: function () {
+                $this = this;
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
 
             },
             load: function () {
+                $this = this;
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
             },
             "#createTaxLink click": function (el, ev) {
@@ -40,10 +43,22 @@ steal('jquery/controller',
                     url: "/createnewitem",
                     data: form.serialize(),
                     dataType: "json",
-                    success: function () { $("#body").sales_items_list("load"); }
+                    success: function (data) {
+                        if (data.error) {
+                            $this.onErrorRequestData(data.message);
+                            return;
+                        }
+                        $("#body").sales_items_list("load");
+                    }
+
                 });
                 ev.preventDefault();
 
+            },
+            onErrorRequestData: function (msg) {
+                var err = $("#errorCreateItemDiv");
+                err.empty();
+                $('<li>', { text: msg }).appendTo(err.show());
             },
             submitTax: function (el, ev) {
                 var form = $("#taxForm");
@@ -63,16 +78,6 @@ steal('jquery/controller',
                     $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus lebih besar dari nol" }).appendTo(err.show());
                 ev.preventDefault();
                 return;
-            },
-            "#itemName keypress": function () {
-                $('li.name').remove();
-                if ($("#error").is(':empty'))
-                    $("#error").hide();
-            },
-            "#itemPrice keypress": function () {
-                $('li.price').remove();
-                if ($("#errorCreateItemDiv").is(':empty'))
-                    $("#errorCreateItemDiv").hide();
             },
             taxNameKeypress: function () {
                 $('li.name').remove();
