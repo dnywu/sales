@@ -6,11 +6,6 @@ namespace dokuku.sales.customer.model
 {
     public class Customer
     {
-        public Customer()
-        {
-            Type = "customer";
-        }
-
         public string Name { get; set; }
         public string Currency { get; set; }
         public string Salutation { get; set; }
@@ -25,7 +20,6 @@ namespace dokuku.sales.customer.model
         public string PostalCode { get; set; }
         public string Fax { get; set; }
         public string Term { get; set; }
-        public string Type { get; set; }
 
         public string Province { get; set; }
         public string ShipmentAddress { get; set; }
@@ -42,7 +36,6 @@ namespace dokuku.sales.customer.model
         public string AddValueCustID3 { get; set; }
 
         public Guid _id { get; set; }
-        public string _rev { get; set; }
         public string OwnerId { get; set; }
     }
 }

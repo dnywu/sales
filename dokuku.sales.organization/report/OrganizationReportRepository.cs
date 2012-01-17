@@ -5,6 +5,8 @@ using System.Text;
 using dokuku.sales.organization.model;
 using MongoDB.Driver;
 using dokuku.sales.config;
+using MongoDB.Driver.Builders;
+using MongoDB.Bson;
 namespace dokuku.sales.organization.report
 {
     public class OrganizationReportRepository : IOrganizationReportRepository
@@ -16,17 +18,11 @@ namespace dokuku.sales.organization.report
         }
         public Organization FindByOwnerId(string email)
         {
-            QueryDocument qry = new QueryDocument(){
-                                    {"OwnerId",email}};
-            return reportCollections.FindOneAs<Organization>(qry);
-        }
-        private MongoDatabase db
-        {
-            get { return mongo.MongoDatabase; }
+            return reportCollections.FindOneAs<Organization>(Query.EQ("_id", BsonValue.Create(email)));
         }
         private MongoCollection<Organization> reportCollections
         {
-            get { return db.GetCollection<Organization>("organizations"); }
+            get { return mongo.ReportingDatabase.GetCollection<Organization>("organizations"); }
         }
     }
 }

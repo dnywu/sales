@@ -2,139 +2,150 @@
   <div class="topBandHeaderDIV">
     <div id="TitleSpan" class="HeaderDIVLeft">Create Invoices</div>
   </div>
-  <div class='newInvoiceContain'>
-    <div class='divInvoiceGroup'>
-      <table width='100%'>
-        <tbody>
-          <tr>
-            <td class="labelLeft"><div class="mandatoryTxt">Select Customer</div></td>
-            <td class="td_field">
-              <input type='text' name="customer" id="selectcust"/>
-            </td>
-            <td class="error">
-              <label id="keteranganSelectCust"></label>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <div class='divInvoiceGroup'>
-      <table width='100%'>
-        <tbody>
-          <tr>
-            <td class="labelLeft">
-              <div class="mandatoryTxt">Invoice#</div>
-            </td>
-            <td class="td_field">
-              <input type='text' readonly='' value='Will be auto generated'/>
-            </td>
-            <td class='error'></td>
-          </tr>
-          <tr>
-            <td class="labelLeft">P.O.#</td>
-            <td class="td_field">
-              <input type='text' name='po'/>
-            </td>
-            <td class='error'></td>
-          </tr>
-          <tr>
-            <td class="labelLeft">Invoice Date</td>
-            <td class="td_field">
-              <input type="date" name='invoiceDate'/>
-            </td>
-            <td class='error'></td>
-          </tr>
-          <tr>
-            <td class="labelLeft">Terms</td>
-            <td class="td_field">
-              <select name='terms'>
-                <option value="15">Net 15</option>
-                <option value="30">Net 30</option>
-                <option value="45">Net 45</option>
-                <option value="60">Net 60</option>
-                <option value="0">Due On Receipt</option>
-                <option value="-1">Due on the specified date</option>
-              </select>
-            </td>
-            <td class='error'></td>
-          </tr>
-          <tr>
-            <td class="labelLeft">Due Date</td>
-            <td class="td_field">
-              <input type='date' name='dueDate'/>
-            </td>
-            <td class='error'></td>
-          </tr>
-          <tr>
-            <td class="labelLeft">Late Fee</td>
-            <td class="td_field">
-              <select name='latefee'>
-                <option value="15">No Late Fee</option>
-              </select>
-            </td>
-            <td class='error'></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <form method="POST" id="formNewIvoice">
+    <div class='newInvoiceContain'>
+      <div class='divInvoiceGroup'>
+        <table width='100%'>
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <div class="mandatoryTxt">pilih Pelanggan</div>
+              </td>
+              <td class="td_field">
+                <input type='text' name="customer" id="selectcust" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('pelanggan harus dipilih')/>"</td>
+              <td class="error">
+                <label id="keteranganSelectCust"></label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <table id='itemInvoice' cellpadding='5px'>
-      <thead>
-        <tr>
-          <td class='barang'>Barang</td>
-          <td class='desc'>Deskripsi</td>
-          <td class='qty right'>Qty</td>
-          <td class='rate right'>Rate</td>
-          <td class='disc right'>Diskon(%)</td>
-          <td class='tax'>Tax</td>
-          <td class='amount right'>Amount</td>
-          <td class='dltItem'></td>
-        </tr>
-      </thead>
-      <tbody>
-        
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>
-            <span id='addItemRow'>Add another line</span>
-          </td>
-          <td colspan='3'></td>
-          <td colspan='2' class='right borderbottom'>Sub Total</td>
-          <td class='right borderbottom'>
-            <span id='subtotal'></span></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td colspan='4'></td>
-          <td colspan='2' class='right bold borderbottom graybgcolor'>Total</td>
-          <td class='right bold borderbottom graybgcolor'>
-            <span id='total'></span>
-          </td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
+      <div class='divInvoiceGroup'>
+        <table width='100%'>
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <div class="mandatoryTxt">Invoice#</div>
+              </td>
+              <td class="td_field">
+                <input type='text' readonly='' value='Will be auto generated'/>
+              </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">P.O.#</td>
+              <td class="td_field">
+                <input type='text' name='po' id='po' required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('PO harus di isi')/>"</td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Tanggal Invoice</td>
+              <td class="td_field">
+                <input type="date" name='invoiceDate' id='invDate' readonly/>
+              </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Terms</td>
+              <td class="td_field">
+                <select name='terms' id='terms'>
+                  <option value="15">Net 15</option>
+                  <option value="30">Net 30</option>
+                  <option value="45">Net 45</option>
+                  <option value="60">Net 60</option>
+                  <option value="0">Due On Receipt</option>
+                  <option value="-1">Due on the specified date</option>
+                </select>
+              </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Due Date</td>
+              <td class="td_field">
+                <input type='date' name='dueDate' id='dueDate' readonly/>
+              </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Late Fee</td>
+              <td class="td_field">
+                <select name='latefee' id='latefee'>
+                  <option value="15">No Late Fee</option>
+                </select>
+              </td>
+              <td class='error'></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <div class='divInvoiceGroup'>
-      <table width='100%' cellpadding='0px'>
-        <tr>
-          <td width='40%'><b class='boldlabel'>Customer Note</b></td>
-          <td width='60%'><b class='boldlabel'>Term and Conditions</b></td>
-        </tr>
-        <tr>
-          <td><textarea class="CustomerMessageTxtArea">Thanks for your business.</textarea></td>
-          <td><textarea class="TermsandConditionsTxtArea"></textarea></td>
-        </tr>
+      <table id='itemInvoice' cellpadding='5px'>
+        <thead>
+          <tr>
+            <td class='barang'>Barang</td>
+            <td class='desc'>Deskripsi</td>
+            <td class='qty right'>Qty</td>
+            <td class='rate right'>Rate</td>
+            <td class='disc right'>Diskon(%)</td>
+            <td class='tax'>Tax</td>
+            <td class='amounthd right'>Amount</td>
+            <td class='dltItem'></td>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <span id='addItemRow'>Add another line</span>
+            </td>
+            <td colspan='3'></td>
+            <td colspan='2' class='right borderbottom'>Sub Total</td>
+            <td class='right borderbottom'>
+              <span id='subtotal'></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan='4'></td>
+            <td colspan='2' class='right bold borderbottom graybgcolor'>Total</td>
+            <td class='right bold borderbottom graybgcolor'>
+              <span id='total'></span>
+            </td>
+            <td></td>
+          </tr>
+        </tfoot>
       </table>
+
+      <div class='divInvoiceGroup'>
+        <table width='100%' cellpadding='0px'>
+          <tr>
+            <td width='40%'>
+              <b class='boldlabel'>Customer Note</b>
+            </td>
+            <td width='60%'>
+              <b class='boldlabel'>Term and Conditions</b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <textarea name='custMsg' id='custMsg' class="CustomerMessageTxtArea">Thanks for your business.</textarea>
+            </td>
+            <td>
+              <textarea name="termAndCond" id="termAndCond" class="TermsandConditionsTxtArea"></textarea>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="margin-top:30px">
+        <p align="center" style="font-size:11px">
+          <input id="NewInvoiceSave" type="submit" name="save" value="Save"/>
+          or
+          <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Cancel</span>
+        </p>
+      </div>
     </div>
-    <div style="margin-top:30px">
-      <p align="center" style="font-size:11px">
-        <input id="NewInvoiceSave" type="submit" name="save" value="Save"/>
-        or
-        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Cancel</span>
-      </p>
-    </div>
-  </div>
+  </form>
 </div>
