@@ -86,8 +86,8 @@ steal('jquery/controller',
                     return;
                 var index = el.attr('id').split('_')[1];
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
-                //var t = $(".amount");
-                $this.GetSubTotal();
+                this.GetSubTotal();
+                this.GetTotal();
             },
             '.partname change': function (el) {
                 var partName = el.val();
@@ -96,11 +96,15 @@ steal('jquery/controller',
 
                 if (part != null) {
                     inv.ShowListItem(part, index);
-                    $this.GetSubTotal();
-                    $this.GetTotal();
+                    this.GetSubTotal();
+                    this.GetTotal();
+                    $("#additem_" + index).hide();
                     return;
                 }
-                $this.ClearItemField;
+                this.ClearItemField(index);
+                $("#additem_" + index).show();
+                this.GetSubTotal();
+                this.GetTotal();
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
             '.quantity change': function (el) {
@@ -119,14 +123,14 @@ steal('jquery/controller',
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).text(amount);
-                $this.GetSubTotal();
-                $this.GetTotal();
+                this.GetSubTotal();
+                this.GetTotal();
             },
-            ClearItemField: function () {
+            ClearItemField: function (index) {
                 $("#desc_" + index).empty();
-                $("#qty_" + index).empty();
-                $("#rate_" + index).empty();
-                $("#disc_" + index).empty();
+                $("#qty_" + index).val('');
+                $("#rate_" + index).val('');
+                $("#disc_" + index).val('');
                 $("#amount_" + index).empty();
             },
             LoadTax: function (index) {
