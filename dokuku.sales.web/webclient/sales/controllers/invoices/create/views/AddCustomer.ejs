@@ -1,0 +1,95 @@
+﻿<form id="formAddCustDialog" method="POST">
+  <table width="100%">
+    <tr>
+      <td width="30%" class="right">
+        <div class="mandatoryTxt">Nama Pelanggan</div>
+      </td>
+      <td width="70%" class="left">
+        <input type="text" name="Name"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Mata Uang</td>
+      <td class="left">
+        <select name="Currency">
+          <option value="IDR">IDR - Rupiah</option>
+          <option value="USD">USD - US Dollar</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Nama Awal</td>
+      <td class="left">
+        <input type="text" name="FirstName"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Nama Akhir</td>
+      <td class="left">
+        <input type="text" name="LastName"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Telepon#</td>
+      <td class="left">
+        <input type="text" name="Phone"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Email</td>
+      <td class="left">
+        <input type="email" name="Email"/>
+      </td>
+    </tr>
+    <tr id="trmoreFieldCustomer">
+      <td class="right"></td>
+      <td class="left">
+        <label id="moreFieldCustomer">klik ini untuk keterangan lainnya</label>
+      </td>
+    </tr>
+  </table>
+  <table width="100%" class="hiddenTable">
+    <tr>
+      <td width="30%" class="right">
+        Alamat
+      </td>
+      <td width="70%" class="left">
+        <textarea name="BillingAddress"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Kota</td>
+      <td class="left">
+        <input type="text" name="City"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Provinsi</td>
+      <td class="left">
+        <input type="text" name="Province"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Kode Pos</td>
+      <td class="left">
+        <input type="text" name="PostalCode"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Negara</td>
+      <td class="left">
+        <input type="text" name="State"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Fax</td>
+      <td class="left">
+        <input type="text" name="Fax"/>
+      </td>
+    </tr>
+  </table>
+  <div class="submitAddCust">
+    <input type="button" value="Simpan dan Pilih" id="createCust"/>
+    <input type="button" value="Cancel" id="btnCancelAddCust"/>
+  </div>
+</form>

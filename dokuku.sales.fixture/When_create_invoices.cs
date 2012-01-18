@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Machine.Specifications;
 using dokuku.sales.invoices;
+using dokuku.sales.invoices.command;
+using dokuku.sales.invoices.model;
 
 namespace dokuku.sales.fixture
 {
@@ -12,12 +14,12 @@ namespace dokuku.sales.fixture
     {
         private static IInvoicesRepository ciRepo;
         private static Invoices ci;
-        private static Guid id;
+        private static string id;
 
         Establish context = () =>
         {
-            ciRepo = new InvoicesRepository();
-            id = Guid.NewGuid();
+            ciRepo = new InvoicesRepository(new config.MongoConfig());
+            id = "INV-1";
         };
 
         Because of = () =>

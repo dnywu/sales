@@ -12,6 +12,7 @@ using dokuku.security.repository;
 using dokuku.sales.invoices.command;
 using dokuku.sales.invoices.query;
 using dokuku.sales.item.service;
+using dokuku.sales.invoices.service;
 
 namespace dokuku.sales.web.modules
 {
@@ -60,6 +61,10 @@ namespace dokuku.sales.web.modules
         public static IInsertItemService InsertItemService(this Nancy.NancyModule mod)
         {
             return ObjectFactory.GetInstance<IInsertItemService>();
+        }
+        public static IInvoiceService InvoiceService(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IInvoiceService>();
         }
     }
 }

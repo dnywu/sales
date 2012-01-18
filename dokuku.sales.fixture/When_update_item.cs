@@ -11,24 +11,24 @@ namespace dokuku.sales.fixture
     [Subject("Update Item")]
     public class When_update_item
     {
-        static IItemCommand _itemCmd;
-        static IItemQuery _itemQry;
-        static Item _item;
-        static Guid _id;
+        static IItemCommand itemCmd;
+        static IItemQuery itemQry;
+        static Item item;
+        static Guid guid;
 
         Establish initialize = () =>
         {
             MongoConfig mongoCfg = new MongoConfig();
-            _itemCmd = new ItemCommand(mongoCfg);
-            _itemQry = new ItemQuery(mongoCfg);
-            _id = Guid.NewGuid();
+            itemCmd = new ItemCommand(mongoCfg);
+            itemQry = new ItemQuery(mongoCfg);
+            guid = Guid.NewGuid();
         };
 
         Because of = () =>
         {
-            _itemCmd.Save(new Item()
+            itemCmd.Save(new Item()
             {
-                _id = _id,
+                _id = guid,
                 OwnerId = "oetawan@inforsys.co.id",
                 Name = "Honda Jazz",
                 Description = "All new honda jazz",
@@ -39,22 +39,22 @@ namespace dokuku.sales.fixture
 
         It should_create_item = () =>
         {
-            _item = _itemQry.Get(_id);
-            _item.ShouldNotBeNull();
+            item = itemQry.Get(guid);
+            item.ShouldNotBeNull();
         };
 
         It must_be_success_on_update_item = () => 
         {
-            _item.OwnerId = "irfan";
-            _itemCmd.Update(_item);
-            _item = _itemQry.Get(_id);
+            item.OwnerId = "irfan";
+            itemCmd.Save(item);
+            item = itemQry.Get(guid);
 
-            _item.OwnerId.ShouldEqual("irfan");
+            item.OwnerId.ShouldEqual("irfan");
         };
 
         Cleanup cleanup = () =>
         {
-            _itemCmd.Delete(_id);
+            itemCmd.Delete(guid);
         };
     }
 }

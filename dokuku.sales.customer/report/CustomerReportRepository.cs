@@ -63,9 +63,6 @@ namespace dokuku.sales.customer.repository
             QueryDocument qry = new QueryDocument() { {"_id",id}};
             return Collections.FindOneAs<Customer>(qry);
         }
-        public void UpdateCustomer(Customer item)
-        {
-            Collections.Save<Customer>(item);
-        }
+
     }
 }

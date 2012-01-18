@@ -70,7 +70,7 @@ namespace dokuku.sales.web.modules
                     Customer item = JsonConvert.DeserializeObject<Customer>(Data);
                     try
                     {
-                        this.CustomerReportRepository().UpdateCustomer(item);
+                        this.CustomerRepository().UpdateCustomer(item);
                     }
                     catch (Exception ex)
                     {

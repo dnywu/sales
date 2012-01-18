@@ -19,6 +19,7 @@
     using dokuku.sales.invoices.command;
     using dokuku.sales.invoices.query;
     using dokuku.sales.item.service;
+    using dokuku.sales.invoices.service;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -93,6 +94,8 @@
                 x.For<IInvoicesRepository>().Use<InvoicesRepository>();
                 x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
                 x.For<IInsertItemService>().Use<InsertItemService>();
+                x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
+                x.For<IInvoiceService>().Use<InvoiceService>();
             });
         }
     }

@@ -6,23 +6,22 @@
     -khtml-opacity: 0.8;
     opacity: 0.8;
     background:#fff;
-    position:absolute;
+    position:fixed;
     top:0; left:0;
 	z-index:500;
 }
 
 div.ModalDialog div.Detail{
-	width: 450px;
 	background-color:#FFFFFF;
 	margin-bottom:20px;
 	overflow:hidden;
 	resize: none;
-	padding: 3px 3px 7px 3px;
+	padding: 3px 10px 7px 10px;
 	-webkit-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
 	position:absolute;
 	z-index:750;
-	top: 23%;
+	top: 15%;
 	left: 35%;
 }
 
