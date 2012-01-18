@@ -19,9 +19,5 @@ namespace dokuku.security.model
         public string[] Roles { get; private set; }
         public string Status { get; private set; }
         public Guid Guid { get; private set; }
-        public bool IsOwner()
-        {
-            return Roles.Contains(OWNER);
-        }
     }
 }

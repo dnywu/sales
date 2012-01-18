@@ -64,7 +64,7 @@ steal('jquery/controller',
                         '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
                         '<td class="itemList" id="settingPanel' + item + '"></td>' +
                         '<td class="itemList itemName">' + data[item].Name + '</td>' +
-                        '<td class="itemList itemPrice">' + data[item].Rate + '</td></tr>');
+                        '<td class="itemList itemPrice">Rp. ' + $this.rupiahFormat(data[item].Rate) + '</td></tr>');
                         $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
                     });
                     $('.trDataItem:odd').addClass('odd');
@@ -98,12 +98,7 @@ steal('jquery/controller',
                 var index = el.attr("tabindex");
                 var id = $("#checkBoxItem" + index).val();
                 $('#body').sales_items_edit();
-                $('#body').sales_items_edit("load",id);
-            },
-            "#btnDelete click": function (el) {
-                var index = el.attr("tabindex");
-                var id = $("#checkBoxItem" + index).val();
-                //$("#deleteItem").click();
+                $('#body').sales_items_edit("load", id);
             },
             CheckButtonPaging: function () {
                 var startPage = parseInt($('#idInputPage').val());
@@ -173,10 +168,18 @@ steal('jquery/controller',
                 $this.CheckButtonPaging();
             },
             "#deleteItem click": function () {
+                var countChecked = 0;
+                $(".checkBoxItem:checked").each(function (index) {
+                    countChecked++;
+                });
+                if (countChecked==0) {
+                    return;
+                }
                 $("#body").append(this.view("//sales/controllers/items/list/views/confirmBox.ejs"));
             },
             "#confirmYes click": function () {
-                $('.ModalDialog').remove();
+                $(".ModalDialog").remove();
+                $(".checkBoxItem")
                 $(".checkBoxItem:checked").each(function (index) {
                     $.ajax({
                         type: 'DELETE',
@@ -188,6 +191,16 @@ steal('jquery/controller',
             },
             "#confirmNo click": function () {
                 $('.ModalDialog').remove();
+            },
+            rupiahFormat: function (number) {
+                if (isNaN(number)) return "";
+                var str = new String(number);
+                var result = "", len = str.length;
+                for (var i = len - 1; i >= 0; i--) {
+                    if ((i + 1) % 3 == 0 && i + 1 != len) result += ",";
+                    result += str.charAt(len - 1 - i);
+                }
+                return result;
             }
         })
 

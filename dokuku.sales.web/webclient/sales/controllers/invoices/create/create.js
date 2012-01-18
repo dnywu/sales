@@ -4,6 +4,8 @@ steal('jquery/controller',
 	   'jquery/controller/view',
        './createinvoices.css',
        'sales/controllers/invoices/Invoice.js',
+       'sales/scripts/jquery-ui-1.8.11.min.js',
+       'sales/styles/jquery-ui-1.8.14.custom.css',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
 	   'sales/models')
@@ -22,23 +24,32 @@ steal('jquery/controller',
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
-                this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
-                this.CreateListItem(3);
+                this.load();
             },
             load: function () {
                 tabIndexTr = 0;
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
                 this.CreateListItem(3);
+                this.SetDatePicker();
+                this.SetDefaultDate();
+            },
+            '#terms change': function (el) {
+                var invDate = $("#invDate").val();
+                var dueDate = new Date(invDate);
+                dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
+                $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
                 var dataCust = custRepo.GetCustomerByName(el.val());
                 if (dataCust != null) {
-                    $("#keteranganSelectCust").text(dataCust.Currency);
+                    $("#selectcust").val(dataCust.Name);
+                    $("#currency").text(dataCust.Currency).show();
                     custid = dataCust._id;
                     return;
                 }
-                $("#keteranganSelectCust").text("Pelanggan ini tidak ditemukan");
+                $("#currency").hide();
+                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
                 $("#selectcust").focus().select();
             },
             '#addItemRow click': function () {
@@ -132,8 +143,38 @@ steal('jquery/controller',
             GetTotal: function () {
                 $("#total").text(inv.CalculateTotal);
             },
-            '#NewInvoiceSave click': function () {
+            '#formNewIvoice submit': function (el, ev) {
+                ev.preventDefault();
                 inv.CreateNewInvoice();
+            },
+            SetDatePicker: function () {
+                var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1,
+                    onSelect: function (selectedDate) {
+                        var option = this.id == "invDate" ? "" : "",
+					instance = $(this).data("datepicker"),
+					date = $.datepicker.parseDate(
+						instance.settings.dateFormat ||
+						$.datepicker._defaults.dateFormat,
+						selectedDate, instance.settings);
+                        if (this.id == "invDate") {
+                            var currdate = new Date(date);
+                            var term = $("#terms").val();
+                            currdate.setDate(currdate.getDate() + parseInt(term));
+                            dates.not(this).val($.datepicker.formatDate('dd M yy', currdate));
+                        }
+                    }
+                });
+            },
+            SetDefaultDate: function () {
+                var currdate = new Date();
+                var term = $("#terms").val();
+                var dueDate = currdate;
+                $("#invDate").val($.datepicker.formatDate('dd M yy', currdate));
+                dueDate.setDate(dueDate.getDate() + parseInt(term));
+                $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             }
         })
 	});

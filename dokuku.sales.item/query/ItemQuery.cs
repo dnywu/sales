@@ -47,6 +47,7 @@ namespace dokuku.sales.item
             return _document.FindOneAs<Item>(Query.And(Query.EQ("OwnerId", ownerId),
                                              Query.EQ("Name", new Regex("^" + itemName + "$", RegexOptions.IgnoreCase))));
         }
+
         public IEnumerable<Item> Search(string ownerId, String[] keywords)
         {
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
@@ -64,5 +65,24 @@ namespace dokuku.sales.item
             }
             return Query.Or(qries);
         }
+
+        #region IItemQuery Members
+
+
+        public Item FindByBarcode(string barcode, string owner)
+        {
+            return _document.FindOneAs<Item>(Query.And(
+                Query.EQ("OwnerId", owner),
+                Query.EQ("Barcode",barcode)));
+        }
+
+        public Item FindByCode(string code, string owner)
+        {
+            return _document.FindOneAs<Item>(Query.And(
+                Query.EQ("OwnerId", owner),
+                Query.EQ("Code", code)));
+        }
+
+        #endregion
     }
 }

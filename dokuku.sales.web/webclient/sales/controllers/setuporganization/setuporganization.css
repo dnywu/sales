@@ -47,12 +47,12 @@ div.formgroup{
 	color: #666;
 	font-size:12px;
 }
-#tblsetorg td.left, #setCurrOrg td.left{
+#tblsetorg td.left{
 	width: 170px;
 	text-align: right;
 	font-weight: bold;
 }
-#tblsetorg td.right, #setCurrOrg td.right{
+#tblsetorgtd .right{
 	padding-left: 20px;
 	float:left;
 	text-align:left;

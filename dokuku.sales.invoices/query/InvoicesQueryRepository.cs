@@ -8,7 +8,6 @@ using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
 using System.Text.RegularExpressions;
-
 namespace dokuku.sales.invoices.query
 {
     public class InvoicesQueryRepository : IInvoicesQueryRepository
@@ -18,9 +17,9 @@ namespace dokuku.sales.invoices.query
         {
             this.mongo = mongo;
         }
-        public IEnumerable<Invoices> AllInvoices()
+        public IEnumerable<Invoices> AllInvoices(string OwnerId)
         {
-            return Collections.FindAllAs<Invoices>();
+            return Collections.FindAs<Invoices>(Query.EQ("OwnerId",BsonValue.Create(OwnerId)));
         }
         private MongoCollection<Invoices> Collections
         {

@@ -8,7 +8,7 @@ namespace dokuku.sales.invoices.query
 {
     public interface IInvoicesQueryRepository
     {
-        IEnumerable<Invoices> AllInvoices();
         IEnumerable<Invoices> Search(string ownerId, string[] keywords);
+        IEnumerable<Invoices> AllInvoices(string OwnerId);
     }
 }

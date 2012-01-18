@@ -26,16 +26,13 @@ namespace dokuku.sales.customer.repository
 
         public void Delete(Guid id)
         {
-            QueryDocument qryDoc = new QueryDocument();
-            qryDoc["_id"] = id;
-            Collections.Remove(qryDoc);
+            Collections.Remove(Query.EQ("_id", BsonValue.Create(id)));
         }
         public Customer Get(Guid id, string ownerId)
         {
-            QueryDocument qry = new QueryDocument() {
-                                    {"_id",id},
-                                    {"OwnerId",ownerId}};
-            return Collections.Find(qry).FirstOrDefault();
+            return Collections.FindOneAs<Customer>(Query.And(
+                Query.EQ("_id", BsonValue.Create(id)), 
+                Query.EQ("OwnerId", BsonValue.Create(ownerId))));
         }
         private MongoCollection<Customer> Collections
         {

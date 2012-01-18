@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="model\DokukuKeyGenerator.cs" />
     <Compile Include="model\Account.cs" />
-    <Compile Include="model\InvalidUsernameOrPasswordException.cs" />
     <Compile Include="model\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\AccountRepository.cs" />

@@ -6,9 +6,8 @@ using MongoDB.Driver;
 using dokuku.sales.customer.model;
 using dokuku.sales.config;
 using MongoDB.Driver.Builders;
-using System.Text.RegularExpressions;
 using MongoDB.Bson;
-
+using System.Text.RegularExpressions;
 namespace dokuku.sales.customer.repository
 {
     public class CustomerReportRepository : ICustomerReportRepository
@@ -21,37 +20,27 @@ namespace dokuku.sales.customer.repository
 
         public IEnumerable<Customer> LimitCustomers(string ownerId, int start, int limit)
         {
-            QueryDocument qry = new QueryDocument();
-            qry["OwnerId"] = ownerId;
-            MongoCursor<Customer> docs = Collections.Find(qry).SetSkip(start).SetLimit(limit);
-            IList<Customer> customers = new List<Customer>();
-            foreach (Customer cust in docs)
-            {
-                customers.Add(cust);
-            }
-            return customers.ToArray<Customer>();
+            return Collections.FindAs<Customer>(Query.EQ("OwnerId",BsonValue.Create(ownerId))).
+                SetSkip(start).SetLimit(limit);
         }
 
         public int CountCustomers(string ownerId)
         {
-            QueryDocument qry = new QueryDocument();
-            qry["OwnerId"] = ownerId;
-            MongoCursor<Customer> docs = Collections.Find(qry);
-            return Int32.Parse(docs.Count().ToString());
+            return Convert.ToInt32(Collections.Count(Query.EQ("OwnerId", BsonValue.Create(ownerId))));
         }
 
         public Customer GetByCustName(string ownerId, string custName)
         {
-            QueryDocument qry = new QueryDocument() {
-                                    {"OwnerId",ownerId},
-                                    {"Name",custName}};
-            return Collections.FindOneAs<Customer>(qry);
+            return Collections.FindOneAs<Customer>(Query.And(
+                Query.EQ("OwnerId", BsonValue.Create(ownerId)),
+                Query.EQ("Name", new Regex("^" + custName + "$", RegexOptions.IgnoreCase))));
         }
 
         private MongoCollection<Customer> Collections
         {
             get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
         }
+
         public IEnumerable<Customer> Search(string ownerId, string[] keywords)
         {
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
@@ -67,6 +56,16 @@ namespace dokuku.sales.customer.repository
                 index++;
             }
             return Query.Or(qries);
+        }
+
+        public Customer GetCustomerById(Guid id)
+        {
+            QueryDocument qry = new QueryDocument() { {"_id",id}};
+            return Collections.FindOneAs<Customer>(qry);
+        }
+        public void UpdateCustomer(Customer item)
+        {
+            Collections.Save<Customer>(item);
         }
     }
 }

@@ -7,10 +7,10 @@ namespace dokuku.sales.invoices.model
 {
     public class Invoices
     {
-        public string CustomerId { get; set; }
         public string Customer { get; set; }
-        public string PONo { get; set; }
+        public string CustomerId { get; set; }
         public string InvoiceNo { get; set; }
+        public string PONo { get; set; }
         public DateTime InvoiceDate { get; set; }
         public string Terms { get; set; }
         public DateTime DueDate { get; set; }
@@ -21,6 +21,7 @@ namespace dokuku.sales.invoices.model
         public decimal Total { get; set; }
         public InvoiceItems[] Items { get; set; }
         public Guid _id { get; set; }
+        public string _rev { get; set; }
         public string OwnerId { get; set; }
         public String[] Keywords { get; set; }
     }

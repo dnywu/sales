@@ -53,9 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_count_customer.cs" />
     <Compile Include="When_get_all_items.cs" />
     <Compile Include="When_create_item.cs" />
-    <Compile Include="When_get_all_customer.cs" />
     <Compile Include="When_create_customer.cs" />
     <Compile Include="When_find_organization_by_owner_id.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
