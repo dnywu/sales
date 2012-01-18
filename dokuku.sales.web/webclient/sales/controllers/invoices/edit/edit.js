@@ -30,9 +30,9 @@ steal('jquery/controller',
                 var item = inv.GetDataInvoiceByID(id);
                 var term = item.Terms;
                 var term = item.LateFee;
-
+                var count = item.Items.length;
                 this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", item);
-                this.CreateListItem(3);
+                this.CreateListItem(count, item.Items);
                 this.SetDatePicker();
                 this.selectTerm(term);
                 this.selectLateFee(term);
@@ -91,20 +91,58 @@ steal('jquery/controller',
                     }
                 });
             },
-            CreateListItem: function (count) {
+            '#addItemRow click': function () {
+                this.CreateListItem(1, false);
+            },
+            ".clsDeleteItem click": function (el) {
+                if ($("#itemInvoice > tbody > tr").size() == 1)
+                    return;
+                var index = el.attr('id').split('_')[1];
+                $("#itemInvoice tbody tr#tr_" + index + "").remove();
+                //$this.GetSubTotal();
+            },
+            '#itemInvoice tbody tr hover': function (el) {
+                var index = el.attr('tabindex');
+                $("#deleteItem_" + index).show();
+            },
+            "#itemInvoice tbody tr mouseleave": function (el) {
+                var index = el.attr("tabindex");
+                $("#deleteItem_" + index).hide();
+            },
+            LoadTax: function (index) {
+                $("#taxed_" + index).append("<option value=1>None</option>");
+            },
+            CreateListItem: function (count, item) {
+                var i = 0;
+
                 while (count > 0) {
-                    $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
-                                    "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
-                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/></td>" +
-                                    "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
-                                    "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
-                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input></td>" +
-                                    "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
-                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
-                                    "</select></td>" +
-                                    "<td><span class='amount' id='amount_" + tabIndexTr + "'></span></td>" +
-                                    "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
-                    this.LoadTax(tabIndexTr);
+                    if(item[i]==null){
+                        $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
+                                        "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
+                                        "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/></td>" +
+                                        "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
+                                        "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
+                                        "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input></td>" +
+                                        "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
+                                        "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
+                                        "</select></td>" +
+                                        "<td><span class='amount' id='amount_" + tabIndexTr + "'></span></td>" +
+                                        "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
+                    }else{
+                        $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
+                                        "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "' value='" + item[i].PartName + "'/>" +
+                                        "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'  value='" + item[i].ItemId + "' /></td>" +
+                                        "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'>" + item[i].Description + "</textarea></td>" +
+                                        "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "' value='" + item[i].Qty + "'></input></td>" +
+                                        "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "' value='" + item[i].Rate + "'></input></td>" +
+                                        "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "' value='" + item[i].Discount + "'></input></td>" +
+                                        "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
+                                        "</select></td>" +
+                                        "<td><span class='amount' id='amount_" + tabIndexTr + "'>" + item[i].Amount + "</span></td>" +
+                                        "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
+                        this.LoadTax(tabIndexTr);
+                    }
+                    i++;
                     count--;
                     tabIndexTr++;
                 }
