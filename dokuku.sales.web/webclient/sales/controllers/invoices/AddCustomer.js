@@ -33,6 +33,7 @@
             success: function (data) {
                 if (data == null) {
                     $("#errorAddCust").text(data).show();
+                    return;
                 }
                 $this.CloseAddCustDialog();
                 $("#CustomerId").val(data._id);

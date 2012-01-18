@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace dokuku.sales.item.service
 {
@@ -9,34 +10,38 @@ namespace dokuku.sales.item.service
     {
         IItemCommand cmd;
         IItemQuery qry;
-        Item itm;
         public InsertItemService(IItemCommand command, IItemQuery query)
         {
             cmd = command;
             qry = query;
 
         }
-        public void Insert(Item item)
+        public Item Insert(string jsonItem, string ownerId)
         {
-            itm = item;
-            FailIfBarcodeAlreadyExist();
-            FailIfCodeAlreadyExist();
+            Item item = JsonConvert.DeserializeObject<Item>(jsonItem);
+            item.OwnerId = ownerId;
+            item._id = Guid.NewGuid();
+            FailIfBarcodeAlreadyExist(item);
+            FailIfCodeAlreadyExist(item);
+            
             cmd.Save(item);
+            return item;
         }
 
-        public void Update(Item item)
+        public Item Update(string jsonItem, string ownerId)
         {
-            itm = item;
-            Item self = qry.Get(itm._id);
-            if (self.Code != itm.Code || self.Barcode != itm.Barcode)
+            Item item = JsonConvert.DeserializeObject<Item>(jsonItem);
+            Item self = qry.Get(item._id);
+            if (self.Code != item.Code || self.Barcode != item.Barcode)
             {
-                FailIfBarcodeAlreadyExist();
-                FailIfCodeAlreadyExist();
+                FailIfBarcodeAlreadyExist(item);
+                FailIfCodeAlreadyExist(item);
             }
             cmd.Save(item);
+            return item;
         }
 
-        private void FailIfCodeAlreadyExist()
+        private void FailIfCodeAlreadyExist(Item itm)
         {
             if (qry.FindByBarcode(itm.Barcode, itm.OwnerId)!=null)
             {
@@ -45,8 +50,9 @@ namespace dokuku.sales.item.service
             
         }
 
-        private void FailIfBarcodeAlreadyExist()
+        private void FailIfBarcodeAlreadyExist(Item itm)
         {
+            var t = qry.FindByCode(itm.Code, itm.OwnerId);
             if (qry.FindByCode(itm.Code, itm.OwnerId) != null)
             {
                 throw new Exception(string.Format("Barang dengan kode {0} sudah ada", itm.Code));

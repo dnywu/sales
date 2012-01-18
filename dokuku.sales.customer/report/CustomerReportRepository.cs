@@ -36,15 +36,10 @@ namespace dokuku.sales.customer.repository
                 Query.EQ("Name", new Regex("^" + custName + "$", RegexOptions.IgnoreCase))));
         }
 
-        private MongoCollection<Customer> Collections
-        {
-            get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
-        }
-
-        public IEnumerable<Customer> Search(string ownerId, string[] keywords)
+        public IEnumerable<CustomerReports> Search(string ownerId, string[] keywords)
         {
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
-            return Collections.Find(qry);
+            return searchndexCollections.Find(qry);
         }
         private QueryComplete getQuery(string[] keywords)
         {
@@ -63,6 +58,30 @@ namespace dokuku.sales.customer.repository
             QueryDocument qry = new QueryDocument() { {"_id",id}};
             return Collections.FindOneAs<Customer>(qry);
         }
+        private MongoCollection<Customer> Collections
+        {
+            get { return mongo.ReportingDatabase.GetCollection<Customer>("customers"); }
+        }
+        private MongoCollection<CustomerReports> searchndexCollections
+        {
+            get
+            {
+                return mongo.ReportingDatabase.GetCollection<CustomerReports>("customerreports");
+            }
+        }
 
+        public IEnumerable<Customer> GetCustomerByOwnerIdandGuid(string ownerid, Guid[] ids)
+        {
+            BsonValue[] values = new BsonValue[ids.Length];
+            int i = 0;
+            foreach(Guid id in ids)
+            {
+                values[i] = BsonValue.Create(id);
+                i++;
+            }
+            var qry = Query.And(Query.EQ("OwnerId", ownerid),
+                      Query.In("_id", values));
+            return Collections.Find(qry);
+        }
     }
 }

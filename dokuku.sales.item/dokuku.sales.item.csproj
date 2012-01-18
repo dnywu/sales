@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="command\ItemCommand.cs" />
     <Compile Include="command\IItemCommand.cs" />
+    <Compile Include="model\ItemReports.cs" />
     <Compile Include="service\IInsertItemService.cs" />
     <Compile Include="service\InsertItemServices.cs" />
     <Compile Include="model\Item.cs" />

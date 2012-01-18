@@ -443,6 +443,7 @@
     <Content Include="webclient\sales\controllers\home\home.js" />
     <Content Include="webclient\sales\controllers\home\home_test.js" />
     <Content Include="webclient\sales\controllers\invoices\AddCustomer.js" />
+    <Content Include="webclient\sales\controllers\invoices\AddItem.js" />
     <Content Include="webclient\sales\controllers\invoices\create\create.html" />
     <Content Include="webclient\sales\controllers\invoices\create\create.js" />
     <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
@@ -898,6 +899,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
+    <None Include="webclient\sales\controllers\invoices\create\views\AddItem.ejs" />
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
       <SubType>Designer</SubType>
     </None>
