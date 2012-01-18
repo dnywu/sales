@@ -19,7 +19,7 @@
     using dokuku.sales.invoices.command;
     using dokuku.sales.invoices.query;
     using dokuku.sales.item.service;
-    using dokuku.sales.customer.service;
+    using dokuku.sales.invoices.service;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
