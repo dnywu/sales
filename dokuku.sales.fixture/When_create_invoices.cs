@@ -14,12 +14,12 @@ namespace dokuku.sales.fixture
     {
         private static IInvoicesRepository ciRepo;
         private static Invoices ci;
-        private static Guid id;
+        private static string id;
 
         Establish context = () =>
         {
             ciRepo = new InvoicesRepository(new config.MongoConfig());
-            id = Guid.NewGuid();
+            id = "INV-1";
         };
 
         Because of = () =>

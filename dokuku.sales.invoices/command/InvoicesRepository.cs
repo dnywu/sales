@@ -24,13 +24,13 @@ namespace dokuku.sales.invoices.command
             Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
 
-        public Invoices Get(Guid id)
+        public Invoices Get(string id)
         {
             var qry = Query.EQ("_id", id);
             return Collections.FindOneAs<Invoices>(qry);
         }
 
-        public void Delete(Guid id)
+        public void Delete(string id)
         {
             Collections.Remove(Query.EQ("_id", id));
         }

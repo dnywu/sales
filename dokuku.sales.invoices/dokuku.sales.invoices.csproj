@@ -61,7 +61,9 @@
     <Compile Include="query\IInvoicesQueryRepository.cs" />
     <Compile Include="query\InvoicesQueryRepository.cs" />
     <Compile Include="service\IInvoiceAutoNumberGenerator.cs" />
+    <Compile Include="service\IInvoiceService.cs" />
     <Compile Include="service\InvoiceAutoNumberGenerator.cs" />
+    <Compile Include="service\InvoiceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
