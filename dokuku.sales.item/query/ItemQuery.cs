@@ -69,14 +69,14 @@ namespace dokuku.sales.item
         {
             return _document.FindOneAs<Item>(Query.And(
                 Query.EQ("OwnerId", owner),
-                Query.EQ("Barcode",barcode)));
+                Query.EQ("Barcode", barcode == null ? string.Empty : barcode)));
         }
 
         public Item FindByCode(string code, string owner)
         {
             return _document.FindOneAs<Item>(Query.And(
                 Query.EQ("OwnerId", owner),
-                Query.EQ("Code", code)));
+                Query.EQ("Code", code == null ? string.Empty : code)));
         }
         public bool IsCodeAlreadyExist(string code, string owner)
         {

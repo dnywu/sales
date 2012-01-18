@@ -27,6 +27,16 @@
             total = subtotal * tax;
         return total;
     },
+    ShowListItem: function (part, index) {
+        $("#partid_" + index).val(part._id);
+        $("#part_" + index).val(part.Name);
+        $("#desc_" + index).text(part.Description);
+        $("#qty_" + index).val('1.00');
+        $("#rate_" + index).val(part.Rate);
+        $("#disc_" + index).val('0.00');
+        $("#amount_" + index).text(part.Rate);
+        $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
+    },
     CreateNewInvoice: function () {
         var length = $("#itemInvoice > tbody > tr").size();
         var objInv = new Object;
@@ -34,7 +44,9 @@
         objInv.CustomerId = $("#CustomerId").val();
         objInv.PONo = $("#po").val();
         objInv.InvoiceDate = $("#invDate").val();
-        objInv.Terms = $("#terms").val();
+        objInv.Terms = new Object();
+        objInv.Terms.Name = $("#terms").text();
+        objInv.Terms.Value = $("#terms").val();
         objInv.DueDate = $("#dueDate").val();
         objInv.LateFee = $("#latefee").val();
         objInv.Note = $("#custMsg").val();
@@ -55,10 +67,15 @@
                 objInv.Items[i].Amount = $('.amount').get(i).innerText;
             }
         });
-        if (objInv.Items.length == 0) {
-            $("#errorCreateInv").text("Silahkan Masukkan barang di invoice ini").show();
+        if (objInv.CustomerId == 0) {
+            $("#errorCreateInv").text("Silahkan masukkan Nama Pelanggan dengan benar").show();
             return;
         }
+        if (objInv.Items.length == 0) {
+            $("#errorCreateInv").text("Silahkan masukkan barang di invoice ini").show();
+            return;
+        }
+
         $("#errorCreateInv").empty().hide();
         var newInv = JSON.stringify(objInv);
         $.ajax({

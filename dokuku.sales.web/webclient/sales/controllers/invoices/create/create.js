@@ -5,16 +5,18 @@ steal('jquery/controller',
        './createinvoices.css',
        'sales/controllers/invoices/Invoice.js',
        'sales/controllers/invoices/AddCustomer.js',
+       'sales/controllers/invoices/AddItem.js',
        'sales/scripts/jquery-ui-1.8.11.min.js',
        'sales/styles/jquery-ui-1.8.14.custom.css',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
 	   'sales/models')
 	.then('./views/createinvoices.ejs',
-          './views/AddCustomer.ejs', function ($) {
+          './views/AddCustomer.ejs',
+          './views/AddItem.ejs', function ($) {
               $.Controller('Sales.Invoices.Create',
         {
-            defaults: ( tabIndexTr = 0,
+            defaults: (tabIndexTr = 0,
                         $this = null,
                         inv = null,
                         itmRepo = null,
@@ -28,9 +30,9 @@ steal('jquery/controller',
                 custRepo = new CustomerRepository();
                 this.load();
             },
-            load: function () {
+            load: function (customer) {
                 tabIndexTr = 0;
-                this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs"));
+                this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();
@@ -47,6 +49,13 @@ steal('jquery/controller',
                 var addCust = new AddCustomer();
                 addCust.TriggerEvent();
             },
+            '.additem click': function (el, ev) {
+                new ModalDialog("Tambah Barang Baru");
+                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
+                var addItem = new AddItem(el.attr("id").split('_')[1]);
+                addItem.TriggerEvent();
+
+            },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
                 var dataCust = custRepo.GetCustomerByName(el.val());
@@ -56,6 +65,7 @@ steal('jquery/controller',
                     $("#CustomerId").val(dataCust._id);
                     return;
                 }
+                $("#CustomerId").val("0");
                 $("#currency").hide();
                 $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
                 $("#selectcust").focus().select();
@@ -85,14 +95,7 @@ steal('jquery/controller',
                 var part = itmRepo.GetItemByName(partName);
 
                 if (part != null) {
-                    $("#partid_" + index).val(part._id);
-                    $("#part_" + index).val(part.Name);
-                    $("#desc_" + index).text(part.Description);
-                    $("#qty_" + index).val('1.00');
-                    $("#rate_" + index).val(part.Rate);
-                    $("#disc_" + index).val('0.00');
-                    $("#amount_" + index).text(part.Rate);
-                    $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
+                    inv.ShowListItem(part, index);
                     $this.GetSubTotal();
                     $this.GetTotal();
                     return;
@@ -133,7 +136,8 @@ steal('jquery/controller',
                 while (count > 0) {
                     $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
                                     "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
-                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/></td>" +
+                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/>" +
+                                    "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input></td>" +

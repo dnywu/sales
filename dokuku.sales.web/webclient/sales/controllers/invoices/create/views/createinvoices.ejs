@@ -12,8 +12,8 @@
                 <div class="mandatoryTxt">Pilih Pelanggan</div>
               </td>
               <td class="td_field">
-                <input type="hidden" id="CustomerId" />
-                <input type='text' name="customer" id="selectcust" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('pelanggan harus dipilih')"/>
+                <input type="hidden" id="CustomerId" value="<%=this._id%>"/>
+                <input type='text' name="customer" id="selectcust" value="<%=this.Name%>" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('pelanggan harus dipilih')"/>
               </td>
               <td class="error">
                 <label id="keteranganSelectCust"></label>
