@@ -52,6 +52,7 @@
                 inv.ShowListItem(data, index);
                 $this.GetSubTotal();
                 $this.GetTotal();
+                $("#additem_" + index).hide();
             }
         });
     },
