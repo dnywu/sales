@@ -397,7 +397,7 @@ div.MessageConfirmation{
 	display:none;
 }
 .imagesConfirm{
-	
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -273px -1025px;
 	margin: 10px 15px 10px 5px;
 	height: 34px;

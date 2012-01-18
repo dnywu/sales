@@ -24,6 +24,11 @@ namespace dokuku.sales.customer.repository
             Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
 
+        public void UpdateCustomer(Customer item)
+        {
+            Collections.Save<Customer>(item);
+        }
+
         public void Delete(Guid id)
         {
             Collections.Remove(Query.EQ("_id", BsonValue.Create(id)));
