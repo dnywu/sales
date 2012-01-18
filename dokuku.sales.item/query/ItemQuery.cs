@@ -8,7 +8,6 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB;
-using MongoDB.Driver.Builders;
 using System.Text.RegularExpressions;
 namespace dokuku.sales.item
 {
@@ -66,9 +65,6 @@ namespace dokuku.sales.item
             return Query.Or(qries);
         }
 
-        #region IItemQuery Members
-
-
         public Item FindByBarcode(string barcode, string owner)
         {
             return _document.FindOneAs<Item>(Query.And(
@@ -82,7 +78,28 @@ namespace dokuku.sales.item
                 Query.EQ("OwnerId", owner),
                 Query.EQ("Code", code)));
         }
+        public bool IsCodeAlreadyExist(string code, string owner)
+        {
+            if (FindByCode(code, owner) == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-        #endregion
+        public bool IsBarcodeAlreadyExist(string barcode, string owner)
+        {
+            if (FindByBarcode(barcode, owner) == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

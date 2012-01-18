@@ -10,23 +10,25 @@
 					<tbody>
             <tr>
               <td class="labelLeft">
-                <span>Kode Barang</span>
+                <span class="requiredFieldLabel">Kode Barang</span>
               </td>
               <td class="field">
-                <input type="text" id="itemCode" name="itemCode" />
+                <input type="text" id="itemCode" name="itemCode" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode barang tidak boleh kosong')" />
               </td>
+              <td><div class="messageVerify Code"></div></td>
             </tr>
             <tr>
               <td class="labelLeft">
-                <span>Barcode</span>
+                <span class="requiredFieldLabel">Barcode</span>
               </td>
               <td class="field">
-                <input type="text" id="barcode" name="barcode" />
+                <input type="text" id="barcode" name="barcode" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Barcode barang tidak koleh kosong')" />
               </td>
+              <td><div class="messageVerify Barcode"></div></td>
             </tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
-							<td class="field"><input type="text" id="itemName" name="itemName" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama barang tidak Boleh Kosong')"/></td>
+							<td class="field"><input type="text" id="itemName" name="itemName" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama barang tidak boleh kosong')" /></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">
@@ -38,7 +40,7 @@
 						</tr>
 						<tr>
 							<td class="labelLeft"><span class="requiredFieldLabel">Harga(Rp.)</span></td>
-							<td class="field"><input type="text" id="itemPrice" name="itemPrice" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Harga barang tidak Boleh Kosong')" /></td>
+							<td class="field"><input type="text" id="itemPrice" name="itemPrice" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Harga barang tidak boleh kosong')" /></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">Pajak</td>
