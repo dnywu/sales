@@ -3,6 +3,7 @@ steal('jquery/controller',
 	   'jquery/controller/view',
 	   'sales/models',
        'sales/controllers/invoices/create',
+       'sales/controllers/invoices/edit',
        './listinvoice.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
@@ -51,6 +52,10 @@ steal('jquery/controller',
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
+                },
+                '.EditContextMenuInvoive click': function (el) {
+                    var id = el.attr('id');
+                    $('#body').sales_invoices_edit('load', id);
                 }
             });
 

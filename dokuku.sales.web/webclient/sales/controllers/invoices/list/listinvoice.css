@@ -76,3 +76,8 @@ div.ContextMenuInvoice
 {
 	padding-top:4px;
 }
+
+.EditContextMenuInvoive
+{
+    cursor:pointer;
+}

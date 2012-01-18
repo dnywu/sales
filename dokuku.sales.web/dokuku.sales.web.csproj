@@ -447,6 +447,11 @@
     <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
     <Content Include="webclient\sales\controllers\invoices\create\create_test.js" />
     <Content Include="webclient\sales\controllers\invoices\create\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\invoices\edit\editinvoices.css" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
     <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
@@ -895,9 +900,7 @@
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\invoices\list\views\contextMenuInvoice.ejs">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>
