@@ -13,15 +13,14 @@
 
 div.ModalDialog div.Detail{
 	background-color:#FFFFFF;
-	margin-bottom:20px;
 	overflow:hidden;
 	resize: none;
 	padding: 3px 10px 7px 10px;
 	-webkit-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
-	position:absolute;
+	position:fixed;
 	z-index:750;
-	top: 15%;
+	top: 5.5%;
 	left: 35%;
 }
 
