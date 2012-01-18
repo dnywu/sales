@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using dokuku.sales.item.model;
 namespace dokuku.sales.item
 {
     public interface IItemQuery
@@ -13,7 +14,7 @@ namespace dokuku.sales.item
         Item GetItemByName(string ownerId, string itemName);
         Item FindByBarcode(string barcode, string owner);
         Item FindByCode(string code, string owner);
-        IEnumerable<Item> Search(string ownerId, String[] keywords);
+        IEnumerable<ItemReports> Search(string ownerId, String[] keywords);
         bool IsCodeAlreadyExist(string code, string owner);
         bool IsBarcodeAlreadyExist(string barcode, string owner);
     }

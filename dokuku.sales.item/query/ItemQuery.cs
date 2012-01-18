@@ -9,14 +9,17 @@ using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB;
 using System.Text.RegularExpressions;
+using dokuku.sales.item.model;
 namespace dokuku.sales.item
 {
     public class ItemQuery : IItemQuery
     {
         MongoCollection<BsonDocument> _document;
+        MongoCollection<BsonDocument> _reports;
         public ItemQuery(MongoConfig mongoConfig)
         {
             _document = mongoConfig.MongoDatabase.GetCollection(typeof(Item).Name);
+            _reports = mongoConfig.MongoDatabase.GetCollection(typeof(ItemReports).Name);
         }
 
         public Item Get(Guid id)
@@ -47,10 +50,10 @@ namespace dokuku.sales.item
                                              Query.EQ("Name", new Regex("^" + itemName + "$", RegexOptions.IgnoreCase))));
         }
 
-        public IEnumerable<Item> Search(string ownerId, String[] keywords)
+        public IEnumerable<ItemReports> Search(string ownerId, String[] keywords)
         {
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
-            return _document.FindAs<Item>(qry);
+            return _reports.FindAs<ItemReports>(qry).SetLimit(10);
         }
 
         private QueryComplete getQuery(string[] keywords)
