@@ -7,6 +7,7 @@ using dokuku.sales.customer.model;
 using dokuku.sales.config;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
+using System.Text.RegularExpressions;
 
 namespace dokuku.sales.customer.repository
 {
@@ -33,7 +34,7 @@ namespace dokuku.sales.customer.repository
         {
             return Collections.FindOneAs<Customer>(Query.And(
                 Query.EQ("OwnerId", BsonValue.Create(ownerId)),
-                Query.EQ("Name", BsonValue.Create(custName))));
+                Query.EQ("Name", new Regex("^" + custName + "$", RegexOptions.IgnoreCase))));
         }
 
         private MongoCollection<Customer> Collections
