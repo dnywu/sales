@@ -11,5 +11,7 @@ namespace dokuku.sales.item
         IEnumerable<Item> LimitItems(string ownerId, int start, int limit);
         IEnumerable<Item> AllItems(string companyId);
         Item GetItemByName(string ownerId, string itemName);
+        Item FindByBarcode(string barcode, string owner);
+        Item FindByCode(string code, string owner);
     }
 }

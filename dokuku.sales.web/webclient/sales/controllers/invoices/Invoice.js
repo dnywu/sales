@@ -30,7 +30,7 @@
     CreateNewInvoice: function () {
         var length = $("#itemInvoice > tbody > tr").size();
         var objInv = new Object;
-        objInv.Customer = custid;
+        objInv.Customer = $("#selectcust").val();
         objInv.CustomerId = custid;
         objInv.PONo = $("#po").val();
         objInv.InvoiceDate = $("#invDate").val();
@@ -61,10 +61,28 @@
             data: { 'invoice': newInv },
             dataType: 'json',
             async: false,
+            success: this.GetDataInvoice
+        });
+    },
+    GetDataInvoice: function () {
+        var dataInvoice = new Array();
+        $.ajax({
+            type: 'GET',
+            url: '/GetDataInvoice',
+            data: 'json',
+            async: false,
             success: function (data) {
+                $.each(data, function (i) {
+                    dataInvoice[i] = data[i];
+                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                });
 
             }
         });
+        return dataInvoice;
     }
 })
 });

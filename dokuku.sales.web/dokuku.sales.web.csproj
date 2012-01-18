@@ -454,6 +454,7 @@
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
     <Content Include="webclient\sales\controllers\items\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
@@ -522,6 +523,13 @@
     <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.js" />
     <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
+    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="webclient\sales\styles\images\ui-icons_ffffff_256x240.png" />
     <Content Include="webclient\sales\styles\jquery-ui-1.8.14.custom.css" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
@@ -885,6 +893,9 @@
     </None>
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\contextMenuInvoice.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">

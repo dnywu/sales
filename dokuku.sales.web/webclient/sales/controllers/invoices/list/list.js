@@ -9,12 +9,14 @@ steal('jquery/controller',
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
-           /** @Static */
             {
-            defaults: {}
-        },
+                defaults: ($this = null,
+                           inv = null)
+            },
             {
                 init: function () {
+                    $this = this;
+                    inv = new Invoice();
                     var invoices = this.GetInvoices();
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices));
                 },
@@ -23,7 +25,7 @@ steal('jquery/controller',
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices))
                 },
                 GetInvoices: function () {
-                    var invoices = new Array({ name: 'a', des: 'a' }, { name: 'b', des: 'b' });
+                    var invoices = inv.GetDataInvoice();
                     return invoices;
                 },
                 '#selectall change': function () {
@@ -32,6 +34,20 @@ steal('jquery/controller',
                     } else {
                         $(".selectInvoice").removeAttr('checked');
                     }
+                },
+                'table#tblListInvoice tbody.bodyDataInvoice tr.trbodyDataInvoice hover': function (el) {
+                    var index = el.attr('tabindex');
+                    $('#settingListInvoice' + index).show();
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
+                },
+                'table#tblListInvoice tbody.bodyDataInvoice tr.trbodyDataInvoice mouseleave': function (el) {
+                    var index = el.attr('tabindex');
+                    $('#settingListInvoice' + index).hide();
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
+                },
+                '.settingListInvoice click': function (el) {
+                    var index = el.attr('tabindex');
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").show();
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");

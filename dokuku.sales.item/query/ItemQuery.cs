@@ -47,5 +47,24 @@ namespace dokuku.sales.item
             return _document.FindOneAs<Item>(Query.And(Query.EQ("OwnerId", ownerId),
                                              Query.EQ("Name", new Regex("^" + itemName + "$", RegexOptions.IgnoreCase))));
         }
+
+        #region IItemQuery Members
+
+
+        public Item FindByBarcode(string barcode, string owner)
+        {
+            return _document.FindOneAs<Item>(Query.And(
+                Query.EQ("OwnerId", owner),
+                Query.EQ("Barcode",barcode)));
+        }
+
+        public Item FindByCode(string code, string owner)
+        {
+            return _document.FindOneAs<Item>(Query.And(
+                Query.EQ("OwnerId", owner),
+                Query.EQ("Code", code)));
+        }
+
+        #endregion
     }
 }

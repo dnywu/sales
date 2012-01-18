@@ -5,6 +5,8 @@ using System.Text;
 using dokuku.sales.invoices.model;
 using dokuku.sales.config;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using MongoDB.Bson;
 
 namespace dokuku.sales.invoices.query
 {
@@ -15,9 +17,9 @@ namespace dokuku.sales.invoices.query
         {
             this.mongo = mongo;
         }
-        public IEnumerable<Invoices> AllInvoices()
+        public IEnumerable<Invoices> AllInvoices(string OwnerId)
         {
-            return Collections.FindAllAs<Invoices>();
+            return Collections.FindAs<Invoices>(Query.EQ("OwnerId",BsonValue.Create(OwnerId)));
         }
         private MongoCollection<Invoices> Collections
         {

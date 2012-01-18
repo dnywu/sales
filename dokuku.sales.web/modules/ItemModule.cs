@@ -54,7 +54,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-
+                    string itemCode = (string)this.Request.Form.itemCode;
+                    string barcode = (string)this.Request.Form.barcode;
                     string itemName = (string)this.Request.Form.itemName;
                     string itemDesc = (string)this.Request.Form.description;
                     decimal itemPrice = (decimal)this.Request.Form.itemPrice;
@@ -66,10 +67,12 @@ namespace dokuku.sales.web.modules
                     {
                         taxValue = 0.1m;
                     }
-                    this.ItemCommand().Save(new Item()
+                    this.InsertItemService().Insert(new Item()
                     {
                         _id = id,
                         OwnerId = owner,
+                        Code = itemCode,
+                        Barcode = barcode,
                         Name = itemName,
                         Description = itemDesc,
                         Rate = itemPrice,
@@ -79,7 +82,7 @@ namespace dokuku.sales.web.modules
                 }
                 catch (Exception ex)
                 {
-                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    return Response.AsJson(new { error = true, message = ex.Message });
                 }
                 return Response.AsJson("OK");
             };
@@ -93,7 +96,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-
+                    string itemCode = (string)this.Request.Form.itemCode;
+                    string barcode = (string)this.Request.Form.barcode;
                     string itemName = (string)this.Request.Form.itemName;
                     string itemDesc = (string)this.Request.Form.description;
                     decimal itemPrice = (decimal)this.Request.Form.itemPrice;
@@ -105,10 +109,12 @@ namespace dokuku.sales.web.modules
                     {
                         taxValue = 0.1m;
                     }
-                    this.ItemCommand().Update(new Item()
+                    this.InsertItemService().Update(new Item()
                     {
                         _id = id,
                         OwnerId = owner,
+                        Code = itemCode,
+                        Barcode = barcode,
                         Name = itemName,
                         Description = itemDesc,
                         Rate = itemPrice,
@@ -118,7 +124,7 @@ namespace dokuku.sales.web.modules
                 }
                 catch (Exception ex)
                 {
-                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    return Response.AsJson(new { error = true, message = ex.Message });
                 }
                 return Response.AsJson("OK");
             };
