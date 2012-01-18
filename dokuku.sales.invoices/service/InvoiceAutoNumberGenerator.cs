@@ -20,6 +20,11 @@ namespace dokuku.sales.invoices.service
         {
             this.mongo = mongoConfig;
         }
+        public string GenerateInvoiceNumberDraft(string companyId)
+        {
+            this.companyId = companyId;
+            return mongo.Save(GetInvoiceAutoNumberDraft().Next()).InvoiceNumberInStringFormat();
+        }
         public string GenerateInvoiceNumber(DateTime transactionDate, string companyId)
         {
             this.transactionDate = transactionDate;
@@ -37,6 +42,21 @@ namespace dokuku.sales.invoices.service
             }
         }
 
+        private InvoiceAutoNumberDraft GetInvoiceAutoNumberDraft()
+        {
+            MongoCollection<InvoiceAutoNumberDraft> collection = mongo.MongoDatabase.GetCollection<InvoiceAutoNumberDraft>(typeof(InvoiceAutoNumberDraft).Name);
+            InvoiceAutoNumberDraft invoiceAutoNumber = collection.FindOneAs<InvoiceAutoNumberDraft>(Query.And(
+                Query.EQ("_id", BsonValue.Create(typeof(InvoiceAutoNumberDraft).Name)),
+                Query.EQ(COMPANY_ID_FIELD, BsonValue.Create(companyId))));
+
+            if (invoiceAutoNumber == null)
+            {
+                invoiceAutoNumber = new InvoiceAutoNumberDraft(typeof(InvoiceAutoNumberDraft).Name, companyId);
+                collection.Save<InvoiceAutoNumberDraft>(invoiceAutoNumber);
+            }
+
+            return invoiceAutoNumber;
+        }
         private InvoiceAutoNumberConfig GetInvoiceAutoNumberConfig()
         {
             MongoCollection<InvoiceAutoNumberConfig> collection =  mongo.MongoDatabase.GetCollection<InvoiceAutoNumberConfig>(typeof(InvoiceAutoNumberConfig).Name);
@@ -102,6 +122,12 @@ namespace dokuku.sales.invoices.service
 
     public static class InvoiceAutoNumberWriter
     {
+        public static InvoiceAutoNumberDraft Save(this MongoConfig mongo, InvoiceAutoNumberDraft invAutoNumber)
+        {
+            mongo.MongoDatabase.GetCollection<InvoiceAutoNumberDraft>(typeof(InvoiceAutoNumberDraft).Name).
+                Save<InvoiceAutoNumberDraft>(invAutoNumber);
+            return invAutoNumber;
+        }
         public static InvoiceAutoNumberDefault Save(this MongoConfig mongo, InvoiceAutoNumberDefault invAutoNumber)
         {
             mongo.MongoDatabase.GetCollection<InvoiceAutoNumberDefault>(typeof(InvoiceAutoNumberDefault).Name).

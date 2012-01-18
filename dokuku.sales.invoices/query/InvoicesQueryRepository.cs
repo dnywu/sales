@@ -28,10 +28,11 @@ namespace dokuku.sales.invoices.query
                 return mongo.MongoDatabase.GetCollection<Invoices>("invoices");
             }
         }
-        public IEnumerable<Invoices> Search(string ownerId, string[] keywords)
+        public IEnumerable<InvoiceReports> Search(string ownerId, string[] keywords)
         {
+            MongoCollection<InvoiceReports> reportCollection = mongo.ReportingDatabase.GetCollection<InvoiceReports>(typeof(InvoiceReports).Name);
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
-            return Collections.Find(qry);
+            return reportCollection.Find(qry).SetLimit(10);
         }
 
         private QueryComplete getQuery(string[] keywords)

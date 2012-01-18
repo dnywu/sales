@@ -53,13 +53,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_search_invoices.cs" />
     <Compile Include="When_generate_invoice_number_monthly_mode.cs" />
     <Compile Include="When_generate_invoice_number_yearly_mode.cs" />
     <Compile Include="When_generate_invoice_auto_number_monthly.cs" />
     <Compile Include="When_generate_invoice_auto_number_yearly.cs" />
     <Compile Include="When_generate_invoice_auto_number_default.cs" />
     <Compile Include="When_count_customer.cs" />
-    <Compile Include="When_create_invoices.cs" />
     <Compile Include="When_generate_invoice_number.cs" />
     <Compile Include="When_get_all_items.cs" />
     <Compile Include="When_create_item.cs" />

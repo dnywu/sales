@@ -57,7 +57,7 @@ namespace dokuku.sales.web.modules
                 {
                     return Response.AsRedirect(ex.Message);
                 }
-                return Response.AsJson("OK");
+                return Response.AsJson(customer);
             };
             Get["/GetDataCustomer/id/{id}"] = p =>
             {
