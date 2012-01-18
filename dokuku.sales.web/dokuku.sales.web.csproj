@@ -896,6 +896,9 @@
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\contextMenuInvoice.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>

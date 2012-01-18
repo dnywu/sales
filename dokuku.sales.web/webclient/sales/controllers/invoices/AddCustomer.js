@@ -4,9 +4,21 @@
 },
 {
     init: function () {
-        new ModalDialog("Tambah Pelanggan Baru");
-        $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
-        this.TriggerAddCustEvent();
+    },
+    TriggerEvent: function () {
+        $("#moreFieldCustomer").click(this.MoreFieldAddCust);
+        $("#btnCancelAddCust").click(this.CloseAddCustDialog);
+        $("#createCust").click(this.AddCust);
+
+    }, MoreFieldAddCust: function () {
+        $("tr#trmoreFieldCustomer").remove();
+        $("table.hiddenTable").show();
+    },
+    CloseAddCustDialog: function () {
+        $(".ModalDialog").remove();
+    },
+    AddCust: function (el, ev) {
+        alert(JSON.stringify($("#formAddCustDialog").formParams()));
     }
 })
 });

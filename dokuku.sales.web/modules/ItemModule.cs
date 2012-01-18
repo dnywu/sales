@@ -82,7 +82,7 @@ namespace dokuku.sales.web.modules
                 }
                 catch (Exception ex)
                 {
-                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    return Response.AsJson(new { error = true, message = ex.Message });
                 }
                 return Response.AsJson("OK");
             };
@@ -109,7 +109,7 @@ namespace dokuku.sales.web.modules
                     {
                         taxValue = 0.1m;
                     }
-                    this.ItemCommand().Save(new Item()
+                    this.InsertItemService().Update(new Item()
                     {
                         _id = id,
                         OwnerId = owner,
@@ -124,7 +124,7 @@ namespace dokuku.sales.web.modules
                 }
                 catch (Exception ex)
                 {
-                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                    return Response.AsJson(new { error = true, message = ex.Message });
                 }
                 return Response.AsJson("OK");
             };

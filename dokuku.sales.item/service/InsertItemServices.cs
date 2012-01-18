@@ -24,6 +24,18 @@ namespace dokuku.sales.item.service
             cmd.Save(item);
         }
 
+        public void Update(Item item)
+        {
+            itm = item;
+            Item self = qry.Get(itm._id);
+            if (self.Code != itm.Code || self.Barcode != itm.Barcode)
+            {
+                FailIfBarcodeAlreadyExist();
+                FailIfCodeAlreadyExist();
+            }
+            cmd.Save(item);
+        }
+
         private void FailIfCodeAlreadyExist()
         {
             if (qry.FindByBarcode(itm.Barcode, itm.OwnerId)!=null)

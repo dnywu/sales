@@ -4,6 +4,7 @@ steal('jquery/controller',
 	   'jquery/controller/view',
        './createinvoices.css',
        'sales/controllers/invoices/Invoice.js',
+       'sales/controllers/invoices/AddCustomer.js',
        'sales/scripts/jquery-ui-1.8.11.min.js',
        'sales/styles/jquery-ui-1.8.14.custom.css',
        'sales/repository/ItemRepository.js',
@@ -41,7 +42,10 @@ steal('jquery/controller',
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             },
             '#tambahPelanggan click': function () {
-                
+                new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
+                var addCust = new AddCustomer();
+                addCust.TriggerEvent();
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
@@ -179,22 +183,6 @@ steal('jquery/controller',
                 $("#invDate").val($.datepicker.formatDate('dd M yy', currdate));
                 dueDate.setDate(dueDate.getDate() + parseInt(term));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
-            },
-            TriggerAddCustEvent: function () {
-                $("#moreFieldCustomer").click(this.MoreFieldAddCust);
-                $("#btnCancelAddCust").click(this.CloseAddCustDialog);
-                $("#formAddCustDialog").submit(this.AddCust);
-            },
-            MoreFieldAddCust: function () {
-                $("tr#trmoreFieldCustomer").remove();
-                $("table.hiddenTable").show();
-            },
-            CloseAddCustDialog: function () {
-                $(".ModalDialog").remove();
-            },
-            AddCust: function (el, ev) {
-                ev.preventDefault();
-                alert(JSON.stringify(el.formParams()));
             }
         })
           });

@@ -33,7 +33,8 @@ namespace dokuku.sales.web.modules
             };
             Get["/GetDataInvoice"] = p =>
                 {
-                    return Response.AsJson(this.InvoicesQueryRepository().AllInvoices());
+                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
                 };
         }
     }
