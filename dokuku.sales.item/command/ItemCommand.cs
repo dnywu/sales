@@ -20,6 +20,7 @@ namespace dokuku.sales.item
         public void Save(Item item)
         {
             _document.Insert(item.ToBsonDocument());
+            _document.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
         public void Update(Item item)
         {

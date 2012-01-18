@@ -20,6 +20,7 @@ namespace dokuku.sales.item
         public string Description { get; set; }
         public decimal Rate { get; set; }
         public Tax Tax { get; set; }
+        public String[] KeyWords { get; set; }
     }
 
     public class Tax

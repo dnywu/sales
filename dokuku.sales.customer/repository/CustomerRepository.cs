@@ -7,6 +7,7 @@ using System.Configuration;
 using MongoDB.Driver;
 using MongoDB.Bson;
 using dokuku.sales.customer.model;
+using MongoDB.Driver.Builders;
 namespace dokuku.sales.customer.repository
 {
     public class CustomerRepository : ICustomerRepository
@@ -20,6 +21,7 @@ namespace dokuku.sales.customer.repository
         public void Save(Customer cs)
         {
             Collections.Save<Customer>(cs);
+            Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
 
         public void Delete(Guid id)

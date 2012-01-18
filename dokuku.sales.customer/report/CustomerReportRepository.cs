@@ -5,6 +5,9 @@ using System.Text;
 using MongoDB.Driver;
 using dokuku.sales.customer.model;
 using dokuku.sales.config;
+using MongoDB.Driver.Builders;
+using System.Text.RegularExpressions;
+using MongoDB.Bson;
 
 namespace dokuku.sales.customer.repository
 {
@@ -48,6 +51,22 @@ namespace dokuku.sales.customer.repository
         private MongoCollection<Customer> Collections
         {
             get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
+        }
+        public IEnumerable<Customer> Search(string ownerId, string[] keywords)
+        {
+            var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            return Collections.Find(qry);
+        }
+        private QueryComplete getQuery(string[] keywords)
+        {
+            QueryComplete[] qries = new QueryComplete[keywords.Length];
+            int index = 0;
+            foreach (string keyword in keywords)
+            {
+                qries[index] = Query.EQ("Keywords", new Regex(keyword, RegexOptions.IgnoreCase));
+                index++;
+            }
+            return Query.Or(qries);
         }
     }
 }
