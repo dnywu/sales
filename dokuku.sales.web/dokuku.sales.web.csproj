@@ -962,7 +962,9 @@
     <None Include="webclient\steal\test\map\foo\template.ejs" />
     <None Include="webclient\steal\update" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="webclient\sales\controllers\invoices\App_LocalResources\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>

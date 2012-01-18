@@ -105,6 +105,12 @@
             async: false,
             success: function (data) {
                 dataInvoice = data;
+                
+                var InvoiceDate = new Date(parseInt(data.InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                var DueDate = new Date(parseInt(data.DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                dataInvoice.InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                dataInvoice.DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+
                 //                $.each(data, function (i) {
                 //                    dataInvoice[i] = data[i];
                 //                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
