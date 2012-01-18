@@ -69,7 +69,7 @@ table#itemInvoice tfoot td.graybgcolor{background-color:#F7F7F7;}
     border: 1px solid #ACD2E7;
     border-image: initial;
 }
-span#addItemRow{cursor:pointer;color:#777;font-weight:bold;}
+span#addItemRow{cursor:pointer;color:#DE7110;text-decoration:underline;}
 span#addItemRow:hover{color:#4183C4;}
 .TermsandConditionsTxtArea {height: 86px;}
 div.clsDeleteItem{display:none;color:#d80000;cursor:pointer;font-weight:bold;}
