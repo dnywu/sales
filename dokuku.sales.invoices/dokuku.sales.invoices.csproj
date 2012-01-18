@@ -51,11 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="command\IInvoicesRepository.cs" />
+    <Compile Include="model\InvoiceAutoNumberMonthly.cs" />
+    <Compile Include="model\InvoiceAutoNumberDefault.cs" />
+    <Compile Include="model\InvoiceAutoNumberYearly.cs" />
+    <Compile Include="model\InvoiceAutoNumberConfig.cs" />
     <Compile Include="model\Invoices.cs" />
     <Compile Include="command\InvoicesRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="query\IInvoicesQueryRepository.cs" />
     <Compile Include="query\InvoicesQueryRepository.cs" />
+    <Compile Include="service\IInvoiceAutoNumberGenerator.cs" />
+    <Compile Include="service\InvoiceAutoNumberGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
