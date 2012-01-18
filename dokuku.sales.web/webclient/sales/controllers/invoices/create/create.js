@@ -4,13 +4,15 @@ steal('jquery/controller',
 	   'jquery/controller/view',
        './createinvoices.css',
        'sales/controllers/invoices/Invoice.js',
+       'sales/controllers/invoices/AddCustomer.js',
        'sales/scripts/jquery-ui-1.8.11.min.js',
        'sales/styles/jquery-ui-1.8.14.custom.css',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
 	   'sales/models')
-	.then('./views/createinvoices.ejs', function ($) {
-	    $.Controller('Sales.Invoices.Create',
+	.then('./views/createinvoices.ejs',
+          './views/AddCustomer.ejs', function ($) {
+              $.Controller('Sales.Invoices.Create',
         {
             defaults: (custid = 0, tabIndexTr = 0,
                         $this = null,
@@ -38,6 +40,12 @@ steal('jquery/controller',
                 var dueDate = new Date(invDate);
                 dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
+            },
+            '#tambahPelanggan click': function () {
+                new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
+                var addCust = new AddCustomer();
+                addCust.TriggerEvent();
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
@@ -177,4 +185,4 @@ steal('jquery/controller',
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             }
         })
-	});
+          });

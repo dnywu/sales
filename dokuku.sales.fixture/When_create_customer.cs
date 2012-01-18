@@ -46,7 +46,7 @@ namespace dokuku.sales.fixture
                     Phone = "0778472111",
                     PostalCode = "29432",
                     State = "Kepri",
-                    Keywords = new string[]{id.ToString(),OwnerId,"Seipana","Batam","IDR","oetawan.ac@gmail.com",
+                    Keywords = new string[]{id.ToString(),ownerId,"Seipana","Batam","IDR","oetawan.ac@gmail.com",
                                              "Mr. ","Oet","Chandra","472111","082173739678","Bulan bintang","0778472111",
                                              "29432","Kepri"}
                 });
@@ -59,7 +59,7 @@ namespace dokuku.sales.fixture
             };
         It should_return_customer_bytextsearch = () =>
             {
-                IEnumerable<Customer> custs = csReportRepo.Search(OwnerId,(new string[] { "Oet" }));
+                IEnumerable<Customer> custs = csReportRepo.Search(ownerId,(new string[] { "Oet" }));
                 custs.Count().ShouldEqual(1);
             };
 
