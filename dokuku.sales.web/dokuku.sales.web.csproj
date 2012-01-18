@@ -739,6 +739,7 @@
     <Compile Include="modules\AuthModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
     <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
+    <Compile Include="modules\InvoiceModule.cs" />
     <Compile Include="modules\ItemModule.cs" />
     <Compile Include="modules\MainModule.cs" />
     <Compile Include="modules\OrganizationModule.cs" />
