@@ -99,6 +99,22 @@ steal('jquery/controller',
                 $("#description").val("");
                 $("#itemPrice").val("");
                 $("#tax").val("");
+            },
+            "#itemCode blur": function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/isCodeIsExist',
+                    dataType: 'json',
+                    success: function (data) {
+                        var messageArea = $(".messageVerify"),
+                        imgVerify = null,
+                        message = null;
+                        if (data) {
+                            imgVerify = $('<img>', { 'class': 'exist' });
+                            message = $('<span>', { 'class': 'existMessage' });
+                        }
+                    }
+                });
             }
         })
       });

@@ -48,9 +48,6 @@ namespace dokuku.sales.item
                                              Query.EQ("Name", new Regex("^" + itemName + "$", RegexOptions.IgnoreCase))));
         }
 
-        #region IItemQuery Members
-
-
         public Item FindByBarcode(string barcode, string owner)
         {
             return _document.FindOneAs<Item>(Query.And(
@@ -64,7 +61,18 @@ namespace dokuku.sales.item
                 Query.EQ("OwnerId", owner),
                 Query.EQ("Code", code)));
         }
+        public bool IsCodeAlreadyExist(string code, string owner)
+        {
+            return _document.FindOneAs<bool>(Query.And(
+                Query.EQ("OwnerId", owner),
+                Query.EQ("Code", code)));
+        }
 
-        #endregion
+        public bool IsBarcodeAlreadyExist(string barcode, string owner)
+        {
+            return _document.FindOneAs<bool>(Query.And(
+                Query.EQ("OwnerId", owner),
+                Query.EQ("Barcode", barcode)));
+        }
     }
 }
