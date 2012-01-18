@@ -112,6 +112,7 @@ div.error{
 	padding-left: 10px;
 	background-color:#FF6A6A;
 	border: 1px Solid #E00;
+	margin:0 10px 0 10px;
 }
 
 #saveTax

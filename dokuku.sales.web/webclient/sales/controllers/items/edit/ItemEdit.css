@@ -85,14 +85,6 @@ div.submitFormDiv a.cancelSubmitLink
 	text-decoration: underline;
 	color: red;
 }
-div.error{
-	display:none;
-	color:#fff;
-	padding: 2px;
-	padding-left: 10px;
-	background-color:#FF6A6A;
-	border: 1px Solid #E00;
-}
 #saveTax
 {
 	height: 25px;
