@@ -53,7 +53,7 @@ table#tblListInvoice .tblDue{width:90px;}
 table#tblListInvoice .tblBalance{width:80px;}
 table#tblListInvoice .tblStatus{width:65px;}
 table#tblListInvoice tr{border-top:1px solid #EBEBEB;border-bottom:1px Solid #EBEBEB;}
-table#tblListInvoice td{padding-top:8px;padding-bottom:8px;}
+table#tblListInvoice td{padding-top:8px;padding-bottom:8px; height: 30px;}
 .settingListInvoice{display:none;}
 div.ContextMenuInvoice
 {

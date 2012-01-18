@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CouchDBConfig.cs" />
     <Compile Include="MongoConfig.cs" />
     <Compile Include="MongoConfigSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

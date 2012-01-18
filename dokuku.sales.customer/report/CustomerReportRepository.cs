@@ -8,7 +8,6 @@ using dokuku.sales.config;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
 using System.Text.RegularExpressions;
-
 namespace dokuku.sales.customer.repository
 {
     public class CustomerReportRepository : ICustomerReportRepository
@@ -40,6 +39,23 @@ namespace dokuku.sales.customer.repository
         private MongoCollection<Customer> Collections
         {
             get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
+        }
+
+        public IEnumerable<Customer> Search(string ownerId, string[] keywords)
+        {
+            var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            return Collections.Find(qry);
+        }
+        private QueryComplete getQuery(string[] keywords)
+        {
+            QueryComplete[] qries = new QueryComplete[keywords.Length];
+            int index = 0;
+            foreach (string keyword in keywords)
+            {
+                qries[index] = Query.EQ("Keywords", new Regex(keyword, RegexOptions.IgnoreCase));
+                index++;
+            }
+            return Query.Or(qries);
         }
 
         public Customer GetCustomerById(Guid id)

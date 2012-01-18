@@ -29,8 +29,9 @@ namespace dokuku.sales.fixture
 
         Because of = () =>
             {
-                csRepo.Save(new Customer() { 
-                    _id =id,
+                csRepo.Save(new Customer()
+                {
+                    _id = id,
                     OwnerId = ownerId,
                     BillingAddress = "Seipana",
                     City = "Batam",
@@ -44,14 +45,22 @@ namespace dokuku.sales.fixture
                     Name = "Bulan bintang",
                     Phone = "0778472111",
                     PostalCode = "29432",
-                    State = "Kepri"
+                    State = "Kepri",
+                    Keywords = new string[]{id.ToString(),OwnerId,"Seipana","Batam","IDR","oetawan.ac@gmail.com",
+                                             "Mr. ","Oet","Chandra","472111","082173739678","Bulan bintang","0778472111",
+                                             "29432","Kepri"}
                 });
             };
 
-        It should_create_organization = () =>
+        It should_create_customer = () =>
             {
                 Customer cs = csRepo.Get(id, ownerId);
                 cs.ShouldNotBeNull();
+            };
+        It should_return_customer_bytextsearch = () =>
+            {
+                IEnumerable<Customer> custs = csReportRepo.Search(OwnerId,(new string[] { "Oet" }));
+                custs.Count().ShouldEqual(1);
             };
 
         Cleanup cleanup = () =>

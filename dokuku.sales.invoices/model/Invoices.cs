@@ -23,6 +23,7 @@ namespace dokuku.sales.invoices.model
         public Guid _id { get; set; }
         public string _rev { get; set; }
         public string OwnerId { get; set; }
+        public String[] Keywords { get; set; }
     }
 
     public class InvoiceItems

@@ -48,6 +48,24 @@ namespace dokuku.sales.item
                                              Query.EQ("Name", new Regex("^" + itemName + "$", RegexOptions.IgnoreCase))));
         }
 
+        public IEnumerable<Item> Search(string ownerId, String[] keywords)
+        {
+            var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            return _document.FindAs<Item>(qry);
+        }
+
+        private QueryComplete getQuery(string[] keywords)
+        {
+            QueryComplete[] qries = new QueryComplete[keywords.Length];
+            int index = 0;
+            foreach (string keyword in keywords)
+            {
+                qries[index] = Query.EQ("Keywords", new Regex(keyword, RegexOptions.IgnoreCase));
+                index++;
+            }
+            return Query.Or(qries);
+        }
+
         #region IItemQuery Members
 
 
