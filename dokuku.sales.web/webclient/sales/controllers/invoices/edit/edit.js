@@ -99,7 +99,23 @@ steal('jquery/controller',
                     return;
                 var index = el.attr('id').split('_')[1];
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
-                //$this.GetSubTotal();
+                $this.GetSubTotal();
+            },
+            '.partname change': function (el) {
+                var partName = el.val();
+                var index = el.attr("id").split('_')[1];
+                var part = itmRepo.GetItemByName(partName);
+
+                if (part != null) {
+                    inv.ShowListItem(part, index);
+                    $this.GetSubTotal();
+                    $this.GetTotal();
+                    return;
+                } else {
+                    
+                }
+                $this.ClearItemField;
+                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
             '#itemInvoice tbody tr hover': function (el) {
                 var index = el.attr('tabindex');
@@ -116,7 +132,7 @@ steal('jquery/controller',
                 var i = 0;
 
                 while (count > 0) {
-                    if(item[i]==null){
+                    if (item[i] == null) {
                         $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
                                         "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
                                         "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/></td>" +
@@ -128,7 +144,7 @@ steal('jquery/controller',
                                         "</select></td>" +
                                         "<td><span class='amount' id='amount_" + tabIndexTr + "'></span></td>" +
                                         "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
-                    }else{
+                    } else {
                         $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
                                         "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "' value='" + item[i].PartName + "'/>" +
                                         "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'  value='" + item[i].ItemId + "' /></td>" +
@@ -146,6 +162,12 @@ steal('jquery/controller',
                     count--;
                     tabIndexTr++;
                 }
+            },
+            GetSubTotal: function () {
+                $("#subtotal").text(inv.CalculateSubTotal);
+            },
+            GetTotal: function () {
+                $("#total").text(inv.CalculateTotal);
             }
         })
 	});
