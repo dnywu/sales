@@ -21,8 +21,8 @@
                   <td class="tblPO">P.O.#</td>
                   <td class="tblNamaPelanggan">Nama Pelanggan</td>
                   <td class="tblTanggal">Tanggal</td>
+                  <td class="tblDue">Sampai</td>
                   <td class="tblTotal right">Total</td>
-                  <td class="tblDue">Due On</td>
                   <td class="tblBalance right">Balance Due</td>
                   <td class="tblStatus">Status</td>
                 </tr>
@@ -34,11 +34,13 @@
                       <input type="checkbox" class="selectInvoice"></input>
                     </td>
                     <td><%=this[i].InvoiceNo%></td>
-                    <td><%=this[i].name%></td>
-                    <td><%=this[i].name%></td>
-                    <td><%=this[i].name%></td>
-                    <td class="right"><%=this[i].name%></td>
-                    <td><%=this[i].name%></td>
+                    <td><%=this[i].PONo%></td>
+                    <td><%=this[i].Customer%></td>
+                    <td><%=this[i].InvoiceDate%></td>
+                    <td><%=this[i].DueDate%></td>
+                    <td class="right">
+                      <%=this[i].SubTotal%>
+                    </td>
                     <td class="right"><%=this[i].name%></td>
                     <td><%=this[i].name%></td>
                   </tr>

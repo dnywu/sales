@@ -30,7 +30,7 @@
     CreateNewInvoice: function () {
         var length = $("#itemInvoice > tbody > tr").size();
         var objInv = new Object;
-        objInv.Customer = custid;
+        objInv.Customer = $("#selectcust").val();
         objInv.CustomerId = custid;
         objInv.PONo = $("#po").val();
         objInv.InvoiceDate = $("#invDate").val();
@@ -67,14 +67,16 @@
         });
     },
     GetDataInvoice: function () {
+        var dataInvoice = null;
         $.ajax({
             type: 'GET',
             url: '/GetDataInvoice',
             data: 'json',
-            success: function (data) { 
-            
+            success: function (data) {
+                dataInvoice = data
             }
         });
+        return dataInvoice;
     }
 })
 });

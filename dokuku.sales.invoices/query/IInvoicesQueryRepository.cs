@@ -8,6 +8,6 @@ namespace dokuku.sales.invoices.query
 {
     public interface IInvoicesQueryRepository
     {
-        IEnumerable<Invoices> AllInvoices();
+        IEnumerable<Invoices> AllInvoices(string OwnerId);
     }
 }
