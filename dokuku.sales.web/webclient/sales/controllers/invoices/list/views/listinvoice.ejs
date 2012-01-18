@@ -17,6 +17,7 @@
               <thead>
                 <tr>
                   <td class="tblCheck"><input type="checkbox" id="selectall"></input></td>
+                  <td class="tblCheck" style="width:35px"></td>
                   <td class="tblNoInv">Invoice#</td>
                   <td class="tblPO">P.O.#</td>
                   <td class="tblNamaPelanggan">Nama Pelanggan</td>
@@ -27,11 +28,23 @@
                   <td class="tblStatus">Status</td>
                 </tr>
               </thead>
-              <tbody>
+              <tbody class ="bodyDataInvoice">
                 <%for(var i=0; i<this.length ; i++){%>
-                  <tr>
+                  <tr class="trbodyDataInvoice" id="trbodyDataInvoice<%= i%>" tabindex = "<%= i%>">
                     <td>
                       <input type="checkbox" class="selectInvoice"></input>
+                    </td>
+                    <td id="tdDataInvoice<%= i%>">
+                      <div class="settingListInvoice" id="settingListInvoice<%= i%>" tabindex="<%= i%>">
+                      <img class='' src='/sales/controllers/customers/images/setting.png'/>
+                      </div>
+                      <div class="ContextMenuInvoice" id="ContextMenuInvoice<%= i %>">
+                        <div class="EditImagContextMenu"></div>
+                        <div class="itemContextMenuInvoice">
+                          <span class="EditContextMenuInvoive">Ubah
+                          </span>
+                        </div>
+                      </div>
                     </td>
                     <td><%=this[i].InvoiceNo%></td>
                     <td><%=this[i].PONo%></td>
