@@ -21,6 +21,7 @@ namespace dokuku.sales.invoices.command
         public void Save(Invoices ci)
         {
             Collections.Save<Invoices>(ci);
+            Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
 
         public Invoices Get(Guid id)

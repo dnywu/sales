@@ -10,6 +10,7 @@ namespace dokuku.sales.customer.repository
         Customer GetByCustName(string ownerId, string custName);
         IEnumerable<Customer> LimitCustomers(string ownerId, int start, int limit);
         int CountCustomers(string ownerId);
+        IEnumerable<Customer> Search(string ownerId, string[] keywords);
         Customer GetCustomerById(Guid id);
         void UpdateCustomer(Customer item);
     }

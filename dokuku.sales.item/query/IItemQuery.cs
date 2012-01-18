@@ -13,5 +13,6 @@ namespace dokuku.sales.item
         Item GetItemByName(string ownerId, string itemName);
         Item FindByBarcode(string barcode, string owner);
         Item FindByCode(string code, string owner);
+        IEnumerable<Item> Search(string ownerId, String[] keywords);
     }
 }
