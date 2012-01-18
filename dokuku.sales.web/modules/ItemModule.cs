@@ -128,6 +128,18 @@ namespace dokuku.sales.web.modules
                 }
                 return Response.AsJson("OK");
             };
+            Get["/isCodeIsExist/{code}"] = p =>
+            {
+                string code = p.code;
+                string owner = this.Context.CurrentUser.UserName;
+                return Response.AsJson(this.ItemQuery().IsCodeAlreadyExist(code, owner));
+            };
+            Get["/isBarcodeIsExist/{barcode}"] = p =>
+            {
+                string barcode = p.barcode;
+                string owner = this.Context.CurrentUser.UserName;
+                return Response.AsJson(this.ItemQuery().IsBarcodeAlreadyExist(barcode, owner));
+            };
         }
     }
 }

@@ -35,6 +35,20 @@ steal('jquery/controller',
                         $(".selectInvoice").removeAttr('checked');
                     }
                 },
+                'table#tblListInvoice tbody.bodyDataInvoice tr.trbodyDataInvoice hover': function (el) {
+                    var index = el.attr('tabindex');
+                    $('#settingListInvoice' + index).show();
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
+                },
+                'table#tblListInvoice tbody.bodyDataInvoice tr.trbodyDataInvoice mouseleave': function (el) {
+                    var index = el.attr('tabindex');
+                    $('#settingListInvoice' + index).hide();
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
+                },
+                '.settingListInvoice click': function (el) {
+                    var index = el.attr('tabindex');
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").show();
+                },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
                 }

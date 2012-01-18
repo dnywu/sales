@@ -9,7 +9,6 @@ steal('jquery/controller',
           $.Controller('sales.Controllers.items.create',
         {
             defaults: ($this = null)
-            //    onDocument: true
         },
         {
             init: function () {
@@ -103,16 +102,44 @@ steal('jquery/controller',
             "#itemCode blur": function () {
                 $.ajax({
                     type: 'GET',
-                    url: '/isCodeIsExist',
+                    url: '/isCodeIsExist/' + $("#itemCode").val(),
                     dataType: 'json',
                     success: function (data) {
-                        var messageArea = $(".messageVerify"),
+                        var messageArea = $(".Code"),
                         imgVerify = null,
                         message = null;
-                        if (data) {
-                            imgVerify = $('<img>', { 'class': 'exist' });
-                            message = $('<span>', { 'class': 'existMessage' });
+                        messageArea.empty();
+                        if (!data) {
+                            imgVerify = $('<div>', { 'class': 'exist' });
+                            message = $('<span>', { 'class': 'existMessage', text: 'Kode barang sudah digunakan' });
+                        } else {
+                            imgVerify = $('<div>', { 'class': 'notExist' });
+                            message = $('<span>', { 'class': 'notExistMessage', text: 'Kode barang dapat digunakan' });
                         }
+                        imgVerify.appendTo(messageArea.show());
+                        message.insertAfter(imgVerify);
+                    }
+                });
+            },
+            "#barcode blur": function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/isBarcodeIsExist/' + $("#barcode").val(),
+                    dataType: 'json',
+                    success: function (data) {
+                        var messageArea = $(".Barcode"),
+                        imgVerify = null,
+                        message = null;
+                        messageArea.empty();
+                        if (!data) {
+                            imgVerify = $('<div>', { 'class': 'exist' });
+                            message = $('<span>', { 'class': 'existMessage', text: 'Barcode barang sudah digunakan' });
+                        } else {
+                            imgVerify = $('<div>', { 'class': 'notExist' });
+                            message = $('<span>', { 'class': 'notExistMessage', text: 'Barcode barang dapat digunakan' });
+                        }
+                        imgVerify.appendTo(messageArea.show());
+                        message.insertAfter(imgVerify);
                     }
                 });
             }
