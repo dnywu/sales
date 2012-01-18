@@ -57,7 +57,7 @@ namespace dokuku.sales.web.modules
                 {
                     return Response.AsRedirect(ex.Message);
                 }
-                return Response.AsJson("OK");
+                return Response.AsJson(customer);
             };
             Get["/GetDataCustomer/id/{id}"] = p =>
             {
@@ -70,7 +70,7 @@ namespace dokuku.sales.web.modules
                     Customer item = JsonConvert.DeserializeObject<Customer>(Data);
                     try
                     {
-                        this.CustomerReportRepository().UpdateCustomer(item);
+                        this.CustomerRepository().UpdateCustomer(item);
                     }
                     catch (Exception ex)
                     {

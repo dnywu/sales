@@ -18,6 +18,7 @@ namespace dokuku.sales.fixture
         static MongoConfig mongo;
         Establish context = () =>
             {
+                mongo = new MongoConfig();
                 orgRepo = new OrganizationRepository(mongo);
                 id = Guid.NewGuid();
             };

@@ -31,7 +31,7 @@
         var length = $("#itemInvoice > tbody > tr").size();
         var objInv = new Object;
         objInv.Customer = $("#selectcust").val();
-        objInv.CustomerId = custid;
+        objInv.CustomerId = $("#CustomerId").val();
         objInv.PONo = $("#po").val();
         objInv.InvoiceDate = $("#invDate").val();
         objInv.Terms = $("#terms").val();
@@ -45,6 +45,7 @@
         $('#itemInvoice tbody tr').each(function (i) {
             if ($('.partname').get(i).value != "") {
                 objInv.Items[i] = new Object;
+                objInv.Items[i].ItemId = $('.partid').get(i).value;
                 objInv.Items[i].PartName = $('.partname').get(i).value;
                 objInv.Items[i].Description = $('.description').get(i).value;
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
@@ -54,6 +55,11 @@
                 objInv.Items[i].Amount = $('.amount').get(i).innerText;
             }
         });
+        if (objInv.Items.length == 0) {
+            $("#errorCreateInv").text("Silahkan Masukkan barang di invoice ini").show();
+            return;
+        }
+        $("#errorCreateInv").empty().hide();
         var newInv = JSON.stringify(objInv);
         $.ajax({
             type: 'POST',
@@ -61,8 +67,14 @@
             data: { 'invoice': newInv },
             dataType: 'json',
             async: false,
-            success: this.GetDataInvoice
+            success: this.CreateInvoiceCallBack
         });
+    },
+    CreateInvoiceCallBack: function (data) {
+        if (data.error == true) {
+            $("#errorCreateInv").text(data.message).show();
+            return;
+        }
     },
     GetDataInvoice: function () {
         var dataInvoice = new Array();

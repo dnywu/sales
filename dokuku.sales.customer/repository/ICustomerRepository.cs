@@ -8,6 +8,7 @@ namespace dokuku.sales.customer.repository
     public interface ICustomerRepository
     {
         void Save(Customer cs);
+        void UpdateCustomer(Customer item);
         void Delete(Guid id);
         Customer Get(Guid id, string ownerId);
     }

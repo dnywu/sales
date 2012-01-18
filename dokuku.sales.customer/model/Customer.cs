@@ -37,5 +37,6 @@ namespace dokuku.sales.customer.model
 
         public Guid _id { get; set; }
         public string OwnerId { get; set; }
+        public String[] Keywords { get; set; }
     }
 }

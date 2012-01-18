@@ -21,6 +21,12 @@ namespace dokuku.sales.customer.repository
         public void Save(Customer cs)
         {
             Collections.Save<Customer>(cs);
+            Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
+        }
+
+        public void UpdateCustomer(Customer item)
+        {
+            Collections.Save<Customer>(item);
         }
 
         public void Delete(Guid id)

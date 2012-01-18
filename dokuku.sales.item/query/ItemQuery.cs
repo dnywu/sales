@@ -8,7 +8,6 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB;
-using MongoDB.Driver.Builders;
 using System.Text.RegularExpressions;
 namespace dokuku.sales.item
 {
@@ -48,8 +47,23 @@ namespace dokuku.sales.item
                                              Query.EQ("Name", new Regex("^" + itemName + "$", RegexOptions.IgnoreCase))));
         }
 
-        #region IItemQuery Members
+        public IEnumerable<Item> Search(string ownerId, String[] keywords)
+        {
+            var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            return _document.FindAs<Item>(qry);
+        }
 
+        private QueryComplete getQuery(string[] keywords)
+        {
+            QueryComplete[] qries = new QueryComplete[keywords.Length];
+            int index = 0;
+            foreach (string keyword in keywords)
+            {
+                qries[index] = Query.EQ("Keywords", new Regex(keyword, RegexOptions.IgnoreCase));
+                index++;
+            }
+            return Query.Or(qries);
+        }
 
         public Item FindByBarcode(string barcode, string owner)
         {
@@ -64,7 +78,28 @@ namespace dokuku.sales.item
                 Query.EQ("OwnerId", owner),
                 Query.EQ("Code", code)));
         }
+        public bool IsCodeAlreadyExist(string code, string owner)
+        {
+            if (FindByCode(code, owner) == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-        #endregion
+        public bool IsBarcodeAlreadyExist(string barcode, string owner)
+        {
+            if (FindByBarcode(barcode, owner) == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

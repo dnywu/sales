@@ -82,8 +82,8 @@ label#currency
     color:#fff;
     padding: 2px 3px 2px 3px;
 }
-label#keteranganSelectCust
-{
-    color:Red;
-    font-size:11px;
-}
+label#keteranganSelectCust{color:Red;font-size:11px;}
+label#tambahPelanggan, label#moreFieldCustomer{font-size:11px;color:Blue;text-decoration:underline;cursor:pointer;}
+label#tambahPelanggan:hover, label#moreFieldCustomer:hover{color:#4183C4;}
+div.submitAddCust{margin-top:20px;text-align:center;}
+table.hiddenTable{display:none;}

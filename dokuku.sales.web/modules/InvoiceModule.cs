@@ -15,22 +15,17 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication();
             Post["/createinvoice"] = p =>
             {
-                Invoices invoice = null;
                 try
                 {
-                    string data = this.Request.Form.invoice;
-                    invoice = JsonConvert.DeserializeObject<Invoices>(data);
-                    invoice._id = Guid.NewGuid();
-                    invoice.OwnerId = this.Context.CurrentUser.UserName;
-                    invoice.InvoiceNo = "Inv-01";
-                    this.InvoicesRepository().Save(invoice);
+                    Invoices result = this.InvoiceService().Create(this.Request.Form.invoice, this.Context.CurrentUser.UserName);
+                    return Response.AsJson(result);
                 }
                 catch (Exception ex)
                 {
                     return Response.AsJson(new {error= true, message = ex.Message});
                 }
-                return Response.AsJson(new {noInvoice = invoice.InvoiceNo });
             };
+
             Get["/GetDataInvoice"] = p =>
                 {
                     Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);

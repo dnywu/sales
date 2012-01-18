@@ -4,15 +4,17 @@ steal('jquery/controller',
 	   'jquery/controller/view',
        './createinvoices.css',
        'sales/controllers/invoices/Invoice.js',
+       'sales/controllers/invoices/AddCustomer.js',
        'sales/scripts/jquery-ui-1.8.11.min.js',
        'sales/styles/jquery-ui-1.8.14.custom.css',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
 	   'sales/models')
-	.then('./views/createinvoices.ejs', function ($) {
-	    $.Controller('Sales.Invoices.Create',
+	.then('./views/createinvoices.ejs',
+          './views/AddCustomer.ejs', function ($) {
+              $.Controller('Sales.Invoices.Create',
         {
-            defaults: (custid = 0, tabIndexTr = 0,
+            defaults: ( tabIndexTr = 0,
                         $this = null,
                         inv = null,
                         itmRepo = null,
@@ -39,13 +41,19 @@ steal('jquery/controller',
                 dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             },
+            '#tambahPelanggan click': function () {
+                new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
+                var addCust = new AddCustomer();
+                addCust.TriggerEvent();
+            },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
                 var dataCust = custRepo.GetCustomerByName(el.val());
                 if (dataCust != null) {
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
-                    custid = dataCust._id;
+                    $("#CustomerId").val(dataCust._id);
                     return;
                 }
                 $("#currency").hide();
@@ -77,6 +85,7 @@ steal('jquery/controller',
                 var part = itmRepo.GetItemByName(partName);
 
                 if (part != null) {
+                    $("#partid_" + index).val(part._id);
                     $("#part_" + index).val(part.Name);
                     $("#desc_" + index).text(part.Description);
                     $("#qty_" + index).val('1.00');
@@ -123,7 +132,8 @@ steal('jquery/controller',
             CreateListItem: function (count) {
                 while (count > 0) {
                     $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
-                                    "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/></td>" +
+                                    "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
+                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/></td>" +
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input></td>" +
@@ -177,4 +187,4 @@ steal('jquery/controller',
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             }
         })
-	});
+          });
