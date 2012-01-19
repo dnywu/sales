@@ -15,7 +15,7 @@ steal('jquery/controller',
             '../create/views/AddCustomer.ejs',
             '../create/views/AddItem.ejs', function ($) {
 
-        $.Controller('Sales.Controllers.Invoices.Edit',
+                $.Controller('Sales.Controllers.Invoices.Edit',
         {
             defaults: (tabIndexTr = 0,
                         $this = null,
@@ -85,7 +85,7 @@ steal('jquery/controller',
                 while (count > 0) {
                     $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
                                     "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "' value='" + item[i].PartName + "'/>" +
-                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'  value='" + item[i].ItemId + "' /></td>" +
+                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'  value='" + item[i].ItemId + "' />" +
                                     "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'>" + item[i].Description + "</textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "' value='" + item[i].Qty + "'></input></td>" +
@@ -118,7 +118,7 @@ steal('jquery/controller',
                 while (count > 0) {
                     $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
                                     "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
-                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/></td>" +
+                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/>" +
                                     "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
@@ -146,7 +146,7 @@ steal('jquery/controller',
                 $("#rate_" + index).val('');
                 $("#disc_" + index).val('');
                 $("#amount_" + index).empty();
-            }
+            },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
                 var dataCust = custRepo.GetCustomerByName(el.val());
@@ -210,7 +210,6 @@ steal('jquery/controller',
             '.discount change': function (el) {
                 this.CalculateItem(el);
             },
-           
             '#itemInvoice tbody tr hover': function (el) {
                 var index = el.attr('tabindex');
                 $("#deleteItem_" + index).show();
@@ -219,6 +218,6 @@ steal('jquery/controller',
                 var index = el.attr("tabindex");
                 $("#deleteItem_" + index).hide();
             }
-            
+
         })
-    });
+            });
