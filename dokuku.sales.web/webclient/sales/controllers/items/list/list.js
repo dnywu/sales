@@ -39,13 +39,7 @@ steal('jquery/controller',
                 jumlahdata = data;
                 limit = $('#limitData').val();
                 $this.initPagination();
-                $.ajax({
-                    type: 'GET',
-                    url: '/LimitItems/start/' + (((start - 1) * limit)) + '/limit/' + limit,
-                    dataType: 'json',
-                    ajaxStart: $this.LoadingListItem,
-                    success: $this.requestAllItemSuccess
-                });
+                $this.requestLimitedData(start, limit);
                 $('#idInputPage').val(1);
                 $this.CheckButtonPaging();
             },
@@ -151,13 +145,7 @@ steal('jquery/controller',
             ChangePage: function () {
                 $this.initPagination();
                 var startPage = parseInt($('#idInputPage').val());
-                $.ajax({
-                    type: 'GET',
-                    url: '/LimitItems/start/' + (((startPage - 1) * $('#limitData').val())) + '/limit/' + $('#limitData').val(),
-                    dataType: 'json',
-                    beforSend: $this.LoadingListItem,
-                    success: $this.requestAllItemSuccess
-                });
+                $this.requestLimitedData(startPage, limit);
                 limit = $('#limitData').val();
                 $this.initPagination();
                 $this.CheckButtonPaging();
@@ -218,6 +206,19 @@ steal('jquery/controller',
                         }
                     });
                 }
+            },
+            "#showAllItem click": function () {
+                $('.Pagging').show();
+                $this.RequestNumberOfItem();
+            },
+            requestLimitedData: function (start, limit) {
+                $.ajax({
+                    type: 'GET',
+                    url: '/LimitItems/start/' + (((start - 1) * limit)) + '/limit/' + limit,
+                    dataType: 'json',
+                    ajaxStart: $this.LoadingListItem,
+                    success: $this.requestAllItemSuccess
+                });
             }
         })
 
