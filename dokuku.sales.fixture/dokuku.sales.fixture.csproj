@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_create_item_index.cs" />
     <Compile Include="When_search_invoices.cs" />
     <Compile Include="When_generate_invoice_number_monthly_mode.cs" />
     <Compile Include="When_generate_invoice_number_yearly_mode.cs" />

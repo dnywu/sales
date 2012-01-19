@@ -1,11 +1,12 @@
-﻿steal('jquery/class', function () {
+﻿steal('jquery/class', 'sales/repository/CustomerRepository.js', function () {
     $.Class('AddCustomer',
 {
-    defaults: ($this = null)
+    defaults: ($this = null, custRepo = null)
 },
 {
     init: function () {
         $this = this;
+        custRepo = new CustomerRepository();
     },
     TriggerEvent: function () {
         $("#moreFieldCustomer").click(this.MoreFieldAddCust);
@@ -33,10 +34,15 @@
             success: function (data) {
                 if (data == null) {
                     $("#errorAddCust").text(data).show();
+                    return;
                 }
                 $this.CloseAddCustDialog();
-                $("#CustomerId").val(data._id);
-                $("#selectcust").val(data.Name);
+                var customer = custRepo.GetCustomerByName(data.Name);
+                if (customer != null) {
+                    $("#CustomerId").val(data._id);
+                    $("#selectcust").val(data.Name);
+                    $("#currency").text(customer.Currency).show();
+                }
             }
         });
     }

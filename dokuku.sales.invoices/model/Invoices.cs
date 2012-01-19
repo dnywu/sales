@@ -16,7 +16,7 @@ namespace dokuku.sales.invoices.model
         public string InvoiceNo { get; set; }
         public string PONo { get; set; }
         public DateTime InvoiceDate { get; set; }
-        public string Terms { get; set; }
+        public Term Terms { get; set; }
         public DateTime DueDate { get; set; }
         public string LateFee { get; set; }
         public string Note { get; set; }
@@ -60,6 +60,12 @@ namespace dokuku.sales.invoices.model
         public decimal Discount { get; set; }
         public decimal Tax { get; set; }
         public decimal Amount { get; set; }     
+    }
+
+    public class Term
+    {
+        public string Name { get; set; }
+        public decimal Value { get; set; }
     }
 
     public class InvoiceStatus

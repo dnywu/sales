@@ -69,7 +69,7 @@ namespace dokuku.sales.invoices.command
                     inv.Status,
                     inv.SubTotal.ToString(),
                     inv.TermCondition,
-                    inv.Terms,
+                    inv.Terms.ToString(),
                     inv.Total.ToString()
                 }
             };

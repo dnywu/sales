@@ -87,3 +87,8 @@ label#tambahPelanggan, label#moreFieldCustomer{font-size:11px;color:Blue;text-de
 label#tambahPelanggan:hover, label#moreFieldCustomer:hover{color:#4183C4;}
 div.submitAddCust{margin-top:20px;text-align:center;}
 table.hiddenTable{display:none;}
+label.additem{font-size:11px;color:Blue;text-decoration:underline;cursor:pointer;}
+label.additem:hover{color:#4183C4;}
+#firstNameCust{width:193px;}
+form#formAddCustDialog{color:#666;}
+form#formNewItem{color:#666;}

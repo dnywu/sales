@@ -47,4 +47,5 @@ input[type="date"]{
 }
 textarea {
     font-family:helvetica,arial,freesans,clean,sans-serif;
+    width:260px;
 }
