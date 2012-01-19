@@ -8,12 +8,14 @@ using dokuku.sales.customer;
 using dokuku.sales.customer.repository;
 using dokuku.sales.customer.model;
 using dokuku.sales.config;
+using dokuku.sales.customer.Service;
+using MongoDB.Bson;
 namespace dokuku.sales.fixture
 {
     [Subject("Count customers")]
     public class When_count_customer
     {
-        private static ICustomerRepository csRepo;
+        private static ICustomerService csService;
         private static ICustomerReportRepository csReportRepo;
         private static Guid id1;
         private static Guid id2;
@@ -24,12 +26,12 @@ namespace dokuku.sales.fixture
         Establish context = () =>
             {
                 mongo = new MongoConfig();
-                csRepo = new CustomerRepository(mongo);
+                csService = new CustomerService(mongo,null);
                 csReportRepo = new CustomerReportRepository(mongo);
                 id1 = Guid.NewGuid();
                 id2 = Guid.NewGuid();
 
-                csRepo.Save(new Customer()
+                csService.SaveCustomer(BsonDocument.Create(new Customer()
                 {
                     _id = id1,
                     OwnerId = ownerId,
@@ -46,9 +48,9 @@ namespace dokuku.sales.fixture
                     Phone = "0778472111",
                     PostalCode = "29432",
                     State = "Kepri"
-                });
+                }).ToJson(), ownerId);
 
-                csRepo.Save(new Customer()
+                csService.SaveCustomer(BsonDocument.Create(new Customer()
                 {
                     _id = id2,
                     OwnerId = ownerId,
@@ -65,7 +67,7 @@ namespace dokuku.sales.fixture
                     Phone = "0778472111",
                     PostalCode = "29432",
                     State = "Kepri"
-                });
+                }).ToJson(),ownerId);
             };
 
         Because of = () =>
@@ -80,8 +82,8 @@ namespace dokuku.sales.fixture
 
         Cleanup cleanup = () =>
             {
-                csRepo.Delete(id1);
-                csRepo.Delete(id2);
+                csService.DeleteCustomer(id1);
+                csService.DeleteCustomer(id2);
             };
     }
 }
