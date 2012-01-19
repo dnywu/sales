@@ -59,7 +59,7 @@ steal('jquery/controller',
                     data: { 'data': data },
                     dataType: "json",
                     success: function (data) {
-                        if (data == "OK") {
+                        if (data == "Ok") {
                             $("#body").sales_customers('load');
                         }
                     }
@@ -230,6 +230,17 @@ steal('jquery/controller',
                 limit = $('#limitData').val();
                 $this.initPagination();
                 $this.CheckButtonPaging();
+            },
+            '#SearchCustomer keyup': function () {
+                var key =  $('#SearchCustomer').val();
+                $.ajax({
+                    type: 'GET',
+                    url: '/SearchCustomer/key/' + key,
+                    dataType: 'json',
+                    success: function (data) {
+                        alert(data)
+                    }
+                });
             }
         })
 

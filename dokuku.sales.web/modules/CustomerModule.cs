@@ -57,7 +57,7 @@ namespace dokuku.sales.web.modules
                 {
                     return Response.AsRedirect(ex.Message);
                 }
-                return Response.AsJson(customer);
+                return Response.AsJson("Ok");
             };
             Get["/GetDataCustomer/id/{id}"] = p =>
             {
@@ -78,6 +78,12 @@ namespace dokuku.sales.web.modules
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
                     return Response.AsJson("OK");
+                };
+            Get["/SearchCustomer/key/{key}"] = p =>
+                {
+                    string key = p.key;
+                    Account ownerId = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(this.CustomerReportRepository().Search(ownerId.OwnerId,new string[]{key}));
                 };
         }
     }

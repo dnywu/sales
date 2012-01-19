@@ -71,7 +71,7 @@ namespace dokuku.sales.customer.repository
         private void updateIndex(Customer cust)
         {
             var qry = Query.EQ("_id", cust._id);
-            var update = Update.Replace<Customer>(cust);
+            var update = Update.Replace<CustomerReports>(new CustomerReports(cust));
             CollectionReports.Update(qry, update);
         }
     }
