@@ -16,3 +16,7 @@ deploy
 .tmp*~
 *.local.*
 .pinf-*
+_ReSharper.*
+*.resharper
+*.ReSharper
+~$*
