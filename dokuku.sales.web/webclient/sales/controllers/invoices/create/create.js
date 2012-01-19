@@ -165,6 +165,9 @@ steal('jquery/controller',
                 ev.preventDefault();
                 inv.CreateNewInvoice();
             },
+            '#btnCancelInvoice click': function () {
+                $("#body").sales_invoices_list('load');
+            },
             SetDatePicker: function () {
                 var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
                     defaultDate: "+1w",
