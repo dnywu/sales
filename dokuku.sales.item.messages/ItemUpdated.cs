@@ -7,7 +7,7 @@ using NServiceBus;
 namespace dokuku.sales.item.messages
 {
     [Serializable]
-    public class ItemCreated : IMessage
+    public class ItemUpdated : IMessage
     {
         public string Data { get; set; }
     }
