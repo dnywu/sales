@@ -17,6 +17,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.web", "dokuku.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices", "dokuku.sales.invoices\dokuku.sales.invoices.csproj", "{1003F280-9DFA-4D08-AB9B-771815BCE5B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.item.messages", "dokuku.sales.item.messages\dokuku.sales.item.messages.csproj", "{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.distributor", "dokuku.sales.distributor\dokuku.sales.distributor.csproj", "{A1A6652A-BD05-44AD-B6A6-CD59E96FBDC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.report", "dokuku.sales.report\dokuku.sales.report.csproj", "{DFC91C58-F8C4-47AB-9253-257AE0DF3498}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.customer.messages", "dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj", "{B8DA4234-451B-40A1-969F-F9FB979C6356}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoice.messages", "dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj", "{EA041C37-0229-4188-ACB0-9F684C17F029}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +65,26 @@ Global
 		{1003F280-9DFA-4D08-AB9B-771815BCE5B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1003F280-9DFA-4D08-AB9B-771815BCE5B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1003F280-9DFA-4D08-AB9B-771815BCE5B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1A6652A-BD05-44AD-B6A6-CD59E96FBDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A6652A-BD05-44AD-B6A6-CD59E96FBDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A6652A-BD05-44AD-B6A6-CD59E96FBDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A6652A-BD05-44AD-B6A6-CD59E96FBDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC91C58-F8C4-47AB-9253-257AE0DF3498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC91C58-F8C4-47AB-9253-257AE0DF3498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC91C58-F8C4-47AB-9253-257AE0DF3498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC91C58-F8C4-47AB-9253-257AE0DF3498}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8DA4234-451B-40A1-969F-F9FB979C6356}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8DA4234-451B-40A1-969F-F9FB979C6356}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8DA4234-451B-40A1-969F-F9FB979C6356}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8DA4234-451B-40A1-969F-F9FB979C6356}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA041C37-0229-4188-ACB0-9F684C17F029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA041C37-0229-4188-ACB0-9F684C17F029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA041C37-0229-4188-ACB0-9F684C17F029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA041C37-0229-4188-ACB0-9F684C17F029}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

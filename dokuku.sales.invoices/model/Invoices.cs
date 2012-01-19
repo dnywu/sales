@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using dokuku.sales.item;
 
 namespace dokuku.sales.invoices.model
 {
@@ -58,7 +59,7 @@ namespace dokuku.sales.invoices.model
         public decimal Qty { get; set; }
         public decimal Rate { get; set; }
         public decimal Discount { get; set; }
-        public decimal Tax { get; set; }
+        public Tax Tax { get; set; }
         public decimal Amount { get; set; }     
     }
 

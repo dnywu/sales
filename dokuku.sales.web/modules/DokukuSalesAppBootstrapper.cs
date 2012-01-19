@@ -20,9 +20,14 @@
     using dokuku.sales.invoices.query;
     using dokuku.sales.item.service;
     using dokuku.sales.invoices.service;
+    using NServiceBus;
+    using dokuku.sales.customer.Service;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
+        static IBus bus;
+        static bool structureMapBootstrapped=false;
+
         protected override void ConfigureApplicationContainer(TinyIoC.TinyIoCContainer container)
         {
             // We don't call "base" here to prevent auto-discovery of
@@ -36,6 +41,7 @@
             // Here we register our user mapper as a per-request singleton.
             // As this is now per-request we could inject a request scoped
             // database "context" or other request scoped services.
+            StartNServiceBus();
             BootstrapStructureMap();
             IAccountRepository accRepo = ObjectFactory.GetInstance<IAccountRepository>();
             container.Register<IUserMapper, UserMapper>(new UserMapper(accRepo));
@@ -79,24 +85,48 @@
         }
 
         private void BootstrapStructureMap(){
-            // Initialize the static ObjectFactory container
-            ObjectFactory.Initialize(x =>
+            if (!structureMapBootstrapped)
             {
-                x.For<IAccountRepository>().Use<AccountRepository>();
-                x.For<IItemCommand>().Use<ItemCommand>();
-                x.For<IItemQuery>().Use<ItemQuery>();
-                x.For<ICustomerRepository>().Use<CustomerRepository>();
-                x.For<ICustomerReportRepository>().Use<CustomerReportRepository>();
-                x.For<IOrganizationRepository>().Use<OrganizationRepository>();
-                x.For<IOrganizationReportRepository>().Use<OrganizationReportRepository>();
-                x.For<IAuthService>().Use<AuthService>();
-                x.ForSingletonOf<MongoConfig>().Use<MongoConfig>();
-                x.For<IInvoicesRepository>().Use<InvoicesRepository>();
-                x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
-                x.For<IInsertItemService>().Use<InsertItemService>();
-                x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
-                x.For<IInvoiceService>().Use<InvoiceService>();
-            });
+                // Initialize the static ObjectFactory container
+                ObjectFactory.Initialize(x =>
+                {
+                    x.For<IAccountRepository>().Use<AccountRepository>();
+                    x.For<IItemCommand>().Use<ItemCommand>();
+                    x.For<IItemQuery>().Use<ItemQuery>();
+                    x.For<ICustomerReportRepository>().Use<CustomerReportRepository>();
+                    x.For<IOrganizationRepository>().Use<OrganizationRepository>();
+                    x.For<IOrganizationReportRepository>().Use<OrganizationReportRepository>();
+                    x.For<IAuthService>().Use<AuthService>();
+                    x.ForSingletonOf<MongoConfig>().Use<MongoConfig>();
+                    x.For<IInvoicesRepository>().Use<InvoicesRepository>();
+                    x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
+                    x.For<IItemService>().Use<ItemService>();
+                    x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
+                    x.For<IInvoiceService>().Use<InvoiceService>();
+                    x.ForSingletonOf<IBus>().Use(bus);
+                    x.For<ICustomerService>().Use<CustomerService>();
+                });
+
+                structureMapBootstrapped = true;
+            }
+        }
+        private void StartNServiceBus()
+        {
+            if (bus == null)
+            {
+                bus = Configure.WithWeb()
+                    .Log4Net()
+                    .DefaultBuilder()
+                    .BinarySerializer()
+                    .MsmqTransport()
+                    .IsTransactional(true)
+                    .PurgeOnStartup(false)
+                    .MsmqSubscriptionStorage()
+                    .UnicastBus()
+                    .ImpersonateSender(true)
+                    .CreateBus()
+                    .Start();
+            }
         }
     }
 }

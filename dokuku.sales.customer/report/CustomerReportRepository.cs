@@ -60,13 +60,13 @@ namespace dokuku.sales.customer.repository
         }
         private MongoCollection<Customer> Collections
         {
-            get { return mongo.ReportingDatabase.GetCollection<Customer>("customers"); }
+            get { return mongo.ReportingDatabase.GetCollection<Customer>(typeof(Customer).Name); }
         }
         private MongoCollection<CustomerReports> searchndexCollections
         {
             get
             {
-                return mongo.ReportingDatabase.GetCollection<CustomerReports>("customerreports");
+                return mongo.ReportingDatabase.GetCollection<CustomerReports>(typeof(CustomerReports).Name);
             }
         }
 

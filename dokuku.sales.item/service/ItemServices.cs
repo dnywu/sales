@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NServiceBus;
+using dokuku.sales.item.messages;
 using Newtonsoft.Json;
-
+using MongoDB.Bson;
 namespace dokuku.sales.item.service
 {
-    public class InsertItemService:IInsertItemService
+    public class ItemService:IItemService
     {
         IItemCommand cmd;
         IItemQuery qry;
-        public InsertItemService(IItemCommand command, IItemQuery query)
+        IBus bus;
+        public ItemService(IItemCommand command, IItemQuery query, IBus bus)
         {
             cmd = command;
             qry = query;
-
+            this.bus = bus;
         }
         public Item Insert(string jsonItem, string ownerId)
         {
@@ -25,6 +28,8 @@ namespace dokuku.sales.item.service
             FailIfCodeAlreadyExist(item);
             
             cmd.Save(item);
+            bus.Publish<ItemCreated>(new ItemCreated { Data = item.ToJson() });
+
             return item;
         }
 
@@ -39,7 +44,14 @@ namespace dokuku.sales.item.service
             }
             item.OwnerId = ownerId;
             cmd.Update(item);
+            bus.Publish(new ItemUpdated { Data = item.ToJson() });
             return item;
+        }
+
+        public void Delete(Guid id)
+        {
+            cmd.Delete(id);
+            bus.Publish<ItemDeleted>(new ItemDeleted { Id = id });
         }
 
         private void FailIfCodeAlreadyExist(Item itm)
@@ -48,7 +60,6 @@ namespace dokuku.sales.item.service
             {
                 throw new Exception(string.Format("Barang dengan barcode {0} sudah ada", itm.Barcode));
             }
-            
         }
 
         private void FailIfBarcodeAlreadyExist(Item itm)

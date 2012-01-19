@@ -39,7 +39,7 @@ namespace dokuku.sales.web.modules
                 try
                 {
                     Guid id = p.id;
-                    this.ItemCommand().Delete(id);
+                    this.ItemService().Delete(id);
                 }
                 catch (Exception ex)
                 {
@@ -59,7 +59,7 @@ namespace dokuku.sales.web.modules
                 try
                 {
                     string data = this.Request.Form.data;
-                    Item item = this.InsertItemService().Insert(data, this.Context.CurrentUser.UserName);
+                    Item item = this.ItemService().Insert(data, this.Context.CurrentUser.UserName);
                     return Response.AsJson(item);
                 }
                 catch (Exception ex)
@@ -77,7 +77,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    Item item = this.InsertItemService().Update(this.Request.Form.data, this.Context.CurrentUser.UserName);
+                    Item item = this.ItemService().Update(this.Request.Form.data, this.Context.CurrentUser.UserName);
                     return Response.AsJson(item);
                 }
                 catch (Exception ex)
