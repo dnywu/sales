@@ -2,6 +2,7 @@
 using Nancy.Security;
 using System;
 using dokuku.sales.organization.model;
+using dokuku.security.model;
 namespace dokuku.sales.web.modules
 {
     public class OrganizationModule : Nancy.NancyModule
@@ -23,9 +24,8 @@ namespace dokuku.sales.web.modules
                     string timezone = (string)this.Request.Form.timezone;
                     string curr = (string)this.Request.Form.curr;
                     int starts = (int)this.Request.Form.starts;
-                    Guid id = Guid.NewGuid();
-                    string owner = this.Context.CurrentUser.UserName;
-                    this.OrganizationRepository().Save(new Organization(id, owner, name, curr, starts));
+                    Account acc = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    this.OrganizationRepository().Save(new Organization(acc.OwnerId, acc.OwnerId, name, curr, starts));
                 }
                 catch (Exception ex)
                 {
