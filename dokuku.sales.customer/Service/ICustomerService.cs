@@ -8,9 +8,8 @@ namespace dokuku.sales.customer.Service
 {
     public interface ICustomerService
     {
-        void Save(Customer cs);
-        void UpdateCustomer(Customer cust);
-        void Delete(Guid id);
-        Customer Get(Guid id, string ownerId);
+        string SaveCustomer(string customerJson,string ownerId);
+        void UpdateCustomer(string customerJson);
+        void DeleteCustomer(Guid id);
     }
 }

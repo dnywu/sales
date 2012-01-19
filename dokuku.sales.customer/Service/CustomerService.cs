@@ -5,43 +5,57 @@ using System.Text;
 using dokuku.sales.customer.model;
 using dokuku.sales.customer.repository;
 using NServiceBus;
+using dokuku.sales.customer.messages;
+using MongoDB.Bson;
+using dokuku.sales.config;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 
 namespace dokuku.sales.customer.Service
 {
     public class CustomerService : ICustomerService
     {
-        ICustomerRepository repo;
+        MongoConfig mongo;
         IBus bus;
-        public CustomerService(ICustomerRepository repo, IBus bus)
+        public CustomerService(MongoConfig mongo, IBus bus)
         {
-            this.repo = repo;
+            this.mongo = mongo;
             this.bus = bus;
         }
-        public void Save(Customer cs)
+        public string SaveCustomer(string customerJson, string ownerId)
         {
-            repo.Save(cs);
-            CreateIndex(cs);
-            bus.Publish<>();
+            Customer cs = Newtonsoft.Json.JsonConvert.DeserializeObject<Customer>(customerJson);
+            cs._id = Guid.NewGuid();
+            cs.OwnerId = ownerId;
+            
+            Collections.Save<Customer>(cs);
+            var result = cs.ToJson<Customer>();
+            if (bus != null)
+                bus.Publish<CustomerCreated>(new CustomerCreated { Data = result });
+            return result;
         }
 
-        private CustomerReports CreateIndex(Customer customer)
+        public void UpdateCustomer(string customerJson)
         {
-            return new CustomerReports(customer);
+            Customer cs = Newtonsoft.Json.JsonConvert.DeserializeObject<Customer>(customerJson);
+            Collections.Save<Customer>(cs);
+
+            if (bus != null)
+            bus.Publish<CustomerUpdated>(new CustomerUpdated { Data = cs.ToJson() });
         }
 
-        public void UpdateCustomer(Customer cust)
+        public void DeleteCustomer(Guid id)
         {
-            repo.UpdateCustomer(cust);
+            Collections.Remove(Query.EQ("_id", BsonValue.Create(id)));
+            if (bus != null)
+            bus.Publish<CustomerDeleted>(new CustomerDeleted { Id = id });
         }
-
-        public void Delete(Guid id)
+        private MongoCollection Collections
         {
-            throw new NotImplementedException();
-        }
-
-        public Customer Get(Guid id, string ownerId)
-        {
-            throw new NotImplementedException();
+            get
+            {
+                return mongo.MongoDatabase.GetCollection(typeof(Customer).Name);
+            }
         }
     }
 }
