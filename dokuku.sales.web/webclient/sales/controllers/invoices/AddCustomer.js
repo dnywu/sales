@@ -39,6 +39,7 @@
                 $this.CloseAddCustDialog();
                 var customer = custRepo.GetCustomerByName(data.Name);
                 if (customer != null) {
+                    $("#keteranganSelectCust").empty();
                     $("#CustomerId").val(data._id);
                     $("#selectcust").val(data.Name);
                     $("#currency").text(customer.Currency).show();

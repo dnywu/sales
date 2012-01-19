@@ -490,6 +490,8 @@
     <Content Include="webclient\sales\controllers\nav\images\icon.png" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\controllers\nav\images\uknown-person.gif" />
+    <Content Include="webclient\sales\controllers\nav\images\userlogo.png" />
     <Content Include="webclient\sales\controllers\nav\Nav.css" />
     <Content Include="webclient\sales\controllers\nav\nav.html" />
     <Content Include="webclient\sales\controllers\nav\nav.js" />
@@ -525,6 +527,8 @@
     <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.js" />
     <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
+    <Content Include="webclient\sales\scripts\stringformat.js" />
+    <Content Include="webclient\sales\styles\images\Actions.png" />
     <Content Include="webclient\sales\styles\images\ui-bg_glass_100_e4f1fb_1x400.png" />
     <Content Include="webclient\sales\styles\images\ui-bg_glass_100_f6f6f6_1x400.png" />
     <Content Include="webclient\sales\styles\images\ui-bg_glass_100_fdf5ce_1x400.png" />

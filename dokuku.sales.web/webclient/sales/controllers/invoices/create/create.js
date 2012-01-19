@@ -3,6 +3,7 @@ steal('jquery/controller',
 	   'jquery/dom/form_params',
 	   'jquery/controller/view',
        './createinvoices.css',
+       'sales/scripts/stringformat.js',
        'sales/controllers/invoices/Invoice.js',
        'sales/controllers/invoices/AddCustomer.js',
        'sales/controllers/invoices/AddItem.js',
@@ -115,6 +116,13 @@ steal('jquery/controller',
             '.discount change': function (el) {
                 this.CalculateItem(el);
             },
+            '#formNewIvoice submit': function (el, ev) {
+                ev.preventDefault();
+                inv.CreateNewInvoice();
+            },
+            '#btnCancelInvoice click': function () {
+                $("#body").sales_invoices_list('load');
+            },
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
@@ -150,7 +158,7 @@ steal('jquery/controller',
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
-                                    "<input type='hidden' class='amount' id='amount_"+ tabIndexTr +"'/></td>" +
+                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     count--;
@@ -158,17 +166,14 @@ steal('jquery/controller',
                 }
             },
             GetSubTotal: function () {
-                $("#subtotal").text(inv.CalculateSubTotal);
+                var subtotal = inv.CalculateSubTotal();
+                $("#subtotaltext").text(String.format("{0:C}", subtotal));
+                $("#subtotal").val(subtotal);
             },
             GetTotal: function () {
-                $("#total").text(inv.CalculateTotal);
-            },
-            '#formNewIvoice submit': function (el, ev) {
-                ev.preventDefault();
-                inv.CreateNewInvoice();
-            },
-            '#btnCancelInvoice click': function () {
-                $("#body").sales_invoices_list('load');
+                var total = inv.CalculateTotal();
+                $("#totaltext").text(String.format("{0:C}", total));
+                $("#total").val(total);
             },
             SetDatePicker: function () {
                 var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',

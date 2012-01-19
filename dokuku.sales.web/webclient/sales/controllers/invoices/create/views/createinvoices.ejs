@@ -50,7 +50,7 @@
             <tr>
               <td class="labelLeft">Tanggal Invoice</td>
               <td class="td_field">
-                <input type="date" name='invoiceDate' id='invDate' readonly/>
+                <input type="date" name='invoiceDate' class='datepicker' id='invDate' readonly/>
               </td>
               <td class='error'></td>
             </tr>
@@ -71,7 +71,7 @@
             <tr>
               <td class="labelLeft">Due Date</td>
               <td class="td_field">
-                <input type='date' name='dueDate' id='dueDate' readonly/>
+                <input type='date' name='dueDate' class='datepicker' id='dueDate' readonly/>
               </td>
               <td class='error'></td>
             </tr>
@@ -112,7 +112,8 @@
             <td colspan='3'></td>
             <td colspan='2' class='right borderbottom'>Sub Total</td>
             <td class='right borderbottom'>
-              <span id='subtotal'></span>
+              <span id='subtotaltext'></span>
+              <input type='hidden' id='subtotal'/>
             </td>
             <td></td>
           </tr>
@@ -120,7 +121,8 @@
             <td colspan='4'></td>
             <td colspan='2' class='right bold borderbottom graybgcolor'>Total</td>
             <td class='right bold borderbottom graybgcolor'>
-              <span id='total'></span>
+              <span id='totaltext'></span>
+              <input type='hidden' id='total'/>
             </td>
             <td></td>
           </tr>
