@@ -1,10 +1,10 @@
 ﻿div.DialogOverlay{
 	width:100%;
     height:100%;
-    filter:alpha(opacity=80);
-    -moz-opacity:0.8;
-    -khtml-opacity: 0.8;
-    opacity: 0.8;
+    filter:alpha(opacity=60);
+    -moz-opacity:0.6;
+    -khtml-opacity: 0.6;
+    opacity: 0.6;
     background:#fff;
     position:fixed;
     top:0; left:0;
@@ -13,15 +13,14 @@
 
 div.ModalDialog div.Detail{
 	background-color:#FFFFFF;
-	margin-bottom:20px;
 	overflow:hidden;
 	resize: none;
 	padding: 3px 10px 7px 10px;
 	-webkit-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
     -moz-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
-	position:absolute;
+	position:fixed;
 	z-index:750;
-	top: 15%;
+	top: 5.5%;
 	left: 35%;
 }
 

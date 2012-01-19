@@ -1,6 +1,6 @@
 ﻿<form id="formAddCustDialog" method="POST">
   <div class="error" id="errorAddCust"></div>
-  <table width="100%" cellpadding="5px">
+  <table width="100%" cellpadding="3px">
     <tr>
       <td width="30%" class="right">
         <div class="mandatoryTxt">Nama Pelanggan</div>
@@ -21,7 +21,12 @@
     <tr>
       <td class="right">Nama Awal</td>
       <td class="left">
-        <input type="text" name="FirstName"/>
+        <select class="field_select" name="Salutation">
+          <option value ="" selected="selected">None</option>
+          <option value ="Bapak"> Bapak </option>
+          <option value ="Ibu"> Ibu. </option>
+        </select>
+        <input type="text" name="FirstName" id="firstNameCust"/>
       </td>
     </tr>
     <tr>
@@ -39,7 +44,7 @@
     <tr>
       <td class="right">Email</td>
       <td class="left">
-        <input type="email" name="Email"/>
+        <input type="text" name="Email"/>
       </td>
     </tr>
     <tr id="trmoreFieldCustomer">
@@ -49,7 +54,7 @@
       </td>
     </tr>
   </table>
-  <table width="100%" class="hiddenTable">
+  <table width="100%" class="hiddenTable" cellpadding="3px">
     <tr>
       <td width="30%" class="right">
         Alamat
@@ -91,6 +96,6 @@
   </table>
   <div class="submitAddCust">
     <input type="button" value="Simpan dan Pilih" id="createCust"/>
-    <input type="button" value="Cancel" id="btnCancelAddCust"/>
+    <input type="button" value="Batal" id="btnCancelAddCust"/>
   </div>
 </form>

@@ -3,6 +3,7 @@ using Nancy;
 using Nancy.Security;
 using dokuku.security.model;
 using dokuku.sales.item;
+using Newtonsoft.Json;
 
 namespace dokuku.sales.web.modules
 {
@@ -54,37 +55,14 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    string itemCode = (string)this.Request.Form.itemCode;
-                    string barcode = (string)this.Request.Form.barcode;
-                    string itemName = (string)this.Request.Form.itemName;
-                    string itemDesc = (string)this.Request.Form.description;
-                    decimal itemPrice = (decimal)this.Request.Form.itemPrice;
-                    string taxName = (string)this.Request.Form.tax;
-                    decimal taxValue = 0;
-                    Guid id = Guid.NewGuid();
-                    string owner = this.Context.CurrentUser.UserName;
-                    if (taxName == "PPn")
-                    {
-                        taxValue = 0.1m;
-                    }
-                    this.InsertItemService().Insert(new Item()
-                    {
-                        _id = id,
-                        OwnerId = owner,
-                        Code = itemCode,
-                        Barcode = barcode,
-                        Name = itemName,
-                        Description = itemDesc,
-                        Rate = itemPrice,
-                        Tax = new Tax() { Name = taxName, Value = taxValue }
-                    }
-                    );
+                    string data = this.Request.Form.data;
+                    Item item = this.InsertItemService().Insert(data, this.Context.CurrentUser.UserName);
+                    return Response.AsJson(item);
                 }
                 catch (Exception ex)
                 {
                     return Response.AsJson(new { error = true, message = ex.Message });
                 }
-                return Response.AsJson("OK");
             };
             Get["/Items/_id/{id}"] = p =>
             {
@@ -96,37 +74,14 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    string itemCode = (string)this.Request.Form.itemCode;
-                    string barcode = (string)this.Request.Form.barcode;
-                    string itemName = (string)this.Request.Form.itemName;
-                    string itemDesc = (string)this.Request.Form.description;
-                    decimal itemPrice = (decimal)this.Request.Form.itemPrice;
-                    string taxName = (string)this.Request.Form.tax;
-                    decimal taxValue = 0;
-                    Guid id = Guid.Parse((string)this.Request.Form.itemId);
-                    string owner = this.Context.CurrentUser.UserName;
-                    if (taxName == "PPn")
-                    {
-                        taxValue = 0.1m;
-                    }
-                    this.InsertItemService().Update(new Item()
-                    {
-                        _id = id,
-                        OwnerId = owner,
-                        Code = itemCode,
-                        Barcode = barcode,
-                        Name = itemName,
-                        Description = itemDesc,
-                        Rate = itemPrice,
-                        Tax = new Tax() { Name = taxName, Value = taxValue }
-                    }
-                    );
+                    Item item = this.InsertItemService().Update(this.Request.Form.data, this.Context.CurrentUser.UserName);
+                    return Response.AsJson(item);
                 }
                 catch (Exception ex)
                 {
                     return Response.AsJson(new { error = true, message = ex.Message });
                 }
-                return Response.AsJson("OK");
+                
             };
             Get["/isCodeIsExist/{code}"] = p =>
             {
