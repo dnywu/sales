@@ -73,6 +73,10 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
+      <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
+      <Name>dokuku.sales.item</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

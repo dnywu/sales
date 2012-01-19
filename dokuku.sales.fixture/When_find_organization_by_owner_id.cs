@@ -18,6 +18,7 @@ namespace dokuku.sales.fixture
         private static Organization org;
         private static Guid id;
         static MongoConfig mongo;
+        static string email = "oetawan@inforsys.co.id";
         Establish context = () =>
             {
                 mongo = new MongoConfig();
@@ -28,18 +29,18 @@ namespace dokuku.sales.fixture
 
         Because of = () =>
             {
-                orgRepo.Save(new Organization(id, "oetawan@inforsys.co.id", "Inforsys Indonesia, PT", "IDR", 1));
+                orgRepo.Save(new Organization(email, email, "Inforsys Indonesia, PT", "IDR", 1));
             };
 
         It should_return_organization = () =>
             {
-                Organization org = orgReportRepo.FindByOwnerId("oetawan@inforsys.co.id");
+                Organization org = orgReportRepo.FindByOwnerId(email);
                 org.ShouldNotBeNull();
             };
 
         Cleanup cleanup = () =>
             {
-                orgRepo.Delete(id);
+                orgRepo.Delete(email);
             };
     }
 }

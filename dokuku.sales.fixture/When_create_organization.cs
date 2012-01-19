@@ -7,30 +7,32 @@ using dokuku.sales.organization;
 using dokuku.sales.organization.repository;
 using dokuku.sales.organization.model;
 using dokuku.sales.config;
+using dokuku.sales.organization.report;
 namespace dokuku.sales.fixture
 {
     [Subject("Creating organization")]
     public class When_create_organization
     {
         private static IOrganizationRepository orgRepo;
+        private static IOrganizationReportRepository orgReportRepo;
         private static Organization org;
-        private static Guid id;
         static MongoConfig mongo;
+        static string email = "oetawan@inforsys.co.id";
         Establish context = () =>
             {
                 mongo = new MongoConfig();
                 orgRepo = new OrganizationRepository(mongo);
-                id = Guid.NewGuid();
+                orgReportRepo = new OrganizationReportRepository(mongo);
             };
 
         Because of = () =>
             {
-                orgRepo.Save(new Organization(id, "oetawan@inforsys.co.id", "Inforsys Indonesia, PT", "IDR", 1));
+                orgRepo.Save(new Organization(email, email, "Inforsys Indonesia, PT", "IDR", 1));
             };
 
         It should_create_organization = () =>
             {
-                org = orgRepo.Get(id);
+                org = orgReportRepo.FindById(email);
                 org.ShouldNotBeNull();
             };
 

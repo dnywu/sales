@@ -1,4 +1,4 @@
-﻿steal('jquery/class', function () {
+﻿steal('jquery/class', 'sales/scripts/stringformat.js', function () {
     $.Class('Invoice',
 {
 },
@@ -13,7 +13,7 @@
         var subtotal = 0;
         var tmpval = 0;
         $('.amount').each(function (index) {
-            tmpval = parseFloat($(this).text());
+            tmpval = parseFloat($(this).val());
             if (!isNaN(tmpval))
                 subtotal += tmpval;
         });
@@ -21,7 +21,7 @@
     },
     CalculateTotal: function () {
         var tax = 0;
-        var subtotal = parseFloat($("#subtotal").text());
+        var subtotal = parseFloat($("#subtotal").val());
         var total = subtotal;
         if (tax > 0)
             total = subtotal * tax;
@@ -34,7 +34,8 @@
         $("#qty_" + index).val('1.00');
         $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
-        $("#amount_" + index).text(part.Rate);
+        $("#amount_" + index).val(part.Rate);
+        $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CreateNewInvoice: function () {
@@ -45,14 +46,14 @@
         objInv.PONo = $("#po").val();
         objInv.InvoiceDate = $("#invDate").val();
         objInv.Terms = new Object();
-        objInv.Terms.Name = $("#terms").text();
         objInv.Terms.Value = $("#terms").val();
+        objInv.Terms.Name = $("#terms option[value='" + objInv.Terms.Value + "']").text().trim();
         objInv.DueDate = $("#dueDate").val();
         objInv.LateFee = $("#latefee").val();
         objInv.Note = $("#custMsg").val();
         objInv.TermCondition = $("#termAndCond").val();
-        objInv.SubTotal = $("#subtotal").text();
-        objInv.Total = $("#total").text();
+        objInv.SubTotal = $("#subtotal").val();
+        objInv.Total = $("#total").val();
         objInv.Items = new Array;
         $('#itemInvoice tbody tr').each(function (i) {
             if ($('.partname').get(i).value != "") {
@@ -63,8 +64,10 @@
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
                 objInv.Items[i].Rate = $('.price').get(i).value;
                 objInv.Items[i].Discount = $('.discount').get(i).value;
-                objInv.Items[i].Tax = $('.taxed').get(i).value;
-                objInv.Items[i].Amount = $('.amount').get(i).innerText;
+                objInv.Items[i].Tax = new Object();
+                objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
+                objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
+                objInv.Items[i].Amount = $('.amount').get(i).value;
             }
         });
         if (objInv.CustomerId == 0) {
@@ -98,7 +101,7 @@
         $.ajax({
             type: 'GET',
             url: '/GetDataInvoice',
-            data: 'json',
+            dataType: 'json',
             async: false,
             success: function (data) {
                 $.each(data, function (i) {
@@ -107,6 +110,7 @@
                     var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
                     dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
                     dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                    dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
                 });
 
             }

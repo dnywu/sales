@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using dokuku.sales.organization.model;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 namespace dokuku.sales.organization.repository
 {
     public class OrganizationRepository : IOrganizationRepository
@@ -19,26 +20,14 @@ namespace dokuku.sales.organization.repository
             collection.Save<Organization>(org);
         }
 
-        public void Delete(Guid id)
+        public void Delete(string id)
         {
-            QueryDocument qryDoc = new QueryDocument();
-            qryDoc["_id"] = id;
-            collection.Remove(qryDoc);
+            collection.Remove(Query.EQ("_id", id));
         }
 
-        public Organization Get(Guid id)
-        {
-            QueryDocument qry = new QueryDocument() {
-                                    {"_id",id}};
-            return collection.Find(qry).FirstOrDefault();
-        }
-        private MongoDatabase db
-        {
-            get { return mongo.MongoDatabase; }
-        }
         private MongoCollection<Organization> collection
         {
-            get { return db.GetCollection<Organization>("organizations"); }
+            get { return mongo.MongoDatabase.GetCollection<Organization>(typeof(Organization).Name); }
         }
     }
 }
