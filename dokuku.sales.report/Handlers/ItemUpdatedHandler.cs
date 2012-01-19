@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using dokuku.sales.item.messages;
 using NServiceBus;
-using System.Threading;
 using dokuku.sales.config;
-using MongoDB.Driver;
-using MongoDB.Driver.Builders;
 using MongoDB.Bson;
+using MongoDB.Driver;
+
 namespace dokuku.sales.report.Handlers
 {
-    public class ItemCreatedHandler : IHandleMessages<ItemCreated>
+    public class ItemUpdatedHandler : IHandleMessages<ItemUpdated>
     {
         public MongoConfig Mongo { get; set; }
-        public void Handle(ItemCreated message)
+        public void Handle(ItemUpdated message)
         {
             BsonDocument doc = BsonDocument.Parse(message.Data);
             BsonDocument index = new BsonDocument();
@@ -29,7 +31,6 @@ namespace dokuku.sales.report.Handlers
             index["Barcode"] = doc["Barcode"];
             index["Name"] = doc["Name"];
             Collections.Save(index);
-            Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
         private MongoCollection Collections
         {

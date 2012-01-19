@@ -88,6 +88,8 @@
     <Compile Include="Handlers\CustomerDeletedHandler.cs" />
     <Compile Include="Handlers\CustomerUpdatedHandler.cs" />
     <Compile Include="Handlers\ItemCreatedHandler.cs" />
+    <Compile Include="Handlers\ItemDeletedHandler.cs" />
+    <Compile Include="Handlers\ItemUpdatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
