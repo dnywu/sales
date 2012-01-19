@@ -53,22 +53,17 @@ steal('jquery/controller',
                 alert('Tunggu Cuy');
             },
             requestAllItemSuccess: function (data) {
-                if (data == null || data.length == 0) {
-                    $('#body').sales_items_create();
-                }
-                else {
-                    totalData = data.length;
-                    $("table.ItemList tbody").empty();
-                    $.each(data, function (item) {
-                        $("table.ItemList tbody").append('<tr class="trDataItem" id="itemContent' + item + '" tabindex="' + item + '">' +
-                        '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
-                        '<td class="itemList" id="settingPanel' + item + '"></td>' +
-                        '<td class="itemList itemName">' + data[item].Name + '</td>' +
-                        '<td class="itemList itemPrice">Rp. ' + $this.rupiahFormat(data[item].Rate) + '</td></tr>');
-                        $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
-                    });
-                    $('.trDataItem:odd').addClass('odd');
-                }
+                totalData = data.length;
+                $("table.ItemList tbody").empty();
+                $.each(data, function (item) {
+                    $("table.ItemList tbody").append('<tr class="trDataItem" id="itemContent' + item + '" tabindex="' + item + '">' +
+                    '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
+                    '<td class="itemList" id="settingPanel' + item + '"></td>' +
+                    '<td class="itemList itemName">' + data[item].Name + '</td>' +
+                    '<td class="itemList itemPrice">Rp. ' + $this.rupiahFormat(data[item].Rate) + '</td></tr>');
+                    $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
+                });
+                $('.trDataItem:odd').addClass('odd');
             },
             "table.ItemList tbody tr hover": function (el) {
                 var index = el.attr("tabindex");
@@ -172,7 +167,7 @@ steal('jquery/controller',
                 $(".checkBoxItem:checked").each(function (index) {
                     countChecked++;
                 });
-                if (countChecked==0) {
+                if (countChecked == 0) {
                     return;
                 }
                 $("#body").append(this.view("//sales/controllers/items/list/views/confirmBox.ejs"));
@@ -201,6 +196,28 @@ steal('jquery/controller',
                     result += str.charAt(len - 1 - i);
                 }
                 return result;
+            },
+            '#searchItem focus': function () {
+                $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");
+                $("#searchItem").attr("style", "outline:none; background:#FFFFFF");
+            },
+            '#searchItem blur': function () {
+                $(".DivSearch").attr("style", "background:#F3F3F3");
+                $("#searchItem").attr("style", "background:#F3F3F3");
+                $("#searchItem").val("");
+            },
+            "#searchItem keypress": function (el, ev) {
+                if (ev.keyCode == 13) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/searchItem/keyword/' + $("#searchItem").val(),
+                        dataType: 'json',
+                        success: function (data) {
+                            $this.requestAllItemSuccess(data);
+                            $('.Pagging').hide();
+                        }
+                    });
+                }
             }
         })
 

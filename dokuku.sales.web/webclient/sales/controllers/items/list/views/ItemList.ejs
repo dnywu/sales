@@ -5,10 +5,57 @@
         <div class="HeaderListDiv">Barang</div>
         <div class="ItemListContentDiv">
           <div class="ActionButtonDiv">
-            <input type="button" id="createEstimation" value="Buat Estimasi" style="height:20px;" />
-            <input type="button" id="createinvoice" value="Buat Faktur Penjualan" style="height:20px;" />
-            <input type="button" id="deleteItem" value="Hapus" style="height:20px;" />
-            <input type="search" id="searchItem" style="height:20px; float:right;" autosave="some_unique_value" results="5" name="SearchCustomer" placeholder="Cari Barang"/>
+            <table width="100%">
+              <tr>
+                <td>
+                  <table>
+                    <tr>
+                      <td>
+                        <div class="menuLeft" id="createEstimation">Buat Estimasi</div>
+                      </td>
+                      <td>
+                        <div class="menuLeft" id="createinvoice">Buat Faktur Penjualan</div>
+                      </td>
+                      <td>
+                        <div class="menuLeft" id="deleteItem">
+                          <div class="floatLeft">Hapus</div>
+                          <div class="iconHapus"></div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+                <td style="float: right;">
+                  <table>
+                    <tr>
+                      <td>
+                        <div style="color:grey;">Tampilkan :</div>
+                      </td>
+                      <td>
+                        <div>
+                          <div class=" floatRight menuLeft">
+                            <div class="floatRight">Aktif</div>
+                            <div class="imgFilter floatRight"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class=" floatLeft">
+                          <div class="DivSearch">
+                            <div class="imgSearch">
+                              <input type="input" id="searchItem" placeholder="Cari"/>
+                            </div>
+                          </div>
+                          <div class="searchOption">
+                            <table id="autoCompleteItems" style="width:100%"></table>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
           </div>
           <table class="ItemList">
             <thead>
@@ -22,7 +69,7 @@
               </tr>
             </thead>
             <tbody class="BodyDataItem">
-               
+
             </tbody>
           </table>
         </div>

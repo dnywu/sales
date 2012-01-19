@@ -460,7 +460,7 @@
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
-    <Content Include="webclient\sales\controllers\items\list\images\Search-icon.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\find.png" />
     <Content Include="webclient\sales\controllers\items\list\images\search.png" />
     <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
     <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
