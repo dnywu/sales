@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NServiceBus;
+using dokuku.sales.item.messages;
 using Newtonsoft.Json;
-
 namespace dokuku.sales.item.service
 {
     public class InsertItemService:IInsertItemService
     {
         IItemCommand cmd;
         IItemQuery qry;
-        public InsertItemService(IItemCommand command, IItemQuery query)
+        IBus bus;
+        public InsertItemService(IItemCommand command, IItemQuery query, IBus bus)
         {
             cmd = command;
             qry = query;
-
+            this.bus = bus;
         }
         public Item Insert(string jsonItem, string ownerId)
         {
@@ -25,6 +27,8 @@ namespace dokuku.sales.item.service
             FailIfCodeAlreadyExist(item);
             
             cmd.Save(item);
+            bus.Publish(new ItemCreated { Id = item._id });
+
             return item;
         }
 
