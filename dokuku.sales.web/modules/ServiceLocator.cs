@@ -62,5 +62,9 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IInsertItemService>();
         }
+        public static IInvoiceService InvoiceService(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IInvoiceService>();
+        }
     }
 }

@@ -94,6 +94,8 @@
                 x.For<IInvoicesRepository>().Use<InvoicesRepository>();
                 x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
                 x.For<IInsertItemService>().Use<InsertItemService>();
+                x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
+                x.For<IInvoiceService>().Use<InvoiceService>();
             });
         }
     }
