@@ -37,7 +37,8 @@ namespace dokuku.sales.item.service
                 FailIfBarcodeAlreadyExist(item);
                 FailIfCodeAlreadyExist(item);
             }
-            cmd.Save(item);
+            item.OwnerId = ownerId;
+            cmd.Update(item);
             return item;
         }
 
