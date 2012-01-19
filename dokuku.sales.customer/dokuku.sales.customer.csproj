@@ -49,6 +49,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus\distributor\NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -66,6 +69,8 @@
     <Compile Include="report\ICustomerReportRepository.cs" />
     <Compile Include="repository\CustomerRepository.cs" />
     <Compile Include="repository\ICustomerRepository.cs" />
+    <Compile Include="Service\CustomerService.cs" />
+    <Compile Include="Service\ICustomerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
