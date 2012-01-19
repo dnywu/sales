@@ -2,6 +2,7 @@ steal('jquery/controller',
 	   'jquery/view/ejs',
 	   'jquery/controller/view',
 	   'sales/models',
+       'sales/scripts/stringformat.js',
        'sales/controllers/invoices/create',
        'sales/controllers/invoices/edit',
        './listinvoice.css')
@@ -27,6 +28,7 @@ steal('jquery/controller',
                 },
                 GetInvoices: function () {
                     var invoices = inv.GetDataInvoice();
+                    
                     return invoices;
                 },
                 '#selectall change': function () {
