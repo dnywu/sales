@@ -9,12 +9,7 @@ namespace dokuku.sales.web.modules
     {
         public OrganizationModule()
         {
-            this.RequiresAuthentication();
-
-            Get["/getorganization"] = p =>
-            {
-                return Response.AsJson(this.OrganizationReportRepository().FindByOwnerId(this.Context.CurrentUser.UserName));
-            };
+            this.RequiresClaims(new string[1] { Account.OWNER });
 
             Post["/setuporganization"] = p =>
             {
