@@ -39,7 +39,7 @@ namespace dokuku.sales.customer.repository
         public IEnumerable<CustomerReports> Search(string ownerId, string[] keywords)
         {
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
-            return searchndexCollections.Find(qry);
+            return searchndexCollections.Find(qry).SetLimit(10);
         }
         private QueryComplete getQuery(string[] keywords)
         {
