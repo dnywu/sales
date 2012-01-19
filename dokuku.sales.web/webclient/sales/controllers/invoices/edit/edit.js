@@ -93,7 +93,8 @@ steal('jquery/controller',
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "' value='" + item[i].Discount + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
                                     "</select></td>" +
-                                    "<td><span class='amount' id='amount_" + tabIndexTr + "'>" + item[i].Amount + "</span></td>" +
+                                    "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
+                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     i++;
@@ -126,7 +127,8 @@ steal('jquery/controller',
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
-                                    "<td><span class='amount' id='amount_" + tabIndexTr + "'></span></td>" +
+                                    "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
+                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     i++;
@@ -135,10 +137,14 @@ steal('jquery/controller',
                 }
             },
             GetSubTotal: function () {
-                $("#subtotal").text(inv.CalculateSubTotal);
+                var subtotal = inv.CalculateSubTotal();
+                $("#subtotaltext").text(String.format("{0:C}", subtotal));
+                $("#subtotal").val(subtotal);
             },
             GetTotal: function () {
-                $("#total").text(inv.CalculateTotal);
+                var total = inv.CalculateTotal();
+                $("#totaltext").text(String.format("{0:C}", total));
+                $("#total").val(total);
             },
             ClearItemField: function (index) {
                 $("#desc_" + index).empty();
@@ -170,7 +176,6 @@ steal('jquery/controller',
                 new ModalDialog("Tambah Barang Baru");
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
-                addItem.TriggerEvent();
 
             },
             '#addItemRow click': function () {
