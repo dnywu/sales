@@ -139,6 +139,65 @@
             }
         });
         return dataInvoice;
+    },
+    UpdateInvoice: function () {
+        var length = $("#itemInvoice > tbody > tr").size();
+        var objInv = new Object;
+        objInv.Customer = $("#selectcust").val();
+        objInv.CustomerId = $("#CustomerId").val();
+        objInv.PONo = $("#po").val();
+        objInv.InvoiceDate = $("#invDate").val();
+        objInv.Terms = new Object();
+        objInv.Terms.Value = $("#terms").val();
+        objInv.Terms.Name = $("#terms option[value='" + objInv.Terms.Value + "']").text().trim();
+        objInv.DueDate = $("#dueDate").val();
+        objInv.LateFee = $("#latefee").val();
+        objInv.Note = $("#custMsg").val();
+        objInv.TermCondition = $("#termAndCond").val();
+        objInv.SubTotal = $("#subtotal").val();
+        objInv.Total = $("#total").val();
+        objInv.Items = new Array;
+        $('#itemInvoice tbody tr').each(function (i) {
+            if ($('.partname').get(i).value != "") {
+                objInv.Items[i] = new Object;
+                objInv.Items[i].ItemId = $('.partid').get(i).value;
+                objInv.Items[i].PartName = $('.partname').get(i).value;
+                objInv.Items[i].Description = $('.description').get(i).value;
+                objInv.Items[i].Qty = $('.quantity').get(i).value;
+                objInv.Items[i].Rate = $('.price').get(i).value;
+                objInv.Items[i].Discount = $('.discount').get(i).value;
+
+                objInv.Items[i].Taxes = new Array;
+                objInv.Items[i].Taxes = new Object;
+                objInv.Items[i].Taxes.name = $("#taxed_" + i + " option[value='" + $('.taxed').get(i).value + "']").text().trim();
+                objInv.Items[i].Taxes.value = $('.taxed').get(i).value;
+                objInv.Items[i].Amount = $('.amount').get(i).innerText;
+                objInv.Items[i].Tax = new Object();
+                objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
+                objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
+                objInv.Items[i].Amount = $('.amount').get(i).value;
+            }
+        });
+        if (objInv.CustomerId == 0) {
+            $("#errorCreateInv").text("Silahkan masukkan Nama Pelanggan dengan benar").show();
+            return;
+        }
+        if (objInv.Items.length == 0) {
+            $("#errorCreateInv").text("Silahkan masukkan barang di invoice ini").show();
+            return;
+        }
+
+        $("#errorCreateInv").empty().hide();
+        var newInv = JSON.stringify(objInv);
+        $.ajax({
+            type: 'POST',
+            url: '/UpdateInvoice',
+            data: { 'invoice': newInv },
+            dataType: 'json',
+            async: false,
+            success: this.CreateInvoiceCallBack
+        });
     }
+
 })
 });

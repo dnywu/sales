@@ -225,7 +225,7 @@ steal('jquery/controller',
             },
             '#formUpdateIvoice submit': function (el, ev) {
                 ev.preventDefault();
-                inv.CreateNewInvoice();
+                inv.UpdateInvoice();
             }
 
         })

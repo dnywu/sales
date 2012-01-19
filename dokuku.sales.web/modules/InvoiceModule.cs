@@ -38,7 +38,7 @@ namespace dokuku.sales.web.modules
                 var invoices = this.InvoicesRepository().Get(id, account.OwnerId);
                 return Response.AsJson(invoices);
             };
-            Post["/UpdateInvoice/data"] = p =>
+            Post["/UpdateInvoice"] = p =>
             {
                 try
                 {
