@@ -10,7 +10,7 @@ steal('jquery/controller',
             },
             {
                 init: function () {
-                    
+
                 },
                 load: function (id) {
                     $this = this;
@@ -32,10 +32,30 @@ steal('jquery/controller',
                 },
                 "#editItemsForm submit": function (el, ev) {
                     var form = $("#editItemsForm");
+                    var id = $("#itemId").val();
+                    var code = $("#itemCode").val();
+                    var barcode = $("#barcode").val();
+                    var name = $("#itemName").val();
+                    var harga = $("#itemPrice").val();
+                    var description = $("#description").val();
+                    var taxName = $("#tax").text();
+                    var taxValue = $("#tax").val();
+
+                    var item = new Object;
+                    item._id = id;
+                    item.Code = code;
+                    item.Barcode = barcode;
+                    item.Name = name;
+                    item.Rate = harga;
+                    item.Description = description;
+
+                    item.Tax = new Object();
+                    item.Tax.Name = taxName.trim();
+                    item.Tax.Value = taxValue;
                     $.ajax({
                         type: "POST",
                         url: "/editItem",
-                        data: form.serialize(),
+                        data: { 'data': JSON.stringify(item) },
                         dataType: "json",
                         success: function (data) {
                             if (data.error) {

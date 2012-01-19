@@ -36,14 +36,32 @@ steal('jquery/controller',
                 $("#percentTax").keypress(this.percentTaxKeypress);
             },
             "#createItemsForm submit": function (el, ev) {
-                var form = $("#createItemsForm");
+                var code = $("#itemCode").val();
+                var barcode = $("#barcode").val();
+                var name = $("#itemName").val();
+                var harga = $("#itemPrice").val();
+                var description = $("#description").val();
+                var taxName = $("#tax").text();
+                var taxValue = $("#tax").val();
+
+                var item = new Object;
+                item.Code = code;
+                item.Barcode = barcode;
+                item.Name = name;
+                item.Rate = harga;
+                item.Description = description;
+
+                item.Tax = new Object();
+                item.Tax.Name = taxName.trim();
+                item.Tax.Value = taxValue;
+
                 $.ajax({
                     type: "POST",
                     url: "/createnewitem",
-                    data: form.serialize(),
+                    data: { 'data': JSON.stringify(item) },
                     dataType: "json",
                     success: function (data) {
-                        if (data.error) {
+                        if (data.error == "true") {
                             $this.onErrorRequestData(data.message);
                             return;
                         }
