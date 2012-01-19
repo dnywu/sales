@@ -63,7 +63,11 @@
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
                 objInv.Items[i].Rate = $('.price').get(i).value;
                 objInv.Items[i].Discount = $('.discount').get(i).value;
-                objInv.Items[i].Tax = $('.taxed').get(i).value;
+
+                objInv.Items[i].Taxes = new Array;
+                objInv.Items[i].Taxes = new Object;
+                objInv.Items[i].Taxes.name = $("#taxed_" + i + " option[value='" + $('.taxed').get(i).value + "']").text();
+                objInv.Items[i].Taxes.value = $('.taxed').get(i).value;
                 objInv.Items[i].Amount = $('.amount').get(i).innerText;
             }
         });
@@ -122,19 +126,10 @@
             async: false,
             success: function (data) {
                 dataInvoice = data;
-                
                 var InvoiceDate = new Date(parseInt(data.InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
                 var DueDate = new Date(parseInt(data.DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
                 dataInvoice.InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
                 dataInvoice.DueDate = $.datepicker.formatDate('dd M yy', DueDate);
-
-                //                $.each(data, function (i) {
-                //                    dataInvoice[i] = data[i];
-                //                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                //                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                //                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
-                //                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
-                //                });
             }
         });
         return dataInvoice;
