@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using NServiceBus;
+using dokuku.sales.item.messages;
 namespace dokuku.sales.item.service
 {
     public class InsertItemService:IInsertItemService
@@ -10,11 +11,12 @@ namespace dokuku.sales.item.service
         IItemCommand cmd;
         IItemQuery qry;
         Item itm;
-        public InsertItemService(IItemCommand command, IItemQuery query)
+        IBus bus;
+        public InsertItemService(IItemCommand command, IItemQuery query, IBus bus)
         {
             cmd = command;
             qry = query;
-
+            this.bus = bus;
         }
         public void Insert(Item item)
         {
@@ -22,6 +24,7 @@ namespace dokuku.sales.item.service
             FailIfBarcodeAlreadyExist();
             FailIfCodeAlreadyExist();
             cmd.Save(item);
+            bus.Publish(new ItemCreated { Id = item._id });
         }
 
         public void Update(Item item)
