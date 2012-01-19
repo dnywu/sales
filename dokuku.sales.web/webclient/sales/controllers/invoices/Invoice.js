@@ -66,7 +66,7 @@
 
                 objInv.Items[i].Taxes = new Array;
                 objInv.Items[i].Taxes = new Object;
-                objInv.Items[i].Taxes.name = $("#taxed_" + i + " option[value='" + $('.taxed').get(i).value + "']").text();
+                objInv.Items[i].Taxes.name = $("#taxed_" + i + " option[value='" + $('.taxed').get(i).value + "']").text().trim();
                 objInv.Items[i].Taxes.value = $('.taxed').get(i).value;
                 objInv.Items[i].Amount = $('.amount').get(i).innerText;
             }
