@@ -1,17 +1,19 @@
 ﻿using System;
-using dokuku.sales.item.messages;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using dokuku.sales.customer.messages;
 using NServiceBus;
-using System.Threading;
-using dokuku.sales.config;
 using MongoDB.Driver;
-using MongoDB.Driver.Builders;
+using dokuku.sales.config;
 using MongoDB.Bson;
+
 namespace dokuku.sales.report.Handlers
 {
-    public class ItemCreatedHandler : IHandleMessages<ItemCreated>
+    public class CustomerUpdatedHandler : IHandleMessages<CustomerUpdated>
     {
         public MongoConfig Mongo { get; set; }
-        public void Handle(ItemCreated message)
+        public void Handle(CustomerUpdated message)
         {
             BsonDocument doc = BsonDocument.Parse(message.Data);
             BsonDocument index = new BsonDocument();
@@ -19,21 +21,20 @@ namespace dokuku.sales.report.Handlers
             {
                 doc["_id"].ToString(),
                 doc["OwnerId"].ToString(),
-                doc["Code"].ToString(),
-                doc["Barcode"].ToString(),
-                doc["Name"].ToString()
+                doc["Name"].ToString(),
+                doc["Email"].ToString(),
+                doc["BillingAddress"].ToString()
             });
             index["_id"] = doc["_id"];
             index["OwnerId"] = doc["OwnerId"];
-            index["Code"] = doc["Code"];
-            index["Barcode"] = doc["Barcode"];
             index["Name"] = doc["Name"];
+            index["Email"] = doc["Email"];
+            index["BillingAddress"] = doc["BillingAddress"];
             Collections.Save(index);
-            Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
         private MongoCollection Collections
         {
-            get { return Mongo.MongoDatabase.GetCollection(CollectionName.ITEM_REPORTS); }
+            get { return Mongo.MongoDatabase.GetCollection(CollectionName.CUSTOMER_REPORTS); }
         }
     }
 }

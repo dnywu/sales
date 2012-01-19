@@ -47,7 +47,7 @@ namespace dokuku.sales.item
         public Item GetItemByName(string ownerId, string itemName)
         {
             return _document.FindOneAs<Item>(Query.And(Query.EQ("OwnerId", ownerId),
-                                             Query.EQ("Name", new Regex("^" + itemName + "$", RegexOptions.IgnoreCase))));
+                                             Query.EQ("Name", new Regex(itemName, RegexOptions.IgnoreCase))));
         }
 
         public IEnumerable<ItemReports> Search(string ownerId, String[] keywords)

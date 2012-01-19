@@ -1,4 +1,4 @@
-﻿steal('jquery/class','sales/scripts/stringformat.js', function () {
+﻿steal('jquery/class', 'sales/scripts/stringformat.js', function () {
     $.Class('Invoice',
 {
 },
@@ -35,7 +35,7 @@
         $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
         $("#amount_" + index).val(part.Rate);
-        $("#amounttext_" + index).text(String.format("{0:C}",part.Rate));
+        $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CreateNewInvoice: function () {
@@ -47,7 +47,7 @@
         objInv.InvoiceDate = $("#invDate").val();
         objInv.Terms = new Object();
         objInv.Terms.Value = $("#terms").val();
-        objInv.Terms.Name = $("#terms option[value='"+ objInv.Terms.Value +"']").text().trim();
+        objInv.Terms.Name = $("#terms option[value='" + objInv.Terms.Value + "']").text().trim();
         objInv.DueDate = $("#dueDate").val();
         objInv.LateFee = $("#latefee").val();
         objInv.Note = $("#custMsg").val();

@@ -6,13 +6,15 @@ using Machine.Specifications;
 using dokuku.sales.config;
 using dokuku.sales.customer.repository;
 using dokuku.sales.customer.model;
+using dokuku.sales.customer.Service;
+using MongoDB.Bson;
 
 namespace dokuku.sales.fixture
 {
     [Subject("Search Customer")]
     public class When_search_customer
     {
-        private static ICustomerRepository csRepo;
+        private static ICustomerService csService;
         private static ICustomerReportRepository csReportRepo;
         private static Guid id1;
         private static Guid id2;
@@ -23,7 +25,7 @@ namespace dokuku.sales.fixture
         Establish context = () =>
             {
                 mongo = new MongoConfig();
-                csRepo = new CustomerRepository(mongo);
+                csService = new CustomerService(mongo,null);
                 csReportRepo = new CustomerReportRepository(mongo);
                 id1 = Guid.NewGuid();
                 id2 = Guid.NewGuid();
@@ -31,7 +33,7 @@ namespace dokuku.sales.fixture
             };
         Because of = () =>
         {
-            csRepo.Save(new Customer()
+            csService.SaveCustomer(BsonDocument.Create(new Customer()
             {
                 _id = id1,
                 OwnerId = ownerId,
@@ -48,8 +50,8 @@ namespace dokuku.sales.fixture
                 Phone = "0778472111",
                 PostalCode = "29432",
                 State = "Kepri"
-            });
-            csRepo.Save(new Customer()
+            }).ToJson(),ownerId);
+            csService.SaveCustomer(BsonDocument.Create(new Customer()
             {
                 _id = id2,
                 OwnerId = ownerId,
@@ -66,8 +68,8 @@ namespace dokuku.sales.fixture
                 Phone = "0778472111",
                 PostalCode = "29432",
                 State = "Kepri"
-            });
-            csRepo.Save(new Customer()
+            }).ToJson(),ownerId);
+            csService.SaveCustomer(BsonDocument.Create(new Customer()
             {
                 _id = id3,
                 OwnerId = ownerId,
@@ -84,7 +86,7 @@ namespace dokuku.sales.fixture
                 Phone = "0778472111",
                 PostalCode = "29432",
                 State = "Kepri"
-            });
+            }).ToJson(),ownerId);
         };
         It should_return_customerreports = () =>
             {
@@ -97,9 +99,9 @@ namespace dokuku.sales.fixture
             };
         Cleanup cleanup = () =>
             {
-                csRepo.Delete(id1);
-                csRepo.Delete(id2);
-                csRepo.Delete(id3);
+                csService.DeleteCustomer(id1);
+                csService.DeleteCustomer(id2);
+                csService.DeleteCustomer(id3);
             };
     }
 }

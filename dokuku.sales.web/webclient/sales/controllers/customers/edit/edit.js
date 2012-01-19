@@ -5,7 +5,7 @@ steal('jquery/controller',
 
 	    $.Controller('sales.Controllers.customers.edit',
         {
-            init: function (el, ev, id) {
+            init: function (id) {
                 var item = this.GetDataCustomer(id);
                 this.element.html("//sales/controllers/customers/edit/views/editCustomer.ejs", { 'item': item });
             },

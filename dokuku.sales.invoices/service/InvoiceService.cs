@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 using dokuku.sales.config;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using NServiceBus;
+using dokuku.sales.invoice.messages;
+using MongoDB.Bson;
 namespace dokuku.sales.invoices.service
 {
     public class InvoiceService : IInvoiceService
@@ -15,12 +18,14 @@ namespace dokuku.sales.invoices.service
         IInvoicesRepository invRepo;
         IInvoiceAutoNumberGenerator gen;
         MongoConfig mongo;
+        IBus bus;
 
-        public InvoiceService(IInvoicesRepository invoiceRepository, IInvoiceAutoNumberGenerator invNumberGenerator, MongoConfig mongo)
+        public InvoiceService(IInvoicesRepository invoiceRepository, IInvoiceAutoNumberGenerator invNumberGenerator, MongoConfig mongo, IBus bus)
         {
             this.invRepo = invoiceRepository;
             this.gen = invNumberGenerator;
             this.mongo = mongo;
+            this.bus = bus;
         }
 
         public Invoices Create(string jsonInvoice, string ownerId)
@@ -32,6 +37,9 @@ namespace dokuku.sales.invoices.service
             invoice.OwnerId = ownerId;
             invoice.InvoiceNo = invoiceNumber;
             invRepo.Save(invoice);
+
+            if (bus != null)
+                bus.Publish<InvoiceCreated>(new InvoiceCreated { InvoiceJson = invoice.ToJson<Invoices>() });
 
             return invoice;
         }

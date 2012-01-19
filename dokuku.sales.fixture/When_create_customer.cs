@@ -8,12 +8,14 @@ using dokuku.sales.customer;
 using dokuku.sales.customer.repository;
 using dokuku.sales.customer.model;
 using dokuku.sales.config;
+using dokuku.sales.customer.Service;
+using MongoDB.Bson;
 namespace dokuku.sales.fixture
 {
     [Subject("Creating customer")]
     public class When_create_customer
     {
-        private static ICustomerRepository csRepo;
+        private static ICustomerService csService;
         private static ICustomerReportRepository csReportRepo;
         private static Guid id;
         static MongoConfig mongo;
@@ -22,14 +24,14 @@ namespace dokuku.sales.fixture
         Establish context = () =>
             {
                 mongo = new MongoConfig();
-                csRepo = new CustomerRepository(mongo);
+                csService = new CustomerService(mongo,null);
                 csReportRepo = new CustomerReportRepository(mongo);
                 id = Guid.NewGuid();
             };
 
         Because of = () =>
             {
-                csRepo.Save(new Customer()
+                csService.SaveCustomer(BsonDocument.Create(new Customer()
                 {
                     _id = id,
                     OwnerId = ownerId,
@@ -46,18 +48,18 @@ namespace dokuku.sales.fixture
                     Phone = "0778472111",
                     PostalCode = "29432",
                     State = "Kepri"
-                });
+                }).ToJson(), ownerId);
             };
 
         It should_create_customer = () =>
             {
-                Customer cs = csRepo.Get(id, ownerId);
+                Customer cs = csReportRepo.GetByCustName(ownerId, "oetawan.ac@gmail.com");
                 cs.ShouldNotBeNull();
             };
 
         Cleanup cleanup = () =>
             {
-                csRepo.Delete(id);
+                csService.DeleteCustomer(id);
             };
     }
 }

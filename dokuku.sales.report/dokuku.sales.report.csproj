@@ -51,6 +51,15 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="NServiceBus">
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>
@@ -73,11 +82,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\CollectionName.cs" />
     <Compile Include="EndpointConfig.cs" />
+    <Compile Include="Handlers\CustomerCreatedHandler.cs" />
+    <Compile Include="Handlers\CustomerDeletedHandler.cs" />
+    <Compile Include="Handlers\CustomerUpdatedHandler.cs" />
+    <Compile Include="Handlers\InvoiceCreatedHandler.cs" />
+    <Compile Include="Handlers\InvoiceDeletedHandler.cs" />
     <Compile Include="Handlers\ItemCreatedHandler.cs" />
+    <Compile Include="Handlers\ItemDeletedHandler.cs" />
+    <Compile Include="Handlers\ItemUpdatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
+      <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
+      <Name>dokuku.sales.customer.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
+      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
+      <Name>dokuku.sales.invoice.messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.item.messages\dokuku.sales.item.messages.csproj">
       <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
       <Name>dokuku.sales.item.messages</Name>
