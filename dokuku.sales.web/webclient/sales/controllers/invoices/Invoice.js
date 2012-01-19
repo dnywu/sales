@@ -13,7 +13,7 @@
         var subtotal = 0;
         var tmpval = 0;
         $('.amount').each(function (index) {
-            tmpval = parseFloat($(this).text());
+            tmpval = parseFloat($(this).val());
             if (!isNaN(tmpval))
                 subtotal += tmpval;
         });
@@ -46,7 +46,7 @@
         objInv.PONo = $("#po").val();
         objInv.InvoiceDate = $("#invDate").val();
         objInv.Terms = new Object();
-        objInv.Terms.Name = $("#terms").text();
+        objInv.Terms.Name = $("#terms").text().trim();
         objInv.Terms.Value = $("#terms").val();
         objInv.DueDate = $("#dueDate").val();
         objInv.LateFee = $("#latefee").val();
@@ -67,7 +67,7 @@
                 objInv.Items[i].Tax = new Object();
                 objInv.Items[i].Tax.Name = $('.taxed').get(i).innerText;
                 objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
-                objInv.Items[i].Amount = $('.amount').get(i).innerText;
+                objInv.Items[i].Amount = $('.amount').get(i).value;
             }
         });
         if (objInv.CustomerId == 0) {
@@ -101,7 +101,7 @@
         $.ajax({
             type: 'GET',
             url: '/GetDataInvoice',
-            data: 'json',
+            dataType: 'json',
             async: false,
             success: function (data) {
                 $.each(data, function (i) {

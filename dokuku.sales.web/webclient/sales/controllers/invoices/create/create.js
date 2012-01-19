@@ -135,7 +135,7 @@ steal('jquery/controller',
                 $("#amount_" + index).val('');
             },
             LoadTax: function (index) {
-                $("#taxed_" + index).append("<option value='0'>None</option>");
+                $("#taxed_" + index).append("<option value='0'>None</option><option value='1'>A</option>");
             },
             CreateListItem: function (count) {
                 while (count > 0) {
@@ -149,7 +149,7 @@ steal('jquery/controller',
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
-                                    "<td><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
+                                    "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
                                     "<input type='hidden' class='amount' id='amount_"+ tabIndexTr +"'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
