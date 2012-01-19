@@ -21,7 +21,8 @@ namespace dokuku.sales.customer.repository
         public void Save(Customer cs)
         {
             Collections.Save<Customer>(cs);
-            CreateIndex(cs);
+            CollectionReports.Save<CustomerReports>(new CustomerReports(customer));
+            CollectionReports.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
 
         public void UpdateCustomer(Customer item)
@@ -48,11 +49,6 @@ namespace dokuku.sales.customer.repository
             get { return mongo.MongoDatabase.GetCollection<Customer>("customers"); }
         }
 
-        private void CreateIndex(Customer customer)
-        {
-            CollectionReports.Save<CustomerReports>(new CustomerReports(customer));
-            CollectionReports.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
-        }
         private MongoDatabase DB
         {
             get { return mongo.MongoDatabase; }

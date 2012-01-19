@@ -66,7 +66,7 @@ namespace dokuku.sales.customer.repository
         {
             get
             {
-                return mongo.ReportingDatabase.GetCollection<CustomerReports>("customerreports");
+                return mongo.ReportingDatabase.GetCollection<CustomerReports>(typeof(CustomerReports).Name);
             }
         }
 

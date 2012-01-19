@@ -8,7 +8,7 @@ namespace dokuku.sales.customer.model
     public class CustomerReports
     {
         public Guid _id { get; private set; }
-        public string ownerId { get; private set; }
+        public string OwnerId { get; private set; }
         public String[] Keywords { get; private set; }
         public string Name { get; private set; }
         public string Email { get; private set; }
@@ -16,7 +16,7 @@ namespace dokuku.sales.customer.model
         public CustomerReports(Customer customer)
         {
             _id = customer._id;
-            this.ownerId = customer.OwnerId;
+            this.OwnerId = customer.OwnerId;
             this.Name = customer.Name;
             this.Email = customer.Email;
             this.BillingAddress = customer.BillingAddress;
