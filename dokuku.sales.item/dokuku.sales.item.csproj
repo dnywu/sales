@@ -42,6 +42,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -69,6 +72,10 @@
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.item.messages\dokuku.sales.item.messages.csproj">
+      <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
+      <Name>dokuku.sales.item.messages</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
