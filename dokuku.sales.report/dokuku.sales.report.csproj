@@ -87,6 +87,8 @@
     <Compile Include="Handlers\CustomerCreatedHandler.cs" />
     <Compile Include="Handlers\CustomerDeletedHandler.cs" />
     <Compile Include="Handlers\CustomerUpdatedHandler.cs" />
+    <Compile Include="Handlers\InvoiceCreatedHandler.cs" />
+    <Compile Include="Handlers\InvoiceDeletedHandler.cs" />
     <Compile Include="Handlers\ItemCreatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -98,6 +100,10 @@
     <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
       <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
       <Name>dokuku.sales.customer.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
+      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
+      <Name>dokuku.sales.invoice.messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.item.messages\dokuku.sales.item.messages.csproj">
       <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>

@@ -9,5 +9,6 @@ namespace dokuku.sales.report.Handlers
     public static class CollectionName
     {
         public const string CUSTOMER_REPORTS = "CustomerReports";
+        public const string INVOICE_REPORTS = "InvoiceReports";
     }
 }

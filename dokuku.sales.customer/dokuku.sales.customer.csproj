@@ -63,7 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\Customer.cs" />
-    <Compile Include="model\CustomerReports.cs" />
+    <Compile Include="model\CustomerReports.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="report\CustomerReportRepository.cs" />
     <Compile Include="report\ICustomerReportRepository.cs" />
