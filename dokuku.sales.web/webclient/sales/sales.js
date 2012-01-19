@@ -6,6 +6,7 @@ steal(
     'sales/controllers/nav',
     'sales/controllers/setuporganization',
 	function () {					// configure your application
+
 	    $.ajax({
 	        type: 'GET',
 	        url: '/getuser',
@@ -32,4 +33,5 @@ steal(
 	            name: data
 	        }).save();
 	    }
+	    $("#LoadingElment").remove();
 	})
