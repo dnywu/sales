@@ -54,7 +54,6 @@ steal('jquery/controller',
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
-
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
@@ -122,7 +121,8 @@ steal('jquery/controller',
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).text(amount);
+                $("#amount_" + index).val(amount);
+                $("#amounttext_" + index).text(amount);
                 this.GetSubTotal();
                 this.GetTotal();
             },
@@ -131,10 +131,11 @@ steal('jquery/controller',
                 $("#qty_" + index).val('');
                 $("#rate_" + index).val('');
                 $("#disc_" + index).val('');
-                $("#amount_" + index).empty();
+                $("#amounttext_" + index).empty();
+                $("#amount_" + index).val('');
             },
             LoadTax: function (index) {
-                $("#taxed_" + index).append("<option value=1>None</option>");
+                $("#taxed_" + index).append("<option value='0'>None</option>");
             },
             CreateListItem: function (count) {
                 while (count > 0) {
@@ -148,7 +149,8 @@ steal('jquery/controller',
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
-                                    "<td><span class='amount' id='amount_" + tabIndexTr + "'></span></td>" +
+                                    "<td><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
+                                    "<input type='hidden' class='amount' id='amount_"+ tabIndexTr +"'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     count--;

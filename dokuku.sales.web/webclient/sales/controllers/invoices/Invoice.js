@@ -34,7 +34,8 @@
         $("#qty_" + index).val('1.00');
         $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
-        $("#amount_" + index).text(part.Rate);
+        $("#amount_" + index).val(part.Rate);
+        $("#amounttext_" + index).text(part.Rate);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CreateNewInvoice: function () {
@@ -63,7 +64,9 @@
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
                 objInv.Items[i].Rate = $('.price').get(i).value;
                 objInv.Items[i].Discount = $('.discount').get(i).value;
-                objInv.Items[i].Tax = $('.taxed').get(i).value;
+                objInv.Items[i].Tax = new Object();
+                objInv.Items[i].Tax.Name = $('.taxed').get(i).innerText;
+                objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
                 objInv.Items[i].Amount = $('.amount').get(i).innerText;
             }
         });
