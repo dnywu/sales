@@ -217,6 +217,10 @@ steal('jquery/controller',
             "#itemInvoice tbody tr mouseleave": function (el) {
                 var index = el.attr("tabindex");
                 $("#deleteItem_" + index).hide();
+            },
+            '#formUpdateIvoice submit': function (el, ev) {
+                ev.preventDefault();
+                inv.CreateNewInvoice();
             }
 
         })

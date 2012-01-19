@@ -23,6 +23,21 @@ namespace dokuku.sales.invoices.command
             SaveAsReport(invoice);
         }
 
+        public void UpdateInvoices(Invoices invoice)
+        {
+            var qry = Query.EQ("_id", invoice._id);
+            var update = Update.Replace<Invoices>(invoice);
+            Collections.Update(qry, update);
+            updateIndex(invoice);
+        }
+
+        private void updateIndex(Invoices inv)
+        {
+            var qry = Query.EQ("_id", inv._id);
+            var update = Update.Replace<Invoices>(inv);
+            Collections.Update(qry, update);
+        }
+
         public Invoices Get(string id, string ownerId)
         {
             var qry = Query.And(

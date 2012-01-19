@@ -35,5 +35,16 @@ namespace dokuku.sales.invoices.service
 
             return invoice;
         }
+
+
+        public Invoices Update(string jsonInvoice, string ownerId)
+        {
+            string data = jsonInvoice;
+            Invoices invoice = JsonConvert.DeserializeObject<Invoices>(data);
+            invoice.OwnerId = ownerId;
+            invRepo.UpdateInvoices(invoice);
+
+            return invoice;
+        }
     }
 }
