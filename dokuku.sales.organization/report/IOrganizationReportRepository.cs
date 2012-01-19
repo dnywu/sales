@@ -7,6 +7,7 @@ namespace dokuku.sales.organization.report
 {
     public interface IOrganizationReportRepository
     {
+        Organization FindById(string id);
         Organization FindByOwnerId(string email);
     }
 }

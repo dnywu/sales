@@ -5,23 +5,32 @@ steal(
     'jquery',
     'sales/controllers/nav',
     'sales/controllers/setuporganization',
+    'sales/controllers/restrictuser',
 	function () {					// configure your application
 
 	    $.ajax({
 	        type: 'GET',
 	        url: '/getuser',
 	        dataType: 'json',
+            async: false,
 	        success: GetUserCallback
 	    });
 	    $.ajax({
 	        type: 'GET',
 	        url: '/getorganization',
 	        dataType: 'json',
+            async: false,
 	        success: GetOrganizationCallback
 	    });
 	    function GetOrganizationCallback(data) {
 	        if (data == null) {
-	            $('body').sales_setuporganization();
+	            $.ajax({
+	                type: 'GET',
+	                url: '/validatesetuporganization',
+	                dataType: 'json',
+	                async: false,
+	                success: ValidateSetupOrganizationCallback
+	            });
 	        }
 	        else {
 	            $('body').sales_nav();
@@ -33,5 +42,12 @@ steal(
 	            name: data
 	        }).save();
 	    }
+	    function ValidateSetupOrganizationCallback(data) {
+	        if (data.IsValid)
+	            $(document.body).sales_setuporganization();
+	        else
+	            $(document.body).sales_restrictuser();
+	    }
 	    $("#LoadingElment").remove();
 	})
+
