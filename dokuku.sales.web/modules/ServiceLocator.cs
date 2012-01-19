@@ -12,6 +12,7 @@ using dokuku.security.repository;
 using dokuku.sales.invoices.command;
 using dokuku.sales.invoices.query;
 using dokuku.sales.item.service;
+using dokuku.sales.customer.service;
 
 namespace dokuku.sales.web.modules
 {

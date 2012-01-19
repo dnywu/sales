@@ -50,7 +50,7 @@ steal('jquery/controller',
                 $('#totalPage').text(totalPage);
             },
             '#AddCustomers submit': function (el, ev) {
-                var form = $("#AddCustomers").formParams() ;
+                var form = $("#AddCustomers").formParams();
                 var data = JSON.stringify(form);
                 ev.preventDefault();
                 $.ajax({
