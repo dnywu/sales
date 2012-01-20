@@ -66,10 +66,17 @@ steal('jquery/controller',
                 dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             },
+            '#tambahPelanggan click': function () {
+                new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
+                var addCust = new AddCustomer();
+                addCust.TriggerEvent();
+            },
             '.additem click': function (el, ev) {
                 new ModalDialog("Tambah Barang Baru");
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
+                addItem.TriggerEvent();
             },
             '#addItemRow click': function () {
                 this.CreateListItem(1);
