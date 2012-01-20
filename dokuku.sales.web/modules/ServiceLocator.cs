@@ -13,6 +13,7 @@ using dokuku.sales.invoices.command;
 using dokuku.sales.invoices.query;
 using dokuku.sales.item.service;
 using dokuku.sales.invoices.service;
+using dokuku.sales.customer.Service;
 
 namespace dokuku.sales.web.modules
 {
@@ -21,10 +22,6 @@ namespace dokuku.sales.web.modules
         internal static IAuthService GetAuthenticationService(this Nancy.NancyModule mod)
         {
             return ObjectFactory.GetInstance<IAuthService>();
-        }
-        public static ICustomerRepository CustomerRepository(this Nancy.NancyModule mod)
-        {
-            return ObjectFactory.GetInstance<ICustomerRepository>();
         }
         public static ICustomerReportRepository CustomerReportRepository(this Nancy.NancyModule mod)
         {
@@ -58,13 +55,17 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IInvoicesQueryRepository>();
         }
-        public static IInsertItemService InsertItemService(this Nancy.NancyModule mod)
+        public static IItemService ItemService(this Nancy.NancyModule mod)
         {
-            return ObjectFactory.GetInstance<IInsertItemService>();
+            return ObjectFactory.GetInstance<IItemService>();
         }
         public static IInvoiceService InvoiceService(this Nancy.NancyModule mod)
         {
             return ObjectFactory.GetInstance<IInvoiceService>();
+        }
+        public static ICustomerService CustomerService(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<ICustomerService>();
         }
     }
 }

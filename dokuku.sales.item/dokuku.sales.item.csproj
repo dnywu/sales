@@ -58,8 +58,8 @@
     <Compile Include="command\ItemCommand.cs" />
     <Compile Include="command\IItemCommand.cs" />
     <Compile Include="model\ItemReports.cs" />
-    <Compile Include="service\IInsertItemService.cs" />
-    <Compile Include="service\InsertItemServices.cs" />
+    <Compile Include="service\IItemService.cs" />
+    <Compile Include="service\ItemServices.cs" />
     <Compile Include="model\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="query\IItemQuery.cs" />

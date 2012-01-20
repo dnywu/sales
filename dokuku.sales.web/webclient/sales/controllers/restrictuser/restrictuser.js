@@ -13,7 +13,7 @@ $.Controller('sales.Controllers.restrictuser',
 /** @Prototype */
 {
 	init : function(){
-		this.element.html(this.view("//sales/controllers/restrictuser/views/init.ejs"));
+	    this.element.html(this.view("//sales/controllers/restrictuser/views/init.ejs", Sales.Models.Companyprofile.findOne({ id: '1' })));
 	}
 })
 

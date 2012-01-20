@@ -4,6 +4,7 @@ using Nancy.Security;
 using dokuku.security.model;
 using dokuku.sales.customer.model;
 using Newtonsoft.Json;
+using System.Linq;
 namespace dokuku.sales.web.modules
 {
     public class CustomerModule : Nancy.NancyModule
@@ -14,21 +15,23 @@ namespace dokuku.sales.web.modules
             Get["/Customers"] = p =>
             {
                 Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.CustomerReportRepository().CountCustomers(account.OwnerId));
+                int count = this.CustomerReportRepository().CountCustomers(account.OwnerId);
+                return Response.AsJson(count);
             };
             Get["/LimitCustomers/start/{start}/limit/{limit}"] = p =>
             {
                 int start = p.start;
                 int limit = p.limit;
                 Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.CustomerReportRepository().LimitCustomers(account.OwnerId, start, limit));
+                Customer[] result = this.CustomerReportRepository().LimitCustomers(account.OwnerId, start, limit).ToArray();
+                return Response.AsJson(result);
             };
             Delete["/DeleteCustomer/id/{id}"] = p =>
             {
                 try
                 {
                     Guid id = p.id;
-                    this.CustomerRepository().Delete(id);
+                    this.CustomerService().DeleteCustomer(id);
                 }
                 catch (Exception ex)
                 {
@@ -46,18 +49,15 @@ namespace dokuku.sales.web.modules
             Post["/customer/data"] = p =>
             {
                 string data = this.Request.Form.data;
-                Customer customer = JsonConvert.DeserializeObject<Customer>(data);
                 try
                 {
-                    customer._id = Guid.NewGuid();
-                    customer.OwnerId = this.Context.CurrentUser.UserName;
-                    this.CustomerRepository().Save(customer);
+                    data = this.CustomerService().SaveCustomer(data,this.Context.CurrentUser.UserName);
                 }
                 catch (Exception ex)
                 {
                     return Response.AsRedirect(ex.Message);
                 }
-                return Response.AsJson(customer);
+                return Response.AsJson("Ok");
             };
             Get["/GetDataCustomer/id/{id}"] = p =>
             {
@@ -67,10 +67,9 @@ namespace dokuku.sales.web.modules
             Post["/UpdateDataCustomer/data"] = p =>
                 {
                     string Data = this.Request.Form.data;
-                    Customer item = JsonConvert.DeserializeObject<Customer>(Data);
                     try
                     {
-                        this.CustomerRepository().UpdateCustomer(item);
+                        this.CustomerService().UpdateCustomer(Data);
                     }
                     catch (Exception ex)
                     {
@@ -78,6 +77,12 @@ namespace dokuku.sales.web.modules
                         return Response.AsRedirect("/?error=true&message=" + ex.Message);
                     }
                     return Response.AsJson("OK");
+                };
+            Get["/SearchCustomer/key/{key}"] = p =>
+                {
+                    string key = p.key;
+                    Account ownerId = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    return Response.AsJson(this.CustomerReportRepository().Search(ownerId.OwnerId,new string[]{key}));
                 };
         }
     }

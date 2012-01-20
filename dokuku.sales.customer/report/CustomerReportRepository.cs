@@ -39,6 +39,7 @@ namespace dokuku.sales.customer.repository
         public IEnumerable<CustomerReports> Search(string ownerId, string[] keywords)
         {
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            CustomerReports cr = searchndexCollections.Find(qry).FirstOrDefault();
             return searchndexCollections.Find(qry);
         }
         private QueryComplete getQuery(string[] keywords)
@@ -60,13 +61,13 @@ namespace dokuku.sales.customer.repository
         }
         private MongoCollection<Customer> Collections
         {
-            get { return mongo.ReportingDatabase.GetCollection<Customer>("customers"); }
+            get { return mongo.ReportingDatabase.GetCollection<Customer>(typeof(Customer).Name); }
         }
         private MongoCollection<CustomerReports> searchndexCollections
         {
             get
             {
-                return mongo.ReportingDatabase.GetCollection<CustomerReports>("customerreports");
+                return mongo.ReportingDatabase.GetCollection<CustomerReports>(typeof(CustomerReports).Name);
             }
         }
 

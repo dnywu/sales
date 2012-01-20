@@ -9,6 +9,6 @@ namespace dokuku.sales.item.messages
     [Serializable]
     public class ItemCreated : IMessage
     {
-        public Guid Id { get; set; }
+        public string Data { get; set; }
     }
 }

@@ -25,11 +25,29 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new {error= true, message = ex.Message});
                 }
             };
-
             Get["/GetDataInvoice"] = p =>
                 {
                     Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                     return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
+                };
+            Post["/UpdateInvoice"] = p =>
+            {
+                try
+                {
+                    this.InvoiceService().Update(this.Request.Form.invoice, this.Context.CurrentUser.UserName);
+                    return Response.AsJson(new { error = false });
+                }
+                catch (Exception ex)
+                {
+                    return Response.AsJson(new { error = true, message = ex.Message });
+                }
+            };
+            Get["/invoice/{id}"] = p =>
+                {
+                    Guid invoiceId = p.id;
+                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, account.OwnerId);
+                    return Response.AsJson(invoice);
                 };
         }
     }
