@@ -21,7 +21,8 @@ steal('jquery/controller',
                         $this = null,
                         inv = null,
                         itmRepo = null,
-                        custRepo = null)
+                        custRepo = null,
+                        baseCcy = null)
         },
         {
             init: function () {
@@ -29,6 +30,7 @@ steal('jquery/controller',
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
+                this.SetCurrency();
                 this.load();
             },
             load: function (customer) {
@@ -37,7 +39,7 @@ steal('jquery/controller',
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();
-                this.SetCurrency();
+                this.ShowCurrencyToView();
             },
             '#terms change': function (el) {
                 var invDate = $("#invDate").val();
@@ -120,7 +122,7 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
-                
+
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
@@ -208,8 +210,11 @@ steal('jquery/controller',
             },
             SetCurrency: function () {
                 Sales.Models.Currency.findOne({ id: '1' }, function (data) {
-                    $("#curr").text(data.curr);
+                    baseCcy = data.curr;
                 });
+            },
+            ShowCurrencyToView: function () {
+                $("#curr").text(baseCcy);
             }
         })
           });
