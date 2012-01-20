@@ -105,7 +105,11 @@ steal('jquery/controller',
                         "<tr class='trDataCustomer' id='trCustomerList" + item + "' tabindex='" + item + "'>" +
                         "<td class='thDataCustomer tdDataCustomerCenter textAlignRight' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
                         "<td class='tdDataCustomerCenter' id='tdDataCustomer" + item + "'><div class='settingListCustomer' id='settingListCustomer" + item + "' tabindex='" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
-                        "<td class='tdDataCustomerLeft'>" + data[item].Name + "</td>" +
+                        "<td class='tdDataCustomerLeft'>" +
+                            "<div class='nameCompany' width = '100%'>" + data[item].Name + "</div>" +
+                            "<div class='atributDataCustomer' width = '100%'>" + data[item].BillingAddress + "</div>" +
+                            "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +                       
+                        "</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "<td class='tdDataCustomerRight'>Rp. 00</td>" +
                         "</tr>");
@@ -232,16 +236,38 @@ steal('jquery/controller',
                 $this.CheckButtonPaging();
             },
             '#SearchCustomer keyup': function () {
-                var key =  $('#SearchCustomer').val();
+                var key = $('#SearchCustomer').val();
                 $.ajax({
                     type: 'GET',
                     url: '/SearchCustomer/key/' + key,
                     dataType: 'json',
-                    success: function (data) {
-                        alert(data)
-                    }
+                    failure: $('#ListSearchCustomer').hide(),
+                    success: $this.requestAllCustomerSuccess
                 });
             }
+//            ListSearchCustomer: function (data) {
+//                $('#ListSearchCustomer').show();
+//                $("table.listSearchCustomer tbody").empty();
+//                $.each(data, function (item) {
+//                    $("table.listSearchCustomer tbody").append(
+//                        "<tr class='trlistSearchCustomer'>" +
+//                        "<td style='border-bottom:solid 1px #939191'>" +
+//                        "<div class='nameCompany' width = '100%'>" + data[item].Name + "</div>" +
+//                        "<div class='atributDataCustomer' width = '100%'>" + data[item].BillingAddress + "</div>" +
+//                        "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +
+//                        "</td>" +
+//                        "</tr>");
+//                });
+//            },
+//            '#SearchCustomer focus': function () {
+//                $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");
+//                $("#SearchCustomer").attr("style", "outline:none; background:#FFFFFF");
+//            },
+//            '#SearchCustomer blur': function () {
+//                $(".DivSearch").attr("style", "background:#F3F3F3");
+//                $("#SearchCustomer").attr("style", "background:#F3F3F3");
+//                $('#ListSearchCustomer').hide();
+//            }
         })
 
 	});

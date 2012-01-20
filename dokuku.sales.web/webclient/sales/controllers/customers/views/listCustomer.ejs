@@ -7,9 +7,9 @@
             <div class="HeaderDIVListCustomer" id="TitleSpan">Pelanggan</div>
             <div class="classPesan"></div>
             <div class="ClassSubMenuDataCustomer" id="idKosong">
-              <table width="100%">
+              <table width="900px">
                 <tr>
-                  <td width="60%">
+                  <td width="450px">
                     <table>
                       <tr>
                         <td>
@@ -27,7 +27,7 @@
                       </tr>
                     </table>
                   </td>
-                  <td style="float: right;">
+                  <td width="450px" style="float: right;">
                     <table>
                       <tr>
                         <td>
@@ -41,10 +41,20 @@
                             </div>
                           </div>
                         </td>
-                        <td>
+                        <td id="search">
                           <div class=" floatLeft">
-                            <div class="floatLeft"><input type="search" id="SearchCustomer" results ="5" autosave="some_unique_value" name="SearchCustomer" placeholder="Cari"/></div>
-                          </div>
+                            <div class="DivSearch">
+                              <div class="imgSearch">
+                              <input type="input" id="SearchCustomer" placeholder="Cari"/>
+                              </div>
+                            </div>
+                              <div class="ListSearchCustomer" id="ListSearchCustomer">
+                                <table width="100%" class ="listSearchCustomer">
+                                  <tbody>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
                         </td>
                       </tr>
                     </table>
@@ -131,4 +141,3 @@
     </tr>
   </table>
 </div>
-<div class="ListSearchCustomer" id="ListSearchCustomer"></div>
