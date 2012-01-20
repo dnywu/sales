@@ -134,7 +134,7 @@ steal('jquery/controller',
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).val(amount);
-                $("#amounttext_" + index).text(amount);
+                $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
             },
