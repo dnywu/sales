@@ -103,15 +103,15 @@ steal('jquery/controller',
                 $.each(data, function (item) {
                     $("table.dataCustomer tbody.BodyDataCustomer").append(
                         "<tr class='trDataCustomer' id='trCustomerList" + item + "' tabindex='" + item + "'>" +
-                        "<td class='thDataCustomer tdDataCustomerCenter textAlignRight' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
-                        "<td class='tdDataCustomerCenter' id='tdDataCustomer" + item + "'><div class='settingListCustomer' id='settingListCustomer" + item + "' tabindex='" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
-                        "<td class='tdDataCustomerLeft'>" +
+                        "<td class='thDataCustomer tdDataCustomer tdDataCustomerCenter textAlignRight' style='text-align:center'><input type='checkbox' name='SelectAll' class='SelectCustomer' value='" + data[item]._id + "'/></td>" +
+                        "<td class='tdDataCustomerCenter tdDataCustomer' id='tdDataCustomer" + item + "'><div class='settingListCustomer' id='settingListCustomer" + item + "' tabindex='" + item + "'><img class='' src='/sales/controllers/customers/images/setting.png'/></div></td>" +
+                        "<td class='tdDataCustomerLeft tdDataCustomer'>" +
                             "<div class='nameCompany' width = '100%'>" + data[item].Name + "</div>" +
                             "<div class='atributDataCustomer' width = '100%'>" + data[item].BillingAddress + "</div>" +
-                            "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +                       
+                            "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +
                         "</td>" +
-                        "<td class='tdDataCustomerRight'>Rp. 00</td>" +
-                        "<td class='tdDataCustomerRight'>Rp. 00</td>" +
+                        "<td class='tdDataCustomerRight tdDataCustomer'>Rp. 00</td>" +
+                        "<td class='tdDataCustomerRight tdDataCustomer'>Rp. 00</td>" +
                         "</tr>");
                     $("td#tdDataCustomer" + item).append("//sales/controllers/customers/views/contextMenuCustomer.ejs", { index: item }, { id: data[item]._id });
                 });
@@ -221,6 +221,10 @@ steal('jquery/controller',
             '#limitData change': function () {
                 $this.ChangePage();
             },
+            '#allCustomer click': function () {
+                $('.Pagging').show();
+                $this.ChangePage();
+            },
             ChangePage: function () {
                 $this.initPagination();
                 var startPage = parseInt($('#idInputPage').val());
@@ -235,39 +239,41 @@ steal('jquery/controller',
                 $this.initPagination();
                 $this.CheckButtonPaging();
             },
-            '#SearchCustomer keyup': function () {
-                var key = $('#SearchCustomer').val();
-                $.ajax({
-                    type: 'GET',
-                    url: '/SearchCustomer/key/' + key,
-                    dataType: 'json',
-                    failure: $('#ListSearchCustomer').hide(),
-                    success: $this.requestAllCustomerSuccess
-                });
+            '#SearchCustomer keypress': function (el, ev) {
+                if (ev.keyCode == "13") {
+                    var key = $('#SearchCustomer').val();
+                    $.ajax({
+                        type: 'GET',
+                        url: '/SearchCustomer/key/' + key,
+                        dataType: 'json',
+                        failure: $('#ListSearchCustomer').hide(),
+                        success: $this.requestAllCustomerSuccess
+                    });
+                }
+            },
+            //            ListSearchCustomer: function (data) {
+            //                $('#ListSearchCustomer').show();
+            //                $("table.listSearchCustomer tbody").empty();
+            //                $.each(data, function (item) {
+            //                    $("table.listSearchCustomer tbody").append(
+            //                        "<tr class='trlistSearchCustomer'>" +
+            //                        "<td style='border-bottom:solid 1px #939191'>" +
+            //                        "<div class='nameCompany' width = '100%'>" + data[item].Name + "</div>" +
+            //                        "<div class='atributDataCustomer' width = '100%'>" + data[item].BillingAddress + "</div>" +
+            //                        "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +
+            //                        "</td>" +
+            //                        "</tr>");
+            //                });
+            //            },
+            '#SearchCustomer focus': function () {
+                $('.Pagging').hide();
+                $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");
+                $("#SearchCustomer").attr("style", "outline:none; background:#FFFFFF");
+            },
+            '#SearchCustomer blur': function () {
+                $(".DivSearch").attr("style", "background:#F3F3F3");
+                $("#SearchCustomer").attr("style", "background:#F3F3F3");
             }
-//            ListSearchCustomer: function (data) {
-//                $('#ListSearchCustomer').show();
-//                $("table.listSearchCustomer tbody").empty();
-//                $.each(data, function (item) {
-//                    $("table.listSearchCustomer tbody").append(
-//                        "<tr class='trlistSearchCustomer'>" +
-//                        "<td style='border-bottom:solid 1px #939191'>" +
-//                        "<div class='nameCompany' width = '100%'>" + data[item].Name + "</div>" +
-//                        "<div class='atributDataCustomer' width = '100%'>" + data[item].BillingAddress + "</div>" +
-//                        "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +
-//                        "</td>" +
-//                        "</tr>");
-//                });
-//            },
-//            '#SearchCustomer focus': function () {
-//                $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");
-//                $("#SearchCustomer").attr("style", "outline:none; background:#FFFFFF");
-//            },
-//            '#SearchCustomer blur': function () {
-//                $(".DivSearch").attr("style", "background:#F3F3F3");
-//                $("#SearchCustomer").attr("style", "background:#F3F3F3");
-//                $('#ListSearchCustomer').hide();
-//            }
         })
 
 	});

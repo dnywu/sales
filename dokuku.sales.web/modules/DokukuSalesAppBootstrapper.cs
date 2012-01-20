@@ -21,6 +21,7 @@
     using dokuku.sales.item.service;
     using dokuku.sales.invoices.service;
     using NServiceBus;
+    using dokuku.sales.customer.Service;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -92,7 +93,6 @@
                     x.For<IAccountRepository>().Use<AccountRepository>();
                     x.For<IItemCommand>().Use<ItemCommand>();
                     x.For<IItemQuery>().Use<ItemQuery>();
-                    x.For<ICustomerRepository>().Use<CustomerRepository>();
                     x.For<ICustomerReportRepository>().Use<CustomerReportRepository>();
                     x.For<IOrganizationRepository>().Use<OrganizationRepository>();
                     x.For<IOrganizationReportRepository>().Use<OrganizationReportRepository>();
@@ -104,6 +104,7 @@
                     x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
                     x.For<IInvoiceService>().Use<InvoiceService>();
                     x.ForSingletonOf<IBus>().Use(bus);
+                    x.For<ICustomerService>().Use<CustomerService>();
                 });
 
                 structureMapBootstrapped = true;

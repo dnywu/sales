@@ -301,7 +301,9 @@ div.menuLeft{
 .floatRight{
 	float: left;
 }
-.Pagging {
+.Pagging 
+{
+	display:none;
 	padding: 7px 12px 25px 35px;
 	border: solid 1px #EBEBEB;
 	background: #EBEBEB;
@@ -571,3 +573,4 @@ div.DivSearch{
 }
 .nameCompany{ color:Black; font-weight:bolder; font-size:14px;}
 .atributDataCustomer{ color:#A5A2A2; font-size:10px;}
+.tdDataCustomer{padding-bottom:5px; padding-top:5px;}
