@@ -6,7 +6,7 @@ using Machine.Specifications;
 using dokuku.sales.payment.domain;
 namespace dokuku.sales.payment.fixture
 {
-    [Subject("Bayar invoice partial")]
+    [Subject("Bayar invoice")]
     public class When_pay_invoice_full
     {
         static InvoicePayment payment;
@@ -22,12 +22,12 @@ namespace dokuku.sales.payment.fixture
                 PaymentDate(new DateTime(2012, 1, 20)).
                 PaymentMode(new PaymentMode("Cash")).
                 Reference("#001002").
-                Notes("test partial payment");
+                Notes("test full payment");
 
             payment.Pay(pr);
         };
 
-        It should_return_true_when_full_payment_balance_due = () =>
+        It has_outstanding_should_be_false = () =>
         {
             payment.HasOutstanding().ShouldBeFalse();
         };
