@@ -49,11 +49,11 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new { error = true, message = ex.Message });
                 }
             };
-            Get["/invoice/{invoiceno}"] = p =>
+            Get["/invoice/{id}"] = p =>
                 {
-                    var invoiceNo = p.invoiceno;
+                    Guid invoiceId = p.id;
                     Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                    Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceNo, account.OwnerId);
+                    Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, account.OwnerId);
                     return Response.AsJson(invoice);
                 };
         }

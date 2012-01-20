@@ -46,7 +46,9 @@
                       </div>
                     </td>
                     <td>
-                      <span class="invNo"><%=this[i].InvoiceNo%></span>
+                      <span class="invNo" id="<%=i%>">
+                        <input type="hidden" id='invoiceId_<%=i%>' value="<%=this[i]._id %>"/><%=this[i].InvoiceNo%>
+                      </span>
                     </td>
                     <td><%=this[i].PONo%></td>
                     <td><%=this[i].Customer%></td>

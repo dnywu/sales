@@ -22,10 +22,10 @@ namespace dokuku.sales.invoices.query
             return Collections.FindAs<Invoices>(Query.EQ("OwnerId",BsonValue.Create(OwnerId)));
         }
         
-        public Invoices FindById(string invoiceNo, string ownerId)
+        public Invoices FindById(Guid id, string ownerId)
         {
             return Collections.FindOneAs<Invoices>(Query.And(
-                                Query.EQ("_id",invoiceNo),
+                                Query.EQ("_id",id),
                                 Query.EQ("OwnerId",ownerId)
                 ));
         }

@@ -10,6 +10,6 @@ namespace dokuku.sales.invoices.query
     {
         IEnumerable<InvoiceReports> Search(string ownerId, string[] keywords);
         IEnumerable<Invoices> AllInvoices(string OwnerId);
-        Invoices FindById(string invoiceNo, string ownerId);
+        Invoices FindById(Guid id, string ownerId);
     }
 }
