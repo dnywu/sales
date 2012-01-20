@@ -117,7 +117,8 @@
             <td colspan='4'></td>
             <td colspan='2' class='right bold borderbottom graybgcolor'>Total</td>
             <td class='right bold borderbottom graybgcolor'>
-              <span id='total'></span>
+              <span id='totaltext'></span>
+              <input type='hidden' id='total'/>
             </td>
             <td></td>
           </tr>
@@ -148,7 +149,7 @@
         <p align="center" style="font-size:11px">
           <input id="UpdateInvoiceSave" type="submit" name="save" value="Update"/>
           or
-          <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Cancel</span>
+          <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Cancel</span>
         </p>
       </div>
     </div>

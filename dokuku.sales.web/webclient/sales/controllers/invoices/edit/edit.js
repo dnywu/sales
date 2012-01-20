@@ -104,13 +104,24 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
             },
-            CalculateItem: function (element) {
+            CalculateItemx: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).text(amount);
+                this.GetSubTotal();
+                this.GetTotal();
+            },
+            CalculateItem: function (element) {
+                var index = element.attr("id").split('_')[1];
+                var qty = $("#qty_" + index).val();
+                var rate = $("#rate_" + index).val();
+                var disc = $("#disc_" + index).val();
+                var amount = inv.CalculateAmountPerItem(qty, rate, disc);
+                $("#amount_" + index).val(amount);
+                $("#amounttext_" + index).text(amount);
                 this.GetSubTotal();
                 this.GetTotal();
             },
@@ -151,7 +162,8 @@ steal('jquery/controller',
                 $("#qty_" + index).val('');
                 $("#rate_" + index).val('');
                 $("#disc_" + index).val('');
-                $("#amount_" + index).empty();
+                $("#amounttext_" + index).empty();
+                $("#amount_" + index).val('');
             },
             '#selectcust change': function (el, ev) {
                 $("#keteranganSelectCust").empty();
@@ -226,6 +238,9 @@ steal('jquery/controller',
             '#formUpdateIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.UpdateInvoice();
+            },
+            '#btnCancelInvoice click': function () {
+                $("#body").sales_invoices_list('load');
             }
 
         })
