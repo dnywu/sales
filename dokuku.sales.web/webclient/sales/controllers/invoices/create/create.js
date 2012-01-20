@@ -21,7 +21,8 @@ steal('jquery/controller',
                         $this = null,
                         inv = null,
                         itmRepo = null,
-                        custRepo = null)
+                        custRepo = null,
+                        baseCcy = null)
         },
         {
             init: function () {
@@ -29,6 +30,7 @@ steal('jquery/controller',
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
+                this.SetCurrency();
                 this.load();
             },
             load: function (customer) {
@@ -37,6 +39,7 @@ steal('jquery/controller',
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();
+                this.ShowCurrencyToView();
             },
             '#terms change': function (el) {
                 var invDate = $("#invDate").val();
@@ -119,6 +122,7 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
+
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
@@ -130,7 +134,7 @@ steal('jquery/controller',
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).val(amount);
-                $("#amounttext_" + index).text(amount);
+                $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
             },
@@ -203,6 +207,14 @@ steal('jquery/controller',
                 $("#invDate").val($.datepicker.formatDate('dd M yy', currdate));
                 dueDate.setDate(dueDate.getDate() + parseInt(term));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
+            },
+            SetCurrency: function () {
+                Sales.Models.Currency.findOne({ id: '1' }, function (data) {
+                    baseCcy = data.curr;
+                });
+            },
+            ShowCurrencyToView: function () {
+                $("#curr").text(baseCcy);
             }
         })
           });

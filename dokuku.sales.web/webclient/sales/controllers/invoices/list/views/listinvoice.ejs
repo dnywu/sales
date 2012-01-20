@@ -41,12 +41,15 @@
                       <div class="ContextMenuInvoice" id="ContextMenuInvoice<%= i %>">
                         <div class="EditImagContextMenu"></div>
                         <div class="itemContextMenuInvoice">
-                          <span class="EditContextMenuInvoive">Ubah
-                          </span>
+                          <span class="EditContextMenuInvoive" id="<%=this[i]._id%>">Ubah</span>
                         </div>
                       </div>
                     </td>
-                    <td><%=this[i].InvoiceNo%></td>
+                    <td>
+                      <span class="invNo" id="<%=i%>">
+                        <input type="hidden" id='invoiceId_<%=i%>' value="<%=this[i]._id %>"/><%=this[i].InvoiceNo%>
+                      </span>
+                    </td>
                     <td><%=this[i].PONo%></td>
                     <td><%=this[i].Customer%></td>
                     <td><%=this[i].InvoiceDate%></td>
@@ -65,7 +68,7 @@
         </div>
       </td>
       <td class="bodyBgRight" valign='top'>
-        <div class='BtnTambahCustomer' id='newinvoices'>Invoice Baru</div>
+        <div class='BtnNew' id='newinvoices'>Invoice Baru</div>
       </td>
     </tr>
   </tbody>

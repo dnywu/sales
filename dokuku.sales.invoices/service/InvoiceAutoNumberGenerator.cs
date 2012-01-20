@@ -46,7 +46,7 @@ namespace dokuku.sales.invoices.service
         {
             MongoCollection<InvoiceAutoNumberDraft> collection = mongo.MongoDatabase.GetCollection<InvoiceAutoNumberDraft>(typeof(InvoiceAutoNumberDraft).Name);
             InvoiceAutoNumberDraft invoiceAutoNumber = collection.FindOneAs<InvoiceAutoNumberDraft>(Query.And(
-                Query.EQ("_id", BsonValue.Create(typeof(InvoiceAutoNumberDraft).Name)),
+                Query.EQ("_id", BsonValue.Create(typeof(InvoiceAutoNumberDraft).Name + "-"+ companyId)),
                 Query.EQ(COMPANY_ID_FIELD, BsonValue.Create(companyId))));
 
             if (invoiceAutoNumber == null)

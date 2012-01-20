@@ -52,3 +52,18 @@ textarea {
 input.datepicker
 {
 }
+div.BtnNew
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -16px -226px;
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	padding: 9px 5px 4px 35px;
+	height: 26px;
+	width: 154px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+}

@@ -456,6 +456,7 @@
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\customers\images\setting.png" />
+    <Content Include="webclient\sales\controllers\customers\images\find.png" />
     <Content Include="webclient\sales\controllers\home\funcunit.html" />
     <Content Include="webclient\sales\controllers\home\home.css" />
     <Content Include="webclient\sales\controllers\home\home.html" />
@@ -468,7 +469,17 @@
     <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
     <Content Include="webclient\sales\controllers\invoices\create\create_test.js" />
     <Content Include="webclient\sales\controllers\invoices\create\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\invoices\edit\editinvoices.css" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.css" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.html" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.js" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail_test.js" />
     <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
@@ -479,7 +490,7 @@
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
-    <Content Include="webclient\sales\controllers\items\list\images\Search-icon.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\find.png" />
     <Content Include="webclient\sales\controllers\items\list\images\search.png" />
     <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
     <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
@@ -531,10 +542,12 @@
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\companyprofile.js" />
+    <Content Include="webclient\sales\models\currency.js" />
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
     <Content Include="webclient\sales\repository\CustomerRepository.js" />
+    <Content Include="webclient\sales\repository\InvoiceRepository.js" />
     <Content Include="webclient\sales\sales.css" />
     <Content Include="webclient\sales\sales.js" />
     <Content Include="webclient\sales\scripts\build.html" />
@@ -921,6 +934,12 @@
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -930,7 +949,9 @@
     <None Include="webclient\sales\controllers\invoices\create\views\AddCustomer.ejs" />
     <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
-    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
     <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
@@ -981,7 +1002,6 @@
     <None Include="webclient\steal\test\map\foo\template.ejs" />
     <None Include="webclient\steal\update" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
