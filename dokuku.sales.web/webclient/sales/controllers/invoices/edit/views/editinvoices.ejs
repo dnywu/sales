@@ -5,7 +5,7 @@
   <form method="POST" id="formUpdateIvoice">
     <div class='newInvoiceContain'>
       <div class='divInvoiceGroup'>
-        <input type="text" id="invoiceId" name="invoiceId" value="<%= this._id %>" />
+        <input type="hidden" id="invoiceId" name="invoiceId" value="<%= this._id %>" />
         <table width='100%'>
           <tbody>
             <tr>
@@ -20,6 +20,13 @@
                 <label id="keteranganSelectCust"></label>
                 <label id="currency"></label>
               </td>
+            </tr>
+            <tr valign="top">
+              <td></td>
+              <td>
+                <label id="tambahPelanggan">Tambah Pelanggan</label>
+              </td>
+              <td></td>
             </tr>
           </tbody>
         </table>
@@ -137,7 +144,7 @@
           </tr>
           <tr>
             <td>
-              <textarea name='custMsg' id='custMsg' class="CustomerMessageTxtArea">Thanks for your business.</textarea>
+              <textarea name='custMsg' id='custMsg' class="CustomerMessageTxtArea"><%= this.Note %></textarea>
             </td>
             <td>
               <textarea name="termAndCond" id="termAndCond" class="TermsandConditionsTxtArea"><%= this.TermCondition %></textarea>

@@ -39,13 +39,96 @@ steal('jquery/controller',
                 var invoice = this.GetInvoice(id);
                 if (invoice == null)
                     return;
-                var term = invoice.LateFee;
+                var term = invoice.Terms;
+                var late = invoice.LateFee;
                 var count = invoice.Items.length;
                 this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", invoice);
                 this.LoadListItem(count, invoice.Items);
                 this.SetDatePicker();
                 this.selectTerm(term);
-                this.selectLateFee(term);
+                this.selectLateFee(late);
+            }, '#selectcust change': function (el, ev) {
+                $("#keteranganSelectCust").empty();
+                var dataCust = custRepo.GetCustomerByName(el.val());
+                if (dataCust != null) {
+                    $("#selectcust").val(dataCust.Name);
+                    $("#currency").text(dataCust.Currency).show();
+                    $("#CustomerIdEdit").val(dataCust._id);
+                    return;
+                }
+                $("#currency").hide();
+                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#selectcust").focus().select();
+            },
+            '#terms change': function (el) {
+                var invDate = $("#invDate").val();
+                var dueDate = new Date(invDate);
+                dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
+                $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
+            },
+            '#tambahPelanggan click': function () {
+                new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
+                var addCust = new AddCustomer();
+                addCust.TriggerEvent();
+            },
+            '.additem click': function (el, ev) {
+                new ModalDialog("Tambah Barang Baru");
+                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
+                var addItem = new AddItem(el.attr("id").split('_')[1]);
+                addItem.TriggerEvent();
+            },
+            '#addItemRow click': function () {
+                this.CreateListItem(1);
+            },
+            ".clsDeleteItem click": function (el) {
+                if ($("#itemInvoice > tbody > tr").size() == 1)
+                    return;
+                var index = el.attr('id').split('_')[1];
+                $("#itemInvoice tbody tr#tr_" + index + "").remove();
+                $this.GetSubTotal();
+            },
+            '.partname change': function (el) {
+                var partName = el.val();
+                var index = el.attr("id").split('_')[1];
+                var part = itmRepo.GetItemByName(partName);
+
+                if (part != null) {
+                    inv.ShowListItem(part, index);
+                    this.GetSubTotal();
+                    this.GetTotal();
+                    $("#additem_" + index).hide();
+                    return;
+                }
+                this.ClearItemField(index);
+                $("#additem_" + index).show();
+                this.GetSubTotal();
+                this.GetTotal();
+                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            },
+            '.quantity change': function (el) {
+                this.CalculateItem(el);
+            },
+            '.price change': function (el) {
+                this.CalculateItem(el);
+            },
+            '.discount change': function (el) {
+                this.CalculateItem(el);
+            },
+            '#itemInvoice tbody tr hover': function (el) {
+                var index = el.attr('tabindex');
+                $("#deleteItem_" + index).show();
+            },
+            "#itemInvoice tbody tr mouseleave": function (el) {
+                var index = el.attr("tabindex");
+                $("#deleteItem_" + index).hide();
+            },
+            '#formUpdateIvoice submit': function (el, ev) {
+                ev.preventDefault();
+                inv.UpdateInvoice();
+            },
+            '#btnCancelInvoice click': function () {
+                $("#body").sales_invoices_list('load');
             },
             GetInvoice: function (id) {
                 var invoice = invRepo.GetInvoiceById(id);
@@ -107,7 +190,7 @@ steal('jquery/controller',
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
                                     "</select></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
-                                    "<input type='text' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
+                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     i++;
@@ -124,7 +207,7 @@ steal('jquery/controller',
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).val(amount);
-                $("#amounttext_" + index).text(amount);
+                $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
             },
@@ -142,7 +225,7 @@ steal('jquery/controller',
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
-                                    "<input type='text' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
+                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     i++;
@@ -167,84 +250,8 @@ steal('jquery/controller',
                 $("#disc_" + index).val('');
                 $("#amounttext_" + index).empty();
                 $("#amount_" + index).val('');
-            },
-            '#selectcust change': function (el, ev) {
-                $("#keteranganSelectCust").empty();
-                var dataCust = custRepo.GetCustomerByName(el.val());
-                if (dataCust != null) {
-                    $("#selectcust").val(dataCust.Name);
-                    $("#currency").text(dataCust.Currency).show();
-                    $("#CustomerId").val(dataCust._id);
-                    return;
-                }
-                $("#currency").hide();
-                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
-                $("#selectcust").focus().select();
-            },
-            '#terms change': function (el) {
-                var invDate = $("#invDate").val();
-                var dueDate = new Date(invDate);
-                dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
-                $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
-            },
-            '.additem click': function (el, ev) {
-                new ModalDialog("Tambah Barang Baru");
-                $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
-                var addItem = new AddItem(el.attr("id").split('_')[1]);
-
-            },
-            '#addItemRow click': function () {
-                this.CreateListItem(1);
-            },
-            ".clsDeleteItem click": function (el) {
-                if ($("#itemInvoice > tbody > tr").size() == 1)
-                    return;
-                var index = el.attr('id').split('_')[1];
-                $("#itemInvoice tbody tr#tr_" + index + "").remove();
-                $this.GetSubTotal();
-            },
-            '.partname change': function (el) {
-                var partName = el.val();
-                var index = el.attr("id").split('_')[1];
-                var part = itmRepo.GetItemByName(partName);
-
-                if (part != null) {
-                    inv.ShowListItem(part, index);
-                    this.GetSubTotal();
-                    this.GetTotal();
-                    $("#additem_" + index).hide();
-                    return;
-                }
-                this.ClearItemField(index);
-                $("#additem_" + index).show();
-                this.GetSubTotal();
-                this.GetTotal();
-                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
-            },
-            '.quantity change': function (el) {
-                this.CalculateItem(el);
-            },
-            '.price change': function (el) {
-                this.CalculateItem(el);
-            },
-            '.discount change': function (el) {
-                this.CalculateItem(el);
-            },
-            '#itemInvoice tbody tr hover': function (el) {
-                var index = el.attr('tabindex');
-                $("#deleteItem_" + index).show();
-            },
-            "#itemInvoice tbody tr mouseleave": function (el) {
-                var index = el.attr("tabindex");
-                $("#deleteItem_" + index).hide();
-            },
-            '#formUpdateIvoice submit': function (el, ev) {
-                ev.preventDefault();
-                inv.UpdateInvoice();
-            },
-            '#btnCancelInvoice click': function () {
-                $("#body").sales_invoices_list('load');
             }
+
 
         })
             });
