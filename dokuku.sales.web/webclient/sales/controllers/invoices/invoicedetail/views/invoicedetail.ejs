@@ -1,0 +1,72 @@
+<div class="divcontainerFormInvoice">
+  <div class="topBandHeaderDIV">
+    <div id="TitleSpan" class="HeaderDIVLeft">Invoices Detail</div>
+  </div>
+  <div class="invoiceDetail">
+  <div class="InvoiceNoRpt"><%=this.InvoiceNo%></div>
+  <div class="billingDetailRpt">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" height="150">
+      <tbody>
+        <tr>
+          <td height="30" class="curveLGrnLBg billToPadding txt-lft">
+            <div style="float:left">
+              <b>Ke Alamat:</b>
+            </div>
+            <div class="paddingRight10 txt-rgh">Edit</div>
+          </td>
+        </tr>
+        <tr height="120">
+          <td class="defaultInnerBg padding10 txt-lft" valign="top">
+            <span class="Header3 fontRedClose1 displayBlock paddingBottom5">
+              <%=this.Customer%>
+            </span>
+            <div>
+              <%=this.BillingAddress%> </br>
+              <%=this.City%>, <%= this.Province%> <%= this.PostalCode%> </br>
+              <%= this.State%>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="DateandPO">
+    <table width="100%" cellpadding="3" cellspacing="0" border="0">
+      <tr class="curveLGrnLBg" height="30" valign="middle">
+        <td>DATE</td>
+        <td>TERMS</td>
+        <td>DUE DATE</td>
+        <td>P.O.#</td>
+      </tr>
+      <tr class="defaultInnerBg">
+        <td><%=this.InvoiceDate %></td>
+        <td><%=this.Terms.Name %></td>
+        <td><%=this.DueDate %></td>
+        <td><%=this.PONo %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="Items">
+    <table width="100%" cellpadding="3" cellspacing="0" border="0">
+      <tr class="curveLGrnLBg" height="25" valign="middle">
+        <td>#</td>
+        <td>Barang</td>
+        <td>Deskripsi</td>
+        <td>Qty</td>
+        <td>Harga</td>
+        <td>Total</td>
+      </tr>
+      <%for(var i =0; i<this.Items.length; i++){%>
+      <tr class="defaultInnerBg">
+        <td><%=(i + 1) %></td>
+        <td><%=this.Items[i].PartName %></td>
+        <td><%=this.Items[i].Description %></td>
+        <td><%=this.Items[i].Qty %></td>
+        <td><%=this.Items[i].Rate %></td>
+        <td><%=this.Items[i].Amount %></td>
+      </tr>
+      <%}%>
+    </table>
+  </div>
+  </div>
+</div>

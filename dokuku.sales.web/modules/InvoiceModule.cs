@@ -31,6 +31,13 @@ namespace dokuku.sales.web.modules
                     Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                     return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
                 };
+            Get["/invoice/{invoiceno}"] = p =>
+                {
+                    var invoiceNo = p.invoiceno;
+                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceNo, account.OwnerId);
+                    return Response.AsJson(invoice);
+                };
         }
     }
 }

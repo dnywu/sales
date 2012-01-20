@@ -37,6 +37,7 @@ steal('jquery/controller',
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();
+                this.SetCurrency();
             },
             '#terms change': function (el) {
                 var invDate = $("#invDate").val();
@@ -119,6 +120,7 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
+                $("#body").sales_invoices_invoicedetail('load');
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
@@ -203,6 +205,11 @@ steal('jquery/controller',
                 $("#invDate").val($.datepicker.formatDate('dd M yy', currdate));
                 dueDate.setDate(dueDate.getDate() + parseInt(term));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
+            },
+            SetCurrency: function () {
+                Sales.Models.Currency.findOne({ id: '1' }, function (data) {
+                    $("#curr").text(data.curr);
+                });
             }
         })
           });

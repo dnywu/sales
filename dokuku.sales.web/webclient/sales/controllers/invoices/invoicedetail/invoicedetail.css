@@ -1,0 +1,80 @@
+﻿div.invoiceDetail
+{
+    padding:20px;
+}
+div.InvoiceNoRpt
+{
+    width: 40%;
+    float: right;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align:right;
+    margin-right:10px;
+}
+div.billingDetailRpt
+{
+    clear:both;
+    float: left;
+    width: 50%;
+    display:inline;
+}
+.curveLGrnLBg
+{
+    background-color: #E9E9E9;
+}
+.txt-lft
+{
+    text-align: left;
+}
+.billToPadding
+{
+    padding: 0px 0px 0px 10px;
+    vertical-align: middle;
+}
+.txt-rgh
+{
+    text-align: right;
+}
+.paddingRight10
+{
+    padding-right: 10px;
+}
+.defaultInnerBg
+{
+    background-color: #F7F7F7;
+}
+.padding10
+{
+    padding-left: 10px;
+}
+.paddingBottom5
+{
+    padding-bottom: 5px;
+}
+.displayBlock
+{
+    display: block;
+}
+.Header3
+{
+    font-size: 14px;
+}
+.fontRedClose1, .fontRedClose1 a
+{
+    color: black;
+    text-decoration: underline;
+}
+.fontRedClose1:hover, .fontRedClose1 a:hover
+{
+    color: red;
+}
+div.DateandPO
+{
+    clear:both;
+    padding-top: 30px;
+}
+div.Items
+{
+    clear:both;
+    padding-top:20px;
+}

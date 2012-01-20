@@ -469,6 +469,11 @@
     <Content Include="webclient\sales\controllers\invoices\create\create_test.js" />
     <Content Include="webclient\sales\controllers\invoices\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.css" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.html" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.js" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail_test.js" />
     <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
@@ -531,6 +536,7 @@
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\companyprofile.js" />
+    <Content Include="webclient\sales\models\currency.js" />
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
@@ -919,6 +925,9 @@
     <None Include="webclient\sales\controllers\home\views\home.ejs" />
     <None Include="webclient\sales\controllers\invoices\create\views\AddItem.ejs" />
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">

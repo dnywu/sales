@@ -4,6 +4,7 @@ steal('jquery/controller',
 	   'sales/models',
        'sales/scripts/stringformat.js',
        'sales/controllers/invoices/create',
+       'sales/controllers/invoices/invoicedetail',
        './listinvoice.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
@@ -27,7 +28,7 @@ steal('jquery/controller',
                 },
                 GetInvoices: function () {
                     var invoices = inv.GetDataInvoice();
-                    
+
                     return invoices;
                 },
                 '#selectall change': function () {
@@ -53,6 +54,17 @@ steal('jquery/controller',
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
+                },
+                '.invNo click': function (el, ev) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/invoice/'+ el.text(),
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            $("#body").sales_invoices_invoicedetail('load', data);
+                        }
+                    });
                 }
             });
 

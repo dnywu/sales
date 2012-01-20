@@ -23,6 +23,7 @@ steal(
 	        success: GetOrganizationCallback
 	    });
 	    function GetOrganizationCallback(data) {
+            
 	        if (data == null) {
 	            $.ajax({
 	                type: 'GET',
@@ -33,12 +34,16 @@ steal(
 	            });
 	        }
 	        else {
+	            new Sales.Models.Currency({
+	                id: '1',
+	                curr: data.Currency
+	            }).save();
 	            $('body').sales_nav();
 	        }
 	    }
 	    function GetUserCallback(data) {
 	        new Sales.Models.Companyprofile({
-	            id: 1,
+	            id: '1',
 	            name: data
 	        }).save();
 	    }
