@@ -57,10 +57,14 @@
         });
     },
     GetSubTotal: function () {
-        $("#subtotal").text(inv.CalculateSubTotal);
+        var subtotal = inv.CalculateSubTotal();
+        $("#subtotaltext").text(String.format("{0:C}", subtotal));
+        $("#subtotal").val(subtotal);
     },
     GetTotal: function () {
-        $("#total").text(inv.CalculateTotal);
+        var total = inv.CalculateTotal();
+        $("#totaltext").text(String.format("{0:C}", total));
+        $("#total").val(total);
     }
 })
 });

@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="antlr.runtime">
+      <HintPath>..\packages\NServiceBus\antlr.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\NServiceBus\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
@@ -40,6 +46,10 @@
     </Reference>
     <Reference Include="FluentMongo">
       <HintPath>..\packages\FluentMongo.1.3.1\lib\FluentMongo.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSMQ">
+      <HintPath>..\packages\NServiceBus\Interop.MSMQ.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
@@ -66,6 +76,15 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Dokuku\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Core">
+      <HintPath>..\packages\NServiceBus\NServiceBus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\packages\NServiceBus\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
@@ -491,6 +510,8 @@
     <Content Include="webclient\sales\controllers\nav\images\icon.png" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
     <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\controllers\nav\images\uknown-person.gif" />
+    <Content Include="webclient\sales\controllers\nav\images\userlogo.png" />
     <Content Include="webclient\sales\controllers\nav\Nav.css" />
     <Content Include="webclient\sales\controllers\nav\nav.html" />
     <Content Include="webclient\sales\controllers\nav\nav.js" />
@@ -526,6 +547,8 @@
     <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.js" />
     <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
+    <Content Include="webclient\sales\scripts\stringformat.js" />
+    <Content Include="webclient\sales\styles\images\Actions.png" />
     <Content Include="webclient\sales\styles\images\ui-bg_glass_100_e4f1fb_1x400.png" />
     <Content Include="webclient\sales\styles\images\ui-bg_glass_100_f6f6f6_1x400.png" />
     <Content Include="webclient\sales\styles\images\ui-bg_glass_100_fdf5ce_1x400.png" />
@@ -972,6 +995,10 @@
     <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
       <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
       <Name>dokuku.sales.invoices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.item.messages\dokuku.sales.item.messages.csproj">
+      <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
+      <Name>dokuku.sales.item.messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
       <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
