@@ -547,6 +547,7 @@
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
     <Content Include="webclient\sales\repository\CustomerRepository.js" />
+    <Content Include="webclient\sales\repository\InvoiceRepository.js" />
     <Content Include="webclient\sales\sales.css" />
     <Content Include="webclient\sales\sales.js" />
     <Content Include="webclient\sales\scripts\build.html" />
@@ -936,71 +937,71 @@
     <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs">
       <SubType>Designer</SubType>
     </None>
-      <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
-        <SubType>Designer</SubType>
-      </None>
-      <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
-        <SubType>Designer</SubType>
-      </None>
-      <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
-        <SubType>Designer</SubType>
-      </None>
-      <None Include="webclient\sales\controllers\invoices\create\views\AddCustomer.ejs" />
-      <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
-      <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
-      <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs">
-        <SubType>Designer</SubType>
-      </None>
-      <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
-      <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
-      <None Include="webclient\sales\controllers\items\create\views\init.ejs">
-        <SubType>Designer</SubType>
-      </None>
-      <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
-      <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
-      <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
-      <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
-        <SubType>Designer</SubType>
-      </None>
-      <None Include="webclient\sales\sales.md" />
-      <None Include="webclient\steal\buildjs" />
-      <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
-      <None Include="webclient\steal\build\scripts\uglify\bin\uglifyjs" />
-      <None Include="webclient\steal\build\scripts\uglify\package.json" />
-      <None Include="webclient\steal\build\scripts\uglify\README.org" />
-      <None Include="webclient\steal\build\test\styles\another.less" />
-      <None Include="webclient\steal\build\test\styles\mystyles.less" />
-      <None Include="webclient\steal\cleanjs" />
-      <None Include="webclient\steal\coffee\coffee.coffee" />
-      <None Include="webclient\steal\generate\app" />
-      <None Include="webclient\steal\generate\templates\app\%28application_name%29.coffee.ejs" />
-      <None Include="webclient\steal\generate\templates\app\%28application_name%29.css.ejs" />
-      <None Include="webclient\steal\generate\templates\app\%28application_name%29.html.ejs" />
-      <None Include="webclient\steal\generate\templates\app\%28application_name%29.js.ejs" />
-      <None Include="webclient\steal\generate\templates\app\docs\.ignore" />
-      <None Include="webclient\steal\generate\templates\app\plugin\plugin.js.ejs" />
-      <None Include="webclient\steal\generate\templates\app\plugin\plugin.less.ejs" />
-      <None Include="webclient\steal\generate\templates\app\scripts\build.html.ejs" />
-      <None Include="webclient\steal\generate\templates\app\scripts\build.js.ejs" />
-      <None Include="webclient\steal\generate\templates\app\scripts\clean.js.ejs" />
-      <None Include="webclient\steal\generate\templates\app\scripts\crawl.js.ejs" />
-      <None Include="webclient\steal\generate\templates\app\test\.ignore" />
-      <None Include="webclient\steal\generate\templates\page.ejs" />
-      <None Include="webclient\steal\getjs" />
-      <None Include="webclient\steal\get\gets.json" />
-      <None Include="webclient\steal\get\test\README" />
-      <None Include="webclient\steal\js" />
-      <None Include="webclient\steal\js.bat" />
-      <None Include="webclient\steal\less\less.less" />
-      <None Include="webclient\steal\less\test\styles.less" />
-      <None Include="webclient\steal\pluginifyjs" />
-      <None Include="webclient\steal\README.md" />
-      <None Include="webclient\steal\rhino\loader" />
-      <None Include="webclient\steal\rhino\loader.bat" />
-      <None Include="webclient\steal\test\files\require.foo" />
-      <None Include="webclient\steal\test\map\foo\template.ejs" />
-      <None Include="webclient\steal\update" />
-    </ItemGroup>
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\create\views\AddCustomer.ejs" />
+    <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
+    <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
+    <None Include="webclient\sales\controllers\items\create\views\init.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
+    <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\sales.md" />
+    <None Include="webclient\steal\buildjs" />
+    <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
+    <None Include="webclient\steal\build\scripts\uglify\bin\uglifyjs" />
+    <None Include="webclient\steal\build\scripts\uglify\package.json" />
+    <None Include="webclient\steal\build\scripts\uglify\README.org" />
+    <None Include="webclient\steal\build\test\styles\another.less" />
+    <None Include="webclient\steal\build\test\styles\mystyles.less" />
+    <None Include="webclient\steal\cleanjs" />
+    <None Include="webclient\steal\coffee\coffee.coffee" />
+    <None Include="webclient\steal\generate\app" />
+    <None Include="webclient\steal\generate\templates\app\%28application_name%29.coffee.ejs" />
+    <None Include="webclient\steal\generate\templates\app\%28application_name%29.css.ejs" />
+    <None Include="webclient\steal\generate\templates\app\%28application_name%29.html.ejs" />
+    <None Include="webclient\steal\generate\templates\app\%28application_name%29.js.ejs" />
+    <None Include="webclient\steal\generate\templates\app\docs\.ignore" />
+    <None Include="webclient\steal\generate\templates\app\plugin\plugin.js.ejs" />
+    <None Include="webclient\steal\generate\templates\app\plugin\plugin.less.ejs" />
+    <None Include="webclient\steal\generate\templates\app\scripts\build.html.ejs" />
+    <None Include="webclient\steal\generate\templates\app\scripts\build.js.ejs" />
+    <None Include="webclient\steal\generate\templates\app\scripts\clean.js.ejs" />
+    <None Include="webclient\steal\generate\templates\app\scripts\crawl.js.ejs" />
+    <None Include="webclient\steal\generate\templates\app\test\.ignore" />
+    <None Include="webclient\steal\generate\templates\page.ejs" />
+    <None Include="webclient\steal\getjs" />
+    <None Include="webclient\steal\get\gets.json" />
+    <None Include="webclient\steal\get\test\README" />
+    <None Include="webclient\steal\js" />
+    <None Include="webclient\steal\js.bat" />
+    <None Include="webclient\steal\less\less.less" />
+    <None Include="webclient\steal\less\test\styles.less" />
+    <None Include="webclient\steal\pluginifyjs" />
+    <None Include="webclient\steal\README.md" />
+    <None Include="webclient\steal\rhino\loader" />
+    <None Include="webclient\steal\rhino\loader.bat" />
+    <None Include="webclient\steal\test\files\require.foo" />
+    <None Include="webclient\steal\test\map\foo\template.ejs" />
+    <None Include="webclient\steal\update" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>

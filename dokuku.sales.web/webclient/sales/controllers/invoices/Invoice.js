@@ -1,9 +1,13 @@
-﻿steal('jquery/class', 'sales/scripts/stringformat.js', function () {
-    $.Class('Invoice',
+﻿steal('jquery/class', 'sales/scripts/stringformat.js',
+      'sales/repository/InvoiceRepository.js',
+    function () {
+        $.Class('Invoice',
 {
+    defaults: (invRepo = null)
 },
 {
     init: function () {
+        invRepo = new InvoiceRepository();
     },
     CalculateAmountPerItem: function (qty, rate, disc) {
         var amount = (rate - ((rate * disc) / 100)) * qty;
@@ -39,11 +43,51 @@
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CreateNewInvoice: function () {
+        var invoice = this.GetInvoiceDataFromView();
+        $.ajax({
+            type: 'POST',
+            url: '/createinvoice',
+            data: { 'invoice': invoice },
+            dataType: 'json',
+            async: false,
+            success: this.CreateInvoiceCallBack
+        });
+    },
+    CreateInvoiceCallBack: function (data) {
+        if (data.error == true) {
+            $("#errorCreateInv").text(data.message).show();
+            return;
+        } else {
+            $("#body").sales_invoices_invoicedetail('load', data);
+        }
+    },
+    UpdateInvoice: function () {
+        var invoice = this.GetInvoiceDataFromView();
+        var invId = $("#invoiceId").val();
+        $.ajax({
+            type: 'POST',
+            url: '/UpdateInvoice',
+            data: { 'invoice': invoice },
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                if (data.error == true) {
+                    $("#errorUpdateInv").text(data.message).show();
+                    return;
+                }
+                var invoice = invRepo.GetInvoiceById(invId);
+                $("#body").sales_invoices_invoicedetail('load', invoice);
+            }
+        });
+    },
+    GetInvoiceDataFromView: function () {
         var length = $("#itemInvoice > tbody > tr").size();
         var objInv = new Object;
+        objInv._id = $("#invoiceId").val();
         objInv.Customer = $("#selectcust").val();
         objInv.CustomerId = $("#CustomerId").val();
         objInv.PONo = $("#po").val();
+        objInv.InvoiceNo = $("#InvoiceNo").val();
         objInv.InvoiceDate = $("#invDate").val();
         objInv.Terms = new Object();
         objInv.Terms.Value = $("#terms").val();
@@ -81,123 +125,7 @@
 
         $("#errorCreateInv").empty().hide();
         var newInv = JSON.stringify(objInv);
-        $.ajax({
-            type: 'POST',
-            url: '/createinvoice',
-            data: { 'invoice': newInv },
-            dataType: 'json',
-            async: false,
-            success: this.CreateInvoiceCallBack
-        });
-    },
-    CreateInvoiceCallBack: function (data) {
-        if (data.error == true) {
-            $("#errorCreateInv").text(data.message).show();
-            return;
-        } else {
-            $("#body").sales_invoices_invoicedetail('load',data);
-        }
-    },
-    GetDataInvoice: function () {
-        var dataInvoice = new Array();
-        $.ajax({
-            type: 'GET',
-            url: '/GetDataInvoice',
-            dataType: 'json',
-            async: false,
-            success: function (data) {
-                $.each(data, function (i) {
-                    dataInvoice[i] = data[i];
-                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
-                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
-                    dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
-                });
-
-            }
-        });
-        return dataInvoice;
-    },
-    GetDataInvoiceByID: function (Guid) {
-        var dataInvoice = new Array();
-        $.ajax({
-            type: 'GET',
-            url: '/GetDataInvoiceByInvoiceID/_id/' + Guid,
-            data: 'json',
-            async: false,
-            success: function (data) {
-                dataInvoice = data;
-                var InvoiceDate = new Date(parseInt(data.InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                var DueDate = new Date(parseInt(data.DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                dataInvoice.InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
-                dataInvoice.DueDate = $.datepicker.formatDate('dd M yy', DueDate);
-            }
-        });
-        return dataInvoice;
-    },
-    UpdateInvoice: function () {
-        var length = $("#itemInvoice > tbody > tr").size();
-        var objInv = new Object;
-        objInv._id = $("#itemId").val(); 
-        objInv.Customer = $("#selectcust").val();
-        objInv.CustomerId = $("#CustomerId").val();
-        objInv.InvoiceNo = $("#InvoiceNo").val();
-        objInv.PONo = $("#po").val();
-        objInv.InvoiceDate = $("#invDate").val();
-        objInv.Terms = new Object();
-        objInv.Terms.Value = $("#terms").val();
-        objInv.Terms.Name = $("#terms option[value='" + objInv.Terms.Value + "']").text().trim();
-        objInv.DueDate = $("#dueDate").val();
-        objInv.LateFee = $("#latefee").val();
-        objInv.Note = $("#custMsg").val();
-        objInv.TermCondition = $("#termAndCond").val();
-        objInv.SubTotal = $("#subtotal").val();
-        objInv.Total = $("#total").val();
-        objInv.Items = new Array;
-        $('#itemInvoice tbody tr').each(function (i) {
-            if ($('.partname').get(i).value != "") {
-                objInv.Items[i] = new Object;
-                objInv.Items[i].ItemId = $('.partid').get(i).value;
-                objInv.Items[i].PartName = $('.partname').get(i).value;
-                objInv.Items[i].Description = $('.description').get(i).value;
-                objInv.Items[i].Qty = $('.quantity').get(i).value;
-                objInv.Items[i].Rate = $('.price').get(i).value;
-                objInv.Items[i].Discount = $('.discount').get(i).value;
-                objInv.Items[i].Tax = new Object();
-                objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
-                objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
-                objInv.Items[i].Amount = $('.amount').get(i).value;
-            }
-        });
-        if (objInv.CustomerId == 0) {
-            $("#errorCreateInv").text("Silahkan masukkan Nama Pelanggan dengan benar").show();
-            return;
-        }
-        if (objInv.Items.length == 0) {
-            $("#errorCreateInv").text("Silahkan masukkan barang di invoice ini").show();
-            return;
-        }
-
-        $("#errorCreateInv").empty().hide();
-        var UpdateInv = JSON.stringify(objInv);
-        $.ajax({
-            type: 'POST',
-            url: '/UpdateInvoice',
-            data: { 'invoice': UpdateInv },
-            dataType: 'json',
-            async: false,
-            success: this.UpdateInvoiceCallBack
-        });
-    },
-    UpdateInvoiceCallBack: function (data) {
-        if (data.error == true) {
-            $("#errorUpdateInv").text(data.message).show();
-            return;
-        }
-
-        $("#body").sales_invoice_list("load");
+        return newInv;
     }
-
 })
-});
+    });

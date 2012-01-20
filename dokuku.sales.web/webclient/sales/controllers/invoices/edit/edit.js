@@ -10,6 +10,7 @@ steal('jquery/controller',
         'sales/styles/jquery-ui-1.8.14.custom.css',
         'sales/repository/ItemRepository.js',
         'sales/repository/CustomerRepository.js',
+        'sales/repository/InvoiceRepository.js',
         'sales/models')
 	.then('./views/editinvoices.ejs',
             '../create/views/AddCustomer.ejs',
@@ -21,26 +22,38 @@ steal('jquery/controller',
                         $this = null,
                         inv = null,
                         itmRepo = null,
-                        custRepo = null)
+                        custRepo = null,
+                        invRepo = null)
         },
         {
-            init: function () {
+            init: function (el, ev, id) {
                 $this = this;
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
+                invRepo = new InvoiceRepository();
                 inv = new Invoice();
+                this.load(id);
             },
             load: function (id) {
                 tabIndexTr = 0;
-                var item = inv.GetDataInvoiceByID(id);
-                var term = item.Terms;
-                var term = item.LateFee;
-                var count = item.Items.length;
-                this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", item);
-                this.LoadListItem(count, item.Items);
+                var invoice = this.GetInvoice(id);
+                if (invoice == null)
+                    return;
+                var term = invoice.LateFee;
+                var count = invoice.Items.length;
+                this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", invoice);
+                this.LoadListItem(count, invoice.Items);
                 this.SetDatePicker();
                 this.selectTerm(term);
                 this.selectLateFee(term);
+            },
+            GetInvoice: function (id) {
+                var invoice = invRepo.GetInvoiceById(id);
+                var InvoiceDate = new Date(parseInt(invoice.InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                var DueDate = new Date(parseInt(invoice.DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                invoice.InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                invoice.DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                return invoice;
             },
             SetDatePicker: function () {
                 var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
@@ -101,16 +114,6 @@ steal('jquery/controller',
                     count--;
                     tabIndexTr++;
                 }
-                this.GetSubTotal();
-                this.GetTotal();
-            },
-            CalculateItemx: function (element) {
-                var index = element.attr("id").split('_')[1];
-                var qty = $("#qty_" + index).val();
-                var rate = $("#rate_" + index).val();
-                var disc = $("#disc_" + index).val();
-                var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).text(amount);
                 this.GetSubTotal();
                 this.GetTotal();
             },

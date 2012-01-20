@@ -6,6 +6,7 @@ steal('jquery/controller',
        'sales/controllers/invoices/create',
        'sales/controllers/invoices/edit',
        'sales/controllers/invoices/invoicedetail',
+       'sales/repository/InvoiceRepository.js',
        './listinvoice.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
@@ -14,23 +15,19 @@ steal('jquery/controller',
            $.Controller('Sales.Controllers.Invoices.List',
             {
                 defaults: ($this = null,
-                           inv = null)
+                           inv = null,
+                           invRepo = null)
             },
             {
                 init: function () {
                     $this = this;
                     inv = new Invoice();
-                    var invoices = this.GetInvoices();
-                    this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices));
+                    invRepo = new InvoiceRepository();
+                    this.load();
                 },
                 load: function () {
-                    var invoices = this.GetInvoices();
+                    var invoices = invRepo.GetAllInvoice();
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices))
-                },
-                GetInvoices: function () {
-                    var invoices = inv.GetDataInvoice();
-
-                    return invoices;
                 },
                 '#selectall change': function () {
                     if ($("#selectall").attr('checked')) {
@@ -59,18 +56,12 @@ steal('jquery/controller',
                 '.EditContextMenuInvoive click': function (el) {
                     var id = el.attr('id');
                     $('#body').sales_invoices_edit('load', id);
-				},
+                },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
-                    $.ajax({
-                        type: 'GET',
-                        url: '/invoice/' + invoiceId,
-                        dataType: 'json',
-                        async: false,
-                        success: function (data) {
-                            $("#body").sales_invoices_invoicedetail('load', data);
-                        }
-                    });
+                    var invoice = invRepo.GetInvoiceById(invoiceId);
+                    if (invoice != null)
+                        $("#body").sales_invoices_invoicedetail('load', invoice);
                 }
             });
 
