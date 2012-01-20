@@ -64,12 +64,6 @@
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
                 objInv.Items[i].Rate = $('.price').get(i).value;
                 objInv.Items[i].Discount = $('.discount').get(i).value;
-
-                objInv.Items[i].Taxes = new Array;
-                objInv.Items[i].Taxes = new Object;
-                objInv.Items[i].Taxes.name = $("#taxed_" + i + " option[value='" + $('.taxed').get(i).value + "']").text().trim();
-                objInv.Items[i].Taxes.value = $('.taxed').get(i).value;
-                objInv.Items[i].Amount = $('.amount').get(i).innerText;
                 objInv.Items[i].Tax = new Object();
                 objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
                 objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
@@ -143,8 +137,10 @@
     UpdateInvoice: function () {
         var length = $("#itemInvoice > tbody > tr").size();
         var objInv = new Object;
+        objInv._id = $("#itemId").val(); 
         objInv.Customer = $("#selectcust").val();
         objInv.CustomerId = $("#CustomerId").val();
+        objInv.InvoiceNo = $("#InvoiceNo").val();
         objInv.PONo = $("#po").val();
         objInv.InvoiceDate = $("#invDate").val();
         objInv.Terms = new Object();
@@ -166,12 +162,6 @@
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
                 objInv.Items[i].Rate = $('.price').get(i).value;
                 objInv.Items[i].Discount = $('.discount').get(i).value;
-
-                objInv.Items[i].Taxes = new Array;
-                objInv.Items[i].Taxes = new Object;
-                objInv.Items[i].Taxes.name = $("#taxed_" + i + " option[value='" + $('.taxed').get(i).value + "']").text().trim();
-                objInv.Items[i].Taxes.value = $('.taxed').get(i).value;
-                objInv.Items[i].Amount = $('.amount').get(i).innerText;
                 objInv.Items[i].Tax = new Object();
                 objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
                 objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
@@ -188,15 +178,23 @@
         }
 
         $("#errorCreateInv").empty().hide();
-        var newInv = JSON.stringify(objInv);
+        var UpdateInv = JSON.stringify(objInv);
         $.ajax({
             type: 'POST',
             url: '/UpdateInvoice',
-            data: { 'invoice': newInv },
+            data: { 'invoice': UpdateInv },
             dataType: 'json',
             async: false,
-            success: this.CreateInvoiceCallBack
+            success: this.UpdateInvoiceCallBack
         });
+    },
+    UpdateInvoiceCallBack: function (data) {
+        if (data.error == true) {
+            $("#errorUpdateInv").text(data.message).show();
+            return;
+        }
+
+        $("#body").sales_invoice_list("load");
     }
 
 })

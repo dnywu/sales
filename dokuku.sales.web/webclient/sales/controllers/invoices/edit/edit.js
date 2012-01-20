@@ -15,7 +15,7 @@ steal('jquery/controller',
             '../create/views/AddCustomer.ejs',
             '../create/views/AddItem.ejs', function ($) {
 
-                $.Controller('Sales.Controllers.Invoices.Edit',
+                $.Controller('Sales.Invoices.Edit',
         {
             defaults: (tabIndexTr = 0,
                         $this = null,
@@ -94,7 +94,7 @@ steal('jquery/controller',
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
                                     "</select></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
-                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
+                                    "<input type='text' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     i++;
@@ -128,7 +128,7 @@ steal('jquery/controller',
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
-                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
+                                    "<input type='text' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
                     this.LoadTax(tabIndexTr);
                     i++;

@@ -5,7 +5,7 @@
   <form method="POST" id="formUpdateIvoice">
     <div class='newInvoiceContain'>
       <div class='divInvoiceGroup'>
-        <input type="hidden" id="itemId" name="itemId" value=""<%= this._id %>" />
+        <input type="hidden" id="itemId" name="itemId" value="<%= this._id %>" />
         <table width='100%'>
           <tbody>
             <tr>
@@ -13,7 +13,8 @@
                 <div class="mandatoryTxt">Pilih Pelanggan</div>
               </td>
               <td class="td_field">
-                <input type='text' name="customer" id="selectcust" value="<%= this.Customer %>" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('pelanggan harus dipilih')"/>
+                <input type="hidden" id="CustomerId" value="<%=this.CustomerId%>"/>
+                  <input type='text' name="customer" id="selectcust" value="<%= this.Customer %>" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('pelanggan harus dipilih')"/>
               </td>
               <td class="error">
                 <label id="keteranganSelectCust"></label>
@@ -32,7 +33,7 @@
                 <div class="mandatoryTxt">Invoice#</div>
               </td>
               <td class="td_field">
-                <input type='text' value="<%= this.InvoiceNo %>" readonly />
+                <input type='text' id='InvoiceNo' value="<%= this.InvoiceNo %>" readonly />
                 </td>
               <td class='error'></td>
             </tr>
@@ -138,9 +139,7 @@
               <textarea name='custMsg' id='custMsg' class="CustomerMessageTxtArea">Thanks for your business.</textarea>
             </td>
             <td>
-              <textarea name="termAndCond" id="termAndCond" class="TermsandConditionsTxtArea">
-                <%= this.TermCondition %>
-              </textarea>
+              <textarea name="termAndCond" id="termAndCond" class="TermsandConditionsTxtArea"><%= this.TermCondition %></textarea>
             </td>
           </tr>
         </table>
@@ -154,4 +153,5 @@
       </div>
     </div>
   </form>
+  <div class="error" id="errorUpdateInv"></div>
 </div>

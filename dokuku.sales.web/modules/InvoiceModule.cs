@@ -25,7 +25,6 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new {error= true, message = ex.Message});
                 }
             };
-
             Get["/GetDataInvoice"] = p =>
                 {
                     Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);

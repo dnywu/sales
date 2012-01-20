@@ -54,7 +54,7 @@ table#tblListInvoice .tblBalance{width:80px;}
 table#tblListInvoice .tblStatus{width:65px;}
 table#tblListInvoice tr{border-top:1px solid #EBEBEB;border-bottom:1px Solid #EBEBEB;}
 table#tblListInvoice td{padding-top:8px;padding-bottom:8px; height: 30px;}
-.settingListInvoice{display:none; cursor:pointer}
+.settingListInvoice{display:none; cursor:pointer;outline:none}
 div.ContextMenuInvoice
 {
 	display:none;
@@ -74,10 +74,13 @@ div.ContextMenuInvoice
 
 .itemContextMenuInvoice
 {
-	padding-top:4px;
+	padding-top:4px;cursor:pointer;
 }
 
 .EditContextMenuInvoive
 {
-    cursor:pointer;
+    cursor:pointer;outline:none;
 }
+
+.itemContextMenuInvoice{cursor:pointer;outline:none;}
+
