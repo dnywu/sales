@@ -43,6 +43,7 @@
     <Compile Include="domain\Customer.cs" />
     <Compile Include="domain\Invoice.cs" />
     <Compile Include="domain\InvoicePayment.cs" />
+    <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
     <Compile Include="domain\PaymentMode.cs" />
     <Compile Include="domain\PaymentRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

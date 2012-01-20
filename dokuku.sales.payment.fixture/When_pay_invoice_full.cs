@@ -7,7 +7,7 @@ using dokuku.sales.payment.domain;
 namespace dokuku.sales.payment.fixture
 {
     [Subject("Bayar invoice partial")]
-    public class When_pay_invoice_partial
+    public class When_pay_invoice_full
     {
         static InvoicePayment payment;
         Establish context = () => {
@@ -17,7 +17,7 @@ namespace dokuku.sales.payment.fixture
         Because of = () =>
         {
             PaymentRecord pr = PaymentRecord.
-                AmountPaid(2000000).
+                AmountPaid(10000000).
                 BankCharge(100000).
                 PaymentDate(new DateTime(2012, 1, 20)).
                 PaymentMode(new PaymentMode("Cash")).
@@ -27,9 +27,9 @@ namespace dokuku.sales.payment.fixture
             payment.Pay(pr);
         };
 
-        It seharusnya_invoice_masih_ada_yang_outstanding = () =>
+        It should_return_true_when_full_payment_balance_due = () =>
         {
-            payment.BalanceDue.ShouldEqual(8000000);
+            payment.HasOutstanding().ShouldBeFalse();
         };
     }
 }

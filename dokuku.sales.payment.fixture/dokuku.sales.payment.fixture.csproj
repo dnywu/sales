@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_pay_invoice_full.cs" />
+    <Compile Include="When_pay_invoice_exceed_balance_due.cs" />
     <Compile Include="When_pay_invoice_partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

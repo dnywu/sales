@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-namespace dokuku.sales.payment
+namespace dokuku.sales.payment.domain
 {
     public class Invoice
     {
