@@ -251,20 +251,6 @@ steal('jquery/controller',
                     });
                 }
             },
-            //            ListSearchCustomer: function (data) {
-            //                $('#ListSearchCustomer').show();
-            //                $("table.listSearchCustomer tbody").empty();
-            //                $.each(data, function (item) {
-            //                    $("table.listSearchCustomer tbody").append(
-            //                        "<tr class='trlistSearchCustomer'>" +
-            //                        "<td style='border-bottom:solid 1px #939191'>" +
-            //                        "<div class='nameCompany' width = '100%'>" + data[item].Name + "</div>" +
-            //                        "<div class='atributDataCustomer' width = '100%'>" + data[item].BillingAddress + "</div>" +
-            //                        "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +
-            //                        "</td>" +
-            //                        "</tr>");
-            //                });
-            //            },
             '#SearchCustomer focus': function () {
                 $('.Pagging').hide();
                 $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");

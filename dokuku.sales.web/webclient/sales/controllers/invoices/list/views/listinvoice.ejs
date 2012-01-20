@@ -8,10 +8,31 @@
           </div>
           <div class="invoiceContain">
             <div class="ActionButtonDiv">
-              <input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />
-              <div class="rightbuttonarea">Show: 
-                <input type="button" id="searchinvoice" value="Search" style="height:20px;" />
-              </div>
+              <table id ="tblMenuInvoice" width="900px">
+                <tr id ="trMenuInvoice">
+                  <td id="tdMenuInvoiceLeft" width="450px">
+                    <input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />
+                  </td>
+                  <td id="tdMenuInvoiceRight" width="450px">
+                    <table id="subMenuInvoiceRight" width="100%">
+                      <tr id="trsubMenuInvoiceRight">
+                        <td id="tdsubMenuInvoiceRight" width="30%">
+                          <div class="floatLeft" id="titelMenuInvoice">Show:</div>
+                        </td>
+                        <td id="tdsubMenuInvoiceRight" width="70%">
+                          <div class=" floatLeft">
+                            <div class="DivSearch">
+                              <div class="imgSearch">
+                                <input type="input" id="SearchInvoice" placeholder="Cari"/>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </div>
             <table width="100%" cellpadding="5px" id="tblListInvoice">
               <thead>
@@ -22,8 +43,8 @@
                   <td class="tblPO">P.O.#</td>
                   <td class="tblNamaPelanggan">Nama Pelanggan</td>
                   <td class="tblTanggal">Tanggal</td>
-                  <td class="tblDue">Sampai</td>
                   <td class="tblTotal right">Total</td>
+                  <td class="tblDue">Sampai</td>
                   <td class="tblBalance right">Balance Due</td>
                   <td class="tblStatus">Status</td>
                 </tr>
@@ -50,10 +71,8 @@
                     <td><%=this[i].PONo%></td>
                     <td><%=this[i].Customer%></td>
                     <td><%=this[i].InvoiceDate%></td>
+                    <td class="right"><%=this[i].Total%></td>
                     <td><%=this[i].DueDate%></td>
-                    <td class="right">
-                      <%=this[i].Total%>
-                    </td>
                     <td class="right"><%=this[i].name%></td>
                     <td><%=this[i].Status%></td>
                   </tr>

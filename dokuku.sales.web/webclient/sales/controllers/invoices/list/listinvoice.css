@@ -76,3 +76,11 @@ div.ContextMenuInvoice
 {
 	padding-top:4px;
 }
+#SearchInvoice{
+	border: none;
+	margin-left: 18px;
+	height: 16px;
+	width: 254px;
+	background: #F3F3F3;
+}
+

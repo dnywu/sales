@@ -5,6 +5,8 @@ using dokuku.security.model;
 using dokuku.sales.customer.model;
 using dokuku.sales.invoices.model;
 using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace dokuku.sales.web.modules
 {
@@ -30,6 +32,18 @@ namespace dokuku.sales.web.modules
                 {
                     Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                     return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
+                };
+            Get["/SearchInvoice/key/{key}"] = p =>
+                {
+                    string key = p.key;
+                    Account ownerId = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    IList<Invoices> invoices = new List<Invoices>();
+                    IEnumerable<InvoiceReports> invoiceReport = this.InvoicesQueryRepository().Search(ownerId.OwnerId, new string[] { key });
+                    foreach (InvoiceReports invoice in invoiceReport)
+                    {
+                        invoices.Add(this.InvoicesRepository().Get(invoice._id, ownerId.OwnerId));
+                    }
+                    return Response.AsJson(invoices);
                 };
         }
     }
