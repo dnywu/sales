@@ -22,6 +22,8 @@ namespace dokuku.sales.invoices.model
         public string LateFee { get; set; }
         public string Note { get; set; }
         public string TermCondition { get; set; }
+        public decimal ExchangeRate { get; set; }
+        public string Currency { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
         public InvoiceItems[] Items { get; set; }
