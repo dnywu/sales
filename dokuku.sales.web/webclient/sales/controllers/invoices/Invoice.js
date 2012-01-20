@@ -85,7 +85,7 @@
         var objInv = new Object;
         objInv._id = $("#invoiceId").val();
         objInv.Customer = $("#selectcust").val();
-        objInv.CustomerId = $("#CustomerId").val();
+        objInv.CustomerId = $("#CustomerId").val(); 
         objInv.PONo = $("#po").val();
         objInv.InvoiceNo = $("#InvoiceNo").val();
         objInv.InvoiceDate = $("#invDate").val();
