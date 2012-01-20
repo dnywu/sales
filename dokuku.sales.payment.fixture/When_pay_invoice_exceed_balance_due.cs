@@ -12,7 +12,7 @@ namespace dokuku.sales.payment.fixture
         static InvoicePayment payment;
         static PaymentExceedBalanceDueException exception;
         Establish context = () => {
-            payment = new InvoicePayment(new Invoice("INV-1", 10000000),new Customer(Guid.NewGuid(),"Matahari"));
+            payment = new InvoicePayment(new Invoice(Guid.NewGuid(), "INV-1", 10000000), Guid.NewGuid());
         };
 
         Because of = () =>
