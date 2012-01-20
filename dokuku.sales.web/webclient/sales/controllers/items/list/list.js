@@ -203,13 +203,13 @@ steal('jquery/controller',
                         dataType: 'json',
                         success: function (data) {
                             $this.requestAllItemSuccess(data);
-                            $('.Pagging').hide();
+                            $('.PagingItems').hide();
                         }
                     });
                 }
             },
             "#showAllItem click": function () {
-                $('.Pagging').show();
+                $('.PagingItems').show();
                 $this.RequestNumberOfItem();
             },
             requestLimitedData: function (start, limit) {

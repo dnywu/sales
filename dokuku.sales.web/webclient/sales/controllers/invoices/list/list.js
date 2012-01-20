@@ -27,7 +27,7 @@ steal('jquery/controller',
                 },
                 GetInvoices: function () {
                     var invoices = inv.GetDataInvoice();
-                    
+
                     return invoices;
                 },
                 '#selectall change': function () {
@@ -53,6 +53,12 @@ steal('jquery/controller',
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
+                },
+                '#deleteinvoice click': function () {
+                    $(".selectInvoice:checked").each(function (index) {
+                        var no = $(".invoiceNo").text();
+                        inv.DeleteInvoice(no);
+                    });
                 }
             });
 

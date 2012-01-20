@@ -116,6 +116,18 @@
             }
         });
         return dataInvoice;
+    },
+    DeleteInvoice: function (invoiceNo) {
+        $.ajax({
+            type: 'DELETE',
+            url: '/deleteInvoice/invoiceNo/' + invoiceNo,
+            dataType: 'json',
+            success: function (data) {
+                if (data.error == "true") {
+                    alert(data.message);
+                }
+            }
+        });
     }
 })
 });

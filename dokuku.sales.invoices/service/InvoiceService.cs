@@ -43,5 +43,18 @@ namespace dokuku.sales.invoices.service
 
             return invoice;
         }
+
+        public void Delete(string id, string ownerId)
+        {
+            IsInvoiceStatusDraft(id, ownerId);
+            invRepo.Delete(id, ownerId);
+        }
+
+        private void IsInvoiceStatusDraft(string id, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(id, ownerId);
+            if (invoice.Status.ToLower() != "draft")
+                throw new Exception("Hapus invoice gagal, status invoice bukan draft");
+        }
     }
 }

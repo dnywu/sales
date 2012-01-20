@@ -9,5 +9,6 @@ namespace dokuku.sales.invoices.service
     public interface IInvoiceService
     {
         Invoices Create(string jsonInvoice, string ownerId);
+        void Delete(string id, string ownerId);
     }
 }

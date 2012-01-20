@@ -27,9 +27,22 @@ namespace dokuku.sales.web.modules
             };
 
             Get["/GetDataInvoice"] = p =>
+            {
+                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
+            };
+            Delete["/deleteInvoice/invoiceNo/{invoiceNo}"] = p =>
                 {
-                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
+                    try
+                    {
+                        string invNo = p.invoiceNo;
+                        this.InvoiceService().Delete(invNo, this.Context.CurrentUser.UserName);
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsJson(new { error = true, message = ex.Message });
+                    }
+                    return Response.AsJson("OK");
                 };
         }
     }
