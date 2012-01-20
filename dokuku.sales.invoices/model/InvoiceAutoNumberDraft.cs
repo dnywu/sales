@@ -8,7 +8,7 @@ namespace dokuku.sales.invoices.model
     {
         public InvoiceAutoNumberDraft(string id, string companyId)
         {
-            _id = id;
+            _id = id + "-" + companyId;
             CompanyId = companyId;
             Value = 0;
         }

@@ -45,7 +45,9 @@
                         </div>
                       </div>
                     </td>
-                    <td><%=this[i].InvoiceNo%></td>
+                    <td>
+                      <span class="invNo"><%=this[i].InvoiceNo%></span>
+                    </td>
                     <td><%=this[i].PONo%></td>
                     <td><%=this[i].Customer%></td>
                     <td><%=this[i].InvoiceDate%></td>
@@ -64,7 +66,7 @@
         </div>
       </td>
       <td class="bodyBgRight" valign='top'>
-        <div class='BtnTambahCustomer' id='newinvoices'>Invoice Baru</div>
+        <div class='BtnNew' id='newinvoices'>Invoice Baru</div>
       </td>
     </tr>
   </tbody>

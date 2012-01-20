@@ -50,5 +50,14 @@ namespace dokuku.sales.invoices.command
                 return mongo.MongoDatabase.GetCollection<Invoices>(typeof(Invoices).Name);
             }
         }
+
+        public Invoices GetInvByNumber(string invoiceNumber, string ownerId)
+        {
+            var qry = Query.And(
+                Query.EQ("InvoiceNo", invoiceNumber),
+                Query.EQ("OwnerId", ownerId));
+
+            return Collections.FindOneAs<Invoices>(qry);
+        }
     }
 }
