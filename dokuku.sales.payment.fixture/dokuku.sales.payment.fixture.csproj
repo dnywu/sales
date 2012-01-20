@@ -43,13 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_paymentMode_CRUD.cs" />
     <Compile Include="When_pay_invoice_partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
       <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
       <Name>dokuku.sales.payment</Name>

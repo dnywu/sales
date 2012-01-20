@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,12 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="command\IPaymentModeCommand.cs" />
+    <Compile Include="command\PaymentModeCommand.cs" />
     <Compile Include="domain\Customer.cs" />
     <Compile Include="domain\Invoice.cs" />
     <Compile Include="domain\InvoicePayment.cs" />
     <Compile Include="domain\PaymentMode.cs" />
     <Compile Include="domain\PaymentRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="query\IPaymentModeQuery.cs" />
+    <Compile Include="query\PaymentModeQuery.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
