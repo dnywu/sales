@@ -4,6 +4,7 @@ steal('jquery/controller',
 	   'sales/models',
        'sales/scripts/stringformat.js',
        'sales/controllers/invoices/create',
+       'sales/controllers/invoices/invoicedetail',
        './listinvoice.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
@@ -65,6 +66,18 @@ steal('jquery/controller',
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
+                },
+                '.invNo click': function (el, ev) {
+                    var invoiceId = $("#invoiceId_" + el.attr("id")).val();
+                    $.ajax({
+                        type: 'GET',
+                        url: '/invoice/' + invoiceId,
+                        dataType: 'json',
+                        async: false,
+                        success: function (data) {
+                            $("#body").sales_invoices_invoicedetail('load', data);
+                        }
+                    });
                 }
             });
 
