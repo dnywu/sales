@@ -381,3 +381,15 @@ div.DivSearch{
 	width: 17px;
 	float:left;
 }
+div.itemName
+{
+	font-weight:bolder;
+	font-size:14px;
+	width:100%;
+}
+div.itemDesc
+{
+	font-size:11px;
+	color:#999;
+	width:100%;
+}
