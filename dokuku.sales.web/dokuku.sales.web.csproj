@@ -494,16 +494,6 @@
     <Content Include="webclient\sales\controllers\items\list\list_test.js" />
     <Content Include="webclient\sales\controllers\items\list\test\qunit\items_test.js" />
     <Content Include="webclient\sales\controllers\items\list\test\qunit\qunit.js" />
-    <Content Include="webclient\sales\controllers\items\list\nav\funcunit.html" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.jpg" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.png" />
-    <Content Include="webclient\sales\controllers\items\list\nav\Nav.css" />
-    <Content Include="webclient\sales\controllers\items\list\nav\nav.html" />
-    <Content Include="webclient\sales\controllers\items\list\nav\nav.js" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\items\list\nav\NavSubMenu.css" />
-    <Content Include="webclient\sales\controllers\items\list\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
@@ -944,7 +934,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
-    <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>

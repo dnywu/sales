@@ -22,6 +22,11 @@ namespace dokuku.sales.invoices.command
             Collections.Save<Invoices>(invoice);
         }
 
+        public void UpdateInvoices(Invoices invoice)
+        {
+            Collections.Save<Invoices>(invoice);
+        }
+
         public Invoices Get(string id, string ownerId)
         {
             var qry = Query.And(
