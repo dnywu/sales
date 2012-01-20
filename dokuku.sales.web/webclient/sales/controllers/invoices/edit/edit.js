@@ -53,7 +53,7 @@ steal('jquery/controller',
                 if (dataCust != null) {
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
-                    $("#CustomerId").val(dataCust._id);
+                    $("#CustomerIdEdit").val(dataCust._id);
                     return;
                 }
                 $("#currency").hide();
