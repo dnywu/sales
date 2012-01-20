@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using dokuku.sales.domainevents;
 namespace dokuku.sales.payment.domain
 {
     public class InvoicePayment
@@ -24,6 +25,8 @@ namespace dokuku.sales.payment.domain
             FailIfAmountPaidGreaterThanBalanceDue(pr);
             BalanceDue = BalanceDue - pr.amountPaid;
             PaymentRecords.Add(pr);
+            if (!HasOutstanding())
+                DomainEvents.Raise<InvoiceSudahLunas>(new InvoiceSudahLunas { InvoiceNumber = this.Invoice.InvoiceNumber, InvoiceId = this.Invoice.InvoiceId });
         }
 
         private void FailIfAmountPaidGreaterThanBalanceDue(PaymentRecord pr)
