@@ -56,9 +56,10 @@ steal('jquery/controller',
                     $("#body").sales_invoices_create("load");
                 },
                 '.invNo click': function (el, ev) {
+                    var invoiceId = $("#invoiceId_" + el.attr("id")).val();
                     $.ajax({
                         type: 'GET',
-                        url: '/invoice/'+ el.text(),
+                        url: '/invoice/' + invoiceId,
                         dataType: 'json',
                         async: false,
                         success: function (data) {

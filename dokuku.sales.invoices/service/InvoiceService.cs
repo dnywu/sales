@@ -35,7 +35,7 @@ namespace dokuku.sales.invoices.service
             string invoiceNumber = gen.GenerateInvoiceNumberDraft(ownerId);
             FailIfInvoiceNumberAlreadyUsed(invoiceNumber,ownerId);
 
-            invoice._id = Guid.NewGuid().ToString();
+            invoice._id = Guid.NewGuid();
             invoice.OwnerId = ownerId;
             invoice.InvoiceNo = invoiceNumber;
             invRepo.Save(invoice);
