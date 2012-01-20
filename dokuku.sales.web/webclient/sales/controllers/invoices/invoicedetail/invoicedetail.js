@@ -13,7 +13,7 @@ steal('jquery/controller', 'jquery/view/ejs',
     load: function (invoice) {
         var inv = this.GetDetailCustomer(invoice);
         this.element.html(this.view("//sales/controllers/invoices/invoicedetail/views/invoicedetail.ejs", inv));
-
+        this.SetCurrencyToView();
     },
     GetDetailCustomer: function (invoice) {
         $.ajax({
@@ -26,7 +26,7 @@ steal('jquery/controller', 'jquery/view/ejs',
                 invoice.DueDate = new Date(parseInt(invoice.DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
                 invoice.InvoiceDate = $.datepicker.formatDate('dd M yy', invoice.InvoiceDate);
                 invoice.DueDate = $.datepicker.formatDate('dd M yy', invoice.DueDate);
-                invoice.BillingAddress = data.Address;
+                invoice.BillingAddress = data.BillingAddress;
                 invoice.City = data.City;
                 invoice.Province = data.Province;
                 invoice.PostalCode = data.PostalCode;
@@ -34,6 +34,11 @@ steal('jquery/controller', 'jquery/view/ejs',
             }
         });
         return invoice;
+    },
+    SetCurrencyToView: function () {
+        Sales.Models.Currency.findOne({ id: '1' }, function (data) {
+            $(".ccy").text(data.curr);
+        });
     }
 })
 

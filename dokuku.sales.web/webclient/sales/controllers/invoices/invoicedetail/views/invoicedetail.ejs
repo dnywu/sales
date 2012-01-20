@@ -3,12 +3,13 @@
     <div id="TitleSpan" class="HeaderDIVLeft">Invoices Detail</div>
   </div>
   <div class="invoiceDetail">
-  <div class="InvoiceNoRpt"><%=this.InvoiceNo%></div>
+  <div class="InvoiceNoRpt">INVOICE# <b><%=this.InvoiceNo%></b>
+  </div>
   <div class="billingDetailRpt">
     <table width="100%" cellpadding="0" cellspacing="0" border="0" height="150">
       <tbody>
         <tr>
-          <td height="30" class="curveLGrnLBg billToPadding txt-lft">
+          <td height="30" class="curveLGrnLBg padding10 billToPadding txt-lft">
             <div style="float:left">
               <b>Ke Alamat:</b>
             </div>
@@ -17,9 +18,9 @@
         </tr>
         <tr height="120">
           <td class="defaultInnerBg padding10 txt-lft" valign="top">
-            <span class="Header3 fontRedClose1 displayBlock paddingBottom5">
+            <div class="Header3 fontRedClose1 customerName">
               <%=this.Customer%>
-            </span>
+            </div>
             <div>
               <%=this.BillingAddress%> </br>
               <%=this.City%>, <%= this.Province%> <%= this.PostalCode%> </br>
@@ -32,13 +33,13 @@
   </div>
   <div class="DateandPO">
     <table width="100%" cellpadding="3" cellspacing="0" border="0">
-      <tr class="curveLGrnLBg" height="30" valign="middle">
-        <td>DATE</td>
-        <td>TERMS</td>
-        <td>DUE DATE</td>
-        <td>P.O.#</td>
+      <tr class="curveLGrnLBg padding5" valign="middle">
+        <td width="25%">DATE</td>
+        <td width="25%">TERMS</td>
+        <td width="25%">DUE DATE</td>
+        <td width="25%">P.O.#</td>
       </tr>
-      <tr class="defaultInnerBg">
+      <tr class="defaultInnerBg padding5" height="30">
         <td><%=this.InvoiceDate %></td>
         <td><%=this.Terms.Name %></td>
         <td><%=this.DueDate %></td>
@@ -47,25 +48,55 @@
     </table>
   </div>
   <div class="Items">
-    <table width="100%" cellpadding="3" cellspacing="0" border="0">
-      <tr class="curveLGrnLBg" height="25" valign="middle">
-        <td>#</td>
-        <td>Barang</td>
-        <td>Deskripsi</td>
-        <td>Qty</td>
-        <td>Harga</td>
-        <td>Total</td>
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" id="tableItem">
+      <tr class="curveLGrnLBg headerTableItem" height="30" valign="middle">
+        <td width="3%" class="txt-ctr">#</td>
+        <td width="20%">Barang</td>
+        <td width="45%">Deskripsi</td>
+        <td width="8%" class="txt-rgh">Qty</td>
+        <td width="12%" class="txt-rgh">Harga</td>
+        <td class="txt-rgh">Total</td>
+        <td width="10px"></td>
       </tr>
       <%for(var i =0; i<this.Items.length; i++){%>
-      <tr class="defaultInnerBg">
-        <td><%=(i + 1) %></td>
+      <tr class="borderbottom">
+        <td class="txt-ctr"><%=(i + 1) %></td>
         <td><%=this.Items[i].PartName %></td>
         <td><%=this.Items[i].Description %></td>
-        <td><%=this.Items[i].Qty %></td>
-        <td><%=this.Items[i].Rate %></td>
-        <td><%=this.Items[i].Amount %></td>
+        <td class="txt-rgh"><%=this.Items[i].Qty %></td>
+        <td class="txt-rgh"><%=this.Items[i].Rate %></td>
+        <td class="txt-rgh"><%=this.Items[i].Amount %></td>
+        <td width="10px"></td>
       </tr>
       <%}%>
+        <tr height="35">
+          <td class="txt-lft" colspan="4"><%=this.Note%></td>
+          <td class="txt-rgh borderbottom">
+            <b>Sub Total</b>
+          </td>
+          <td class="txt-rgh borderbottom"><%=this.SubTotal%></td>
+          <td width="10px"></td>
+        </tr>
+        <tr height="40">
+          <td class="txt-lft" colspan="4"></td>
+          <td class="txt-rgh">
+            <b>Total</b>
+          </td>
+          <td class="txt-rgh">
+            <span class='ccy'></span>
+            <%=this.Total%>
+          </td>
+          <td width="10px"></td>
+        </tr>
+        <tr height="40">
+          <td class="txt-lft" colspan="4"></td>
+          <td class="txt-rgh">
+            <b>Balance Due</b>
+          </td>
+          <td class="txt-rgh">
+          </td>
+          <td width="10px"></td>
+        </tr>
     </table>
   </div>
   </div>
