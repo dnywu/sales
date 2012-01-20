@@ -10,5 +10,6 @@ namespace dokuku.sales.invoices.command
         void Save(Invoices invoice);
         Invoices Get(string id, string ownerId);
         void Delete(string id, string ownerId);
+        Invoices GetInvByNumber(string invoiceNumber, string ownerId);
     }
 }

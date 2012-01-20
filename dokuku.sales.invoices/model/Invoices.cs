@@ -25,7 +25,7 @@ namespace dokuku.sales.invoices.model
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
         public InvoiceItems[] Items { get; set; }
-        public string _id { get; set; }
+        public Guid _id { get; set; }
         public string OwnerId { get; set; }
         public string Status { get; private set; }
 

@@ -56,7 +56,7 @@
         objInv.Total = $("#total").val();
         objInv.Items = new Array;
         $('#itemInvoice tbody tr').each(function (i) {
-            if ($('.partname').get(i).value != "") {
+            if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
                 objInv.Items[i] = new Object;
                 objInv.Items[i].ItemId = $('.partid').get(i).value;
                 objInv.Items[i].PartName = $('.partname').get(i).value;
@@ -94,6 +94,8 @@
         if (data.error == true) {
             $("#errorCreateInv").text(data.message).show();
             return;
+        } else {
+            $("#body").sales_invoices_invoicedetail('load',data);
         }
     },
     GetDataInvoice: function () {

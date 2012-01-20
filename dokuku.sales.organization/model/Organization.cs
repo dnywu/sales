@@ -9,7 +9,7 @@ namespace dokuku.sales.organization.model
         public string _id { get; set; }
         public string OwnerId { get; set; }
         public string Name { get; set; }
-        public string Cucrrency { get; set; }
+        public string Currency { get; set; }
         public int FiscalYearPeriod { get; set; }
 
         public Organization(string id, string ownerId, string name, string ccy, int fiscalYearPeriod)
@@ -17,7 +17,7 @@ namespace dokuku.sales.organization.model
             _id = id;
             OwnerId = ownerId;
             Name = name;
-            Cucrrency = ccy;
+            Currency = ccy;
             FiscalYearPeriod = fiscalYearPeriod;
         }
     }

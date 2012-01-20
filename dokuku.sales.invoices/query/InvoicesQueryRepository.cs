@@ -21,6 +21,15 @@ namespace dokuku.sales.invoices.query
         {
             return Collections.FindAs<Invoices>(Query.EQ("OwnerId",BsonValue.Create(OwnerId)));
         }
+        
+        public Invoices FindById(Guid id, string ownerId)
+        {
+            return Collections.FindOneAs<Invoices>(Query.And(
+                                Query.EQ("_id",id),
+                                Query.EQ("OwnerId",ownerId)
+                ));
+        }
+
         public IEnumerable<InvoiceReports> Search(string ownerId, string[] keywords)
         {
             MongoCollection<InvoiceReports> reportCollection = mongo.ReportingDatabase.GetCollection<InvoiceReports>(typeof(InvoiceReports).Name);
