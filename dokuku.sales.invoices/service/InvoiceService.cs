@@ -46,7 +46,7 @@ namespace dokuku.sales.invoices.service
             return invoice;
         }
 
-        public Invoices Update(string jsonInvoice, string ownerId)
+        public void Update(string jsonInvoice, string ownerId)
         {
             string data = jsonInvoice;
             Invoices invoice = JsonConvert.DeserializeObject<Invoices>(data);
@@ -55,8 +55,6 @@ namespace dokuku.sales.invoices.service
 
             if (bus != null)
                 bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
-
-            return invoice;
 		}
         public void Delete(string id, string ownerId)
         {

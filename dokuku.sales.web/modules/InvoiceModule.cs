@@ -43,19 +43,12 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsJson("OK");
                 };
-            Get["/GetDataInvoiceByInvoiceID/_id/{id}"] = p =>
-            {
-                string id = p.id;
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                var invoices = this.InvoicesRepository().Get(id, account.OwnerId);
-                return Response.AsJson(invoices);
-            };
             Post["/UpdateInvoice"] = p =>
             {
                 try
                 {
-                    Invoices result = this.InvoiceService().Update(this.Request.Form.invoice, this.Context.CurrentUser.UserName);
-                    return Response.AsJson(result);
+                    this.InvoiceService().Update(this.Request.Form.invoice, this.Context.CurrentUser.UserName);
+                    return Response.AsJson(new { error = false });
                 }
                 catch (Exception ex)
                 {
