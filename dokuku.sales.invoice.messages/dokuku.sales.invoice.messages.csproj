@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</ProjectGuid>
+    <ProjectGuid>{EA041C37-0229-4188-ACB0-9F684C17F029}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.item.messages</RootNamespace>
-    <AssemblyName>dokuku.sales.item.messages</AssemblyName>
+    <RootNamespace>dokuku.sales.invoice.messages</RootNamespace>
+    <AssemblyName>dokuku.sales.invoice.messages</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemCreated.cs" />
-    <Compile Include="ItemDeleted.cs" />
-    <Compile Include="ItemUpdated.cs" />
+    <Compile Include="InvoiceDeleted.cs" />
+    <Compile Include="InvoiceCreated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
