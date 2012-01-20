@@ -120,7 +120,7 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
-                $("#body").sales_invoices_invoicedetail('load');
+                
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');

@@ -456,6 +456,7 @@
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\customers\images\setting.png" />
+    <Content Include="webclient\sales\controllers\customers\images\find.png" />
     <Content Include="webclient\sales\controllers\home\funcunit.html" />
     <Content Include="webclient\sales\controllers\home\home.css" />
     <Content Include="webclient\sales\controllers\home\home.html" />
@@ -484,7 +485,7 @@
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
     <Content Include="webclient\sales\controllers\items\list\images\add.png" />
-    <Content Include="webclient\sales\controllers\items\list\images\Search-icon.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\find.png" />
     <Content Include="webclient\sales\controllers\items\list\images\search.png" />
     <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
     <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
@@ -939,7 +940,9 @@
     <None Include="webclient\sales\controllers\invoices\create\views\AddCustomer.ejs" />
     <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
     <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
-    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
     <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
@@ -996,9 +999,17 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
+      <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
+      <Name>dokuku.sales.customer.messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
+      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
+      <Name>dokuku.sales.invoice.messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
       <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>

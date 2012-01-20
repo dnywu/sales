@@ -39,6 +39,7 @@ namespace dokuku.sales.customer.repository
         public IEnumerable<CustomerReports> Search(string ownerId, string[] keywords)
         {
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            CustomerReports cr = searchndexCollections.Find(qry).FirstOrDefault();
             return searchndexCollections.Find(qry);
         }
         private QueryComplete getQuery(string[] keywords)

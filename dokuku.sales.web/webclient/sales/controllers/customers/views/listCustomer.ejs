@@ -7,9 +7,9 @@
             <div class="HeaderDIVListCustomer" id="TitleSpan">Pelanggan</div>
             <div class="classPesan"></div>
             <div class="ClassSubMenuDataCustomer" id="idKosong">
-              <table width="100%">
+              <table width="900px">
                 <tr>
-                  <td width="60%">
+                  <td width="400px">
                     <table>
                       <tr>
                         <td>
@@ -27,8 +27,8 @@
                       </tr>
                     </table>
                   </td>
-                  <td style="float: right;">
-                    <table>
+                  <td width="500px" style="float: right;">
+                    <table width="100%" style="padding-left:20px">
                       <tr>
                         <td>
                           <div style="color:grey;">Tampilkan :</div>
@@ -36,15 +36,25 @@
                         <td>
                           <div>
                             <div class=" floatRight menuLeft">
-                              <div class="floatRight">Aktif</div>
+                              <div class="floatRight" id="allCustomer">Semua</div>
                               <div class="imgFilter floatRight"></div>
                             </div>
                           </div>
                         </td>
-                        <td>
+                        <td id="search" style="padding-left:17px">
                           <div class=" floatLeft">
-                            <div class="floatLeft"><input type="search" results ="5" autosave="some_unique_value" name="SearchCustomer" placeholder="Cari"/></div>
-                          </div>
+                            <div class="DivSearch">
+                              <div class="imgSearch">
+                              <input type="input" id="SearchCustomer" placeholder="Cari"/>
+                              </div>
+                            </div>
+                              <div class="ListSearchCustomer" id="ListSearchCustomer">
+                                <table width="100%" class ="listSearchCustomer">
+                                  <tbody>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
                         </td>
                       </tr>
                     </table>

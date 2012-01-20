@@ -86,12 +86,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dokuku.sales.item.messages\dokuku.sales.item.messages.csproj">
-      <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
-      <Name>dokuku.sales.item.messages</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

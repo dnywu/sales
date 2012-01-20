@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NServiceBus;
-
-namespace dokuku.sales.item.messages
+namespace dokuku.sales.invoice.messages
 {
     [Serializable]
-    public class ItemCreated : IMessage
+    public class InvoiceCreated : IMessage
     {
-        public string Data { get; set; }
+        public string InvoiceJson { get; set; }
     }
 }
