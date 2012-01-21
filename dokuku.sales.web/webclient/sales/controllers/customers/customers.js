@@ -2,21 +2,25 @@ steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
       'sales/controllers/customers/edit',
-      'sales/controllers/customers/customer.css')
+      'sales/controllers/customers/customer.css',
+      'sales/repository/CustomerRepository.js',
+      'sales/controllers/invoices/create')
 	.then('./views/listCustomer.ejs', './views/addcustomer.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.customers',
         {
-            defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null)
+            defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null, custRepo = null)
         },
         {
             init: function () {
                 $this = this;
+                custRepo = new CustomerRepository();
                 this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
                 this.RequestAllCustomer();
             },
             load: function () {
                 $this = this;
+                custRepo = new CustomerRepository();
                 this.element.html(this.view('//sales/controllers/customers/views/listCustomer.ejs'));
                 this.RequestAllCustomer();
             },
@@ -59,7 +63,7 @@ steal('jquery/controller',
                     data: { 'data': data },
                     dataType: "json",
                     success: function (data) {
-                        if (data == "Ok") {
+                        if (data != null) {
                             $("#body").sales_customers('load');
                         }
                     }
@@ -146,7 +150,13 @@ steal('jquery/controller',
             },
             '.EditContextMenuCustomer click': function (el) {
                 var id = el.attr('id');
-                $('#body').sales_customers_edit('load', id);
+                var customer = custRepo.GetCustomerById(id);
+                $('#body').sales_customers_edit('load',customer);
+            },
+            '.CreatInvoiceContextMenuCustomer click': function (el) {
+                var id = el.attr('id');
+                var customer = custRepo.GetCustomerById(id);
+                $('#body').sales_invoices_create('load', customer);
             },
             '.settingListCustomer click': function (el) {
                 var index = el.attr('tabindex');

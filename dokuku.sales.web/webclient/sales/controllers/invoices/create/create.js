@@ -24,16 +24,18 @@ steal('jquery/controller',
                         custRepo = null)
         },
         {
-            init: function () {
+            init: function (ev,el,customer) {
                 $this = this;
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
-                this.load();
+                this.load(customer);
             },
             load: function (customer) {
                 tabIndexTr = 0;
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
+                if (customer != null)
+                    $("#currency").text(customer.Currency).show();
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();
