@@ -10,6 +10,6 @@ namespace dokuku.sales.invoices.service
     {
         Invoices Create(string jsonInvoice, string ownerId);
         void Update(string jsonInvoice, string ownerId);
-        void Delete(string id, string ownerId);
+        void Delete(Guid id, string ownerId);
     }
 }

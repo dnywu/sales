@@ -124,41 +124,21 @@
         }
 
         $("#errorCreateInv").empty().hide();
-<<<<<<< HEAD
-        var UpdateInv = JSON.stringify(objInv);
-        $.ajax({
-            type: 'POST',
-            url: '/UpdateInvoice',
-            data: { 'invoice': UpdateInv },
-            dataType: 'json',
-            async: false,
-            success: this.UpdateInvoiceCallBack
-        });
-    },
-    UpdateInvoiceCallBack: function (data) {
-        if (data.error == true) {
-            $("#errorUpdateInv").text(data.message).show();
-            return;
-        }
-
-        $("#body").sales_invoice_list("load");
+        var newInv = JSON.stringify(objInv);
+        return newInv;
     },
     DeleteInvoice: function (invoiceNo) {
+        var result;
         $.ajax({
             type: 'DELETE',
             url: '/deleteInvoice/invoiceNo/' + invoiceNo,
             dataType: 'json',
+            async: false,
             success: function (data) {
-                if (data.error == "true") {
-                    alert(data.message);
-                }
+                result = data;
             }
         });
-
-=======
-        var newInv = JSON.stringify(objInv);
-        return newInv;
+        return result;
     }
->>>>>>> 9cf6ad2f76c5c9de2a2cc68c47688ddd784d64f8
 })
     });

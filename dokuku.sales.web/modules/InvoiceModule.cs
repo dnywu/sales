@@ -30,12 +30,12 @@ namespace dokuku.sales.web.modules
                 Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                 return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
             };
-            Delete["/deleteInvoice/invoiceNo/{invoiceNo}"] = p =>
+            Delete["/deleteInvoice/invoiceNo/{invoiceId}"] = p =>
                 {
                     try
                     {
-                        string invNo = p.invoiceNo;
-                        this.InvoiceService().Delete(invNo, this.Context.CurrentUser.UserName);
+                        Guid _id = Guid.Parse(p.invoiceId);
+                        this.InvoiceService().Delete(_id, this.Context.CurrentUser.UserName);
                     }
                     catch (Exception ex)
                     {

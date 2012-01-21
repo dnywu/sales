@@ -7,9 +7,11 @@ steal('jquery/controller',
        'sales/controllers/invoices/edit',
        'sales/controllers/invoices/invoicedetail',
        'sales/repository/InvoiceRepository.js',
-       './listinvoice.css')
+       './listinvoice.css',
+       './DeleteConfirmBox.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
+       './views/confirmDeleteInvoice.ejs',
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
@@ -26,6 +28,7 @@ steal('jquery/controller',
                     this.load();
                 },
                 load: function () {
+                    $this = this;
                     var invoices = invRepo.GetAllInvoice();
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices))
                 },
@@ -59,28 +62,49 @@ steal('jquery/controller',
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
-<<<<<<< HEAD
-                    $.ajax({
-                        type: 'GET',
-                        url: '/invoice/' + invoiceId,
-                        dataType: 'json',
-                        async: false,
-                        success: function (data) {
-                            $("#body").sales_invoices_invoicedetail('load', data);
-                        }
-                    });
-                },
-                '#deleteinvoice click': function () {
-                    $(".selectInvoice:checked").each(function (index) {
-                        var no = $(".invoiceNo").text();
-                        inv.DeleteInvoice(no);
-                    });
-=======
                     var invoice = invRepo.GetInvoiceById(invoiceId);
                     if (invoice != null)
                         $("#body").sales_invoices_invoicedetail('load', invoice);
+                },
+                '#deleteinvoice click': function () {
+                    var checkList = $this.IsCheckListNull();
+                    if (checkList != 0) {
+                        var message = $("<div>Apakah anda yakin akan menghapus pelanggan ini</div>" +
+                                    "<div class='ButtonConfirmYes'>Ya</div>" +
+                                    "<div class='ButtonConfirmClose'>Tidak</div>");
+                        $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                        $(".BodyConfirmMassage").append(message);
+                    }
+                },
+                '.ButtonConfirmYes click': function () {
+                    $(".selectInvoice:checked").each(function (index) {
+                        var index = $(this).attr("id");
+                        var no = $("#invoiceId_" + index).val();
+                        var result = inv.DeleteInvoice(no);
+                    });
+                    if (result == "OK") {
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
+                    } else {
+                        $(".BodyConfirmMassage").empty();
+                        var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                        $(".BodyConfirmMassage").append(message);
+                    }
+                },
+                '.ButtonConfirmClose click': function () {
+                    $(".DeleteConfirmation").remove();
+                },
+                IsCheckListNull: function () {
+                    var countChecked = 0;
+                    $(".selectInvoice:checked").each(function (index) {
+                        countChecked++;
+                    });
+                    if (countChecked == 0) {
+                        return 0;
+                    }
+                    return countChecked;
                 }
->>>>>>> 9cf6ad2f76c5c9de2a2cc68c47688ddd784d64f8
             });
 
        });

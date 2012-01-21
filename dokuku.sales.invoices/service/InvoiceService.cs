@@ -56,13 +56,13 @@ namespace dokuku.sales.invoices.service
             if (bus != null)
                 bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
 		}
-        public void Delete(string id, string ownerId)
+        public void Delete(Guid id, string ownerId)
         {
             IsInvoiceStatusDraft(id, ownerId);
             invRepo.Delete(id, ownerId);
         }
 
-        private void IsInvoiceStatusDraft(string id, string ownerId)
+        private void IsInvoiceStatusDraft(Guid id, string ownerId)
         {
             Invoices invoice = invRepo.Get(id, ownerId);
             if (invoice.Status.ToLower() != "draft")
