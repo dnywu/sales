@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using dokuku.sales.domainevents;
-namespace dokuku.sales.payment.domain
+using NServiceBus;
+
+namespace dokuku.sales.payment.messages
 {
-    public class InvoiceSudahLunas : IDomainEvent
+    [Serializable]
+    public class InvoiceFullPaid : IMessage
     {
         public Guid InvoiceId { get; set; }
         public string InvoiceNumber { get; set; }
+        public string ownerid { get; set; }
     }
 }

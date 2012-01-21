@@ -55,5 +55,12 @@ namespace dokuku.sales.invoices.query
                 return mongo.ReportingDatabase.GetCollection<Invoices>(typeof(Invoices).Name);
             }
         }
+
+
+        public Invoices FindById(Guid guid)
+        {
+            return Collections.FindOneAs<Invoices>(Query.And(
+                                Query.EQ("_id", guid)));
+        }
     }
 }

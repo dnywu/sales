@@ -123,9 +123,10 @@
                     .PurgeOnStartup(false)
                     .MsmqSubscriptionStorage()
                     .UnicastBus()
-                    .ImpersonateSender(true)
+                    .ImpersonateSender(false)
                     .CreateBus()
                     .Start();
+                Configure.Instance.Configurer.ConfigureComponent<InvoiceService>(NServiceBus.ObjectBuilder.ComponentCallModelEnum.Singlecall);
             }
         }
     }

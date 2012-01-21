@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EA041C37-0229-4188-ACB0-9F684C17F029}</ProjectGuid>
+    <ProjectGuid>{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.invoice.messages</RootNamespace>
-    <AssemblyName>dokuku.sales.invoice.messages</AssemblyName>
+    <RootNamespace>dokuku.sales.payment.domainevents</RootNamespace>
+    <AssemblyName>dokuku.sales.payment.domainevents</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus">
-      <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,11 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvoiceApproved.cs" />
-    <Compile Include="InvoiceDeleted.cs" />
-    <Compile Include="InvoiceCreated.cs" />
-    <Compile Include="InvoiceUpdate.cs" />
+    <Compile Include="InvoiceDibayarSebagian.cs" />
+    <Compile Include="InvoiceSudahLunas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.domainevents\dokuku.sales.domainevents.csproj">
+      <Project>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</Project>
+      <Name>dokuku.sales.domainevents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

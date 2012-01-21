@@ -10,5 +10,7 @@ namespace dokuku.sales.invoices.service
     {
         Invoices Create(string jsonInvoice, string ownerId);
         void Update(string jsonInvoice, string ownerId);
+        void InvoiceFullyPaid(Guid invoiceId, string ownerId);
+        void InvoicePartialyPaid(Guid invoiceId, string ownerId);
     }
 }

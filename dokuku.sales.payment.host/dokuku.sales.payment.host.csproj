@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DFC91C58-F8C4-47AB-9253-257AE0DF3498}</ProjectGuid>
+    <ProjectGuid>{1E3B0C19-D3B2-4345-9530-8E8C87363521}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.report</RootNamespace>
-    <AssemblyName>dokuku.sales.report</AssemblyName>
+    <RootNamespace>dokuku.sales.payment.host</RootNamespace>
+    <AssemblyName>dokuku.sales.payment.host</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,34 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accessibility">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="antlr.runtime">
+      <HintPath>..\packages\NServiceBus\antlr.runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\NServiceBus\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
       <HintPath>..\packages\NServiceBus\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Log4Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Common.Logging.Log4Net">
       <HintPath>..\packages\NServiceBus\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.MSMQ, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="Interop.MSMQ">
       <HintPath>..\packages\NServiceBus\Interop.MSMQ.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Bson">
-      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus">
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
@@ -69,8 +60,7 @@
     <Reference Include="NServiceBus.Host">
       <HintPath>..\packages\NServiceBus\NServiceBus.Host.exe</HintPath>
     </Reference>
-    <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Spring.Core">
       <HintPath>..\packages\NServiceBus\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -82,16 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\CollectionName.cs" />
     <Compile Include="EndpointConfig.cs" />
-    <Compile Include="Handlers\CustomerCreatedHandler.cs" />
-    <Compile Include="Handlers\CustomerDeletedHandler.cs" />
-    <Compile Include="Handlers\CustomerUpdatedHandler.cs" />
-    <Compile Include="Handlers\InvoiceCreatedHandler.cs" />
-    <Compile Include="Handlers\InvoiceDeletedHandler.cs" />
-    <Compile Include="Handlers\ItemCreatedHandler.cs" />
-    <Compile Include="Handlers\ItemDeletedHandler.cs" />
-    <Compile Include="Handlers\ItemUpdatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,33 +80,32 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
-      <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
-      <Name>dokuku.sales.customer.messages</Name>
+    <ProjectReference Include="..\dokuku.sales.domainevents\dokuku.sales.domainevents.csproj">
+      <Project>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</Project>
+      <Name>dokuku.sales.domainevents</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.item.messages\dokuku.sales.item.messages.csproj">
-      <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
-      <Name>dokuku.sales.item.messages</Name>
+    <ProjectReference Include="..\dokuku.sales.payment.domainevents\dokuku.sales.payment.domainevents.csproj">
+      <Project>{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}</Project>
+      <Name>dokuku.sales.payment.domainevents</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
       <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
       <Name>dokuku.sales.payment.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
+      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
+      <Name>dokuku.sales.payment</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="log4net.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

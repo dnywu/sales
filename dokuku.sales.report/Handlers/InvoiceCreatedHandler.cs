@@ -19,7 +19,7 @@ namespace dokuku.sales.report.Handlers
             BsonDocument doc = BsonDocument.Parse(message.InvoiceJson);
             BsonDocument index = new BsonDocument();
 
-            index["Keywords"] = BsonValue.Create(new string[12]{
+            index["Keywords"] = BsonValue.Create(new string[13]{
                     doc["_id"].ToString(),
                     doc["Customer"].ToString(),
                     doc["CustomerId"].ToString(),
@@ -31,11 +31,12 @@ namespace dokuku.sales.report.Handlers
                     doc["Status"].ToString(),
                     doc["SubTotal"].ToString(),
                     doc["TermCondition"].ToString(),
-                    doc["Total"].ToString()});
+                    doc["Total"].ToString(),
+                    doc["OwnerId"].ToString()});
 
             index["InvoiceNumber"] = doc["_id"].ToString();
             index["Customer"] = doc["Customer"].ToString();
-
+            index["OwnerId"] = doc["OwnerId"].ToString();
             Collections.Save(index);
             Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
