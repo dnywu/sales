@@ -8,7 +8,8 @@ namespace dokuku.sales.invoices.command
     public interface IInvoicesRepository
     {
         void Save(Invoices invoice);
-        Invoices Get(string id, string ownerId);
+        void UpdateInvoices(Invoices invoice);
+        Invoices Get(Guid id, string ownerId);
         void Delete(string id, string ownerId);
         Invoices GetInvByNumber(string invoiceNumber, string ownerId);
     }

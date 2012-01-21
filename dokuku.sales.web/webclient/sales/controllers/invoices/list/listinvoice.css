@@ -1,7 +1,4 @@
-﻿td.bodyBgCenter {
-    width: 75%;
-    background-color: white;
-}
+﻿td.bodyBgCenter {width: 75%;background-color: white;}
 td.bodyBgRight {
     width: 25%;
     padding: 30px 0 20px 20px;
@@ -38,10 +35,7 @@ div.rightbuttonarea
     color:#666;
     font-size:11px;
 }
-.right
-{
-    text-align:right;
-}
+.right{text-align:right;}
 table#tblListInvoice{border-collapse:collapse;}
 table#tblListInvoice thead {color:#666;}
 table#tblListInvoice .tblCheck{width:24px;}
@@ -54,7 +48,7 @@ table#tblListInvoice .tblBalance{width:80px;}
 table#tblListInvoice .tblStatus{width:65px;}
 table#tblListInvoice tr{border-top:1px solid #EBEBEB;border-bottom:1px Solid #EBEBEB;}
 table#tblListInvoice td{padding-top:8px;padding-bottom:8px; height: 30px;}
-.settingListInvoice{display:none;}
+.settingListInvoice{display:none; cursor:pointer;outline:none}
 div.ContextMenuInvoice
 {
 	display:none;
@@ -89,3 +83,7 @@ div.ContextMenuInvoice
 {
     color:#4183C4;
 }
+.invNo{color:Blue;padding-top:4px;cursor:pointer;}
+.EditContextMenuInvoive{cursor:pointer;outline:none;}
+.itemContextMenuInvoice{cursor:pointer;outline:none;color:Blue;cursor:pointer;text-decoration:underline;}
+.invNo:hover{color:Red;}

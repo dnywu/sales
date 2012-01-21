@@ -46,6 +46,17 @@ namespace dokuku.sales.invoices.service
             return invoice;
         }
 
+        public void Update(string jsonInvoice, string ownerId)
+        {
+            string data = jsonInvoice;
+            Invoices invoice = JsonConvert.DeserializeObject<Invoices>(data);
+            invoice.OwnerId = ownerId;
+            invRepo.UpdateInvoices(invoice);
+
+            if (bus != null)
+                bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
+		}
+		
         private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber,string ownerId)
         {
             Invoices inv = invRepo.GetInvByNumber(invoiceNumber, ownerId);

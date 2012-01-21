@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EA041C37-0229-4188-ACB0-9F684C17F029}</ProjectGuid>
+    <ProjectGuid>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.invoice.messages</RootNamespace>
-    <AssemblyName>dokuku.sales.invoice.messages</AssemblyName>
+    <RootNamespace>dokuku.sales.payment</RootNamespace>
+    <AssemblyName>dokuku.sales.payment</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus">
-      <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvoiceDeleted.cs" />
-    <Compile Include="InvoiceCreated.cs" />
-    <Compile Include="InvoiceUpdate.cs" />
+    <Compile Include="domain\Customer.cs" />
+    <Compile Include="domain\Invoice.cs" />
+    <Compile Include="domain\InvoicePayment.cs" />
+    <Compile Include="domain\PaymentMode.cs" />
+    <Compile Include="domain\PaymentRecord.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

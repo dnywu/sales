@@ -1,0 +1,158 @@
+<div class="divcontainerFormInvoice">
+  <div class="topBandHeaderDIV">
+    <div id="TitleSpan" class="HeaderDIVLeft">Update Invoices</div>
+  </div>
+  <form method="POST" id="formUpdateIvoice">
+    <div class='newInvoiceContain'>
+      <div class='divInvoiceGroup'>
+        <input type="hidden" id="invoiceId" name="invoiceId" value="<%= this._id %>" />
+        <table width='100%'>
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <div class="mandatoryTxt">Pilih Pelanggan</div>
+              </td>
+              <td class="td_field">
+                <input type="hidden" id="CustomerId" value="<%=this.CustomerId%>"/>
+                  <input type='text' name="customer" id="selectcust" value="<%= this.Customer %>" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('pelanggan harus dipilih')"/>
+              </td>
+              <td class="error">
+                <label id="keteranganSelectCust"></label>
+                <label id="currency"></label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class='divInvoiceGroup'>
+        <table width='100%'>
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <div class="mandatoryTxt">Invoice#</div>
+              </td>
+              <td class="td_field">
+                <input type='text' id='InvoiceNo' value="<%= this.InvoiceNo %>" readonly />
+                </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">P.O.#</td>
+              <td class="td_field">
+                <input type='text' name='po' id='po' value="<%= this.PONo %>" /></td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Tanggal Invoice</td>
+              <td class="td_field">
+                <input type="date" name='invoiceDate' id='invDate' value="<%= this.InvoiceDate %>" readonly/>
+                </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Terms</td>
+              <td class="td_field">
+                <select name='terms' id='terms'>
+                  <option class="TermOpt" value="15">Net 15</option>
+                  <option class="TermOpt" value="30">Net 30</option>
+                  <option class="TermOpt" value="45">Net 45</option>
+                  <option class="TermOpt" value="60">Net 60</option>
+                  <option class="TermOpt" value="0">Due On Receipt</option>
+                  <option class="TermOpt" value="-1">Due on the specified date</option>
+                </select>
+              </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Due Date</td>
+              <td class="td_field">
+                <input type='date' name='dueDate' id='dueDate'  value="<%= this.DueDate %>" readonly/>
+              </td>
+              <td class='error'></td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Late Fee</td>
+              <td class="td_field">
+                <select name='latefee' id='latefee'>
+                  <option class="LateFeeOpt" value="15">No Late Fee</option>
+                </select>
+              </td>
+              <td class='error'></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <table id='itemInvoice' cellpadding='5px'>
+        <thead>
+          <tr>
+            <td class='barang'>Barang</td>
+            <td class='desc'>Deskripsi</td>
+            <td class='qty right'>Qty</td>
+            <td class='rate right'>Rate</td>
+            <td class='disc right'>Diskon(%)</td>
+            <td class='tax'>Tax</td>
+            <td class='amounthd right'>Amount</td>
+            <td class='dltItem'></td>
+          </tr>
+        </thead>
+        <tbody>
+              
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <span id='addItemRow'>Add another line</span>
+            </td>
+            <td colspan='3'></td>
+            <td colspan='2' class='right borderbottom'>Sub Total</td>
+            <td class='right borderbottom'>
+              <span id='subtotaltext'></span>
+              <input type='hidden' id='subtotal'/>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan='4'></td>
+            <td colspan='2' class='right bold borderbottom graybgcolor'>Total</td>
+            <td class='right bold borderbottom graybgcolor'>
+              <span id='totaltext'></span>
+              <input type='hidden' id='total'/>
+            </td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div class='divInvoiceGroup'>
+        <table width='100%' cellpadding='0px'>
+          <tr>
+            <td width='40%'>
+              <b class='boldlabel'>Customer Note</b>
+            </td>
+            <td width='60%'>
+              <b class='boldlabel'>Term and Conditions</b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <textarea name='custMsg' id='custMsg' class="CustomerMessageTxtArea"><%= this.Note %></textarea>
+            </td>
+            <td>
+              <textarea name="termAndCond" id="termAndCond" class="TermsandConditionsTxtArea"><%= this.TermCondition %></textarea>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div style="margin-top:30px">
+        <p align="center" style="font-size:11px">
+          <input id="UpdateInvoiceSave" type="submit" name="save" value="Update"/>
+          or
+          <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Cancel</span>
+        </p>
+      </div>
+    </div>
+  </form>
+  <div class="error" id="errorUpdateInv"></div>
+</div>

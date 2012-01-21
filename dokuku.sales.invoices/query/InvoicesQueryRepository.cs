@@ -34,6 +34,7 @@ namespace dokuku.sales.invoices.query
         {
             MongoCollection<InvoiceReports> reportCollection = mongo.ReportingDatabase.GetCollection<InvoiceReports>(typeof(InvoiceReports).Name);
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            InvoiceReports invReport = reportCollection.Find(qry).FirstOrDefault();
             return reportCollection.Find(qry).SetLimit(10);
         }
 

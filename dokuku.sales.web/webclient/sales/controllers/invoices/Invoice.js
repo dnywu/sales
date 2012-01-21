@@ -1,9 +1,13 @@
-﻿steal('jquery/class', 'sales/scripts/stringformat.js', function () {
-    $.Class('Invoice',
+﻿steal('jquery/class', 'sales/scripts/stringformat.js',
+      'sales/repository/InvoiceRepository.js',
+    function () {
+        $.Class('Invoice',
 {
+    defaults: (invRepo = null)
 },
 {
     init: function () {
+        invRepo = new InvoiceRepository();
     },
     CalculateAmountPerItem: function (qty, rate, disc) {
         var amount = (rate - ((rate * disc) / 100)) * qty;
@@ -39,11 +43,51 @@
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CreateNewInvoice: function () {
+        var invoice = this.GetInvoiceDataFromView();
+        $.ajax({
+            type: 'POST',
+            url: '/createinvoice',
+            data: { 'invoice': invoice },
+            dataType: 'json',
+            async: false,
+            success: this.CreateInvoiceCallBack
+        });
+    },
+    CreateInvoiceCallBack: function (data) {
+        if (data.error == true) {
+            $("#errorCreateInv").text(data.message).show();
+            return;
+        } else {
+            $("#body").sales_invoices_invoicedetail('load', data);
+        }
+    },
+    UpdateInvoice: function () {
+        var invoice = this.GetInvoiceDataFromView();
+        var invId = $("#invoiceId").val();
+        $.ajax({
+            type: 'POST',
+            url: '/UpdateInvoice',
+            data: { 'invoice': invoice },
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                if (data.error == true) {
+                    $("#errorUpdateInv").text(data.message).show();
+                    return;
+                }
+                var invoice = invRepo.GetInvoiceById(invId);
+                $("#body").sales_invoices_invoicedetail('load', invoice);
+            }
+        });
+    },
+    GetInvoiceDataFromView: function () {
         var length = $("#itemInvoice > tbody > tr").size();
         var objInv = new Object;
+        objInv._id = $("#invoiceId").val();
         objInv.Customer = $("#selectcust").val();
-        objInv.CustomerId = $("#CustomerId").val();
+        objInv.CustomerId = $("#CustomerId").val(); 
         objInv.PONo = $("#po").val();
+        objInv.InvoiceNo = $("#InvoiceNo").val();
         objInv.InvoiceDate = $("#invDate").val();
         objInv.Terms = new Object();
         objInv.Terms.Value = $("#terms").val();
@@ -141,4 +185,4 @@
         return dataInvoice;
     }
 })
-});
+    });

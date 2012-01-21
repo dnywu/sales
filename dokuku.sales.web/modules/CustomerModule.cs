@@ -5,6 +5,7 @@ using dokuku.security.model;
 using dokuku.sales.customer.model;
 using Newtonsoft.Json;
 using System.Linq;
+using dokuku.sales.item;
 namespace dokuku.sales.web.modules
 {
     public class CustomerModule : Nancy.NancyModule
@@ -51,13 +52,13 @@ namespace dokuku.sales.web.modules
                 string data = this.Request.Form.data;
                 try
                 {
-                    data = this.CustomerService().SaveCustomer(data,this.Context.CurrentUser.UserName);
+                    Customer cust = this.CustomerService().SaveCustomer(data,this.Context.CurrentUser.UserName);
+                    return Response.AsJson(cust);
                 }
                 catch (Exception ex)
                 {
                     return Response.AsRedirect(ex.Message);
                 }
-                return Response.AsJson(data);
             };
             Get["/GetDataCustomer/id/{id}"] = p =>
             {

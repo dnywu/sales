@@ -21,7 +21,8 @@ steal('jquery/controller',
                         $this = null,
                         inv = null,
                         itmRepo = null,
-                        custRepo = null)
+                        custRepo = null,
+                        baseCcy = null)
         },
         {
             init: function (ev,el,customer) {
@@ -29,6 +30,8 @@ steal('jquery/controller',
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
+                this.load(customer);
+                this.SetCurrency();
                 this.load(customer);
             },
             load: function (customer) {
@@ -39,7 +42,7 @@ steal('jquery/controller',
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();
-                this.SetCurrency();
+                this.ShowCurrencyToView();
             },
             '#terms change': function (el) {
                 var invDate = $("#invDate").val();
@@ -122,7 +125,7 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
-                
+
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
@@ -134,7 +137,7 @@ steal('jquery/controller',
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).val(amount);
-                $("#amounttext_" + index).text(amount);
+                $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
             },
@@ -210,8 +213,11 @@ steal('jquery/controller',
             },
             SetCurrency: function () {
                 Sales.Models.Currency.findOne({ id: '1' }, function (data) {
-                    $("#curr").text(data.curr);
+                    baseCcy = data.curr;
                 });
+            },
+            ShowCurrencyToView: function () {
+                $("#curr").text(baseCcy);
             }
         })
           });

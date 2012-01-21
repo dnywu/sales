@@ -27,7 +27,6 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new {error= true, message = ex.Message});
                 }
             };
-
             Get["/GetDataInvoice"] = p =>
                 {
                     Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
@@ -41,10 +40,22 @@ namespace dokuku.sales.web.modules
                     IEnumerable<InvoiceReports> invoiceReport = this.InvoicesQueryRepository().Search(ownerId.OwnerId, new string[] { key });
                     foreach (InvoiceReports invoice in invoiceReport)
                     {
-                        invoices.Add(this.InvoicesRepository().Get(invoice._id, ownerId.OwnerId));
+                        invoices.Add(this.InvoicesRepository().Get(invoice._id, invoice.OwnerId));
                     }
                     return Response.AsJson(invoices);
                 };
+            Post["/UpdateInvoice"] = p =>
+            {
+                try
+                {
+                    this.InvoiceService().Update(this.Request.Form.invoice, this.Context.CurrentUser.UserName);
+                    return Response.AsJson(new { error = false });
+                }
+                catch (Exception ex)
+                {
+                    return Response.AsJson(new { error = true, message = ex.Message });
+                }
+            };
             Get["/invoice/{id}"] = p =>
                 {
                     Guid invoiceId = p.id;
