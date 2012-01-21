@@ -32,6 +32,24 @@ steal('jquery/controller',
                     var invoices = invRepo.GetAllInvoice();
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices))
                 },
+                GetInvoices: function () {
+                    var invoices = inv.GetDataInvoice();
+                    return invoices;
+                },
+                '#SearchInvoice keypress': function (el, ev) {
+                    if (ev.keyCode == "13") {
+                        var invoices = inv.SearchInvoice();
+                        this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices));
+                    }
+                },
+                '#SearchInvoice focus': function () {
+                    $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");
+                    $("#SearchInvoice").attr("style", "outline:none; background:#FFFFFF");
+                },
+                '#SearchInvoice blur': function () {
+                    $(".DivSearch").attr("style", "background:#F3F3F3");
+                    $("#SearchInvoice").attr("style", "background:#F3F3F3");
+                },
                 '#selectall change': function () {
                     if ($("#selectall").attr('checked')) {
                         $(".selectInvoice").attr('checked', 'checked');

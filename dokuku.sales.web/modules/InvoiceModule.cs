@@ -5,6 +5,8 @@ using dokuku.security.model;
 using dokuku.sales.customer.model;
 using dokuku.sales.invoices.model;
 using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace dokuku.sales.web.modules
 {
@@ -42,6 +44,18 @@ namespace dokuku.sales.web.modules
                         return Response.AsJson(new { error = true, message = ex.Message });
                     }
                     return Response.AsJson("OK");
+                };
+            Get["/SearchInvoice/key/{key}"] = p =>
+                {
+                    string key = p.key;
+                    Account ownerId = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    IList<Invoices> invoices = new List<Invoices>();
+                    IEnumerable<InvoiceReports> invoiceReport = this.InvoicesQueryRepository().Search(ownerId.OwnerId, new string[] { key });
+                    foreach (InvoiceReports invoice in invoiceReport)
+                    {
+                        invoices.Add(this.InvoicesRepository().Get(invoice._id, invoice.OwnerId));
+                    }
+                    return Response.AsJson(invoices);
                 };
             Post["/UpdateInvoice"] = p =>
             {

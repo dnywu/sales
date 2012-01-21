@@ -22,24 +22,27 @@ steal('jquery/controller',
                         inv = null,
                         itmRepo = null,
                         custRepo = null,
-                        baseCcy = null)
+                        baseCcy = null,
+                        isDifferentCcy = true)
         },
         {
-            init: function () {
+            init: function (ev,el,customer) {
                 $this = this;
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
+                this.load(customer);
                 this.SetCurrency();
-                this.load();
+                this.load(customer);
             },
             load: function (customer) {
                 tabIndexTr = 0;
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
+                if (customer != null)
+                    $("#currency").text(customer.Currency).show();
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();
-                this.ShowCurrencyToView();
             },
             '#terms change': function (el) {
                 var invDate = $("#invDate").val();
@@ -60,9 +63,17 @@ steal('jquery/controller',
                 addItem.TriggerEvent();
             },
             '#selectcust change': function (el, ev) {
+                isDifferentCcy = true;
+               // $("#divExchangeRate").hide();
+               // $("#custCcyCode").val(baseCcy);
                 $("#keteranganSelectCust").empty();
+                this.ShowCurrencyToView();
                 var dataCust = custRepo.GetCustomerByName(el.val());
                 if (dataCust != null) {
+                    if (dataCust.Currency != baseCcy) {
+                        isDifferentCcy = false;
+                        this.ShowExchangRate(dataCust.Currency, baseCcy);
+                    }
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
                     $("#CustomerId").val(dataCust._id);
@@ -96,7 +107,6 @@ steal('jquery/controller',
                 var partName = el.val();
                 var index = el.attr("id").split('_')[1];
                 var part = itmRepo.GetItemByName(partName);
-
                 if (part != null) {
                     inv.ShowListItem(part, index);
                     this.GetSubTotal();
@@ -127,6 +137,9 @@ steal('jquery/controller',
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
             },
+//            '#custRate change': function () {
+//                inv.CalculateByRate($("#custRate").val());
+//            },
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
@@ -157,7 +170,8 @@ steal('jquery/controller',
                                     "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
-                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input></td>" +
+                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
+                                    "<input type='hidden' class='baseprice' id='bestprice_"+ tabIndexTr +"'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
@@ -215,6 +229,13 @@ steal('jquery/controller',
             },
             ShowCurrencyToView: function () {
                 $("#curr").text(baseCcy);
+            },
+            ShowExchangRate: function (custCcy, baseCcy) {
+                $("#curr").text(custCcy);
+                $("#divExchangeRate").show();
+                $("#custCcy").val("1 " + custCcy + " =");
+                $("#baseCcy").val(baseCcy);
+                //$("#custCcyCode").val(custCcy);
             }
         })
           });
