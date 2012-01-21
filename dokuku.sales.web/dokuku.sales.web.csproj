@@ -779,7 +779,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="webclient\documentjs\demo\something.md" />
     <None Include="webclient\documentjs\doc" />
     <None Include="webclient\documentjs\doc.bat" />

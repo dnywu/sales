@@ -11,7 +11,7 @@ namespace dokuku.sales.payment.fixture
     {
         static InvoicePayment payment;
         Establish context = () => {
-            payment = new InvoicePayment(new Invoice(Guid.NewGuid(), "INV-1", 10000000), Guid.NewGuid());
+            payment = new InvoicePayment(Guid.NewGuid(),"oetawan",new Invoice(Guid.NewGuid(), "INV-1", 10000000), Guid.NewGuid());
         };
 
         Because of = () =>
