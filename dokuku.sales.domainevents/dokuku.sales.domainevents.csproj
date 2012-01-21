@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F389B501-2848-4C9B-B2C2-583FEC9BD01A}</ProjectGuid>
+    <ProjectGuid>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.payment.fixture</RootNamespace>
-    <AssemblyName>dokuku.sales.payment.fixture</AssemblyName>
+    <RootNamespace>dokuku.sales.domainevents</RootNamespace>
+    <AssemblyName>dokuku.sales.domainevents</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Machine.Specifications">
-      <HintPath>..\packages\Machine.Specifications.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,19 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="When_pay_invoice_full.cs" />
-    <Compile Include="When_pay_invoice_exceed_balance_due.cs" />
-    <Compile Include="When_pay_invoice_partial.cs" />
+    <Compile Include="DomainEvents.cs" />
+    <Compile Include="Handles.cs" />
+    <Compile Include="IContainer.cs" />
+    <Compile Include="IDomainEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
-      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
-      <Name>dokuku.sales.payment</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
