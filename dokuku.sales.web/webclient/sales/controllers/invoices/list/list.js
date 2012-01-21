@@ -95,10 +95,11 @@ steal('jquery/controller',
                     }
                 },
                 '.ButtonConfirmYes click': function () {
+                    var result;
                     $(".selectInvoice:checked").each(function (index) {
                         var index = $(this).attr("id");
                         var no = $("#invoiceId_" + index).val();
-                        var result = inv.DeleteInvoice(no);
+                        result = inv.DeleteInvoice(no);
                     });
                     if (result == "OK") {
                         $(".DeleteConfirmation").remove();
