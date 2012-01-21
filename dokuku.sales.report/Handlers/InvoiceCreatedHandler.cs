@@ -34,9 +34,18 @@ namespace dokuku.sales.report.Handlers
                     doc["Total"].ToString(),
                     doc["OwnerId"].ToString()});
 
+<<<<<<< HEAD
             index["InvoiceNumber"] = doc["_id"].ToString();
             index["Customer"] = doc["Customer"].ToString();
             index["OwnerId"] = doc["OwnerId"].ToString();
+=======
+            index["InvoiceNo"] = doc["InvoiceNo"];
+            index["Customer"] = doc["Customer"];
+            index["OwnerId"] = doc["OwnerId"];
+            index["_id"] = doc["_id"];
+            index["PONo"] = doc["PONo"];
+
+>>>>>>> 29abdf5baa5c495ab06646fa6efc218ca7af0f2e
             Collections.Save(index);
             Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }

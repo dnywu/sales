@@ -56,6 +56,21 @@ namespace dokuku.sales.invoices.service
             if (bus != null)
                 bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
 		}
+<<<<<<< HEAD
+=======
+        public void Delete(Guid id, string ownerId)
+        {
+            IsInvoiceStatusDraft(id, ownerId);
+            invRepo.Delete(id, ownerId);
+        }
+
+        private void IsInvoiceStatusDraft(Guid id, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(id, ownerId);
+            if (invoice.Status.ToLower() != "draft")
+                throw new Exception("Hapus invoice gagal, status invoice bukan draft");
+		}
+>>>>>>> 29abdf5baa5c495ab06646fa6efc218ca7af0f2e
 		
         private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber,string ownerId)
         {

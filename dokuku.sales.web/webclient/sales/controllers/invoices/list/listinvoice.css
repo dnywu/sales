@@ -66,6 +66,23 @@ div.ContextMenuInvoice
 	padding: 8px;
 }
 .itemContextMenuInvoice{padding-top:4px;}
+.invNo
+{
+    color:Blue;
+    cursor:pointer;
+    text-decoration:underline;
+}
+#SearchInvoice{
+	border: none;
+	margin-left: 18px;
+	height: 16px;
+	width: 254px;
+	background: #F3F3F3;
+}
+.invNo:hover
+{
+    color:#4183C4;
+}
 .invNo{color:Blue;padding-top:4px;cursor:pointer;}
 .EditContextMenuInvoive{cursor:pointer;outline:none;}
 .itemContextMenuInvoice{cursor:pointer;outline:none;color:Blue;cursor:pointer;text-decoration:underline;}

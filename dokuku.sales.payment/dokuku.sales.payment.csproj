@@ -54,6 +54,8 @@
     <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
     <Compile Include="domain\PaymentMode.cs" />
     <Compile Include="domain\PaymentRecord.cs" />
+    <Compile Include="IPaymentRepository.cs" />
+    <Compile Include="PaymentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="report\IPaymentReportingRepository.cs" />
     <Compile Include="report\PaymentReportingRepository.cs" />
