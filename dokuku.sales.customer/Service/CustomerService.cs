@@ -22,7 +22,7 @@ namespace dokuku.sales.customer.Service
             this.mongo = mongo;
             this.bus = bus;
         }
-        public string SaveCustomer(string customerJson, string ownerId)
+        public Customer SaveCustomer(string customerJson, string ownerId)
         {
             Customer cs = Newtonsoft.Json.JsonConvert.DeserializeObject<Customer>(customerJson);
             cs._id = Guid.NewGuid();
@@ -32,7 +32,7 @@ namespace dokuku.sales.customer.Service
             var result = cs.ToJson<Customer>();
             if (bus != null)
                 bus.Publish<CustomerCreated>(new CustomerCreated { Data = result });
-            return result;
+            return cs;
         }
 
         public void UpdateCustomer(string customerJson)
