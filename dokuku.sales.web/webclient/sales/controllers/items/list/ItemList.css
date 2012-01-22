@@ -119,7 +119,7 @@ div.itempopup label
 	cursor:pointer;
 }
 
-.Pagging {
+.PagingItems {
 	padding: 7px 12px 25px 35px;
 	border: solid 1px #EBEBEB;
 	background: #EBEBEB;
@@ -380,4 +380,16 @@ div.DivSearch{
 	height: 16px;
 	width: 17px;
 	float:left;
+}
+div.itemName
+{
+	font-weight:bolder;
+	font-size:14px;
+	width:100%;
+}
+div.itemDesc
+{
+	font-size:11px;
+	color:#999;
+	width:100%;
 }

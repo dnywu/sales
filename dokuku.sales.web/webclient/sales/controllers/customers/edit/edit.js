@@ -5,28 +5,15 @@ steal('jquery/controller',
 
 	    $.Controller('sales.Controllers.customers.edit',
         {
-            init: function (el,ev,id) {
-                var item = this.GetDataCustomer(id);
+            init: function (el,ev,item) {
+                //var item = this.GetDataCustomer(id);
                 this.element.html("//sales/controllers/customers/edit/views/editCustomer.ejs", { 'item': item });
                 $('#inputSelect_PersonName option[value="' + item.Salutation + '"]').attr('selected', 'selected')
             },
-            load: function (id) {
-                var item = this.GetDataCustomer(id);
+            load: function (item) {
+                //var item = this.GetDataCustomer(id);
                 this.element.html("//sales/controllers/customers/edit/views/editCustomer.ejs", { 'item': item });
                 $('#inputSelect_PersonName option[value="' + item.Salutation + '"]').attr('selected', 'selected')
-            },
-            GetDataCustomer: function (id) {
-                var item = null;
-                $.ajax({
-                    type: 'GET',
-                    url: '/GetDataCustomer/id/' + id,
-                    datatype: 'json',
-                    async: false,
-                    success: function (data) {
-                        item = data;
-                    }
-                });
-                return item;
             },
             '#EditCustomers submit': function (el, ev) {
                 ev.preventDefault();

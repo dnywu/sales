@@ -469,11 +469,6 @@
     <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
     <Content Include="webclient\sales\controllers\invoices\create\create_test.js" />
     <Content Include="webclient\sales\controllers\invoices\create\funcunit.html" />
-    <Content Include="webclient\sales\controllers\invoices\edit\edit.html" />
-    <Content Include="webclient\sales\controllers\invoices\edit\edit.js" />
-    <Content Include="webclient\sales\controllers\invoices\edit\editinvoices.css" />
-    <Content Include="webclient\sales\controllers\invoices\edit\edit_test.js" />
-    <Content Include="webclient\sales\controllers\invoices\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.css" />
@@ -485,6 +480,7 @@
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\list\DeleteConfirmBox.css" />
     <Content Include="webclient\sales\controllers\items\edit\edit.js" />
     <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
@@ -499,16 +495,6 @@
     <Content Include="webclient\sales\controllers\items\list\list_test.js" />
     <Content Include="webclient\sales\controllers\items\list\test\qunit\items_test.js" />
     <Content Include="webclient\sales\controllers\items\list\test\qunit\qunit.js" />
-    <Content Include="webclient\sales\controllers\items\list\nav\funcunit.html" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.jpg" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\LOGO-DOKUKU.png" />
-    <Content Include="webclient\sales\controllers\items\list\nav\Nav.css" />
-    <Content Include="webclient\sales\controllers\items\list\nav\nav.html" />
-    <Content Include="webclient\sales\controllers\items\list\nav\nav.js" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\items\list\nav\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\items\list\nav\NavSubMenu.css" />
-    <Content Include="webclient\sales\controllers\items\list\nav\nav_test.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
@@ -793,7 +779,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="webclient\documentjs\demo\something.md" />
     <None Include="webclient\documentjs\doc" />
     <None Include="webclient\documentjs\doc.bat" />
@@ -934,12 +922,13 @@
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs">
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -953,7 +942,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
-    <None Include="webclient\sales\controllers\items\list\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -1015,6 +1003,10 @@
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.domainevents\dokuku.sales.domainevents.csproj">
+      <Project>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</Project>
+      <Name>dokuku.sales.domainevents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
@@ -1034,6 +1026,14 @@
     <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
+      <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
+      <Name>dokuku.sales.payment.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
+      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
+      <Name>dokuku.sales.payment</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
       <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>

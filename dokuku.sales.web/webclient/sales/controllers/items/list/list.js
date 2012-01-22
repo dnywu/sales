@@ -50,10 +50,11 @@ steal('jquery/controller',
                 totalData = data.length;
                 $("table.ItemList tbody").empty();
                 $.each(data, function (item) {
-                    $("table.ItemList tbody").append('<tr class="trDataItem" id="itemContent' + item + '" tabindex="' + item + '">' +
+                    $("table.ItemList tbody").append('<tr class="trDataItem" width="48px" id="itemContent' + item + '" tabindex="' + item + '">' +
                     '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
                     '<td class="itemList" id="settingPanel' + item + '"></td>' +
-                    '<td class="itemList itemName">' + data[item].Name + '</td>' +
+                    '<td class="itemList itemName"><div class="itemName">' + data[item].Name + '</div>' +
+                    '<div class="itemDesc">' + data[item].Description + '</div></td>' +
                     '<td class="itemList itemPrice">Rp. ' + $this.rupiahFormat(data[item].Rate) + '</td></tr>');
                     $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
                 });
@@ -202,13 +203,13 @@ steal('jquery/controller',
                         dataType: 'json',
                         success: function (data) {
                             $this.requestAllItemSuccess(data);
-                            $('.Pagging').hide();
+                            $('.PagingItems').hide();
                         }
                     });
                 }
             },
             "#showAllItem click": function () {
-                $('.Pagging').show();
+                $('.PagingItems').show();
                 $this.RequestNumberOfItem();
             },
             requestLimitedData: function (start, limit) {

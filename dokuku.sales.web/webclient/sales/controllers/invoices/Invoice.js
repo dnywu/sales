@@ -146,7 +146,77 @@
 
         $("#errorCreateInv").empty().hide();
         var newInv = JSON.stringify(objInv);
-        return newInv;
+        $.ajax({
+            type: 'POST',
+            url: '/createinvoice',
+            data: { 'invoice': newInv },
+            dataType: 'json',
+            async: false,
+            success: this.CreateInvoiceCallBack
+        });
+    },
+    CreateInvoiceCallBack: function (data) {
+        if (data.error == true) {
+            $("#errorCreateInv").text(data.message).show();
+            return;
+        } else {
+            $("#body").sales_invoices_invoicedetail('load',data);
+        }
+    },
+    GetDataInvoice: function () {
+        var dataInvoice = new Array();
+        $.ajax({
+            type: 'GET',
+            url: '/GetDataInvoice',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i) {
+                    dataInvoice[i] = data[i];
+                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                    dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
+                });
+
+            }
+        });
+        return dataInvoice;
+    },
+    SearchInvoice: function () {
+        var dataInvoice = new Array();
+        var key = $('#SearchInvoice').val();
+        $.ajax({
+            type: 'GET',
+            url: '/SearchInvoice/key/' + key,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i) {
+                    dataInvoice[i] = data[i];
+                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                    dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
+                });
+            }
+        });
+        return dataInvoice;
+    },
+    DeleteInvoice: function (invoiceNo) {
+        var result;
+        $.ajax({
+            type: 'DELETE',
+            url: '/deleteInvoice/invoiceNo/' + invoiceNo,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
     }
 })
     });

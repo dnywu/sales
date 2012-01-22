@@ -119,13 +119,15 @@
                     .DefaultBuilder()
                     .BinarySerializer()
                     .MsmqTransport()
-                    .IsTransactional(true)
-                    .PurgeOnStartup(false)
+                        .IsTransactional(true)
+                        .PurgeOnStartup(false)
                     .MsmqSubscriptionStorage()
                     .UnicastBus()
-                    .ImpersonateSender(true)
+                        .LoadMessageHandlers()
+                        .ImpersonateSender(true)
                     .CreateBus()
                     .Start();
+                Configure.Instance.Configurer.ConfigureComponent<InvoiceService>(NServiceBus.ObjectBuilder.ComponentCallModelEnum.Singlecall);
             }
         }
     }

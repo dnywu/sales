@@ -27,7 +27,7 @@ namespace dokuku.sales.invoices.command
             Collections.Save<Invoices>(invoice);
         }
 
-        public Invoices Get(string id, string ownerId)
+        public Invoices Get(Guid id, string ownerId)
         {
             var qry = Query.And(
                 Query.EQ("_id", id),
@@ -36,7 +36,7 @@ namespace dokuku.sales.invoices.command
             return Collections.FindOneAs<Invoices>(qry);
         }
 
-        public void Delete(string id, string ownerId)
+        public void Delete(Guid id, string ownerId)
         {
             Collections.Remove(Query.And(
                 Query.EQ("_id", id),
