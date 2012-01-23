@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using dokuku.sales.config;
+using dokuku.sales.payment.domain;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 
-namespace dokuku.sales.payment
+namespace dokuku.sales.payment.command
 {
     public class PaymentModeCommand : IPaymentModeCommand
     {

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Machine.Specifications;
 using dokuku.sales.config;
+using dokuku.sales.payment.command;
+using dokuku.sales.payment.domain;
+using dokuku.sales.payment.query;
+using Machine.Specifications;
 
 namespace dokuku.sales.payment.fixture
 {

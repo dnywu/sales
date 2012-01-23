@@ -1,5 +1,6 @@
 ﻿using System;
-namespace dokuku.sales.payment
+using dokuku.sales.payment.domain;
+namespace dokuku.sales.payment.command
 {
     public interface IPaymentModeCommand
     {
