@@ -73,7 +73,7 @@ namespace dokuku.sales.web.modules
                     Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, this.CurrentAccount().OwnerId);
                     return Response.AsJson(invoice);
                 };
-            Post["/ApproveInvoice/{id}"] = p =>
+            Post["/approveinvoice/{id}"] = p =>
             {
                 try
                 {
