@@ -9,13 +9,16 @@ steal('jquery/controller',
       './views/init.ejs', function ($) {
           $.Controller('sales.Controllers.items.create',
         {
-            onDocument: true
+            defaults: ($this = null)
         },
         {
             init: function () {
+                $this = this;
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
+
             },
             load: function () {
+                $this = this;
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
             },
             "#createTaxLink click": function (el, ev) {
@@ -34,25 +37,46 @@ steal('jquery/controller',
                 $("#percentTax").keypress(this.percentTaxKeypress);
             },
             "#createItemsForm submit": function (el, ev) {
-                var form = $("#createItemsForm");
-                var err = $("#errorCreateItemDiv");
-                var defaults = {
-                    name: $("#itemName").val(),
-                    description: $("#description").val(),
-                    price: $("#itemPrice").val(),
-                    tax: $("#tax").val()
-                };
-                err.empty();
-                if (defaults.name !== "" && defaults.price != 0)
-                    form.submit();
-                if (defaults.name == "")
-                    $('<li>', { 'class': 'name', text: "Nama Barang harus di isi" }).appendTo(err.show());
-                if (defaults.price == "")
-                    $('<li>', { 'class': 'price', text: "Harga harus di diisi" }).appendTo(err.show());
-                if (defaults.description.length>500)
-                    $('<li>', { 'class': 'description', text: "Deskripsi barang tidak boleh lebih dari 500 karakter" }).appendTo(err.show());
+                var code = $("#itemCode").val();
+                var barcode = $("#barcode").val();
+                var name = $("#itemName").val();
+                var harga = $("#itemPrice").val();
+                var description = $("#description").val();
+                var taxName = $("#tax").text();
+                var taxValue = $("#tax").val();
+
+                var item = new Object;
+                item.Code = code;
+                item.Barcode = barcode;
+                item.Name = name;
+                item.Rate = harga;
+                item.Description = description;
+
+                item.Tax = new Object();
+                item.Tax.Name = taxName.trim();
+                item.Tax.Value = taxValue;
+
+                $.ajax({
+                    type: "POST",
+                    url: "/createnewitem",
+                    data: { 'data': JSON.stringify(item) },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.error == "true") {
+                            $this.onErrorRequestData(data.message);
+                            return;
+                        }
+                        $("#body").sales_items_list("load");
+                    }
+
+                });
                 ev.preventDefault();
-                return;
+
+            },
+            onErrorRequestData: function (msg) {
+                var err = $("#errorCreateItemDiv");
+                err.empty();
+                $('<li>', { text: msg }).appendTo(err.show());
             },
             submitTax: function (el, ev) {
                 var form = $("#taxForm");
@@ -72,16 +96,6 @@ steal('jquery/controller',
                     $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus lebih besar dari nol" }).appendTo(err.show());
                 ev.preventDefault();
                 return;
-            },
-            "#itemName keypress": function () {
-                $('li.name').remove();
-                if ($("#error").is(':empty'))
-                    $("#error").hide();
-            },
-            "#itemPrice keypress": function () {
-                $('li.price').remove();
-                if ($("#errorCreateItemDiv").is(':empty'))
-                    $("#errorCreateItemDiv").hide();
             },
             taxNameKeypress: function () {
                 $('li.name').remove();
@@ -103,6 +117,50 @@ steal('jquery/controller',
                 $("#description").val("");
                 $("#itemPrice").val("");
                 $("#tax").val("");
+            },
+            "#itemCode blur": function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/isCodeIsExist/' + $("#itemCode").val(),
+                    dataType: 'json',
+                    success: function (data) {
+                        var messageArea = $(".Code"),
+                        imgVerify = null,
+                        message = null;
+                        messageArea.empty();
+                        if (!data) {
+                            imgVerify = $('<div>', { 'class': 'exist' });
+                            message = $('<span>', { 'class': 'existMessage', text: 'Kode barang sudah digunakan' });
+                        } else {
+                            imgVerify = $('<div>', { 'class': 'notExist' });
+                            message = $('<span>', { 'class': 'notExistMessage', text: 'Kode barang dapat digunakan' });
+                        }
+                        imgVerify.appendTo(messageArea.show());
+                        message.insertAfter(imgVerify);
+                    }
+                });
+            },
+            "#barcode blur": function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/isBarcodeIsExist/' + $("#barcode").val(),
+                    dataType: 'json',
+                    success: function (data) {
+                        var messageArea = $(".Barcode"),
+                        imgVerify = null,
+                        message = null;
+                        messageArea.empty();
+                        if (!data) {
+                            imgVerify = $('<div>', { 'class': 'exist' });
+                            message = $('<span>', { 'class': 'existMessage', text: 'Barcode barang sudah digunakan' });
+                        } else {
+                            imgVerify = $('<div>', { 'class': 'notExist' });
+                            message = $('<span>', { 'class': 'notExistMessage', text: 'Barcode barang dapat digunakan' });
+                        }
+                        imgVerify.appendTo(messageArea.show());
+                        message.insertAfter(imgVerify);
+                    }
+                });
             }
         })
-});
+      });

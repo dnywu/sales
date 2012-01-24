@@ -2,9 +2,12 @@
   <div id='header'>
 	  <div class="container">
       <div class="logo">
-        <a href="/"> <img src="sales/controllers/nav/images/Dokuku-Logo.gif" height="35px"/></a>
+        <a href="/"> <img src="sales/controllers/nav/images/LOGO-DOKUKU.png" height="35px"/></a>
       </div>
 		  <ul class="top-nav">
+      <li class="home">
+        <img src="sales/controllers/nav/images/userlogo.png" height="23px" style="margin-right:10px;"/>
+      </li>
       <li class="home"><a href="" id='login'><%= this.name %></a></li>
         <ul id='setting'>
           <li><a href='' title='Pengaturan Akun'><span class='iconaccount'>Account Setting</span></a></li>
@@ -16,10 +19,10 @@
   <div id='tabs'>
     <div class="containertabs">
       <ul class="ultabs">
-        <li><span>Home</span></li>
+        <li id="HomeLink"><span>Home</span></li>
         <li id="InvoiceLink"><span>Invoices</span></li>
         <li id="CustomerLink"><span>Customers</span></li>
-        <li><span>Setting</span></li>
+        <li id="SettingLink"><span>Setting</span></li>
       </ul>
     </div>
     <div id="subtabs"></div>

@@ -1,0 +1,39 @@
+﻿<form id="formNewItem">
+  <div class="error" id="errorAddItem"></div>
+  <table width="100%" cellpadding="5px">
+    <tr>
+      <td width="30%" class="right">
+        <div class="mandatoryTxt">Nama Barang</div>
+      </td>
+      <td width="70%" class="left">
+        <input type="text" name="Name" id="itemName"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Deskripsi</td>
+      <td class="left">
+        <textarea name="Description" id="decription"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">
+        <div class="mandatoryTxt">Harga</div>
+      </td>
+      <td class="left">
+        <input type="text" name="Rate" id="rate"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="right">Pajak</td>
+      <td class="left">
+        <select name="Tax" id="tax">
+          <option value="0">None</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <div class="submitAddCust">
+    <input type="button" value="Simpan dan Pilih" id="createItem"/>
+    <input type="button" value="Batal" id="btnCancelAddItem"/>
+  </div>
+</form>

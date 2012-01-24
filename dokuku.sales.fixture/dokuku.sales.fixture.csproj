@@ -31,19 +31,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LoveSeat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LoveSeat\LoveSeat.dll</HintPath>
-    </Reference>
-    <Reference Include="LoveSeat.Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
-    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\packages\Machine.Specifications-Signed.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
     </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -55,13 +56,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_create_item_index.cs" />
+    <Compile Include="When_search_invoices.cs" />
+    <Compile Include="When_generate_invoice_number_monthly_mode.cs" />
+    <Compile Include="When_generate_invoice_number_yearly_mode.cs" />
+    <Compile Include="When_generate_invoice_auto_number_monthly.cs" />
+    <Compile Include="When_generate_invoice_auto_number_yearly.cs" />
+    <Compile Include="When_generate_invoice_auto_number_default.cs" />
+    <Compile Include="When_count_customer.cs" />
+    <Compile Include="When_generate_invoice_number.cs" />
     <Compile Include="When_get_all_items.cs" />
     <Compile Include="When_create_item.cs" />
-    <Compile Include="When_get_all_customer.cs" />
     <Compile Include="When_create_customer.cs" />
     <Compile Include="When_find_organization_by_owner_id.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="When_create_organization.cs" />
+    <Compile Include="When_list_customer_with_paging.cs" />
+    <Compile Include="When_search_customer.cs" />
+    <Compile Include="When_update_item.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -70,9 +82,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
+      <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
+      <Name>dokuku.sales.invoices</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
       <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>

@@ -32,22 +32,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\..\Dokuku\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+    <Reference Include="antlr.runtime">
+      <HintPath>..\packages\NServiceBus\antlr.runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Common.Logging.Log4Net">
-      <HintPath>..\..\Dokuku\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\NServiceBus\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\Bonastoco-v2\external-lib\log4net.dll</HintPath>
+    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
-    <Reference Include="LoveSeat">
-      <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.dll</HintPath>
+    <Reference Include="Common.Logging.Log4Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="LoveSeat.Interfaces">
-      <HintPath>..\..\Dokuku\packages\LoveSeat\LoveSeat.Interfaces.dll</HintPath>
+    <Reference Include="FluentMongo">
+      <HintPath>..\packages\FluentMongo.1.3.1\lib\FluentMongo.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSMQ">
+      <HintPath>..\packages\NServiceBus\Interop.MSMQ.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.9.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
@@ -62,6 +76,18 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Dokuku\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Core">
+      <HintPath>..\packages\NServiceBus\NServiceBus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\packages\NServiceBus\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -88,13 +114,116 @@
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="webclient\documentjs\build.js" />
+    <Content Include="webclient\documentjs\demo\something.js" />
+    <Content Include="webclient\documentjs\demo\test.html" />
+    <Content Include="webclient\documentjs\distance.js" />
+    <Content Include="webclient\documentjs\documentjs.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\content\content.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\content\content.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\content\content_test.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\content\doc_updated.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\content\funcunit.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\demo\demo.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\highlight\highlight.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\highlight\languages\javascript.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\highlight\languages\www.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\iframe\iframe.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\close.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\fav-off.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\fav-on.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\favicon.ico" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\logo.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\logo80x30.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\main_sprite.jpg" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\main_sprite.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\menu_button.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\pre.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\sidebar_top_close.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\type.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-icons_222222_256x240.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-icons_454545_256x240.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-icons_888888_256x240.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\images\_sidebar_top_close.png" />
+    <Content Include="webclient\documentjs\jmvcdoc\jmvcdoc.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\jmvcdoc.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\models\favorites.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\models\search.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\nav\funcunit.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\nav\nav.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\nav\nav.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\nav\nav_test.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\production.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\qunit.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\resources\helpers.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\scripts\build.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\scripts\doc.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\search\funcunit.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\search\search.html" />
+    <Content Include="webclient\documentjs\jmvcdoc\search\search.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\search\search_test.js" />
+    <Content Include="webclient\documentjs\jmvcdoc\style.css" />
+    <Content Include="webclient\documentjs\jmvcdoc\test\qunit.js" />
+    <Content Include="webclient\documentjs\json.js" />
+    <Content Include="webclient\documentjs\pages\how.js" />
+    <Content Include="webclient\documentjs\scripts\run.js" />
+    <Content Include="webclient\documentjs\searchdata.js" />
+    <Content Include="webclient\documentjs\showdown.js" />
+    <Content Include="webclient\documentjs\tags\alias.js" />
+    <Content Include="webclient\documentjs\tags\author.js" />
+    <Content Include="webclient\documentjs\tags\codeend.js" />
+    <Content Include="webclient\documentjs\tags\codestart.js" />
+    <Content Include="webclient\documentjs\tags\constructor.js" />
+    <Content Include="webclient\documentjs\tags\demo.js" />
+    <Content Include="webclient\documentjs\tags\download.js" />
+    <Content Include="webclient\documentjs\tags\hide.js" />
+    <Content Include="webclient\documentjs\tags\iframe.js" />
+    <Content Include="webclient\documentjs\tags\image.js" />
+    <Content Include="webclient\documentjs\tags\inherits.js" />
+    <Content Include="webclient\documentjs\tags\page.js" />
+    <Content Include="webclient\documentjs\tags\param.js" />
+    <Content Include="webclient\documentjs\tags\parent.js" />
+    <Content Include="webclient\documentjs\tags\plugin.js" />
+    <Content Include="webclient\documentjs\tags\return.js" />
+    <Content Include="webclient\documentjs\tags\scope.js" />
+    <Content Include="webclient\documentjs\tags\tag.js" />
+    <Content Include="webclient\documentjs\tags\tags.js" />
+    <Content Include="webclient\documentjs\tags\test.js" />
+    <Content Include="webclient\documentjs\tags\type.js" />
+    <Content Include="webclient\documentjs\test\docs.html" />
+    <Content Include="webclient\documentjs\test\run.js" />
+    <Content Include="webclient\documentjs\test\something.js" />
+    <Content Include="webclient\documentjs\test\test.html" />
+    <Content Include="webclient\documentjs\test\test_script.txt" />
+    <Content Include="webclient\documentjs\types\add.js" />
+    <Content Include="webclient\documentjs\types\attribute.js" />
+    <Content Include="webclient\documentjs\types\class.js" />
+    <Content Include="webclient\documentjs\types\function.js" />
+    <Content Include="webclient\documentjs\types\page.js" />
+    <Content Include="webclient\documentjs\types\prototype.js" />
+    <Content Include="webclient\documentjs\types\script.js" />
+    <Content Include="webclient\documentjs\types\static.js" />
+    <Content Include="webclient\documentjs\types\type.js" />
+    <Content Include="webclient\documentjs\types\types.js" />
     <Content Include="webclient\jquery\build.js" />
     <Content Include="webclient\jquery\buildAll.js" />
     <Content Include="webclient\jquery\class\class.html" />
@@ -319,22 +448,79 @@
     <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />
     <Content Include="webclient\sales\controllers\customers\customers_test.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\customers\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\funcunit.html" />
     <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
     <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
-    <Content Include="webclient\sales\controllers\nav\Nav.css" />
-    <Content Include="webclient\sales\controllers\nav\nav.html" />
-    <Content Include="webclient\sales\controllers\nav\nav.js" />
-    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
-    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\customers\images\setting.png" />
+    <Content Include="webclient\sales\controllers\customers\images\find.png" />
+    <Content Include="webclient\sales\controllers\home\funcunit.html" />
+    <Content Include="webclient\sales\controllers\home\home.css" />
+    <Content Include="webclient\sales\controllers\home\home.html" />
+    <Content Include="webclient\sales\controllers\home\home.js" />
+    <Content Include="webclient\sales\controllers\home\home_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\AddCustomer.js" />
+    <Content Include="webclient\sales\controllers\invoices\AddItem.js" />
+    <Content Include="webclient\sales\controllers\invoices\create\create.html" />
+    <Content Include="webclient\sales\controllers\invoices\create\create.js" />
+    <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
+    <Content Include="webclient\sales\controllers\invoices\create\create_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\create\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.css" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.html" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.js" />
+    <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\list\list.html" />
+    <Content Include="webclient\sales\controllers\invoices\list\list.js" />
+    <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
+    <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\list\DeleteConfirmBox.css" />
+    <Content Include="webclient\sales\controllers\items\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
+    <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
+    <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\add.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\find.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\search.png" />
+    <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
+    <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
+    <Content Include="webclient\sales\controllers\items\list\list.html" />
+    <Content Include="webclient\sales\controllers\items\list\list.js" />
+    <Content Include="webclient\sales\controllers\items\list\list_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\test\qunit\items_test.js" />
+    <Content Include="webclient\sales\controllers\items\list\test\qunit\qunit.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
+    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
+    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
+    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\controllers\nav\images\icon.png" />
+    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
+    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\controllers\nav\images\uknown-person.gif" />
+    <Content Include="webclient\sales\controllers\nav\images\userlogo.png" />
+    <Content Include="webclient\sales\controllers\nav\Nav.css" />
+    <Content Include="webclient\sales\controllers\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\nav\nav.js" />
+    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
+    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\restrictuser\funcunit.html" />
+    <Content Include="webclient\sales\controllers\restrictuser\restrictuser.html" />
+    <Content Include="webclient\sales\controllers\restrictuser\restrictuser.js" />
+    <Content Include="webclient\sales\controllers\restrictuser\restrictuser_test.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\funcunit.html" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.html" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering_test.js" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
@@ -346,8 +532,12 @@
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\companyprofile.js" />
+    <Content Include="webclient\sales\models\currency.js" />
+    <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
+    <Content Include="webclient\sales\repository\CustomerRepository.js" />
+    <Content Include="webclient\sales\repository\InvoiceRepository.js" />
     <Content Include="webclient\sales\sales.css" />
     <Content Include="webclient\sales\sales.js" />
     <Content Include="webclient\sales\scripts\build.html" />
@@ -355,10 +545,22 @@
     <Content Include="webclient\sales\scripts\clean.js" />
     <Content Include="webclient\sales\scripts\crawl.js" />
     <Content Include="webclient\sales\scripts\docs.js" />
+    <Content Include="webclient\sales\repository\ItemRepository.js" />
+    <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.js" />
+    <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
+    <Content Include="webclient\sales\scripts\stringformat.js" />
+    <Content Include="webclient\sales\styles\images\Actions.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="webclient\sales\styles\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="webclient\sales\styles\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="webclient\sales\styles\jquery-ui-1.8.14.custom.css" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
-    <Content Include="webclient\sales\style\ModalDialog.css" />
     <Content Include="webclient\sales\test\funcunit\funcunit.js" />
     <Content Include="webclient\sales\test\funcunit\sales_test.js" />
     <Content Include="webclient\sales\test\qunit\qunit.js" />
@@ -571,11 +773,38 @@
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\CustomerModule.cs" />
+    <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
+    <Compile Include="modules\InvoiceModule.cs" />
+    <Compile Include="modules\ItemModule.cs" />
     <Compile Include="modules\MainModule.cs" />
+    <Compile Include="modules\OrganizationModule.cs" />
+    <Compile Include="modules\ServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="log4net.config" />
+    <Content Include="log4net.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="webclient\documentjs\demo\something.md" />
+    <None Include="webclient\documentjs\doc" />
+    <None Include="webclient\documentjs\doc.bat" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\attribute.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\class.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\constructor.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\favorite.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\function.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\page.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\results.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\content\views\top.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\demo\demo.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\nav\views\results.ejs" />
+    <None Include="webclient\documentjs\jmvcdoc\summary.ejs" />
+    <None Include="webclient\documentjs\README" />
+    <None Include="webclient\documentjs\test\docs\searchData.json" />
+    <None Include="webclient\documentjs\test\docs\Something.json" />
+    <None Include="webclient\documentjs\test\page.md" />
+    <None Include="webclient\documentjs\update" />
     <None Include="webclient\jquery\controller\pages\listening.md" />
     <None Include="webclient\jquery\controller\pages\plugin.md" />
     <None Include="webclient\jquery\controller\view\test\qunit\views\init.micro" />
@@ -680,11 +909,54 @@
     <None Include="webclient\jquery\view\test\qunit\template.micro" />
     <None Include="webclient\jquery\view\test\qunit\template.tmpl" />
     <None Include="webclient\jquery\view\tmpl\test.tmpl" />
-    <None Include="webclient\sales\controllers\customers\views\customer.ejs">
+    <None Include="webclient\sales\controllers\customers\edit\views\editCustomer.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
-    <None Include="webclient\sales\controllers\items\create\views\init.ejs" />
+    <None Include="webclient\sales\controllers\customers\views\addcustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\customers\views\contextMenuCustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\customers\views\listCustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\home\views\home.ejs" />
+    <None Include="webclient\sales\controllers\invoices\create\views\AddItem.ejs" />
+    <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs" />
+    <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\invoices.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\create\views\AddCustomer.ejs" />
+    <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\items\list\views\popupEventDialog.ejs" />
+    <None Include="webclient\sales\controllers\items\create\views\init.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setupautonumbering\views\setupautonumbering.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\setupautonumbering\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
@@ -729,22 +1001,56 @@
     <None Include="webclient\steal\update" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="webclient\sales\docs\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
+      <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
+      <Name>dokuku.sales.customer.messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.domainevents\dokuku.sales.domainevents.csproj">
+      <Project>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</Project>
+      <Name>dokuku.sales.domainevents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
+      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
+      <Name>dokuku.sales.invoice.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
+      <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
+      <Name>dokuku.sales.invoices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.item.messages\dokuku.sales.item.messages.csproj">
+      <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
+      <Name>dokuku.sales.item.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
+      <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
+      <Name>dokuku.sales.item</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
+      <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
+      <Name>dokuku.sales.payment.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
+      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
+      <Name>dokuku.sales.payment</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
       <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>
       <Name>dokuku.security</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

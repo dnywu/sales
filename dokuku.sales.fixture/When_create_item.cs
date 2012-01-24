@@ -4,24 +4,28 @@ using System.Linq;
 using System.Text;
 using Machine.Specifications;
 using dokuku.sales.item;
+using dokuku.sales.config;
 namespace dokuku.sales.fixture
 {
     [Subject("Creating item")]
     public class When_create_item
     {
-        private static IItemRepository itemRepo;
+        private static IItemCommand itemCmd;
+        private static IItemQuery itemQry;
         private static Item item;
         private static Guid id;
-
+        static MongoConfig mongo;
         Establish context = () =>
             {
-                itemRepo = new ItemRepository();
+                mongo = new MongoConfig();
+                itemCmd = new ItemCommand(mongo);
+                itemQry = new ItemQuery(mongo);
                 id = Guid.NewGuid();
             };
 
         Because of = () =>
             {
-                itemRepo.Save(new Item()
+                itemCmd.Save(new Item()
                 {
                     _id = id,
                     OwnerId = "oetawan@inforsys.co.id",
@@ -32,15 +36,15 @@ namespace dokuku.sales.fixture
                 });
             };
 
-        It should_create_organization = () =>
+        It should_create_item = () =>
             {
-                item = itemRepo.Get(id);
+                item = itemQry.Get(id);
                 item.ShouldNotBeNull();
             };
 
         Cleanup cleanup = () =>
             {
-                //itemRepo.Delete(id);
+                itemCmd.Delete(id);
             };
     }
 }

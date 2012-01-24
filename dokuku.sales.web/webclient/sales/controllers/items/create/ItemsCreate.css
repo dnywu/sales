@@ -112,6 +112,7 @@ div.error{
 	padding-left: 10px;
 	background-color:#FF6A6A;
 	border: 1px Solid #E00;
+	margin:0 10px 0 10px;
 }
 
 #saveTax
@@ -121,4 +122,37 @@ div.error{
 #cancelCreateTax
 {
 	height: 25px;
+}
+.messageVerify
+{
+	margin-bottom:10px;
+	width:250px;
+}
+.messageVerify span
+{
+	margin-left:10px;
+}
+.messageVerify div
+{
+	width:15px;
+	height:15px;
+	float:left;
+}
+div.notExist
+{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position:-80px -108px;
+}
+span.notExistMessage
+{
+	color:Green;
+}
+div.exist
+{
+	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background-position:-40px -108px;
+}
+span.existMessage
+{
+	color:Red;
 }

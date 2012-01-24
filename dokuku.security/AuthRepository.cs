@@ -16,6 +16,7 @@
         const string OWNER_ROLE = "owner";
         const string ACCOUNT_TYPE = "account";
         static CouchClient couchClient;
+        static CouchDatabase db;
 
         static AuthRepository()
         {
@@ -74,7 +75,16 @@
             return ValidateUser(email, password);
         }
 
-        private class Account
+        public static AccountUser GetAccountByUsername(string username)
+        {
+            CouchDatabase db = couchClient.GetDatabase("dokuku");
+            AccountUser accUser = db.GetDocument<AccountUser>(username);
+            if (accUser == null)
+                accUser.CompanyId = username;
+            return accUser;
+        }
+
+        public class Account
         {
             public string _id { get; set; }
             public string _rev { get; set; }
@@ -83,6 +93,11 @@
             public string Password { get; set; }
             public string[] Roles { get; set; }
             public string Type { get; set; }
+        }
+
+        public class AccountUser : Account
+        {
+            public string CompanyId { get; set; }
         }
     }
 }

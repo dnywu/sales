@@ -1,0 +1,89 @@
+﻿td.bodyBgCenter {width: 75%;background-color: white;}
+td.bodyBgRight {
+    width: 25%;
+    padding: 30px 0 20px 20px;
+    text-align: left;
+}
+div.invoicesContainer
+{
+	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
+	width : 100%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}
+div.HeaderTitleDIVLeft
+{
+    position:inherit;
+    width:94.6%;
+    color: #777;
+    font-size:18px;
+    background:#F7F7F7;
+    padding: 20px 25px;
+}
+div.invoiceContain
+{
+    width:95.7%;
+    min-height:380px;
+    padding:50px 20px 20px 20px;
+}
+div.rightbuttonarea
+{
+    float:right;
+    color:#666;
+    font-size:11px;
+}
+.right{text-align:right;}
+table#tblListInvoice{border-collapse:collapse;}
+table#tblListInvoice thead {color:#666;}
+table#tblListInvoice .tblCheck{width:24px;}
+table#tblListInvoice .tblNoInv{width:80px;}
+table#tblListInvoice .tblPO{width:80px;}
+table#tblListInvoice .tblTanggal{width:90px;}
+table#tblListInvoice .tblTotal{width:80px;}
+table#tblListInvoice .tblDue{width:90px;}
+table#tblListInvoice .tblBalance{width:80px;}
+table#tblListInvoice .tblStatus{width:65px;}
+table#tblListInvoice tr{border-top:1px solid #EBEBEB;border-bottom:1px Solid #EBEBEB;}
+table#tblListInvoice td{padding-top:8px;padding-bottom:8px; height: 30px;}
+.settingListInvoice{display:none; cursor:pointer;outline:none}
+div.ContextMenuInvoice
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 75px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+.itemContextMenuInvoice{padding-top:4px;}
+.invNo
+{
+    color:Blue;
+    cursor:pointer;
+    text-decoration:underline;
+}
+#SearchInvoice{
+	border: none;
+	margin-left: 18px;
+	height: 16px;
+	width: 254px;
+	background: #F3F3F3;
+}
+.invNo:hover
+{
+    color:#4183C4;
+}
+.invNo{color:Blue;padding-top:4px;cursor:pointer;}
+.EditContextMenuInvoive{cursor:pointer;outline:none;}
+.itemContextMenuInvoice{cursor:pointer;outline:none;color:Blue;cursor:pointer;text-decoration:underline;}
+.invNo:hover{color:Red;}

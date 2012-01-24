@@ -1,0 +1,94 @@
+<table width="100%" cellpadding="0" border="0" id="tbllistinvoice">
+  <tbody>
+    <tr>
+      <td valign="top" class="bodyBgCenter">
+        <div class="invoicesContainer">
+          <div class="topBandHeaderDIV">
+            <div id="TitleSpan" class="HeaderDIVLeft">Invoices</div>
+          </div>
+          <div class="invoiceContain">
+            <div class="ActionButtonDiv">
+              <table id ="tblMenuInvoice" width="900px">
+                <tr id ="trMenuInvoice">
+                  <td id="tdMenuInvoiceLeft" width="450px">
+                    <input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />
+                  </td>
+                  <td id="tdMenuInvoiceRight" width="450px">
+                    <table id="subMenuInvoiceRight" width="100%">
+                      <tr id="trsubMenuInvoiceRight">
+                        <td id="tdsubMenuInvoiceRight" width="30%">
+                          <div class="floatLeft" id="titelMenuInvoice">Show:</div>
+                        </td>
+                        <td id="tdsubMenuInvoiceRight" width="70%">
+                          <div class=" floatLeft">
+                            <div class="DivSearch">
+                              <div class="imgSearch">
+                                <input type="input" id="SearchInvoice" placeholder="Cari"/>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <table width="100%" cellpadding="5px" id="tblListInvoice">
+              <thead>
+                <tr>
+                  <td class="tblCheck"><input type="checkbox" id="selectall"></input></td>
+                  <td class="tblCheck" style="width:35px"></td>
+                  <td class="tblNoInv">Invoice#</td>
+                  <td class="tblPO">P.O.#</td>
+                  <td class="tblNamaPelanggan">Nama Pelanggan</td>
+                  <td class="tblTanggal">Tanggal</td>
+                  <td class="tblTotal right">Total</td>
+                  <td class="tblDue">Sampai</td>
+                  <td class="tblBalance right">Balance Due</td>
+                  <td class="tblStatus">Status</td>
+                </tr>
+              </thead>
+              <tbody class ="bodyDataInvoice">
+                <%for(var i=0; i<this.length ; i++){%>
+                  <tr class="trbodyDataInvoice" id="trbodyDataInvoice<%= i%>" tabindex = "<%= i%>">
+                    <td>
+                      <input type="checkbox" class="selectInvoice" id="<%= i%>"></input>
+                    </td>
+                    <td id="tdDataInvoice<%= i%>">
+                      <div class="settingListInvoice" id="settingListInvoice<%= i%>" tabindex="<%= i%>">
+                      <img class='' src='/sales/controllers/customers/images/setting.png'/>
+                      </div>
+                      <div class="ContextMenuInvoice" id="ContextMenuInvoice<%= i %>">
+                        <div class="EditImagContextMenu"></div>
+                        <div class="itemContextMenuInvoice">
+                          <span class="EditContextMenuInvoive" id="<%=this[i]._id%>">Ubah</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="invNo" id="<%=i%>">
+                        <input type="hidden" id='invoiceId_<%=i%>' value="<%=this[i]._id %>"/><%=this[i].InvoiceNo%>
+                      </span>
+                    </td>
+                    <td><%=this[i].PONo%></td>
+                    <td><%=this[i].Customer%></td>
+                    <td><%=this[i].InvoiceDate%></td>
+                    <td class="right"><%=this[i].Total%></td>
+                    <td><%=this[i].DueDate%></td>
+                    <td class="right"><%=this[i].name%></td>
+                    <td><%=this[i].Status%></td>
+                  </tr>
+                <%}%>
+                
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </td>
+      <td class="bodyBgRight" valign='top'>
+        <div class='BtnNew' id='newinvoices'>Invoice Baru</div>
+      </td>
+    </tr>
+  </tbody>
+</table>

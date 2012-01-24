@@ -1,0 +1,137 @@
+<div id='CustomerDiv'>
+  <table class='CustomerTable'>
+    <tbody>
+      <tr>
+        <td id ='formListCustomer'>
+          <div class ='ListCustomerDiv'>
+            <div class="HeaderDIVListCustomer" id="TitleSpan">Pelanggan</div>
+            <div class="classPesan"></div>
+            <div class="ClassSubMenuDataCustomer" id="idKosong">
+              <table width="900px">
+                <tr>
+                  <td width="400px">
+                    <table>
+                      <tr>
+                        <td>
+                          <div class="menuLeft" id="menggabungkan">Menggabungkan</div>
+                        </td>
+                        <td>
+                          <div class="menuLeft" id="tandai">Tandai Yang Aktif</div>
+                        </td>
+                        <td>
+                          <div class="menuLeft" id="hapus">
+                            <div class="floatLeft">Hapus</div>
+                            <div class="iconHapus"></div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="500px" style="float: right;">
+                    <table width="100%" style="padding-left:36px">
+                      <tr>
+                        <td>
+                          <div style="color:grey;">Tampilkan :</div>
+                        </td>
+                        <td>
+                          <div>
+                            <div class=" floatRight menuLeft">
+                              <div class="floatRight" id="allCustomer">Semua</div>
+                              <div class="imgFilter floatRight"></div>
+                            </div>
+                          </div>
+                        </td>
+                        <td id="search">
+                          <div class=" floatLeft">
+                            <div class="DivSearch">
+                              <div class="imgSearch">
+                              <input type="input" id="SearchCustomer" placeholder="Cari"/>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class='ClassListCustomer'>
+              <table class='dataCustomer' width='100%' style='border-collapse:collapse;'>
+                <thead>
+                  <tr style='background :#F0F0F0'>
+                    <th class='thDataCustomer tdDataCustomerCenter textAlignRight' style='width: 6%;'>
+                      <input type="checkbox" name="SelectAll" class="SelectAllCustomer"/>
+                    </th>
+                    <th class='thDataCustomer tdDataCustomerCenter' style='width: 4%;'></th>
+                    <th class='thDataCustomer tdDataCustomerLeft' style='width: 50%;'>Name</th>
+                    <th class='thDataCustomer tdDataCustomerRight'style='width: 20%;'>Outstanding</th>
+                    <th class='thDataCustomer tdDataCustomerRight'style='width: 20%;'>Unused Credits</th>
+                  </tr>
+                </thead>
+                <tbody class='BodyDataCustomer'>
+                  
+                </tbody>
+              </table>
+          </div>
+            <div class ='Pagging'>
+              <div class ='DivPrev'>
+                <img class ='first pagingSize'></img>
+                <img class ='prev pagingSize'></img>
+              </div>
+              <div class ="disablePrev" style="display:none;">
+                <img class ='firstDisable pagingSize'></img>
+                <img class ='prevDisable pagingSize'></img>
+              </div>
+              <div class ='DivPage'>
+                Page <input type='text' id='idInputPage' style="width:20px; height:14px"/> of <span id="totalPage"></span>
+              </div>
+              <div class='DivNext'>
+                  <img class ='next pagingSize'></img>
+                  <img class ='last pagingSize'></img>
+              </div>
+              <div class ="disableNext" style="display:none;">
+                <img class ='nextDisable pagingSize'></img>
+                <img class ='lastDisable pagingSize'></img>
+              </div>
+              <div class='DivlimitData'>
+                  <select class="limit" id="limitData" style="width:50px; height:21px">
+                    <option value="10" selected="selected"> 10 </option>
+                    <option value="20"> 20 </option>
+                    <option value="30"> 30 </option>
+                    <option value="40"> 40 </option>
+                  </select>
+              </div>
+              
+              
+            </div>
+         </div>
+        </td>
+        <td class='MenuFormListCustomer'>
+          <div class='BtnTambahCustomer'>Tambah Customer</div>
+        </td>
+      </tr>  
+    </tbody>
+  </table>
+</div>
+<div class='MessageConfirmation'>
+  <table>
+    <tr>
+      <td>
+        <div class='ConfirmationHeader'>
+          <div class='imagesConfirm'></div>
+          <div class='isiConfirmationHeader'>Konfirmasi</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class='BodyConfirmationMassage'>
+          <div>Apakah anda yakin akan menghapus pelanggan ini</div>
+          <div class='ButtonConfirmationMassageYa'>Ya</div>
+          <div class='ButtonConfirmationMassageTidak'>Tidak</div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
