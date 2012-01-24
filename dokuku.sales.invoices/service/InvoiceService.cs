@@ -56,12 +56,43 @@ namespace dokuku.sales.invoices.service
             if (bus != null)
                 bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
 		}
+        public void Delete(Guid id, string ownerId)
+        {
+            IsInvoiceStatusDraft(id, ownerId);
+            invRepo.Delete(id, ownerId);
+        }
+
+        private void IsInvoiceStatusDraft(Guid id, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(id, ownerId);
+            if (invoice.Status.ToLower() != "draft")
+                throw new Exception("Hapus invoice gagal, status invoice bukan draft");
+		}
 		
         private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber,string ownerId)
         {
             Invoices inv = invRepo.GetInvByNumber(invoiceNumber, ownerId);
             if (inv != null)
                 throw new ApplicationException("Invoice " + invoiceNumber + " sudah digunakan!");
+        }
+
+
+        public void InvoiceFullyPaid(Guid invoiceId, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(invoiceId, ownerId);
+            if (invoice == null)
+                throw new ApplicationException("Invoice tidak ditemukan dalam database");
+            invoice.InvoiceStatusSudahLunas();
+            invRepo.Save(invoice);
+        }
+
+        public void InvoicePartialyPaid(Guid invoiceId, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(invoiceId, ownerId);
+            if (invoice == null)
+                throw new ApplicationException("Invoice tidak ditemukan dalam database");
+            invoice.InvoiceStatusBelumLunas();
+            invRepo.Save(invoice);
         }
     }
 }

@@ -1,0 +1,83 @@
+﻿div.DeleteConfirmation{
+	width : 23%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
+	position: absolute;
+	top: 245px;
+	left: 337px;
+	background-color:#FFF;
+}
+
+.DeleteConfirmHeader{
+	font-size: 18px;
+	font-family: arial, verdana;
+	background: #F0F0F0;
+	height: 52px;
+	padding: 2px;
+}
+
+.imgDeleteConfirm{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -273px -1025px;
+	margin: 10px 15px 10px 5px;
+	height: 34px;
+	width: 38px;
+	float : left;
+}
+
+div.textDeleteConfirmHeader{margin: 20px 5px 10px 5px;}
+
+.BodyConfirmMassage{
+	font-size: 14px;
+	background: #F8F8F8;
+	height: 81px;
+	padding: 8px;
+}
+
+.ButtonConfirmYes{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 72px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	
+}
+.ButtonConfirmClose{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 4px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}

@@ -34,6 +34,7 @@ namespace dokuku.sales.invoices.query
         {
             MongoCollection<InvoiceReports> reportCollection = mongo.ReportingDatabase.GetCollection<InvoiceReports>(typeof(InvoiceReports).Name);
             var qry = Query.And(Query.EQ("OwnerId", BsonValue.Create(ownerId)), getQuery(keywords));
+            InvoiceReports invReport = reportCollection.Find(qry).FirstOrDefault();
             return reportCollection.Find(qry).SetLimit(10);
         }
 
@@ -54,6 +55,13 @@ namespace dokuku.sales.invoices.query
             {
                 return mongo.ReportingDatabase.GetCollection<Invoices>(typeof(Invoices).Name);
             }
+        }
+
+
+        public Invoices FindById(Guid guid)
+        {
+            return Collections.FindOneAs<Invoices>(Query.And(
+                                Query.EQ("_id", guid)));
         }
     }
 }

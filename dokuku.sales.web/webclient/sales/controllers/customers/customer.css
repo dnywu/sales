@@ -295,7 +295,7 @@ div.menuLeft{
 
 }
 .floatLeft{
-	float: left;
+	float: right;
 	padding-right: 5px;
 }
 .floatRight{
@@ -512,6 +512,15 @@ div.itemContextMenuCustomer span:hover{
 	margin-right:20px;
 	margin-top: 1px;
 }
+.CreateInvoiceContextMenuCustomer{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -50px -79px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
 .judulAlamatPengiriman
 {
 	font-size: 15px;
@@ -525,22 +534,6 @@ div.itemContextMenuCustomer span:hover{
 	height: 16px;
 	width: 17px;
 	float:right;
-}
-div.ListSearchCustomer
-{
-	display:none;
-	background-color: #FFFFFF;
-	position: absolute;
-	white-space: normal;
-	width: 281px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;
-	-moz-box-shadow: 0 0 4px 0 #999;
-	-webkit-box-shadow: 0 0 4px 0 #999;
-	box-shadow: 0 0 4px 0 #999;
-	padding: 8px;
-	margin-left: 3px;
 }
 div.DivSearch{
 	list-style: none;
@@ -572,5 +565,5 @@ div.DivSearch{
 	float:left;
 }
 .nameCompany{ color:Black; font-weight:bolder; font-size:14px;}
-.atributDataCustomer{ color:#A5A2A2; font-size:10px;}
+.atributDataCustomer{ color:#A5A2A2; font-size:11px;}
 .tdDataCustomer{padding-bottom:5px; padding-top:5px;}
