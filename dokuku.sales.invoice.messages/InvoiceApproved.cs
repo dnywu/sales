@@ -5,7 +5,6 @@ namespace dokuku.sales.invoice.messages
     [Serializable]
     public class InvoiceApproved : IMessage
     {
-        public Guid InvoiceId { get; set; }
-        public string OwnerId { get; set; }
+        public string Data { get; set; }
     }
 }
