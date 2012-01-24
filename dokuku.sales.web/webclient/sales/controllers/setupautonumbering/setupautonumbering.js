@@ -1,21 +1,20 @@
-steal( 'jquery/controller','jquery/view/ejs' )
-	.then( './views/init.ejs', function($){
+steal('jquery/controller', 
+      'jquery/view/ejs',
+      './autonumbering.css')
+	.then('./views/setupautonumbering.ejs', function ($) {
+    $.Controller('Sales.Controllers.Setupautonumbering',
+    {
+    defaults: {}
+    },
 
-/**
- * @class Sales.Controllers.Setupautonumbering
- */
-$.Controller('Sales.Controllers.Setupautonumbering',
-/** @Static */
-{
-	defaults : {}
-},
-/** @Prototype */
-{
-	init : function(){
-		this.element.html("//sales/controllers/setupautonumbering/views/init.ejs",{
-			message: "Hello World"
-		});
-	}
-})
+    {
+        init: function () {
+            this.element.html(this.view('//sales/controllers/setupautonumbering/views/setupautonumbering.ejs'));
+        },
+
+        load: function () {
+            this.element.html(this.view('//sales/controllers/setupautonumbering/views/setupautonumbering.ejs'));
+        }
+    })
 
 });

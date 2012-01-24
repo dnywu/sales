@@ -62,7 +62,7 @@ steal('jquery/controller', 'jquery/view/ejs',
                 this.SetActivePage(el);
                 $("#body").sales_setupautonumbering('load');
             },
-            '#etupautonumbering click': function (el) {
+            '#setupautonumbering click': function (el) {
                 this.ClearContain();
                 this.SetBoldActivePage(el);
                 $("#body").sales_setupautonumbering('load');
