@@ -61,8 +61,8 @@
     },
     CalculateItem_onChangeRate: function (index, ccy) {
         var Rate = $("#baseprice_" + index).val() / $("#custRate").val();
-        Rate = Rate * 100;
-        Rate = Math.ceil(Rate.toFixed(2)) / 100;
+        Rate = Rate.toFixed(2);
+        Rate = Math.ceil(Rate);
         $("#rate_" + index).val(Rate);
         var amount = inv.CalculateAmountPerItem($("#qty_" + index).val(), Rate, $("#disc_" + index).val());
         $("#amount_" + index).val(amount);
@@ -137,6 +137,7 @@
         objInv.SubTotal = $("#subtotal").val();
         objInv.Total = $("#total").val();
         objInv.ExchangeRate = $("#custRate").val();
+        objInv.BaseCcy = $("#baseCcy").val();
         objInv.Currency = $("#custCcyCode").val();
         objInv.Items = new Array;
         $('#itemInvoice tbody tr').each(function (i) {

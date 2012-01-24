@@ -132,7 +132,6 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
-
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
@@ -143,8 +142,6 @@ steal('jquery/controller',
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
-                //var rate = $("#rate_" + index).val();
-                var rate = $("#baseprice_" + index).val() / $("#custRate").val();
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);

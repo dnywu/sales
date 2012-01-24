@@ -71,8 +71,8 @@ namespace dokuku.sales.invoices.service
             invoice.InvoiceStatusBelumBayar();
             invRepo.UpdateInvoices(invoice);
 
-            if (bus != null)
-                bus.Publish(new InvoiceHasBeenApproved { InvoiceId = invoiceId, OwnerId = ownerId });
+            //if (bus != null)
+                //bus.Publish(new InvoiceHasBeenApproved { InvoiceId = invoiceId, OwnerId = ownerId });
         }
 
         private void IsInvoiceStatusDraft(Guid id, string ownerId)
