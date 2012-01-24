@@ -517,6 +517,10 @@
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.html" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.js" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser_test.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\funcunit.html" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.html" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering_test.js" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
@@ -947,6 +951,8 @@
     </None>
     <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
     <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setupautonumbering\views\autonumbering.ejs" />
+    <None Include="webclient\sales\controllers\setupautonumbering\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
@@ -1040,6 +1046,7 @@
       <Name>dokuku.security</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
