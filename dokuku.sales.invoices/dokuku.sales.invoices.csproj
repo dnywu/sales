@@ -70,6 +70,7 @@
     <Compile Include="service\FullPaymentInvoiceHandler.cs" />
     <Compile Include="service\IInvoiceAutoNumberGenerator.cs" />
     <Compile Include="service\IInvoiceService.cs" />
+    <Compile Include="service\InvoiceApproveHandler.cs" />
     <Compile Include="service\InvoiceAutoNumberGenerator.cs" />
     <Compile Include="service\InvoiceService.cs" />
     <Compile Include="service\PartiallyPaymentInvoiceHandler.cs" />

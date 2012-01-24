@@ -20,3 +20,4 @@ _ReSharper.*
 *.resharper
 *.ReSharper
 ~$*
+*.stackdump

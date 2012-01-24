@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using dokuku.sales.config;
+using dokuku.sales.invoice.messages;
 using dokuku.sales.invoices.command;
 using dokuku.sales.invoices.model;
-using Newtonsoft.Json;
-using dokuku.sales.config;
+using dokuku.sales.invoices.query;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using Newtonsoft.Json;
 using NServiceBus;
-using dokuku.sales.invoice.messages;
-using MongoDB.Bson;
 namespace dokuku.sales.invoices.service
 {
     public class InvoiceService : IInvoiceService
@@ -33,7 +34,7 @@ namespace dokuku.sales.invoices.service
             string data = jsonInvoice;
             Invoices invoice = JsonConvert.DeserializeObject<Invoices>(data);
             string invoiceNumber = gen.GenerateInvoiceNumberDraft(ownerId);
-            FailIfInvoiceNumberAlreadyUsed(invoiceNumber,ownerId);
+            FailIfInvoiceNumberAlreadyUsed(invoiceNumber, ownerId);
 
             invoice._id = Guid.NewGuid();
             invoice.OwnerId = ownerId;
@@ -55,11 +56,23 @@ namespace dokuku.sales.invoices.service
 
             if (bus != null)
                 bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
-		}
+        }
         public void Delete(Guid id, string ownerId)
         {
             IsInvoiceStatusDraft(id, ownerId);
             invRepo.Delete(id, ownerId);
+        }
+        public void UpdateStatusToAprrove(Guid invoiceId, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(invoiceId, ownerId);
+            if (invoice.Status != InvoiceStatus.DRAFT)
+                throw new Exception(String.Format("Status invoice '{0}' harus {1} sebelum dilakukan ganti status. Sedangkan status sekarang adalah {2}", invoice.InvoiceNo, InvoiceStatus.DRAFT, invoice.Status));
+
+            invoice.InvoiceStatusBelumBayar();
+            invRepo.UpdateInvoices(invoice);
+
+            if (bus != null)
+                bus.Publish(new InvoiceHasBeenApproved { InvoiceId = invoiceId, OwnerId = ownerId });
         }
 
         private void IsInvoiceStatusDraft(Guid id, string ownerId)
@@ -67,9 +80,9 @@ namespace dokuku.sales.invoices.service
             Invoices invoice = invRepo.Get(id, ownerId);
             if (invoice.Status.ToLower() != "draft")
                 throw new Exception("Hapus invoice gagal, status invoice bukan draft");
-		}
-		
-        private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber,string ownerId)
+        }
+
+        private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber, string ownerId)
         {
             Invoices inv = invRepo.GetInvByNumber(invoiceNumber, ownerId);
             if (inv != null)
