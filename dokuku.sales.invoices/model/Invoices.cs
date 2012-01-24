@@ -31,6 +31,7 @@ namespace dokuku.sales.invoices.model
         public Guid _id { get; set; }
         public string OwnerId { get; set; }
         public string Status { get; private set; }
+        public string CancelNote { get; private set; }
 
         public void InvoiceStatusBelumBayar()
         {
@@ -48,9 +49,10 @@ namespace dokuku.sales.invoices.model
         {
             this.Status = InvoiceStatus.VOID;
         }
-        public void InvoiceStatusBatal()
+        public void InvoiceStatusBatal(string note)
         {
             this.Status = InvoiceStatus.BATAL;
+            this.CancelNote = note;
         }
     }
 
