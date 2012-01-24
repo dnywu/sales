@@ -62,7 +62,7 @@ namespace dokuku.sales.invoices.service
             IsInvoiceStatusDraft(id, ownerId);
             invRepo.Delete(id, ownerId);
         }
-        public void UpdateStatusToAprrove(Guid invoiceId, string ownerId)
+        public void ApproveInvoice(Guid invoiceId, string ownerId)
         {
             Invoices invoice = invRepo.Get(invoiceId, ownerId);
             if (invoice.Status != InvoiceStatus.DRAFT)

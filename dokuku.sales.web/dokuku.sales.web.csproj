@@ -13,6 +13,7 @@
     <RootNamespace>dokuku.sales.web</RootNamespace>
     <AssemblyName>dokuku.sales.web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -778,6 +779,7 @@
     <Compile Include="modules\InvoiceModule.cs" />
     <Compile Include="modules\ItemModule.cs" />
     <Compile Include="modules\MainModule.cs" />
+    <Compile Include="modules\ModuleExtension.cs" />
     <Compile Include="modules\OrganizationModule.cs" />
     <Compile Include="modules\ServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

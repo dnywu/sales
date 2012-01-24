@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="InvoiceApproved.cs" />
+    <Compile Include="InvoiceCancelled.cs" />
     <Compile Include="InvoiceDeleted.cs" />
     <Compile Include="InvoiceCreated.cs" />
     <Compile Include="InvoiceUpdate.cs" />
