@@ -85,6 +85,19 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new { error = true, message = e.Message });
                 }
             };
+
+            Post["/cancelinvoice/{id}"] = p =>
+            {
+                try
+                {
+                    this.InvoiceService().Cancel(p.id, this.Request.Form.invoice.note, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { error = false });
+                }
+                catch (Exception e)
+                {
+                    return Response.AsJson(new { error = true, message = e.Message });
+                }
+            };
         }
     }
 }
