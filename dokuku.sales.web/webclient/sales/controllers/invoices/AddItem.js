@@ -48,11 +48,12 @@
                     $("#errorAddCust").text(data).show();
                     return;
                 }
-                $this.CloseAddItemDialog();
+                $this.CloseAddItemDialog;
                 inv.ShowListItem(data, index);
                 $this.GetSubTotal();
                 $this.GetTotal();
                 $("#additem_" + index).hide();
+                
             }
         });
     },
