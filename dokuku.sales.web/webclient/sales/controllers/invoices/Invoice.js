@@ -3,10 +3,11 @@
     function () {
         $.Class('Invoice',
 {
-    defaults: (invRepo = null)
+    defaults: (invRepo = null, $this = null)
 },
 {
     init: function () {
+        $this = this;
         invRepo = new InvoiceRepository();
     },
     CalculateAmountPerItem: function (qty, rate, disc) {
@@ -32,35 +33,53 @@
         return total;
     },
     ShowListItem: function (part, index) {
-//        $("#bestprice_" + index).val(part.Rate);
-//        if (!isDifferentCcy) {
-//            part.Rate = part.Rate / custRate;
-//        }
+        $("#baseprice_" + index).val(part.Rate);
+        if (!isDifferentCcy) {
+            part.Rate = part.Rate / $("#custRate").val();
+            part.Rate = part.Rate * 100;
+            part.Rate = Math.ceil(part.Rate.toFixed(2)) / 100;
+        }
         $("#partid_" + index).val(part._id);
         $("#part_" + index).val(part.Name);
         $("#desc_" + index).text(part.Description);
         $("#qty_" + index).val('1.00');
-        $("#rate_" + index).val(String.format("{0:C}", part.Rate));
+        $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
         $("#amount_" + index).val(part.Rate);
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
-//    CalculateByRate: function (rate) {
-//        var subtotal = 0;
-//        $('#itemInvoice tbody tr').each(function (i) {
-//            if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
-//                price = $('.bestprice').get(i).value;
-//                amount = $('.amount').get(i).value;
-//                $('.bprice').get(i).value = String.format("{0:C}", price / rate);
-//                $('.amount').get(i).value = $('.qty').get(i).value * (price / rate);
-//                $('.amounttext').get(i).innerText = String.format("{0:C}", amount / rate);
-//                subtotal += $('.amount').get(i).value;
-//            }
-//        });
-//        $("#subtotal").text(subtotal);
-//        $("#total").text(subtotal);
-//    },
+    CalculateByRate: function (rate) {
+        var subtotal = 0;
+        $('#itemInvoice tbody tr').each(function (i) {
+            if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
+                var index = $('#itemInvoice tbody tr').get(i).id;
+                var index = index.split('_')[1];
+                $this.CalculateItem_onChangeRate(index, rate);
+            }
+        });
+    },
+    CalculateItem_onChangeRate: function (index, ccy) {
+        var Rate = $("#baseprice_" + index).val() / $("#custRate").val();
+        Rate = Rate * 100;
+        Rate = Math.ceil(Rate.toFixed(2)) / 100;
+        $("#rate_" + index).val(Rate);
+        var amount = inv.CalculateAmountPerItem($("#qty_"  + index).val(), Rate, $("#disc_" + index).val());
+        $("#amount_" + index).val(amount);
+        $("#amounttext_" + index).text(String.format("{0:C}", amount));
+        $this.GetSubTotal();
+        $this.GetTotal();
+    },
+    GetSubTotal: function () {
+        var subtotal = inv.CalculateSubTotal();
+        $("#subtotaltext").text(String.format("{0:C}", subtotal));
+        $("#subtotal").val(subtotal);
+    },
+    GetTotal: function () {
+        var total = inv.CalculateTotal();
+        $("#totaltext").text(String.format("{0:C}", total));
+        $("#total").val(total);
+    },
     CreateNewInvoice: function () {
         var invoice = this.GetInvoiceDataFromView();
         $.ajax({
@@ -104,7 +123,7 @@
         var objInv = new Object;
         objInv._id = $("#invoiceId").val();
         objInv.Customer = $("#selectcust").val();
-        objInv.CustomerId = $("#CustomerId").val(); 
+        objInv.CustomerId = $("#CustomerId").val();
         objInv.PONo = $("#po").val();
         objInv.InvoiceNo = $("#InvoiceNo").val();
         objInv.InvoiceDate = $("#invDate").val();
@@ -127,6 +146,7 @@
                 objInv.Items[i].PartName = $('.partname').get(i).value;
                 objInv.Items[i].Description = $('.description').get(i).value;
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
+                objInv.Items[i].BaseRate = $('.baseprice').get(i).value;
                 objInv.Items[i].Rate = $('.price').get(i).value;
                 objInv.Items[i].Discount = $('.discount').get(i).value;
                 objInv.Items[i].Tax = new Object();

@@ -2,6 +2,7 @@ steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
       'sales/models',
+      'sales/scripts/stringformat.js',
       './ItemList.css',
       'sales/controllers/items/create',
       'sales/controllers/items/edit')
@@ -55,7 +56,7 @@ steal('jquery/controller',
                     '<td class="itemList" id="settingPanel' + item + '"></td>' +
                     '<td class="itemList itemName"><div class="itemName">' + data[item].Name + '</div>' +
                     '<div class="itemDesc">' + data[item].Description + '</div></td>' +
-                    '<td class="itemList itemPrice">Rp. ' + $this.rupiahFormat(data[item].Rate) + '</td></tr>');
+                    '<td class="itemList itemPrice">Rp. ' + String.format("{0:C}",data[item].Rate) + '</td></tr>');
                     $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
                 });
                 $('.trDataItem:odd').addClass('odd');
@@ -175,16 +176,6 @@ steal('jquery/controller',
             },
             "#confirmNo click": function () {
                 $('.ModalDialog').remove();
-            },
-            rupiahFormat: function (number) {
-                if (isNaN(number)) return "";
-                var str = new String(number);
-                var result = "", len = str.length;
-                for (var i = len - 1; i >= 0; i--) {
-                    if ((i + 1) % 3 == 0 && i + 1 != len) result += ",";
-                    result += str.charAt(len - 1 - i);
-                }
-                return result;
             },
             '#searchItem focus': function () {
                 $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");
