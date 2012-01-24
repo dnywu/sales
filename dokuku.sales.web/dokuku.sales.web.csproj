@@ -949,9 +949,13 @@
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
-    <None Include="webclient\sales\controllers\setupautonumbering\views\autonumbering.ejs" />
+    <None Include="webclient\sales\controllers\setupautonumbering\views\setupautonumbering.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\setupautonumbering\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
