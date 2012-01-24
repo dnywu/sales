@@ -61,8 +61,12 @@ steal('jquery/controller',
             },
             '#selectcust change': function (el, ev) {
                 isDifferentCcy = true;
-               // $("#divExchangeRate").hide();
-               // $("#custCcyCode").val(baseCcy);
+
+                //hide
+                $("#divExchangeRate").hide();
+                $("#custCcyCode").val(baseCcy);
+                //hide
+
                 $("#keteranganSelectCust").empty();
                 this.ShowCurrencyToView();
                 var dataCust = custRepo.GetCustomerByName(el.val());
@@ -134,9 +138,11 @@ steal('jquery/controller',
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
             },
-//            '#custRate change': function () {
-//                inv.CalculateByRate($("#custRate").val());
-//            },
+            //Hide
+            '#custRate change': function () {
+                inv.CalculateByRate($("#custRate").val());
+            },
+            //Hide
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
@@ -168,7 +174,7 @@ steal('jquery/controller',
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
-                                    "<input type='hidden' class='baseprice' id='bestprice_"+ tabIndexTr +"'/></td>" +
+                                    "<input type='hidden' class='baseprice' id='bestprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
@@ -232,7 +238,8 @@ steal('jquery/controller',
                 $("#divExchangeRate").show();
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
-                //$("#custCcyCode").val(custCcy);
+                //Hide
+                $("#custCcyCode").val(custCcy);
             }
         })
           });
