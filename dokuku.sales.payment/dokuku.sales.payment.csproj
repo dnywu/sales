@@ -37,6 +37,12 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="command\IPaymentModeCommand.cs" />
+    <Compile Include="command\PaymentModeCommand.cs" />
     <Compile Include="domain\Invoice.cs" />
     <Compile Include="domain\InvoicePayment.cs" />
     <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
     <Compile Include="domain\PaymentMode.cs" />
     <Compile Include="domain\PaymentRecord.cs" />
-    <Compile Include="domain\InvoiceSudahLunas.cs" />
-    <Compile Include="IPaymentRepository.cs" />
-    <Compile Include="PaymentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="query\IPaymentModeQuery.cs" />
+    <Compile Include="query\PaymentModeQuery.cs" />
+    <Compile Include="service\PaymentModeService.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
@@ -65,9 +74,14 @@
       <Project>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</Project>
       <Name>dokuku.sales.domainevents</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\dokuku.sales.payment.domainevents\dokuku.sales.payment.domainevents.csproj">
+      <Project>{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}</Project>
+      <Name>dokuku.sales.payment.domainevents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
+      <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
+      <Name>dokuku.sales.payment.messages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

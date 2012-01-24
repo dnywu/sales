@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NServiceBus;
 using dokuku.sales.item.messages;
-using Newtonsoft.Json;
 using MongoDB.Bson;
+using Newtonsoft.Json;
+using NServiceBus;
 namespace dokuku.sales.item.service
 {
     public class ItemService:IItemService
@@ -26,7 +26,7 @@ namespace dokuku.sales.item.service
             item._id = Guid.NewGuid();
             FailIfBarcodeAlreadyExist(item);
             FailIfCodeAlreadyExist(item);
-            
+
             cmd.Save(item);
             bus.Publish<ItemCreated>(new ItemCreated { Data = item.ToJson() });
 

@@ -75,5 +75,24 @@ namespace dokuku.sales.invoices.service
             if (inv != null)
                 throw new ApplicationException("Invoice " + invoiceNumber + " sudah digunakan!");
         }
+
+
+        public void InvoiceFullyPaid(Guid invoiceId, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(invoiceId, ownerId);
+            if (invoice == null)
+                throw new ApplicationException("Invoice tidak ditemukan dalam database");
+            invoice.InvoiceStatusSudahLunas();
+            invRepo.Save(invoice);
+        }
+
+        public void InvoicePartialyPaid(Guid invoiceId, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(invoiceId, ownerId);
+            if (invoice == null)
+                throw new ApplicationException("Invoice tidak ditemukan dalam database");
+            invoice.InvoiceStatusBelumLunas();
+            invRepo.Save(invoice);
+        }
     }
 }

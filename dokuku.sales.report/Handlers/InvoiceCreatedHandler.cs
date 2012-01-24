@@ -39,7 +39,6 @@ namespace dokuku.sales.report.Handlers
             index["OwnerId"] = doc["OwnerId"];
             index["_id"] = doc["_id"];
             index["PONo"] = doc["PONo"];
-
             Collections.Save(index);
             Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
         }
