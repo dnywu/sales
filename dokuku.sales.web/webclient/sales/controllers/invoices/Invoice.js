@@ -3,10 +3,11 @@
     function () {
         $.Class('Invoice',
 {
-    defaults: (invRepo = null)
+    defaults: (invRepo = null, $this = null)
 },
 {
     init: function () {
+        $this = this;
         invRepo = new InvoiceRepository();
     },
     CalculateAmountPerItem: function (qty, rate, disc) {
@@ -32,23 +33,26 @@
         return total;
     },
     ShowListItem: function (part, index) {
-        //Hide
         $("#bestprice_" + index).val(part.Rate);
         if (!isDifferentCcy) {
             part.Rate = part.Rate / custRate;
         }
-        //Hide
+        $("#baseprice_" + index).val(part.Rate);
+        if (!isDifferentCcy) {
+            part.Rate = part.Rate / $("#custRate").val();
+            part.Rate = part.Rate * 100;
+            part.Rate = Math.ceil(part.Rate.toFixed(2)) / 100;
+        }
         $("#partid_" + index).val(part._id);
         $("#part_" + index).val(part.Name);
         $("#desc_" + index).text(part.Description);
         $("#qty_" + index).val('1.00');
-        $("#rate_" + index).val(String.format("{0:C}", part.Rate));
+        $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
         $("#amount_" + index).val(part.Rate);
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
-    //Hide
     CalculateByRate: function (rate) {
         var subtotal = 0;
         $('#itemInvoice tbody tr').each(function (i) {
@@ -64,7 +68,33 @@
         $("#subtotal").text(subtotal);
         $("#total").text(subtotal);
     },
-    //Hide
+                var index = $('#itemInvoice tbody tr').get(i).id;
+                var index = index.split('_')[1];
+                $this.CalculateItem_onChangeRate(index, rate);
+            }
+        });
+    },
+    CalculateItem_onChangeRate: function (index, ccy) {
+        var Rate = $("#baseprice_" + index).val() / $("#custRate").val();
+        Rate = Rate * 100;
+        Rate = Math.ceil(Rate.toFixed(2)) / 100;
+        $("#rate_" + index).val(Rate);
+        var amount = inv.CalculateAmountPerItem($("#qty_"  + index).val(), Rate, $("#disc_" + index).val());
+        $("#amount_" + index).val(amount);
+        $("#amounttext_" + index).text(String.format("{0:C}", amount));
+        $this.GetSubTotal();
+        $this.GetTotal();
+    },
+    GetSubTotal: function () {
+        var subtotal = inv.CalculateSubTotal();
+        $("#subtotaltext").text(String.format("{0:C}", subtotal));
+        $("#subtotal").val(subtotal);
+    },
+    GetTotal: function () {
+        var total = inv.CalculateTotal();
+        $("#totaltext").text(String.format("{0:C}", total));
+        $("#total").val(total);
+    },
     CreateNewInvoice: function () {
         var invoice = this.GetInvoiceDataFromView();
         $.ajax({
@@ -131,6 +161,7 @@
                 objInv.Items[i].PartName = $('.partname').get(i).value;
                 objInv.Items[i].Description = $('.description').get(i).value;
                 objInv.Items[i].Qty = $('.quantity').get(i).value;
+                objInv.Items[i].BaseRate = $('.baseprice').get(i).value;
                 objInv.Items[i].Rate = $('.price').get(i).value;
                 objInv.Items[i].Discount = $('.discount').get(i).value;
                 objInv.Items[i].Tax = new Object();
@@ -150,7 +181,77 @@
 
         $("#errorCreateInv").empty().hide();
         var newInv = JSON.stringify(objInv);
-        return newInv;
+        $.ajax({
+            type: 'POST',
+            url: '/createinvoice',
+            data: { 'invoice': newInv },
+            dataType: 'json',
+            async: false,
+            success: this.CreateInvoiceCallBack
+        });
+    },
+    CreateInvoiceCallBack: function (data) {
+        if (data.error == true) {
+            $("#errorCreateInv").text(data.message).show();
+            return;
+        } else {
+            $("#body").sales_invoices_invoicedetail('load',data);
+        }
+    },
+    GetDataInvoice: function () {
+        var dataInvoice = new Array();
+        $.ajax({
+            type: 'GET',
+            url: '/GetDataInvoice',
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i) {
+                    dataInvoice[i] = data[i];
+                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                    dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
+                });
+
+            }
+        });
+        return dataInvoice;
+    },
+    SearchInvoice: function () {
+        var dataInvoice = new Array();
+        var key = $('#SearchInvoice').val();
+        $.ajax({
+            type: 'GET',
+            url: '/SearchInvoice/key/' + key,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                $.each(data, function (i) {
+                    dataInvoice[i] = data[i];
+                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                    dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
+                });
+            }
+        });
+        return dataInvoice;
+    },
+    DeleteInvoice: function (invoiceNo) {
+        var result;
+        $.ajax({
+            type: 'DELETE',
+            url: '/deleteInvoice/invoiceNo/' + invoiceNo,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
     }
 })
     });

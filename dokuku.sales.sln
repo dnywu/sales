@@ -31,6 +31,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment", "dok
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.fixture", "dokuku.sales.payment.fixture\dokuku.sales.payment.fixture.csproj", "{F389B501-2848-4C9B-B2C2-583FEC9BD01A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.domainevents", "dokuku.sales.domainevents\dokuku.sales.domainevents.csproj", "{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.messages", "dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj", "{13FDB4DB-B1B3-415B-A89C-1F126A238718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.domainevents", "dokuku.sales.payment.domainevents\dokuku.sales.payment.domainevents.csproj", "{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.host", "dokuku.sales.payment.host\dokuku.sales.payment.host.csproj", "{1E3B0C19-D3B2-4345-9530-8E8C87363521}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +105,22 @@ Global
 		{F389B501-2848-4C9B-B2C2-583FEC9BD01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F389B501-2848-4C9B-B2C2-583FEC9BD01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F389B501-2848-4C9B-B2C2-583FEC9BD01A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FDB4DB-B1B3-415B-A89C-1F126A238718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FDB4DB-B1B3-415B-A89C-1F126A238718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FDB4DB-B1B3-415B-A89C-1F126A238718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FDB4DB-B1B3-415B-A89C-1F126A238718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E3B0C19-D3B2-4345-9530-8E8C87363521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E3B0C19-D3B2-4345-9530-8E8C87363521}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E3B0C19-D3B2-4345-9530-8E8C87363521}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E3B0C19-D3B2-4345-9530-8E8C87363521}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

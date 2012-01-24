@@ -7,9 +7,11 @@ steal('jquery/controller',
        'sales/controllers/invoices/edit',
        'sales/controllers/invoices/invoicedetail',
        'sales/repository/InvoiceRepository.js',
-       './listinvoice.css')
+       './listinvoice.css',
+       './DeleteConfirmBox.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
+       './views/confirmDeleteInvoice.ejs',
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
@@ -26,8 +28,27 @@ steal('jquery/controller',
                     this.load();
                 },
                 load: function () {
+                    $this = this;
                     var invoices = invRepo.GetAllInvoice();
                     this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices))
+                },
+                GetInvoices: function () {
+                    var invoices = inv.GetDataInvoice();
+                    return invoices;
+                },
+                '#SearchInvoice keypress': function (el, ev) {
+                    if (ev.keyCode == "13") {
+                        var invoices = inv.SearchInvoice();
+                        this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices));
+                    }
+                },
+                '#SearchInvoice focus': function () {
+                    $(".DivSearch").attr("style", "background:#FFFFFF; border-color:#3BB9FF");
+                    $("#SearchInvoice").attr("style", "outline:none; background:#FFFFFF");
+                },
+                '#SearchInvoice blur': function () {
+                    $(".DivSearch").attr("style", "background:#F3F3F3");
+                    $("#SearchInvoice").attr("style", "background:#F3F3F3");
                 },
                 '#selectall change': function () {
                     if ($("#selectall").attr('checked')) {
@@ -62,6 +83,46 @@ steal('jquery/controller',
                     var invoice = invRepo.GetInvoiceById(invoiceId);
                     if (invoice != null)
                         $("#body").sales_invoices_invoicedetail('load', invoice);
+                },
+                '#deleteinvoice click': function () {
+                    var checkList = $this.IsCheckListNull();
+                    if (checkList != 0) {
+                        var message = $("<div>Apakah anda yakin akan menghapus pelanggan ini</div>" +
+                                    "<div class='ButtonConfirmYes'>Ya</div>" +
+                                    "<div class='ButtonConfirmClose'>Tidak</div>");
+                        $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                        $(".BodyConfirmMassage").append(message);
+                    }
+                },
+                '.ButtonConfirmYes click': function () {
+                    var result;
+                    $(".selectInvoice:checked").each(function (index) {
+                        var index = $(this).attr("id");
+                        var no = $("#invoiceId_" + index).val();
+                        result = inv.DeleteInvoice(no);
+                    });
+                    if (result == "OK") {
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
+                    } else {
+                        $(".BodyConfirmMassage").empty();
+                        var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                        $(".BodyConfirmMassage").append(message);
+                    }
+                },
+                '.ButtonConfirmClose click': function () {
+                    $(".DeleteConfirmation").remove();
+                },
+                IsCheckListNull: function () {
+                    var countChecked = 0;
+                    $(".selectInvoice:checked").each(function (index) {
+                        countChecked++;
+                    });
+                    if (countChecked == 0) {
+                        return 0;
+                    }
+                    return countChecked;
                 }
             });
 

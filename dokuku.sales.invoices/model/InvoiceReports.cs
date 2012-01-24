@@ -6,11 +6,31 @@ namespace dokuku.sales.invoices.model
 {
     public class InvoiceReports
     {
-        public string OwnerId { get; set; }
-        public string _id { get; set; }
-        public string PONumber { get; set; }
-        public string CustomerName { get; set; }
+        public string OwnerId { get; private set; }
+        public Guid _id { get; private set; }
+        public string PONo { get; private set; }
+        public string Customer { get; private set; }
+        public string InvoiceNo { get; private set; }
+        public String[] Keywords { get; private set; }
+        public InvoiceReports(Invoices Invoices) 
+        {
+            _id = Invoices._id;
+            this.OwnerId = Invoices.OwnerId;
+            this.PONo = Invoices.PONo;
+            this.Customer = Invoices.Customer;
+            this.InvoiceNo = Invoices.InvoiceNo;
+            buildKeywords(Invoices);
+        }
 
-        public string[] Keywords { get; set; }
+        private void buildKeywords(Invoices Invoices)
+        {
+            Keywords = new string[] {
+                Invoices._id.ToString(),
+                Invoices.OwnerId,
+                Invoices.PONo,
+                Invoices.Customer,
+                Invoices.InvoiceNo
+            };
+        }
     }
 }
