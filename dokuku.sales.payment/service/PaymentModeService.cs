@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using dokuku.sales.payment.command;
 using dokuku.sales.payment.domain;
 using dokuku.sales.payment.messages;
@@ -12,7 +10,7 @@ using NServiceBus;
 
 namespace dokuku.sales.payment.service
 {
-    public class PaymentModeService
+    public class PaymentModeService : IPaymentModeService
     {
         IPaymentModeCommand _command;
         IPaymentModeQuery _query;
@@ -32,6 +30,14 @@ namespace dokuku.sales.payment.service
 
             _bus.Publish(new PaymentModeCreated { Data = paymentMode.ToJson() });
             return paymentMode;
+        }
+        public PaymentMode Get(Guid id)
+        {
+            return _query.Get(id);
+        }
+        public IEnumerable<PaymentMode> FindAll()
+        {
+            return _query.FindAll();
         }
         public PaymentMode Update(string json)
         {

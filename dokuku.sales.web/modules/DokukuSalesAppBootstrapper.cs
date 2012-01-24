@@ -1,27 +1,30 @@
 ﻿namespace dokuku.module
 {
+    using System;
+    using System.Text;
+    using dokuku.sales.config;
+    using dokuku.sales.customer.repository;
+    using dokuku.sales.customer.Service;
+    using dokuku.sales.invoices.command;
+    using dokuku.sales.invoices.query;
+    using dokuku.sales.invoices.service;
+    using dokuku.sales.item;
+    using dokuku.sales.item.service;
+    using dokuku.sales.organization.report;
+    using dokuku.sales.organization.repository;
+    using dokuku.sales.payment.command;
+    using dokuku.sales.payment.query;
+    using dokuku.sales.payment.service;
+    using dokuku.security.model;
+    using dokuku.security.repository;
+    using dokuku.security.service;
     using Nancy;
     using Nancy.Authentication.Forms;
     using Nancy.Bootstrapper;
     using Nancy.Cryptography;
-    using TinyIoC;
-    using System.Text;
-    using System;
-    using StructureMap;
-    using dokuku.security.repository;
-    using dokuku.security.service;
-    using dokuku.security.model;
-    using dokuku.sales.config;
-    using dokuku.sales.item;
-    using dokuku.sales.customer.repository;
-    using dokuku.sales.organization.repository;
-    using dokuku.sales.organization.report;
-    using dokuku.sales.invoices.command;
-    using dokuku.sales.invoices.query;
-    using dokuku.sales.item.service;
-    using dokuku.sales.invoices.service;
     using NServiceBus;
-    using dokuku.sales.customer.Service;
+    using StructureMap;
+    using TinyIoC;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -105,6 +108,9 @@
                     x.For<IInvoiceService>().Use<InvoiceService>();
                     x.ForSingletonOf<IBus>().Use(bus);
                     x.For<ICustomerService>().Use<CustomerService>();
+                    x.For<IPaymentModeCommand>().Use<PaymentModeCommand>();
+                    x.For<IPaymentModeQuery>().Use<PaymentModeQuery>();
+                    x.For<IPaymentModeService>().Use<PaymentModeService>();
                 });
 
                 structureMapBootstrapped = true;
