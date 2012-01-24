@@ -33,10 +33,6 @@
         return total;
     },
     ShowListItem: function (part, index) {
-        $("#bestprice_" + index).val(part.Rate);
-        if (!isDifferentCcy) {
-            part.Rate = part.Rate / custRate;
-        }
         $("#baseprice_" + index).val(part.Rate);
         if (!isDifferentCcy) {
             part.Rate = part.Rate / $("#custRate").val();
@@ -57,17 +53,6 @@
         var subtotal = 0;
         $('#itemInvoice tbody tr').each(function (i) {
             if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
-                price = $('.bestprice').get(i).value;
-                amount = $('.amount').get(i).value;
-                $('.bprice').get(i).value = String.format("{0:C}", price / rate);
-                $('.amount').get(i).value = $('.qty').get(i).value * (price / rate);
-                $('.amounttext').get(i).innerText = String.format("{0:C}", amount / rate);
-                subtotal += $('.amount').get(i).value;
-            }
-        });
-        $("#subtotal").text(subtotal);
-        $("#total").text(subtotal);
-    },
                 var index = $('#itemInvoice tbody tr').get(i).id;
                 var index = index.split('_')[1];
                 $this.CalculateItem_onChangeRate(index, rate);
@@ -79,7 +64,7 @@
         Rate = Rate * 100;
         Rate = Math.ceil(Rate.toFixed(2)) / 100;
         $("#rate_" + index).val(Rate);
-        var amount = inv.CalculateAmountPerItem($("#qty_"  + index).val(), Rate, $("#disc_" + index).val());
+        var amount = inv.CalculateAmountPerItem($("#qty_" + index).val(), Rate, $("#disc_" + index).val());
         $("#amount_" + index).val(amount);
         $("#amounttext_" + index).text(String.format("{0:C}", amount));
         $this.GetSubTotal();
@@ -195,7 +180,7 @@
             $("#errorCreateInv").text(data.message).show();
             return;
         } else {
-            $("#body").sales_invoices_invoicedetail('load',data);
+            $("#body").sales_invoices_invoicedetail('load', data);
         }
     },
     GetDataInvoice: function () {
