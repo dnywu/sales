@@ -107,6 +107,7 @@ namespace dokuku.sales.invoices.service
             invoice.InvoiceStatusBelumLunas();
             invRepo.Save(invoice);
         }
+
         public void Cancel(Guid id, string cancelNote, string ownerId)
         {
             Invoices invoice = cancel(id, cancelNote, ownerId, false);
@@ -132,5 +133,6 @@ namespace dokuku.sales.invoices.service
             invRepo.UpdateInvoices(invoice);
             return invoice;
         }
+
     }
 }
