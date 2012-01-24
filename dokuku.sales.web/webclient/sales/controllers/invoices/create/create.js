@@ -108,6 +108,12 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
             },
+            '.partname focus': function (el) {
+                var index = el.attr("id").split('_')[1];
+                $(".resultItemDiv").remove();
+                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
+            },
+
             '.partname change': function (el) {
                 var partName = el.val();
                 var index = el.attr("id").split('_')[1];
@@ -124,6 +130,25 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            },
+            '.partname keyup': function (el) {
+                var searchResultList = null;
+                var searchResult = itmRepo.SearchItem(el.val());
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "'><div id='itemName" + index + "'>" + searchResult[index].Name + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
+            },
+            '.itemTd click': function (el) {
+                var index = el.attr("id");
+                $('#part_' + $('.resultItemDiv').attr("id").split('_')[1]).val($("div#itemName" + index).text());
+                $(".partname").change();
+                $(".resultItemDiv").remove();
+            },
+            '.resultItemDiv mouseleave': function () {
+                $(".resultItemDiv").remove();
             },
             '.quantity change': function (el) {
                 this.CalculateItem(el);

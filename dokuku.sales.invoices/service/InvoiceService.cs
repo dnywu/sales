@@ -110,18 +110,28 @@ namespace dokuku.sales.invoices.service
 
         public void Cancel(Guid id, string cancelNote, string ownerId)
         {
+            Invoices invoice = cancel(id, cancelNote, ownerId, false);
+            if (bus != null)
+                bus.Publish(new InvoiceCancelled { Data = invoice.ToJson<Invoices>() });
+        }
+        public void ForceCancel(Guid id, string cancelNote, string ownerId)
+        {
+            Invoices invoice = cancel(id, cancelNote, ownerId, true);
+            if (bus != null)
+                bus.Publish(new InvoiceForceCancelled { Data = invoice.ToJson<Invoices>() });
+        }
+        private Invoices cancel(Guid id, string cancelNote, string ownerId, bool forceCancel)
+        {
             Invoices invoice = invRepo.Get(id, ownerId);
             if (invoice == null)
                 throw new Exception("Invoice tidak ditemukan dalam database");
-            if (invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
+            if (forceCancel && invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
                 throw new Exception(String.Format("Status invoice {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
             if (String.IsNullOrWhiteSpace(cancelNote))
                 throw new Exception("Mohon catatan untuk batal diisi.");
             invoice.InvoiceStatusBatal(cancelNote);
             invRepo.UpdateInvoices(invoice);
-
-            if (bus != null)
-                bus.Publish(new InvoiceCancelled { Data = invoice.ToJson<Invoices>() });
+            return invoice;
         }
 
     }
