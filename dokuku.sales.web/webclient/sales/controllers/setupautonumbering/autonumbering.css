@@ -123,22 +123,5 @@ div.error{
 	height:15px;
 	float:left;
 }
-div.notExist
-{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
-	background-position:-80px -108px;
-}
-span.notExistMessage
-{
-	color:Green;
-}
-div.exist
-{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
-	background-position:-40px -108px;
-}
-span.existMessage
-{
-	color:Red;
-}
+
 

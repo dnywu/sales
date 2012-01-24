@@ -107,5 +107,6 @@ namespace dokuku.sales.invoices.service
             invoice.InvoiceStatusBelumLunas();
             invRepo.Save(invoice);
         }
+
     }
 }

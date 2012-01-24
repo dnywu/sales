@@ -67,5 +67,9 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<ICustomerService>();
         }
+        public static IInvoiceAutoNumberGenerator InvoiceAutoNumberGenerator(this Nancy.NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IInvoiceAutoNumberGenerator>();
+        }
     }
 }

@@ -13,9 +13,9 @@
                 <span class="requiredFieldLabel">Mode</span>
               </td>
               <td class="field">
-                   <input type="radio" name="Mode" id="mode"/> Default
+                   <input type="radio" name="Mode" id="mode" checked="checked" /> Default
+                <p><input type="radio" name="Mode" id="mode"/> Yearly</p>
                 <p><input type="radio" name="Mode" id="mode"/> Monthly</p>
-                <p><input type="radio" name="Mode" id="mode"/> Yearly </p>
               </td>
             </tr>
             <tr>
@@ -23,7 +23,7 @@
                 <span class="requiredFieldLabel">Prefix</span>
               </td>
               <td class="field">
-                <input type="text" name="Prefix" id="prefix" required="required"/>
+                <input type="text" name="Prefix" id="prefix" oninput="setCustomValidity('')" oninvalid="setCustomValidity('prefix tidak boleh kosong')" required="required"/>
               </td>
               <td>
                 <div class="messageVerify "></div>

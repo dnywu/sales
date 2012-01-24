@@ -85,6 +85,23 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new { error = true, message = e.Message });
                 }
             };
+            Get["/InvoiceAutoNumber"] = p =>
+                {
+                    var autoNumber = this.InvoiceAutoNumberGenerator().GetInvoiceAutoNumberConfig(this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { prefix = autoNumber.Prefix, mode = autoNumber.Mode });
+                };
+            Post["/SetupInvoiceAutoNumber"] = p =>
+                {
+                    try
+                    {
+                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(this.Request.Form.Mode, this.Request.Form.Prefix);
+                        return Response.AsJson(new { error = false });
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsJson(new { error = true, message = ex.Message });
+                    }
+                };
         }
     }
 }

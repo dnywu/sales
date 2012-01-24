@@ -14,5 +14,6 @@ namespace dokuku.sales.invoices.service
         void InvoicePartialyPaid(Guid invoiceId, string ownerId);
         void Delete(Guid id, string ownerId);
         void ApproveInvoice(Guid invoiceId, string ownerId);
+        
     }
 }
