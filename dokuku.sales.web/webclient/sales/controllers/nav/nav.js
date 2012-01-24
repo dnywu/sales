@@ -7,7 +7,7 @@ steal('jquery/controller', 'jquery/view/ejs',
         'sales/controllers/customers',
         'sales/controllers/home',
         'sales/controllers/invoices/list',
-        'sales/controllers/autonumbering'
+        'sales/controllers/setupautonumbering'
      )
 	.then('./views/nav.ejs', function ($) {
 	    $.Controller('sales.controllers.nav',
@@ -60,7 +60,12 @@ steal('jquery/controller', 'jquery/view/ejs',
                 this.ClearContain();
                 this.SettingSubMenu();
                 this.SetActivePage(el);
-                $("#body").sales_autonumbering_create('load');
+                $("#body").sales_setupautonumbering('load');
+            },
+            '#etupautonumbering click': function (el) {
+                this.ClearContain();
+                this.SetBoldActivePage(el);
+                $("#body").sales_setupautonumbering('load');
             },
             CustomerSubMenu: function () {
                 var submenu = $('#subtabs');
@@ -99,11 +104,11 @@ steal('jquery/controller', 'jquery/view/ejs',
                 var 
                     container = $('<div>', { 'class': 'container' }),
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
-                    autonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'autonumbering', text: 'Auto Numbering' }),
+                    setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Auto Numbering' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);
                 ul.appendTo(container);
-                autonumbering.appendTo(ul);
+                setupautonumbering.appendTo(ul);
             },
             ClearContain: function () {
                 $("#body").empty();
