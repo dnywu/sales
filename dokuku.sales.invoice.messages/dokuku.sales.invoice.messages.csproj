@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvoiceForceCancelled.cs" />
     <Compile Include="InvoiceApproved.cs" />
     <Compile Include="InvoiceCancelled.cs" />
     <Compile Include="InvoiceDeleted.cs" />
