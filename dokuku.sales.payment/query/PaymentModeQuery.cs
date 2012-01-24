@@ -29,5 +29,9 @@ namespace dokuku.sales.payment.query
         {
             return _collections.FindOneAs<PaymentMode>(Query.And(Query.EQ("Name", name), Query.EQ("_id", id)));
         }
+        public IEnumerable<PaymentMode> FindAll()
+        {
+            return _collections.FindAllAs<PaymentMode>();
+        }
     }
 }

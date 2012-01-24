@@ -4,7 +4,7 @@ using NServiceBus;
 namespace dokuku.sales.invoice.messages
 {
     [Serializable]
-    public class InvoiceUpdate : IMessage
+    public class InvoiceForceCancelled : IMessage
     {
         public string Data { get; set; }
     }
