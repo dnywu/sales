@@ -86,7 +86,7 @@ steal('jquery/controller',
                     return;
                 var index = el.attr('id').split('_')[1];
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
-                $this.GetSubTotal();
+                inv.GetSubTotal();
             },
             '.partname change': function (el) {
                 var partName = el.val();
@@ -95,15 +95,15 @@ steal('jquery/controller',
 
                 if (part != null) {
                     inv.ShowListItem(part, index);
-                    this.GetSubTotal();
-                    this.GetTotal();
+                    inv.GetSubTotal();
+                    inv.GetTotal();
                     $("#additem_" + index).hide();
                     return;
                 }
                 this.ClearItemField(index);
                 $("#additem_" + index).show();
-                this.GetSubTotal();
-                this.GetTotal();
+                inv.GetSubTotal();
+                inv.GetTotal();
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
             '.quantity change': function (el) {
@@ -197,8 +197,8 @@ steal('jquery/controller',
                     count--;
                     tabIndexTr++;
                 }
-                this.GetSubTotal();
-                this.GetTotal();
+                inv.GetSubTotal();
+                inv.GetTotal();
             },
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
@@ -208,8 +208,8 @@ steal('jquery/controller',
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
                 $("#amount_" + index).val(amount);
                 $("#amounttext_" + index).text(String.format("{0:C}", amount));
-                this.GetSubTotal();
-                this.GetTotal();
+                inv.GetSubTotal();
+                inv.GetTotal();
             },
             CreateListItem: function (count) {
                 var i = 0;
@@ -232,16 +232,6 @@ steal('jquery/controller',
                     count--;
                     tabIndexTr++;
                 }
-            },
-            GetSubTotal: function () {
-                var subtotal = inv.CalculateSubTotal();
-                $("#subtotaltext").text(String.format("{0:C}", subtotal));
-                $("#subtotal").val(subtotal);
-            },
-            GetTotal: function () {
-                var total = inv.CalculateTotal();
-                $("#totaltext").text(String.format("{0:C}", total));
-                $("#total").val(total);
             },
             ClearItemField: function (index) {
                 $("#desc_" + index).empty();
