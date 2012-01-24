@@ -1,0 +1,41 @@
+<div class='mainFrame'>
+  <div class="topBandHeaderDIV">
+    <div class="HeaderDIVLeft" id="TitleSpan">Setup Auto Numbering</div>
+  </div>
+  <div class="error" id="errorCreateItemDiv"></div>
+  <div class="mainDivWidth">
+    <form id="autoNumberForm">
+      <div class="ie-form AutoNumberFormDiv">
+        <table>
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Mode</span>
+              </td>
+              <td class="field">
+                   <input type="radio" name="Mode" id="mode"/> Default
+                <p><input type="radio" name="Mode" id="mode"/> Monthly</p>
+                <p><input type="radio" name="Mode" id="mode"/> Yearly </p>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Prefix</span>
+              </td>
+              <td class="field">
+                <input type="text" name="Prefix" id="prefix" required="required"/>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submitFormDiv">
+        <input type="submit" Value="Simpan" />
+        <input type="button" value="Batal" id="cancelAutoNumber" />
+      </div>
+    </form>
+  </div>
+</div>

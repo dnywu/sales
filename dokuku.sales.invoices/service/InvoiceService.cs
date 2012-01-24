@@ -62,17 +62,17 @@ namespace dokuku.sales.invoices.service
             IsInvoiceStatusDraft(id, ownerId);
             invRepo.Delete(id, ownerId);
         }
-        public void UpdateStatusToAprrove(Guid invoiceId, string ownerId)
+        public void ApproveInvoice(Guid invoiceId, string ownerId)
         {
             Invoices invoice = invRepo.Get(invoiceId, ownerId);
             if (invoice.Status != InvoiceStatus.DRAFT)
-                throw new Exception(String.Format("Status invoice '{0}' harus {1} sebelum dilakukan ganti status. Sedangkan status sekarang adalah {2}", invoice.InvoiceNo, InvoiceStatus.DRAFT, invoice.Status));
+                throw new Exception(String.Format("Status invoice '{0}' harus {1} sebelum dilakukan ganti status. Sedangkan status saat ini adalah {2}", invoice.InvoiceNo, InvoiceStatus.DRAFT, invoice.Status));
 
             invoice.InvoiceStatusBelumBayar();
             invRepo.UpdateInvoices(invoice);
 
-            //if (bus != null)
-                //bus.Publish(new InvoiceHasBeenApproved { InvoiceId = invoiceId, OwnerId = ownerId });
+            if (bus != null)
+                bus.Publish(new InvoiceApproved { Data = invoice.ToJson<Invoices>() });
         }
 
         private void IsInvoiceStatusDraft(Guid id, string ownerId)
