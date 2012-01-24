@@ -9,7 +9,7 @@ namespace dokuku.sales.invoices.service
     {
         string GenerateInvoiceNumberDraft(string companyId);
         string GenerateInvoiceNumber(DateTime transactionDate, string companyId);
-        void SetupInvoiceAutoMumber(AutoNumberMode mode, string prefix);
+        void SetupInvoiceAutoMumber(AutoNumberMode mode, string prefix, string companyId);
         InvoiceAutoNumberConfig GetInvoiceAutoNumberConfig(string companyId);
     }
 }

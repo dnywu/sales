@@ -108,5 +108,21 @@ namespace dokuku.sales.invoices.service
             invRepo.Save(invoice);
         }
 
+        public void Cancel(Guid id, string cancelNote, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(id, ownerId);
+            if (invoice == null)
+                throw new Exception("Invoice tidak ditemukan dalam database");
+            if (invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
+                throw new Exception(String.Format("Status invoice {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
+            if (String.IsNullOrWhiteSpace(cancelNote))
+                throw new Exception("Mohon catatan untuk batal diisi.");
+            invoice.InvoiceStatusBatal(cancelNote);
+            invRepo.UpdateInvoices(invoice);
+
+            if (bus != null)
+                bus.Publish(new InvoiceCancelled { Data = invoice.ToJson<Invoices>() });
+        }
+
     }
 }

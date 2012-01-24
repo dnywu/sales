@@ -12,8 +12,8 @@
         $("#moreFieldCustomer").click(this.MoreFieldAddCust);
         $("#btnCancelAddCust").click(this.CloseAddCustDialog);
         $("#createCust").click(this.AddCust);
-
-    }, MoreFieldAddCust: function () {
+    }, 
+    MoreFieldAddCust: function () {
         $("tr#trmoreFieldCustomer").remove();
         $("table.hiddenTable").show();
     },

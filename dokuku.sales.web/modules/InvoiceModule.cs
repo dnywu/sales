@@ -85,6 +85,7 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new { error = true, message = e.Message });
                 }
             };
+
             Get["/InvoiceAutoNumber"] = p =>
                 {
                     var autoNumber = this.InvoiceAutoNumberGenerator().GetInvoiceAutoNumberConfig(this.CurrentAccount().OwnerId);
@@ -94,7 +95,7 @@ namespace dokuku.sales.web.modules
                 {
                     try
                     {
-                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(this.Request.Form.Mode, this.Request.Form.Prefix);
+                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(this.Request.Form.Mode, this.Request.Form.Prefix, this.CurrentAccount().OwnerId);
                         return Response.AsJson(new { error = false });
                     }
                     catch (Exception ex)
@@ -102,6 +103,19 @@ namespace dokuku.sales.web.modules
                         return Response.AsJson(new { error = true, message = ex.Message });
                     }
                 };
+
+            Post["/cancelinvoice/{id}"] = p =>
+            {
+                try
+                {
+                    this.InvoiceService().Cancel(p.id, this.Request.Form.invoice.note, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { error = false });
+                }
+                catch (Exception e)
+                {
+                    return Response.AsJson(new { error = true, message = e.Message });
+                }
+            };
         }
     }
 }
