@@ -521,6 +521,7 @@
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.html" />
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.js" />
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering_test.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\autonumbering.css" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
