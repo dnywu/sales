@@ -171,16 +171,21 @@
             return;
         }
 
+
         $("#errorCreateInv").empty().hide();
+
+        return JSON.stringify(objInv);
+        /*
         var newInv = JSON.stringify(objInv);
         $.ajax({
-            type: 'POST',
-            url: '/createinvoice',
-            data: { 'invoice': newInv },
-            dataType: 'json',
-            async: false,
-            success: this.CreateInvoiceCallBack
+        type: 'POST',
+        url: '/createinvoice',
+        data: { 'invoice': newInv },
+        dataType: 'json',
+        async: false,
+        success: this.CreateInvoiceCallBack
         });
+        */
     },
     CreateInvoiceCallBack: function (data) {
         if (data.error == true) {
