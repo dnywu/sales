@@ -8,13 +8,31 @@ steal('jquery/controller',
             init: function (el, ev) {
                 var item = this.getAutoNumber();
                 this.element.html('//sales/controllers/setupautonumbering/views/setupautonumbering.ejs', { 'item': item });
-                $('input:radio[name=Mode value="' + item.mode + '"]').attr('checked', 'checked')
+
+                if (item.mode == "1") {
+                    $('input:radio[class=yearly]').attr('checked', 'checked');
+                }
+                else if (item.mode == "2") {
+                    $('input:radio[class=monthly]').attr('checked', 'checked');
+                }
+                else {
+                    $('input:radio[class=default]').attr('checked', 'checked');
+                }
+
             },
 
             load: function () {
                 var item = this.getAutoNumber();
                 this.element.html('//sales/controllers/setupautonumbering/views/setupautonumbering.ejs', { 'item': item });
-                $('input:radio[name=Mode value="' + item.mode + '"]').attr('checked', 'checked')
+                if (item.mode == "1") {
+                    $('input:radio[class=yearly]').attr('checked', 'checked');
+                }
+                else if (item.mode == "2") {
+                    $('input:radio[class=monthly]').attr('checked', 'checked');
+                }
+                else {
+                    $('input:radio[class=default]').attr('checked', 'checked');
+                }
             },
             getAutoNumber: function () {
                 var item = null;
@@ -30,8 +48,9 @@ steal('jquery/controller',
                 return item;
             },
             '#cancelAutoNumber click': function () {
-                $("#input-prefix").val('');
-                $("#input-prefix").focus();
+                $("#body").empty();
+                $("#subtabs").empty();
+                $("ul.ultabs li").removeClass('active');
             },
             '#autoNumberForm submit': function (el, ev) {
                 var form = $('#autoNumberForm').formParams();
@@ -48,7 +67,10 @@ steal('jquery/controller',
                     data: { 'data': JSON.stringify(item) },
                     datatype: 'json',
                     success: function (data) {
-                        $("#body").sales_setupautonumbering("load");
+                        $("div#successMessage").empty();
+                        $("#body").sales_setupautonumbering('load');
+                        $("div#successMessage").append("Data telah tersimpan");
+
                     }
                 });
                 ev.preventDefault();
