@@ -76,15 +76,15 @@ steal('jquery/controller',
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
                         $("#divExchangeRate").show();
-                        //this.ShowExchangRate(dataCust.Currency, baseCcy);
                     } else {
                         $("#divExchangeRate").hide();
                     }
-
                     this.ShowExchangRate(dataCust.Currency, baseCcy);
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
                     $("#CustomerId").val(dataCust._id);
+                    $("#custRate").val(1);
+                    $("#custRate").change();
                     return;
                 }
                 $("#CustomerId").val("0");
@@ -201,7 +201,7 @@ steal('jquery/controller',
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
-                                    "<input type='text' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
+                                    "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
@@ -262,7 +262,6 @@ steal('jquery/controller',
             },
             ShowExchangRate: function (custCcy, baseCcy) {
                 $("#curr").text(custCcy);
-
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);

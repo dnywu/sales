@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="InvoiceDibayarSebagian.cs" />
     <Compile Include="InvoiceSudahLunas.cs" />
+    <Compile Include="PaymentRecorded.cs" />
+    <Compile Include="PaymentRevised.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

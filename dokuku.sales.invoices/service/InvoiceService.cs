@@ -97,6 +97,9 @@ namespace dokuku.sales.invoices.service
                 throw new ApplicationException("Invoice tidak ditemukan dalam database");
             invoice.InvoiceStatusSudahLunas();
             invRepo.Save(invoice);
+
+            if (bus != null)
+                bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
         }
 
         public void InvoicePartialyPaid(Guid invoiceId, string ownerId)
@@ -106,6 +109,9 @@ namespace dokuku.sales.invoices.service
                 throw new ApplicationException("Invoice tidak ditemukan dalam database");
             invoice.InvoiceStatusBelumLunas();
             invRepo.Save(invoice);
+
+            if (bus != null)
+                bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
         }
 
         public void Cancel(Guid id, string cancelNote, string ownerId)
