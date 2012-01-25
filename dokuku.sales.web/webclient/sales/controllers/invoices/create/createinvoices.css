@@ -143,3 +143,27 @@ div#divExchangeRate
 {
     display:none;
 }
+div.resultItemDiv
+{
+	display:none;
+	width: 155px;
+	position:absolute;
+	background-color: white;
+	white-space: normal;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 17px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+.itemTd
+{
+	cursor:pointer;
+}
+.itemTd:hover
+{
+	color:Green;
+}

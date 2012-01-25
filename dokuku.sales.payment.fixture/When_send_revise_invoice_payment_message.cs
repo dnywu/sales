@@ -69,7 +69,6 @@ namespace dokuku.sales.payment.fixture
             {
                 bus.Send(new RevisePayment()
                 {
-                     AdjustedPaymentId = 
                 });
             };
     }
