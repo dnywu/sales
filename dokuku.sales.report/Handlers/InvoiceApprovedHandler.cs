@@ -12,7 +12,7 @@ namespace dokuku.sales.report.Handlers
         MongoConfig Config { get; set; }
         public void Handle(InvoiceApproved message)
         {
-            BsonDocument doc = BsonDocument.Parse(message.Data);
+            BsonDocument doc = BsonDocument.Parse(message.InvoiceJson);
             BsonDocument index = new BsonDocument();
 
             index["Keywords"] = BsonValue.Create(new string[]{
