@@ -979,7 +979,6 @@
     <None Include="webclient\sales\controllers\setupautonumbering\views\setupautonumbering.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\setupautonumbering\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
@@ -1082,7 +1081,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54372</DevelopmentServerPort>
+          <DevelopmentServerPort>54153</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

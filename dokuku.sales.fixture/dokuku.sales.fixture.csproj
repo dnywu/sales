@@ -135,6 +135,10 @@
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
+      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
+      <Name>dokuku.sales.payment</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.taxes\dokuku.sales.taxes.csproj">
       <Project>{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}</Project>
       <Name>dokuku.sales.taxes</Name>

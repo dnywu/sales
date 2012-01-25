@@ -18,20 +18,20 @@ namespace dokuku.sales.report.Handlers
             BsonDocument doc = BsonDocument.Parse(message.PaymentJson);
             BsonDocument index = new BsonDocument();
 
-            index["Keywords"] = BsonValue.Create(new string[13]{
-                    doc["_id"].ToString(),
-                    doc["Customer"].ToString(),
-                    doc["CustomerId"].ToString(),
-                    doc["InvoiceDate"].ToString(),
-                    doc["DueDate"].ToString(),
-                    doc["LateFee"].ToString(),
-                    doc["Note"].ToString(),
-                    doc["PONo"].ToString(),
-                    doc["Status"].ToString(),
-                    doc["SubTotal"].ToString(),
-                    doc["TermCondition"].ToString(),
-                    doc["Total"].ToString(),
-                    doc["OwnerId"].ToString()});
+//            index["Keywords"] = BsonValue.Create(new string[13]{
+//                    doc["_id"].ToString(),
+//                    doc["Customer"].ToString(),
+//                    doc["CustomerId"].ToString(),
+//                    doc["InvoiceDate"].ToString(),
+//                    doc["DueDate"].ToString(),
+//                    doc["LateFee"].ToString(),
+//                    doc["Note"].ToString(),
+//                    doc["PONo"].ToString(),
+//                    doc["Status"].ToString(),
+//                    doc["SubTotal"].ToString(),
+//                    doc["TermCondition"].ToString(),
+//                    doc["Total"].ToString(),
+//                    doc["OwnerId"].ToString()});
 
             index["InvoiceNo"] = doc["InvoiceNo"];
             index["Customer"] = doc["Customer"];

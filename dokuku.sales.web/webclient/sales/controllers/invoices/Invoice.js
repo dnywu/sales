@@ -35,15 +35,15 @@
     ShowListItem: function (part, index) {
         $("#baseprice_" + index).val(part.Rate);
         //if (!isDifferentCcy) {
-            part.Rate = part.Rate / $("#custRate").val();
-            //normal
-            part.Rate = part.Rate.toFixed(2)
-            //up
-            /*
-            part.Rate = part.Rate.toFixed(3) * 100;
-            part.Rate = Math.ceil(part.Rate);
-            part.Rate = part.Rate / 100;
-            */
+        part.Rate = part.Rate / $("#custRate").val();
+        //normal
+        part.Rate = part.Rate.toFixed(2)
+        //up
+        /*
+        part.Rate = part.Rate.toFixed(3) * 100;
+        part.Rate = Math.ceil(part.Rate);
+        part.Rate = part.Rate / 100;
+        */
         //}
         $("#partid_" + index).val(part._id);
         $("#part_" + index).val(part.Name);
@@ -249,6 +249,33 @@
             }
         });
         return result;
+    },
+    ApproveInvoiceByID: function (invoiceID) {
+        var id = invoiceID;
+        $.ajax({
+            type: 'PUT',
+            url: '/approveinvoice/invoiceNo/' + invoiceNo,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+	},
+    SearchCustomer: function (key) {
+        var listCustomer = null;
+        $.ajax({
+            type: 'GET',
+            url: '/SearchCustomer/key/' + key,
+            dataType: 'json',
+            failure: $('#DivSearchCustomer').hide(),
+            async: false,
+            success: function (data) {
+                listCustomer = data;
+            }
+        });
+        return listCustomer;
     }
 })
     });
