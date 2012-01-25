@@ -56,12 +56,12 @@ div.AutoNumberFormDiv
 {
 	color: #9C0000;
 }
-.field
+.autonumberfield
 {
 	width: 350px;
 }
 
-.field input[type="text"], .field textarea, .field select
+.autonumberfield input[type="text"], .field textarea, .field select
 {
 	width:50%;
 	margin-bottom: 15px;
