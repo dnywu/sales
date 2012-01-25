@@ -95,7 +95,9 @@ namespace dokuku.sales.web.modules
                 {
                     try
                     {
-                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(this.Request.Form.Mode, this.Request.Form.Prefix, this.CurrentAccount().OwnerId);
+                        string Data = this.Request.Form.data;
+                        InvoiceAutoNumberConfig config = Newtonsoft.Json.JsonConvert.DeserializeObject<InvoiceAutoNumberConfig>(Data);
+                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(config.Mode, config.Prefix, this.CurrentAccount().OwnerId);
                         return Response.AsJson(new { error = false });
                     }
                     catch (Exception ex)
