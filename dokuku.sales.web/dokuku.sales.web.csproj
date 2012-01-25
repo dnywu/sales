@@ -801,6 +801,7 @@
     <Compile Include="modules\OrganizationModule.cs" />
     <Compile Include="modules\PaymentModeModule.cs" />
     <Compile Include="modules\ServiceLocator.cs" />
+    <Compile Include="modules\TaxModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
