@@ -262,6 +262,20 @@
             }
         });
         return result;
+	},
+    SearchCustomer: function (key) {
+        var listCustomer = null;
+        $.ajax({
+            type: 'GET',
+            url: '/SearchCustomer/key/' + key,
+            dataType: 'json',
+            failure: $('#DivSearchCustomer').hide(),
+            async: false,
+            success: function (data) {
+                listCustomer = data;
+            }
+        });
+        return listCustomer;
     }
 })
     });
