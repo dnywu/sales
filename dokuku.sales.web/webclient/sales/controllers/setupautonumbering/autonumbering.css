@@ -124,4 +124,13 @@ div.error{
 	float:left;
 }
 
+div#successMessage
+{
+	color:Green;
+	margin-left:30px;
+	margin-top:10px;
+	height:0px;
+}
+	
+
 
