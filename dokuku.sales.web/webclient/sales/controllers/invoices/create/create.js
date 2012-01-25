@@ -37,6 +37,9 @@ steal('jquery/controller',
             },
             load: function (customer) {
                 tabIndexTr = 0;
+                inv = new Invoice();
+                itmRepo = new ItemRepository();
+                custRepo = new CustomerRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
                 if (customer != null)
                     $("#currency").text(customer.Currency).show();
