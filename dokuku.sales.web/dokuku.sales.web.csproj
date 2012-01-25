@@ -585,7 +585,9 @@
     <None Include="webclient\funcunit\update" />
     <None Include="webclient\sales\controllers\currencyandtax\views\init.ejs" />
     <None Include="webclient\sales\controllers\currencyandtax\views\listcurrencyandtax.ejs" />
-    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs" />
+    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="webclient\sales\controllers\currency\currency.html" />
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
@@ -687,6 +689,10 @@
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
     <Content Include="webclient\sales\controllers\tax\funcunit.html" />
+    <Content Include="webclient\sales\controllers\tax\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\tax\images\find.png" />
+    <Content Include="webclient\sales\controllers\tax\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\tax\images\setting.png" />
     <Content Include="webclient\sales\controllers\tax\tax.css" />
     <Content Include="webclient\sales\controllers\tax\tax.html" />
     <Content Include="webclient\sales\controllers\tax\tax.js" />
@@ -1127,7 +1133,12 @@
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\tax\views\addtax.ejs" />
+    <None Include="webclient\sales\controllers\tax\views\addtax.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\tax\views\contextMenuCustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\tax\views\init.ejs" />
     <None Include="webclient\sales\controllers\tax\views\listtax.ejs" />
     <None Include="webclient\sales\sales.md" />

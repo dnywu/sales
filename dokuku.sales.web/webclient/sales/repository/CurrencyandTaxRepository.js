@@ -19,16 +19,20 @@
         return dataTax;
     },
     SaveTax: function (taxModel) {
+        var tax = taxModel;
+        var response = false;
         $.ajax({
             type: 'POST',
-            url: '/SaveTax/'+taxModel,
+            url: '/SaveTax/' + taxModel,
             dataType: 'json',
             async: false,
             success: function (data) {
+                response = true;
             }
         });
+        return response;
     },
-    DeleteTax: function () {
+    DeleteTax: function (id) {
         $.ajax({
             type: 'GET',
             url: '/DeleteTax',
@@ -61,7 +65,7 @@
             }
         });
     },
-    DeleteCurrency: function () {
+    DeleteCurrency: function (id) {
         $.ajax({
             type: 'GET',
             url: '/DeleteCurrency',
