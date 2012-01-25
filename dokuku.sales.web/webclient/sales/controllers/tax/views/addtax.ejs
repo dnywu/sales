@@ -1,0 +1,50 @@
+<form id='AddCustomers'>
+  <div class='FormNewCustomer'>
+    <div class="topBandHeaderDIV">
+      <div id="TitleSpan" class="HeaderDIVLeft">Tambah Pajak</div>
+    </div>
+    <div class = 'CreateNewCustomer'>
+      <table class="FormNewCuscotmer">
+        <tbody>
+          <tr>
+            <td>
+              <div class="mandatoryTxt">Nama Pajak</div>
+
+            </td>
+            <td class="td_field">
+              <input type="text" name="Name" id="inputText_CustomerName" placeholder="Nama Pajak" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+            </td>
+            <td class="error"></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="mandatoryTxt">Persentase</div>
+            </td>
+            <td class="td_field">
+              <input type="text" name="Name" id="inputText_CustomerName" placeholder="Persentase" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+            </td>
+            <td class="error"></td>
+          </tr>
+          <tr>
+            <td class="labelLeft">Pajak Tambahan?</td>
+            <td class="td_field" colspan="2">
+              <div class="checkboxLabelDiv">
+                <input type="checkbox" name="checkbox_separateShipping" id="seperateShipping" class="seperateShipping"/>
+                <label for="seperateShipping" class="labelStyle">Ya, pajak ini merupakan pajak tambahan.</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top:30px">
+      <p align="center" style="font-size:11px">
+        <input type="hidden" id="keywords" name="keywords"></input>
+        <input id="EditCustomerSave" type="submit" class="CreateCustomerBtn" name="save" value="Save"/>
+        or
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Cancel</span>
+      </p>
+    </div>
+  </div>
+</form>
