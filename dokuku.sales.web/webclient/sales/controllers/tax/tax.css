@@ -1,4 +1,4 @@
-﻿div.FormNewCurrency{
+﻿div.FormNewCustomer{
 	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
 	height : 100%;
 	width : 75%;
@@ -8,7 +8,7 @@
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
 }
-div.ListCurrencyDiv{
+div.ListCustomerDiv{
 	width : 100%;
 	border : 1px solid #ECECEC;
 	border-radius: 6px;
@@ -17,7 +17,7 @@ div.ListCurrencyDiv{
 	box-shadow: 0 0 4px 0 #999;
 	margin-bottom:25px;
 }
-.topBandHeaderListCurrencyDIV{
+.topBandHeaderListCustomerDIV{
 	width: 100%;
 	margin: 0;
 	background: #F7F7F7;
@@ -28,7 +28,7 @@ div.ListCurrencyDiv{
 }
 
 
-div.CreateNewCurrency{
+div.CreateNewCustomer{
 	margin:20px;
 	padding:20px;
 	border-top : 1px solid #ECECEC;
@@ -76,7 +76,7 @@ input[type="checkbox"]{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -126px -453px;
 	margin-top: 2px;
 }
@@ -89,7 +89,7 @@ input[type="checkbox"]:checked{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -141px -453px;
 	margin-top: 2px;
 }
@@ -111,18 +111,18 @@ table.FormNewCuscotmer{
 	width:100%;
 	border:0px solid black;
 }
-table.CurrencyTable{
+table.CustomerTable{
 	width:100%;
 	border:0px solid black;
 }
-table.CurrencyTable tbody{
+table.CustomerTable tbody{
 	border:0px solid black;
 }
-table.CurrencyTable tbody tr td#formListCurrency{
+table.CustomerTable tbody tr td#formListCustomer{
 	border:0px solid black;
 	width:75%;
 }
-table.CurrencyTable tbody tr td#MenuFormListCurrency{
+table.CustomerTable tbody tr td#MenuFormListCustomer{
 	border:0px solid black;
 	width:25%;
 }
@@ -150,7 +150,7 @@ td.space{
 	display:none;
 }
 .add{
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -194px -110px;
 	width: 12px;
 	height: 12px;
@@ -160,7 +160,7 @@ td.space{
 	vertical-align: top;
 }
 .copyField{
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -389px -166px;
 	width: 8px;
 	height: 11px;
@@ -169,8 +169,8 @@ td.space{
 #CustomField{
 	display:none;
 }
-.CreateCurrencyBtn{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") repeat-x;
+.CreateCustomerBtn{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") repeat-x;
 	background-position: -0px -1458px;
 	border-color: #CFCECE #CFCECE #B5B4B4;
 	-moz-border-radius: 3px;
@@ -186,7 +186,7 @@ td.space{
 .field_select{
 	width: 63px ! important;
 }
-.td_field_Currency{
+.td_field_customer{
 	width:100%;
 }
 
@@ -194,7 +194,7 @@ td.space{
 	height:35px;
 }
 
-.HeaderDIVListCurrency{
+.HeaderDIVListCustomer{
 	font-size: 21px;
 	font-family: arial, verdana;
 	background: #F7F7F7;
@@ -202,18 +202,18 @@ td.space{
 	padding: 20px;
 }
 
-.ClassListCurrency {
+.ClassListCustomer {
 	padding-left: 12px;
 	padding-right: 12px;
 	padding-bottom: 30px;
 }
-.ClassSubMenuDataCurrency {
+.ClassSubMenuDataCustomer {
 	padding-left: 12px;
 	padding-right: 12px;
 	padding-bottom: 12px;
 }
 
-.thDataCurrency
+.thDataCustomer
 {
 	padding: 6px 10px 6px 0;
 	border: solid 0 #EBEBEB;
@@ -224,7 +224,7 @@ td.space{
 	height: 32px;
 	border-image: initial;
 }
-.tdDataCurrencyRight{
+.tdDataCustomerRight{
 	text-align:right;
 	padding: 6px 10px 6px 0;
 	border: solid 0 #EBEBEB;
@@ -233,7 +233,7 @@ td.space{
 	font-weight: normal;
 	height: 32px;
 }
-.tdDataCurrencyLeft{
+.tdDataCustomerLeft{
 	text-align:left;
 	padding: 6px 10px 6px 10;
 	border: solid 0 #EBEBEB;
@@ -242,7 +242,7 @@ td.space{
 	font-weight: normal;
 	height: 32px;
 }
-.tdDataCurrencyCenter{
+.tdDataCustomerCenter{
 	border-bottom: solid 1px #EBEBEB;
 }
 div.menuLeft{
@@ -261,12 +261,12 @@ div.menuLeft{
 	height: 15px;
 }
 
-.MenuFormListCurrency {
+.MenuFormListCustomer {
 	padding: 40px 0 20px 20px;
 	vertical-align: top;
 }
-.BtnTambahCurrency{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+.BtnTambahCustomer{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -16px -226px;
 	color: #6F6F6F;
 	font-family: arial, verdana;
@@ -279,7 +279,21 @@ div.menuLeft{
 	font-weight: bold;
 	cursor: pointer;
 }
+.imgCari{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -332px -82px;
+	height: 15px;
+	width: 15px;
 
+}
+.imgFilter{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -230px -139px;
+	height: 4px;
+	width: 11px;
+	margin-top: 5px;
+
+}
 .floatLeft{
 	float: right;
 	padding-right: 5px;
@@ -325,7 +339,41 @@ div.menuLeft{
 	width: 19px;
 	cursor: pointer;
 }
-.BodyDataCurrency{
+.prev{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
+}
+.next{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -257px -265px;
+}
+.first
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -209px -265px;
+}
+.last{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -283px -265px;
+}
+.prevDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -334px -265px;
+}
+.nextDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -359px -265px;
+}
+.firstDisable
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -309px -265px;
+}
+.lastDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -383px -265px;
+}
+.BodyDataCustomer{
 	overflow : auto;
 	height : 280px;
 }
@@ -333,7 +381,7 @@ div.menuLeft{
 .odd {
 	background: #F8F8F8;
 }
-div.settingListCurrency
+div.settingListCustomer
 {
 	display:none;
 }
@@ -351,7 +399,7 @@ div.MessageConfirmation{
 	display:none;
 }
 .imagesConfirm{
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -273px -1025px;
 	margin: 10px 15px 10px 5px;
 	height: 34px;
@@ -424,7 +472,7 @@ div.isiConfirmationHeader{
 	padding-right:5px;
 }
 
-div.ContextMenuCurrency
+div.ContextMenuCustomer
 {
 	display:none;
 	background-color: white;
@@ -440,23 +488,23 @@ div.ContextMenuCurrency
 	color: #457BD9;
 	padding: 8px;
 }
-div.itemContextMenuCurrency{
+div.itemContextMenuCustomer{
 	padding: 7px 5px 5px 7px;
 	color: #457BD9;
 	cursor: pointer;
 	white-space: normal;
 	text-decoration: none;
 }
-div.itemContextMenuCurrency span
+div.itemContextMenuCustomer span
 {
 	cursor:pointer;
 }
-div.itemContextMenuCurrency span:hover{
+div.itemContextMenuCustomer span:hover{
 	color:Red;
 	text-decoration:underline;
 }
 .EditImagContextMenu{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -382px -53px;
 	height: 21px;
 	width: 19px;
@@ -464,8 +512,8 @@ div.itemContextMenuCurrency span:hover{
 	margin-right:20px;
 	margin-top: 1px;
 }
-.CreateInvoiceContextMenuCurrency{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+.CreateInvoiceContextMenuCustomer{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -50px -79px;
 	height: 21px;
 	width: 19px;
@@ -481,7 +529,7 @@ div.itemContextMenuCurrency span:hover{
 	color: #666;
 }
 .iconHapus{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -332px -29px;
 	height: 16px;
 	width: 17px;
@@ -503,7 +551,7 @@ div.DivSearch{
 	width: 280px;
 	height: 17px;
 }
-#SearchCurrency{
+#SearchCustomer{
 	border: none;
 	margin-left: 18px;
 	height: 16px;
@@ -511,11 +559,11 @@ div.DivSearch{
 	background: #F3F3F3;
 }
 .imgSearch{
-	background: transparent url("/sales/controllers/currency/images/find.png") no-repeat;
+	background: transparent url("/sales/controllers/customers/images/find.png") no-repeat;
 	height: 16px;
 	width: 17px;
 	float:left;
 }
 .nameCompany{ color:Black; font-weight:bolder; font-size:14px;}
-.atributDataCurrency{ color:#A5A2A2; font-size:11px;}
-.tdDataCurrency{padding-bottom:5px; padding-top:5px;}
+.atributDataCustomer{ color:#A5A2A2; font-size:11px;}
+.tdDataCustomer{padding-bottom:5px; padding-top:5px;}
