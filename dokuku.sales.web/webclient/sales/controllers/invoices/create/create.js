@@ -268,6 +268,36 @@ steal('jquery/controller',
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
+            },
+            '#selectcust keyup': function () {
+                var key = $('#selectcust').val();
+                if (key == "") {
+                    $('.DivSearchCustomer').hide();
+                }
+                else {
+                    var customer = inv.SearchCustomer(key);
+                    $('.DivSearchCustomer').show();
+                    $("table#tblSearchCustomer tbody#bodySearchCustomer").empty();
+                    $.each(customer, function (item) {
+                        $("table#tblSearchCustomer tbody#bodySearchCustomer").append(
+                        '<tr id="trSearchCustomer">' +
+                        '<td id="tdSearchCustomer" style="border-bottom:solid 1px grey">' +
+                          '<div class="DivNamaCustomer" id="' + customer[item]._id + '">' + customer[item].Name + '</div>' +
+                          '<div class="DivFieldCustomer">' + customer[item].Email + '</div>' +
+                          '<div class="DivFieldCustomer">' + customer[item].BillingAddress + '</div>' +
+                        '</td>' +
+                      '</tr>'
+                    );
+                    })
+                }
+            },
+            '.DivNamaCustomer click': function (el) {
+                var id = el.attr('id');
+                var name = el.text();
+                $('#selectcust').val(name);
+                $('#CustomerId').val(id);
+                $('#selectcust').change();
+                $('.DivSearchCustomer').hide();
             }
         })
           });
