@@ -31,6 +31,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="antlr.runtime">
+      <HintPath>..\packages\NServiceBus\antlr.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\NServiceBus\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\NServiceBus\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net">
+      <HintPath>..\packages\NServiceBus\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSMQ">
+      <HintPath>..\packages\NServiceBus\Interop.MSMQ.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Machine.Specifications">
       <HintPath>..\packages\Machine.Specifications-Signed.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
     </Reference>
@@ -46,6 +66,12 @@
     <Reference Include="NServiceBus">
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>
+    <Reference Include="NServiceBus.Core">
+      <HintPath>..\packages\NServiceBus\NServiceBus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\packages\NServiceBus\Spring.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -56,6 +82,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_publich_invoice_approved.cs" />
     <Compile Include="When_create_item_index.cs" />
     <Compile Include="When_search_invoices.cs" />
     <Compile Include="When_generate_invoice_number_monthly_mode.cs" />
@@ -77,7 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
-      <SubType>Designer</SubType>
+      <SubType>
+      </SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -90,6 +118,10 @@
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
+      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
+      <Name>dokuku.sales.invoice.messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
       <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
       <Name>dokuku.sales.invoices</Name>
@@ -101,6 +133,10 @@
     <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
+      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
+      <Name>dokuku.sales.payment</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

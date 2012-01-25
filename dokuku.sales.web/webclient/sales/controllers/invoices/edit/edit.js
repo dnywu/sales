@@ -284,7 +284,7 @@ steal('jquery/controller',
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
                 if (ExchangeRate != 1)
-                    $("#custRate").val(ExchangeRate); 
+                    $("#custRate").val(ExchangeRate);
             }
         })
             });

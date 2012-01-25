@@ -28,8 +28,50 @@ namespace dokuku.sales.payment.domain
         public void Pay(PaymentRecord pr)
         {
             FailIfAmountPaidGreaterThanBalanceDue(pr);
-            BalanceDue = BalanceDue - pr.amountPaid;
             PaymentRecords.Add(pr);
+            CalculateBalanceDue();
+
+            DomainEvents.Raise<PaymentRecorded>(new PaymentRecorded
+            {
+                AmountPaid = pr.amountPaid,
+                BankCharge = pr.bankCharge,
+                InvoiceId = this.Invoice.InvoiceId,
+                InvoiceNo = this.Invoice.InvoiceNumber,
+                PaymentDate = pr.paymentDate,
+                PaymentMode = pr.paymentMode.Name,
+                PaymentRecordId = pr.Id,
+                PRNotes = pr.notes,
+                PRReference = pr.reference,
+                OwnerId = this.OwnerId
+            });
+
+            if (!HasOutstanding())
+                DomainEvents.Raise<InvoiceSudahLunas>(new InvoiceSudahLunas { InvoiceNumber = this.Invoice.InvoiceNumber, InvoiceId = this.Invoice.InvoiceId, ownerid = this.OwnerId });
+            if (HasOutstanding())
+                DomainEvents.Raise<InvoiceDibayarSebagian>(new InvoiceDibayarSebagian { InvoiceNumber = this.Invoice.InvoiceNumber, InvoiceId = this.Invoice.InvoiceId, ownerid = this.OwnerId });
+        }
+        
+        public void RevisePayment(Guid revisedPaymentRecordId, PaymentRecord newPaymentRecord)
+        {
+            Adjust(revisedPaymentRecordId);
+            FailIfAmountPaidGreaterThanBalanceDue(newPaymentRecord);
+            PaymentRecords.Add(newPaymentRecord);
+            CalculateBalanceDue();
+
+            DomainEvents.Raise<PaymentRevised>(new PaymentRevised
+            {
+                AmountPaid = newPaymentRecord.amountPaid,
+                BankCharge = newPaymentRecord.bankCharge,
+                InvoiceId = this.Invoice.InvoiceId,
+                InvoiceNo = this.Invoice.InvoiceNumber,
+                PaymentDate = newPaymentRecord.paymentDate,
+                PaymentMode = newPaymentRecord.paymentMode.Name,
+                PaymentRecordId = newPaymentRecord.Id,
+                PRNotes = newPaymentRecord.notes,
+                PRReference = newPaymentRecord.reference,
+                OwnerId = this.OwnerId
+            });
+
             if (!HasOutstanding())
                 DomainEvents.Raise<InvoiceSudahLunas>(new InvoiceSudahLunas { InvoiceNumber = this.Invoice.InvoiceNumber, InvoiceId = this.Invoice.InvoiceId, ownerid = this.OwnerId });
             if (HasOutstanding())
@@ -45,6 +87,24 @@ namespace dokuku.sales.payment.domain
         public bool HasOutstanding()
         {
             return BalanceDue > 0;
+        }
+
+        private void Adjust(Guid paymentRecordId)
+        {
+            PaymentRecord adjusted = PaymentRecords.Where(x => x.Id == paymentRecordId).FirstOrDefault();
+            if (adjusted == null) return;
+            
+            PaymentRecord reversal = adjusted.Reverse();
+            PaymentRecords.Add(reversal);
+            CalculateBalanceDue();
+        }
+
+        private void CalculateBalanceDue()
+        {
+            decimal amountPaid = 0;
+            foreach (PaymentRecord p in PaymentRecords)
+                amountPaid += p.amountPaid;
+            BalanceDue = Invoice.Amount - amountPaid;
         }
     }
 }

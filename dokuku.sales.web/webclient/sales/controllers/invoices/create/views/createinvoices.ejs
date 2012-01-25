@@ -14,6 +14,13 @@
               <td class="td_field">
                 <input type="hidden" id="CustomerId" value="<%=this._id%>"/>
                 <input type='text' name="customer" id="selectcust" value="<%=this.Name%>" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('pelanggan harus dipilih')"/>
+                <div class="DivSearchCustomer" id="DivSearchCustomer">
+                  <table id="tblSearchCustomer" width="100%">
+                    <tbody id="bodySearchCustomer">
+
+                    </tbody>
+                  </table>
+                </div>
               </td>
               <td class="error">
                 <label id="keteranganSelectCust"></label>
@@ -93,7 +100,7 @@
             <td class="labelLeft">Exchange Rate</td>
             <td width='272px'>
               <div style="float: left; display: block; ">
-                <input type="text" id="custCcyCode"/>
+                <input type="hidden" id="custCcyCode"/>
                 <input type="text" readonly class="extRateLeftDIV" id="custCcy"/>
                 <input type="text" id="custRate" class="extRateCenterInput" value="1"/>
                 <input type="text" readonly class="exchangeRateTxtBox" id="baseCcy"/>

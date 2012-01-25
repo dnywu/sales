@@ -37,6 +37,9 @@ steal('jquery/controller',
             },
             load: function (customer) {
                 tabIndexTr = 0;
+                inv = new Invoice();
+                itmRepo = new ItemRepository();
+                custRepo = new CustomerRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
                 if (customer != null)
                     $("#currency").text(customer.Currency).show();
@@ -73,15 +76,15 @@ steal('jquery/controller',
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
                         $("#divExchangeRate").show();
-                        //this.ShowExchangRate(dataCust.Currency, baseCcy);
                     } else {
                         $("#divExchangeRate").hide();
                     }
-
                     this.ShowExchangRate(dataCust.Currency, baseCcy);
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
                     $("#CustomerId").val(dataCust._id);
+                    $("#custRate").val(1);
+                    $("#custRate").change();
                     return;
                 }
                 $("#CustomerId").val("0");
@@ -200,7 +203,7 @@ steal('jquery/controller',
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
-                                    "<input type='text' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
+                                    "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
@@ -261,10 +264,39 @@ steal('jquery/controller',
             },
             ShowExchangRate: function (custCcy, baseCcy) {
                 $("#curr").text(custCcy);
-
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
+            },
+            '#selectcust keyup': function () {
+                var key = $('#selectcust').val();
+                if (key == "") {
+                    $('.DivSearchCustomer').hide();
+                }
+                else {
+                    var customer = inv.SearchCustomer(key);
+                    $('.DivSearchCustomer').show();
+                    $("table#tblSearchCustomer tbody#bodySearchCustomer").empty();
+                    $.each(customer, function (item) {
+                        $("table#tblSearchCustomer tbody#bodySearchCustomer").append(
+                        '<tr id="trSearchCustomer">' +
+                        '<td id="tdSearchCustomer" style="border-bottom:solid 1px grey">' +
+                          '<div class="DivNamaCustomer" id="' + customer[item]._id + '">' + customer[item].Name + '</div>' +
+                          '<div class="DivFieldCustomer">' + customer[item].Email + '</div>' +
+                          '<div class="DivFieldCustomer">' + customer[item].BillingAddress + '</div>' +
+                        '</td>' +
+                      '</tr>'
+                    );
+                    })
+                }
+            },
+            '.DivNamaCustomer click': function (el) {
+                var id = el.attr('id');
+                var name = el.text();
+                $('#selectcust').val(name);
+                $('#CustomerId').val(id);
+                $('#selectcust').change();
+                $('.DivSearchCustomer').hide();
             }
         })
           });
