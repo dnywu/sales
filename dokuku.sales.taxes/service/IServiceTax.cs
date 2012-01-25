@@ -9,7 +9,7 @@ namespace dokuku.sales.taxes.service
     public interface IServiceTax
     {
         Taxes Create(string taxJson,string ownerId);
-        void Update(Taxes tax, string ownerId);
+        void Update(string taxJson, string ownerId);
         void Delete(Guid guid);
     }
 }

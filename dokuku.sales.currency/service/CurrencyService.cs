@@ -27,6 +27,7 @@ namespace dokuku.sales.currency.service
         {
             Currencies ccy = JsonConvert.DeserializeObject<Currencies>(data);
             ccy.OwnerId = ownerId;
+            ccy._id = Guid.NewGuid();
             _collections.Save(ccy);
 
             if (_bus != null)

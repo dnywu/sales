@@ -32,7 +32,7 @@ namespace dokuku.sales.fixture.Tax_Fixture
                     OwnerId = "marthin",
                     Value = 10
                 };
-                serviceTax.Create(tax);
+                serviceTax.Create(Newtonsoft.Json.JsonConvert.SerializeObject(tax,Newtonsoft.Json.Formatting.None),"marthin");
             };
         It should_return_tax = () =>
             {

@@ -937,6 +937,7 @@
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\CurrencyModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
     <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
     <Compile Include="modules\InvoiceModule.cs" />
@@ -1170,6 +1171,10 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.currency\dokuku.sales.currency.csproj">
+      <Project>{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}</Project>
+      <Name>dokuku.sales.currency</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
       <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
       <Name>dokuku.sales.customer.messages</Name>
@@ -1209,6 +1214,10 @@
     <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
       <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
       <Name>dokuku.sales.payment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.taxes\dokuku.sales.taxes.csproj">
+      <Project>{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}</Project>
+      <Name>dokuku.sales.taxes</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
       <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>

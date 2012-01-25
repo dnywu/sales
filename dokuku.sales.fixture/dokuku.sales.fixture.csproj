@@ -82,7 +82,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tax Fixture\When_create_tax.cs" />
+    <Compile Include="currency\When_create_currency.cs" />
+    <Compile Include="tax\When_create_tax.cs" />
     <Compile Include="When_publich_invoice_approved.cs" />
     <Compile Include="When_create_item_index.cs" />
     <Compile Include="When_search_invoices.cs" />
@@ -114,6 +115,10 @@
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.currency\dokuku.sales.currency.csproj">
+      <Project>{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}</Project>
+      <Name>dokuku.sales.currency</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer\dokuku.sales.customer.csproj">
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>

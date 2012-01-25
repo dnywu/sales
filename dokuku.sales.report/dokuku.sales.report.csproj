@@ -84,6 +84,8 @@
   <ItemGroup>
     <Compile Include="Handlers\CollectionName.cs" />
     <Compile Include="EndpointConfig.cs" />
+    <Compile Include="Handlers\CurrenciesCreatedHandler.cs" />
+    <Compile Include="Handlers\CurrenciesDeletedHandler.cs" />
     <Compile Include="Handlers\TaxDeletedHandler.cs" />
     <Compile Include="Handlers\CustomerCreatedHandler.cs" />
     <Compile Include="Handlers\CustomerDeletedHandler.cs" />
@@ -103,6 +105,10 @@
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.currency.messages\dokuku.sales.currency.messages.csproj">
+      <Project>{8B2DDB22-5A9B-44B5-8BF3-E97787507886}</Project>
+      <Name>dokuku.sales.currency.messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
       <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
