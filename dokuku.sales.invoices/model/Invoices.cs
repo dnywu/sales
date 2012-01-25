@@ -23,6 +23,7 @@ namespace dokuku.sales.invoices.model
         public string Note { get; set; }
         public string TermCondition { get; set; }
         public decimal ExchangeRate { get; set; }
+        public string BaseCcy { get; set; }
         public string Currency { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
@@ -30,6 +31,7 @@ namespace dokuku.sales.invoices.model
         public Guid _id { get; set; }
         public string OwnerId { get; set; }
         public string Status { get; private set; }
+        public string CancelNote { get; private set; }
 
         public void InvoiceStatusBelumBayar()
         {
@@ -47,9 +49,10 @@ namespace dokuku.sales.invoices.model
         {
             this.Status = InvoiceStatus.VOID;
         }
-        public void InvoiceStatusBatal()
+        public void InvoiceStatusBatal(string note)
         {
             this.Status = InvoiceStatus.BATAL;
+            this.CancelNote = note;
         }
     }
 
@@ -59,6 +62,7 @@ namespace dokuku.sales.invoices.model
         public string PartName { get; set; }
         public string Description { get; set; }
         public decimal Qty { get; set; }
+        public decimal BaseRate { get; set; }
         public decimal Rate { get; set; }
         public decimal Discount { get; set; }
         public Tax Tax { get; set; }

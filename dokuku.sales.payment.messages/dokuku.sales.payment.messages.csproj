@@ -43,8 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RevisePayment.cs" />
     <Compile Include="InvoiceFullPaid.cs" />
+    <Compile Include="PayInvoice.cs" />
     <Compile Include="InvoicePartiallyPaid.cs" />
+    <Compile Include="PaymentIsRecorded.cs" />
+    <Compile Include="PaymentIsRevised.cs" />
+    <Compile Include="PaymentModeCreated.cs" />
+    <Compile Include="PaymentModeDeleted.cs" />
+    <Compile Include="PaymentModeUpdated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

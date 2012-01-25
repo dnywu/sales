@@ -26,7 +26,7 @@ steal('jquery/controller',
                         isDifferentCcy = true)
         },
         {
-            init: function (ev,el,customer) {
+            init: function (ev, el, customer) {
                 $this = this;
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
@@ -37,6 +37,9 @@ steal('jquery/controller',
             },
             load: function (customer) {
                 tabIndexTr = 0;
+                inv = new Invoice();
+                itmRepo = new ItemRepository();
+                custRepo = new CustomerRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
                 if (customer != null)
                     $("#currency").text(customer.Currency).show();
@@ -64,19 +67,24 @@ steal('jquery/controller',
             },
             '#selectcust change': function (el, ev) {
                 isDifferentCcy = true;
-               // $("#divExchangeRate").hide();
-               // $("#custCcyCode").val(baseCcy);
+                $("#divExchangeRate").hide();
+                $("#custCcyCode").val(baseCcy);
                 $("#keteranganSelectCust").empty();
                 this.ShowCurrencyToView();
                 var dataCust = custRepo.GetCustomerByName(el.val());
                 if (dataCust != null) {
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
-                        this.ShowExchangRate(dataCust.Currency, baseCcy);
+                        $("#divExchangeRate").show();
+                    } else {
+                        $("#divExchangeRate").hide();
                     }
+                    this.ShowExchangRate(dataCust.Currency, baseCcy);
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
                     $("#CustomerId").val(dataCust._id);
+                    $("#custRate").val(1);
+                    $("#custRate").change();
                     return;
                 }
                 $("#CustomerId").val("0");
@@ -103,6 +111,12 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
             },
+            '.partname focus': function (el) {
+                var index = el.attr("id").split('_')[1];
+                $(".resultItemDiv").remove();
+                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
+            },
+
             '.partname change': function (el) {
                 var partName = el.val();
                 var index = el.attr("id").split('_')[1];
@@ -120,6 +134,25 @@ steal('jquery/controller',
                 this.GetTotal();
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
+            '.partname keyup': function (el) {
+                var searchResultList = null;
+                var searchResult = itmRepo.SearchItem(el.val());
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "'><div id='itemName" + index + "'>" + searchResult[index].Name + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
+            },
+            '.itemTd click': function (el) {
+                var index = el.attr("id");
+                $('#part_' + $('.resultItemDiv').attr("id").split('_')[1]).val($("div#itemName" + index).text());
+                $(".partname").change();
+                $(".resultItemDiv").remove();
+            },
+            '.resultItemDiv mouseleave': function () {
+                $(".resultItemDiv").remove();
+            },
             '.quantity change': function (el) {
                 this.CalculateItem(el);
             },
@@ -132,14 +165,13 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
-
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
             },
-//            '#custRate change': function () {
-//                inv.CalculateByRate($("#custRate").val());
-//            },
+            '#custRate change': function () {
+                inv.CalculateByRate($("#custRate").val());
+            },
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
@@ -171,7 +203,7 @@ steal('jquery/controller',
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
-                                    "<input type='hidden' class='baseprice' id='bestprice_"+ tabIndexTr +"'/></td>" +
+                                    "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
@@ -232,10 +264,9 @@ steal('jquery/controller',
             },
             ShowExchangRate: function (custCcy, baseCcy) {
                 $("#curr").text(custCcy);
-                $("#divExchangeRate").show();
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
-                //$("#custCcyCode").val(custCcy);
+                $("#custCcyCode").val(custCcy);
             }
         })
           });

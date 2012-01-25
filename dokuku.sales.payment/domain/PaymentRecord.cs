@@ -12,10 +12,13 @@ namespace dokuku.sales.payment.domain
         public PaymentMode paymentMode { get; private set; }
         public string reference { get; private set; }
         public string notes { get; private set; }
-        
+        public Guid Id { get; private set; }
+        public Guid adjustedPaymentRecordId { get; private set; }
+
         private PaymentRecord(decimal amount)
         {
             amountPaid = amount;
+            Id = Guid.NewGuid();
         }
         public static PaymentRecord AmountPaid(decimal amount)
         {
@@ -45,6 +48,22 @@ namespace dokuku.sales.payment.domain
         {
             this.notes = notes;
             return this;
+        }
+        public PaymentRecord AdjustedPaymentRecordId(Guid id)
+        {
+            this.adjustedPaymentRecordId = id;
+            return this;
+        }
+
+        public PaymentRecord Reverse()
+        {
+            return new PaymentRecord(0 - this.amountPaid)
+                .BankCharge(0 - this.bankCharge)
+                .PaymentDate(this.paymentDate)
+                .PaymentMode(this.paymentMode)
+                .Reference(this.reference)
+                .Notes("Reversal adjusment")
+                .AdjustedPaymentRecordId(this.Id);
         }
     }
 }

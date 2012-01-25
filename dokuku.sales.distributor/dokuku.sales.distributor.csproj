@@ -83,6 +83,7 @@
   <ItemGroup>
     <Content Include="NServiceBus.Distributor.dll.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>

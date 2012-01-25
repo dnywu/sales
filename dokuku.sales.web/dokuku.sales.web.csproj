@@ -13,6 +13,7 @@
     <RootNamespace>dokuku.sales.web</RootNamespace>
     <AssemblyName>dokuku.sales.web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -444,6 +445,18 @@
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
     <Content Include="Views\login.html" />
+    <Content Include="webclient\sales\controllers\currency\create\addcurrency.css" />
+    <Content Include="webclient\sales\controllers\currency\create\create.html" />
+    <Content Include="webclient\sales\controllers\currency\create\create.js" />
+    <Content Include="webclient\sales\controllers\currency\create\create_test.js" />
+    <Content Include="webclient\sales\controllers\currency\create\funcunit.html" />
+    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs" />
+    <Content Include="webclient\sales\controllers\currency\currency.html" />
+    <Content Include="webclient\sales\controllers\currency\currency.js" />
+    <Content Include="webclient\sales\controllers\currency\currency_test.js" />
+    <Content Include="webclient\sales\controllers\currency\funcunit.html" />
+    <None Include="webclient\sales\controllers\currency\views\listcurrency.ejs" />
+    <Content Include="webclient\sales\controllers\currency\currency.css" />
     <Content Include="webclient\sales\controllers\customers\customer.css" />
     <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />
@@ -469,6 +482,11 @@
     <Content Include="webclient\sales\controllers\invoices\create\createinvoices.css" />
     <Content Include="webclient\sales\controllers\invoices\create\create_test.js" />
     <Content Include="webclient\sales\controllers\invoices\create\funcunit.html" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit.html" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit.js" />
+    <Content Include="webclient\sales\controllers\invoices\edit\editinvoices.css" />
+    <Content Include="webclient\sales\controllers\invoices\edit\edit_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.css" />
@@ -517,6 +535,11 @@
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.html" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.js" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser_test.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\funcunit.html" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.html" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering_test.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\autonumbering.css" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
@@ -774,7 +797,9 @@
     <Compile Include="modules\InvoiceModule.cs" />
     <Compile Include="modules\ItemModule.cs" />
     <Compile Include="modules\MainModule.cs" />
+    <Compile Include="modules\ModuleExtension.cs" />
     <Compile Include="modules\OrganizationModule.cs" />
+    <Compile Include="modules\PaymentModeModule.cs" />
     <Compile Include="modules\ServiceLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -922,6 +947,7 @@
     <None Include="webclient\sales\controllers\invoices\create\views\createinvoices.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs" />
     <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -945,8 +971,14 @@
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\nav\views\nav.ejs" />
+    <None Include="webclient\sales\controllers\nav\views\nav.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\restrictuser\views\init.ejs" />
+    <None Include="webclient\sales\controllers\setupautonumbering\views\setupautonumbering.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\setupautonumbering\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
@@ -1040,6 +1072,7 @@
       <Name>dokuku.security</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

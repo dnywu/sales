@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using dokuku.sales.config;
+using dokuku.sales.invoice.messages;
 using dokuku.sales.invoices.command;
 using dokuku.sales.invoices.model;
-using Newtonsoft.Json;
-using dokuku.sales.config;
+using dokuku.sales.invoices.query;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using Newtonsoft.Json;
 using NServiceBus;
-using dokuku.sales.invoice.messages;
-using MongoDB.Bson;
 namespace dokuku.sales.invoices.service
 {
     public class InvoiceService : IInvoiceService
@@ -33,7 +34,7 @@ namespace dokuku.sales.invoices.service
             string data = jsonInvoice;
             Invoices invoice = JsonConvert.DeserializeObject<Invoices>(data);
             string invoiceNumber = gen.GenerateInvoiceNumberDraft(ownerId);
-            FailIfInvoiceNumberAlreadyUsed(invoiceNumber,ownerId);
+            FailIfInvoiceNumberAlreadyUsed(invoiceNumber, ownerId);
 
             invoice._id = Guid.NewGuid();
             invoice.OwnerId = ownerId;
@@ -55,11 +56,23 @@ namespace dokuku.sales.invoices.service
 
             if (bus != null)
                 bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
-		}
+        }
         public void Delete(Guid id, string ownerId)
         {
             IsInvoiceStatusDraft(id, ownerId);
             invRepo.Delete(id, ownerId);
+        }
+        public void ApproveInvoice(Guid invoiceId, string ownerId)
+        {
+            Invoices invoice = invRepo.Get(invoiceId, ownerId);
+            if (invoice.Status != InvoiceStatus.DRAFT)
+                throw new Exception(String.Format("Status invoice '{0}' harus {1} sebelum dilakukan ganti status. Sedangkan status saat ini adalah {2}", invoice.InvoiceNo, InvoiceStatus.DRAFT, invoice.Status));
+
+            invoice.InvoiceStatusBelumBayar();
+            invRepo.UpdateInvoices(invoice);
+
+            if (bus != null)
+                bus.Publish(new InvoiceApproved { Data = invoice.ToJson<Invoices>() });
         }
 
         private void IsInvoiceStatusDraft(Guid id, string ownerId)
@@ -67,9 +80,9 @@ namespace dokuku.sales.invoices.service
             Invoices invoice = invRepo.Get(id, ownerId);
             if (invoice.Status.ToLower() != "draft")
                 throw new Exception("Hapus invoice gagal, status invoice bukan draft");
-		}
-		
-        private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber,string ownerId)
+        }
+
+        private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber, string ownerId)
         {
             Invoices inv = invRepo.GetInvByNumber(invoiceNumber, ownerId);
             if (inv != null)
@@ -84,6 +97,9 @@ namespace dokuku.sales.invoices.service
                 throw new ApplicationException("Invoice tidak ditemukan dalam database");
             invoice.InvoiceStatusSudahLunas();
             invRepo.Save(invoice);
+
+            if (bus != null)
+                bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
         }
 
         public void InvoicePartialyPaid(Guid invoiceId, string ownerId)
@@ -93,6 +109,36 @@ namespace dokuku.sales.invoices.service
                 throw new ApplicationException("Invoice tidak ditemukan dalam database");
             invoice.InvoiceStatusBelumLunas();
             invRepo.Save(invoice);
+
+            if (bus != null)
+                bus.Publish<InvoiceUpdate>(new InvoiceUpdate { Data = invoice.ToJson() });
         }
+
+        public void Cancel(Guid id, string cancelNote, string ownerId)
+        {
+            Invoices invoice = cancel(id, cancelNote, ownerId, false);
+            if (bus != null)
+                bus.Publish(new InvoiceCancelled { Data = invoice.ToJson<Invoices>() });
+        }
+        public void ForceCancel(Guid id, string cancelNote, string ownerId)
+        {
+            Invoices invoice = cancel(id, cancelNote, ownerId, true);
+            if (bus != null)
+                bus.Publish(new InvoiceForceCancelled { Data = invoice.ToJson<Invoices>() });
+        }
+        private Invoices cancel(Guid id, string cancelNote, string ownerId, bool forceCancel)
+        {
+            Invoices invoice = invRepo.Get(id, ownerId);
+            if (invoice == null)
+                throw new Exception("Invoice tidak ditemukan dalam database");
+            if (forceCancel && invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
+                throw new Exception(String.Format("Status invoice {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
+            if (String.IsNullOrWhiteSpace(cancelNote))
+                throw new Exception("Mohon catatan untuk batal diisi.");
+            invoice.InvoiceStatusBatal(cancelNote);
+            invRepo.UpdateInvoices(invoice);
+            return invoice;
+        }
+
     }
 }

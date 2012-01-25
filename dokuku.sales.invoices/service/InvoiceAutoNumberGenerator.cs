@@ -12,7 +12,7 @@ namespace dokuku.sales.invoices.service
     public class InvoiceAutoNumberGenerator : IInvoiceAutoNumberGenerator
     {
         const string DEFAULT_PREFIX = "INV-";
-        const string COMPANY_ID_FIELD = "CompanyId";
+        public const string COMPANY_ID_FIELD = "CompanyId";
         MongoConfig mongo;
         DateTime transactionDate;
         string companyId;
@@ -29,7 +29,7 @@ namespace dokuku.sales.invoices.service
         {
             this.transactionDate = transactionDate;
             this.companyId = companyId;
-            InvoiceAutoNumberConfig cfg = GetInvoiceAutoNumberConfig();
+            InvoiceAutoNumberConfig cfg = GetInvoiceAutoNumberConfig(companyId);
 
             switch (cfg.Mode)
             {
@@ -57,7 +57,7 @@ namespace dokuku.sales.invoices.service
 
             return invoiceAutoNumber;
         }
-        private InvoiceAutoNumberConfig GetInvoiceAutoNumberConfig()
+        public InvoiceAutoNumberConfig GetInvoiceAutoNumberConfig(string companyId)
         {
             MongoCollection<InvoiceAutoNumberConfig> collection =  mongo.MongoDatabase.GetCollection<InvoiceAutoNumberConfig>(typeof(InvoiceAutoNumberConfig).Name);
             InvoiceAutoNumberConfig cfg = collection.FindOneAs<InvoiceAutoNumberConfig>(Query.And(
@@ -117,6 +117,14 @@ namespace dokuku.sales.invoices.service
             }
 
             return invoiceAutoNumber;
+        }
+
+        public void SetupInvoiceAutoMumber(AutoNumberMode mode, string prefix, string companyId)
+        {
+           var config = GetInvoiceAutoNumberConfig(companyId);
+           config.SetupAutoNumber(mode, prefix);
+           MongoCollection<InvoiceAutoNumberConfig> collection = mongo.MongoDatabase.GetCollection<InvoiceAutoNumberConfig>(typeof(InvoiceAutoNumberConfig).Name);
+           collection.Save<InvoiceAutoNumberConfig>(config);
         }
     }
 
