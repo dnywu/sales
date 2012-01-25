@@ -67,12 +67,18 @@
     <Compile Include="item\ItemDeletedHandler.cs" />
     <Compile Include="item\ItemUpdatedHandler.cs" />
     <Compile Include="payment\InvoicePaidHandler.cs" />
+    <Compile Include="Handlers\TaxCreatedHandler.cs" />
+    <Compile Include="Handlers\TaxUpdatedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.currency.messages\dokuku.sales.currency.messages.csproj">
+      <Project>{8B2DDB22-5A9B-44B5-8BF3-E97787507886}</Project>
+      <Name>dokuku.sales.currency.messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
       <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
@@ -89,6 +95,10 @@
     <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
       <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
       <Name>dokuku.sales.payment.events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.taxes.messages\dokuku.sales.taxes.messages.csproj">
+      <Project>{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}</Project>
+      <Name>dokuku.sales.taxes.messages</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

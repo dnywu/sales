@@ -55,12 +55,14 @@ steal('jquery/controller',
             },
             '#tambahPelanggan click': function () {
                 new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
                 var addCust = new AddCustomer();
                 addCust.TriggerEvent();
             },
             '.additem click': function (el, ev) {
                 new ModalDialog("Tambah Barang Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
@@ -178,7 +180,7 @@ steal('jquery/controller',
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).val(amount);
+                $("#amount_" + index).val(amount.toFixed(2));
                 $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
@@ -218,12 +220,12 @@ steal('jquery/controller',
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();
                 $("#subtotaltext").text(String.format("{0:C}", subtotal));
-                $("#subtotal").val(subtotal);
+                $("#subtotal").val(subtotal.toFixed(2));
             },
             GetTotal: function () {
                 var total = inv.CalculateTotal();
                 $("#totaltext").text(String.format("{0:C}", total));
-                $("#total").val(total);
+                $("#total").val(total.toFixed(2));
             },
             SetDatePicker: function () {
                 var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
@@ -267,6 +269,36 @@ steal('jquery/controller',
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
+            },
+            '#selectcust keyup': function () {
+                var key = $('#selectcust').val();
+                if (key == "") {
+                    $('.DivSearchCustomer').hide();
+                }
+                else {
+                    var customer = inv.SearchCustomer(key);
+                    $('.DivSearchCustomer').show();
+                    $("table#tblSearchCustomer tbody#bodySearchCustomer").empty();
+                    $.each(customer, function (item) {
+                        $("table#tblSearchCustomer tbody#bodySearchCustomer").append(
+                        '<tr id="trSearchCustomer">' +
+                        '<td id="tdSearchCustomer" style="border-bottom:solid 1px grey">' +
+                          '<div class="DivNamaCustomer" id="' + customer[item]._id + '">' + customer[item].Name + '</div>' +
+                          '<div class="DivFieldCustomer">' + customer[item].Email + '</div>' +
+                          '<div class="DivFieldCustomer">' + customer[item].BillingAddress + '</div>' +
+                        '</td>' +
+                      '</tr>'
+                    );
+                    })
+                }
+            },
+            '.DivNamaCustomer click': function (el) {
+                var id = el.attr('id');
+                var name = el.text();
+                $('#selectcust').val(name);
+                $('#CustomerId').val(id);
+                $('#selectcust').change();
+                $('.DivSearchCustomer').hide();
             }
         })
           });

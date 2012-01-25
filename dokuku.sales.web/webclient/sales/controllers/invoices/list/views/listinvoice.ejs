@@ -60,10 +60,17 @@
                       <img class='' src='/sales/controllers/customers/images/setting.png'/>
                       </div>
                       <div class="ContextMenuInvoice" id="ContextMenuInvoice<%= i %>">
-                        <div class="EditImagContextMenu"></div>
+                      
+                        <div class="EditImagContextMenu invoiceImgContextMenu"></div>
                         <div class="itemContextMenuInvoice">
                           <span class="EditContextMenuInvoive" id="<%=this[i]._id%>">Ubah</span>
                         </div>
+                        
+                        <div class="ApproveImagContextMenu invoiceImgContextMenu"></div>
+                        <div class="itemContextMenuInvoice">
+                          <span class="ApproveContextMenuInvoive" id="<%=this[i]._id%>">Approve</span>
+                        </div>
+                        
                       </div>
                     </td>
                     <td>

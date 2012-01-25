@@ -45,6 +45,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.events
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.distributor", "dokuku.sales.payment.distributor\dokuku.sales.payment.distributor.csproj", "{2F70E826-B450-4F8A-800E-CB52E5FD45D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.currency", "dokuku.sales.currency\dokuku.sales.currency.csproj", "{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.currency.messages", "dokuku.sales.currency.messages\dokuku.sales.currency.messages.csproj", "{8B2DDB22-5A9B-44B5-8BF3-E97787507886}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.taxes", "dokuku.sales.taxes\dokuku.sales.taxes.csproj", "{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.taxes.messages", "dokuku.sales.taxes.messages\dokuku.sales.taxes.messages.csproj", "{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -139,6 +147,22 @@ Global
 		{2F70E826-B450-4F8A-800E-CB52E5FD45D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F70E826-B450-4F8A-800E-CB52E5FD45D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F70E826-B450-4F8A-800E-CB52E5FD45D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B2DDB22-5A9B-44B5-8BF3-E97787507886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B2DDB22-5A9B-44B5-8BF3-E97787507886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B2DDB22-5A9B-44B5-8BF3-E97787507886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B2DDB22-5A9B-44B5-8BF3-E97787507886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
