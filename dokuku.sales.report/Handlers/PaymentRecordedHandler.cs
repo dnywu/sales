@@ -6,6 +6,8 @@ using NServiceBus;
 using dokuku.sales.payment.messages;
 using dokuku.sales.config;
 using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 namespace dokuku.sales.report.Handlers
 {
     public class PaymentRecordedHandler : IHandleMessages<PaymentIsRecorded>
@@ -38,6 +40,10 @@ namespace dokuku.sales.report.Handlers
             index["PONo"] = doc["PONo"];
             Collections.Save(index);
             Collections.EnsureIndex(IndexKeys.Descending("Keywords"), IndexOptions.SetName("Keywords"));
+        }
+        private MongoCollection Collections
+        {
+            get { return Mongo.MongoDatabase.GetCollection(CollectionName.PAYMENT_REPORTS); }
         }
     }
 }

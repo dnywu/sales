@@ -27,7 +27,7 @@ namespace dokuku.sales.web.modules
                 Customer[] result = this.CustomerReportRepository().LimitCustomers(account.OwnerId, start, limit).ToArray();
                 return Response.AsJson(result);
             };
-            Delete["/DeleteCustomer/id/{id}"] = p =>
+            Delete["/DeleteCustomer/{id}"] = p =>
             {
                 try
                 {
@@ -60,7 +60,7 @@ namespace dokuku.sales.web.modules
                     return Response.AsRedirect(ex.Message);
                 }
             };
-            Get["/GetDataCustomer/id/{id}"] = p =>
+            Get["/GetDataCustomer/{id}"] = p =>
             {
                 Guid id = p.id;
                 return Response.AsJson(this.CustomerReportRepository().GetCustomerById(id));
@@ -79,7 +79,7 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsJson("OK");
                 };
-            Get["/SearchCustomer/key/{key}"] = p =>
+            Get["/SearchCustomer/{key}"] = p =>
                 {
                     string key = p.key;
                     Account ownerId = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
