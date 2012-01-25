@@ -6,7 +6,7 @@ using dokuku.sales.domainevents;
 using dokuku.sales.payment.domainevents;
 using NServiceBus;
 using dokuku.sales.payment.messages;
-namespace dokuku.sales.payment.host
+namespace dokuku.sales.payment.service
 {
     public class InvoiceFullPaidHandler : Handles<InvoiceSudahLunas>
     {

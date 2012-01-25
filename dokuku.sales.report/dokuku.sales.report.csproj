@@ -93,6 +93,7 @@
     <Compile Include="Handlers\ItemCreatedHandler.cs" />
     <Compile Include="Handlers\ItemDeletedHandler.cs" />
     <Compile Include="Handlers\ItemUpdatedHandler.cs" />
+    <Compile Include="Handlers\PaymentRecordedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
