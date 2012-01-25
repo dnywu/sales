@@ -79,10 +79,9 @@ steal('jquery/controller',
                     $('#body').sales_invoices_edit('load', id);
                 },
                 '.ApproveContextMenuInvoive click': function (el) {
-                    //var id = el.attr('id');
-                    var index = $(this).attr("id");
-                    var no = $("#invoiceId_" + index).val();
-                    result = inv.ApproveInvoiceByID(no);
+                    var id = el.attr('id');
+                    result = inv.ApproveInvoiceByID(id);
+                    $("#body").sales_invoices_list('load');
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();

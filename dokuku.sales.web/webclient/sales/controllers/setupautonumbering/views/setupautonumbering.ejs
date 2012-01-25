@@ -3,10 +3,10 @@
     <div class="HeaderDIVLeft" id="TitleSpan">Setup Auto Numbering</div>
   </div>
   <div class="error" id="errorCreateItemDiv"></div>
+  <div id="successMessage">&nbsp;</div>
   <div class="mainDivWidth">
     <form id="autoNumberForm">
       <div class="ie-form AutoNumberFormDiv">
-        <div id="successAlert"></div>
         <table>
           <tbody>
             <tr>
@@ -14,9 +14,9 @@
                 <span class="requiredFieldLabel">Mode</span>
               </td>
               <td class="autonumberfield">
-                <input type="radio" name="Mode" id="mode" value="0"/> Default
-                <p><input type="radio" name="Mode" id="mode" value="1"/> Yearly</p>
-                <p><input type="radio" name="Mode" id="mode" value="2"/> Monthly</p>
+                <input type="radio" name="Mode" id="mode" value="0" class="default"/> Default
+                <p><input type="radio" name="Mode" id="mode" value="1" class="yearly"/> Yearly</p>
+                <p><input type="radio" name="Mode" id="mode" value="2" class="monthly"/> Monthly</p>
               </td>
             </tr>
             <tr>
