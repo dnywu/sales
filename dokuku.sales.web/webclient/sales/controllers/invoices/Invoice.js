@@ -126,6 +126,10 @@
     },
     GetInvoiceDataFromView: function () {
         var length = $("#itemInvoice > tbody > tr").size();
+        
+        //var SubAmt = $("#subtotal").val();
+        //var TotalAmt = $("#total").val();
+
         var objInv = new Object;
         objInv._id = $("#invoiceId").val();
         objInv.Customer = $("#selectcust").val();
