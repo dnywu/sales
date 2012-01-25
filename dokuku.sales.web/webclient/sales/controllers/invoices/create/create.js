@@ -116,7 +116,6 @@ steal('jquery/controller',
                 $(".resultItemDiv").remove();
                 $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
             },
-
             '.partname change': function (el) {
                 var partName = el.val();
                 var index = el.attr("id").split('_')[1];
@@ -135,14 +134,13 @@ steal('jquery/controller',
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
             '.partname keyup': function (el) {
+                var indexposition = 0;
+                if (el.keycode == 34) {
+                    $("#itemList tr:nth-first(" + indexposition++ + ") td").addClass("selected");
+                }
                 var searchResultList = null;
                 var searchResult = itmRepo.SearchItem(el.val());
-                $(".resultItemDiv").show();
-                $("#itemList").empty();
-                $.each(searchResult, function (index) {
-                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "'><div id='itemName" + index + "'>" + searchResult[index].Name + "</div></td></tr>");
-                    searchResultList.appendTo($("#itemList"));
-                });
+                this.RenderToSearchList(searchResult);
             },
             '.itemTd click': function (el) {
                 var index = el.attr("id");
@@ -268,6 +266,14 @@ steal('jquery/controller',
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
+            },
+            RenderToSearchList: function (searchResult) {
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "'><div id='itemName" + index + "'>" + searchResult[index].Name + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
             }
         })
           });

@@ -163,7 +163,7 @@ div.resultItemDiv
 {
 	cursor:pointer;
 }
-.itemTd:hover
+.itemTd:hover, .selected
 {
 	color:Green;
 }
