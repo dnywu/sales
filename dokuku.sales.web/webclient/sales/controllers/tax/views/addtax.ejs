@@ -12,16 +12,16 @@
 
             </td>
             <td class="td_field">
-              <input type="text" name="Name" id="inputText_CustomerName" placeholder="Nama Pajak" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+              <input type="text" name="Name" id="inputText_PajakName" placeholder="Nama Pajak" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
             </td>
             <td class="error"></td>
           </tr>
           <tr>
             <td>
-              <div class="mandatoryTxt">Persentase</div>
+              <div class="mandatoryTxt">Persentase (%)</div>
             </td>
             <td class="td_field">
-              <input type="text" name="Name" id="inputText_CustomerName" placeholder="Persentase" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+              <input type="text" name="Name" id="inputText_Persentage" placeholder="Persentase" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
             </td>
             <td class="error"></td>
           </tr>
@@ -29,7 +29,7 @@
             <td class="labelLeft">Pajak Tambahan?</td>
             <td class="td_field" colspan="2">
               <div class="checkboxLabelDiv">
-                <input type="checkbox" name="checkbox_separateShipping" id="seperateShipping" class="seperateShipping"/>
+                <input type="checkbox" name="checkbox_pajak" id="seperateShipping" class="seperateShipping"/>
                 <label for="seperateShipping" class="labelStyle">Ya, pajak ini merupakan pajak tambahan.</label>
               </div>
             </td>
@@ -41,9 +41,9 @@
     <div style="margin-top:30px">
       <p align="center" style="font-size:11px">
         <input type="hidden" id="keywords" name="keywords"></input>
-        <input id="EditCustomerSave" type="submit" class="CreateCustomerBtn" name="save" value="Save"/>
-        or
-        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Cancel</span>
+        <input id="TaxSave" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
+        atau
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Batal</span>
       </p>
     </div>
   </div>

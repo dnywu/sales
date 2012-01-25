@@ -9,24 +9,27 @@ steal('jquery/controller',
 	    $.Controller('Sales.Controllers.Tax',
 	    /** @Static */
 {
-defaults: {}
+defaults: (currandtaxRepo = new CurrencyandTaxRepository())
 },
 	    /** @Prototype */
 {
 init: function () {
-    var CurrencyandTaxRepo = new CurrencyandTaxRepository();
-    CurrencyandTaxRepo.getAllTax();
+    var currandtaxRepo = new CurrencyandTaxRepository()
+    currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
 },
 load: function () {
-    var CurrencyandTaxRepo = new CurrencyandTaxRepository();
-    CurrencyandTaxRepo.getAllTax();
+    var currandtaxRepo = new CurrencyandTaxRepository()
+    currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
 },
 viewAddTax: function () {
     this.element.html(this.view('//sales/controllers/tax/views/addtax.ejs'));
+},
+'#TaxSave click': function () {
+
 }
 
 })
 
-	});
+});
