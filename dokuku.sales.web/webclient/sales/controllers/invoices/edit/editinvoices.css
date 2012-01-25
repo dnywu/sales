@@ -1,4 +1,4 @@
-﻿div.divcontainerFormInvoice{
+﻿/*div.divcontainerFormInvoice{
 	width:80%;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
@@ -86,4 +86,152 @@ label#keteranganSelectCust
 {
     color:Red;
     font-size:11px;
+}
+*/
+
+
+div.divcontainerFormInvoice{
+	width:80%;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	padding-bottom:20px;
+	margin-bottom:20px;
+}
+div.divheaderFormInvoice
+{
+    width:95.6%;
+    color: #777;
+    font-size:18px;
+    background:#F7F7F7;
+    padding: 20px;
+}
+div.newInvoiceContain{padding: 0 25px;}
+div.divInvoiceGroup
+{
+	margin:20px;
+	padding:20px;
+	border-top : 1px solid #ECECEC;
+	border-bottom : 1px solid #ECECEC;
+	background: #F7F7F7;
+}
+table#itemInvoice
+{
+    margin:20px;
+    width:95.6%;
+    border-collapse:collapse;
+    padding:0px;
+    position:inherit;
+}
+table#itemInvoice thead
+{
+    background-color:#F7F7F7;
+    color:#777;
+    font-size:11px;
+    font-weight:bold;
+}
+table#itemInvoice td{padding-top:10px;padding-bottom:10px;}
+table#itemInvoice td.barang{width:170px;}
+table#itemInvoice td.desc{width:210px;}
+table#itemInvoice td.qty{width:70px;}
+table#itemInvoice td.rate{width:70px;}
+table#itemInvoice td.disc{width:70px;}
+table#itemInvoice td.tax{width:100px;}
+table#itemInvoice td.dltItem{width:10px;}
+table#itemInvoice td input,table#itemInvoice td textarea,table#itemInvoice td select
+{
+    width:100%;
+    border:1px Solid #a2ddff;
+    font-size:11px;
+}
+table#itemInvoice tbody{font-size:12px;color:#777;}
+table#itemInvoice tbody tr td{vertical-align:top;border-bottom:1px solid #eaeaea;}
+table#itemInvoice tbody tr:hover{background-color:#FAFAFA;}
+table#itemInvoice tfoot{font-size:11px;}
+table#itemInvoice tfoot td.borderbottom{border-bottom:1px Solid #eaeaea;}
+table#itemInvoice tfoot td.graybgcolor{background-color:#F7F7F7;}
+.boldlabel{font-size: 11px;color: #666;font-weight: bold;}
+.CustomerMessageTxtArea, .TermsandConditionsTxtArea {
+    width: 96%;
+    height: 86px;
+    padding: 5px;
+    border: 1px solid #ACD2E7;
+    border-image: initial;
+}
+span#addItemRowEdit{cursor:pointer;color:#DE7110;text-decoration:underline;}
+span#addItemRowEdit:hover{color:#4183C4;}
+.TermsandConditionsTxtArea {height: 86px;}
+div.clsDeleteItem{display:none;color:#d80000;cursor:pointer;font-weight:bold;}
+span.amount{text-align:right;float:right;}
+tr.errItemNotFound{background-color:#fff5f5;}
+label#currency
+{
+    display:none;
+    background-color:#8BC464;
+    color:#fff;
+    padding: 2px 3px 2px 3px;
+}
+label#keteranganSelectCust{color:Red;font-size:11px;}
+label#tambahPelangganEdit, label#moreFieldCustomer{font-size:11px;color:Blue;text-decoration:underline;cursor:pointer;}
+label#tambahPelangganEdit:hover, label#moreFieldCustomer:hover{color:#4183C4;}
+div.submitAddCust{margin-top:20px;text-align:center;}
+table.hiddenTable{display:none;}
+label.additem{font-size:11px;color:Blue;text-decoration:underline;cursor:pointer;}
+label.additem:hover{color:#4183C4;}
+#firstNameCust{width:193px;}
+form#formAddCustDialog{color:#666;}
+form#formNewItem{color:#666;}
+td.labelLeft
+{
+    font-size: 11px;
+    font-weight: bold;
+    text-align: right;
+    padding: 5px 10px 5px 10px;
+    white-space: nowrap;
+    color: #666;
+    width: 152px;
+}
+input.extRateLeftDIV {
+    width: 53px;
+    height: 14px;
+    float: left;
+    text-align: center;
+    background-color: #FEFFD8;
+    border: 1px solid #D5BF8B;
+    color: black;
+    padding: 3px;
+    white-space: nowrap;
+    border-image: initial;
+}
+input.extRateCenterInput
+{
+    margin:0;
+    border-left: none;
+    width: 148px;
+    height: 17px;
+    float: left;
+    border-right: none;
+    border:0;
+    border-top: 1px solid #ACD2E7;
+    border-bottom: 1px solid #ACD2E7;
+    padding-top:2px;
+}
+input.exchangeRateTxtBox {
+    width: 53px;
+    height: 14px;
+    float: right;
+    text-align: center;
+    background-color: #FEFFD8;
+    border: 1px solid #D5BF8B;
+    color: black;
+    padding: 3px;
+    white-space: nowrap;
+    border-image: initial;
+}
+div#divExchangeRate
+{
+    display:none;
 }

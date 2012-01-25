@@ -72,8 +72,13 @@ steal('jquery/controller',
                 if (dataCust != null) {
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
-                        this.ShowExchangRate(dataCust.Currency, baseCcy);
+                        $("#divExchangeRate").show();
+                        //this.ShowExchangRate(dataCust.Currency, baseCcy);
+                    } else {
+                        $("#divExchangeRate").hide();
                     }
+
+                    this.ShowExchangRate(dataCust.Currency, baseCcy);
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
                     $("#CustomerId").val(dataCust._id);
@@ -103,6 +108,12 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
             },
+            '.partname focus': function (el) {
+                var index = el.attr("id").split('_')[1];
+                $(".resultItemDiv").remove();
+                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
+            },
+
             '.partname change': function (el) {
                 var partName = el.val();
                 var index = el.attr("id").split('_')[1];
@@ -119,6 +130,25 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            },
+            '.partname keyup': function (el) {
+                var searchResultList = null;
+                var searchResult = itmRepo.SearchItem(el.val());
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "'><div id='itemName" + index + "'>" + searchResult[index].Name + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
+            },
+            '.itemTd click': function (el) {
+                var index = el.attr("id");
+                $('#part_' + $('.resultItemDiv').attr("id").split('_')[1]).val($("div#itemName" + index).text());
+                $(".partname").change();
+                $(".resultItemDiv").remove();
+            },
+            '.resultItemDiv mouseleave': function () {
+                $(".resultItemDiv").remove();
             },
             '.quantity change': function (el) {
                 this.CalculateItem(el);
@@ -170,7 +200,7 @@ steal('jquery/controller',
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
-                                    "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
+                                    "<input type='text' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
@@ -231,7 +261,7 @@ steal('jquery/controller',
             },
             ShowExchangRate: function (custCcy, baseCcy) {
                 $("#curr").text(custCcy);
-                $("#divExchangeRate").show();
+
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);

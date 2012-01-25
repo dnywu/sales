@@ -12,7 +12,7 @@
         $("#moreFieldCustomer").click(this.MoreFieldAddCust);
         $("#btnCancelAddCust").click(this.CloseAddCustDialog);
         $("#createCust").click(this.AddCust);
-    }, 
+    },
     MoreFieldAddCust: function () {
         $("tr#trmoreFieldCustomer").remove();
         $("table.hiddenTable").show();
@@ -43,6 +43,7 @@
                     $("#CustomerId").val(data._id);
                     $("#selectcust").val(data.Name);
                     $("#currency").text(customer.Currency).show();
+                    $("#selectcust").change();
                 }
             }
         });

@@ -49,7 +49,11 @@ steal('jquery/controller',
                 this.ShowCurrencyToView();
                 this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", invoice);
                 this.ShowExchangRate(invoice.Currency,invoice.BaseCcy, invoice.ExchangeRate);
-                $("#currency").text(invoice.Currency).show();
+                if (invoice.BaseCcy != invoice.Currency) {
+                    $("#divExchangeRate").show();
+                } else {
+                    $("#divExchangeRate").hide();
+                }
                 this.LoadListItem(count, invoice.Items);
                 this.SetDatePicker();
                 this.selectTerm(term);
@@ -61,7 +65,7 @@ steal('jquery/controller',
                 dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             },
-            '#tambahPelanggan click': function () {
+            '#tambahPelangganEdit click': function () {
                 new ModalDialog("Tambah Pelanggan Baru");
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
                 var addCust = new AddCustomer();
@@ -88,7 +92,7 @@ steal('jquery/controller',
                 $("#selectcust").focus().select();
                 */
             },
-            '#addItemRow click': function () {
+            '#addItemRowEdit click': function () {
                 this.CreateListItem(1);
             },
             '#itemInvoice tbody tr hover': function (el) {
@@ -200,7 +204,7 @@ steal('jquery/controller',
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "' value='" + item[i].Rate + "'></input>" +
                                     "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "' value='" + item[i].BaseRate + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "' value='" + item[i].Discount + "'></input></td>" +
-                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
+                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
@@ -276,7 +280,6 @@ steal('jquery/controller',
             },
             ShowExchangRate: function (custCcy, baseCcy,ExchangeRate) {
                 $("#curr").text(custCcy);
-                $("#divExchangeRate").show();
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
