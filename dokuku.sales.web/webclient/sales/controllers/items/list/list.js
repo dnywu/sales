@@ -11,16 +11,18 @@ steal('jquery/controller',
 	    $.Controller('sales.Controllers.items.list',
 
         {
-            defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null)
+            defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null, baseCcy = null)
         },
         {
             init: function () {
                 $this = this;
+                this.SetCurrency();
                 this.element.html(this.view("//sales/controllers/items/list/views/ItemList.ejs"));
                 this.RequestNumberOfItem();
             },
             load: function () {
                 $this = this;
+                this.SetCurrency();
                 this.element.html(this.view("//sales/controllers/items/list/views/ItemList.ejs"));
                 this.RequestNumberOfItem();
             },
@@ -56,9 +58,12 @@ steal('jquery/controller',
                     '<td class="itemList" id="settingPanel' + item + '"></td>' +
                     '<td class="itemList itemName"><div class="itemName">' + data[item].Name + '</div>' +
                     '<div class="itemDesc">' + data[item].Description + '</div></td>' +
-                    '<td class="itemList itemPrice">Rp. ' + String.format("{0:C}",data[item].Rate) + '</td></tr>');
+                    '<td class="itemList itemPrice"><span class="ccy"></span>' + String.format("{0:C}", data[item].Rate) + '</td></tr>');
                     $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
+                    
+                    $this.ShowCurrencyToView();
                 });
+                
                 $('.trDataItem:odd').addClass('odd');
             },
             "table.ItemList tbody tr hover": function (el) {
@@ -211,6 +216,20 @@ steal('jquery/controller',
                     ajaxStart: $this.LoadingListItem,
                     success: $this.requestAllItemSuccess
                 });
+            },
+            SetCurrency: function () {
+                Sales.Models.Currency.findOne({ id: '1' }, function (data) {
+                    baseCcy = data.curr;
+                });
+            },
+            ShowCurrencyToView: function () {
+                var ccyCode = null;
+                if (baseCcy == "IDR") {
+                    ccyCode = "Rp "
+                } else {
+                    ccyCode = "$ "
+                }
+                $(".ccy").text(ccyCode);
             }
         })
 

@@ -34,11 +34,17 @@
     },
     ShowListItem: function (part, index) {
         $("#baseprice_" + index).val(part.Rate);
-        if (!isDifferentCcy) {
+        //if (!isDifferentCcy) {
             part.Rate = part.Rate / $("#custRate").val();
-            part.Rate = part.Rate * 100;
-            part.Rate = Math.ceil(part.Rate.toFixed(2)) / 100;
-        }
+            //normal
+            part.Rate = part.Rate.toFixed(2)
+            //up
+            /*
+            part.Rate = part.Rate.toFixed(3) * 100;
+            part.Rate = Math.ceil(part.Rate);
+            part.Rate = part.Rate / 100;
+            */
+        //}
         $("#partid_" + index).val(part._id);
         $("#part_" + index).val(part.Name);
         $("#desc_" + index).text(part.Description);
@@ -55,14 +61,14 @@
             if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
                 var index = $('#itemInvoice tbody tr').get(i).id;
                 var index = index.split('_')[1];
-                $this.CalculateItem_onChangeRate(index, rate);
+                $this.CalculateItemOnChangeRate(index, rate);
             }
         });
     },
-    CalculateItem_onChangeRate: function (index, ccy) {
+    CalculateItemOnChangeRate: function (index, ccy) {
         var Rate = $("#baseprice_" + index).val() / $("#custRate").val();
         Rate = Rate.toFixed(2);
-        Rate = Math.ceil(Rate);
+        //Rate = Math.ceil(Rate);
         $("#rate_" + index).val(Rate);
         var amount = inv.CalculateAmountPerItem($("#qty_" + index).val(), Rate, $("#disc_" + index).val());
         $("#amount_" + index).val(amount);
@@ -165,16 +171,21 @@
             return;
         }
 
+
         $("#errorCreateInv").empty().hide();
+
+        return JSON.stringify(objInv);
+        /*
         var newInv = JSON.stringify(objInv);
         $.ajax({
-            type: 'POST',
-            url: '/createinvoice',
-            data: { 'invoice': newInv },
-            dataType: 'json',
-            async: false,
-            success: this.CreateInvoiceCallBack
+        type: 'POST',
+        url: '/createinvoice',
+        data: { 'invoice': newInv },
+        dataType: 'json',
+        async: false,
+        success: this.CreateInvoiceCallBack
         });
+        */
     },
     CreateInvoiceCallBack: function (data) {
         if (data.error == true) {

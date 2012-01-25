@@ -48,6 +48,7 @@
                     $("#errorAddCust").text(data).show();
                     return;
                 }
+                $(".ModalDialog").remove();
                 $this.CloseAddItemDialog;
                 inv.ShowListItem(data, index);
                 $this.GetSubTotal();

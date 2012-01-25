@@ -15,14 +15,15 @@ namespace dokuku.sales.payment.service
         public void Handle(InvoiceApproved message)
         {
             BsonDocument invoice = BsonDocument.Parse(message.InvoiceJson);
+            BsonBinaryData invoiceId = (BsonBinaryData)invoice["_id"];
             InvoicePayment paymentInvoice = new InvoicePayment(
-                Guid.NewGuid(),
+                (Guid)invoiceId.RawValue,
                 invoice["OwnerId"].ToString(),
-                new Invoice(Guid.Parse(invoice["_id"].ToString()),
+                new Invoice((Guid)invoiceId.RawValue,
                     invoice["InvoiceNo"].ToString(),
                     Convert.ToDecimal(invoice["Total"])),
                 Guid.Parse(invoice["CustomerId"].ToString()));
-            Mongo.MongoDatabase.GetCollection(typeof(InvoicePayment).Name).Save(paymentInvoice);
+            Mongo.MongoDatabase.GetCollection<InvoicePayment>(typeof(InvoicePayment).Name).Save<InvoicePayment>(paymentInvoice);
         }
     }
 }

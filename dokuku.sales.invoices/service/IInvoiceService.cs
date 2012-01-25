@@ -15,5 +15,6 @@ namespace dokuku.sales.invoices.service
         void Delete(Guid id, string ownerId);
         void ApproveInvoice(Guid invoiceId, string ownerId);
         void Cancel(Guid id, string cancelNote, string ownerId);
+        void ForceCancel(Guid id, string cancelNote, string ownerId);
     }
 }
