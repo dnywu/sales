@@ -134,6 +134,10 @@
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
+      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
+      <Name>dokuku.sales.payment</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

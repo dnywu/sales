@@ -6,6 +6,7 @@ using NServiceBus;
 using dokuku.sales.payment.messages;
 using dokuku.sales.config;
 using MongoDB.Bson;
+using MongoDB.Driver.Builders;
 namespace dokuku.sales.report.Handlers
 {
     public class PaymentRecordedHandler : IHandleMessages<PaymentIsRecorded>
