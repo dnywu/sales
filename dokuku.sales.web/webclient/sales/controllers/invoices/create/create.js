@@ -65,13 +65,16 @@ steal('jquery/controller',
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
             },
-            '#selectcust change': function (el, ev) {
+//            '#selectcust change': function (el, ev) {
+//                this.CheckNameCutomer(el.val());
+//            },
+            CheckNameCutomer : function(name){
                 isDifferentCcy = true;
                 $("#divExchangeRate").hide();
                 $("#custCcyCode").val(baseCcy);
                 $("#keteranganSelectCust").empty();
                 this.ShowCurrencyToView();
-                var dataCust = custRepo.GetCustomerByName(el.val());
+                var dataCust = custRepo.GetCustomerByName(name);
                 if (dataCust != null) {
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
@@ -89,7 +92,7 @@ steal('jquery/controller',
                 }
                 $("#CustomerId").val("0");
                 $("#currency").hide();
-                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#keteranganSelectCust").text("Pelanggan '" + name + "' tidak ditemukan");
                 $("#selectcust").focus().select();
             },
             '#addItemRow click': function () {
@@ -268,7 +271,12 @@ steal('jquery/controller',
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
             },
-            '#selectcust keyup': function () {
+            '#selectcust keyup': function (el, ev) {
+                if (ev.keyCode == "13") {
+                    this.CheckNameCutomer(el.val());
+                    $('.DivSearchCustomer').hide();
+                    return;
+                }
                 var key = $('#selectcust').val();
                 if (key == "") {
                     $('.DivSearchCustomer').hide();
@@ -295,8 +303,8 @@ steal('jquery/controller',
                 var name = el.text();
                 $('#selectcust').val(name);
                 $('#CustomerId').val(id);
-                $('#selectcust').change();
+                this.CheckNameCutomer(name);
                 $('.DivSearchCustomer').hide();
-            }
+            },
         })
           });
