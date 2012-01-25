@@ -1123,7 +1123,6 @@
     <None Include="webclient\sales\controllers\setupautonumbering\views\setupautonumbering.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\setupautonumbering\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
