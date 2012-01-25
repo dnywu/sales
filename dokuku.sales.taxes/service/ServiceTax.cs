@@ -21,12 +21,16 @@ namespace dokuku.sales.taxes.service
             _collections = mongo.MongoDatabase.GetCollection(typeof(Taxes).Name);
             _bus = bus;
         }
-        public void Create(Taxes tax)
+        public Taxes Create(string taxJson,string ownerId)
         {
+            Taxes tax = Newtonsoft.Json.JsonConvert.DeserializeObject<Taxes>(taxJson);
+            tax.OwnerId = ownerId;
+            tax._id = Guid.NewGuid();
             _collections.Save(tax);
 
             if (_bus != null)
                 _bus.Publish(new TaxCreated { TaxJson = tax.ToJson() });
+            return tax;
         }
         public void Update(Taxes tax)
         {

@@ -13,5 +13,6 @@ namespace dokuku.sales.report.Handlers
         public const string INVOICE_REPORTS = "InvoiceReports";
         public const string PAYMENT_REPORTS = "PaymentReports";
         public const string TAX_REPORTS = "TaxReports";
+        public const string CURRENCY_REPORTS = "CurrencyReports";
     }
 }

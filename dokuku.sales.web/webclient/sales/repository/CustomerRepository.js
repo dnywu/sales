@@ -22,7 +22,7 @@
         var customer = null;
         $.ajax({
             type: 'GET',
-            url: '/GetDataCustomer/id/' + id,
+            url: '/GetDataCustomer/' + id,
             dataType: 'json',
             async: false,
             success: function (data) {

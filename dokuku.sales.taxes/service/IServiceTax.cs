@@ -8,8 +8,8 @@ namespace dokuku.sales.taxes.service
 {
     public interface IServiceTax
     {
-        void Create(Taxes tax);
-        void Update(Taxes tax);
+        Taxes Create(string taxJson,string ownerId);
+        void Update(Taxes tax, string ownerId);
         void Delete(Guid guid);
     }
 }

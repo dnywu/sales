@@ -16,6 +16,10 @@ using dokuku.sales.invoices.service;
 using dokuku.sales.customer.Service;
 using dokuku.sales.payment.service;
 using Nancy;
+using dokuku.sales.taxes.service;
+using dokuku.sales.taxes.query;
+using dokuku.sales.currency.service;
+using dokuku.sales.currency.report;
 
 namespace dokuku.sales.web.modules
 {
@@ -77,6 +81,22 @@ namespace dokuku.sales.web.modules
         public static IPaymentModeService PaymentModeService(this NancyModule module)
         {
             return ObjectFactory.GetInstance<IPaymentModeService>();
+        }
+        public static IServiceTax ServiceTax(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IServiceTax>();
+        }
+        public static ITaxQueryRepository TaxQueryRepository(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<ITaxQueryRepository>();
+        }
+        public static ICurrencyService CurrencyService(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<ICurrencyService>();
+        }
+        public static ICurrencyQueryRepository CurencyQueryRepo(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<ICurrencyQueryRepository>();
         }
     }
 }

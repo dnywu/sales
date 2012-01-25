@@ -42,7 +42,7 @@
         var dataInvoice = new Array();
         $.ajax({
             type: 'GET',
-            url: '/GetAllTax',
+            url: '/GetAllCurrency',
             dataType: 'json',
             async: false,
             success: function (data) {
