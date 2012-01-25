@@ -62,7 +62,7 @@ namespace dokuku.sales.invoices.service
             IsInvoiceStatusDraft(id, ownerId);
             invRepo.Delete(id, ownerId);
         }
-        public void UpdateStatusToAprrove(Guid invoiceId, string ownerId)
+        public void ApproveInvoice(Guid invoiceId, string ownerId)
         {
             Invoices invoice = invRepo.Get(invoiceId, ownerId);
             if (invoice.Status != InvoiceStatus.DRAFT)
@@ -107,5 +107,32 @@ namespace dokuku.sales.invoices.service
             invoice.InvoiceStatusBelumLunas();
             invRepo.Save(invoice);
         }
+
+        public void Cancel(Guid id, string cancelNote, string ownerId)
+        {
+            Invoices invoice = cancel(id, cancelNote, ownerId, false);
+            if (bus != null)
+                bus.Publish(new InvoiceCancelled { Data = invoice.ToJson<Invoices>() });
+        }
+        public void ForceCancel(Guid id, string cancelNote, string ownerId)
+        {
+            Invoices invoice = cancel(id, cancelNote, ownerId, true);
+            if (bus != null)
+                bus.Publish(new InvoiceForceCancelled { Data = invoice.ToJson<Invoices>() });
+        }
+        private Invoices cancel(Guid id, string cancelNote, string ownerId, bool forceCancel)
+        {
+            Invoices invoice = invRepo.Get(id, ownerId);
+            if (invoice == null)
+                throw new Exception("Invoice tidak ditemukan dalam database");
+            if (forceCancel && invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
+                throw new Exception(String.Format("Status invoice {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
+            if (String.IsNullOrWhiteSpace(cancelNote))
+                throw new Exception("Mohon catatan untuk batal diisi.");
+            invoice.InvoiceStatusBatal(cancelNote);
+            invRepo.UpdateInvoices(invoice);
+            return invoice;
+        }
+
     }
 }

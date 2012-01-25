@@ -36,8 +36,14 @@
         $("#baseprice_" + index).val(part.Rate);
         if (!isDifferentCcy) {
             part.Rate = part.Rate / $("#custRate").val();
-            part.Rate = part.Rate * 100;
-            part.Rate = Math.ceil(part.Rate.toFixed(2)) / 100;
+            //normal
+            part.Rate = part.Rate.toFixed(2)
+            //up
+            /*
+            part.Rate = part.Rate.toFixed(3) * 100;
+            part.Rate = Math.ceil(part.Rate);
+            part.Rate = part.Rate / 100;
+            */
         }
         $("#partid_" + index).val(part._id);
         $("#part_" + index).val(part.Name);
@@ -55,16 +61,16 @@
             if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
                 var index = $('#itemInvoice tbody tr').get(i).id;
                 var index = index.split('_')[1];
-                $this.CalculateItem_onChangeRate(index, rate);
+                $this.CalculateItemOnChangeRate(index, rate);
             }
         });
     },
-    CalculateItem_onChangeRate: function (index, ccy) {
+    CalculateItemOnChangeRate: function (index, ccy) {
         var Rate = $("#baseprice_" + index).val() / $("#custRate").val();
-        Rate = Rate * 100;
-        Rate = Math.ceil(Rate.toFixed(2)) / 100;
+        Rate = Rate.toFixed(2);
+        //Rate = Math.ceil(Rate);
         $("#rate_" + index).val(Rate);
-        var amount = inv.CalculateAmountPerItem($("#qty_"  + index).val(), Rate, $("#disc_" + index).val());
+        var amount = inv.CalculateAmountPerItem($("#qty_" + index).val(), Rate, $("#disc_" + index).val());
         $("#amount_" + index).val(amount);
         $("#amounttext_" + index).text(String.format("{0:C}", amount));
         $this.GetSubTotal();
@@ -137,6 +143,7 @@
         objInv.SubTotal = $("#subtotal").val();
         objInv.Total = $("#total").val();
         objInv.ExchangeRate = $("#custRate").val();
+        objInv.BaseCcy = $("#baseCcy").val();
         objInv.Currency = $("#custCcyCode").val();
         objInv.Items = new Array;
         $('#itemInvoice tbody tr').each(function (i) {
@@ -180,7 +187,7 @@
             $("#errorCreateInv").text(data.message).show();
             return;
         } else {
-            $("#body").sales_invoices_invoicedetail('load',data);
+            $("#body").sales_invoices_invoicedetail('load', data);
         }
     },
     GetDataInvoice: function () {

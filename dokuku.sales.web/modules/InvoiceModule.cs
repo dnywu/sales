@@ -10,7 +10,7 @@ using System.Collections.Generic;
 
 namespace dokuku.sales.web.modules
 {
-    public class InvoiceModule: Nancy.NancyModule
+    public class InvoiceModule : Nancy.NancyModule
     {
         public InvoiceModule()
         {
@@ -19,18 +19,17 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    Invoices result = this.InvoiceService().Create(this.Request.Form.invoice, this.Context.CurrentUser.UserName);
+                    Invoices result = this.InvoiceService().Create(this.Request.Form.invoice, this.CurrentAccount().OwnerId);
                     return Response.AsJson(result);
                 }
                 catch (Exception ex)
                 {
-                    return Response.AsJson(new {error= true, message = ex.Message});
+                    return Response.AsJson(new { error = true, message = ex.Message });
                 }
             };
             Get["/GetDataInvoice"] = p =>
             {
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(account.OwnerId));
+                return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(this.CurrentAccount().OwnerId));
             };
             Delete["/deleteInvoice/invoiceNo/{invoiceId}"] = p =>
                 {
@@ -48,9 +47,8 @@ namespace dokuku.sales.web.modules
             Get["/SearchInvoice/key/{key}"] = p =>
                 {
                     string key = p.key;
-                    Account ownerId = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                     IList<Invoices> invoices = new List<Invoices>();
-                    IEnumerable<InvoiceReports> invoiceReport = this.InvoicesQueryRepository().Search(ownerId.OwnerId, new string[] { key });
+                    IEnumerable<InvoiceReports> invoiceReport = this.InvoicesQueryRepository().Search(this.CurrentAccount().OwnerId, new string[] { key });
                     foreach (InvoiceReports invoice in invoiceReport)
                     {
                         invoices.Add(this.InvoicesRepository().Get(invoice._id, invoice.OwnerId));
@@ -61,7 +59,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    this.InvoiceService().Update(this.Request.Form.invoice, this.Context.CurrentUser.UserName);
+                    this.InvoiceService().Update(this.Request.Form.invoice, this.CurrentAccount().OwnerId);
                     return Response.AsJson(new { error = false });
                 }
                 catch (Exception ex)
@@ -72,10 +70,65 @@ namespace dokuku.sales.web.modules
             Get["/invoice/{id}"] = p =>
                 {
                     Guid invoiceId = p.id;
-                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                    Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, account.OwnerId);
+                    Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, this.CurrentAccount().OwnerId);
                     return Response.AsJson(invoice);
                 };
+            Post["/approveinvoice/{id}"] = p =>
+            {
+                try
+                {
+                    this.InvoiceService().ApproveInvoice(p.id, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { error = false });
+                }
+                catch (Exception e)
+                {
+                    return Response.AsJson(new { error = true, message = e.Message });
+                }
+            };
+
+            Get["/InvoiceAutoNumber"] = p =>
+                {
+                    var autoNumber = this.InvoiceAutoNumberGenerator().GetInvoiceAutoNumberConfig(this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { prefix = autoNumber.Prefix, mode = autoNumber.Mode });
+                };
+            Post["/SetupInvoiceAutoNumber"] = p =>
+                {
+                    try
+                    {
+                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(this.Request.Form.Mode, this.Request.Form.Prefix, this.CurrentAccount().OwnerId);
+                        return Response.AsJson(new { error = false });
+                    }
+                    catch (Exception ex)
+                    {
+                        return Response.AsJson(new { error = true, message = ex.Message });
+                    }
+                };
+
+            Post["/cancelinvoice/{id}"] = p =>
+            {
+                try
+                {
+                    this.InvoiceService().Cancel(p.id, this.Request.Form.invoice.note, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { error = false });
+                }
+                catch (Exception e)
+                {
+                    return Response.AsJson(new { error = true, message = e.Message });
+                }
+            };
+
+            Post["/forcecancelinvoice/{id}"] = p =>
+            {
+                try
+                {
+                    this.InvoiceService().ForceCancel(p.id, this.Request.Form.invoice.note, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { error = false });
+                }
+                catch (Exception e)
+                {
+                    return Response.AsJson(new { error = true, message = e.Message });
+                }
+            };
         }
     }
 }

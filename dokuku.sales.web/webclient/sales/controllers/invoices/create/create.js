@@ -26,7 +26,7 @@ steal('jquery/controller',
                         isDifferentCcy = true)
         },
         {
-            init: function (ev,el,customer) {
+            init: function (ev, el, customer) {
                 $this = this;
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
@@ -132,7 +132,6 @@ steal('jquery/controller',
             '#formNewIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.CreateNewInvoice();
-
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
@@ -143,8 +142,6 @@ steal('jquery/controller',
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
-                //var rate = $("#rate_" + index).val();
-                var rate = $("#baseprice_" + index).val() / $("#custRate").val();
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
@@ -173,7 +170,7 @@ steal('jquery/controller',
                                     "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
                                     "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
-                                    "<input type='text' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
+                                    "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +

@@ -1,0 +1,39 @@
+﻿<div class='mainFrame'>
+  <div class="topBandHeaderDIV">
+    <div class="HeaderDIVLeft" id="TitleSpan">New Currency</div>
+  </div>
+  <div class="error" id="errorCreateItemDiv"></div>
+  <div class="mainDivWidth">
+    <form id="addCurrencyForm">
+      <div class="ie-form AddCurrencyFormDiv">
+        <table>
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Currency Code</span>
+              </td>
+              <td class="field">
+                    <select ></select>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Currency Symbol</span>
+              </td>
+              <td class="field">
+                <input type="text" name="Symbol" id="Symbol" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Currency Symbol tidak boleh kosong')" required="required"/>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submitFormDiv">
+        <input type="submit" Value="Simpan" />
+        <input type="button" value="Batal" id="cancelCurrency" />
+      </div>
+    </form>
+  </div>
+</div>

@@ -13,6 +13,8 @@ namespace dokuku.sales.invoices.service
         void InvoiceFullyPaid(Guid invoiceId, string ownerId);
         void InvoicePartialyPaid(Guid invoiceId, string ownerId);
         void Delete(Guid id, string ownerId);
-        void UpdateStatusToAprrove(Guid invoiceId, string ownerId);
+        void ApproveInvoice(Guid invoiceId, string ownerId);
+        void Cancel(Guid id, string cancelNote, string ownerId);
+        void ForceCancel(Guid id, string cancelNote, string ownerId);
     }
 }

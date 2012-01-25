@@ -17,6 +17,12 @@ namespace dokuku.sales.invoices.model
         public AutoNumberMode Mode { get; private set; }
         public string Prefix { get; private set; }
         public string CompanyId { get; private set; }
+
+        public void SetupAutoNumber(AutoNumberMode mode, string prefix)
+        {
+            this.Mode = mode;
+            this.Prefix = prefix;
+        }
     }
 
     public enum AutoNumberMode

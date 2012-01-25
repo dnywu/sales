@@ -23,7 +23,9 @@ steal('jquery/controller',
                         inv = null,
                         itmRepo = null,
                         custRepo = null,
-                        invRepo = null)
+                        invRepo = null,
+                        baseCcy = null,
+                        isDifferentCcy = true)
         },
         {
             init: function (el, ev, id) {
@@ -33,6 +35,7 @@ steal('jquery/controller',
                 invRepo = new InvoiceRepository();
                 inv = new Invoice();
                 this.load(id);
+                this.SetCurrency();
             },
             load: function (id) {
                 tabIndexTr = 0;
@@ -42,23 +45,15 @@ steal('jquery/controller',
                 var term = invoice.Terms;
                 var late = invoice.LateFee;
                 var count = invoice.Items.length;
+
+                this.ShowCurrencyToView();
                 this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", invoice);
+                this.ShowExchangRate(invoice.Currency,invoice.BaseCcy, invoice.ExchangeRate);
+                $("#currency").text(invoice.Currency).show();
                 this.LoadListItem(count, invoice.Items);
                 this.SetDatePicker();
                 this.selectTerm(term);
                 this.selectLateFee(late);
-            }, '#selectcust change': function (el, ev) {
-                $("#keteranganSelectCust").empty();
-                var dataCust = custRepo.GetCustomerByName(el.val());
-                if (dataCust != null) {
-                    $("#selectcust").val(dataCust.Name);
-                    $("#currency").text(dataCust.Currency).show();
-                    $("#CustomerIdEdit").val(dataCust._id);
-                    return;
-                }
-                $("#currency").hide();
-                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
-                $("#selectcust").focus().select();
             },
             '#terms change': function (el) {
                 var invDate = $("#invDate").val();
@@ -78,8 +73,31 @@ steal('jquery/controller',
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
             },
+            '#selectcust change': function (el, ev) {
+                /*
+                $("#keteranganSelectCust").empty();
+                var dataCust = custRepo.GetCustomerByName(el.val());
+                if (dataCust != null) {
+                $("#selectcust").val(dataCust.Name);
+                $("#currency").text(dataCust.Currency).show();
+                $("#CustomerIdEdit").val(dataCust._id);
+                return;
+                }
+                $("#currency").hide();
+                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#selectcust").focus().select();
+                */
+            },
             '#addItemRow click': function () {
                 this.CreateListItem(1);
+            },
+            '#itemInvoice tbody tr hover': function (el) {
+                var index = el.attr('tabindex');
+                $("#deleteItem_" + index).show();
+            },
+            "#itemInvoice tbody tr mouseleave": function (el) {
+                var index = el.attr("tabindex");
+                $("#deleteItem_" + index).hide();
             },
             ".clsDeleteItem click": function (el) {
                 if ($("#itemInvoice > tbody > tr").size() == 1)
@@ -92,18 +110,17 @@ steal('jquery/controller',
                 var partName = el.val();
                 var index = el.attr("id").split('_')[1];
                 var part = itmRepo.GetItemByName(partName);
-
                 if (part != null) {
                     inv.ShowListItem(part, index);
-                    inv.GetSubTotal();
-                    inv.GetTotal();
+                    this.GetSubTotal();
+                    this.GetTotal();
                     $("#additem_" + index).hide();
                     return;
                 }
                 this.ClearItemField(index);
                 $("#additem_" + index).show();
-                inv.GetSubTotal();
-                inv.GetTotal();
+                this.GetSubTotal();
+                this.GetTotal();
                 $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
             '.quantity change': function (el) {
@@ -115,20 +132,96 @@ steal('jquery/controller',
             '.discount change': function (el) {
                 this.CalculateItem(el);
             },
-            '#itemInvoice tbody tr hover': function (el) {
-                var index = el.attr('tabindex');
-                $("#deleteItem_" + index).show();
-            },
-            "#itemInvoice tbody tr mouseleave": function (el) {
-                var index = el.attr("tabindex");
-                $("#deleteItem_" + index).hide();
-            },
             '#formUpdateIvoice submit': function (el, ev) {
                 ev.preventDefault();
                 inv.UpdateInvoice();
             },
             '#btnCancelInvoice click': function () {
                 $("#body").sales_invoices_list('load');
+            },
+            '#custRate change': function () {
+                inv.CalculateByRate($("#custRate").val());
+            },
+            CalculateItem: function (element) {
+                var index = element.attr("id").split('_')[1];
+                var qty = $("#qty_" + index).val();
+                //var rate = $("#baseprice_" + index).val() / $("#custRate").val();
+                var rate = $("#rate_" + index).val();
+                var disc = $("#disc_" + index).val();
+                var amount = inv.CalculateAmountPerItem(qty, rate, disc);
+                $("#amount_" + index).val(amount);
+                $("#amounttext_" + index).text(String.format("{0:C}", amount));
+                this.GetSubTotal();
+                this.GetTotal();
+            },
+            ClearItemField: function (index) {
+                $("#desc_" + index).empty();
+                $("#qty_" + index).val('');
+                $("#rate_" + index).val('');
+                $("#disc_" + index).val('');
+                $("#amounttext_" + index).empty();
+                $("#amount_" + index).val('');
+            },
+            LoadTax: function (index) {
+                $("#taxed_" + index).append("<option value=1>None</option>");
+            },
+            CreateListItem: function (count) {
+                var i = 0;
+                while (count > 0) {
+                    $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
+                                    "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
+                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/>" +
+                                    "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
+                                    "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
+                                    "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
+                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
+                                    "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
+                                    "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
+                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
+                                    "</select></td>" +
+                                    "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
+                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
+                                    "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
+                    this.LoadTax(tabIndexTr);
+                    i++;
+                    count--;
+                    tabIndexTr++;
+                }
+            },
+            LoadListItem: function (count, item) {
+                var i = 0;
+                while (count > 0) {
+                    $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
+                                    "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "' value='" + item[i].PartName + "'/>" +
+                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'  value='" + item[i].ItemId + "' />" +
+                                    "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
+                                    "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'>" + item[i].Description + "</textarea></td>" +
+                                    "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "' value='" + item[i].Qty + "'></input></td>" +
+                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "' value='" + item[i].Rate + "'></input>" +
+                                    "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "' value='" + item[i].BaseRate + "'/></td>" +
+                                    "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "' value='" + item[i].Discount + "'></input></td>" +
+                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
+                                    "</select></td>" +
+                                    "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
+                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
+                                    "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
+                    this.LoadTax(tabIndexTr);
+                    i++;
+                    count--;
+                    tabIndexTr++;
+                }
+                inv.GetSubTotal();
+                inv.GetTotal();
+            },
+            GetSubTotal: function () {
+                var subtotal = inv.CalculateSubTotal();
+                $("#subtotaltext").text(String.format("{0:C}", subtotal));
+                $("#subtotal").val(subtotal);
+            },
+            GetTotal: function () {
+                var total = inv.CalculateTotal();
+                $("#totaltext").text(String.format("{0:C}", total));
+                $("#total").val(total);
             },
             GetInvoice: function (id) {
                 var invoice = invRepo.GetInvoiceById(id);
@@ -173,75 +266,22 @@ steal('jquery/controller',
                     }
                 });
             },
-            LoadTax: function (index) {
-                $("#taxed_" + index).append("<option value=1>None</option>");
+            SetCurrency: function () {
+                Sales.Models.Currency.findOne({ id: '1' }, function (data) {
+                    baseCcy = data.curr;
+                });
             },
-            LoadListItem: function (count, item) {
-                var i = 0;
-                while (count > 0) {
-                    $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
-                                    "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "' value='" + item[i].PartName + "'/>" +
-                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'  value='" + item[i].ItemId + "' />" +
-                                    "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
-                                    "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'>" + item[i].Description + "</textarea></td>" +
-                                    "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "' value='" + item[i].Qty + "'></input></td>" +
-                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "' value='" + item[i].Rate + "'></input></td>" +
-                                    "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "' value='" + item[i].Discount + "'></input></td>" +
-                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
-                                    "</select></td>" +
-                                    "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
-                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
-                                    "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
-                    this.LoadTax(tabIndexTr);
-                    i++;
-                    count--;
-                    tabIndexTr++;
-                }
-                inv.GetSubTotal();
-                inv.GetTotal();
+            ShowCurrencyToView: function () {
+                $("#curr").text(baseCcy);
             },
-            CalculateItem: function (element) {
-                var index = element.attr("id").split('_')[1];
-                var qty = $("#qty_" + index).val();
-                var rate = $("#rate_" + index).val();
-                var disc = $("#disc_" + index).val();
-                var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).val(amount);
-                $("#amounttext_" + index).text(String.format("{0:C}", amount));
-                inv.GetSubTotal();
-                inv.GetTotal();
-            },
-            CreateListItem: function (count) {
-                var i = 0;
-                while (count > 0) {
-                    $("#itemInvoice tbody").append("<tr id='tr_" + tabIndexTr + "' tabindex='" + tabIndexTr + "'>" +
-                                    "<td><input type='text' name='part' class='partname' id='part_" + tabIndexTr + "'/>" +
-                                    "<input type='hidden' class='partid' id='partid_" + tabIndexTr + "'/>" +
-                                    "<label class='additem' id='additem_" + tabIndexTr + "'>Tambah Barang</label></td>" +
-                                    "<td><textarea name='description' class='description' id='desc_" + tabIndexTr + "'></textarea></td>" +
-                                    "<td><input type='text' name='quantity' class='quantity right' id='qty_" + tabIndexTr + "'></input></td>" +
-                                    "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input></td>" +
-                                    "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
-                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
-                                    "</select></td>" +
-                                    "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
-                                    "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
-                                    "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
-                    this.LoadTax(tabIndexTr);
-                    i++;
-                    count--;
-                    tabIndexTr++;
-                }
-            },
-            ClearItemField: function (index) {
-                $("#desc_" + index).empty();
-                $("#qty_" + index).val('');
-                $("#rate_" + index).val('');
-                $("#disc_" + index).val('');
-                $("#amounttext_" + index).empty();
-                $("#amount_" + index).val('');
+            ShowExchangRate: function (custCcy, baseCcy,ExchangeRate) {
+                $("#curr").text(custCcy);
+                $("#divExchangeRate").show();
+                $("#custCcy").val("1 " + custCcy + " =");
+                $("#baseCcy").val(baseCcy);
+                $("#custCcyCode").val(custCcy);
+                if (ExchangeRate != 1)
+                    $("#custRate").val(ExchangeRate); 
             }
-
-
         })
             });
