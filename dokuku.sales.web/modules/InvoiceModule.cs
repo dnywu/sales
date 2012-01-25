@@ -31,7 +31,7 @@ namespace dokuku.sales.web.modules
             {
                 return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(this.CurrentAccount().OwnerId));
             };
-            Delete["/deleteInvoice/invoiceNo/{invoiceId}"] = p =>
+            Delete["/deleteInvoice/{invoiceId}"] = p =>
                 {
                     try
                     {
@@ -44,7 +44,7 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsJson("OK");
                 };
-            Get["/SearchInvoice/key/{key}"] = p =>
+            Get["/SearchInvoice/{key}"] = p =>
                 {
                     string key = p.key;
                     IList<Invoices> invoices = new List<Invoices>();
@@ -77,7 +77,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    //this.InvoiceService().ApproveInvoice(p., this.CurrentAccount().OwnerId);
+                    Guid invoiceId = p.id;
+                    this.InvoiceService().ApproveInvoice(p.id, this.CurrentAccount().OwnerId);
                     return Response.AsJson(new { error = false });
                 }
                 catch (Exception e)
