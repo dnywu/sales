@@ -25,7 +25,7 @@ namespace dokuku.sales.payment.service
         public PaymentMode Insert(string json)
         {
             PaymentMode paymentMode = JsonConvert.DeserializeObject<PaymentMode>(json);
-            FailedIfNameAlreadyExistsOnInsert(paymentMode);
+            FailedIfNameAlreadyExistsOnInsert(paymentMode, paymentMode.OwnerId);
             _command.Save(paymentMode);
 
             _bus.Publish(new PaymentModeCreated { Data = paymentMode.ToJson() });
@@ -35,9 +35,9 @@ namespace dokuku.sales.payment.service
         {
             return _query.Get(id);
         }
-        public IEnumerable<PaymentMode> FindAll()
+        public IEnumerable<PaymentMode> FindAll(string ownerId)
         {
-            return _query.FindAll();
+            return _query.FindAll(ownerId);
         }
         public PaymentMode Update(string json)
         {
@@ -53,14 +53,14 @@ namespace dokuku.sales.payment.service
             _command.Delete(id);
             _bus.Publish(new PaymentModeDeleted { Id = id });
         }
-        public void FailedIfNameAlreadyExistsOnInsert(PaymentMode paymentMode)
+        public void FailedIfNameAlreadyExistsOnInsert(PaymentMode paymentMode, string ownerId)
         {
-            if (_query.FindByName(paymentMode.Name) != null)
+            if (_query.FindByName(paymentMode.Name, ownerId) != null)
                 throw new Exception(String.Format("Payment mode dengan nama {0} sudah ada!", paymentMode.Name));
         }
         public void FailedIfNameAlreadyExistsOnUpdate(PaymentMode paymentMode)
         {
-            if (_query.FindByNameAndId(paymentMode.Name, paymentMode._id) != null)
+            if (_query.FindByNameAndId(paymentMode.Name, paymentMode._id, paymentMode.OwnerId) != null)
                 throw new Exception(String.Format("Payment mode dengan nama {0} sudah ada!", paymentMode.Name));
         }
     }

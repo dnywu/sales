@@ -7,6 +7,7 @@ using dokuku.sales.payment.domain;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
+using System.Text.RegularExpressions;
 
 namespace dokuku.sales.payment.query
 {
@@ -21,17 +22,17 @@ namespace dokuku.sales.payment.query
         {
             return _collections.FindOneAs<PaymentMode>(Query.EQ("_id", id));
         }
-        public PaymentMode FindByName(string name)
+        public PaymentMode FindByName(string name, string ownerId)
         {
-            return _collections.FindOneAs<PaymentMode>(Query.EQ("Name", name));
+            return _collections.FindOneAs<PaymentMode>(Query.And(Query.EQ("OwnerId", ownerId), Query.EQ("Name", new Regex(name, RegexOptions.IgnoreCase))));
         }
-        public PaymentMode FindByNameAndId(string name, Guid id)
+        public PaymentMode FindByNameAndId(string name, Guid id, string ownerId)
         {
-            return _collections.FindOneAs<PaymentMode>(Query.And(Query.EQ("Name", name), Query.EQ("_id", id)));
+            return _collections.FindOneAs<PaymentMode>(Query.And(Query.EQ("Name", new Regex(name, RegexOptions.IgnoreCase)), Query.EQ("_id", id), Query.EQ("OwnerId", ownerId)));
         }
-        public IEnumerable<PaymentMode> FindAll()
+        public IEnumerable<PaymentMode> FindAll(string ownerId)
         {
-            return _collections.FindAllAs<PaymentMode>();
+            return _collections.FindAs<PaymentMode>(Query.EQ("OwnerId", ownerId));
         }
     }
 }

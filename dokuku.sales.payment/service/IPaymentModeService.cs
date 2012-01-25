@@ -7,10 +7,10 @@ namespace dokuku.sales.payment.service
     {
         PaymentMode Insert(string json);
         PaymentMode Update(string json);
-        IEnumerable<PaymentMode> FindAll();
+        IEnumerable<PaymentMode> FindAll(string ownerId);
         PaymentMode Get(Guid id);
         void Delete(Guid id);
-        void FailedIfNameAlreadyExistsOnInsert(PaymentMode paymentMode);
-        void FailedIfNameAlreadyExistsOnUpdate(PaymentMode paymentMode);        
+        void FailedIfNameAlreadyExistsOnInsert(PaymentMode paymentMode, string ownerId);
+        void FailedIfNameAlreadyExistsOnUpdate(PaymentMode paymentMode);
     }
 }

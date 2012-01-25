@@ -128,7 +128,7 @@ namespace dokuku.sales.invoices.service
             if (forceCancel && invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
                 throw new Exception(String.Format("Status invoice {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
             if (String.IsNullOrWhiteSpace(cancelNote))
-                throw new Exception("Mohon catatan untuk batal diisi.");
+                throw new Exception("Mohon catatan untuk membatalkan invoice ini diisi terlebih dahulu.");
             invoice.InvoiceStatusBatal(cancelNote);
             invRepo.UpdateInvoices(invoice);
             return invoice;

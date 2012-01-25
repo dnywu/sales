@@ -44,7 +44,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    IEnumerable<PaymentMode> paymentModes = this.PaymentModeService().FindAll();
+                    IEnumerable<PaymentMode> paymentModes = this.PaymentModeService().FindAll(this.CurrentAccount().OwnerId);
                     return Response.AsJson(paymentModes);
                 }
                 catch (Exception e)
