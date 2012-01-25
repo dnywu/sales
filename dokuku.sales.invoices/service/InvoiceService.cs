@@ -72,7 +72,7 @@ namespace dokuku.sales.invoices.service
             invRepo.UpdateInvoices(invoice);
 
             if (bus != null)
-                bus.Publish(new InvoiceApproved { Data = invoice.ToJson<Invoices>() });
+                bus.Publish(new InvoiceApproved { InvoiceJson = invoice.ToJson<Invoices>() });
         }
 
         private void IsInvoiceStatusDraft(Guid id, string ownerId)

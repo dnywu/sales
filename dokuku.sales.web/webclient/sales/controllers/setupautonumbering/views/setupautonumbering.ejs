@@ -6,24 +6,25 @@
   <div class="mainDivWidth">
     <form id="autoNumberForm">
       <div class="ie-form AutoNumberFormDiv">
+        <div id="successAlert"></div>
         <table>
           <tbody>
             <tr>
               <td class="labelLeft">
                 <span class="requiredFieldLabel">Mode</span>
               </td>
-              <td class="field">
-                   <input type="radio" name="Mode" id="mode" checked="checked" /> Default
-                <p><input type="radio" name="Mode" id="mode"/> Yearly</p>
-                <p><input type="radio" name="Mode" id="mode"/> Monthly</p>
+              <td class="autonumberfield">
+                <input type="radio" name="Mode" id="mode" value="0"/> Default
+                <p><input type="radio" name="Mode" id="mode" value="1"/> Yearly</p>
+                <p><input type="radio" name="Mode" id="mode" value="2"/> Monthly</p>
               </td>
             </tr>
             <tr>
               <td class="labelLeft">
                 <span class="requiredFieldLabel">Prefix</span>
               </td>
-              <td class="field">
-                <input type="text" name="Prefix" id="prefix" oninput="setCustomValidity('')" oninvalid="setCustomValidity('prefix tidak boleh kosong')" required="required"/>
+              <td class="autonumberfield">
+                <input type="text" name="Prefix" id="input-prefix" width="50%" oninput="setCustomValidity('')" oninvalid="setCustomValidity('prefix tidak boleh kosong')" required="required" value="<%= item.prefix %>"/>
               </td>
               <td>
                 <div class="messageVerify "></div>
