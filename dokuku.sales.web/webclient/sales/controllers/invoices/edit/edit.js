@@ -48,6 +48,7 @@ steal('jquery/controller',
 
                 this.ShowCurrencyToView();
                 this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", invoice);
+                $("#currency").text(invoice.Currency).show();
                 this.ShowExchangRate(invoice.Currency,invoice.BaseCcy, invoice.ExchangeRate);
                 if (invoice.BaseCcy != invoice.Currency) {
                     $("#divExchangeRate").show();
@@ -67,12 +68,14 @@ steal('jquery/controller',
             },
             '#tambahPelangganEdit click': function () {
                 new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
                 var addCust = new AddCustomer();
                 addCust.TriggerEvent();
             },
             '.additem click': function (el, ev) {
                 new ModalDialog("Tambah Barang Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
@@ -91,6 +94,32 @@ steal('jquery/controller',
                 $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
                 $("#selectcust").focus().select();
                 */
+
+                //isDifferentCcy = true;
+                $("#divExchangeRate").hide();
+                $("#custCcyCode").val(baseCcy);
+                $("#keteranganSelectCust").empty();
+                this.ShowCurrencyToView();
+                var dataCust = custRepo.GetCustomerByName(el.val());
+                if (dataCust != null) {
+                    if (dataCust.Currency != baseCcy) {
+                        isDifferentCcy = false;
+                        $("#divExchangeRate").show();
+                    } else {
+                        $("#divExchangeRate").hide();
+                    }
+                    this.ShowExchangRate(dataCust.Currency, baseCcy);
+                    $("#selectcust").val(dataCust.Name);
+                    $("#currency").text(dataCust.Currency).show();
+                    $("#CustomerId").val(dataCust._id);
+                    $("#custRate").val(1);
+                    $("#custRate").change();
+                    return;
+                }
+                $("#CustomerId").val("0");
+                $("#currency").hide();
+                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#selectcust").focus().select();
             },
             '#addItemRowEdit click': function () {
                 this.CreateListItem(1);
@@ -153,7 +182,7 @@ steal('jquery/controller',
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).val(amount);
+                $("#amount_" + index).val(amount.toFixed(2));
                 $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
@@ -220,12 +249,12 @@ steal('jquery/controller',
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();
                 $("#subtotaltext").text(String.format("{0:C}", subtotal));
-                $("#subtotal").val(subtotal);
+                $("#subtotal").val(subtotal.toFixed(2));
             },
             GetTotal: function () {
                 var total = inv.CalculateTotal();
                 $("#totaltext").text(String.format("{0:C}", total));
-                $("#total").val(total);
+                $("#total").val(total.toFixed(2));
             },
             GetInvoice: function (id) {
                 var invoice = invRepo.GetInvoiceById(id);
