@@ -29,7 +29,6 @@ namespace dokuku.sales.payment.service
             FailedIfNameAlreadyExistsOnInsert(paymentMode);
             _command.Save(paymentMode);
 
-            _bus.Publish(new PaymentModeCreated { Data = paymentMode.ToJson() });
             return paymentMode;
         }
         public PaymentMode Get(Guid id)
@@ -46,13 +45,11 @@ namespace dokuku.sales.payment.service
             FailedIfNameAlreadyExistsOnUpdate(paymentMode);
             _command.Update(paymentMode);
 
-            _bus.Publish(new PaymentModeUpdated { Data = paymentMode.ToJson() });
             return paymentMode;
         }
         public void Delete(Guid id)
         {
             _command.Delete(id);
-            _bus.Publish(new PaymentModeDeleted { Id = id });
         }
         public void FailedIfNameAlreadyExistsOnInsert(PaymentMode paymentMode)
         {

@@ -57,6 +57,7 @@
     <Compile Include="command\PaymentModeCommand.cs" />
     <Compile Include="domain\Invoice.cs" />
     <Compile Include="domain\InvoicePayment.cs" />
+    <Compile Include="domain\Payment.cs" />
     <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
     <Compile Include="domain\PaymentMode.cs" />
     <Compile Include="domain\PaymentRecord.cs" />

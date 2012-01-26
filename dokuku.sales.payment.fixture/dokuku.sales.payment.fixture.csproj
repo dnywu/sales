@@ -81,9 +81,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="When_paid_invoice_edited.cs" />
-    <Compile Include="When_paymentMode_CRUD.cs" />
-    <Compile Include="When_pay_invoice_partial.cs" />
+    <Compile Include="When_revise_payment.cs" />
+    <Compile Include="When_pay_invoice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="When_send_revise_invoice_payment_message.cs" />
     <Compile Include="When_sent_invoice_payment_message.cs" />
