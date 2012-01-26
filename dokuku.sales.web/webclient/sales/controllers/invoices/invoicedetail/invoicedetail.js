@@ -13,6 +13,26 @@ steal('jquery/controller', 'jquery/view/ejs',
     load: function (invoice) {
         var inv = this.GetDetailCustomer(invoice);
         this.element.html(this.view("//sales/controllers/invoices/invoicedetail/views/invoicedetail.ejs", inv));
+        GetStatusInvoice(inv.Status);
+    },
+    '#newinvoicesByDetails click': function () {
+        $("#body").sales_invoices_create("load");
+    },
+    GetStatusInvoice: function (Status) {
+        //var invoice = new Array(invoices);
+        //$("#Div").hide();
+        if (status == "Draft") {
+            $("#approveIvo").hide();    
+        }
+
+        //public const string DRAFT = "Draft";
+        //public const string BELUM_BAYAR = "Belum Bayar";
+        //public const string BELUM_LUNAS = "Belum Lunas";
+        //public const string SUDAH_LUNAS = "Sudah Lunas";
+        //public const string VOID = "Void";
+        //public const string BATAL = "Batal";
+
+
     },
     GetDetailCustomer: function (invoice) {
         $.ajax({
