@@ -2,16 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-namespace dokuku.sales.payment.domain
+namespace dokuku.sales.paymentmode.model
 {
-    public class PaymentMode
+    public class PaymentModes
     {
-        public PaymentMode(Guid id, string name)
-        {
-            _id = id;
-            Name = name;
-        }
         public Guid _id { get; set; }
         public string Name { get; set; }
+        public string OwnerId { get; set; }
     }
 }

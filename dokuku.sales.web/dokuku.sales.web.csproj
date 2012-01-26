@@ -1105,6 +1105,10 @@
     <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>

@@ -60,8 +60,9 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus">
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
@@ -83,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="currency\When_create_currency.cs" />
+    <Compile Include="payment mode\When_create_paymentmode.cs" />
     <Compile Include="tax\When_create_tax.cs" />
     <Compile Include="When_publich_invoice_approved.cs" />
     <Compile Include="When_create_item_index.cs" />
@@ -143,6 +145,10 @@
     <ProjectReference Include="..\dokuku.sales.organization\dokuku.sales.organization.csproj">
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.paymentmode\dokuku.sales.paymentmode.csproj">
+      <Project>{596F49BE-C0F4-437F-B927-94E946EC0C38}</Project>
+      <Name>dokuku.sales.paymentmode</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
       <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
