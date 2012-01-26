@@ -1,4 +1,4 @@
-﻿td.bodyBgCenter {width: 75%;background-color: white;}
+﻿td.bodyBgCenter {width: 85%;background-color: white;}
 td.bodyBgRight {
     width: 25%;
     padding: 30px 0 20px 20px;
@@ -36,18 +36,22 @@ div.rightbuttonarea
     font-size:11px;
 }
 .right{text-align:right;}
+.center{text-align:center;}
 table#tblListInvoice{border-collapse:collapse;}
 table#tblListInvoice thead {color:#666;}
-table#tblListInvoice .tblCheck{width:24px;}
-table#tblListInvoice .tblNoInv{width:80px;}
-table#tblListInvoice .tblPO{width:80px;}
+table#tblListInvoice tbody tr td {font-size:12px;}
+table#tblListInvoice .tblCheck{width:20px;}
+table#tblListInvoice .tblNoInv{width:100px}
+table#tblListInvoice .tblPO{width:100px;}
 table#tblListInvoice .tblTanggal{width:90px;}
-table#tblListInvoice .tblTotal{width:80px;}
+table#tblListInvoice .tblTotal{width:100px;}
 table#tblListInvoice .tblDue{width:90px;}
-table#tblListInvoice .tblBalance{width:80px;}
+table#tblListInvoice .tblBalance{width:100px;}
 table#tblListInvoice .tblStatus{width:65px;}
-table#tblListInvoice tr{border-top:1px solid #EBEBEB;border-bottom:1px Solid #EBEBEB;}
+table#tblListInvoice tr{border-top:1px solid #F7F7F7;border-bottom:1px Solid #F7F7F7;}
+table#tblListInvoice thead tr{background-color:#F7F7F7;}
 table#tblListInvoice td{padding-top:8px;padding-bottom:8px; height: 30px;}
+table#tblListInvoice thead td{font-weight:bolder;}
 .settingListInvoice{display:none; cursor:pointer;outline:none}
 div.ContextMenuInvoice
 {
@@ -122,4 +126,21 @@ margin-bottom: 0px;
     float: left;
     margin-right: 20px;
     margin-top: 4px;
+}
+.menuDelete
+{
+	list-style: none;
+	margin: 0 3px 2px 0;
+	padding: 5px 10px 5px 10px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font: 11px verdana;
+	background: #F3F3F3;
+	border: solid 1px gainsboro;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor: pointer;
+	height: 15px;
+	width:60px;
 }
