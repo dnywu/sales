@@ -78,10 +78,6 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IInvoiceAutoNumberGenerator>();
         }
-        public static IPaymentModeService PaymentModeService(this NancyModule module)
-        {
-            return ObjectFactory.GetInstance<IPaymentModeService>();
-        }
         public static IServiceTax ServiceTax(this NancyModule mod)
         {
             return ObjectFactory.GetInstance<IServiceTax>();
