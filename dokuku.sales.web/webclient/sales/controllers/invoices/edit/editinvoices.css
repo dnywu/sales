@@ -9,19 +9,30 @@
     box-shadow: 0 0 4px 0 #999;
     padding-bottom: 20px;
     margin-bottom: 20px;
+    float: left;
 }
 div.divcontainerRightFormInvoice
 {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 200px;
-    height: 100%;
-    overflow: hidden;
-    background: navy;
-    color: white;
+    border: 1px solid;
+    float: right;
+    border-radius: 6px;
+    border-image: initial;
+    width: 17%;
+    box-shadow: 0 0 4px 0 #999;
+    padding: 10px;
 }
+div.actionsRightTop
+{
+    margin-bottom:30px;
+}
+div.actionsRightBottom
+{
+    margin-top:20px;
+}
+div.divcontainerRightFormInvoiceContain
+{
+    padding:2px;
+    }
 div.divheaderFormInvoice
 {
     width: 95.6%;

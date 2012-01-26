@@ -234,10 +234,14 @@
             dataType: 'json',
             async: false,
             success: function (data) {
-                result = data;
+                if (data.error == true) {
+                    $("#errorListInv").text(data.message).show("slow");
+                    return;
+                }
+                //var invoice = invRepo.GetInvoiceById(invId);
+                //$("#body").sales_invoices_invoicedetail('load', invoice);
             }
         });
-        return result;
 	},
     SearchCustomer: function (key) {
         var listCustomer = null;

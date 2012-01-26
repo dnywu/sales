@@ -60,12 +60,12 @@ steal('jquery/controller',
                 'table#tblListInvoice tbody.bodyDataInvoice tr.trbodyDataInvoice hover': function (el) {
                     var index = el.attr('tabindex');
                     $('#settingListInvoice' + index).show();
-                    //$("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
                 },
                 'table#tblListInvoice tbody.bodyDataInvoice tr.trbodyDataInvoice mouseleave': function (el) {
                     var index = el.attr('tabindex');
-                   // $('#settingListInvoice' + index).hide();
-                    //$("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
+                    $('#settingListInvoice' + index).hide();
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").hide();
                 },
                 '.settingListInvoice click': function (el) {
                     var index = el.attr('tabindex');
@@ -81,7 +81,7 @@ steal('jquery/controller',
                 '.ApproveContextMenuInvoive click': function (el) {
                     var id = el.attr('id');
                     result = inv.ApproveInvoiceByID(id);
-                    $("#body").sales_invoices_list('load');
+                    //$("#body").sales_invoices_list('load');
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
