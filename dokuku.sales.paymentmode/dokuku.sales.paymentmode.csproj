@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</ProjectGuid>
+    <ProjectGuid>{596F49BE-C0F4-437F-B927-94E946EC0C38}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.payment</RootNamespace>
-    <AssemblyName>dokuku.sales.payment</AssemblyName>
+    <RootNamespace>dokuku.sales.paymentmode</RootNamespace>
+    <AssemblyName>dokuku.sales.paymentmode</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -37,11 +37,11 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus, Version=2.6.0.1504, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NServiceBus">
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -53,49 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="command\IPaymentModeCommand.cs" />
-    <Compile Include="command\PaymentModeCommand.cs" />
-    <Compile Include="domain\Invoice.cs" />
-    <Compile Include="domain\InvoicePayment.cs" />
-    <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
-    <Compile Include="domain\PaymentMode.cs" />
-    <Compile Include="domain\PaymentRecord.cs" />
+    <Compile Include="model\PaymentModes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="query\IPaymentModeQuery.cs" />
     <Compile Include="query\PaymentModeQuery.cs" />
-    <Compile Include="service\eventhandler\InvoiceApprovedHandler.cs" />
-    <Compile Include="service\commandhandler\PayInvoiceHandler.cs" />
-    <Compile Include="service\domaineventhandler\InvoicePaidHandler.cs" />
-    <Compile Include="service\domaineventhandler\PaymentRevisedHandler.cs" />
-    <Compile Include="service\commandhandler\RevisePaymentHandler.cs" />
     <Compile Include="service\IPaymentModeService.cs" />
     <Compile Include="service\PaymentModeService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.domainevents\dokuku.sales.domainevents.csproj">
-      <Project>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</Project>
-      <Name>dokuku.sales.domainevents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
-      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
-      <Name>dokuku.sales.invoice.messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.domainevents\dokuku.sales.payment.domainevents.csproj">
-      <Project>{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}</Project>
-      <Name>dokuku.sales.payment.domainevents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
-      <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
-      <Name>dokuku.sales.payment.events</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
-      <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
-      <Name>dokuku.sales.payment.messages</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
