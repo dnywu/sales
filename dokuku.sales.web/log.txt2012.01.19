@@ -1,0 +1,12 @@
+2012-01-19 19:42:05,897 [19] WARN  NServiceBus.Config - Could not scan assembly: NServiceBus.Core, Version=2.6.0.1504, Culture=neutral, PublicKeyToken=9fc386479f8a226c
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at NServiceBus.Configure.<>c__DisplayClass1.<With>b__0(Assembly a)
+2012-01-19 19:42:05,897 [19] WARN  NServiceBus.Config - Could not scan assembly: NServiceBus.Core, Version=2.6.0.1504, Culture=neutral, PublicKeyToken=9fc386479f8a226c
+System.Reflection.ReflectionTypeLoadException: Unable to load one or more of the requested types. Retrieve the LoaderExceptions property for more information.
+   at System.Reflection.RuntimeModule.GetTypes(RuntimeModule module)
+   at System.Reflection.RuntimeModule.GetTypes()
+   at System.Reflection.Assembly.GetTypes()
+   at NServiceBus.Configure.<>c__DisplayClass1.<With>b__0(Assembly a)
