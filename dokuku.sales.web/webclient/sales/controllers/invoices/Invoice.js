@@ -197,7 +197,7 @@
         var key = $('#SearchInvoice').val();
         $.ajax({
             type: 'GET',
-            url: '/SearchInvoice/key/' + key,
+            url: '/SearchInvoice/' + key,
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -217,7 +217,7 @@
         var result;
         $.ajax({
             type: 'DELETE',
-            url: '/deleteInvoice/invoiceNo/' + invoiceNo,
+            url: '/deleteInvoice/' + invoiceNo,
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -243,7 +243,7 @@
         var listCustomer = null;
         $.ajax({
             type: 'GET',
-            url: '/SearchCustomer/key/' + key,
+            url: '/SearchCustomer/' + key,
             dataType: 'json',
             failure: $('#DivSearchCustomer').hide(),
             async: false,
