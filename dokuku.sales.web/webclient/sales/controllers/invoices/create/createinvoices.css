@@ -185,3 +185,4 @@ div.resultItemDiv
 .DivNamaCustomer{ font-size:14px; font-weight:bolder; color:Black; cursor:pointer;}
 .DivFieldCustomer{font-size:11px; color:Gray;}
 .DivNamaCustomer:hover { font-size:14px; font-weight:bolder; color:Red; cursor:pointer;}
+.selectedCustomer2{ background-color:#DCD9D9; }
