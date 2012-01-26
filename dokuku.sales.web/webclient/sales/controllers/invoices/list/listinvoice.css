@@ -94,7 +94,7 @@ text-decoration: underline;
 margin-top: 0px;
 margin-bottom: 0px;
 }
-.EditContextMenuInvoive, .ApproveContextMenuInvoive
+.spanContextMenuListInvoice
 {
     cursor: pointer;
     outline: none;
@@ -107,7 +107,7 @@ margin-bottom: 0px;
     height: 24px;
     padding-top: 6px;
 }
-.EditContextMenuInvoive:hover, .ApproveContextMenuInvoive:hover
+.spanContextMenuListInvoice:hover
 {
     background-color:#E8E8E8;
     border-radius:10px;
