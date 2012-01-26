@@ -9,7 +9,7 @@ namespace dokuku.sales.payment.domain
         public decimal amountPaid{get; private set;}
         public decimal bankCharge { get; private set; }
         public DateTime paymentDate { get; private set; }
-        public PaymentMode paymentMode { get; private set; }
+        public Guid paymentMode { get; private set; }
         public string reference { get; private set; }
         public string notes { get; private set; }
         public Guid Id { get; private set; }
@@ -34,7 +34,7 @@ namespace dokuku.sales.payment.domain
             paymentDate = date;
             return this;
         }
-        public Payment PaymentMode(PaymentMode mode)
+        public Payment PaymentMode(Guid mode)
         {
             paymentMode = mode;
             return this;

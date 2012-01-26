@@ -24,7 +24,7 @@ namespace dokuku.sales.payment.fixture
                 AmountPaid(2000000).
                 BankCharge(100000).
                 PaymentDate(new DateTime(2012, 1, 20)).
-                PaymentMode(new PaymentMode(Guid.NewGuid(), "Cash")).
+                PaymentMode(Guid.NewGuid()).
                 Reference("#001002").
                 Notes("test partial payment");
 

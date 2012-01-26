@@ -21,7 +21,7 @@ namespace dokuku.sales.payment.service
                             AmountPaid(message.AmountPaid).
                             BankCharge(message.BankCharge).
                             PaymentDate(message.PaymentDate).
-                            PaymentMode(new PaymentMode(message.PaymentModeId,"")).
+                            PaymentMode(message.PaymentModeId).
                             Reference(message.Reference).
                             Notes(message.Notes));
             Collections.Save(invPayment);

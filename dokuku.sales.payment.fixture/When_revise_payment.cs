@@ -28,7 +28,7 @@ namespace dokuku.sales.payment.fixture
                 AmountPaid(2000000).
                 BankCharge(100000).
                 PaymentDate(new DateTime(2012, 1, 20)).
-                PaymentMode(new PaymentMode(Guid.NewGuid(), "Cash")).
+                PaymentMode(Guid.NewGuid()).
                 Reference("#001002").
                 Notes("test partial payment");
 
@@ -43,7 +43,7 @@ namespace dokuku.sales.payment.fixture
                 AmountPaid(8000000).
                 BankCharge(100000).
                 PaymentDate(new DateTime(2012, 1, 21)).
-                PaymentMode(new PaymentMode(Guid.NewGuid(), "Cash")).
+                PaymentMode(Guid.NewGuid()).
                 Reference("#001002").
                 Notes("Test Revised Transaction");
             payment.RevisePayment(invoicePaid.PaymentRecordId, newPaymentRecord);
