@@ -128,7 +128,7 @@ steal('jquery/controller',
                 $('.SelectCustomer:checked').each(function (index) {
                     $.ajax({
                         type: 'Delete',
-                        url: '/DeleteCustomer/id/' + $(this).val(),
+                        url: '/DeleteCustomer/' + $(this).val(),
                         dataType: 'json'
                     });
                 })
@@ -254,7 +254,7 @@ steal('jquery/controller',
                     var key = $('#SearchCustomer').val();
                     $.ajax({
                         type: 'GET',
-                        url: '/SearchCustomer/key/' + key,
+                        url: '/SearchCustomer/' + key,
                         dataType: 'json',
                         failure: $('#ListSearchCustomer').hide(),
                         success: $this.requestAllCustomerSuccess
