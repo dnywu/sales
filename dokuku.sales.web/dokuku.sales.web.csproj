@@ -1143,7 +1143,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\init.ejs" />
-    <None Include="webclient\sales\controllers\tax\views\listtax.ejs" />
+    <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
