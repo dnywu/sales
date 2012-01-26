@@ -7,7 +7,8 @@ steal('jquery/controller', 'jquery/view/ejs',
         'sales/controllers/customers',
         'sales/controllers/home',
         'sales/controllers/invoices/list',
-        'sales/controllers/setupautonumbering'
+        'sales/controllers/setupautonumbering',
+        'sales/controllers/currencyandtax'
      )
 	.then('./views/nav.ejs', function ($) {
 	    $.Controller('sales.controllers.nav',
@@ -67,6 +68,11 @@ steal('jquery/controller', 'jquery/view/ejs',
                 this.SetBoldActivePage(el);
                 $("#body").sales_setupautonumbering('load');
             },
+            '#currencyandtax click': function (el) {
+                this.ClearContain();
+                this.SetBoldActivePage(el);
+                $("#body").sales_currencyandtax('load');
+            },
             CustomerSubMenu: function () {
                 var submenu = $('#subtabs');
                 var 
@@ -105,10 +111,12 @@ steal('jquery/controller', 'jquery/view/ejs',
                     container = $('<div>', { 'class': 'container' }),
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
                     setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Auto Numbering' });
+                currencyandtax = $('<li>', { 'class': 'lisubtabs', id: 'currencyandtax', text: 'Mata Uang & Pajak' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);
                 ul.appendTo(container);
                 setupautonumbering.appendTo(ul);
+                currencyandtax.insertAfter(setupautonumbering);
             },
             ClearContain: function () {
                 $("#body").empty();

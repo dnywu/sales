@@ -34,7 +34,7 @@ namespace dokuku.sales.web.modules
                 return Response.AsJson(this.ItemQuery().LimitItems(account.OwnerId, start, limit));
             };
 
-            Delete["/deleteItem/_id/{id}"] = p =>
+            Delete["/deleteItem/{id}"] = p =>
             {
                 try
                 {
@@ -67,7 +67,7 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new { error = true, message = ex.Message });
                 }
             };
-            Get["/Items/_id/{id}"] = p =>
+            Get["/Items/{id}"] = p =>
             {
                 Guid id = p.id;
                 var item = this.ItemQuery().Get(id);
@@ -98,7 +98,7 @@ namespace dokuku.sales.web.modules
                 string owner = this.Context.CurrentUser.UserName;
                 return Response.AsJson(this.ItemQuery().IsBarcodeAlreadyExist(barcode, owner));
             };
-            Get["/searchItem/keyword/{keyword}"] = p =>
+            Get["/searchItem/{keyword}"] = p =>
             {
                 string keyWords = p.keyword;
                 string owner = this.Context.CurrentUser.UserName;
