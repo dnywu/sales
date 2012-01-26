@@ -67,12 +67,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="query\IInvoicesQueryRepository.cs" />
     <Compile Include="query\InvoicesQueryRepository.cs" />
-    <Compile Include="service\FullPaymentInvoiceHandler.cs" />
+    <Compile Include="service\InvoicePaidHandler.cs" />
     <Compile Include="service\IInvoiceAutoNumberGenerator.cs" />
     <Compile Include="service\IInvoiceService.cs" />
     <Compile Include="service\InvoiceAutoNumberGenerator.cs" />
     <Compile Include="service\InvoiceService.cs" />
-    <Compile Include="service\PartiallyPaymentInvoiceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
@@ -87,9 +86,9 @@
       <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
       <Name>dokuku.sales.item</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
-      <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
-      <Name>dokuku.sales.payment.messages</Name>
+    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
+      <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
+      <Name>dokuku.sales.payment.events</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
