@@ -51,7 +51,8 @@ namespace dokuku.sales.payment.fixture
                     PONo = "",
                     SubTotal = 10000000,
                     TermCondition = "",
-                    Total = 10000000
+                    Total = 10000000,
+                    Status = "Draft"
                 };
                 bus.Publish(new InvoiceApproved { InvoiceJson = invoice.ToJson() });
                 System.Threading.Thread.Sleep(3000);

@@ -67,13 +67,16 @@ steal('jquery/controller',
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
             },
-            '#selectcust change': function (el, ev) {
+//            '#selectcust change': function (el, ev) {
+//                this.CheckNameCutomer(el.val());
+//            },
+            CheckNameCutomer : function(name){
                 isDifferentCcy = true;
                 $("#divExchangeRate").hide();
                 $("#custCcyCode").val(baseCcy);
                 $("#keteranganSelectCust").empty();
                 this.ShowCurrencyToView();
-                var dataCust = custRepo.GetCustomerByName(el.val());
+                var dataCust = custRepo.GetCustomerByName(name);
                 if (dataCust != null) {
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
@@ -91,7 +94,7 @@ steal('jquery/controller',
                 }
                 $("#CustomerId").val("0");
                 $("#currency").hide();
-                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#keteranganSelectCust").text("Pelanggan '" + name + "' tidak ditemukan");
                 $("#selectcust").focus().select();
             },
             '#addItemRow click': function () {
@@ -270,35 +273,86 @@ steal('jquery/controller',
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
             },
-            '#selectcust keyup': function () {
-                var key = $('#selectcust').val();
-                if (key == "") {
+            '#selectcust keyup': function (el, ev) {
+                var limit = 0;
+                if (ev.keyCode == "13") {
+                    this.CheckNameCutomer(el.val());
                     $('.DivSearchCustomer').hide();
-                }
-                else {
-                    var customer = inv.SearchCustomer(key);
-                    $('.DivSearchCustomer').show();
-                    $("table#tblSearchCustomer tbody#bodySearchCustomer").empty();
-                    $.each(customer, function (item) {
-                        $("table#tblSearchCustomer tbody#bodySearchCustomer").append(
-                        '<tr id="trSearchCustomer">' +
-                        '<td id="tdSearchCustomer" style="border-bottom:solid 1px grey">' +
-                          '<div class="DivNamaCustomer" id="' + customer[item]._id + '">' + customer[item].Name + '</div>' +
-                          '<div class="DivFieldCustomer">' + customer[item].Email + '</div>' +
-                          '<div class="DivFieldCustomer">' + customer[item].BillingAddress + '</div>' +
-                        '</td>' +
-                      '</tr>'
-                    );
-                    })
-                }
+                    return;
+                }else{
+                    var key = $('#selectcust').val();
+                    if (key == "") {
+                        $('.DivSearchCustomer').hide();
+                    }
+                    else {
+                      if (ev.keyCode=="38")
+                        {
+                             var indexposition = parseInt($(".selectedCustomer").attr("tabIndex") + 1);
+                             limit = $('#bodySearchCustomer tr').length;
+                             indexposition = indexposition - 1;
+                             if (indexposition <= 0){
+                                indexposition = limit;
+                             }
+
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer");
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer2");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer2");
+                             $('#selectcust').val($('#bodySearchCustomer tr:nth-child(' + indexposition + ') td div.DivNamaCustomer').text()); 
+                        }
+                       else if (ev.keyCode=="40")
+                        {
+                             if ($(".selectedCustomer").length>1)
+                                var indexposition = $(".selectedCustomer").length - 1;
+                             else
+                             
+                                var indexposition = $(".selectedCustomer").attr("tabIndex");
+                            
+                             indexposition += 1;
+                             limit = $('#bodySearchCustomer tr').length;
+                             if (indexposition >= limit ) {
+                                 indexposition = 1;
+                             }else{
+                                indexposition += 1;
+                             }
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer");
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer2");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer2");
+                             $('#selectcust').val($('#bodySearchCustomer tr:nth-child(' + indexposition + ') td div.DivNamaCustomer').text()); 
+                        }
+                        else{
+                            var key = $('#selectcust').val();
+                                if (key == "") {
+                                    $('.DivSearchCustomer').hide();
+                                }
+                                else {
+                                    var customer = inv.SearchCustomer(key);
+                                    $('.DivSearchCustomer').show();
+                                    $("table#tblSearchCustomer tbody#bodySearchCustomer").empty();
+                                    $.each(customer, function (item) {
+                                        $("table#tblSearchCustomer tbody#bodySearchCustomer").append(
+                                        '<tr id="trSearchCustomer">' +
+                                        '<td id="tdSearchCustomer'+ item +'" class="selectedCustomer" style="border-bottom:solid 1px grey" tabIndex = "'+ item +'">' +
+                                            '<div class="DivNamaCustomer" id="' + customer[item]._id + '">' + customer[item].Name + '</div>' +
+                                            '<div class="DivFieldCustomer">' + customer[item].Email + '</div>' +
+                                            '<div class="DivFieldCustomer">' + customer[item].BillingAddress + '</div>' +
+                                        '</td>' +
+                                        '</tr>'
+                                    );
+                                    })
+                                }
+                            }
+                        }
+                    }
             },
             '.DivNamaCustomer click': function (el) {
                 var id = el.attr('id');
                 var name = el.text();
                 $('#selectcust').val(name);
                 $('#CustomerId').val(id);
-                $('#selectcust').change();
+                this.CheckNameCutomer(name);
                 $('.DivSearchCustomer').hide();
-            }
+            },
         })
           });

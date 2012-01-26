@@ -34,7 +34,7 @@ steal('jquery/controller', 'jquery/view/ejs',
     GetDetailCustomer: function (invoice) {
         $.ajax({
             type: 'GET',
-            url: '/GetDataCustomer/id/' + invoice.CustomerId,
+            url: '/GetDataCustomer/' + invoice.CustomerId,
             dataType: 'json',
             async: false,
             success: function (data) {

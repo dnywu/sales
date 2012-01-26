@@ -45,12 +45,12 @@ steal('jquery/controller', 'jquery/view/ejs',
             '#customers click': function (el) {
                 this.ClearContain();
                 this.SetBoldActivePage(el);
-                $("#body").sales_items_create('load');
+                $("#body").sales_customers('load');
             },
             '#emailhistory click': function (el) {
                 this.ClearContain();
                 this.SetBoldActivePage(el);
-                $("#body").sales_items_create('load');
+                $("#body").sales_customers('load');
             },
             '#items click': function (el) {
                 this.ClearContain();

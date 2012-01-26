@@ -1,24 +1,27 @@
 ﻿<div class='mainFrame'>
   <div class="topBandHeaderDIV">
-    <div class="HeaderDIVLeft" id="TitleSpan">New Currency</div>
+    <div class="HeaderDIVLeft" id="TambahMU">Tambah Mata Uang</div>
   </div>
   <div class="error" id="errorCreateItemDiv"></div>
   <div class="mainDivWidth">
-    <form id="addCurrencyForm">
+    <div id="addCurrencyForm">
       <div class="ie-form AddCurrencyFormDiv">
         <table>
           <tbody>
             <tr>
               <td class="labelLeft">
-                <span class="requiredFieldLabel">Currency Code</span>
+                <span class="requiredFieldLabel">Kode Mata Uang</span>
               </td>
               <td class="field">
-                    <select ></select>
+                <select >
+                  <option value="IDR" selected>IDR</option>
+                  <option value="USD">USD</option>
+                </select>                
               </td>
             </tr>
             <tr>
               <td class="labelLeft">
-                <span class="requiredFieldLabel">Currency Symbol</span>
+                <span class="requiredFieldLabel">Lambang Mata Uang</span>
               </td>
               <td class="field">
                 <input type="text" name="Symbol" id="Symbol" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Currency Symbol tidak boleh kosong')" required="required"/>
@@ -30,10 +33,18 @@
           </tbody>
         </table>
       </div>
-      <div class="submitFormDiv">
-        <input type="submit" Value="Simpan" />
-        <input type="button" value="Batal" id="cancelCurrency" />
-      </div>
-    </form>
+      <!--<div class="submitFormDiv">
+        <input type="submit" Value="Simpan" id="CurrencySave" />
+        <input type="button" value="Batal" id="CancelCurrency" />
+      </div>-->
+    </div>
+    <div style="margin-top:30px">
+      <p align="center" style="font-size:11px">
+        <input type="hidden" id="keywords" name="keywords"></input>
+        <input id="CurrencySave" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
+        atau
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="CancelCurrency">Batal</span>
+      </p>
+    </div>
   </div>
 </div>
