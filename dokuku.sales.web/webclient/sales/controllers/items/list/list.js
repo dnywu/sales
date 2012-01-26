@@ -54,9 +54,9 @@ steal('jquery/controller',
                 $("table.ItemList tbody").empty();
                 $.each(data, function (item) {
                     $("table.ItemList tbody").append('<tr class="trDataItem" width="48px" id="itemContent' + item + '" tabindex="' + item + '">' +
-                    '<td class="itemList"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
-                    '<td class="itemList" id="settingPanel' + item + '"></td>' +
-                    '<td class="itemList itemName"><div class="itemName">' + data[item].Name + '</div>' +
+                    '<td class="itemList itemSelect"><input type="checkbox" class="checkBoxItem" id="checkBoxItem' + item + '" value="' + data[item]._id + '" /></td>' +
+                    '<td class="itemList itemSetting" id="settingPanel' + item + '"></td>' +
+                    '<td class="itemList items"><div class="itemName">' + data[item].Name + '</div>' +
                     '<div class="itemDesc">' + data[item].Description + '</div></td>' +
                     '<td class="itemList itemPrice"><span class="ccy"></span>' + String.format("{0:C}", data[item].Rate) + '</td></tr>');
                     $("td#settingPanel" + item).append("//sales/controllers/items/list/views/popupEventDialog.ejs", { index: item });
