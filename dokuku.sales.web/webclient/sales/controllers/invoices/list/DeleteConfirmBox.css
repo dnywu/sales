@@ -81,3 +81,25 @@ div.textDeleteConfirmHeader{margin: 20px 5px 10px 5px;}
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
 }
+.ButtonApproveYes{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 72px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	
+}
