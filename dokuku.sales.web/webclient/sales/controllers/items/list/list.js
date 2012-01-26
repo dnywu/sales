@@ -173,7 +173,7 @@ steal('jquery/controller',
                 $(".checkBoxItem:checked").each(function (index) {
                     $.ajax({
                         type: 'DELETE',
-                        url: '/deleteItem/_id/' + $(this).val(),
+                        url: '/deleteItem/' + $(this).val(),
                         dataType: 'json'
                     });
                 });
@@ -195,7 +195,7 @@ steal('jquery/controller',
                 if (ev.keyCode == 13) {
                     $.ajax({
                         type: 'GET',
-                        url: '/searchItem/keyword/' + $("#searchItem").val(),
+                        url: '/searchItem/' + $("#searchItem").val(),
                         dataType: 'json',
                         success: function (data) {
                             $this.requestAllItemSuccess(data);

@@ -27,7 +27,7 @@
             try {
                 $.ajax({
                     type: 'GET',
-                    url: '/searchItem/keyword/' + key,
+                    url: '/searchItem/' + key,
                     dataType: 'json',
                     async: false,
                     success: function (data) {

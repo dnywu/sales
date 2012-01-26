@@ -55,23 +55,28 @@ steal('jquery/controller',
             },
             '#tambahPelanggan click': function () {
                 new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
                 var addCust = new AddCustomer();
                 addCust.TriggerEvent();
             },
             '.additem click': function (el, ev) {
                 new ModalDialog("Tambah Barang Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
             },
-            '#selectcust change': function (el, ev) {
+//            '#selectcust change': function (el, ev) {
+//                this.CheckNameCutomer(el.val());
+//            },
+            CheckNameCutomer : function(name){
                 isDifferentCcy = true;
                 $("#divExchangeRate").hide();
                 $("#custCcyCode").val(baseCcy);
                 $("#keteranganSelectCust").empty();
                 this.ShowCurrencyToView();
-                var dataCust = custRepo.GetCustomerByName(el.val());
+                var dataCust = custRepo.GetCustomerByName(name);
                 if (dataCust != null) {
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
@@ -89,7 +94,7 @@ steal('jquery/controller',
                 }
                 $("#CustomerId").val("0");
                 $("#currency").hide();
-                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#keteranganSelectCust").text("Pelanggan '" + name + "' tidak ditemukan");
                 $("#selectcust").focus().select();
             },
             '#addItemRow click': function () {
@@ -196,7 +201,7 @@ steal('jquery/controller',
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).val(amount);
+                $("#amount_" + index).val(amount.toFixed(2));
                 $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
@@ -236,12 +241,12 @@ steal('jquery/controller',
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();
                 $("#subtotaltext").text(String.format("{0:C}", subtotal));
-                $("#subtotal").val(subtotal);
+                $("#subtotal").val(subtotal.toFixed(2));
             },
             GetTotal: function () {
                 var total = inv.CalculateTotal();
                 $("#totaltext").text(String.format("{0:C}", total));
-                $("#total").val(total);
+                $("#total").val(total.toFixed(2));
             },
             SetDatePicker: function () {
                 var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
@@ -285,6 +290,87 @@ steal('jquery/controller',
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
+            },
+            '#selectcust keyup': function (el, ev) {
+                var limit = 0;
+                if (ev.keyCode == "13") {
+                    this.CheckNameCutomer(el.val());
+                    $('.DivSearchCustomer').hide();
+                    return;
+                }else{
+                    var key = $('#selectcust').val();
+                    if (key == "") {
+                        $('.DivSearchCustomer').hide();
+                    }
+                    else {
+                      if (ev.keyCode=="38")
+                        {
+                             var indexposition = parseInt($(".selectedCustomer").attr("tabIndex") + 1);
+                             limit = $('#bodySearchCustomer tr').length;
+                             indexposition = indexposition - 1;
+                             if (indexposition <= 0){
+                                indexposition = limit;
+                             }
+
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer");
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer2");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer2");
+                             $('#selectcust').val($('#bodySearchCustomer tr:nth-child(' + indexposition + ') td div.DivNamaCustomer').text()); 
+                        }
+                       else if (ev.keyCode=="40")
+                        {
+                             if ($(".selectedCustomer").length>1)
+                                var indexposition = $(".selectedCustomer").length - 1;
+                             else
+                             
+                                var indexposition = $(".selectedCustomer").attr("tabIndex");
+                            
+                             indexposition += 1;
+                             limit = $('#bodySearchCustomer tr').length;
+                             if (indexposition >= limit ) {
+                                 indexposition = 1;
+                             }else{
+                                indexposition += 1;
+                             }
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer");
+                             $('#bodySearchCustomer tr td ').removeClass("selectedCustomer2");
+                             $('#bodySearchCustomer tr:nth-child('+ indexposition +') td').addClass("selectedCustomer2");
+                             $('#selectcust').val($('#bodySearchCustomer tr:nth-child(' + indexposition + ') td div.DivNamaCustomer').text()); 
+                        }
+                        else{
+                            var key = $('#selectcust').val();
+                                if (key == "") {
+                                    $('.DivSearchCustomer').hide();
+                                }
+                                else {
+                                    var customer = inv.SearchCustomer(key);
+                                    $('.DivSearchCustomer').show();
+                                    $("table#tblSearchCustomer tbody#bodySearchCustomer").empty();
+                                    $.each(customer, function (item) {
+                                        $("table#tblSearchCustomer tbody#bodySearchCustomer").append(
+                                        '<tr id="trSearchCustomer">' +
+                                        '<td id="tdSearchCustomer'+ item +'" class="selectedCustomer" style="border-bottom:solid 1px grey" tabIndex = "'+ item +'">' +
+                                            '<div class="DivNamaCustomer" id="' + customer[item]._id + '">' + customer[item].Name + '</div>' +
+                                            '<div class="DivFieldCustomer">' + customer[item].Email + '</div>' +
+                                            '<div class="DivFieldCustomer">' + customer[item].BillingAddress + '</div>' +
+                                        '</td>' +
+                                        '</tr>'
+                                    );
+                                    })
+                                }
+                            }
+                        }
+                    }
+            },
+            '.DivNamaCustomer click': function (el) {
+                var id = el.attr('id');
+                var name = el.text();
+                $('#selectcust').val(name);
+                $('#CustomerId').val(id);
+                this.CheckNameCutomer(name);
+                $('.DivSearchCustomer').hide();
             },
             RenderToSearchList: function (searchResult) {
                 $(".resultItemDiv").show();

@@ -7,6 +7,7 @@ using dokuku.sales.payment.query;
 using MongoDB.Bson;
 using Newtonsoft.Json;
 using NServiceBus;
+using dokuku.sales.payment.events;
 
 namespace dokuku.sales.payment.service
 {

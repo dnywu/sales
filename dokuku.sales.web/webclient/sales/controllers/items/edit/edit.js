@@ -21,7 +21,7 @@ steal('jquery/controller',
                     var item = null;
                     $.ajax({
                         type: 'GET',
-                        url: 'Items/_id/' + id,
+                        url: 'Items/' + id,
                         dataType: 'json',
                         async: false,
                         success: function (data) {

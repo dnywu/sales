@@ -34,17 +34,8 @@
     },
     ShowListItem: function (part, index) {
         $("#baseprice_" + index).val(part.Rate);
-        //if (!isDifferentCcy) {
         part.Rate = part.Rate / $("#custRate").val();
-        //normal
         part.Rate = part.Rate.toFixed(2)
-        //up
-        /*
-        part.Rate = part.Rate.toFixed(3) * 100;
-        part.Rate = Math.ceil(part.Rate);
-        part.Rate = part.Rate / 100;
-        */
-        //}
         $("#partid_" + index).val(part._id);
         $("#part_" + index).val(part.Name);
         $("#desc_" + index).text(part.Description);
@@ -68,7 +59,6 @@
     CalculateItemOnChangeRate: function (index, ccy) {
         var Rate = $("#baseprice_" + index).val() / $("#custRate").val();
         Rate = Rate.toFixed(2);
-        //Rate = Math.ceil(Rate);
         $("#rate_" + index).val(Rate);
         var amount = inv.CalculateAmountPerItem($("#qty_" + index).val(), Rate, $("#disc_" + index).val());
         $("#amount_" + index).val(amount);
@@ -170,22 +160,8 @@
             $("#errorCreateInv").text("Silahkan masukkan barang di invoice ini").show();
             return;
         }
-
-
         $("#errorCreateInv").empty().hide();
-
         return JSON.stringify(objInv);
-        /*
-        var newInv = JSON.stringify(objInv);
-        $.ajax({
-        type: 'POST',
-        url: '/createinvoice',
-        data: { 'invoice': newInv },
-        dataType: 'json',
-        async: false,
-        success: this.CreateInvoiceCallBack
-        });
-        */
     },
     CreateInvoiceCallBack: function (data) {
         if (data.error == true) {
@@ -249,6 +225,33 @@
             }
         });
         return result;
+    },
+    ApproveInvoiceByID: function (invoiceID) {
+        var id = invoiceID;
+        $.ajax({
+            type: 'POST',
+            url: '/approveinvoice/' + id,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+	},
+    SearchCustomer: function (key) {
+        var listCustomer = null;
+        $.ajax({
+            type: 'GET',
+            url: '/SearchCustomer/key/' + key,
+            dataType: 'json',
+            failure: $('#DivSearchCustomer').hide(),
+            async: false,
+            success: function (data) {
+                listCustomer = data;
+            }
+        });
+        return listCustomer;
     }
 })
     });

@@ -19,7 +19,7 @@ namespace dokuku.sales.payment.fixture
         static Guid paymentId;
         Establish context = () =>
         {
-            DomainEvents.Register<PaymentRecorded>( p => paymentId = p.PaymentRecordId );
+            DomainEvents.Register<InvoicePaid>( p => paymentId = p.PaymentRecordId );
             payment = new InvoicePayment(Guid.NewGuid(), "oetawan", new Invoice(Guid.NewGuid(), "INV-1", 10000000), Guid.NewGuid());
             PaymentRecord pr = PaymentRecord.
                 AmountPaid(2000000).
