@@ -55,7 +55,7 @@ div.ContextMenuInvoice
 	background-color: white;
 	position: absolute;
 	white-space: normal;
-	width: 75px;
+	width: 130px;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
@@ -65,7 +65,6 @@ div.ContextMenuInvoice
 	color: #457BD9;
 	padding: 8px;
 }
-.itemContextMenuInvoice{padding-top:4px;}
 .invNo
 {
     color:Blue;
@@ -84,23 +83,43 @@ div.ContextMenuInvoice
     color:#4183C4;
 }
 .invNo{color:Blue;padding-top:4px;cursor:pointer;}
-.EditContextMenuInvoive{cursor:pointer;outline:none;left: 27px;position: relative;}
-.ApproveContextMenuInvoive{cursor:pointer;outline:none;left: 27px;position: relative;}
 .itemContextMenuInvoice
 {
-    cursor:pointer;
-    outline:none;
-    color:Blue;
-    cursor:pointer;
-    text-decoration:underline;
-    margin-top: 3px;
-    margin-bottom: 16px;
+padding-top: 1px;
+padding-bottom: 1px;
+outline: none;
+color: blue;
+cursor: pointer;
+text-decoration: underline;
+margin-top: 0px;
+margin-bottom: 0px;
 }
-
-.itemContextMenuInvoice:hover
+.spanContextMenuListInvoice
+{
+    cursor: pointer;
+    outline: none;
+    left: -6px;
+    position: relative;
+    display: block;
+    width: 110px;
+    padding-left: 32px;
+    z-index: 1;
+    height: 24px;
+    padding-top: 6px;
+}
+.spanContextMenuListInvoice:hover
 {
     background-color:#E8E8E8;
+    border-radius:10px;
 }
-
 .invNo:hover{color:Red;}
-.invoiceImgContextMenu{position:absolute;}
+.invoiceImgContextMenu{position:absolute; z-index:2;}
+.EditImagContextMenu_ListInvoice{
+    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+    background-position: -382px -57px;
+    height: 21px;
+    width: 19px;
+    float: left;
+    margin-right: 20px;
+    margin-top: 4px;
+}

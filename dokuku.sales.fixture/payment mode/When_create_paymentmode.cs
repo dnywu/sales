@@ -20,17 +20,16 @@ namespace dokuku.sales.fixture.payment_mode
                 config = new MongoConfig();
                 payModeService = new PaymentModeService(config);
                 payModeQuery = new PaymentModeQuery(config);
-                paymentmodeId = Guid.NewGuid();
             };
         Because of = () =>
             {
                 PaymentModes paymodes = new PaymentModes
                 {
-                    _id = paymentmodeId,
                     Name = "Cash",
                     OwnerId = "marthin"
                 };
-                payModeService.Insert(JsonConvert.SerializeObject(paymodes,Formatting.None),"marthin");
+                PaymentModes pm = payModeService.Insert(JsonConvert.SerializeObject(paymodes,Formatting.None),"marthin");
+                paymentmodeId = pm._id;
             };
         It should_save_paymentmodes = () =>
             {

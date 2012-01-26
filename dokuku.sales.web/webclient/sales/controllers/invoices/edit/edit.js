@@ -49,7 +49,7 @@ steal('jquery/controller',
                 this.ShowCurrencyToView();
                 this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", invoice);
                 $("#currency").text(invoice.Currency).show();
-                this.ShowExchangRate(invoice.Currency,invoice.BaseCcy, invoice.ExchangeRate);
+                this.ShowExchangRate(invoice.Currency, invoice.BaseCcy, invoice.ExchangeRate);
                 if (invoice.BaseCcy != invoice.Currency) {
                     $("#divExchangeRate").show();
                 } else {
@@ -139,22 +139,74 @@ steal('jquery/controller',
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
                 inv.GetSubTotal();
             },
-            '.partname change': function (el) {
-                var partName = el.val();
-                var index = el.attr("id").split('_')[1];
-                var part = itmRepo.GetItemByName(partName);
-                if (part != null) {
-                    inv.ShowListItem(part, index);
-                    this.GetSubTotal();
-                    this.GetTotal();
-                    $("#additem_" + index).hide();
-                    return;
+            //            '.partname change': function (el) {
+            //                var partName = el.val();
+            //                var index = el.attr("id").split('_')[1];
+            //                this.FillItemAtribut(partName, index);
+            //            },
+            '.partname focus': function (el) {
+                el.select();
+            },
+            '.partname keyup': function (el, ev) {
+                if (el.val() != "") {
+                    var limit = 0;
+                    if (ev.keyCode == 13) {
+                        var partName = $("#itemList tr td.selected div.itemName").text();
+                        el.val(partName);
+                        var index = el.attr("id").split('_')[1];
+                        this.FillItemAtribut(partName, index);
+                        $(".resultItemDiv").remove();
+                        el.trigger("blur");
+                        $("#qty_" + index).trigger("focus");
+                    } else {
+                        var index = el.attr("id").split('_')[1];
+                        if (ev.keyCode == 40) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition++;
+                            if (limit < indexposition)
+                                indexposition = 1;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else if (ev.keyCode == 38) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition--;
+                            if (indexposition < 1)
+                                indexposition = limit;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else {
+                            var searchResultList = null;
+                            if ($(".resultItemDiv").length == 0) {
+                                $(".resultItemDiv").remove();
+                                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
+                            }
+                            var searchResult = itmRepo.SearchItem(el.val());
+                            this.RenderToSearchList(searchResult);
+                            $("#itemList tr:nth-child(1) td").addClass("selected");
+                        }
+                    }
                 }
-                this.ClearItemField(index);
-                $("#additem_" + index).show();
-                this.GetSubTotal();
-                this.GetTotal();
-                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            },
+            '.itemTd hover': function (el) {
+                $("#itemList tr td").removeClass("selected");
+                el.addClass("selected");
+            },
+            '.itemTd click': function (el) {
+                var index = el.attr("id");
+                var fieldIndex = $('.resultItemDiv').attr("id").split('_')[1];
+                var partName = $("div#itemName" + index).text();
+
+                $('#part_' + fieldIndex).val(partName);
+                this.FillItemAtribut(partName, fieldIndex);
+                $(".resultItemDiv").remove();
+            },
+            '.quantity focus': function (el) {
+                el.select();
+            },
+            '.quantity click': function (el) {
+                el.focus();
             },
             '.quantity change': function (el) {
                 this.CalculateItem(el);
@@ -307,13 +359,38 @@ steal('jquery/controller',
             ShowCurrencyToView: function () {
                 $("#curr").text(baseCcy);
             },
-            ShowExchangRate: function (custCcy, baseCcy,ExchangeRate) {
+            ShowExchangRate: function (custCcy, baseCcy, ExchangeRate) {
                 $("#curr").text(custCcy);
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
                 if (ExchangeRate != 1)
                     $("#custRate").val(ExchangeRate);
+            },
+            RenderToSearchList: function (searchResult) {
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "' tabIndex='" + index + "'>" +
+                                "<div class='itemName' id='itemName" + index + "'>" + searchResult[index].Name + "</div>" +
+                                "<div class='itemDesc' id='itemDesc" + index + "'>" + searchResult[index].Description + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
+            },
+            FillItemAtribut: function (name, index) {
+                var part = itmRepo.GetItemByName(name);
+                if (part != null) {
+                    inv.ShowListItem(part, index);
+                    this.GetSubTotal();
+                    this.GetTotal();
+                    $("#additem_" + index).hide();
+                    return;
+                }
+                this.ClearItemField(index);
+                $("#additem_" + index).show();
+                this.GetSubTotal();
+                this.GetTotal();
+                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             }
         })
             });
