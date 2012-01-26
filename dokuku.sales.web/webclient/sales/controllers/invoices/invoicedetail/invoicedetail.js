@@ -13,7 +13,7 @@ steal('jquery/controller', 'jquery/view/ejs',
     load: function (invoice) {
         var inv = this.GetDetailCustomer(invoice);
         this.element.html(this.view("//sales/controllers/invoices/invoicedetail/views/invoicedetail.ejs", inv));
-        GetStatusInvoice(inv.Status);
+        //GetStatusInvoice(inv.Status);
     },
     '#newinvoicesByDetails click': function () {
         $("#body").sales_invoices_create("load");

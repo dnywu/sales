@@ -81,7 +81,11 @@ steal('jquery/controller',
                 '.ApproveContextMenuInvoive click': function (el) {
                     var id = el.attr('id');
                     result = inv.ApproveInvoiceByID(id);
-                    //$("#body").sales_invoices_list('load');
+                    if (result.error == false) {
+                        $this.load();
+                    } else {
+                        $("#errorListInv").text(result.message).show("slow");
+                    }
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
@@ -140,35 +144,21 @@ steal('jquery/controller',
                     }
                 },
                 '.ButtonApproveYes click': function () {
-                    //alert("approve");
                     var result;
-                    var checkedID = new Array();
                     $(".selectInvoice:checked").each(function (index) {
                         var index = $(this).attr("id");
                         var no = $("#invoiceId_" + index).val();
-                        //result = inv.DeleteInvoice(no);
-                        checkedID = no;
-                        alert(checkedID);
-                    });
-                    /*
-                    var result;
-                    $(".selectInvoice:checked").each(function (index) {
-                    var index = $(this).attr("id");
-                    var no = $("#invoiceId_" + index).val();
-                    result = inv.DeleteInvoice(no);
+                        result = inv.ApproveInvoiceByID(no);
                     });
                     if (result == "OK") {
-                    $(".DeleteConfirmation").remove();
-                    $this.load();
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
                     } else {
-                    $(".BodyConfirmMassage").empty();
-                    var message = $("<div>" + result.message + "</div>" +
-                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
-                    $(".BodyConfirmMassage").append(message);
+                        $(".BodyConfirmMassage").empty();
+                        var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                        $(".BodyConfirmMassage").append(message);
                     }
-                    */
                 }
-
             });
-
        });

@@ -1102,7 +1102,9 @@
     </None>
     <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs" />
     <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs" />
-    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs" />
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>
