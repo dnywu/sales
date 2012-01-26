@@ -28,6 +28,7 @@ namespace dokuku.sales.payment.domain
         
         public void Pay(Payment payment)
         {
+            FailIfDateLessThanInvoiceDate(payment);
             FailIfAmountPaidGreaterThanBalanceDue(payment);
             BalanceDue = BalanceDue - payment.amountPaid;
             InvoicePaid invoicePaid = new InvoicePaid(Guid.NewGuid(),
@@ -50,8 +51,8 @@ namespace dokuku.sales.payment.domain
         public void RevisePayment(Guid revisedPaymentRecordId, Payment payment)
         {
             Adjust(revisedPaymentRecordId);
-            FailIfAmountPaidGreaterThanBalanceDue(payment);
             FailIfDateLessThanInvoiceDate(payment);
+            FailIfAmountPaidGreaterThanBalanceDue(payment);
             BalanceDue = BalanceDue - payment.amountPaid;
 
             PaymentRevised paymentRevised = new PaymentRevised(Guid.NewGuid(),
