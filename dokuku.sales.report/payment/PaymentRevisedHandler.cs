@@ -15,7 +15,8 @@ namespace dokuku.sales.report.Handlers
         public void Handle(PaymentRevised message)
         {
             BsonDocument doc = BsonDocument.Parse(message.PaymentJson);
-            doc["_id"] = doc["PaymentRecordId"];
+            doc["_id"] = doc["RevisedPaymentId"];
+            doc.Remove("RevisedPaymentId");
             Collections.Save(doc);
         }
 

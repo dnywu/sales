@@ -6,11 +6,9 @@ namespace dokuku.sales.payment.domain
 {
     public class PaymentMode
     {
-        private string p;
-
-        public PaymentMode() { }
-        public PaymentMode(string name)
+        public PaymentMode(Guid id, string name)
         {
+            _id = id;
             Name = name;
         }
         public Guid _id { get; set; }

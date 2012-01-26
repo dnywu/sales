@@ -53,21 +53,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="command\IPaymentModeCommand.cs" />
-    <Compile Include="command\PaymentModeCommand.cs" />
     <Compile Include="domain\Invoice.cs" />
     <Compile Include="domain\InvoicePayment.cs" />
     <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
     <Compile Include="domain\PaymentMode.cs" />
-    <Compile Include="domain\PaymentRecord.cs" />
+    <Compile Include="domain\Payment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="query\IPaymentModeQuery.cs" />
-    <Compile Include="query\PaymentModeQuery.cs" />
-    <Compile Include="service\IPaymentModeService.cs" />
     <Compile Include="service\eventhandler\InvoiceApprovedHandler.cs" />
     <Compile Include="service\commandhandler\PayInvoiceHandler.cs" />
     <Compile Include="service\domaineventhandler\InvoicePaidHandler.cs" />
-    <Compile Include="service\PaymentModeService.cs" />
     <Compile Include="service\domaineventhandler\PaymentRevisedHandler.cs" />
     <Compile Include="service\commandhandler\RevisePaymentHandler.cs" />
   </ItemGroup>

@@ -21,8 +21,7 @@ namespace dokuku.sales.payment.service
                 invoice["OwnerId"].ToString(),
                 new Invoice((Guid)invoiceId.RawValue,
                     invoice["InvoiceNo"].ToString(),
-                    Convert.ToDecimal(invoice["Total"])),
-                Guid.Parse(invoice["CustomerId"].ToString()));
+                    Convert.ToDecimal(invoice["Total"])));
             Mongo.MongoDatabase.GetCollection<InvoicePayment>(typeof(InvoicePayment).Name).Save<InvoicePayment>(paymentInvoice);
         }
     }

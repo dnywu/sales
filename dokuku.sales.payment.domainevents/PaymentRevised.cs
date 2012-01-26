@@ -5,20 +5,36 @@ using System.Text;
 using dokuku.sales.domainevents;
 namespace dokuku.sales.payment.domainevents
 {
-    public class PaymentRevised : IDomainEvent
+    public class PaymentRevised : InvoicePaid
     {
-        public Guid InvoiceId { get; set; }
-        public string InvoiceNumber { get; set; }
-        public string ownerid { get; set; }
+        public Guid RevisedPaymentId { get; private set; }
 
-        public decimal AmountPaid { get; set; }
-        public decimal BankCharge { get; set; }
-        public DateTime PaymentDate { get; set; }
-        public string PaymentMode { get; set; }
-        public string PRReference { get; set; }
-        public string PRNotes { get; set; }
-        public Guid PaymentRecordId { get; set; }
-        public string OwnerId { get; set; }
-        public bool Lunas { get; set; }
+        public PaymentRevised(Guid paymentRecordId,
+            Guid invoiceId,
+            string invoiceNumber,
+            string ownerId,
+            decimal amountPaid,
+            decimal bankCharge,
+            DateTime paymentDate,
+            Guid paymentMode,
+            string reference,
+            string notes,
+            bool lunas,
+            decimal balanceDue,
+            Guid revisedPaymentId) : base(paymentRecordId,
+                                          invoiceId, 
+                                          invoiceNumber, 
+                                          ownerId, 
+                                          amountPaid, 
+                                          bankCharge, 
+                                          paymentDate,
+                                          paymentMode,
+                                          reference,
+                                          notes,
+                                          lunas,
+                                          balanceDue)
+        {
+            this.RevisedPaymentId = revisedPaymentId;
+        }
     }
 }
