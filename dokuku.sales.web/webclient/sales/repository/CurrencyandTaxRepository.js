@@ -6,7 +6,7 @@
     init: function () {
     },
     getAllTax: function () {
-        var dataTax;
+        var dataTax = new Array();
         $.ajax({
             type: 'GET',
             url: '/GetAllTax',
@@ -23,9 +23,8 @@
         var response = false;
         $.ajax({
             type: 'POST',
-            url: '/SaveTax',
+            url: '/SaveTax/' + taxModel,
             dataType: 'json',
-            data: { 'data': JSON.stringify(tax) },
             async: false,
             success: function (data) {
                 response = true;
