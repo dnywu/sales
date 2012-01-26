@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using dokuku.sales.payment.domain;
+using dokuku.sales.paymentmode.model;
 using Nancy;
 using Nancy.Security;
 
@@ -18,9 +18,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    //PaymentMode paymentMode = this.PaymentModeService().Insert(this.Request.Form.paymentmode);
-                    //return Response.AsJson(paymentMode);
-                    return null;
+                    PaymentModes paymentMode = this.PaymentModeService().Insert(this.Request.Form.paymentmode, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(paymentMode);                    
                 }
                 catch (Exception e)
                 {
@@ -32,9 +31,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    //PaymentMode paymentMode = this.PaymentModeService().Get(p.id);
-                    //return Response.AsJson(paymentMode);
-                    return null;
+                    PaymentModes paymentMode = this.PaymentModeQuery().Get(p.id, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(paymentMode);
                 }
                 catch (Exception e)
                 {
@@ -46,9 +44,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    //IEnumerable<PaymentMode> paymentModes = this.PaymentModeService().FindAll();
-                    //return Response.AsJson(paymentModes);
-                    return null;
+                    PaymentModes[] paymentModes = this.PaymentModeQuery().FindAll(this.CurrentAccount().OwnerId);
+                    return Response.AsJson(paymentModes);
                 }
                 catch (Exception e)
                 {
@@ -60,9 +57,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    //PaymentMode paymentMode = this.PaymentModeService().Update(this.Request.Form.paymentmode);
-                    //return Response.AsJson(paymentMode);
-                    return null;
+                    PaymentModes paymentMode = this.PaymentModeService().Update(this.Request.Form.paymentmode, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(paymentMode);
                 }
                 catch (Exception e)
                 {
@@ -74,9 +70,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    //this.PaymentModeService().Delete(p.id);
-                    //return Response.AsJson(new { error = false });
-                    return null;
+                    this.PaymentModeService().Delete(p.id);
+                    return Response.AsJson(new { error = false });
                 }
                 catch (Exception e)
                 {
