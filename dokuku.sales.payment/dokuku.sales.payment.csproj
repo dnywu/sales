@@ -53,27 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="command\IPaymentModeCommand.cs" />
-    <Compile Include="command\PaymentModeCommand.cs" />
     <Compile Include="domain\Invoice.cs" />
     <Compile Include="domain\InvoicePayment.cs" />
+    <Compile Include="domain\Payment.cs" />
+    <Compile Include="domain\PaymentDateLessThanInvoiceDateException.cs" />
     <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
     <Compile Include="domain\PaymentMode.cs" />
-    <Compile Include="domain\PaymentRecord.cs" />
-    <Compile Include="IPaymentRepository.cs" />
-    <Compile Include="PaymentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="query\IPaymentModeQuery.cs" />
-    <Compile Include="query\PaymentModeQuery.cs" />
-    <Compile Include="service\IPaymentModeService.cs" />
-    <Compile Include="service\InvoiceApprovedHandler.cs" />
-    <Compile Include="service\InvoiceFullPaidHandler.cs" />
-    <Compile Include="service\PayInvoiceHandler.cs" />
-    <Compile Include="service\PartialInvoicePaymentHandler.cs" />
-    <Compile Include="service\PaymentInvoiceRecordedHandler.cs" />
-    <Compile Include="service\PaymentModeService.cs" />
-    <Compile Include="service\PaymentRecordRevisedHandler.cs" />
-    <Compile Include="service\RevisePaymentHandler.cs" />
+    <Compile Include="service\eventhandler\InvoiceApprovedHandler.cs" />
+    <Compile Include="service\commandhandler\PayInvoiceHandler.cs" />
+    <Compile Include="service\domaineventhandler\InvoicePaidHandler.cs" />
+    <Compile Include="service\domaineventhandler\PaymentRevisedHandler.cs" />
+    <Compile Include="service\commandhandler\RevisePaymentHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -92,6 +83,10 @@
     <ProjectReference Include="..\dokuku.sales.payment.domainevents\dokuku.sales.payment.domainevents.csproj">
       <Project>{A9026D2B-D2AE-43CC-B9FF-4D686A75BDC1}</Project>
       <Name>dokuku.sales.payment.domainevents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
+      <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
+      <Name>dokuku.sales.payment.events</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
       <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>

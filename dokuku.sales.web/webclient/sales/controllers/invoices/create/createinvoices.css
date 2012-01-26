@@ -163,9 +163,20 @@ div.resultItemDiv
 {
 	cursor:pointer;
 }
-.itemTd:hover
+td.selected
 {
-	color:Green;
+	background-color:#A2DDFF;
+}
+.itemName
+{
+	font-size:12px;
+	font-weight:bolder;
+	width:100%;
+}
+.itemDesc
+{
+	width:100%;
+	font-size:9px;
 }
 #DivSearchCustomer{
 	display:none;
@@ -185,3 +196,4 @@ div.resultItemDiv
 .DivNamaCustomer{ font-size:14px; font-weight:bolder; color:Black; cursor:pointer;}
 .DivFieldCustomer{font-size:11px; color:Gray;}
 .DivNamaCustomer:hover { font-size:14px; font-weight:bolder; color:Red; cursor:pointer;}
+.selectedCustomer2{ background-color:#DCD9D9; }

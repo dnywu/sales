@@ -12,7 +12,7 @@
 
             </td>
             <td class="td_field">
-              <input type="text" name="Name" id="inputText_PajakName" placeholder="Nama Pajak" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+              <input type="text" name="Pajak" id="inputText_PajakName" placeholder="Nama Pajak" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pajak tidak Boleh Kosong')"/>
             </td>
             <td class="error"></td>
           </tr>
@@ -21,18 +21,9 @@
               <div class="mandatoryTxt">Persentase (%)</div>
             </td>
             <td class="td_field">
-              <input type="text" name="Name" id="inputText_Persentage" placeholder="Persentase" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pelanggan tidak Boleh Kosong')"/>
+              <input type="text" name="Persentase" id="inputText_Persentage" placeholder="Persentase" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Persentase tidak Boleh Kosong')"/>
             </td>
             <td class="error"></td>
-          </tr>
-          <tr>
-            <td class="labelLeft">Pajak Tambahan?</td>
-            <td class="td_field" colspan="2">
-              <div class="checkboxLabelDiv">
-                <input type="checkbox" name="checkbox_pajak" id="seperateShipping" class="seperateShipping"/>
-                <label for="seperateShipping" class="labelStyle">Ya, pajak ini merupakan pajak tambahan.</label>
-              </div>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -43,7 +34,7 @@
         <input type="hidden" id="keywords" name="keywords"></input>
         <input id="TaxSave" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
         atau
-        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px">Batal</span>
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="Canceltax">Batal</span>
       </p>
     </div>
   </div>

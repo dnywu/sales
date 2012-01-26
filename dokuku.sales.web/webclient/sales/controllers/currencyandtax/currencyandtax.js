@@ -43,10 +43,13 @@ defaults: {}
         this.ClearContain();
         $("#body").sales_tax('viewAddTax');
     },   
-    
+     '#btn-add-currency click': function(){
+        this.ClearContain();
+        $("#body").sales_currency('viewAddCurrency');
+    },    
      ClearContain: function () {
                 $("#body").empty();
-     },
+     }
 
 })
 });

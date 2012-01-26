@@ -42,8 +42,8 @@
         $("#qty_" + index).val('1.00');
         $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
-        $("#amount_" + index).val(part.Rate);
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
+        $("#amount_" + index).val(part.Rate);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CalculateByRate: function (rate) {
@@ -197,7 +197,7 @@
         var key = $('#SearchInvoice').val();
         $.ajax({
             type: 'GET',
-            url: '/SearchInvoice/key/' + key,
+            url: '/SearchInvoice/' + key,
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -217,7 +217,7 @@
         var result;
         $.ajax({
             type: 'DELETE',
-            url: '/deleteInvoice/invoiceNo/' + invoiceNo,
+            url: '/deleteInvoice/' + invoiceNo,
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -227,23 +227,28 @@
         return result;
     },
     ApproveInvoiceByID: function (invoiceID) {
-        var id = invoiceID;
+        var result;
         $.ajax({
             type: 'POST',
-            url: '/approveinvoice/' + id,
+            url: '/approveinvoice/' + invoiceID,
             dataType: 'json',
             async: false,
             success: function (data) {
                 result = data;
+                //if (data.error == true) {
+                //    $("#errorListInv").text(data.message).show("slow");
+                //    return;
+                //}
+
             }
         });
         return result;
-	},
+    },
     SearchCustomer: function (key) {
         var listCustomer = null;
         $.ajax({
             type: 'GET',
-            url: '/SearchCustomer/key/' + key,
+            url: '/SearchCustomer/' + key,
             dataType: 'json',
             failure: $('#DivSearchCustomer').hide(),
             async: false,

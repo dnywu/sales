@@ -585,7 +585,9 @@
     <None Include="webclient\funcunit\update" />
     <None Include="webclient\sales\controllers\currencyandtax\views\init.ejs" />
     <None Include="webclient\sales\controllers\currencyandtax\views\listcurrencyandtax.ejs" />
-    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs" />
+    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="webclient\sales\controllers\currency\currency.html" />
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
@@ -687,6 +689,10 @@
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
     <Content Include="webclient\sales\controllers\tax\funcunit.html" />
+    <Content Include="webclient\sales\controllers\tax\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\tax\images\find.png" />
+    <Content Include="webclient\sales\controllers\tax\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\tax\images\setting.png" />
     <Content Include="webclient\sales\controllers\tax\tax.css" />
     <Content Include="webclient\sales\controllers\tax\tax.html" />
     <Content Include="webclient\sales\controllers\tax\tax.js" />
@@ -1096,6 +1102,12 @@
     </None>
     <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs" />
     <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs" />
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
@@ -1124,9 +1136,16 @@
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\tax\views\addtax.ejs" />
+    <None Include="webclient\sales\controllers\tax\views\addtax.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\tax\views\contextMenuCustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\tax\views\init.ejs" />
-    <None Include="webclient\sales\controllers\tax\views\listtax.ejs" />
+    <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
@@ -1210,6 +1229,10 @@
     <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
       <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
       <Name>dokuku.sales.payment.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.paymentmode\dokuku.sales.paymentmode.csproj">
+      <Project>{596F49BE-C0F4-437F-B927-94E946EC0C38}</Project>
+      <Name>dokuku.sales.paymentmode</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
       <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>

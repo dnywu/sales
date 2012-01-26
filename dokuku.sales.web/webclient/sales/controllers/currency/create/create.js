@@ -19,4 +19,5 @@ $.Controller('Sales.Controllers.Currency.Create',
 	}
 })
 
+
 });

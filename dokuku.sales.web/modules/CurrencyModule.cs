@@ -1,10 +1,9 @@
 ﻿using System;
-using Nancy;
-using Nancy.Security;
-using dokuku.security.model;
 using System.Collections;
 using System.Collections.Generic;
 using dokuku.security.model;
+using Nancy;
+using Nancy.Security;
 
 namespace dokuku.sales.web.modules
 {
