@@ -109,15 +109,19 @@ steal('jquery/controller',
                         var index = $(this).attr("id");
                         var no = $("#invoiceId_" + index).val();
                         result = inv.DeleteInvoice(no);
+
+                        if (result.error == true) {
+                            $(".BodyConfirmMassage").empty();
+                            var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                            $(".BodyConfirmMassage").append(message);
+                            return false;
+                        }
                     });
+
                     if (result == "OK") {
                         $(".DeleteConfirmation").remove();
                         $this.load();
-                    } else {
-                        $(".BodyConfirmMassage").empty();
-                        var message = $("<div>" + result.message + "</div>" +
-                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
-                        $(".BodyConfirmMassage").append(message);
                     }
                 },
                 '.ButtonConfirmClose click': function () {
@@ -149,15 +153,18 @@ steal('jquery/controller',
                         var index = $(this).attr("id");
                         var no = $("#invoiceId_" + index).val();
                         result = inv.ApproveInvoiceByID(no);
+                        if (result.error == true) {
+                            $(".BodyConfirmMassage").empty();
+                            var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                            $(".BodyConfirmMassage").append(message);
+                            return false;
+                        }
                     });
-                    if (result == "OK") {
+
+                    if (result.error == false) {
                         $(".DeleteConfirmation").remove();
                         $this.load();
-                    } else {
-                        $(".BodyConfirmMassage").empty();
-                        var message = $("<div>" + result.message + "</div>" +
-                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
-                        $(".BodyConfirmMassage").append(message);
                     }
                 }
             });
