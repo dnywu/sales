@@ -65,9 +65,10 @@ namespace dokuku.sales.invoices.service
         public void ApproveInvoice(Guid invoiceId, string ownerId)
         {
             Invoices invoice = invRepo.Get(invoiceId, ownerId);
+            string invoiceNumber = gen.GenerateInvoiceNumber(invoice.InvoiceDate, ownerId);
             if (invoice.Status != InvoiceStatus.DRAFT)
                 throw new Exception(String.Format("Status invoice '{0}' harus {1} sebelum dilakukan ganti status. Sedangkan status saat ini adalah {2}", invoice.InvoiceNo, InvoiceStatus.DRAFT, invoice.Status));
-
+            invoice.InvoiceNo = invoiceNumber;
             invoice.InvoiceStatusBelumBayar();
             invRepo.UpdateInvoices(invoice);
 
