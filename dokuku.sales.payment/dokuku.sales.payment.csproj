@@ -56,6 +56,7 @@
     <Compile Include="domain\Invoice.cs" />
     <Compile Include="domain\InvoicePayment.cs" />
     <Compile Include="domain\Payment.cs" />
+    <Compile Include="domain\PaymentDateLessThanInvoiceDateException.cs" />
     <Compile Include="domain\PaymentExceedBalanceDueException.cs" />
     <Compile Include="domain\PaymentMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

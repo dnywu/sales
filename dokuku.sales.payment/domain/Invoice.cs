@@ -9,12 +9,13 @@ namespace dokuku.sales.payment.domain
         public Guid InvoiceId { get; set; }
         public string InvoiceNumber { get; set; }
         public decimal Amount { get; set; }
-
-        public Invoice(Guid invoiceId, string invoiceNumber, decimal amount)
+        public DateTime InvoiceDate { get; set; }
+        public Invoice(Guid invoiceId, string invoiceNumber, decimal amount, DateTime invoiceDate)
         {
             this.InvoiceId = invoiceId;
             this.InvoiceNumber = invoiceNumber;
             this.Amount = amount;
+            this.InvoiceDate = invoiceDate;
         }
     }
 }
