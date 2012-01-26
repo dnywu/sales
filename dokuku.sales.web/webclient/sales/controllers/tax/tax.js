@@ -15,13 +15,16 @@ defaults: (currandtaxRepo = new CurrencyandTaxRepository())
 {
 init: function () {
     var currandtaxRepo = new CurrencyandTaxRepository()
-    currandtaxRepo.getAllTax();
+   var data= currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
+    this.requestAllCustomerSuccess(data);
+    
 },
 load: function () {
     var currandtaxRepo = new CurrencyandTaxRepository()
-    currandtaxRepo.getAllTax();
+    var data = currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
+    this.requestAllCustomerSuccess(data);
 },
 viewAddTax: function () {
     this.element.html(this.view('//sales/controllers/tax/views/addtax.ejs'));
@@ -33,9 +36,9 @@ viewAddTax: function () {
     var persentase = $("#inputText_Persentage").val();
     var tax = new Object();
     tax.Name = name;
-    tax.persentase = persentase;
+    tax.Value = persentase;
     if (currandtaxRepo.SaveTax(tax)) {
-        alert("data telah disimpan");
+       
     }
 },
 "#Canceltax click": function () {
@@ -50,8 +53,7 @@ viewAddTax: function () {
                         "<td class='tdDataCustomerCenter tdDataCustomer' id='tdDataCustomer" + item + "'><div class='settingListCustomer' id='settingListCustomer" + item + "' tabindex='" + item + "'><img class='' src='/sales/controllers/tax/images/setting.png'/></div></td>" +
                         "<td class='tdDataCustomerLeft tdDataCustomer'>" +
                             "<div class='nameCompany' width = '100%'>" + data[item].Name + "</div>" +
-                            "<div class='atributDataCustomer' width = '100%'>" + data[item].BillingAddress + "</div>" +
-                            "<div class='atributDataCustomer' width = '100%'>" + data[item].Email + "</div>" +
+                            "<div class='atributDataCustomer' width = '100%'>" + data[item].Value + "</div>" +                          
                         "</td>" +
                         "<td class='tdDataCustomerRight tdDataCustomer'>Rp. 00</td>" +
                         "<td class='tdDataCustomerRight tdDataCustomer'>Rp. 00</td>" +
