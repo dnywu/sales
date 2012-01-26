@@ -15,6 +15,9 @@ steal('jquery/controller', 'jquery/view/ejs',
         this.element.html(this.view("//sales/controllers/invoices/invoicedetail/views/invoicedetail.ejs", inv));
         GetStatusInvoice(inv.Status);
     },
+    '#newinvoicesByDetails click': function () {
+        $("#body").sales_invoices_create("load");
+    },
     GetStatusInvoice: function (Status) {
         //var invoice = new Array(invoices);
         //$("#Div").hide();
