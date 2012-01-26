@@ -14,7 +14,7 @@ namespace dokuku.sales.payment.fixture
         static InvoicePayment payment;
         static InvoicePaid paymentRevised;
         Establish context = () => {
-            payment = new InvoicePayment(Guid.NewGuid(),"oetawan",new Invoice(Guid.NewGuid(), "INV-1", 10000000));
+            payment = new InvoicePayment(Guid.NewGuid(),"oetawan",new Invoice(Guid.NewGuid(), "INV-1", 10000000,DateTime.Now));
             DomainEvents.Register<InvoicePaid>(p => paymentRevised = p);
         };
 

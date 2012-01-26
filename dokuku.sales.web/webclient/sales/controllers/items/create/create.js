@@ -116,6 +116,7 @@ steal('jquery/controller',
                 $("#description").val("");
                 $("#itemPrice").val("");
                 $("#tax").val("");
+                $("#body").sales_items_list("load");
             },
             "#itemCode blur": function () {
                 $.ajax({

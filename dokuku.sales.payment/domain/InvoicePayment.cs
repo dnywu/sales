@@ -28,6 +28,7 @@ namespace dokuku.sales.payment.domain
         
         public void Pay(Payment payment)
         {
+            FailIfDateLessThanInvoiceDate(payment);
             FailIfAmountPaidGreaterThanBalanceDue(payment);
             BalanceDue = BalanceDue - payment.amountPaid;
             InvoicePaid invoicePaid = new InvoicePaid(Guid.NewGuid(),
@@ -50,6 +51,7 @@ namespace dokuku.sales.payment.domain
         public void RevisePayment(Guid revisedPaymentRecordId, Payment payment)
         {
             Adjust(revisedPaymentRecordId);
+            FailIfDateLessThanInvoiceDate(payment);
             FailIfAmountPaidGreaterThanBalanceDue(payment);
             BalanceDue = BalanceDue - payment.amountPaid;
 
@@ -69,6 +71,11 @@ namespace dokuku.sales.payment.domain
 
             DomainEvents.Raise<PaymentRevised>(paymentRevised);        }
 
+        private void FailIfDateLessThanInvoiceDate(Payment pr)
+        {
+            if (pr.paymentDate < this.Invoice.InvoiceDate)
+                throw new PaymentDateLessThanInvoiceDateException();
+        }
         private void FailIfAmountPaidGreaterThanBalanceDue(Payment pr)
         {
             if (pr.amountPaid > this.BalanceDue)
