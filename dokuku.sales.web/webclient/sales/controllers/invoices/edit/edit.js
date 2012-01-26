@@ -48,8 +48,13 @@ steal('jquery/controller',
 
                 this.ShowCurrencyToView();
                 this.element.html("//sales/controllers/invoices/edit/views/editinvoices.ejs", invoice);
-                this.ShowExchangRate(invoice.Currency,invoice.BaseCcy, invoice.ExchangeRate);
                 $("#currency").text(invoice.Currency).show();
+                this.ShowExchangRate(invoice.Currency, invoice.BaseCcy, invoice.ExchangeRate);
+                if (invoice.BaseCcy != invoice.Currency) {
+                    $("#divExchangeRate").show();
+                } else {
+                    $("#divExchangeRate").hide();
+                }
                 this.LoadListItem(count, invoice.Items);
                 this.SetDatePicker();
                 this.selectTerm(term);
@@ -61,14 +66,16 @@ steal('jquery/controller',
                 dueDate.setDate(dueDate.getDate() + parseInt(el.val()));
                 $("#dueDate").val($.datepicker.formatDate('dd M yy', dueDate));
             },
-            '#tambahPelanggan click': function () {
+            '#tambahPelangganEdit click': function () {
                 new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
                 var addCust = new AddCustomer();
                 addCust.TriggerEvent();
             },
             '.additem click': function (el, ev) {
                 new ModalDialog("Tambah Barang Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
@@ -87,8 +94,34 @@ steal('jquery/controller',
                 $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
                 $("#selectcust").focus().select();
                 */
+
+                //isDifferentCcy = true;
+                $("#divExchangeRate").hide();
+                $("#custCcyCode").val(baseCcy);
+                $("#keteranganSelectCust").empty();
+                this.ShowCurrencyToView();
+                var dataCust = custRepo.GetCustomerByName(el.val());
+                if (dataCust != null) {
+                    if (dataCust.Currency != baseCcy) {
+                        isDifferentCcy = false;
+                        $("#divExchangeRate").show();
+                    } else {
+                        $("#divExchangeRate").hide();
+                    }
+                    this.ShowExchangRate(dataCust.Currency, baseCcy);
+                    $("#selectcust").val(dataCust.Name);
+                    $("#currency").text(dataCust.Currency).show();
+                    $("#CustomerId").val(dataCust._id);
+                    $("#custRate").val(1);
+                    $("#custRate").change();
+                    return;
+                }
+                $("#CustomerId").val("0");
+                $("#currency").hide();
+                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#selectcust").focus().select();
             },
-            '#addItemRow click': function () {
+            '#addItemRowEdit click': function () {
                 this.CreateListItem(1);
             },
             '#itemInvoice tbody tr hover': function (el) {
@@ -106,22 +139,74 @@ steal('jquery/controller',
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
                 inv.GetSubTotal();
             },
-            '.partname change': function (el) {
-                var partName = el.val();
-                var index = el.attr("id").split('_')[1];
-                var part = itmRepo.GetItemByName(partName);
-                if (part != null) {
-                    inv.ShowListItem(part, index);
-                    this.GetSubTotal();
-                    this.GetTotal();
-                    $("#additem_" + index).hide();
-                    return;
+            //            '.partname change': function (el) {
+            //                var partName = el.val();
+            //                var index = el.attr("id").split('_')[1];
+            //                this.FillItemAtribut(partName, index);
+            //            },
+            '.partname focus': function (el) {
+                el.select();
+            },
+            '.partname keyup': function (el, ev) {
+                if (el.val() != "") {
+                    var limit = 0;
+                    if (ev.keyCode == 13) {
+                        var partName = $("#itemList tr td.selected div.itemName").text();
+                        el.val(partName);
+                        var index = el.attr("id").split('_')[1];
+                        this.FillItemAtribut(partName, index);
+                        $(".resultItemDiv").remove();
+                        el.trigger("blur");
+                        $("#qty_" + index).trigger("focus");
+                    } else {
+                        var index = el.attr("id").split('_')[1];
+                        if (ev.keyCode == 40) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition++;
+                            if (limit < indexposition)
+                                indexposition = 1;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else if (ev.keyCode == 38) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition--;
+                            if (indexposition < 1)
+                                indexposition = limit;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else {
+                            var searchResultList = null;
+                            if ($(".resultItemDiv").length == 0) {
+                                $(".resultItemDiv").remove();
+                                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
+                            }
+                            var searchResult = itmRepo.SearchItem(el.val());
+                            this.RenderToSearchList(searchResult);
+                            $("#itemList tr:nth-child(1) td").addClass("selected");
+                        }
+                    }
                 }
-                this.ClearItemField(index);
-                $("#additem_" + index).show();
-                this.GetSubTotal();
-                this.GetTotal();
-                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            },
+            '.itemTd hover': function (el) {
+                $("#itemList tr td").removeClass("selected");
+                el.addClass("selected");
+            },
+            '.itemTd click': function (el) {
+                var index = el.attr("id");
+                var fieldIndex = $('.resultItemDiv').attr("id").split('_')[1];
+                var partName = $("div#itemName" + index).text();
+
+                $('#part_' + fieldIndex).val(partName);
+                this.FillItemAtribut(partName, fieldIndex);
+                $(".resultItemDiv").remove();
+            },
+            '.quantity focus': function (el) {
+                el.select();
+            },
+            '.quantity click': function (el) {
+                el.focus();
             },
             '.quantity change': function (el) {
                 this.CalculateItem(el);
@@ -149,7 +234,7 @@ steal('jquery/controller',
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).val(amount);
+                $("#amount_" + index).val(amount.toFixed(2));
                 $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
@@ -200,7 +285,7 @@ steal('jquery/controller',
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "' value='" + item[i].Rate + "'></input>" +
                                     "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "' value='" + item[i].BaseRate + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "' value='" + item[i].Discount + "'></input></td>" +
-                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "' value='" + item[i].Tax + "'>" +
+                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
                                     "</select></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
@@ -216,12 +301,12 @@ steal('jquery/controller',
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();
                 $("#subtotaltext").text(String.format("{0:C}", subtotal));
-                $("#subtotal").val(subtotal);
+                $("#subtotal").val(subtotal.toFixed(2));
             },
             GetTotal: function () {
                 var total = inv.CalculateTotal();
                 $("#totaltext").text(String.format("{0:C}", total));
-                $("#total").val(total);
+                $("#total").val(total.toFixed(2));
             },
             GetInvoice: function (id) {
                 var invoice = invRepo.GetInvoiceById(id);
@@ -274,14 +359,38 @@ steal('jquery/controller',
             ShowCurrencyToView: function () {
                 $("#curr").text(baseCcy);
             },
-            ShowExchangRate: function (custCcy, baseCcy,ExchangeRate) {
+            ShowExchangRate: function (custCcy, baseCcy, ExchangeRate) {
                 $("#curr").text(custCcy);
-                $("#divExchangeRate").show();
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
                 if (ExchangeRate != 1)
-                    $("#custRate").val(ExchangeRate); 
+                    $("#custRate").val(ExchangeRate);
+            },
+            RenderToSearchList: function (searchResult) {
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "' tabIndex='" + index + "'>" +
+                                "<div class='itemName' id='itemName" + index + "'>" + searchResult[index].Name + "</div>" +
+                                "<div class='itemDesc' id='itemDesc" + index + "'>" + searchResult[index].Description + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
+            },
+            FillItemAtribut: function (name, index) {
+                var part = itmRepo.GetItemByName(name);
+                if (part != null) {
+                    inv.ShowListItem(part, index);
+                    this.GetSubTotal();
+                    this.GetTotal();
+                    $("#additem_" + index).hide();
+                    return;
+                }
+                this.ClearItemField(index);
+                $("#additem_" + index).show();
+                this.GetSubTotal();
+                this.GetTotal();
+                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             }
         })
             });

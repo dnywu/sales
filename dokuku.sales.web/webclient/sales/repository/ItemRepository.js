@@ -21,6 +21,23 @@
                 console.log(ex);
             }
             return part;
+        },
+        SearchItem: function (key) {
+            var part;
+            try {
+                $.ajax({
+                    type: 'GET',
+                    url: '/searchItem/' + key,
+                    dataType: 'json',
+                    async: false,
+                    success: function (data) {
+                        part = data;
+                    }
+                });
+            } catch (ex) {
+                console.log(ex);
+            }
+            return part;
         }
     })
 });

@@ -1,0 +1,569 @@
+﻿div.FormNewCustomer{
+	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
+	height : 100%;
+	width : 75%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}
+div.ListCustomerDiv{
+	width : 100%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
+}
+.topBandHeaderListCustomerDIV{
+	width: 100%;
+	margin: 0;
+	background: #F7F7F7;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+	padding: 20px 25px;
+}
+
+
+div.CreateNewCustomer{
+	margin:20px;
+	padding:20px;
+	border-top : 1px solid #ECECEC;
+	border-bottom : 1px solid #ECECEC;
+	background: #F7F7F7;
+}
+div.topBandHeaderDIV {
+padding: 20px 25px;
+background: #F7F7F7;
+
+}
+div.mandatoryTxt{
+	color: #9C0000;
+	font-size : 12px;
+	font-weight:bold;
+	text-align : right;
+}
+.HeaderDIVLeft{
+	font-size: 21px;
+	font-family: arial, verdana;
+}
+
+td.td_field{
+	width:30%;
+}
+td.labelLeft{
+	width:18%;
+}
+td.error{
+	width:52%;
+}
+.labelLeft{
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+	padding-right : 10px;
+	color: #666;
+}
+input[type="checkbox"]{
+	display: inline-block;
+	font-size: 15px;
+	padding: 0;
+	width: 1.05em;
+	height: 1.05em;
+	-webkit-border-radius: 0.25em;
+	vertical-align: text-top;
+	-webkit-appearance: none;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -126px -453px;
+	margin-top: 2px;
+}
+input[type="checkbox"]:checked{
+	display: inline-block;
+	font-size: 15px;
+	padding: 0;
+	width: 1.05em;
+	height: 1.05em;
+	-webkit-border-radius: 0.25em;
+	vertical-align: text-top;
+	-webkit-appearance: none;
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -141px -453px;
+	margin-top: 2px;
+}
+.checkboxLabelDiv {
+	float: left;
+	margin: 5px 0 0 2px;
+}
+.checkboxLabelDiv label{
+	font-size:12px;
+}
+label.labelStyle{
+	margin-left: 3px;
+	margin-bottom : 2px;
+}
+.text{
+	width:73% ! important;
+}
+table.FormNewCuscotmer{
+	width:100%;
+	border:0px solid black;
+}
+table.CustomerTable{
+	width:100%;
+	border:0px solid black;
+}
+table.CustomerTable tbody{
+	border:0px solid black;
+}
+table.CustomerTable tbody tr td#formListCustomer{
+	border:0px solid black;
+	width:75%;
+}
+table.CustomerTable tbody tr td#MenuFormListCustomer{
+	border:0px solid black;
+	width:25%;
+}
+table.Field{
+	width : 40%;
+}
+td.fieldCustom{
+	width:13.5%;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	color: #666;
+}
+td.value{
+	width:14.5%;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	color: #666;
+}
+td.space{
+	width:0.5%;
+}
+#address{
+	display:none;
+}
+.add{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -194px -110px;
+	width: 12px;
+	height: 12px;
+	border: 0px;
+	cursor: pointer;
+	margin-top:7px;
+	vertical-align: top;
+}
+.copyField{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -389px -166px;
+	width: 8px;
+	height: 11px;
+}
+
+#CustomField{
+	display:none;
+}
+.CreateCustomerBtn{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") repeat-x;
+	background-position: -0px -1458px;
+	border-color: #CFCECE #CFCECE #B5B4B4;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	color: #444;
+	font: bold 11px Arial,Helvetica,sans-serif;
+	margin: 0;
+	padding: 5px 15px;
+	cursor:pointer;
+}
+.field_select{
+	width: 63px ! important;
+}
+.td_field_customer{
+	width:100%;
+}
+
+.classPesan{
+	height:35px;
+}
+
+.HeaderDIVListCustomer{
+	font-size: 21px;
+	font-family: arial, verdana;
+	background: #F7F7F7;
+	height: 34px;
+	padding: 20px;
+}
+
+.ClassListCustomer {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 30px;
+}
+.ClassSubMenuDataCustomer {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+}
+
+.thDataCustomer
+{
+	padding: 6px 10px 6px 0;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	color: #999;
+	font-weight: normal;
+	height: 32px;
+	border-image: initial;
+}
+.tdDataCustomerRight{
+	text-align:right;
+	padding: 6px 10px 6px 0;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	font-weight: normal;
+	height: 32px;
+}
+.tdDataCustomerLeft{
+	text-align:left;
+	padding: 6px 10px 6px 10;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	font-weight: normal;
+	height: 32px;
+}
+.tdDataCustomerCenter{
+	border-bottom: solid 1px #EBEBEB;
+}
+div.menuLeft{
+	list-style: none;
+	margin: 0 3px 2px 0;
+	padding: 5px 10px 5px 10px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font: 11px verdana;
+	background: #F3F3F3;
+	border: solid 1px gainsboro;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor: pointer;
+	height: 15px;
+}
+
+.MenuFormListCustomer {
+	padding: 40px 0 20px 20px;
+	vertical-align: top;
+}
+.BtnTambahCustomer{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -16px -226px;
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	padding: 9px 5px 4px 35px;
+	height: 26px;
+	width: 154px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+}
+.imgCari{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -332px -82px;
+	height: 15px;
+	width: 15px;
+
+}
+.imgFilter{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -230px -139px;
+	height: 4px;
+	width: 11px;
+	margin-top: 5px;
+
+}
+.floatLeft{
+	float: right;
+	padding-right: 5px;
+}
+.floatRight{
+	float: left;
+}
+.Pagging 
+{
+	display:none;
+	padding: 7px 12px 25px 35px;
+	border: solid 1px #EBEBEB;
+	background: #EBEBEB;
+}
+.DivNext{
+	float:left;
+	margin-right:5px
+}
+.DivPrev{
+	float:left;
+	margin-right:5px
+}
+.disableNext{
+	float:left;
+	margin-right:5px
+}
+.disablePrev{
+	float:left;
+	margin-right:5px
+}
+.DivlimitData{
+	float:left;
+}
+.DivPage{
+	float:left;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin-left:5px;
+	margin-right:5px;
+}
+.pagingSize{
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
+}
+.prev{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
+}
+.next{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -257px -265px;
+}
+.first
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -209px -265px;
+}
+.last{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -283px -265px;
+}
+.prevDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -334px -265px;
+}
+.nextDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -359px -265px;
+}
+.firstDisable
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -309px -265px;
+}
+.lastDisable{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -383px -265px;
+}
+.BodyDataCustomer{
+	overflow : auto;
+	height : 280px;
+}
+
+.odd {
+	background: #F8F8F8;
+}
+div.settingListCustomer
+{
+	display:none;
+}
+div.MessageConfirmation{
+	width : 23%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
+	position: absolute;
+	top: 245px;
+	left: 337px;
+	display:none;
+}
+.imagesConfirm{
+	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -273px -1025px;
+	margin: 10px 15px 10px 5px;
+	height: 34px;
+	width: 38px;
+	float : left;
+}
+div.isiConfirmationHeader{
+	margin: 20px 5px 10px 5px;
+}
+.ConfirmationHeader{
+	font-size: 18px;
+	font-family: arial, verdana;
+	background: #F0F0F0;
+	height: 52px;
+	padding: 2px;
+}
+.BodyConfirmationMassage{
+	font-size: 14px;
+	background: #F8F8F8;
+	height: 81px;
+	padding: 8px;
+}
+.ButtonConfirmationMassageYa{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 72px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	
+}
+.ButtonConfirmationMassageTidak{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 4px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}
+
+.textAlignRight{
+	text-align:right !important;
+	margin-right:0px !important;
+	padding-right:5px;
+}
+
+div.ContextMenuCustomer
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 145px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+div.itemContextMenuCustomer{
+	padding: 7px 5px 5px 7px;
+	color: #457BD9;
+	cursor: pointer;
+	white-space: normal;
+	text-decoration: none;
+}
+div.itemContextMenuCustomer span
+{
+	cursor:pointer;
+}
+div.itemContextMenuCustomer span:hover{
+	color:Red;
+	text-decoration:underline;
+}
+.EditImagContextMenu{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -382px -53px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
+.CreateInvoiceContextMenuCustomer{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -50px -79px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
+.judulAlamatPengiriman
+{
+	font-size: 15px;
+	font-weight: bold;
+	padding: 5px 10px 5px 29px;
+	color: #666;
+}
+.iconHapus{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -332px -29px;
+	height: 16px;
+	width: 17px;
+	float:right;
+}
+div.DivSearch{
+	list-style: none;
+	margin: 0 0 2px 0;
+	padding: 4px 10px 5px 10px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font: 11px verdana;
+	background: #F3F3F3;
+	border: solid 1px gainsboro;
+	-moz-border-radius: 18px;
+	-webkit-border-radius: 18px;
+	cursor: pointer;
+	width: 280px;
+	height: 17px;
+}
+#SearchCustomer{
+	border: none;
+	margin-left: 18px;
+	height: 16px;
+	width: 254px;
+	background: #F3F3F3;
+}
+.imgSearch{
+	background: transparent url("/sales/controllers/customers/images/find.png") no-repeat;
+	height: 16px;
+	width: 17px;
+	float:left;
+}
+.nameCompany{ color:Black; font-weight:bolder; font-size:14px;}
+.atributDataCustomer{ color:#A5A2A2; font-size:11px;}
+.tdDataCustomer{padding-bottom:5px; padding-top:5px;}

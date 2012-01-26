@@ -34,17 +34,8 @@
     },
     ShowListItem: function (part, index) {
         $("#baseprice_" + index).val(part.Rate);
-        if (!isDifferentCcy) {
-            part.Rate = part.Rate / $("#custRate").val();
-            //normal
-            part.Rate = part.Rate.toFixed(2)
-            //up
-            /*
-            part.Rate = part.Rate.toFixed(3) * 100;
-            part.Rate = Math.ceil(part.Rate);
-            part.Rate = part.Rate / 100;
-            */
-        }
+        part.Rate = part.Rate / $("#custRate").val();
+        part.Rate = part.Rate.toFixed(2)
         $("#partid_" + index).val(part._id);
         $("#part_" + index).val(part.Name);
         $("#desc_" + index).text(part.Description);
@@ -68,7 +59,6 @@
     CalculateItemOnChangeRate: function (index, ccy) {
         var Rate = $("#baseprice_" + index).val() / $("#custRate").val();
         Rate = Rate.toFixed(2);
-        //Rate = Math.ceil(Rate);
         $("#rate_" + index).val(Rate);
         var amount = inv.CalculateAmountPerItem($("#qty_" + index).val(), Rate, $("#disc_" + index).val());
         $("#amount_" + index).val(amount);
@@ -170,17 +160,8 @@
             $("#errorCreateInv").text("Silahkan masukkan barang di invoice ini").show();
             return;
         }
-
         $("#errorCreateInv").empty().hide();
-        var newInv = JSON.stringify(objInv);
-        $.ajax({
-            type: 'POST',
-            url: '/createinvoice',
-            data: { 'invoice': newInv },
-            dataType: 'json',
-            async: false,
-            success: this.CreateInvoiceCallBack
-        });
+        return JSON.stringify(objInv);
     },
     CreateInvoiceCallBack: function (data) {
         if (data.error == true) {
@@ -216,7 +197,7 @@
         var key = $('#SearchInvoice').val();
         $.ajax({
             type: 'GET',
-            url: '/SearchInvoice/key/' + key,
+            url: '/SearchInvoice/' + key,
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -236,7 +217,7 @@
         var result;
         $.ajax({
             type: 'DELETE',
-            url: '/deleteInvoice/invoiceNo/' + invoiceNo,
+            url: '/deleteInvoice/' + invoiceNo,
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -244,6 +225,37 @@
             }
         });
         return result;
+    },
+    ApproveInvoiceByID: function (invoiceID) {
+        var id = invoiceID;
+        $.ajax({
+            type: 'POST',
+            url: '/approveinvoice/' + id,
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                if (data.error == true) {
+                    $("#errorListInv").text(data.message).show("slow");
+                    return;
+                }
+                //var invoice = invRepo.GetInvoiceById(invId);
+                //$("#body").sales_invoices_invoicedetail('load', invoice);
+            }
+        });
+	},
+    SearchCustomer: function (key) {
+        var listCustomer = null;
+        $.ajax({
+            type: 'GET',
+            url: '/SearchCustomer/' + key,
+            dataType: 'json',
+            failure: $('#DivSearchCustomer').hide(),
+            async: false,
+            success: function (data) {
+                listCustomer = data;
+            }
+        });
+        return listCustomer;
     }
 })
     });

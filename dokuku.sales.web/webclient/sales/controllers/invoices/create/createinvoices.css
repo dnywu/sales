@@ -143,3 +143,57 @@ div#divExchangeRate
 {
     display:none;
 }
+div.resultItemDiv
+{
+	display:none;
+	width: 155px;
+	position:absolute;
+	background-color: white;
+	white-space: normal;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 17px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+.itemTd
+{
+	cursor:pointer;
+}
+td.selected
+{
+	background-color:#A2DDFF;
+}
+.itemName
+{
+	font-size:12px;
+	font-weight:bolder;
+	width:100%;
+}
+.itemDesc
+{
+	width:100%;
+	font-size:9px;
+}
+#DivSearchCustomer{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 247px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 17px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+.DivNamaCustomer{ font-size:14px; font-weight:bolder; color:Black; cursor:pointer;}
+.DivFieldCustomer{font-size:11px; color:Gray;}
+.DivNamaCustomer:hover { font-size:14px; font-weight:bolder; color:Red; cursor:pointer;}
+.selectedCustomer2{ background-color:#DCD9D9; }

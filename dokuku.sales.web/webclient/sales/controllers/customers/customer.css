@@ -512,6 +512,25 @@ div.itemContextMenuCustomer span:hover{
 	margin-right:20px;
 	margin-top: 1px;
 }
+.ApproveImagContextMenu{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -78px -107px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
+.DeleteImagContextMenu{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -372px -125px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+	background-size: 643px 1989px;
+}
 .CreateInvoiceContextMenuCustomer{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -50px -79px;

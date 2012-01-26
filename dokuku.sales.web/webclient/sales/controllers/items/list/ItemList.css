@@ -58,6 +58,7 @@ th.headerEvent
 }
 th.headerItems
 {
+	width:730px;
 	text-align:left;
 	color:#DC682F;
 }
@@ -392,4 +393,9 @@ div.itemDesc
 	font-size:11px;
 	color:#999;
 	width:100%;
+}
+.ccy
+{
+	text-align:left;
+	float:left;
 }

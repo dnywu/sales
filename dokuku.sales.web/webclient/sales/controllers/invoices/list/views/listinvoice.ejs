@@ -6,6 +6,7 @@
           <div class="topBandHeaderDIV">
             <div id="TitleSpan" class="HeaderDIVLeft">Invoices</div>
           </div>
+          <div class="error" id="errorListInv"></div>
           <div class="invoiceContain">
             <div class="ActionButtonDiv">
               <table id ="tblMenuInvoice" width="900px">
@@ -60,10 +61,23 @@
                       <img class='' src='/sales/controllers/customers/images/setting.png'/>
                       </div>
                       <div class="ContextMenuInvoice" id="ContextMenuInvoice<%= i %>">
-                        <div class="EditImagContextMenu"></div>
+                      
+                        
                         <div class="itemContextMenuInvoice">
-                          <span class="EditContextMenuInvoive" id="<%=this[i]._id%>">Ubah</span>
+                          <div class="EditImagContextMenu_ListInvoice invoiceImgContextMenu"></div>
+                          <span class="EditContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Ubah</span>
                         </div>
+
+                        <div class="itemContextMenuInvoice">
+                          <div class="ApproveImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="ApproveContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Disetujui</span>
+                        </div>
+
+                        <div class="itemContextMenuInvoice">
+                          <div class="DeleteImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Hapus</span>
+                        </div>
+
                       </div>
                     </td>
                     <td>

@@ -8,43 +8,101 @@ namespace dokuku.sales.payment.domain
 {
     public class InvoicePayment
     {
-        public Guid _id { get; private set; }
-        public string OwnerId { get; private set; }
-        public Invoice Invoice { get; private set; }
-        public Guid CustomerId { get; private set; }
-        public decimal BalanceDue { get; private set; }
-        public IList<PaymentRecord> PaymentRecords { get; private set; }
+        private Guid _id { get; set; }
+        private string OwnerId { get; set; }
+        private Invoice Invoice { get; set; }
+        private decimal BalanceDue { get; set; }
+        private bool SudahLunas { get { return BalanceDue == 0m; } }
+        private IList<InvoicePaid> InvoicePaidEvents { get; set; }
+        private IList<PaymentRevised> PaymentRevisedEvents { get; set; }
 
-        public InvoicePayment(Guid id, string ownerId, Invoice invoice, Guid customerId)
+        public InvoicePayment(Guid id, string ownerId, Invoice invoice)
         {
             this._id = id;
             this.OwnerId = ownerId;
             this.Invoice = invoice;
-            this.CustomerId = customerId;
             this.BalanceDue = invoice.Amount;
-            this.PaymentRecords = new List<PaymentRecord>();
+            this.InvoicePaidEvents = new List<InvoicePaid>();
+            this.PaymentRevisedEvents = new List<PaymentRevised>();
         }
-
-        public void Pay(PaymentRecord pr)
+        
+        public void Pay(Payment payment)
         {
-            FailIfAmountPaidGreaterThanBalanceDue(pr);
-            BalanceDue = BalanceDue - pr.amountPaid;
-            PaymentRecords.Add(pr);
-            if (!HasOutstanding())
-                DomainEvents.Raise<InvoiceSudahLunas>(new InvoiceSudahLunas { InvoiceNumber = this.Invoice.InvoiceNumber, InvoiceId = this.Invoice.InvoiceId, ownerid = this.OwnerId });
-            if (HasOutstanding())
-                DomainEvents.Raise<InvoiceDibayarSebagian>(new InvoiceDibayarSebagian { InvoiceNumber = this.Invoice.InvoiceNumber, InvoiceId = this.Invoice.InvoiceId, ownerid = this.OwnerId });
-        }
+            FailIfDateLessThanInvoiceDate(payment);
+            FailIfAmountPaidGreaterThanBalanceDue(payment);
+            BalanceDue = BalanceDue - payment.amountPaid;
+            InvoicePaid invoicePaid = new InvoicePaid(Guid.NewGuid(),
+                this.Invoice.InvoiceId,
+                this.Invoice.InvoiceNumber,
+                this.OwnerId,
+                payment.amountPaid,
+                payment.bankCharge,
+                payment.paymentDate,
+                payment.paymentMode,
+                payment.reference,
+                payment.notes,
+                SudahLunas,
+                BalanceDue);
+            InvoicePaidEvents.Add(invoicePaid);
 
-        private void FailIfAmountPaidGreaterThanBalanceDue(PaymentRecord pr)
+            DomainEvents.Raise<InvoicePaid>(invoicePaid);
+        }
+        
+        public void RevisePayment(Guid revisedPaymentRecordId, Payment payment)
+        {
+            Adjust(revisedPaymentRecordId);
+            FailIfDateLessThanInvoiceDate(payment);
+            FailIfAmountPaidGreaterThanBalanceDue(payment);
+            BalanceDue = BalanceDue - payment.amountPaid;
+
+            PaymentRevised paymentRevised = new PaymentRevised(Guid.NewGuid(),
+                this.Invoice.InvoiceId,
+                this.Invoice.InvoiceNumber,
+                this.OwnerId,
+                payment.amountPaid,
+                payment.bankCharge,
+                payment.paymentDate,
+                payment.paymentMode,
+                payment.reference,
+                payment.notes,
+                SudahLunas,
+                BalanceDue,
+                revisedPaymentRecordId);
+
+            DomainEvents.Raise<PaymentRevised>(paymentRevised);        }
+
+        private void FailIfDateLessThanInvoiceDate(Payment pr)
+        {
+            if (pr.paymentDate < this.Invoice.InvoiceDate)
+                throw new PaymentDateLessThanInvoiceDateException();
+        }
+        private void FailIfAmountPaidGreaterThanBalanceDue(Payment pr)
         {
             if (pr.amountPaid > this.BalanceDue)
                 throw new PaymentExceedBalanceDueException();
         }
-
-        public bool HasOutstanding()
+        
+        private void Adjust(Guid paymentRecordId)
         {
-            return BalanceDue > 0;
+            InvoicePaid adjusted = InvoicePaidEvents.Where(x => x.PaymentRecordId == paymentRecordId).FirstOrDefault();
+            if (adjusted == null) return;
+
+            BalanceDue = BalanceDue + adjusted.AmountPaid;
+            
+            PaymentRevised reversal = new PaymentRevised(Guid.NewGuid(),
+                adjusted.InvoiceId,
+                adjusted.InvoiceNumber,
+                adjusted.OwnerId,
+                0-adjusted.AmountPaid,
+                0-adjusted.BankCharge,
+                adjusted.PaymentDate,
+                adjusted.PaymentMode,
+                adjusted.Reference,
+                "Reversal adjustment",
+                SudahLunas,
+                BalanceDue,
+                adjusted.PaymentRecordId);
+            PaymentRevisedEvents.Add(reversal);
         }
     }
 }

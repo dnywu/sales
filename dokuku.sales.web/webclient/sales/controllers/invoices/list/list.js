@@ -78,6 +78,11 @@ steal('jquery/controller',
                     var id = el.attr('id');
                     $('#body').sales_invoices_edit('load', id);
                 },
+                '.ApproveContextMenuInvoive click': function (el) {
+                    var id = el.attr('id');
+                    result = inv.ApproveInvoiceByID(id);
+                    //$("#body").sales_invoices_list('load');
+                },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
                     var invoice = invRepo.GetInvoiceById(invoiceId);

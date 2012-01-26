@@ -31,7 +31,7 @@ namespace dokuku.sales.web.modules
             {
                 return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(this.CurrentAccount().OwnerId));
             };
-            Delete["/deleteInvoice/invoiceNo/{invoiceId}"] = p =>
+            Delete["/deleteInvoice/{invoiceId}"] = p =>
                 {
                     try
                     {
@@ -44,7 +44,7 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsJson("OK");
                 };
-            Get["/SearchInvoice/key/{key}"] = p =>
+            Get["/SearchInvoice/{key}"] = p =>
                 {
                     string key = p.key;
                     IList<Invoices> invoices = new List<Invoices>();
@@ -77,6 +77,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
+                    Guid invoiceId = p.id;
                     this.InvoiceService().ApproveInvoice(p.id, this.CurrentAccount().OwnerId);
                     return Response.AsJson(new { error = false });
                 }
@@ -95,7 +96,9 @@ namespace dokuku.sales.web.modules
                 {
                     try
                     {
-                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(this.Request.Form.Mode, this.Request.Form.Prefix, this.CurrentAccount().OwnerId);
+                        string Data = this.Request.Form.data;
+                        InvoiceAutoNumberConfig config = Newtonsoft.Json.JsonConvert.DeserializeObject<InvoiceAutoNumberConfig>(Data);
+                        this.InvoiceAutoNumberGenerator().SetupInvoiceAutoMumber(config.Mode, config.Prefix, this.CurrentAccount().OwnerId);
                         return Response.AsJson(new { error = false });
                     }
                     catch (Exception ex)

@@ -225,6 +225,113 @@
     <Content Include="webclient\documentjs\types\static.js" />
     <Content Include="webclient\documentjs\types\type.js" />
     <Content Include="webclient\documentjs\types\types.js" />
+    <Content Include="webclient\funcunit\browser\actions.js" />
+    <Content Include="webclient\funcunit\browser\core.js" />
+    <Content Include="webclient\funcunit\browser\events.js" />
+    <Content Include="webclient\funcunit\browser\getters.js" />
+    <Content Include="webclient\funcunit\browser\open.js" />
+    <Content Include="webclient\funcunit\browser\queue.js" />
+    <Content Include="webclient\funcunit\browser\resources\jquery.js" />
+    <Content Include="webclient\funcunit\browser\resources\json.js" />
+    <Content Include="webclient\funcunit\browser\traversers.js" />
+    <Content Include="webclient\funcunit\browser\waits.js" />
+    <Content Include="webclient\funcunit\build.js" />
+    <Content Include="webclient\funcunit\commandline\envjs.js" />
+    <Content Include="webclient\funcunit\commandline\events.js" />
+    <Content Include="webclient\funcunit\commandline\output\default.js" />
+    <Content Include="webclient\funcunit\commandline\output\xunit.js" />
+    <Content Include="webclient\funcunit\commandline\phantomjs.js" />
+    <Content Include="webclient\funcunit\commandline\selenium.js" />
+    <Content Include="webclient\funcunit\commandline\utils.js" />
+    <Content Include="webclient\funcunit\docs.html" />
+    <Content Include="webclient\funcunit\funcunit.html" />
+    <Content Include="webclient\funcunit\funcunit.js" />
+    <Content Include="webclient\funcunit\generate_docs.html" />
+    <Content Include="webclient\funcunit\index.html" />
+    <Content Include="webclient\funcunit\pages\images\autosuggest.png" />
+    <Content Include="webclient\funcunit\pages\images\broken.png" />
+    <Content Include="webclient\funcunit\pages\images\commandline.png" />
+    <Content Include="webclient\funcunit\pages\images\console.png" />
+    <Content Include="webclient\funcunit\pages\images\qunit.png" />
+    <Content Include="webclient\funcunit\qunit.html" />
+    <Content Include="webclient\funcunit\qunit\qunit.css" />
+    <Content Include="webclient\funcunit\qunit\qunit.js" />
+    <Content Include="webclient\funcunit\qunit\test\qunit.html" />
+    <Content Include="webclient\funcunit\qunit\test\test.js" />
+    <Content Include="webclient\funcunit\selenium\client.js" />
+    <Content Include="webclient\funcunit\selenium\selenium-java-client-driver.jar" />
+    <Content Include="webclient\funcunit\selenium\selenium-server-standalone-2.0rc3.jar" />
+    <Content Include="webclient\funcunit\selenium\selenium.js" />
+    <Content Include="webclient\funcunit\selenium\user-extensions.js" />
+    <Content Include="webclient\funcunit\settings.js" />
+    <Content Include="webclient\funcunit\syn\browsers.js" />
+    <Content Include="webclient\funcunit\syn\build.js" />
+    <Content Include="webclient\funcunit\syn\demo.html" />
+    <Content Include="webclient\funcunit\syn\demo\record.js" />
+    <Content Include="webclient\funcunit\syn\dist\syn.js" />
+    <Content Include="webclient\funcunit\syn\dist\test.html" />
+    <Content Include="webclient\funcunit\syn\drag\drag.html" />
+    <Content Include="webclient\funcunit\syn\drag\drag.js" />
+    <Content Include="webclient\funcunit\syn\drag\qunit.html" />
+    <Content Include="webclient\funcunit\syn\drag\test\qunit\drag_test.js" />
+    <Content Include="webclient\funcunit\syn\drag\test\qunit\qunit.js" />
+    <Content Include="webclient\funcunit\syn\key.js" />
+    <Content Include="webclient\funcunit\syn\mouse.js" />
+    <Content Include="webclient\funcunit\syn\qunit.html" />
+    <Content Include="webclient\funcunit\syn\recorder.html" />
+    <Content Include="webclient\funcunit\syn\resources\jquery.event.drag.js" />
+    <Content Include="webclient\funcunit\syn\resources\jquery.event.drop.js" />
+    <Content Include="webclient\funcunit\syn\resources\jquery.js" />
+    <Content Include="webclient\funcunit\syn\resources\qunit\qunit.css" />
+    <Content Include="webclient\funcunit\syn\resources\qunit\qunit.js" />
+    <Content Include="webclient\funcunit\syn\syn.js" />
+    <Content Include="webclient\funcunit\syn\synthetic.html" />
+    <Content Include="webclient\funcunit\syn\synthetic.js" />
+    <Content Include="webclient\funcunit\syn\test\clickbasic.html" />
+    <Content Include="webclient\funcunit\syn\test\qunit\h3.html" />
+    <Content Include="webclient\funcunit\syn\test\qunit\key_test.js" />
+    <Content Include="webclient\funcunit\syn\test\qunit\mouse_test.js" />
+    <Content Include="webclient\funcunit\syn\test\qunit\page1.html" />
+    <Content Include="webclient\funcunit\syn\test\qunit\page2.html" />
+    <Content Include="webclient\funcunit\syn\test\qunit\qunit.js" />
+    <Content Include="webclient\funcunit\syn\test\qunit\syn_test.js" />
+    <Content Include="webclient\funcunit\syn\test\submit.html" />
+    <Content Include="webclient\funcunit\syn\test\submitted.html" />
+    <Content Include="webclient\funcunit\template.html" />
+    <Content Include="webclient\funcunit\test\autosuggest\autosuggest.html" />
+    <Content Include="webclient\funcunit\test\autosuggest\autosuggest_test.js" />
+    <Content Include="webclient\funcunit\test\autosuggest\css\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="webclient\funcunit\test\autosuggest\css\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="webclient\funcunit\test\autosuggest\css\ui-lightness\jquery-ui-1.8.16.custom.css" />
+    <Content Include="webclient\funcunit\test\autosuggest\funcunit.html" />
+    <Content Include="webclient\funcunit\test\autosuggest\js\jquery-1.6.2.min.js" />
+    <Content Include="webclient\funcunit\test\autosuggest\js\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="webclient\funcunit\test\confirm.html" />
+    <Content Include="webclient\funcunit\test\drag.html" />
+    <Content Include="webclient\funcunit\test\findclosest.html" />
+    <Content Include="webclient\funcunit\test\funcunit\confirm_test.js" />
+    <Content Include="webclient\funcunit\test\funcunit\find_closest_test.js" />
+    <Content Include="webclient\funcunit\test\funcunit\funcunit.js" />
+    <Content Include="webclient\funcunit\test\funcunit\funcunit_test.js" />
+    <Content Include="webclient\funcunit\test\funcunit\iframe_test.js" />
+    <Content Include="webclient\funcunit\test\funcunit\open_test.js" />
+    <Content Include="webclient\funcunit\test\funcunit\protodrag_test.js" />
+    <Content Include="webclient\funcunit\test\funcunit\syn_test.js" />
+    <Content Include="webclient\funcunit\test\iframe\haveframe.html" />
+    <Content Include="webclient\funcunit\test\iframe\iframe.html" />
+    <Content Include="webclient\funcunit\test\jquery.event.drag.js" />
+    <Content Include="webclient\funcunit\test\jquery.event.drop.js" />
+    <Content Include="webclient\funcunit\test\jquery.js" />
+    <Content Include="webclient\funcunit\test\myapp.html" />
+    <Content Include="webclient\funcunit\test\myotherapp.html" />
+    <Content Include="webclient\funcunit\test\protodrag\dragdrop.js" />
+    <Content Include="webclient\funcunit\test\protodrag\effects.js" />
+    <Content Include="webclient\funcunit\test\protodrag\funcunit_test.js" />
+    <Content Include="webclient\funcunit\test\protodrag\myapp.html" />
+    <Content Include="webclient\funcunit\test\protodrag\prototype.js" />
+    <Content Include="webclient\funcunit\test\protodrag\scriptaculous.js" />
+    <Content Include="webclient\funcunit\test\qunit\qunit.js" />
+    <Content Include="webclient\funcunit\test\run.js" />
     <Content Include="webclient\jquery\build.js" />
     <Content Include="webclient\jquery\buildAll.js" />
     <Content Include="webclient\jquery\class\class.html" />
@@ -445,18 +552,52 @@
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
     <Content Include="Views\login.html" />
+    <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.css" />
+    <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.html" />
+    <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.js" />
+    <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax_test.js" />
+    <Content Include="webclient\sales\controllers\currencyandtax\funcunit.html" />
+    <Content Include="webclient\sales\controllers\currencyandtax\image\currency.gif" />
+    <Content Include="webclient\sales\controllers\currencyandtax\image\taxes.gif" />
     <Content Include="webclient\sales\controllers\currency\create\addcurrency.css" />
     <Content Include="webclient\sales\controllers\currency\create\create.html" />
     <Content Include="webclient\sales\controllers\currency\create\create.js" />
     <Content Include="webclient\sales\controllers\currency\create\create_test.js" />
     <Content Include="webclient\sales\controllers\currency\create\funcunit.html" />
-    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs" />
+    <None Include="webclient\funcunit\dependencies.json" />
+    <None Include="webclient\funcunit\pages\actions.md" />
+    <None Include="webclient\funcunit\pages\assertions.md" />
+    <None Include="webclient\funcunit\pages\demos.md" />
+    <None Include="webclient\funcunit\pages\envjs.md" />
+    <None Include="webclient\funcunit\pages\features.md" />
+    <None Include="webclient\funcunit\pages\finding.md" />
+    <None Include="webclient\funcunit\pages\integrations.md" />
+    <None Include="webclient\funcunit\pages\jenkins.md" />
+    <None Include="webclient\funcunit\pages\maven.md" />
+    <None Include="webclient\funcunit\pages\phantomjs.md" />
+    <None Include="webclient\funcunit\pages\selenium.md" />
+    <None Include="webclient\funcunit\pages\waits.md" />
+    <None Include="webclient\funcunit\README.md" />
+    <None Include="webclient\funcunit\run" />
+    <None Include="webclient\funcunit\summary.ejs" />
+    <None Include="webclient\funcunit\syn\dist\.tmp_test.html.60900~" />
+    <None Include="webclient\funcunit\syn\README" />
+    <None Include="webclient\funcunit\update" />
+    <None Include="webclient\sales\controllers\currencyandtax\views\init.ejs" />
+    <None Include="webclient\sales\controllers\currencyandtax\views\listcurrencyandtax.ejs" />
+    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="webclient\sales\controllers\currency\currency.html" />
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
     <Content Include="webclient\sales\controllers\currency\funcunit.html" />
     <None Include="webclient\sales\controllers\currency\views\listcurrency.ejs" />
     <Content Include="webclient\sales\controllers\currency\currency.css" />
+    <Content Include="webclient\sales\controllers\currency\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\currency\images\find.png" />
+    <Content Include="webclient\sales\controllers\currency\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\currency\images\setting.png" />
     <Content Include="webclient\sales\controllers\customers\customer.css" />
     <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />
@@ -547,6 +688,15 @@
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.html" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
+    <Content Include="webclient\sales\controllers\tax\funcunit.html" />
+    <Content Include="webclient\sales\controllers\tax\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\tax\images\find.png" />
+    <Content Include="webclient\sales\controllers\tax\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\tax\images\setting.png" />
+    <Content Include="webclient\sales\controllers\tax\tax.css" />
+    <Content Include="webclient\sales\controllers\tax\tax.html" />
+    <Content Include="webclient\sales\controllers\tax\tax.js" />
+    <Content Include="webclient\sales\controllers\tax\tax_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
@@ -555,6 +705,7 @@
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
+    <Content Include="webclient\sales\repository\CurrencyandTaxRepository.js" />
     <Content Include="webclient\sales\repository\CustomerRepository.js" />
     <Content Include="webclient\sales\repository\InvoiceRepository.js" />
     <Content Include="webclient\sales\sales.css" />
@@ -792,6 +943,7 @@
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\CurrencyModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
     <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
     <Compile Include="modules\InvoiceModule.cs" />
@@ -801,6 +953,7 @@
     <Compile Include="modules\OrganizationModule.cs" />
     <Compile Include="modules\PaymentModeModule.cs" />
     <Compile Include="modules\ServiceLocator.cs" />
+    <Compile Include="modules\TaxModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -951,9 +1104,6 @@
     <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
@@ -978,9 +1128,18 @@
     <None Include="webclient\sales\controllers\setupautonumbering\views\setupautonumbering.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\setupautonumbering\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\init.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\setuporganization.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\tax\views\addtax.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\tax\views\contextMenuCustomer.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\tax\views\init.ejs" />
+    <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\sales.md" />
@@ -1027,6 +1186,10 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.currency\dokuku.sales.currency.csproj">
+      <Project>{A6C2804E-D3EB-451E-9316-4E1FF1D8277E}</Project>
+      <Name>dokuku.sales.currency</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.customer.messages\dokuku.sales.customer.messages.csproj">
       <Project>{B8DA4234-451B-40A1-969F-F9FB979C6356}</Project>
       <Name>dokuku.sales.customer.messages</Name>
@@ -1067,6 +1230,10 @@
       <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
       <Name>dokuku.sales.payment</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.taxes\dokuku.sales.taxes.csproj">
+      <Project>{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}</Project>
+      <Name>dokuku.sales.taxes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
       <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>
       <Name>dokuku.security</Name>
@@ -1081,7 +1248,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54372</DevelopmentServerPort>
+          <DevelopmentServerPort>54153</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

@@ -37,6 +37,9 @@ steal('jquery/controller',
             },
             load: function (customer) {
                 tabIndexTr = 0;
+                inv = new Invoice();
+                itmRepo = new ItemRepository();
+                custRepo = new CustomerRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
                 if (customer != null)
                     $("#currency").text(customer.Currency).show();
@@ -52,36 +55,46 @@ steal('jquery/controller',
             },
             '#tambahPelanggan click': function () {
                 new ModalDialog("Tambah Pelanggan Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddCustomer.ejs"));
                 var addCust = new AddCustomer();
                 addCust.TriggerEvent();
             },
             '.additem click': function (el, ev) {
                 new ModalDialog("Tambah Barang Baru");
+                $("#dialogContent").empty();
                 $("#dialogContent").html(this.view("//sales/controllers/invoices/create/views/AddItem.ejs"));
                 var addItem = new AddItem(el.attr("id").split('_')[1]);
                 addItem.TriggerEvent();
             },
-            '#selectcust change': function (el, ev) {
+            //            '#selectcust change': function (el, ev) {
+            //                this.CheckNameCutomer(el.val());
+            //            },
+            CheckNameCutomer: function (name) {
                 isDifferentCcy = true;
                 $("#divExchangeRate").hide();
                 $("#custCcyCode").val(baseCcy);
                 $("#keteranganSelectCust").empty();
                 this.ShowCurrencyToView();
-                var dataCust = custRepo.GetCustomerByName(el.val());
+                var dataCust = custRepo.GetCustomerByName(name);
                 if (dataCust != null) {
                     if (dataCust.Currency != baseCcy) {
                         isDifferentCcy = false;
-                        this.ShowExchangRate(dataCust.Currency, baseCcy);
+                        $("#divExchangeRate").show();
+                    } else {
+                        $("#divExchangeRate").hide();
                     }
+                    this.ShowExchangRate(dataCust.Currency, baseCcy);
                     $("#selectcust").val(dataCust.Name);
                     $("#currency").text(dataCust.Currency).show();
                     $("#CustomerId").val(dataCust._id);
+                    $("#custRate").val(1);
+                    $("#custRate").change();
                     return;
                 }
                 $("#CustomerId").val("0");
                 $("#currency").hide();
-                $("#keteranganSelectCust").text("Pelanggan '" + el.val() + "' tidak ditemukan");
+                $("#keteranganSelectCust").text("Pelanggan '" + name + "' tidak ditemukan");
                 $("#selectcust").focus().select();
             },
             '#addItemRow click': function () {
@@ -103,22 +116,68 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
             },
-            '.partname change': function (el) {
-                var partName = el.val();
-                var index = el.attr("id").split('_')[1];
-                var part = itmRepo.GetItemByName(partName);
-                if (part != null) {
-                    inv.ShowListItem(part, index);
-                    this.GetSubTotal();
-                    this.GetTotal();
-                    $("#additem_" + index).hide();
-                    return;
+            //            '.partname change': function (el) {
+            //                var partName = el.val();
+            //                var index = el.attr("id").split('_')[1];
+            //                this.FillItemAtribut(partName, index);
+            //            },
+            '.partname keyup': function (el, ev) {
+                if (el.val() != "") {
+                    var limit = 0;
+                    if (ev.keyCode == 13) {
+                        var partName = $("#itemList tr td.selected div.itemName").text();
+                        el.val(partName);
+                        var index = el.attr("id").split('_')[1];
+                        this.FillItemAtribut(partName, index);
+                        $(".resultItemDiv").remove();
+                        el.trigger("blur");
+                        $("#qty_" + index).trigger("focus");
+                    } else {
+                        var index = el.attr("id").split('_')[1];
+                        if (ev.keyCode == 40) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition++;
+                            if (limit < indexposition)
+                                indexposition = 1;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else if (ev.keyCode == 38) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition--;
+                            if (indexposition < 1)
+                                indexposition = limit;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else {
+                            var searchResultList = null;
+                            if ($(".resultItemDiv").length == 0) {
+                                $(".resultItemDiv").remove();
+                                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
+                            }
+                            var searchResult = itmRepo.SearchItem(el.val());
+                            this.RenderToSearchList(searchResult);
+                            $("#itemList tr:nth-child(1) td").addClass("selected");
+                        }
+                    }
                 }
-                this.ClearItemField(index);
-                $("#additem_" + index).show();
-                this.GetSubTotal();
-                this.GetTotal();
-                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            },
+            '.itemTd hover': function (el) {
+                $("#itemList tr td").removeClass("selected");
+                el.addClass("selected");
+            },
+            '.itemTd click': function (el) {
+                var index = el.attr("id");
+                var fieldIndex = $('.resultItemDiv').attr("id").split('_')[1];
+                var partName = $("div#itemName" + index).text();
+
+                $('#part_' + fieldIndex).val(partName);
+                this.FillItemAtribut(partName, fieldIndex);
+                $(".resultItemDiv").remove();
+            },
+            '.quantity focus': function (el) {
+                el.select();
             },
             '.quantity change': function (el) {
                 this.CalculateItem(el);
@@ -145,7 +204,7 @@ steal('jquery/controller',
                 var rate = $("#rate_" + index).val();
                 var disc = $("#disc_" + index).val();
                 var amount = inv.CalculateAmountPerItem(qty, rate, disc);
-                $("#amount_" + index).val(amount);
+                $("#amount_" + index).val(amount.toFixed(2));
                 $("#amounttext_" + index).text(String.format("{0:C}", amount));
                 this.GetSubTotal();
                 this.GetTotal();
@@ -185,12 +244,12 @@ steal('jquery/controller',
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();
                 $("#subtotaltext").text(String.format("{0:C}", subtotal));
-                $("#subtotal").val(subtotal);
+                $("#subtotal").val(subtotal.toFixed(2));
             },
             GetTotal: function () {
                 var total = inv.CalculateTotal();
                 $("#totaltext").text(String.format("{0:C}", total));
-                $("#total").val(total);
+                $("#total").val(total.toFixed(2));
             },
             SetDatePicker: function () {
                 var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
@@ -231,10 +290,113 @@ steal('jquery/controller',
             },
             ShowExchangRate: function (custCcy, baseCcy) {
                 $("#curr").text(custCcy);
-                $("#divExchangeRate").show();
                 $("#custCcy").val("1 " + custCcy + " =");
                 $("#baseCcy").val(baseCcy);
                 $("#custCcyCode").val(custCcy);
+            },
+            '#selectcust keyup': function (el, ev) {
+                var limit = 0;
+                if (ev.keyCode == "13") {
+                    this.CheckNameCutomer(el.val());
+                    $('.DivSearchCustomer').hide();
+                    return;
+                } else {
+                    var key = $('#selectcust').val();
+                    if (key == "") {
+                        $('.DivSearchCustomer').hide();
+                    }
+                    else {
+                        if (ev.keyCode == "38") {
+                            var indexposition = parseInt($(".selectedCustomer").attr("tabIndex") + 1);
+                            limit = $('#bodySearchCustomer tr').length;
+                            indexposition = indexposition - 1;
+                            if (indexposition <= 0) {
+                                indexposition = limit;
+                            }
+
+                            $('#bodySearchCustomer tr td ').removeClass("selectedCustomer");
+                            $('#bodySearchCustomer tr:nth-child(' + indexposition + ') td').addClass("selectedCustomer");
+                            $('#bodySearchCustomer tr td ').removeClass("selectedCustomer2");
+                            $('#bodySearchCustomer tr:nth-child(' + indexposition + ') td').addClass("selectedCustomer2");
+                            $('#selectcust').val($('#bodySearchCustomer tr:nth-child(' + indexposition + ') td div.DivNamaCustomer').text());
+                        }
+                        else if (ev.keyCode == "40") {
+                            if ($(".selectedCustomer").length > 1)
+                                var indexposition = $(".selectedCustomer").length - 1;
+                            else
+
+                                var indexposition = $(".selectedCustomer").attr("tabIndex");
+
+                            indexposition += 1;
+                            limit = $('#bodySearchCustomer tr').length;
+                            if (indexposition >= limit) {
+                                indexposition = 1;
+                            } else {
+                                indexposition += 1;
+                            }
+                            $('#bodySearchCustomer tr td ').removeClass("selectedCustomer");
+                            $('#bodySearchCustomer tr:nth-child(' + indexposition + ') td').addClass("selectedCustomer");
+                            $('#bodySearchCustomer tr td ').removeClass("selectedCustomer2");
+                            $('#bodySearchCustomer tr:nth-child(' + indexposition + ') td').addClass("selectedCustomer2");
+                            $('#selectcust').val($('#bodySearchCustomer tr:nth-child(' + indexposition + ') td div.DivNamaCustomer').text());
+                        }
+                        else {
+                            var key = $('#selectcust').val();
+                            if (key == "") {
+                                $('.DivSearchCustomer').hide();
+                            }
+                            else {
+                                var customer = inv.SearchCustomer(key);
+                                $('.DivSearchCustomer').show();
+                                $("table#tblSearchCustomer tbody#bodySearchCustomer").empty();
+                                $.each(customer, function (item) {
+                                    $("table#tblSearchCustomer tbody#bodySearchCustomer").append(
+                                        '<tr id="trSearchCustomer">' +
+                                        '<td id="tdSearchCustomer' + item + '" class="selectedCustomer" style="border-bottom:solid 1px grey" tabIndex = "' + item + '">' +
+                                            '<div class="DivNamaCustomer" id="' + customer[item]._id + '">' + customer[item].Name + '</div>' +
+                                            '<div class="DivFieldCustomer">' + customer[item].Email + '</div>' +
+                                            '<div class="DivFieldCustomer">' + customer[item].BillingAddress + '</div>' +
+                                        '</td>' +
+                                        '</tr>'
+                                    );
+                                })
+                            }
+                        }
+                    }
+                }
+            },
+            '.DivNamaCustomer click': function (el) {
+                var id = el.attr('id');
+                var name = el.text();
+                $('#selectcust').val(name);
+                $('#CustomerId').val(id);
+                this.CheckNameCutomer(name);
+                $('.DivSearchCustomer').hide();
+            },
+            RenderToSearchList: function (searchResult) {
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "' tabIndex='" + index + "'>" +
+                                "<div class='itemName' id='itemName" + index + "'>" + searchResult[index].Name + "</div>" +
+                                "<div class='itemDesc' id='itemDesc" + index + "'>" + searchResult[index].Description + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
+            },
+            FillItemAtribut: function (name, index) {
+                var part = itmRepo.GetItemByName(name);
+                if (part != null) {
+                    inv.ShowListItem(part, index);
+                    this.GetSubTotal();
+                    this.GetTotal();
+                    $("#additem_" + index).hide();
+                    return;
+                }
+                this.ClearItemField(index);
+                $("#additem_" + index).show();
+                this.GetSubTotal();
+                this.GetTotal();
+                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             }
         })
           });
