@@ -21,18 +21,17 @@ namespace dokuku.sales.fixture.Tax_Fixture
                 mongo = new MongoConfig();
                 serviceTax = new ServiceTax(mongo,null);
                 taxQueryRepo = new TaxQueryRepository(mongo);
-                taxId = Guid.NewGuid();
             };
         Because of = () =>
             {
                 Taxes tax = new Taxes
                 {
-                    _id = taxId,
                     Name = "PPN",
                     OwnerId = "marthin",
-                    Value = 10
+                    Value = 5
                 };
-                serviceTax.Create(Newtonsoft.Json.JsonConvert.SerializeObject(tax,Newtonsoft.Json.Formatting.None),"marthin");
+                tax = serviceTax.Create(Newtonsoft.Json.JsonConvert.SerializeObject(tax,Newtonsoft.Json.Formatting.None),"marthin");
+                taxId = tax._id; 
             };
         It should_return_tax = () =>
             {
