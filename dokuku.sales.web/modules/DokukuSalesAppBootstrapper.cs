@@ -12,8 +12,6 @@
     using dokuku.sales.item.service;
     using dokuku.sales.organization.report;
     using dokuku.sales.organization.repository;
-    using dokuku.sales.payment.command;
-    using dokuku.sales.payment.query;
     using dokuku.sales.payment.service;
     using dokuku.security.model;
     using dokuku.security.repository;
@@ -112,9 +110,6 @@
                     x.For<IInvoiceService>().Use<InvoiceService>();
                     x.ForSingletonOf<IBus>().Use(bus);
                     x.For<ICustomerService>().Use<CustomerService>();
-                    x.For<IPaymentModeCommand>().Use<PaymentModeCommand>();
-                    x.For<IPaymentModeQuery>().Use<PaymentModeQuery>();
-                    x.For<IPaymentModeService>().Use<PaymentModeService>();
                     x.For<IServiceTax>().Use<ServiceTax>();
                     x.For<ITaxQueryRepository>().Use<TaxQueryRepository>();
                     x.For<ICurrencyService>().Use<CurrencyService>();

@@ -16,11 +16,11 @@ namespace dokuku.sales.payment.service
         public void Handle(PayInvoice message)
         {
             InvoicePayment invPayment = Collections.FindOneAs<InvoicePayment>(Query.EQ("_id", message.InvoiceId));
-            invPayment.Pay(PaymentRecord.
+            invPayment.Pay(Payment.
                             AmountPaid(message.AmountPaid).
                             BankCharge(message.BankCharge).
                             PaymentDate(message.PaymentDate).
-                            PaymentMode(new PaymentMode() { _id = message.PaymentModeId }).
+                            PaymentMode(message.PaymentModeId).
                             Reference(message.Reference).
                             Notes(message.Notes));
             Collections.Save(invPayment);

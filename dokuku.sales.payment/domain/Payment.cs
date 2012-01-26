@@ -4,66 +4,55 @@ using System.Linq;
 using System.Text;
 namespace dokuku.sales.payment.domain
 {
-    public class PaymentRecord
+    public class Payment
     {
-        public decimal amountPaid{get;private set;}
+        public decimal amountPaid{get; private set;}
         public decimal bankCharge { get; private set; }
         public DateTime paymentDate { get; private set; }
-        public PaymentMode paymentMode { get; private set; }
+        public Guid paymentMode { get; private set; }
         public string reference { get; private set; }
         public string notes { get; private set; }
         public Guid Id { get; private set; }
         public Guid adjustedPaymentRecordId { get; private set; }
 
-        private PaymentRecord(decimal amount)
+        private Payment(decimal amount)
         {
             amountPaid = amount;
             Id = Guid.NewGuid();
         }
-        public static PaymentRecord AmountPaid(decimal amount)
+        public static Payment AmountPaid(decimal amount)
         {
-            return new PaymentRecord(amount);
+            return new Payment(amount);
         }
-        public PaymentRecord BankCharge(decimal charge)
+        public Payment BankCharge(decimal charge)
         {
             bankCharge = charge;
             return this;
         }
-        public PaymentRecord PaymentDate(DateTime date)
+        public Payment PaymentDate(DateTime date)
         {
             paymentDate = date;
             return this;
         }
-        public PaymentRecord PaymentMode(PaymentMode mode)
+        public Payment PaymentMode(Guid mode)
         {
             paymentMode = mode;
             return this;
         }
-        public PaymentRecord Reference(string reference)
+        public Payment Reference(string reference)
         {
             this.reference = reference;
             return this;
         }
-        public PaymentRecord Notes(string notes)
+        public Payment Notes(string notes)
         {
             this.notes = notes;
             return this;
         }
-        public PaymentRecord AdjustedPaymentRecordId(Guid id)
+        public Payment AdjustedPaymentRecordId(Guid id)
         {
             this.adjustedPaymentRecordId = id;
             return this;
-        }
-
-        public PaymentRecord Reverse()
-        {
-            return new PaymentRecord(0 - this.amountPaid)
-                .BankCharge(0 - this.bankCharge)
-                .PaymentDate(this.paymentDate)
-                .PaymentMode(this.paymentMode)
-                .Reference(this.reference)
-                .Notes("Reversal adjusment")
-                .AdjustedPaymentRecordId(this.Id);
         }
     }
 }
