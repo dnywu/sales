@@ -22,7 +22,7 @@ namespace dokuku.sales.payment.fixture
         {
             DomainEvents.Register<InvoicePaid>(p => invoicePaid = p);
             DomainEvents.Register<PaymentRevised>( p => paymentRevised = p );
-            Invoice invoice = new Invoice(Guid.NewGuid(), "INV-1", 10000000);
+            Invoice invoice = new Invoice(Guid.NewGuid(), "INV-1", 10000000,DateTime.Now);
             payment = new InvoicePayment(Guid.NewGuid(), "oetawan", invoice);
             Payment pr = Payment.
                 AmountPaid(2000000).
