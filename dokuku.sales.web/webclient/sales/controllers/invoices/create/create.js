@@ -116,46 +116,64 @@ steal('jquery/controller',
                 this.GetSubTotal();
                 this.GetTotal();
             },
-            '.partname focus': function (el) {
-                var index = el.attr("id").split('_')[1];
-                $(".resultItemDiv").remove();
-                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
-            },
-
-            '.partname change': function (el) {
-                var partName = el.val();
-                var index = el.attr("id").split('_')[1];
-                var part = itmRepo.GetItemByName(partName);
-                if (part != null) {
-                    inv.ShowListItem(part, index);
-                    this.GetSubTotal();
-                    this.GetTotal();
-                    $("#additem_" + index).hide();
-                    return;
+            //            '.partname change': function (el) {
+            //                var partName = el.val();
+            //                var index = el.attr("id").split('_')[1];
+            //                this.FillItemAtribut(partName, index);
+            //            },
+            '.partname keyup': function (el, ev) {
+                if (el.val() != "") {
+                    var limit = 0;
+                    if (ev.keyCode == 13) {
+                        var partName = $("#itemList tr td.selected div.itemName").text();
+                        el.val(partName);
+                        var index = el.attr("id").split('_')[1];
+                        this.FillItemAtribut(partName, index);
+                        $(".resultItemDiv").remove();
+                        el.trigger("blur");
+                        $("#qty_" + index).trigger("focus");
+                    } else {
+                        var index = el.attr("id").split('_')[1];
+                        if (ev.keyCode == 40) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition++;
+                            if (limit < indexposition)
+                                indexposition = 1;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else if (ev.keyCode == 38) {
+                            var indexposition = $(".selected").attr("tabindex") + 1;
+                            limit = $("#itemList tr").length;
+                            indexposition--;
+                            if (indexposition < 1)
+                                indexposition = limit;
+                            $("#itemList tr td").removeClass("selected");
+                            $("#itemList tr:nth-child(" + indexposition + ") td").addClass("selected");
+                        } else {
+                            var searchResultList = null;
+                            if ($(".resultItemDiv").length == 0) {
+                                $(".resultItemDiv").remove();
+                                $("<div class='resultItemDiv'id='resultItemDiv_" + index + "'><table id='itemList'></table></div>").insertAfter("#tr_" + index + " td:first-child input.partname");
+                            }
+                            var searchResult = itmRepo.SearchItem(el.val());
+                            this.RenderToSearchList(searchResult);
+                            $("#itemList tr:nth-child(1) td").addClass("selected");
+                        }
+                    }
                 }
-                this.ClearItemField(index);
-                $("#additem_" + index).show();
-                this.GetSubTotal();
-                this.GetTotal();
-                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
             },
-            '.partname keyup': function (el) {
-                var searchResultList = null;
-                var searchResult = itmRepo.SearchItem(el.val());
-                $(".resultItemDiv").show();
-                $("#itemList").empty();
-                $.each(searchResult, function (index) {
-                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "'><div id='itemName" + index + "'>" + searchResult[index].Name + "</div></td></tr>");
-                    searchResultList.appendTo($("#itemList"));
-                });
+            '.itemTd hover': function (el) {
+                $("#itemList tr td").removeClass("selected");
+                el.addClass("selected");
             },
             '.itemTd click': function (el) {
                 var index = el.attr("id");
-                $('#part_' + $('.resultItemDiv').attr("id").split('_')[1]).val($("div#itemName" + index).text());
-                $(".partname").change();
-                $(".resultItemDiv").remove();
-            },
-            '.resultItemDiv mouseleave': function () {
+                var fieldIndex = $('.resultItemDiv').attr("id").split('_')[1];
+                var partName = $("div#itemName" + index).text();
+
+                $('#part_' + fieldIndex).val(partName);
+                this.FillItemAtribut(partName, fieldIndex);
                 $(".resultItemDiv").remove();
             },
             '.quantity change': function (el) {
@@ -354,5 +372,30 @@ steal('jquery/controller',
                 this.CheckNameCutomer(name);
                 $('.DivSearchCustomer').hide();
             },
+            RenderToSearchList: function (searchResult) {
+                $(".resultItemDiv").show();
+                $("#itemList").empty();
+                $.each(searchResult, function (index) {
+                    searchResultList = $("<tr class='itemTr'><td class='itemTd' id='" + index + "' tabIndex='" + index + "'>" +
+                                "<div class='itemName' id='itemName" + index + "'>" + searchResult[index].Name + "</div>" +
+                                "<div class='itemDesc' id='itemDesc" + index + "'>" + searchResult[index].Description + "</div></td></tr>");
+                    searchResultList.appendTo($("#itemList"));
+                });
+            },
+            FillItemAtribut: function (name, index) {
+                var part = itmRepo.GetItemByName(name);
+                if (part != null) {
+                    inv.ShowListItem(part, index);
+                    this.GetSubTotal();
+                    this.GetTotal();
+                    $("#additem_" + index).hide();
+                    return;
+                }
+                this.ClearItemField(index);
+                $("#additem_" + index).show();
+                this.GetSubTotal();
+                this.GetTotal();
+                $("#itemInvoice tbody tr#tr_" + index).addClass('errItemNotFound');
+            }
         })
           });

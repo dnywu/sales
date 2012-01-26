@@ -163,9 +163,20 @@ div.resultItemDiv
 {
 	cursor:pointer;
 }
-.itemTd:hover
+td.selected
 {
-	color:Green;
+	background-color:#A2DDFF;
+}
+.itemName
+{
+	font-size:12px;
+	font-weight:bolder;
+	width:100%;
+}
+.itemDesc
+{
+	width:100%;
+	font-size:9px;
 }
 #DivSearchCustomer{
 	display:none;
