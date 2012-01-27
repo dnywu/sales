@@ -127,7 +127,7 @@ margin-bottom: 0px;
     margin-right: 20px;
     margin-top: 4px;
 }
-.menuDelete
+.leftMenu
 {
 	list-style: none;
 	margin: 0 3px 2px 0;
@@ -142,5 +142,14 @@ margin-bottom: 0px;
 	-webkit-border-radius: 3px;
 	cursor: pointer;
 	height: 15px;
+}
+.menuDelete
+{
 	width:60px;
+	float:left;
+}
+.menuApproveInvoice
+{
+	width:95px;
+	float:left;
 }
