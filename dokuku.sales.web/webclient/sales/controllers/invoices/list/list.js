@@ -71,9 +71,14 @@ steal('jquery/controller',
                     var index = el.attr('tabindex');
                     var id = $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice span.spanContextMenuListInvoice").attr("id");
                     $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").show();
+                    this.LoadActionList(id, index);
                 },
-                LoadActionList: function (id) {
-                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice div.itemContextMenuInvoice").attr("id", "actionEdit").hide()
+                LoadActionList: function (id, index) {
+                    var invoiceId = id;
+                    var invoice = invRepo.GetInvoiceById(invoiceId);
+                    if (invoice.Status != "Draft") {
+                        $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice div#actionApprove").remove()
+                    }
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
