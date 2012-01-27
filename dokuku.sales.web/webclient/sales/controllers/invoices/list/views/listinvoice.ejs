@@ -12,8 +12,8 @@
               <table id ="tblMenuInvoice" width="900px">
                 <tr id ="trMenuInvoice">
                   <td id="tdMenuInvoiceLeft" width="450px">
-                    <input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />
-                    <input type="button" id="approveinvoice" value="Terbitkan Faktur" style="height:20px;" />
+                    <input type="button" id="deleteinvoice" value="Hapus" style="height:20px;" />  
+                    <input type="button" id="approveinvoice" value="Setujui" style="height:20px;" />
                   </td>
                   <td id="tdMenuInvoiceRight" width="450px">
                     <table id="subMenuInvoiceRight" width="100%">
@@ -53,7 +53,7 @@
               </thead>
               <tbody class ="bodyDataInvoice">
                 <%for(var i=0; i<this.length ; i++){%>
-                  <tr class="trbodyDataInvoice" id="trbodyDataInvoice<%= i%>" tabindex = "<%= i%>">
+                  <tr class="trbodyDataInvoice" id="trbodyDataInvoice<%= i%>" tabindex ="<%= i%>">
                     <td>
                       <input type="checkbox" class="selectInvoice" id="<%= i%>"></input>
                     </td>
@@ -61,30 +61,25 @@
                       <div class="settingListInvoice" id="settingListInvoice<%= i%>" tabindex="<%= i%>">
                       <img class='' src='/sales/controllers/customers/images/setting.png'/>
                       </div>
-                      <div class="ContextMenuInvoice" id="ContextMenuInvoice<%= i %>">
-                      
-                        
-                        <div class="itemContextMenuInvoice">
+                      <div class="ContextMenuInvoice" id="ContextMenuInvoice<%= i%>">
+                        <div class="itemContextMenuInvoice" id="actionEdit">
                           <div class="EditImagContextMenu_ListInvoice invoiceImgContextMenu"></div>
                           <span class="EditContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Ubah</span>
                         </div>
 
-                        <div class="itemContextMenuInvoice">
+                        <div class="itemContextMenuInvoice" id="actionApprove">
                           <div class="ApproveImagContextMenu invoiceImgContextMenu"></div>
-                          <span class="ApproveContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Disetujui</span>
+                          <span class="ApproveContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Setujui</span>
                         </div>
 
-                        <div class="itemContextMenuInvoice">
+                        <div class="itemContextMenuInvoice" id="actionDelete">
                           <div class="DeleteImagContextMenu invoiceImgContextMenu"></div>
                           <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Hapus</span>
                         </div>
-
                       </div>
                     </td>
                     <td>
-                      <span class="invNo" id="<%=i%>">
-                        <input type="hidden" id='invoiceId_<%=i%>' value="<%=this[i]._id %>"/><%=this[i].InvoiceNo%>
-                      </span>
+                      <span class="invNo" id="<%=i%>"><input type="hidden" id='invoiceId_<%=i%>' value="<%=this[i]._id %>"/><%=this[i].InvoiceNo%></span>
                     </td>
                     <td><%=this[i].PONo%></td>
                     <td><%=this[i].Customer%></td>
@@ -95,7 +90,6 @@
                     <td><%=this[i].Status%></td>
                   </tr>
                 <%}%>
-                
               </tbody>
             </table>
           </div>

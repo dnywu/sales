@@ -69,7 +69,11 @@ steal('jquery/controller',
                 },
                 '.settingListInvoice click': function (el) {
                     var index = el.attr('tabindex');
+                    var id = $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice span.spanContextMenuListInvoice").attr("id");
                     $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice").show();
+                },
+                LoadActionList: function (id) {
+                    $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice div.itemContextMenuInvoice").attr("id", "actionEdit").hide()
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
@@ -92,6 +96,7 @@ steal('jquery/controller',
                     var invoice = invRepo.GetInvoiceById(invoiceId);
                     if (invoice != null)
                         $("#body").sales_invoices_invoicedetail('load', invoice);
+
                 },
                 '#deleteinvoice click': function () {
                     var checkList = $this.IsCheckListNull();
