@@ -21,6 +21,15 @@ namespace dokuku.sales.invoices.query
         {
             return Collections.FindAs<Invoices>(Query.EQ("OwnerId",BsonValue.Create(OwnerId)));
         }
+        public IEnumerable<Invoices> GetDataInvoiceToPaging(string ownerId, int start, int limit)
+        {
+            return Collections.FindAs<Invoices>(Query.EQ("OwnerId", BsonValue.Create(ownerId))).SetSkip(start)
+                .SetLimit(limit).OrderByDescending<Invoices,DateTime>(x => x.InvoiceDate).ToArray();
+        }
+        public int CountInvoice(string OwnerId) 
+        {
+           return Convert.ToInt32(Collections.Count(Query.EQ("OwnerId",BsonValue.Create(OwnerId))));
+        }
         
         public Invoices FindById(Guid id, string ownerId)
         {

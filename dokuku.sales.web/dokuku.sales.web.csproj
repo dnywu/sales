@@ -592,7 +592,9 @@
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
     <Content Include="webclient\sales\controllers\currency\funcunit.html" />
-    <None Include="webclient\sales\controllers\currency\views\listcurrency.ejs" />
+    <None Include="webclient\sales\controllers\currency\views\listcurrency.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="webclient\sales\controllers\currency\currency.css" />
     <Content Include="webclient\sales\controllers\currency\images\Actions.png" />
     <Content Include="webclient\sales\controllers\currency\images\find.png" />
@@ -1101,14 +1103,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\invoices\edit\views\editinvoices.ejs" />
-    <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs" />
-    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="webclient\sales\controllers\invoices\invoicedetail\views\invoicedetail.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs" />
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmDeleteInvoice.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\invoices\list\views\listinvoice.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -1137,9 +1137,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\addtax.ejs">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="webclient\sales\controllers\tax\views\contextMenuCustomer.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\init.ejs" />

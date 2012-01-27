@@ -29,8 +29,16 @@ namespace dokuku.sales.web.modules
             };
             Get["/GetDataInvoice"] = p =>
             {
-                return Response.AsJson(this.InvoicesQueryRepository().AllInvoices(this.CurrentAccount().OwnerId));
+                int countInvoice = this.InvoicesQueryRepository().CountInvoice(this.CurrentAccount().OwnerId);
+                return Response.AsJson(countInvoice);
             };
+            Get["/GetDataInvoiceToPaging/{start}/{limit}"] = p =>
+              {
+                  int start = p.start;
+                  int limit = p.limit;
+                  IEnumerable<Invoices>  invoices = this.InvoicesQueryRepository().GetDataInvoiceToPaging(this.CurrentAccount().OwnerId, start,limit);
+                  return Response.AsJson(invoices);
+              };
             Delete["/deleteInvoice/{invoiceId}"] = p =>
                 {
                     try
