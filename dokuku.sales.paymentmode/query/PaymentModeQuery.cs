@@ -29,9 +29,9 @@ namespace dokuku.sales.paymentmode.query
         {
             return _collections.FindOneAs<PaymentModes>(Query.And(Query.EQ("Name", name), Query.EQ("_id", id), Query.EQ("OwnerId", ownerId)));
         }
-        public IEnumerable<PaymentModes> FindAll(string ownerId)
+        public PaymentModes[] FindAll(string ownerId)
         {
-            return _collections.FindAs<PaymentModes>(Query.EQ("OwnerId", ownerId));
+            return _collections.FindAs<PaymentModes>(Query.EQ("OwnerId", ownerId)).ToArray();
         }
     }
 }

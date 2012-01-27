@@ -38,7 +38,7 @@ namespace dokuku.sales.fixture.currency
         };
         It should_return_currency = () =>
         {
-            IEnumerable<Currencies> ccy = taxQueryRepo.GetAllTaxes("marthin");
+            IEnumerable<Currencies> ccy = taxQueryRepo.GetAllCurrency("marthin");
             ccy.Count().Equals(1);
         };
         Cleanup cleanup = () =>

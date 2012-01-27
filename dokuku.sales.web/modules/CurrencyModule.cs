@@ -1,10 +1,9 @@
 ﻿using System;
-using Nancy;
-using Nancy.Security;
-using dokuku.security.model;
 using System.Collections;
 using System.Collections.Generic;
 using dokuku.security.model;
+using Nancy;
+using Nancy.Security;
 
 namespace dokuku.sales.web.modules
 {
@@ -16,7 +15,7 @@ namespace dokuku.sales.web.modules
             Get["/GetAllCurrency"] = p =>
             {
                 Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.CurencyQueryRepo().GetAllTaxes(account.OwnerId));
+                return Response.AsJson(this.CurencyQueryRepo().GetAllCurrency(account.OwnerId));
             };
             Post["/SaveCurrency"] = p =>
             {

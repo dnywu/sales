@@ -2,27 +2,23 @@ steal('jquery/controller',
         'jquery/view/ejs',
         'sales/repository/CurrencyandTaxRepository.js')
 	.then('./views/init.ejs', './views/addtax.ejs', function ($) {
-
-	    /**
-	    * @class Sales.Controllers.Tax
-	    */
-	    $.Controller('Sales.Controllers.Tax',
-	    /** @Static */
+$.Controller('Sales.Controllers.Tax',
 {
 defaults: (currandtaxRepo = new CurrencyandTaxRepository())
 },
-	    /** @Prototype */
+
 {
 init: function () {
     var currandtaxRepo = new CurrencyandTaxRepository()
     var data = currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
-    this.requestAllCustomerSuccess(data);
+    this.requestAllTaxSuccess(data);
 },
 load: function () {
     var currandtaxRepo = new CurrencyandTaxRepository()
-    currandtaxRepo.getAllTax();
+    var data = currandtaxRepo.getAllTax();
     this.element.html(this.view('//sales/controllers/tax/views/listtax.ejs'));
+    this.requestAllTaxSuccess(data);
 },
 viewAddTax: function () {
     this.element.html(this.view('//sales/controllers/tax/views/addtax.ejs'));
@@ -34,7 +30,7 @@ viewAddTax: function () {
     var persentase = $("#inputText_Persentage").val();
     var tax = new Object();
     tax.Name = name;
-    tax.persentase = persentase;
+    tax.Value = persentase;
     if (currandtaxRepo.SaveTax(tax)) {
         $("#body").sales_tax("load");
     }
@@ -42,7 +38,7 @@ viewAddTax: function () {
 "#Canceltax click": function () {
     $("#body").sales_tax("load");
 },
-requestAllCustomerSuccess: function (data) {
+requestAllTaxSuccess: function (data) {
     $("table.dataCustomer tbody").empty();
     $.each(data, function (item) {
         $("table.dataCustomer tbody.BodyDataCustomer").append(
@@ -62,4 +58,4 @@ requestAllCustomerSuccess: function (data) {
 }
 })
 
-	});
+});
