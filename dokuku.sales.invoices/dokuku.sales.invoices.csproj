@@ -61,9 +61,13 @@
     <Compile Include="model\InvoiceAutoNumberDefault.cs" />
     <Compile Include="model\InvoiceAutoNumberYearly.cs" />
     <Compile Include="model\InvoiceAutoNumberConfig.cs" />
+    <Compile Include="model\InvoiceItem.cs" />
     <Compile Include="model\InvoiceReports.cs" />
     <Compile Include="model\Invoices.cs" />
     <Compile Include="command\InvoicesRepository.cs" />
+    <Compile Include="model\InvoiceStatus.cs" />
+    <Compile Include="model\Tax.cs" />
+    <Compile Include="model\Term.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="query\IInvoicesQueryRepository.cs" />
     <Compile Include="query\InvoicesQueryRepository.cs" />
@@ -81,10 +85,6 @@
     <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
-      <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
-      <Name>dokuku.sales.item</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
       <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>

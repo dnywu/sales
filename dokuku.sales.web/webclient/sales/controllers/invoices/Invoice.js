@@ -137,19 +137,23 @@
         objInv.Currency = $("#custCcyCode").val();
         objInv.Items = new Array;
         $('#itemInvoice tbody tr').each(function (i) {
-            if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
-                objInv.Items[i] = new Object;
-                objInv.Items[i].ItemId = $('.partid').get(i).value;
-                objInv.Items[i].PartName = $('.partname').get(i).value;
-                objInv.Items[i].Description = $('.description').get(i).value;
-                objInv.Items[i].Qty = $('.quantity').get(i).value;
-                objInv.Items[i].BaseRate = $('.baseprice').get(i).value;
-                objInv.Items[i].Rate = $('.price').get(i).value;
-                objInv.Items[i].Discount = $('.discount').get(i).value;
-                objInv.Items[i].Tax = new Object();
-                objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
-                objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
-                objInv.Items[i].Amount = $('.amount').get(i).value;
+            if ($('.partname').length != 0) {
+                if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
+                    objInv.Items[i] = new Object;
+                    objInv.Items[i].ItemId = $('.partid').get(i).value;
+                    objInv.Items[i].PartName = $('.partname').get(i).value;
+                    objInv.Items[i].Description = $('.description').get(i).value;
+                    objInv.Items[i].Qty = $('.quantity').get(i).value;
+                    objInv.Items[i].BaseRate = $('.baseprice').get(i).value;
+                    objInv.Items[i].Rate = $('.price').get(i).value;
+                    objInv.Items[i].Discount = $('.discount').get(i).value;
+                    objInv.Items[i].Tax = new Object();
+                    objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
+                    objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
+                    objInv.Items[i].Amount = $('.amount').get(i).value;
+                }
+            } else {
+                return;
             }
         });
         if (objInv.CustomerId == 0) {
@@ -171,11 +175,11 @@
             $("#body").sales_invoices_invoicedetail('load', data);
         }
     },
-    GetDataInvoice: function () {
+    GetDataInvoice: function (start, limit) {
         var dataInvoice = new Array();
         $.ajax({
             type: 'GET',
-            url: '/GetDataInvoice',
+            url: '/GetDataInvoiceToPaging/'+ start +'/'+ limit +'',
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -257,7 +261,7 @@
             }
         });
         return listCustomer;
-    }
+    },
 })
     });
  

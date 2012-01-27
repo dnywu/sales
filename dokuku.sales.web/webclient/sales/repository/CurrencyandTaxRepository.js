@@ -71,15 +71,18 @@
         });
         return response;
     },
-    DeleteCurrency: function (id) {
+    GetCurrencyById: function (id) {
+        var currency = null;
         $.ajax({
             type: 'GET',
-            url: '/DeleteCurrency',
+            url: '/GetDataCurrency/' + id,
             dataType: 'json',
             async: false,
             success: function (data) {
+                currency = data;
             }
         });
+        return currency;
     }
 })
 });

@@ -30,7 +30,7 @@ namespace dokuku.sales.web.modules
                 }
 
             };
-            Get["/DeleteCurrency/{id}"] = p =>
+            Delete["/DeleteCurrency/{id}"] = p =>
             {
                 try
                 {
@@ -39,6 +39,25 @@ namespace dokuku.sales.web.modules
                 }
                 catch (Exception ex)
                 {
+                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                }
+                return Response.AsJson("OK");
+            };
+            Get["/GetDataCurrency/{id}"] = p =>
+            {
+                Guid id = p.id;
+                return Response.AsJson(this.CurencyQueryRepo().GetCurrencyById(id));
+            };
+            Post["/UpdateDataCurrency"] = p =>
+            {
+                string Data = this.Request.Form.data;
+                try
+                {
+                    this.CurrencyService().UpdateCurrency(Data, this.CurrentAccount().OwnerId);
+                }
+                catch (Exception ex)
+                {
+
                     return Response.AsRedirect("/?error=true&message=" + ex.Message);
                 }
                 return Response.AsJson("OK");

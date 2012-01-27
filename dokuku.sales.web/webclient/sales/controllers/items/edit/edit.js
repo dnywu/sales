@@ -74,6 +74,36 @@ steal('jquery/controller',
                 },
                 "#cancelEditItem click": function () {
                     $("#body").sales_items_list("load");
+                },
+                "input keypress": function (el, ev) {
+                    if (el.not($(":button"))) {
+                        if (ev.keyCode == 13) {
+                            var iname = el.val();
+                            if (iname !== 'Simpan') {
+                                var fields = el.parents('form:eq(0),body').find('button, input, textarea, select');
+                                var index = fields.index(el);
+                                if (index > -1 && (index + 1) < fields.length) {
+                                    fields.eq(index + 1).focus();
+                                }
+                                return false;
+                            }
+                        }
+                    }
+                },
+                "select keypress": function (el, ev) {
+                    if (el.not($(":button"))) {
+                        if (ev.keyCode == 13) {
+                            var iname = el.val();
+                            if (iname !== 'Simpan') {
+                                var fields = el.parents('form:eq(0),body').find('button, input, textarea, select');
+                                var index = fields.index(el);
+                                if (index > -1 && (index + 1) < fields.length) {
+                                    fields.eq(index + 1).focus();
+                                }
+                                return false;
+                            }
+                        }
+                    }
                 }
             })
 	});
