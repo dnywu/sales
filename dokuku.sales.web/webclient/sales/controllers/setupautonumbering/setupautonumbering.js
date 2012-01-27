@@ -15,7 +15,7 @@ steal('jquery/controller',
                 else if (item.mode == "2") {
                     $('input:radio[class=monthly]').attr('checked', 'checked');
                 }
-                else {
+                else if (item.mode == "0"){
                     $('input:radio[class=default]').attr('checked', 'checked');
                 }
 
@@ -30,7 +30,7 @@ steal('jquery/controller',
                 else if (item.mode == "2") {
                     $('input:radio[class=monthly]').attr('checked', 'checked');
                 }
-                else {
+                else if (item.mode == "0") {
                     $('input:radio[class=default]').attr('checked', 'checked');
                 }
             },

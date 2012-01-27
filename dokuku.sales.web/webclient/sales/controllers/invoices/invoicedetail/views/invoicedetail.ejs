@@ -22,9 +22,10 @@
               <%=this.Customer%>
             </div>
             <div>
+              <%=this.Email%> </br>
               <%=this.BillingAddress%> </br>
               <%=this.City%>, <%= this.Province%> <%= this.PostalCode%> </br>
-              <%= this.State%>
+              <%=this.State%>
             </div>
           </td>
         </tr>
@@ -106,17 +107,18 @@
     <div class="actionsRightTop">
       <div class="BtnNew" id="newinvoicesByDetails">Invoice Baru</div>
     </div>
-    <div class="clearBoth"></div>
-    <div class="detailsAmountDIV_1">
-      <div class="clearBoth paddingBottom25"></div>
-      <div class="actionsRightBottom">
-        <ul id="quickCreateUL" class="actionsRightUL">
-          <li id="editIvo">Edit</li>
-          <li id="approveIvo">Approve</li>
-          <li id="voidIvo">Void Invoices</li>
-          <li id="cancelIvo">Cancel Invoices</li>
-        </ul>
-      </div>
+    <div class="divInvoiceDetailRightMenu">
+      <div id="<%=this._id%>" class="idIvoDetil"></div>
+      <div id="menuItemRightUbah">
+        <div class="invoiceDetailRightMenuImg divInvoiceDetailRightMenuUbah"></div>Ubah</div>
+      <div id="menuItemRightSetujui">
+        <div class="invoiceDetailRightMenuImg divInvoiceDetailRightMenuDisetujui"></div>Setujui</div>
+      <div id="menuItemRightVoid">
+        <div class="invoiceDetailRightMenuImg divInvoiceDetailRightMenuVoidFaktur"></div>Void</div>
+      <div id="menuItemRightBatal">
+        <div class="invoiceDetailRightMenuImg divInvoiceDetailRightMenuBatalFaktur"></div>Batal</div>
+      <div id="menuItemRightCetakKePDF">
+        <div class="invoiceDetailRightMenuImg divInvoiceDetailRightMenuPrintKePDF"></div>Cetak ke PDF</div>
     </div>
   </div>
 </div>

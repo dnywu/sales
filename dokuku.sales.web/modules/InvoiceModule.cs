@@ -140,33 +140,6 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson(new { error = true, message = e.Message });
                 }
             };
-
-            Get["/GetAllTax"] = p =>
-            {
-                try
-                {
-                    var data = new string[] { "namapajak", "jenis", "persentase" };
-                    return null;
-                }
-                catch (Exception)
-                {
-
-                    return null;
-                }
-            };
-            Post["/SaveTax/{taxModel}"] = p =>
-            {
-                try
-                {
-                    var data = new string[] { "namapajak", "jenis", "persentase" };
-                    return null;
-                }
-                catch (Exception)
-                {
-
-                    return null;
-                }
-            };
         }
     }
 }

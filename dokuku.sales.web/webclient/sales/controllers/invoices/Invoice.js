@@ -42,8 +42,8 @@
         $("#qty_" + index).val('1.00');
         $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
-        $("#amount_" + index).val(part.Rate);
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
+        $("#amount_" + index).val(part.Rate);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CalculateByRate: function (rate) {
@@ -227,22 +227,23 @@
         return result;
     },
     ApproveInvoiceByID: function (invoiceID) {
-        var id = invoiceID;
+        var result;
         $.ajax({
             type: 'POST',
-            url: '/approveinvoice/' + id,
+            url: '/approveinvoice/' + invoiceID,
             dataType: 'json',
             async: false,
             success: function (data) {
-                if (data.error == true) {
-                    $("#errorListInv").text(data.message).show("slow");
-                    return;
-                }
-                //var invoice = invRepo.GetInvoiceById(invId);
-                //$("#body").sales_invoices_invoicedetail('load', invoice);
+                result = data;
+                //if (data.error == true) {
+                //    $("#errorListInv").text(data.message).show("slow");
+                //    return;
+                //}
+
             }
         });
-	},
+        return result;
+    },
     SearchCustomer: function (key) {
         var listCustomer = null;
         $.ajax({

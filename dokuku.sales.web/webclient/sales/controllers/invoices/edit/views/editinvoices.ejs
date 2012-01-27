@@ -1,6 +1,6 @@
 <div class="divcontainerFormInvoice">
   <div class="topBandHeaderDIV">
-    <div id="TitleSpan" class="HeaderDIVLeft">Update Invoices</div>
+    <div id="TitleSpan" class="HeaderDIVLeft">Edit Faktur</div>
   </div>
   <form method="POST" id="formUpdateIvoice">
     <div class='newInvoiceContain'>
@@ -37,7 +37,7 @@
           <tbody>
             <tr>
               <td class="labelLeft">
-                <div class="mandatoryTxt">Invoice#</div>
+                <div class="mandatoryTxt">Nomor Faktur</div>
               </td>
               <td class="td_field">
                 <input type='text' id='InvoiceNo' value="<%= this.InvoiceNo %>" readonly />
@@ -45,26 +45,26 @@
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">P.O.#</td>
+              <td class="labelLeft">Nomor PO</td>
               <td class="td_field">
                 <input type='text' name='po' id='po' value="<%= this.PONo %>" /></td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Tanggal Invoice</td>
+              <td class="labelLeft">Tanggal Pembuatan Faktur</td>
               <td class="td_field">
                 <input type="date" name='invoiceDate' id='invDate' value="<%= this.InvoiceDate %>" readonly/>
                 </td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Terms</td>
+              <td class="labelLeft">Termin</td>
               <td class="td_field">
                 <select name='terms' id='terms'>
-                  <option class="TermOpt" value="15">Net 15</option>
-                  <option class="TermOpt" value="30">Net 30</option>
-                  <option class="TermOpt" value="45">Net 45</option>
-                  <option class="TermOpt" value="60">Net 60</option>
+                  <option class="TermOpt" value="15">15</option>
+                  <option class="TermOpt" value="30">30</option>
+                  <option class="TermOpt" value="45">45</option>
+                  <option class="TermOpt" value="60">60</option>
                   <option class="TermOpt" value="0">Due On Receipt</option>
                   <option class="TermOpt" value="-1">Due on the specified date</option>
                 </select>
@@ -72,17 +72,17 @@
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Due Date</td>
+              <td class="labelLeft">Tanggal Jatuh Tempo</td>
               <td class="td_field">
                 <input type='date' name='dueDate' id='dueDate'  value="<%= this.DueDate %>" readonly/>
               </td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Late Fee</td>
+              <td class="labelLeft">Denda Keterlambatan</td>
               <td class="td_field">
                 <select name='latefee' id='latefee'>
-                  <option class="LateFeeOpt" value="15">No Late Fee</option>
+                  <option class="LateFeeOpt" value="15">Tidak ada denda</option>
                 </select>
               </td>
               <td class='error'></td>
@@ -93,7 +93,7 @@
       <div class='divInvoiceGroup' id='divExchangeRate'>
         <table>
           <tr>
-            <td class="labelLeft">Exchange Rate</td>
+            <td class="labelLeft">Nilai Tukar Mata Uang</td>
             <td width='272px'>
               <div style="float: left; display: block; ">
                 <input type="hidden" id="custCcyCode"/>
@@ -110,11 +110,11 @@
           <tr>
             <td class='barang'>Barang</td>
             <td class='desc'>Deskripsi</td>
-            <td class='qty right'>Qty</td>
-            <td class='rate right'>Rate</td>
+            <td class='qty right'>Kuantitas</td>
+            <td class='rate right'>Harga</td>
             <td class='disc right'>Diskon(%)</td>
-            <td class='tax'>Tax</td>
-            <td class='amounthd right'>Amount</td>
+            <td class='tax'>Pajak</td>
+            <td class='amounthd right'>Jumlah</td>
             <td class='dltItem'></td>
           </tr>
         </thead>
@@ -124,7 +124,7 @@
         <tfoot>
           <tr>
             <td>
-              <span id='addItemRowEdit'>Add another line</span>
+              <span id='addItemRowEdit'>Tambah Baris</span>
             </td>
             <td colspan='3'></td>
             <td colspan='2' class='right borderbottom'>Sub Total</td>
@@ -150,10 +150,10 @@
         <table width='100%' cellpadding='0px'>
           <tr>
             <td width='40%'>
-              <b class='boldlabel'>Customer Note</b>
+              <b class='boldlabel'>Catatan</b>
             </td>
             <td width='60%'>
-              <b class='boldlabel'>Term and Conditions</b>
+              <b class='boldlabel'>Syarat Dan Ketentuan</b>
             </td>
           </tr>
           <tr>
@@ -168,9 +168,9 @@
       </div>
       <div style="margin-top:30px">
         <p align="center" style="font-size:11px">
-          <input id="UpdateInvoiceSave" type="submit" name="save" value="Update"/>
-          or
-          <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Cancel</span>
+          <input id="UpdateInvoiceSave" type="submit" name="save" value="Simpan"/>
+          atau
+          <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Batal</span>
         </p>
       </div>
     </div>
