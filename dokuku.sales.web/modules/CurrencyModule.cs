@@ -15,7 +15,7 @@ namespace dokuku.sales.web.modules
             Get["/GetAllCurrency"] = p =>
             {
                 Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.CurencyQueryRepo().GetAllTaxes(account.OwnerId));
+                return Response.AsJson(this.CurencyQueryRepo().GetAllCurrency(account.OwnerId));
             };
             Post["/SaveCurrency"] = p =>
             {
