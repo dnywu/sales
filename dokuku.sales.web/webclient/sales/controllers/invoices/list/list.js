@@ -7,11 +7,12 @@ steal('jquery/controller',
        'sales/controllers/invoices/edit',
        'sales/controllers/invoices/invoicedetail',
        'sales/repository/InvoiceRepository.js',
+       'sales/repository/PaymentRepository.js',
        './listinvoice.css',
        './DeleteConfirmBox.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
-       './views/confirmDeleteInvoice.ejs',
+       './views/confirmDeleteInvoice.ejs', 'sales/controllers/payment/views/recordpayment.ejs',
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
@@ -82,10 +83,20 @@ steal('jquery/controller',
                     var id = el.attr('id');
                     result = inv.ApproveInvoiceByID(id);
                     if (result.error == false) {
-                        $this.load();
+                        sales_payment('load');
                     } else {
                         $("#errorListInv").text(result.message).show("slow");
                     }
+                },
+                '.RecordPaymentContextMenuInvoive click': function (el) {
+                    var Pay = new PaymentRepository();
+                    var id = el.attr('id');
+                    result = Pay.PaymentByIdInvoice(id);
+                    //                    if (result.error == false) {
+                    $('#body').sales_payment('load');
+                    //                    } else {
+                    //                        $("#errorListInv").text(result.message).show("slow");
+                    //                    }
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
