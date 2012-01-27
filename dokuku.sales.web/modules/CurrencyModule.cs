@@ -15,7 +15,7 @@ namespace dokuku.sales.web.modules
             Get["/GetAllCurrency"] = p =>
             {
                 Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.CurencyQueryRepo().GetAllTaxes(account.OwnerId));
+                return Response.AsJson(this.CurencyQueryRepo().GetAllCurrency(account.OwnerId));
             };
             Post["/SaveCurrency"] = p =>
             {
@@ -30,7 +30,7 @@ namespace dokuku.sales.web.modules
                 }
 
             };
-            Get["/DeleteCurrency/{id}"] = p =>
+            Delete["/DeleteCurrency/{id}"] = p =>
             {
                 try
                 {
@@ -39,6 +39,25 @@ namespace dokuku.sales.web.modules
                 }
                 catch (Exception ex)
                 {
+                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                }
+                return Response.AsJson("OK");
+            };
+            Get["/GetDataCurrency/{id}"] = p =>
+            {
+                Guid id = p.id;
+                return Response.AsJson(this.CurencyQueryRepo().GetCurrencyById(id));
+            };
+            Post["/UpdateDataCurrency"] = p =>
+            {
+                string Data = this.Request.Form.data;
+                try
+                {
+                    this.CurrencyService().UpdateCurrency(Data);
+                }
+                catch (Exception ex)
+                {
+
                     return Response.AsRedirect("/?error=true&message=" + ex.Message);
                 }
                 return Response.AsJson("OK");

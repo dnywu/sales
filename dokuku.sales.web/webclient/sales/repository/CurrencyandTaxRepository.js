@@ -44,37 +44,45 @@
         });
     },
     getAllCurrency: function () {
-        var dataInvoice = new Array();
+        var dataInvoice = null;
         $.ajax({
             type: 'GET',
             url: '/GetAllCurrency',
             dataType: 'json',
             async: false,
             success: function (data) {
-
+                dataInvoice = data;
             }
         });
-        return alert("test");
+        return dataInvoice;
     },
     SaveCurrency: function (currencyModel) {
+        var currency = currencyModel;
+        var response = false;
         $.ajax({
             type: 'POST',
             url: '/SaveCurrency',
             dataType: 'json',
+            data: { 'data': JSON.stringify(currency) },
             async: false,
             success: function (data) {
+                response = true;
             }
         });
+        return response;
     },
-    DeleteCurrency: function (id) {
+    GetCurrencyById: function (id) {
+        var currency = null;
         $.ajax({
             type: 'GET',
-            url: '/DeleteCurrency',
+            url: '/GetDataCurrency/' + id,
             dataType: 'json',
             async: false,
             success: function (data) {
+                currency = data;
             }
         });
+        return currency;
     }
 })
 });

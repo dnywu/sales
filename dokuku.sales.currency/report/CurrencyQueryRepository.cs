@@ -17,9 +17,14 @@ namespace dokuku.sales.currency.report
         {
             _collections = mongo.ReportingDatabase.GetCollection(typeof(Currencies).Name);
         }
-        public IEnumerable<Currencies> GetAllTaxes(string ownerId)
+        public IEnumerable<Currencies> GetAllCurrency(string ownerId)
         {
             return _collections.FindAs<Currencies>(Query.EQ("OwnerId", ownerId));
+        }
+        public Currencies GetCurrencyById(Guid id)
+        {
+            QueryDocument qry = new QueryDocument() { { "_id", id } };
+            return _collections.FindOneAs<Currencies>(qry);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace dokuku.sales.currency.report
 {
     public interface ICurrencyQueryRepository
     {
-        IEnumerable<Currencies> GetAllTaxes(string ownerId);
+        IEnumerable<Currencies> GetAllCurrency(string ownerId);
+        Currencies GetCurrencyById(Guid id);
     }
 }

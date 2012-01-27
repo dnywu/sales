@@ -35,6 +35,15 @@ namespace dokuku.sales.currency.service
             return ccy;
         }
 
+        public void UpdateCurrency(string currenciesJson)
+        {
+            Currencies ccy = Newtonsoft.Json.JsonConvert.DeserializeObject<Currencies>(currenciesJson);
+            _collections.Save<Currencies>(ccy);
+
+            if (_bus != null)
+                _bus.Publish<CurrenciesUpdated>(new CurrenciesUpdated { CurrenciesUpdatedJson = ccy.ToJson() });
+        }
+
         public void Delete(Guid id)
         {
             _collections.Remove(Query.EQ("_id", id));

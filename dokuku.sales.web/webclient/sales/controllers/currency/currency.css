@@ -26,8 +26,51 @@ div.ListCurrencyDiv{
 	border-radius: 6px 6px 0 0;
 	padding: 20px 25px;
 }
-
-
+div.settingCurrency
+{
+	display:none;
+	cursor:pointer;
+}
+div.ContextMenuCurrency
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 145px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+.EditImageContextCurrency{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -382px -53px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
+div.itemContextMenuCurrency{
+	padding: 7px 5px 5px 7px;
+	color: #457BD9;
+	cursor: pointer;
+	white-space: normal;
+	text-decoration: none;
+}
+div.itemContextMenuCurrency span
+{
+	cursor:pointer;
+}
+div.itemContextMenuCurrency span:hover{
+	color:Red;
+	text-decoration:underline;
+}
 div.CreateNewCurrency{
 	margin:20px;
 	padding:20px;
@@ -337,8 +380,8 @@ div.settingListCurrency
 {
 	display:none;
 }
-div.MessageConfirmation{
-	width : 23%;
+div.ConfirmationCurrency{
+	width : 20%;
 	border : 1px solid #ECECEC;
 	border-radius: 6px;
 	-moz-box-shadow: 0 0 4px 0 #999;
@@ -358,23 +401,23 @@ div.MessageConfirmation{
 	width: 38px;
 	float : left;
 }
-div.isiConfirmationHeader{
+div.isiConfirmationHeaderCurrency{
 	margin: 20px 5px 10px 5px;
 }
-.ConfirmationHeader{
+.ConfirmationHeaderCurrency{
 	font-size: 18px;
 	font-family: arial, verdana;
 	background: #F0F0F0;
 	height: 52px;
 	padding: 2px;
 }
-.BodyConfirmationMassage{
+.BodyConfirmationCurrency{
 	font-size: 14px;
 	background: #F8F8F8;
 	height: 81px;
 	padding: 8px;
 }
-.ButtonConfirmationMassageYa{
+.ButtonConfirmationCurrencyYa{
 	color: #6F6F6F;
 	font-family: arial, verdana;
 	font-size: 14px;
@@ -396,7 +439,7 @@ div.isiConfirmationHeader{
 	box-shadow: 0 0 4px 0 #999;
 	
 }
-.ButtonConfirmationMassageTidak{
+.ButtonConfirmationCurrencyTidak{
 	color: #6F6F6F;
 	font-family: arial, verdana;
 	font-size: 14px;
@@ -516,6 +559,135 @@ div.DivSearch{
 	width: 17px;
 	float:left;
 }
-.nameCompany{ color:Black; font-weight:bolder; font-size:14px;}
+.currency{ color:Black; font-weight:bolder; font-size:14px;}
 .atributDataCurrency{ color:#A5A2A2; font-size:11px;}
 .tdDataCurrency{padding-bottom:5px; padding-top:5px;}
+
+
+div.mainFrame
+{
+	width:75%;
+	border-color:#999;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	padding-bottom:15px;
+}
+
+div.topBandHeaderDIV {
+	padding: 20px 25px;
+	margin: 0;
+	background: #F7F7F7;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+}
+
+.HeaderDIVLeft {
+	font-size: 21px;
+}
+
+div.mainDivWidth
+{
+	margin: 0 25px 30px 25px;
+	padding-top: 35px;
+	text-align: left;
+}
+
+div.AddCurrencyFormDiv
+{
+	background-color: #F7F7F7;
+	margin: 0;
+	padding: 17px 0;
+	margin-bottom: 25px;
+	border-top: 1px solid #ECECEC;
+	border-bottom: 1px solid #ECECEC;
+}
+.labelLeft
+{
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+	padding: 5px 10px 5px 10px;
+	white-space: nowrap;
+	color: #666;
+	width: 152px;
+	vertical-align: top;
+}
+
+.requiredFieldLabel
+{
+	color: #9C0000;
+}
+.field
+{
+	width: 350px;
+}
+
+.field input[type="text"], .field textarea, .field select
+{
+	width:50%;
+	margin-bottom: 15px;
+	border: 1px solid #ACD2E7;
+	border-image: initial;
+}
+
+div.submitFormDiv
+{
+	margin-top: 20px;
+	text-align: -webkit-center;
+}
+#submitTaxForm
+{
+	padding-top:10px;
+	border-top: 1px dashed #DBDBDB;
+}
+div.submitFormDiv span
+{
+	height: 20px;
+	position: relative;
+	top: 1px;
+}
+
+div.submitFormDiv a.cancelSubmitLink
+{
+	cursor: pointer;
+	text-decoration: underline;
+	color: red;
+}
+
+div.mainCreateTaxDialog
+{
+	padding-top:10px;
+}
+
+div.error{
+	display:none;
+	color:#fff;
+	padding: 2px;
+	padding-left: 10px;
+	background-color:#FF6A6A;
+	border: 1px Solid #E00;
+	margin:0 10px 0 10px;
+}
+
+.messageVerify
+{
+	margin-bottom:10px;
+	width:250px;
+}
+.messageVerify span
+{
+	margin-left:10px;
+}
+.messageVerify div
+{
+	width:15px;
+	height:15px;
+	float:left;
+}
+
+
