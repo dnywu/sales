@@ -13,6 +13,7 @@ div.invoicesContainer
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
 }
 div.HeaderTitleDIVLeft
 {
@@ -26,7 +27,7 @@ div.HeaderTitleDIVLeft
 div.invoiceContain
 {
     width:95.7%;
-    min-height:380px;
+    min-height:310px;
     padding:50px 20px 20px 20px;
 }
 div.rightbuttonarea
@@ -122,4 +123,75 @@ margin-bottom: 0px;
     float: left;
     margin-right: 20px;
     margin-top: 4px;
+}
+.PaggingInvoice 
+{
+	padding: 7px 12px 25px 35px;
+	border: solid 1px #EBEBEB;
+	background: #EBEBEB;
+}
+.DivNextInvoice{
+	float:left;
+	margin-right:5px
+}
+.DivPrevInvoice{
+	float:left;
+	margin-right:5px
+}
+.disableNextInvoice{
+	float:left;
+	margin-right:5px
+}
+.disablePrevInvoice{
+	float:left;
+	margin-right:5px
+}
+.DivlimitDataInvoice{
+	float:left;
+}
+.DivPageInvoice{
+	float:left;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin-left:5px;
+	margin-right:5px;
+}
+.pagingSizeInvoice{
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
+}
+.prevInvoice{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -233px -265px;
+}
+.nextInvoice{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -257px -265px;
+}
+.firstInvoice
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -209px -265px;
+}
+.lastInvoice{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -283px -265px;
+}
+.prevDisableInvoice{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -334px -265px;
+}
+.nextDisableInvoice{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -359px -265px;
+}
+.firstDisableInvoice
+{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -309px -265px;
+}
+.lastDisableInvoice{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -383px -265px;
 }

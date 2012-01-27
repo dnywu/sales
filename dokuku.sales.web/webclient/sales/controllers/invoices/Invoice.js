@@ -171,11 +171,11 @@
             $("#body").sales_invoices_invoicedetail('load', data);
         }
     },
-    GetDataInvoice: function () {
+    GetDataInvoice: function (start, limit) {
         var dataInvoice = new Array();
         $.ajax({
             type: 'GET',
-            url: '/GetDataInvoice',
+            url: '/GetDataInvoiceToPaging/'+ start +'/'+ limit +'',
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -256,7 +256,7 @@
             }
         });
         return listCustomer;
-    }
+    },
 })
     });
  

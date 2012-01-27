@@ -99,6 +99,35 @@
               </tbody>
             </table>
           </div>
+          <div class ='PaggingInvoice'>
+            <div class ='DivPrevInvoice'>
+              <img class ='firstInvoice pagingSizeInvoice'></img>
+              <img class ='prevInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class ="disablePrevInvoice" style="display:none;">
+              <img class ='firstDisableInvoice pagingSizeInvoice'></img>
+              <img class ='prevDisableInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class ='DivPageInvoice'>
+              Page <input type='text' id='idInputPageInvoice' style="width:20px; height:14px"/> of <span id="totalPageInvoice"></span>
+            </div>
+            <div class='DivNextInvoice'>
+              <img class ='nextInvoice pagingSizeInvoice'></img>
+              <img class ='lastInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class ="disableNextInvoice" style="display:none;">
+              <img class ='nextDisableInvoice pagingSizeInvoice'></img>
+              <img class ='lastDisableInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class='DivlimitDataInvoice'>
+              <select class="limit" id="limitDataInvoice" style="width:50px; height:21px">
+                <option value="10" selected="selected"> 10 </option>
+                <option value="20"> 20 </option>
+                <option value="30"> 30 </option>
+                <option value="40"> 40 </option>
+              </select>
+            </div>
+          </div>
         </div>
       </td>
       <td class="bodyBgRight" valign='top'>

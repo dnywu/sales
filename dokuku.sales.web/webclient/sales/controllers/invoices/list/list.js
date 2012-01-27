@@ -16,9 +16,14 @@ steal('jquery/controller',
 
            $.Controller('Sales.Controllers.Invoices.List',
             {
-                defaults: ($this = null,
-                           inv = null,
-                           invRepo = null)
+                /* defaults: ($this = null,
+                inv = null,
+                invRepo = null,
+                jumlahdata = 0,
+                start = 1,
+                page = 1,
+                totalPage = 1) */
+                defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null, inv = null, invRepo = null)
             },
             {
                 init: function () {
@@ -29,12 +34,91 @@ steal('jquery/controller',
                 },
                 load: function () {
                     $this = this;
+                    this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs'));
                     var invoices = invRepo.GetAllInvoice();
-                    this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoices))
+                    var LimitInvoices = this.LimitGetInvoice(invoices);
                 },
-                GetInvoices: function () {
-                    var invoices = inv.GetDataInvoice();
-                    return invoices;
+                LimitGetInvoice: function (data) {
+                    jumlahdata = data;
+                    limit = $('#limitDataInvoice').val();
+                    var startPageInvoice = (start - 1) * limit;
+                    var invoice = inv.GetDataInvoice(startPageInvoice, limit);
+                    this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoice));
+                    $this.initPagination();
+                    $('#idInputPageInvoice').val(1);
+                    $this.CheckButtonPaging();
+                },
+
+                initPagination: function () {
+                    totalPage = Math.ceil(jumlahdata / limit);
+                    $('#totalPageInvoice').text(totalPage);
+                },
+
+                CheckButtonPaging: function () {
+                    var startPage = parseInt($('#idInputPageInvoice').val());
+                    if (isNaN(startPage) || startPage <= 1) {
+                        $('.DivPrevInvoice').hide();
+                        $('.disablePrevInvoice').show();
+                    } else {
+                        $('.DivPrevInvoice').show();
+                        $('.disablePrevInvoice').hide();
+                    }
+                    var totalPage = parseInt($('#totalPageInvoice').text());
+                    if (totalPage <= 1 || totalPage <= startPage) {
+                        $('.DivNextInvoice').hide();
+                        $('.disableNextInvoice').show();
+                    } else {
+                        $('.DivNextInvoice').show();
+                        $('.disableNextInvoice').hide();
+                    }
+                },
+                '.prevInvoice click': function () {
+                    $this.initPagination();
+                    var startPage = parseInt($('#idInputPageInvoice').val());
+                    if (isNaN(startPage))
+                        startPage = 1;
+                    else
+                        startPage--;
+                    $('#idInputPageInvoice').val(startPage);
+                    $this.ChangePage();
+                },
+                '.nextInvoice click': function () {
+                    $this.initPagination();
+                    var startPage = parseInt($('#idInputPageInvoice').val());
+                    if (isNaN(startPage))
+                        startPage = 2;
+                    else
+                        startPage++;
+                    $('#idInputPageInvoice').val(startPage);
+                    $this.ChangePage();
+                },
+                '.lastInvoice click': function () {
+                    $('#idInputPageInvoice').val(parseInt($('#totalPageInvoice').text()));
+                    $this.ChangePage();
+                },
+                '.firstInvoice click': function () {
+                    $this.initPagination();
+                    $('#idInputPageInvoice').val(1);
+                    $this.ChangePage();
+                },
+                '#idInputPageInvoice change': function () {
+                    $this.ChangePage();
+                },
+                '#limitDataInvoice change': function () {
+                    $this.ChangePage();
+                },
+
+                ChangePage: function () {
+                    $this.initPagination();
+                    var startPage = parseInt($('#idInputPageInvoice').val());
+                    var startPageInvoice = (startPage - 1) * $('#limitDataInvoice').val();
+                    var limitInvoice = $('#limitDataInvoice').val();
+                    var invoice = inv.GetDataInvoice(startPageInvoice, limitInvoice);
+                    this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoice));
+                    limit = $('#limitDataInvoice').val();
+                    var startPage = parseInt($('#idInputPageInvoice').val(startPage));
+                    $this.initPagination();
+                    $this.CheckButtonPaging();
                 },
                 '#SearchInvoice keypress': function (el, ev) {
                     if (ev.keyCode == "13") {
