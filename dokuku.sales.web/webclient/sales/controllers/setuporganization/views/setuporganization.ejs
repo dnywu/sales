@@ -33,16 +33,17 @@
     <div id='body' class="container">
       <div class='divorganization'>
         <div class='divheaderorganization'>
-          <label class='title'>Welcome to Dokuku Sales</label>
+          <label class='title'>Selamat Datang di Dokuku Sales</label>
         </div>
         <div class='divcontain'>
           <div id='error'></div>
           <div id='welcomemessage'>
             Hi <%= this.name %>
           </div>
-          <div class='text'>Setup your Company and get started with using Dokuku Invoice for your invocing.</div>
+          <div class='text'>Isi data perusahaan untuk memulai pembuatan faktur penjualan.</div>
           <form method='POST' id='setuporganization' action="/setuporganization">
-            <label class='red divfieldheader'>Company Details</label>
+            <!--<label class='red divfieldheader'>Company Details</label>-->
+            <br/>
             <div class='formgroup'>
               <table width='100%' id='tblsetorg'>
                 <tr>
@@ -50,7 +51,7 @@
                   <td class='right'>
                     <input type='text' id="name" name="name"/>
                     <span class="hint">
-                      Masukkan nama Organisasi anda untuk digunakan pada Dokuku Invoice.
+                      Masukkan nama Organisasi anda untuk digunakan pada Dokuku Sales.
                       <span class="hint-pointer">&nbsp;</span>
                     </span>
                   </td>
@@ -67,7 +68,7 @@
                 </tr>
               </table>
             </div>
-            <label class='red divfieldheader'>Currency & Financial Settings</label>
+            <!--<label class='red divfieldheader'>Currency & Financial Settings</label>-->
             <div class='formgroup'>
               <table width='100%' id='setuporgcurr'>
                 <tr>
@@ -86,12 +87,12 @@
                   <td class='left'></td>
                   <td class='right'>
                     <label class='warning'>
-                      Specify your accounting currency. This <b>cannot</b> be changed later.
+                      Tidak dapat dirubah kemudian hari  
                     </label>
                   </td>
                 </tr>
                 <tr>
-                  <td class='left'>Fiscal Year Starts In</td>
+                  <td class='left'>Tahun pembukuan mulai bulan</td>
                   <td class='right'>
                     <select id='starts' name='starts'>
                       <option value='1'>Januari</option>
@@ -112,7 +113,7 @@
               </table>
             </div>
             <div class='divBtn'>
-              <input type='submit' value='Start Invocing'/>
+              <input type='submit' value='Buat Faktur'/>
             </div>
           </form>
         </div>

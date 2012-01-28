@@ -1,9 +1,9 @@
 <div class="divcontainerFormInvoice">
   <div class="topBandHeaderDIV">
-    <div id="TitleSpan" class="HeaderDIVLeft">Invoices Detail</div>
+    <div id="TitleSpan" class="HeaderDIVLeft">Rincian Faktur</div>
   </div>
   <div class="invoiceDetail">
-  <div class="InvoiceNoRpt">INVOICE# <b><%=this.InvoiceNo%></b>
+  <div class="InvoiceNoRpt">Nomor Faktur <b><%=this.InvoiceNo%></b>
   </div>
   <div class="billingDetailRpt">
     <table width="100%" cellpadding="0" cellspacing="0" border="0" height="150">
@@ -13,7 +13,7 @@
             <div style="float:left">
               <b>Ke Alamat:</b>
             </div>
-            <div class="paddingRight10 txt-rgh">Edit</div>
+            <div class="paddingRight10 txt-rgh">Ubah</div>
           </td>
         </tr>
         <tr height="120">
@@ -35,10 +35,10 @@
   <div class="DateandPO">
     <table width="100%" cellpadding="3" cellspacing="0" border="0">
       <tr class="curveLGrnLBg padding5" valign="middle">
-        <td width="25%">DATE</td>
-        <td width="25%">TERMS</td>
-        <td width="25%">DUE DATE</td>
-        <td width="25%">P.O.#</td>
+        <td width="25%">Tanggal</td>
+        <td width="25%">Termin</td>
+        <td width="25%">Jatuh Tempo</td>
+        <td width="25%">Nomor PO</td>
       </tr>
       <tr class="defaultInnerBg padding5" height="30">
         <td><%=this.InvoiceDate %></td>
@@ -54,7 +54,7 @@
         <td width="3%" class="txt-ctr">#</td>
         <td width="20%">Barang</td>
         <td width="45%">Deskripsi</td>
-        <td width="8%" class="txt-rgh">Qty</td>
+        <td width="8%" class="txt-rgh">Kuantitas</td>
         <td width="12%" class="txt-rgh">Harga</td>
         <td class="txt-rgh">Total</td>
         <td width="10px"></td>
@@ -92,7 +92,7 @@
         <tr height="40">
           <td class="txt-lft" colspan="4"></td>
           <td class="txt-rgh">
-            <b>Balance Due</b>
+            <b>Sisa Tagihan</b>
           </td>
           <td class="txt-rgh">
           </td>
@@ -105,7 +105,7 @@
 <div class="divcontainerRightFormInvoice">
   <div class="divcontainerRightFormInvoiceContain">
     <div class="actionsRightTop">
-      <div class="BtnNew" id="newinvoicesByDetails">Invoice Baru</div>
+      <div class="BtnNew" id="newinvoicesByDetails">Faktur Baru</div>
     </div>
     <div class="divInvoiceDetailRightMenu">
       <div id="<%=this._id%>" class="idIvoDetil"></div>

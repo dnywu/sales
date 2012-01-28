@@ -1,6 +1,6 @@
 <div class='mainFrame'>
   <div class="topBandHeaderDIV">
-    <div class="HeaderDIVLeft" id="TitleSpan">Setup Auto Number</div>
+    <div class="HeaderDIVLeft" id="TitleSpan">Setting nomor otomatis</div>
   </div>
   <div class="error" id="errorCreateItemDiv"></div>
   <div id="successMessage">&nbsp;</div>
@@ -11,17 +11,17 @@
           <tbody>
             <tr>
               <td class="labelLeft">
-                <span class="requiredFieldLabel">Mode</span>
+                <span class="requiredFieldLabel">Pilihan Format</span>
               </td>
               <td class="autonumberfield">
-                <input type="radio" name="Mode" id="mode" value="0" class="default"/> Default
-                <p><input type="radio" name="Mode" id="mode" value="1" class="yearly"/> Yearly</p>
-                <p><input type="radio" name="Mode" id="mode" value="2" class="monthly"/> Monthly</p>
+                <input type="radio" name="Mode" id="mode" value="0" class="default"/> Ikuti standar sistem saja
+                <p><input type="radio" name="Mode" id="mode" value="1" class="yearly"/> Tahunan</p>
+                <p><input type="radio" name="Mode" id="mode" value="2" class="monthly"/> Bulanan</p>
               </td>
             </tr>
             <tr>
               <td class="labelLeft">
-                <span class="requiredFieldLabel">Prefix</span>
+                <span class="requiredFieldLabel">Awalan</span>
               </td>
               <td class="autonumberfield">
                 <input type="text" name="Prefix" id="input-prefix" width="50%" oninput="setCustomValidity('')" oninvalid="setCustomValidity('prefix tidak boleh kosong')" required="required" value="<%= item.prefix %>"/>
