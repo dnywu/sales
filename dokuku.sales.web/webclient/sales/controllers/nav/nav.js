@@ -94,7 +94,7 @@ steal('jquery/controller', 'jquery/view/ejs',
                     invoices = $('<li>', { 'class': 'lisubtabs bold', id: 'invoices', text: 'Faktur' }),
                     recurringinvoices = $('<li>', { 'class': 'lisubtabs', id: 'recurringinvoices', text: 'Faktur Terjadwal' }),
                     creditnotes = $('<li>', { 'class': 'lisubtabs', id: 'creditnotes', text: 'Nota Kredit' }),
-                    paymentreceived = $('<li>', { 'class': 'lisubtabs', id: 'paymentreceived', text: 'Terima Bayaran' });
+                    paymentreceived = $('<li>', { 'class': 'lisubtabs', id: 'paymentreceived', text: 'Terima Pembayaran' });
                 items = $('<li>', { 'class': 'lisubtabs', id: 'items', text: 'Barang' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);

@@ -190,14 +190,14 @@ steal('jquery/controller',
                 '#deleteinvoice click': function () {
                     var checkList = $this.IsCheckListNull();
                     if (checkList != 0) {
-                        var message = $("<div>Apakah anda yakin akan menghapus pelanggan ini</div>" +
-                                    "<div class='ButtonConfirmYes'>Ya</div>" +
-                                    "<div class='ButtonConfirmClose'>Tidak</div>");
+                        var message = $("<div class='deleteConfirmMessage'>Apakah anda yakin akan menghapus pelanggan ini</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm Yes'>Ya</div>" +
+                                    "<div class='ButtonConfirm No' id='Close'>Tidak</div></div>");
                         $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
                         $(".BodyConfirmMassage").append(message);
                     }
                 },
-                '.ButtonConfirmYes click': function () {
+                '.Yes click': function () {
                     var result;
                     $(".selectInvoice:checked").each(function (index) {
                         var index = $(this).attr("id");
@@ -206,8 +206,8 @@ steal('jquery/controller',
 
                         if (result.error == true) {
                             $(".BodyConfirmMassage").empty();
-                            var message = $("<div>" + result.message + "</div>" +
-                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
+                            var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
                             $(".BodyConfirmMassage").append(message);
                             return false;
                         }
@@ -218,7 +218,7 @@ steal('jquery/controller',
                         $this.load();
                     }
                 },
-                '.ButtonConfirmClose click': function () {
+                '#Close click': function () {
                     $(".DeleteConfirmation").remove();
                 },
                 IsCheckListNull: function () {
