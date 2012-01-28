@@ -13,11 +13,10 @@
                 <tr id ="trMenuInvoice">
                   <td id="tdMenuInvoiceLeft" width="700px">
                     <div class="leftMenu menuDelete" id="deleteinvoice">
-                      <div class="floatLeft">Hapus</div>
-                      <div class="iconHapus"></div>
+                      <div class="hapusCaption">Hapus</div>
+                      <div class="iconHapusinvoice"></div>
                     </div>
-                    <div class="leftMenu menuApproveInvoice" id="approveinvoice">Terbitkan Faktur</div>
-                    <!--<input type="button" id="approveinvoice" value="Terbitkan Faktur" style="height:20px;" />-->
+                    <div class="leftMenu menuApproveInvoice" id="approveinvoice">Setujui Faktur</div>
                   </td>
                   <td id="tdMenuInvoiceRight" width="300px">
                     <table id="subMenuInvoiceRight" width="100%">
@@ -80,6 +79,15 @@
                           <div class="DeleteImagContextMenu invoiceImgContextMenu"></div>
                           <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Hapus</span>
                         </div>
+<<<<<<< HEAD
+                        <div class="itemContextMenuInvoice">
+                          <div class="RecordPaymentImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="RecordPaymentContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Catat Pembayaran
+                          </span>
+                           
+                        </div>
+=======
+>>>>>>> 9d812d3cf20af57eb49cfb57fdbacb1947128a10
                       </div>
                     </td>
                     <td>
@@ -107,7 +115,7 @@
               <img class ='prevDisableInvoice pagingSizeInvoice'></img>
             </div>
             <div class ='DivPageInvoice'>
-              Page <input type='text' id='idInputPageInvoice' style="width:20px; height:14px"/> of <span id="totalPageInvoice"></span>
+              Halaman <input type='text' id='idInputPageInvoice' style="width:20px; height:14px"/> dari <span id="totalPageInvoice"></span>
             </div>
             <div class='DivNextInvoice'>
               <img class ='nextInvoice pagingSizeInvoice'></img>

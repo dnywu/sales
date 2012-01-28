@@ -45,7 +45,7 @@ namespace dokuku.sales.web.modules
             Get["/GetDataCurrency/{id}"] = p =>
             {
                 Guid id = p.id;
-                return Response.AsJson(this.CurencyQueryRepo().GetCurrencyById(id));
+                return Response.AsJson(this.CurencyQueryRepo().GetCurrencyById(id, this.CurrentAccount().OwnerId));
             };
             Post["/UpdateDataCurrency"] = p =>
             {
