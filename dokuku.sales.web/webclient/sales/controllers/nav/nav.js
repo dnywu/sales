@@ -116,7 +116,7 @@ steal('jquery/controller', 'jquery/view/ejs',
                 var 
                     container = $('<div>', { 'class': 'container' }),
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
-                    setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Auto Numbering' });
+                    setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Penomoran Otomatis' });
                 currencyandtax = $('<li>', { 'class': 'lisubtabs', id: 'currencyandtax', text: 'Mata Uang & Pajak' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);
