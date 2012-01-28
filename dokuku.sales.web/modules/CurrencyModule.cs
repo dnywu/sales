@@ -14,15 +14,14 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication();
             Get["/GetAllCurrency"] = p =>
             {
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.CurencyQueryRepo().GetAllCurrency(account.OwnerId));
+                return Response.AsJson(this.CurencyQueryRepo().GetAllCurrency(this.CurrentAccount().OwnerId));
             };
             Post["/SaveCurrency"] = p =>
             {
                 try
                 {
                     string data = this.Request.Form.data;
-                    return Response.AsJson(this.CurrencyService().Create(data, this.Context.CurrentUser.UserName));
+                    return Response.AsJson(this.CurrencyService().Create(data, this.CurrentAccount().OwnerId));
                 }
                 catch (Exception ex)
                 {
@@ -53,7 +52,7 @@ namespace dokuku.sales.web.modules
                 string Data = this.Request.Form.data;
                 try
                 {
-                    this.CurrencyService().UpdateCurrency(Data, this.CurrentAccount().OwnerId);
+                    this.CurrencyService().UpdateCurrency(Data);
                 }
                 catch (Exception ex)
                 {
