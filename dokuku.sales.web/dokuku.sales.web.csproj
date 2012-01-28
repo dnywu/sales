@@ -592,6 +592,9 @@
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
     <Content Include="webclient\sales\controllers\currency\funcunit.html" />
+    <None Include="webclient\sales\controllers\currency\views\contextMenuCurrency.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\currency\views\listcurrency.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -600,6 +603,7 @@
     <Content Include="webclient\sales\controllers\currency\images\find.png" />
     <Content Include="webclient\sales\controllers\currency\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\currency\images\setting.png" />
+    <None Include="webclient\sales\controllers\currency\views\EditCurrency.ejs" />
     <Content Include="webclient\sales\controllers\customers\customer.css" />
     <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />

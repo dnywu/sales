@@ -6,8 +6,8 @@ using NServiceBus;
 
 namespace dokuku.sales.currency.messages
 {
-    public class CurrenciesCreated : IMessage
+    public class CurrenciesUpdated : IMessage
     {
-        public string CurrenciesCreatedJson { get; set; }
+        public string CurrenciesUpdatedJson { get; set; }
     }
 }

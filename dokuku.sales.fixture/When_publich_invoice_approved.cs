@@ -50,15 +50,14 @@ namespace dokuku.sales.fixture
                     TermCondition = "",
                     Terms = new Term() { Name = "ASAP", Value = 0 },
                     Total = 10000000,
-                    Items = new InvoiceItems[1] { new InvoiceItems{ 
+                    Items = new InvoiceItem[1] { new InvoiceItem{ 
                         Amount = 10000000, 
                         Description = "Macbook Pro", 
                         Discount = 0, 
                         ItemId = Guid.NewGuid(),
                         PartName = "Macbook Pro", 
                         Qty = 1,
-                        Rate = 10000000,
-                        Tax = new item.Tax() { Name = "PPN", Value = 0 }} }
+                        Rate = 10000000}}
                 };
                 bus.Publish(new InvoiceApproved { InvoiceJson = invoice.ToJson() });
             };
