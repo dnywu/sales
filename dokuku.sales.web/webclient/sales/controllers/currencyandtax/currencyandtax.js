@@ -4,16 +4,11 @@ steal('jquery/controller', 'jquery/view/ejs',
  'sales/controllers/currency'
  )
 	.then('./views/listcurrencyandtax.ejs', function ($) {
-
-	    /**
-	    * @class Sales.Controllers.Currencyandtax
-	    */
-	    $.Controller('Sales.Controllers.Currencyandtax',
-	    /** @Static */
+$.Controller('Sales.Controllers.Currencyandtax',
 {
 defaults: {}
 },
-	    /** @Prototype */
+
 {
 init: function () {
     this.element.html(this.view('//sales/controllers/currencyandtax/views/listcurrencyandtax.ejs'));
