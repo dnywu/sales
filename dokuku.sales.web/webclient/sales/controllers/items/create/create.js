@@ -4,6 +4,7 @@ steal('jquery/controller',
       './ItemsCreate.css',
       'sales/scripts/ModalDialog.js',
       'sales/styles/ModalDialog.css')
+
 .then('./views/createTaxDialog.ejs',
       './views/init.ejs', function ($) {
           $.Controller('sales.Controllers.items.create',

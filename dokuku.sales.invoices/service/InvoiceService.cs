@@ -68,7 +68,7 @@ namespace dokuku.sales.invoices.service
             Invoices invoice = invRepo.Get(invoiceId, ownerId);
             string invoiceNumber = gen.GenerateInvoiceNumber(invoice.InvoiceDate, ownerId);
             if (invoice.Status != InvoiceStatus.DRAFT)
-                throw new Exception(String.Format("Status invoice '{0}' harus {1} sebelum dilakukan ganti status. Sedangkan status saat ini adalah {2}", invoice.InvoiceNo, InvoiceStatus.DRAFT, invoice.Status));
+                throw new Exception(String.Format("Status faktur '{0}' harus {1} sebelum dilakukan ganti status. Sedangkan status saat ini adalah {2}", invoice.InvoiceNo, InvoiceStatus.DRAFT, invoice.Status));
             invoice.InvoiceNo = invoiceNumber;
             invoice.InvoiceStatusBelumBayar();
             invRepo.UpdateInvoices(invoice);
@@ -81,14 +81,14 @@ namespace dokuku.sales.invoices.service
         {
             Invoices invoice = invRepo.Get(id, ownerId);
             if (invoice.Status.ToLower() != "draft")
-                throw new Exception("Hapus invoice gagal, status invoice bukan draft");
+                throw new Exception("Hapus invoice gagal, status faktur bukan draft");
         }
 
         private void FailIfInvoiceNumberAlreadyUsed(string invoiceNumber, string ownerId)
         {
             Invoices inv = invRepo.GetInvByNumber(invoiceNumber, ownerId);
             if (inv != null)
-                throw new ApplicationException("Invoice " + invoiceNumber + " sudah digunakan!");
+                throw new ApplicationException("Faktur " + invoiceNumber + " sudah digunakan!");
         }
 
 
@@ -96,7 +96,7 @@ namespace dokuku.sales.invoices.service
         {
             Invoices invoice = invRepo.Get(invoiceId, ownerId);
             if (invoice == null)
-                throw new ApplicationException("Invoice tidak ditemukan dalam database");
+                throw new ApplicationException("Faktur tidak ditemukan dalam database");
             invoice.InvoiceStatusSudahLunas();
             invRepo.Save(invoice);
 
@@ -108,7 +108,7 @@ namespace dokuku.sales.invoices.service
         {
             Invoices invoice = invRepo.Get(invoiceId, ownerId);
             if (invoice == null)
-                throw new ApplicationException("Invoice tidak ditemukan dalam database");
+                throw new ApplicationException("Faktur tidak ditemukan dalam database");
             invoice.InvoiceStatusBelumLunas();
             invRepo.Save(invoice);
 
@@ -132,11 +132,11 @@ namespace dokuku.sales.invoices.service
         {
             Invoices invoice = invRepo.Get(id, ownerId);
             if (invoice == null)
-                throw new Exception("Invoice tidak ditemukan dalam database");
+                throw new Exception("Faktur tidak ditemukan dalam database");
             if (forceCancel && invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
-                throw new Exception(String.Format("Status invoice {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
+                throw new Exception(String.Format("Status faktur {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
             if (String.IsNullOrWhiteSpace(cancelNote))
-                throw new Exception("Mohon catatan untuk membatalkan invoice ini diisi terlebih dahulu.");
+                throw new Exception("Mohon catatan untuk membatalkan faktur ini diisi terlebih dahulu.");
             invoice.InvoiceStatusBatal(cancelNote);
             invRepo.UpdateInvoices(invoice);
             return invoice;

@@ -6,7 +6,7 @@ using NServiceBus;
 
 namespace dokuku.sales.currency.messages
 {
-    public class CurrenciesDeleted : IMessage
+    public class CurrencyDeleted : IMessage
     {
         public Guid Id { get; set; }
     }

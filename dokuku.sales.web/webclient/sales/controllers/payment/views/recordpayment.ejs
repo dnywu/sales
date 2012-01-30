@@ -1,0 +1,132 @@
+<div class="divcontainerFormInvoice">
+  <div class="topBandHeaderDIV">
+    <div id="TitleSpan" class="HeaderDIVLeft">Pembayaran</div>
+  </div>
+  
+  <table>
+    <tr>
+      <td class="vertical-align">
+        <div id="details">        
+            <header class="paddingleft height">Detail Pelanggan</header>
+            <customer class="paddingleft ">Pelanggan</customer>           
+            <vCustomer class="paddingleft height" >Doni</vCustomer>            
+            <creditAvailable class="paddingleft ">Credit Available</creditAvailable>            
+            <vCreditAvailable class="paddingleft height">Rp. 0.00</vCreditAvailable>
+          <hr class="paddingleft right"></hr>
+            <header class="paddingleft height">Invoice Details</header>
+            <invoice class="paddingleft ">Faktur#</invoice>
+            <vInvoice class="paddingleft height" >INV-1</vInvoice>
+            <balanceDue class="paddingleft ">Balance Due</balanceDue>
+            <vBalancedue class="paddingleft height">Rp.9900</vBalancedue>        
+        </div>
+      </td>
+      <td>
+        <div id="formNewIvoice">
+          <div class='newInvoiceContain' id='paymentForm'>
+            <table>
+              <tr>
+                <td>
+                  <AmountReceived>Jumlah yang diterima (<required>IDR</required>)</AmountReceived>
+                </td>
+                <td>
+                  <BankCharges>Biaya Bank(<required>if any</required>)</BankCharges>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <vAmountReceived class='height'>
+                    <input type='text' id='vAmountReceived'></input>
+                  </vAmountReceived>
+                </td>
+                <td>
+                  <vBankCharges class='height'>
+                    <input type='text' id='vBankCharges'></input>
+                  </vBankCharges>
+                </td>
+              </tr>
+            </table>
+            <p>
+              <input type='checkbox'> 
+            </p>
+            <table>
+              <tr>
+                <td>
+                  <PaymentDate>Tanggal Pembayaran</PaymentDate>
+                </td>
+                <td>
+                  <PaymentMethod>Jenis Pembayaran</PaymentMethod>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <vPaymentDate class='height'>
+                    <input type='date' name='invoiceDate' class='datepicker' id='PayDate'/>
+                  </vPaymentDate>
+                </td>
+                <td>
+                  <vPaymentMethod class='height'>
+                    <select id='vPaymentMethod'>
+                      <option value=''>Cash</option>
+                      <option>Kredit</option>
+                      <option></option>
+                      <option></option>
+                    </select>
+                  </vPaymentMethod>
+                </td>
+              </tr>
+            </table>
+
+            <table>
+              <tr>
+                <td>
+                  <reference>Referensi</reference>
+                  <vreference class='height'>
+                    <input type='text' id='vReference'>
+                </vreference>
+                </td>
+              </tr>
+              <tr>
+                <td>                  
+                  <notes>Catatan</notes>
+                  <vnotes class='height'>
+                    <input type='text'>
+                </vnotes>
+                  <email class='height'> </email>
+                </td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+            <table id='tblemail'>
+              <tr>
+                <td>
+                  <reference>Terkirim &quot;Terima Kasih&quot; catatan untuk pembayaran ini </reference>
+                  <vreference class='height'>                </vreference>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <vreference class='height'> </vreference>                 
+                  <email class='height'>
+                    <input type='checkbox' id='vEmail'> 
+                  putra - <vEmail>doni@inforsys.co.id</vEmail>
+                </email>
+                </td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>                 
+
+            <div style="margin-top:30px">
+              <p align="center" style="font-size:11px">
+                <input id="PayButton" type="button" name="save" value="Simpan"/>
+                atau
+                <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Batal</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="error" id="errorCreateInv"></div>
+</div>

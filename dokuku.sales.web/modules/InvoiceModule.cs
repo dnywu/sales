@@ -44,7 +44,7 @@ namespace dokuku.sales.web.modules
                     try
                     {
                         Guid _id = Guid.Parse(p.invoiceId);
-                        this.InvoiceService().Delete(_id, this.Context.CurrentUser.UserName);
+                        this.InvoiceService().Delete(_id, this.CurrentAccount().OwnerId);
                     }
                     catch (Exception ex)
                     {
