@@ -102,17 +102,51 @@ steal('jquery/controller', 'jquery/view/ejs',
             $("#body").sales_invoices_list('load');
         }
     },
+    '#menuItemRightHapus click': function () {
+        var InvID = $(".idIvoDetil").attr("id");
+        $(".BodyConfirmMassage").remove();
+        var message = $("<div>Apakah anda yakin akan menghapus faktur ini</div>" +
+                                    "<div><input type='hidden' id='invID' value='" + InvID + "'/></div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm DeleteYesDetail'>Ya</div>" +
+                                    "<div class='ButtonConfirm DeleteNoDetail' id='Close'>Tidak</div></div>");
+        $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
+        $(".BodyConfirmMassage").append(message);
+    },
+
+    '.DeleteYesDetail click': function () {
+        var result;
+        var no = $("#invID").val();
+        result = inv.DeleteInvoice(no);
+
+        if (result.error == true) {
+            $(".BodyConfirmMassage").empty();
+            var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
+            $(".BodyConfirmMassage").append(message);
+            return false;
+        }
+
+        if (result.error == false) {
+            $(".DeleteConfirmation").remove();
+            $("#body").sales_invoices_list('load');
+        }
+    },
     GetStatusInvoice: function (status) {
         var IsStatus = status;
-        if (IsStatus != "Draft") {
-            $("#menuItemRightSetujui").remove();
-        }
-        if (IsStatus == "Batal") {
-            $("#menuItemRightBatal").remove();
-        }
-        if(IsStatus != "Belum Bayar" && IsStatus == "Batal" && IsStatus != "Draft") {
-            $("#menuItemRightBatalPaksa").remove();
-        }
+                if (IsStatus != "Draft") {
+                    $("#menuItemRightSetujui").remove();
+                    $("#menuItemRightHapus").remove();
+                }
+                if (IsStatus != "Belum Bayar" && IsStatus != "Draft") {
+                    $("#menuItemRightBatal").remove();
+                    $("#menuItemRightUbah").remove();
+                }
+                if (IsStatus != "Belum Lunas") {
+                    $("#menuItemRightBatalPaksa").remove();
+                }
+                if (IsStatus != "Batal") {
+                    $("#menuItemRightUndo").remove();
+                }
     },
     GetDetailCustomer: function (invoice) {
         $.ajax({

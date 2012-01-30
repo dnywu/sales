@@ -125,6 +125,11 @@ div.textDeleteConfirmHeader
 {
     width:55px;
 }
+
+.DeleteYesDetail, .DeleteNoDetail
+{
+    width:55px;
+}
  
 .Close
 {
