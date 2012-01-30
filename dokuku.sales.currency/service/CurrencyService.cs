@@ -31,8 +31,19 @@ namespace dokuku.sales.currency.service
             _collections.Save(ccy);
 
             if (_bus != null)
-                _bus.Publish(new CurrenciesCreated { CurrenciesCreatedJson = ccy.ToJson() });
+                _bus.Publish(new CurrencyCreated { CurrenciesCreatedJson = ccy.ToJson() });
             return ccy;
+        }
+
+        public void UpdateCurrency(string currenciesJson, string ownerId)
+        {
+            Currencies ccy = Newtonsoft.Json.JsonConvert.DeserializeObject<Currencies>(currenciesJson);
+            ccy.OwnerId = ownerId;
+
+            _collections.Save<Currencies>(ccy);
+
+            if (_bus != null)
+                _bus.Publish<CurrenciesUpdated>(new CurrenciesUpdated { CurrenciesUpdatedJson = ccy.ToJson() });
         }
 
         public void Delete(Guid id)
@@ -40,7 +51,7 @@ namespace dokuku.sales.currency.service
             _collections.Remove(Query.EQ("_id", id));
 
             if (_bus != null)
-                _bus.Publish(new CurrenciesDeleted { Id = id });
+                _bus.Publish(new CurrencyDeleted { Id = id });
         }
     }
 }

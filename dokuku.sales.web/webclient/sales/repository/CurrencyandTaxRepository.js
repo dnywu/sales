@@ -33,15 +33,18 @@
         });
         return response;
     },
-    DeleteTax: function (id) {
+    GetTaxById: function (id) {
+        var tax = null;
         $.ajax({
             type: 'GET',
-            url: '/DeleteTax',
+            url: '/GetTaxById/' + id,
             dataType: 'json',
             async: false,
             success: function (data) {
+                tax = data;
             }
         });
+        return tax;
     },
     getAllCurrency: function () {
         var dataInvoice = null;
@@ -71,15 +74,18 @@
         });
         return response;
     },
-    DeleteCurrency: function (id) {
+    GetCurrencyById: function (id) {
+        var currency = null;
         $.ajax({
             type: 'GET',
-            url: '/DeleteCurrency',
+            url: '/GetDataCurrency/' + id,
             dataType: 'json',
             async: false,
             success: function (data) {
+                currency = data;
             }
         });
+        return currency;
     }
 })
 });

@@ -21,5 +21,9 @@ namespace dokuku.sales.currency.report
         {
             return _collections.FindAs<Currencies>(Query.EQ("OwnerId", ownerId));
         }
+        public Currencies GetCurrencyById(Guid id, string ownerId)
+        {
+            return _collections.FindOneAs<Currencies>(Query.And(Query.EQ("_id", id), Query.EQ("OwnerId", ownerId)));
+        }
     }
 }

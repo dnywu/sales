@@ -18,27 +18,28 @@
 	font-family: arial, verdana;
 	background: #F0F0F0;
 	height: 52px;
-	padding: 2px;
-	width:375px;
+	width:100%;
 }
 
 .imgDeleteConfirm{
 	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -273px -1025px;
-	margin: 10px 15px 10px 5px;
+	margin: 10px 15px 10px 15px;
 	height: 34px;
 	width: 38px;
 	float : left;
 }
 
-div.textDeleteConfirmHeader{margin: 20px 5px 10px 5px;}
+div.textDeleteConfirmHeader
+{
+	padding-top:15px;
+}
 
 .BodyConfirmMassage{
 	font-size: 14px;
 	background: #F8F8F8;
 	height: 81px;
-	padding: 2px;
-	width:375px;
+	width:100%;
 }
 
 .ButtonConfirmYes{
@@ -63,19 +64,23 @@ div.textDeleteConfirmHeader{margin: 20px 5px 10px 5px;}
 	box-shadow: 0 0 4px 0 #999;
 	
 }
-.ButtonConfirmClose{
+.buttonDIV
+{
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.ButtonConfirm{
 	color: #6F6F6F;
 	font-family: arial, verdana;
 	font-size: 14px;
 	margin: 20px 5px 4px 4px;
 	height: 23px;
-	width: 100px;
 	text-decoration: none;
 	white-space: nowrap;
 	font-weight: bold;
 	cursor: pointer;
 	background: #E0E0E0;
-	float: left;
 	text-align: center;
 	padding-top: 7px;
 	border : 1px solid #BBBBBB;
@@ -83,26 +88,19 @@ div.textDeleteConfirmHeader{margin: 20px 5px 10px 5px;}
 	-moz-box-shadow: 0 0 4px 0 #999;
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
+	float:left
 }
-.ButtonApproveYes{
-	color: #6F6F6F;
-	font-family: arial, verdana;
-	font-size: 14px;
-	margin: 20px 5px 4px 72px;
-	height: 23px;
-	width: 55px;
-	text-decoration: none;
-	white-space: nowrap;
-	font-weight: bold;
-	cursor: pointer;
-	background: #E0E0E0;
-	float: left;
-	text-align: center;
-	padding-top: 7px;
-	border : 1px solid #BBBBBB;
-	border-radius: 6px;
-	-moz-box-shadow: 0 0 4px 0 #999;
-	-webkit-box-shadow: 0 0 4px 0 #999;
-	box-shadow: 0 0 4px 0 #999;
-	
+.deleteConfirmMessage
+{
+	text-align:center;
+	padding-left:5px;
+	padding-right:5px;
+}
+.Yes, .No
+{
+	width:55px;
+}
+.Close
+{
+	width:100px;
 }
