@@ -1,4 +1,4 @@
-﻿div.FormNewCustomer{
+﻿div.FormNewTax{
 	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
 	height : 100%;
 	width : 75%;
@@ -8,7 +8,7 @@
 	-webkit-box-shadow: 0 0 4px 0 #999;
 	box-shadow: 0 0 4px 0 #999;
 }
-div.ListCustomerDiv{
+div.ListTaxDiv{
 	width : 100%;
 	border : 1px solid #ECECEC;
 	border-radius: 6px;
@@ -17,7 +17,7 @@ div.ListCustomerDiv{
 	box-shadow: 0 0 4px 0 #999;
 	margin-bottom:25px;
 }
-.topBandHeaderListCustomerDIV{
+.topBandHeaderListTaxDIV{
 	width: 100%;
 	margin: 0;
 	background: #F7F7F7;
@@ -28,7 +28,7 @@ div.ListCustomerDiv{
 }
 
 
-div.CreateNewCustomer{
+div.CreateNewTax{
 	margin:20px;
 	padding:20px;
 	border-top : 1px solid #ECECEC;
@@ -76,7 +76,7 @@ input[type="checkbox"]{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -126px -453px;
 	margin-top: 2px;
 }
@@ -89,7 +89,7 @@ input[type="checkbox"]:checked{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -141px -453px;
 	margin-top: 2px;
 }
@@ -107,22 +107,22 @@ label.labelStyle{
 .text{
 	width:73% ! important;
 }
-table.FormNewCuscotmer{
+table.FormNewTax{
 	width:100%;
 	border:0px solid black;
 }
-table.CustomerTable{
+table.TaxTable{
 	width:100%;
 	border:0px solid black;
 }
-table.CustomerTable tbody{
+table.TaxTable tbody{
 	border:0px solid black;
 }
-table.CustomerTable tbody tr td#formListCustomer{
+table.TaxTable tbody tr td#formListTax{
 	border:0px solid black;
 	width:75%;
 }
-table.CustomerTable tbody tr td#MenuFormListCustomer{
+table.TaxTable tbody tr td#MenuFormListTax{
 	border:0px solid black;
 	width:25%;
 }
@@ -150,7 +150,7 @@ td.space{
 	display:none;
 }
 .add{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -194px -110px;
 	width: 12px;
 	height: 12px;
@@ -160,7 +160,7 @@ td.space{
 	vertical-align: top;
 }
 .copyField{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -389px -166px;
 	width: 8px;
 	height: 11px;
@@ -169,8 +169,8 @@ td.space{
 #CustomField{
 	display:none;
 }
-.CreateCustomerBtn{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") repeat-x;
+.CreateTaxBtn{
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") repeat-x;
 	background-position: -0px -1458px;
 	border-color: #CFCECE #CFCECE #B5B4B4;
 	-moz-border-radius: 3px;
@@ -186,7 +186,7 @@ td.space{
 .field_select{
 	width: 63px ! important;
 }
-.td_field_customer{
+.td_field_Tax{
 	width:100%;
 }
 
@@ -194,7 +194,7 @@ td.space{
 	height:35px;
 }
 
-.HeaderDIVListCustomer{
+.HeaderDIVListTax{
 	font-size: 21px;
 	font-family: arial, verdana;
 	background: #F7F7F7;
@@ -202,18 +202,18 @@ td.space{
 	padding: 20px;
 }
 
-.ClassListCustomer {
+.ClassListTax {
 	padding-left: 12px;
 	padding-right: 12px;
 	padding-bottom: 30px;
 }
-.ClassSubMenuDataCustomer {
+.ClassSubMenuDataTax {
 	padding-left: 12px;
 	padding-right: 12px;
 	padding-bottom: 12px;
 }
 
-.thDataCustomer
+.thDataTax
 {
 	padding: 6px 10px 6px 0;
 	border: solid 0 #EBEBEB;
@@ -224,7 +224,7 @@ td.space{
 	height: 32px;
 	border-image: initial;
 }
-.tdDataCustomerRight{
+.tdDataTaxRight{
 	text-align:right;
 	padding: 6px 10px 6px 0;
 	border: solid 0 #EBEBEB;
@@ -233,7 +233,7 @@ td.space{
 	font-weight: normal;
 	height: 32px;
 }
-.tdDataCustomerLeft{
+.tdDataTaxLeft{
 	text-align:left;
 	padding: 6px 10px 6px 10;
 	border: solid 0 #EBEBEB;
@@ -242,7 +242,7 @@ td.space{
 	font-weight: normal;
 	height: 32px;
 }
-.tdDataCustomerCenter{
+.tdDataTaxCenter{
 	border-bottom: solid 1px #EBEBEB;
 }
 div.menuLeft{
@@ -261,12 +261,12 @@ div.menuLeft{
 	height: 15px;
 }
 
-.MenuFormListCustomer {
+.MenuFormListTax {
 	padding: 40px 0 20px 20px;
 	vertical-align: top;
 }
-.BtnTambahCustomer{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+.BtnTambahTax{
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -16px -226px;
 	color: #6F6F6F;
 	font-family: arial, verdana;
@@ -280,14 +280,14 @@ div.menuLeft{
 	cursor: pointer;
 }
 .imgCari{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -332px -82px;
 	height: 15px;
 	width: 15px;
 
 }
 .imgFilter{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -230px -139px;
 	height: 4px;
 	width: 11px;
@@ -340,40 +340,40 @@ div.menuLeft{
 	cursor: pointer;
 }
 .prev{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -233px -265px;
 }
 .next{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -257px -265px;
 }
 .first
 {
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -209px -265px;
 }
 .last{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -283px -265px;
 }
 .prevDisable{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -334px -265px;
 }
 .nextDisable{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -359px -265px;
 }
 .firstDisable
 {
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -309px -265px;
 }
 .lastDisable{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -383px -265px;
 }
-.BodyDataCustomer{
+.BodyDataTax{
 	overflow : auto;
 	height : 280px;
 }
@@ -381,12 +381,12 @@ div.menuLeft{
 .odd {
 	background: #F8F8F8;
 }
-div.settingListCustomer
+div.settingListTax
 {
 	display:none;
 }
-div.MessageConfirmation{
-	width : 23%;
+div.MessageConfirmationTax{
+	width : 20%;
 	border : 1px solid #ECECEC;
 	border-radius: 6px;
 	-moz-box-shadow: 0 0 4px 0 #999;
@@ -398,31 +398,31 @@ div.MessageConfirmation{
 	left: 337px;
 	display:none;
 }
-.imagesConfirm{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+.imagesConfirmTax{
+	background: url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -273px -1025px;
 	margin: 10px 15px 10px 5px;
 	height: 34px;
 	width: 38px;
 	float : left;
 }
-div.isiConfirmationHeader{
+div.isiConfirmationHeaderTax{
 	margin: 20px 5px 10px 5px;
 }
-.ConfirmationHeader{
+.ConfirmationHeaderTax{
 	font-size: 18px;
 	font-family: arial, verdana;
 	background: #F0F0F0;
 	height: 52px;
 	padding: 2px;
 }
-.BodyConfirmationMassage{
+.BodyConfirmationTax{
 	font-size: 14px;
 	background: #F8F8F8;
 	height: 81px;
 	padding: 8px;
 }
-.ButtonConfirmationMassageYa{
+.ButtonConfirmationTaxYa{
 	color: #6F6F6F;
 	font-family: arial, verdana;
 	font-size: 14px;
@@ -444,7 +444,7 @@ div.isiConfirmationHeader{
 	box-shadow: 0 0 4px 0 #999;
 	
 }
-.ButtonConfirmationMassageTidak{
+.ButtonConfirmationTaxTidak{
 	color: #6F6F6F;
 	font-family: arial, verdana;
 	font-size: 14px;
@@ -472,7 +472,7 @@ div.isiConfirmationHeader{
 	padding-right:5px;
 }
 
-div.ContextMenuCustomer
+div.ContextMenuTax
 {
 	display:none;
 	background-color: white;
@@ -488,23 +488,23 @@ div.ContextMenuCustomer
 	color: #457BD9;
 	padding: 8px;
 }
-div.itemContextMenuCustomer{
+div.itemContextMenuTax{
 	padding: 7px 5px 5px 7px;
 	color: #457BD9;
 	cursor: pointer;
 	white-space: normal;
 	text-decoration: none;
 }
-div.itemContextMenuCustomer span
+div.itemContextMenuTax span
 {
 	cursor:pointer;
 }
-div.itemContextMenuCustomer span:hover{
+div.itemContextMenuTax span:hover{
 	color:Red;
 	text-decoration:underline;
 }
 .EditImagContextMenu{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -382px -53px;
 	height: 21px;
 	width: 19px;
@@ -512,8 +512,8 @@ div.itemContextMenuCustomer span:hover{
 	margin-right:20px;
 	margin-top: 1px;
 }
-.CreateInvoiceContextMenuCustomer{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+.CreateInvoiceContextMenuTax{
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -50px -79px;
 	height: 21px;
 	width: 19px;
@@ -529,7 +529,7 @@ div.itemContextMenuCustomer span:hover{
 	color: #666;
 }
 .iconHapus{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/Actions.png") no-repeat;
 	background-position: -332px -29px;
 	height: 16px;
 	width: 17px;
@@ -551,7 +551,7 @@ div.DivSearch{
 	width: 280px;
 	height: 17px;
 }
-#SearchCustomer{
+#SearchTax{
 	border: none;
 	margin-left: 18px;
 	height: 16px;
@@ -559,11 +559,11 @@ div.DivSearch{
 	background: #F3F3F3;
 }
 .imgSearch{
-	background: transparent url("/sales/controllers/customers/images/find.png") no-repeat;
+	background: transparent url("/sales/controllers/Tax/images/find.png") no-repeat;
 	height: 16px;
 	width: 17px;
 	float:left;
 }
-.nameCompany{ color:Black; font-weight:bolder; font-size:14px;}
-.atributDataCustomer{ color:#A5A2A2; font-size:11px;}
-.tdDataCustomer{padding-bottom:5px; padding-top:5px;}
+.tax{ color:Black; font-weight:bolder; font-size:14px;}
+.atributDataTax{ color:#A5A2A2; font-size:11px;}
+.tdDataTax{padding-bottom:5px; padding-top:5px;}

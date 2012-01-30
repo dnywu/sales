@@ -85,8 +85,8 @@ steal('jquery/controller', 'jquery/view/ejs',
                 var 
                     container = $('<div>', { 'class': 'container' }),
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
-                    customers = $('<li>', { 'class': 'bold lisubtabs', id: 'customers', text: 'Customers' }),
-                    emailhistory = $('<li>', { 'class': 'lisubtabs', id: 'emailhistory', text: 'Email History' });
+                    customers = $('<li>', { 'class': 'bold lisubtabs', id: 'customers', text: 'Pelanggan' }),
+                    emailhistory = $('<li>', { 'class': 'lisubtabs', id: 'emailhistory', text: 'Berkas Email' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);
                 ul.appendTo(container);
@@ -98,11 +98,11 @@ steal('jquery/controller', 'jquery/view/ejs',
                 var 
                     container = $('<div>', { 'class': 'container' }),
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
-                    invoices = $('<li>', { 'class': 'lisubtabs bold', id: 'invoices', text: 'Invoices' }),
-                    recurringinvoices = $('<li>', { 'class': 'lisubtabs', id: 'recurringinvoices', text: 'Recurring Invoices' }),
-                    creditnotes = $('<li>', { 'class': 'lisubtabs', id: 'creditnotes', text: 'Credit Notes' }),
-                    paymentreceived = $('<li>', { 'class': 'lisubtabs', id: 'paymentreceived', text: 'Payment Received' });
-                items = $('<li>', { 'class': 'lisubtabs', id: 'items', text: 'Items' });
+                    invoices = $('<li>', { 'class': 'lisubtabs bold', id: 'invoices', text: 'Faktur' }),
+                    recurringinvoices = $('<li>', { 'class': 'lisubtabs', id: 'recurringinvoices', text: 'Faktur Terjadwal' }),
+                    creditnotes = $('<li>', { 'class': 'lisubtabs', id: 'creditnotes', text: 'Nota Kredit' }),
+                    paymentreceived = $('<li>', { 'class': 'lisubtabs', id: 'paymentreceived', text: 'Terima Pembayaran' });
+                items = $('<li>', { 'class': 'lisubtabs', id: 'items', text: 'Barang' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);
                 ul.appendTo(container);
@@ -117,7 +117,7 @@ steal('jquery/controller', 'jquery/view/ejs',
                 var 
                     container = $('<div>', { 'class': 'container' }),
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
-                    setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Auto Numbering' });
+                    setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Penomoran Otomatis' });
                 currencyandtax = $('<li>', { 'class': 'lisubtabs', id: 'currencyandtax', text: 'Mata Uang & Pajak' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);

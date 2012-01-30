@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CurrenciesCreated.cs" />
-    <Compile Include="CurrenciesDeleted.cs" />
+    <Compile Include="CurrencyCreated.cs" />
+    <Compile Include="CurrencyDeleted.cs" />
     <Compile Include="CurrencyUpdated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

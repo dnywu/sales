@@ -1,10 +1,10 @@
 ﻿<div class='mainFrame'>
   <div class="topBandHeaderDIV">
-    <div class="HeaderDIVLeft" id="TambahMU">Ubah Mata Uang</div>
+    <div class="HeaderDIVLeft" id="TambahMU">Tambah Mata Uang</div>
   </div>
   <div class="error" id="errorCreateItemDiv"></div>
   <div class="mainDivWidth">
-    <div id="editCurrencyForm">
+    <div id="addCurrencyForm">
       <div class="ie-form AddCurrencyFormDiv">
         <table>
           <tbody>
@@ -13,8 +13,8 @@
                 <span class="requiredFieldLabel">Kode Mata Uang</span>
               </td>
               <td class="field">
-                <select id="editName" name="mataUang">
-                  <option value="IDR">IDR</option>
+                <select id="inputName">
+                  <option value="IDR" selected="selected">IDR</option>
                   <option value="USD">USD</option>
                 </select>                
               </td>
@@ -24,8 +24,7 @@
                 <span class="requiredFieldLabel">Lambang Mata Uang</span>
               </td>
               <td class="field">
-                <input type="hidden" name="_id" id="_id" hidden="hidden" value="<%= this._id %>"/>
-                <input type="text" name="lambang" id="editSymbol" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Lambang mata uang tidak boleh kosong')" required="required" value="<%= this.Code %>"/>
+                <input type="text" name="Symbol" id="inputSymbol" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Lambang mata uang tidak boleh kosong')" required="required"/>
               </td>
               <td>
                 <div class="messageVerify "></div>
@@ -36,8 +35,8 @@
                 <span class="requiredFieldLabel">Pembulatan</span>
               </td>
               <td class="field">
-                <select id="editFormat">
-                  <option value="0">0</option>
+                <select id="inputFormat">
+                  <option value="0" selected="selected">0</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
@@ -50,7 +49,7 @@
     <div style="margin-top:30px">
       <p align="center" style="font-size:11px">
         <input type="hidden" id="keywords" name="keywords"></input>
-        <input id="EditCurrency" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
+        <input id="CurrencySave" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
         atau
         <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="CancelCurrency">Batal</span>
       </p>

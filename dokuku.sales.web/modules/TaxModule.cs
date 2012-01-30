@@ -14,15 +14,14 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication();
             Get["/GetAllTax"] = p =>
                 {
-                    Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(this.TaxQueryRepository().GetAllTaxes(account.OwnerId));
+                    return Response.AsJson(this.TaxQueryRepository().GetAllTaxes(this.CurrentAccount().OwnerId));
                 };
             Post["/SaveTax"] = p =>
             {
                 try
                 {
                     string data = this.Request.Form.data;
-                    return Response.AsJson(this.ServiceTax().Create(data, this.Context.CurrentUser.UserName));
+                    return Response.AsJson(this.ServiceTax().Create(data, this.CurrentAccount().OwnerId));
                 }
                 catch (Exception ex)
                 {
@@ -30,7 +29,7 @@ namespace dokuku.sales.web.modules
                 }
 
             };
-            Get["/DeleteTax/{id}"] = p =>
+            Delete["/DeleteTax/{id}"] = p =>
                 {
                     try
                     {
@@ -43,6 +42,25 @@ namespace dokuku.sales.web.modules
                     }
                     return Response.AsJson("OK");
                 };
+            Get["/GetTaxById/{id}"] = p =>
+            {
+                Guid id = p.id;
+                return Response.AsJson(this.TaxQueryRepository().GetTaxById(id, this.CurrentAccount().OwnerId));
+            };
+            Post["/UpdateTax"] = p =>
+            {
+                string Data = this.Request.Form.data;
+                try
+                {
+                    this.ServiceTax().Update(Data, this.CurrentAccount().OwnerId);
+                }
+                catch (Exception ex)
+                {
+
+                    return Response.AsRedirect("/?error=true&message=" + ex.Message);
+                }
+                return Response.AsJson("OK");
+            };
         }
     }
 }
