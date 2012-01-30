@@ -15,16 +15,14 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication();
             Get["/Customers"] = p =>
             {
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                int count = this.CustomerReportRepository().CountCustomers(account.OwnerId);
+                int count = this.CustomerReportRepository().CountCustomers(this.CurrentAccount().OwnerId);
                 return Response.AsJson(count);
             };
             Get["/LimitCustomers/start/{start}/limit/{limit}"] = p =>
             {
                 int start = p.start;
                 int limit = p.limit;
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                Customer[] result = this.CustomerReportRepository().LimitCustomers(account.OwnerId, start, limit).ToArray();
+                Customer[] result = this.CustomerReportRepository().LimitCustomers(this.CurrentAccount().OwnerId, start, limit).ToArray();
                 return Response.AsJson(result);
             };
             Delete["/DeleteCustomer/{id}"] = p =>
@@ -42,9 +40,8 @@ namespace dokuku.sales.web.modules
             };
             Get["/getCustomerByCustomerName/{custName}"] = p =>
             {
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                 string custName = p.custName.ToString();
-                var a = this.CustomerReportRepository().GetByCustName(account.OwnerId, custName);
+                var a = this.CustomerReportRepository().GetByCustName(this.CurrentAccount().OwnerId, custName);
                 return Response.AsJson(a);
             };
             Post["/customer/data"] = p =>
@@ -52,7 +49,7 @@ namespace dokuku.sales.web.modules
                 string data = this.Request.Form.data;
                 try
                 {
-                    Customer cust = this.CustomerService().SaveCustomer(data,this.Context.CurrentUser.UserName);
+                    Customer cust = this.CustomerService().SaveCustomer(data, this.CurrentAccount().OwnerId);
                     return Response.AsJson(cust);
                 }
                 catch (Exception ex)
@@ -82,8 +79,7 @@ namespace dokuku.sales.web.modules
             Get["/SearchCustomer/{key}"] = p =>
                 {
                     string key = p.key;
-                    Account ownerId = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                    return Response.AsJson(this.CustomerReportRepository().Search(ownerId.OwnerId,new string[]{key}));
+                    return Response.AsJson(this.CustomerReportRepository().Search(this.CurrentAccount().OwnerId, new string[] { key }));
                 };
         }
     }

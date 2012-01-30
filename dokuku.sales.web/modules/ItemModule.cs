@@ -17,21 +17,18 @@ namespace dokuku.sales.web.modules
             this.RequiresAuthentication();
             Get["/Items"] = p =>
             {
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.ItemQuery().AllItems(account.OwnerId));
+                return Response.AsJson(this.ItemQuery().AllItems(this.CurrentAccount().OwnerId));
             };
             Get["/CountItem"] = p =>
             {
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.ItemQuery().CountItems(account.OwnerId));
+                return Response.AsJson(this.ItemQuery().CountItems(this.CurrentAccount().OwnerId));
             };
 
             Get["/LimitItems/start/{start}/limit/{limit}"] = p =>
             {
                 int start = p.start;
                 int limit = p.limit;
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.ItemQuery().LimitItems(account.OwnerId, start, limit));
+                return Response.AsJson(this.ItemQuery().LimitItems(this.CurrentAccount().OwnerId, start, limit));
             };
 
             Delete["/deleteItem/{id}"] = p =>
@@ -49,9 +46,8 @@ namespace dokuku.sales.web.modules
             };
             Get["/getItemByName/{itemName}"] = p =>
             {
-                Account account = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
                 string itemName = p.itemName.ToString();
-                var item = this.ItemQuery().GetItemByName(account.OwnerId, itemName);
+                var item = this.ItemQuery().GetItemByName(this.CurrentAccount().OwnerId, itemName);
                 return Response.AsJson(item);
             };
             Post["/createnewitem"] = p =>
@@ -59,7 +55,7 @@ namespace dokuku.sales.web.modules
                 try
                 {
                     string data = this.Request.Form.data;
-                    Item item = this.ItemService().Insert(data, this.Context.CurrentUser.UserName);
+                    Item item = this.ItemService().Insert(data, this.CurrentAccount().OwnerId);
                     return Response.AsJson(item);
                 }
                 catch (Exception ex)
@@ -77,7 +73,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    Item item = this.ItemService().Update(this.Request.Form.data, this.Context.CurrentUser.UserName);
+                    Item item = this.ItemService().Update(this.Request.Form.data, this.CurrentAccount().OwnerId);
                     return Response.AsJson(item);
                 }
                 catch (Exception ex)
@@ -89,21 +85,18 @@ namespace dokuku.sales.web.modules
             Get["/isCodeIsExist/{code}"] = p =>
             {
                 string code = p.code;
-                string owner = this.Context.CurrentUser.UserName;
-                return Response.AsJson(this.ItemQuery().IsCodeAlreadyExist(code, owner));
+                return Response.AsJson(this.ItemQuery().IsCodeAlreadyExist(code, this.CurrentAccount().OwnerId));
             };
             Get["/isBarcodeIsExist/{barcode}"] = p =>
             {
-                string barcode = p.barcode;
-                string owner = this.Context.CurrentUser.UserName;
-                return Response.AsJson(this.ItemQuery().IsBarcodeAlreadyExist(barcode, owner));
+                string barcode = p.barcode;                
+                return Response.AsJson(this.ItemQuery().IsBarcodeAlreadyExist(barcode, this.CurrentAccount().OwnerId));
             };
             Get["/searchItem/{keyword}"] = p =>
             {
                 string keyWords = p.keyword;
-                string owner = this.Context.CurrentUser.UserName;
                 IList<Item> items=new List<Item>();
-                IEnumerable<ItemReports> itemReports = this.ItemQuery().Search(owner, new string[] { keyWords });
+                IEnumerable<ItemReports> itemReports = this.ItemQuery().Search(this.CurrentAccount().OwnerId, new string[] { keyWords });
                 foreach (ItemReports item in itemReports)
                 {
                     items.Add(this.ItemQuery().Get(item._id));

@@ -19,7 +19,7 @@ namespace dokuku.sales.web.modules
                     string timezone = (string)this.Request.Form.timezone;
                     string curr = (string)this.Request.Form.curr;
                     int starts = (int)this.Request.Form.starts;
-                    Account acc = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                    Account acc = this.CurrentAccount();
                     this.OrganizationRepository().Save(new Organization(acc.OwnerId, acc.OwnerId, name, curr, starts));
                 }
                 catch (Exception ex)
