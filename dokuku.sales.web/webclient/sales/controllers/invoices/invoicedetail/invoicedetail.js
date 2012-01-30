@@ -25,7 +25,7 @@ steal('jquery/controller', 'jquery/view/ejs',
     GetStatusInvoice: function (status) {
         var IsStatus = status;
         if (IsStatus != "Draft") {
-            $("#menuItemRightSetujui").remove();
+            $("#menuItemRightSetujui").remove();            
         }
     },
     GetDetailCustomer: function (invoice) {

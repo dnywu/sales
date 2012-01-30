@@ -559,11 +559,6 @@
     <Content Include="webclient\sales\controllers\currencyandtax\funcunit.html" />
     <Content Include="webclient\sales\controllers\currencyandtax\image\currency.gif" />
     <Content Include="webclient\sales\controllers\currencyandtax\image\taxes.gif" />
-    <Content Include="webclient\sales\controllers\currency\create\addcurrency.css" />
-    <Content Include="webclient\sales\controllers\currency\create\create.html" />
-    <Content Include="webclient\sales\controllers\currency\create\create.js" />
-    <Content Include="webclient\sales\controllers\currency\create\create_test.js" />
-    <Content Include="webclient\sales\controllers\currency\create\funcunit.html" />
     <None Include="webclient\funcunit\dependencies.json" />
     <None Include="webclient\funcunit\pages\actions.md" />
     <None Include="webclient\funcunit\pages\assertions.md" />
@@ -584,9 +579,6 @@
     <None Include="webclient\funcunit\syn\README" />
     <None Include="webclient\funcunit\update" />
     <None Include="webclient\sales\controllers\currencyandtax\views\listcurrencyandtax.ejs" />
-    <None Include="webclient\sales\controllers\currency\create\views\AddCurrency.ejs">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="webclient\sales\controllers\currency\currency.html" />
     <Content Include="webclient\sales\controllers\currency\currency.js" />
     <Content Include="webclient\sales\controllers\currency\currency_test.js" />
@@ -682,6 +674,11 @@
     <Content Include="webclient\sales\controllers\nav\nav.js" />
     <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
     <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\paymentreceived\funcunit.html" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.css" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.html" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.js" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived_test.js" />
     <Content Include="webclient\sales\controllers\payment\payment.css" />
     <Content Include="webclient\sales\controllers\payment\funcunit.html" />
     <Content Include="webclient\sales\controllers\payment\payment.html" />
@@ -1144,6 +1141,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\nav\views\nav.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentreceived\views\init.ejs" />
+    <None Include="webclient\sales\controllers\paymentreceived\views\paymentreceivedlist.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\payment\views\init.ejs" />

@@ -5,6 +5,7 @@ using System.Web;
 using dokuku.sales.paymentmode.model;
 using Nancy;
 using Nancy.Security;
+using dokuku.sales.invoices.model;
 
 namespace dokuku.sales.web.modules
 {
@@ -18,7 +19,8 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    PaymentModes paymentMode = this.PaymentModeService().Insert(this.Request.Form.paymentmode, this.CurrentAccount().OwnerId);
+                    var paymentmode = this.Request.Form.paymentmode;
+                    PaymentModes paymentMode = this.PaymentModeService().Insert(paymentmode, this.CurrentAccount().OwnerId);
                     return Response.AsJson(paymentMode);                    
                 }
                 catch (Exception e)
@@ -59,6 +61,22 @@ namespace dokuku.sales.web.modules
                 {
                     PaymentModes paymentMode = this.PaymentModeService().Update(this.Request.Form.paymentmode, this.CurrentAccount().OwnerId);
                     return Response.AsJson(paymentMode);
+                }
+                catch (Exception e)
+                {
+                    return Response.AsJson(new { error = true, message = e });
+                }
+            };
+            Post["/UpdateStatusInvoice/{id}"] = p =>
+            {
+                try
+                {
+                    Guid invoiceId = p.id;
+                    Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, this.CurrentAccount().OwnerId);
+                    invoice.InvoiceStatusSudahLunas();
+                   
+                    this.InvoiceService().Update(this.Request.Form.invoice, this.CurrentAccount().OwnerId);
+                    return Response.AsJson(new { error = false });                
                 }
                 catch (Exception e)
                 {
