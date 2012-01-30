@@ -119,7 +119,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    this.InvoiceService().Cancel(p.id, this.Request.Form.invoice.note, this.CurrentAccount().OwnerId);
+                    this.InvoiceService().Cancel(p.id, this.Request.Form.Note, this.CurrentAccount().OwnerId);
                     return Response.AsJson(new { error = false });
                 }
                 catch (Exception e)
@@ -132,7 +132,7 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    this.InvoiceService().ForceCancel(p.id, this.Request.Form.invoice.note, this.CurrentAccount().OwnerId);
+                    this.InvoiceService().ForceCancel(p.id, this.Request.Form.Note, this.CurrentAccount().OwnerId);
                     return Response.AsJson(new { error = false });
                 }
                 catch (Exception e)

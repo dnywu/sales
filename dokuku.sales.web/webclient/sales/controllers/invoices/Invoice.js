@@ -271,7 +271,7 @@
         });
         return result;
     },
-    ForceCancelInvoiceByID: function (invoiceID) {
+    ForceCancelInvoiceByID: function (invoiceID, Note) {
         var result;
         $.ajax({
             type: 'POST',
