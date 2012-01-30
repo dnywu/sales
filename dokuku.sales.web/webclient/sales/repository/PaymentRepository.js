@@ -39,13 +39,13 @@
         });
         return null;
     },
-    PaymentSave: function (payment) {
+    SendRecordPayment: function (payment) {
         _payment = new Array();
         $.ajax({
             type: 'POST',
-            url: '/Save/' + id,
+            url: '/sendRecorPayment',
             dataType: 'json',
-            data: { 'data': JSON.stringify(payment) },
+            data: { 'payment': JSON.stringify(payment) },
             async: false,
             success: function (data) {
                 _payment = data;
@@ -67,7 +67,22 @@
             }
         });
         return _payment;
+    }, 
+    GetAllPaymentMode: function () {
 
-    }
+        _paymentMode = new Array();
+        $.ajax({
+            type: 'GET',
+            url: '/findallpaymentmode',
+            dataType: 'json',           
+            async: false,
+            success: function (data) {
+                _paymentMode = data;
+            }
+        });
+        return _paymentMode;
+    },
+
+   
 })
 });

@@ -533,7 +533,7 @@ div.itemContextMenuCustomer span:hover{
 }
 .RecordPaymentImagContextMenu{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
-	background-position: -372px -125px;
+	background-position: -300px -32px;
 	height: 21px;
 	width: 19px;
 	float:left;
