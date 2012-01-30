@@ -190,7 +190,7 @@ steal('jquery/controller',
                 '#deleteinvoice click': function () {
                     var checkList = $this.IsCheckListNull();
                     if (checkList != 0) {
-                        var message = $("<div>Apakah anda yakin akan menghapus pelanggan ini</div>" +
+                        var message = $("<div>Apakah anda yakin akan menghapus faktur ini</div>" +
                                     "<div class='ButtonConfirmYes'>Ya</div>" +
                                     "<div class='ButtonConfirmClose'>Tidak</div>");
                         $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
@@ -234,7 +234,7 @@ steal('jquery/controller',
                 '#approveinvoice click': function () {
                     var checkList = $this.IsCheckListNull();
                     if (checkList != 0) {
-                        var message = $("<div>Apakah anda yakin akan menerbitkan faktur ini</div>" +
+                        var message = $("<div>Apakah anda yakin akan menyetujui faktur ini</div>" +
                                     "<div class='ButtonApproveYes'>Ya</div>" +
                                     "<div class='ButtonConfirmClose'>Tidak</div>");
                         $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));

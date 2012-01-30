@@ -239,11 +239,6 @@
             async: false,
             success: function (data) {
                 result = data;
-                //if (data.error == true) {
-                //    $("#errorListInv").text(data.message).show("slow");
-                //    return;
-                //}
-
             }
         });
         return result;
