@@ -111,10 +111,11 @@ div.textDeleteConfirmHeader
     width:55px;
 }
 
-.forceCancelYes, .forceCancelNo
+.forceCancelYes, .forceCancelNo, .CancelOneYes
 {
     width:55px;
 }
+
 .Close
 {
 	width:100px;
