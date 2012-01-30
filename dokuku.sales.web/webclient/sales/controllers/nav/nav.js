@@ -9,7 +9,8 @@ steal('jquery/controller', 'jquery/view/ejs',
         'sales/controllers/invoices/list',
         'sales/controllers/setupautonumbering',
         'sales/controllers/currencyandtax',
-        'sales/controllers/payment'
+        'sales/controllers/payment',
+        'sales/controllers/paymentreceived'
      )
 	.then('./views/nav.ejs', function ($) {
 	    $.Controller('sales.controllers.nav',
@@ -77,7 +78,7 @@ steal('jquery/controller', 'jquery/view/ejs',
             '#paymentreceived click': function (el) {
                 this.ClearContain();
                 this.SetBoldActivePage(el);
-                $("#body").sales_payment('load');
+                $("#body").sales_paymentreceived('load');
             },
             CustomerSubMenu: function () {
                 var submenu = $('#subtabs');

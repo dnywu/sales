@@ -678,6 +678,11 @@
     <Content Include="webclient\sales\controllers\nav\nav.js" />
     <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
     <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\paymentreceived\funcunit.html" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.css" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.html" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.js" />
+    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived_test.js" />
     <Content Include="webclient\sales\controllers\payment\payment.css" />
     <Content Include="webclient\sales\controllers\payment\funcunit.html" />
     <Content Include="webclient\sales\controllers\payment\payment.html" />
@@ -1136,6 +1141,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\nav\views\nav.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentreceived\views\init.ejs" />
+    <None Include="webclient\sales\controllers\paymentreceived\views\paymentreceivedlist.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\payment\views\init.ejs" />
