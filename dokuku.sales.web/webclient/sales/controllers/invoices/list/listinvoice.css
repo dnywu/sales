@@ -151,6 +151,17 @@ margin-bottom: 0px;
 }
 .menuApproveInvoice
 {
+    width:70px;
+	float:left;
+}
+.menuCancelInvoice
+{
+    width:70px;
+	float:left;
+}
+.menuForceCancelInvoice
+{
+    width:90px;
 	float:left;
 }
 .PaggingInvoice 
