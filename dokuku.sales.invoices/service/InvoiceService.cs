@@ -39,7 +39,8 @@ namespace dokuku.sales.invoices.service
             invoice._id = Guid.NewGuid();
             invoice.OwnerId = ownerId;
             invoice.InvoiceNo = invoiceNumber;
-            invRepo.Save(invoice);
+            //invRepo.Save(invoice);
+            //var createInvoice = new CreateInvoice(invoice);
 
             if (bus != null)
                 bus.Publish<InvoiceCreated>(new InvoiceCreated { InvoiceJson = invoice.ToJson<Invoices>() });

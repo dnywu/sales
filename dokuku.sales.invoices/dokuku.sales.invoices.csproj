@@ -37,6 +37,9 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="Ncqrs">
+      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -54,7 +57,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="command\ApproveInvoice.cs" />
+    <Compile Include="command\ReviseInvoice.cs" />
+    <Compile Include="command\CreateInvoice.cs" />
     <Compile Include="command\IInvoicesRepository.cs" />
+    <Compile Include="domain\Invoices.cs" />
+    <Compile Include="events\InvoiceApproved.cs" />
+    <Compile Include="events\InvoiceRevised.cs" />
+    <Compile Include="events\InvoiceCreated.cs" />
+    <Compile Include="events\InvoiceItem.cs" />
+    <Compile Include="events\Tax.cs" />
+    <Compile Include="events\Term.cs" />
     <Compile Include="model\DateFormatter.cs" />
     <Compile Include="model\InvoiceAutoNumberDraft.cs" />
     <Compile Include="model\InvoiceAutoNumberMonthly.cs" />
