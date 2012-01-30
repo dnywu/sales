@@ -158,9 +158,50 @@ steal('jquery/controller',
                 LoadActionList: function (id, index) {
                     var invoiceId = id;
                     var invoice = invRepo.GetInvoiceById(invoiceId);
-                    if (invoice.Status != "Draft") {
-                        $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice div#actionApprove").remove()
+
+                    this.HideList(invoice.Status, index);
+                },
+                HideList: function (Status, index) {
+                    if (Status == "Draft") {
+                        this.HideActionList("fffttt", index);
+                    } else if (Status == "Belum Bayar") {
+                        this.HideActionList("ftfttt", index);
+                    } else if (Status == "Belum Lunas") {
+                        this.HideActionList("ttfttt", index);
+                    } else if (Status == "Sudah Lunas") {
+                        this.HideActionList("tttftt", index);
+                    } else if (Status == "Batal") {
+                        this.HideActionList("tttttf", index);
                     }
+                },
+                HideActionList: function (srcPattern, index) {
+                    var str = srcPattern;
+
+                    if (str.substring(0, 1) == "t") {
+                        this.Menu("div#actionEdit", index);
+                    }
+
+                    if (str.substring(1, 2) == "t") {
+                        this.Menu("div#actionApprove", index);
+                    }
+
+                    if (str.substring(3, 4) == "t") {
+                        this.Menu("div#actionCancel", index);
+                    }
+
+                    if (str.substring(4, 5) == "t") {
+                        this.Menu("div#actionForceCancel", index);
+                    }
+
+                    if (str.substring(5, 6) == "t") {
+                        this.Menu("div#actionUndo", index);
+                    }
+                },
+                Menu: function (Name, index) {
+                    var result;
+                    var Menu = "tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice";
+
+                    result = $(Menu + " " + Name).remove();
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
@@ -173,12 +214,12 @@ steal('jquery/controller',
                     var id = el.attr('id');
                     result = inv.ApproveInvoiceByID(id);
                     if (result.error == false) {
-                        sales_payment('load');
+                        //sales_payment('load');
+                        this.load();
                     } else {
                         $("#errorListInv").text(result.message).show("slow");
                     }
                 },
-
                 '.RecordPaymentContextMenuInvoive click': function (el) {
                     var Pay = new PaymentRepository();
                     var id = el.attr('id');
