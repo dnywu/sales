@@ -251,30 +251,14 @@ steal('jquery/controller',
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
-                    //this.LoadTax(tabIndexTr);
-                    this.loadDataTax(tabIndexTr);
+                    this.LoadTax(tabIndexTr);
+                    //this.loadDataTax(tabIndexTr);
                     count--;
                     tabIndexTr++;
                 }
-                this.CreateRowTax();
+                //this.CreateRowTax();
             },
             CreateRowTax: function () {
-                //var trID = $("#itemInvoice tfoot tr");
-                //var position = trID.length - 1;
-
-                /*
-                $("#itemInvoice tfoot tr:nth-child(1)").append("<tr><td colspan='4'></td>" +
-                "<td colspan='2' class='right borderbottom'>PPN</td>" +
-                "<td class='right borderbottom'>" +
-                "<span id='subtotaltext'></span>" +
-                "<input type='hidden' id='subtotal'/></td>" +
-                "</tr>");
-
-                $("ul li:nth-child(4n)").add('ul li:first').add('ul li:first').after("<div style='color:black'>test ul</div>");
-
-                .add("#itemInvoice tfoot tr:nth-child(1n)")
-                */
-
                 var desc = new Array("PPN", "PPH");
                 var length = 2;
                 var position = 1;
@@ -289,16 +273,6 @@ steal('jquery/controller',
                     "<td>&nbsp;</td>" +
                 "</tr>");
                 }
-
-                /*
-                $("#itemInvoice tfoot tr:nth-child(1)").after("<tr><td colspan='4'></td>" +
-                "<td colspan='2' class='right borderbottom'>PPN</td>" +
-                "<td class='right borderbottom'>" +
-                "<span id='subtotaltext'></span>" +
-                "<input type='hidden' id='subtotal'/></td>" +
-                "<td>&nbsp;</td>" +
-                "</tr>");
-                */
             },
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();
