@@ -1203,10 +1203,6 @@
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.domainevents\dokuku.sales.domainevents.csproj">
-      <Project>{E50EEC36-7450-4C21-9DA4-DBC56BEABDD4}</Project>
-      <Name>dokuku.sales.domainevents</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
@@ -1227,17 +1223,9 @@
       <Project>{2C0F3BC7-ED13-400D-8D03-61E053748F7F}</Project>
       <Name>dokuku.sales.organization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.messages\dokuku.sales.payment.messages.csproj">
-      <Project>{13FDB4DB-B1B3-415B-A89C-1F126A238718}</Project>
-      <Name>dokuku.sales.payment.messages</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.paymentmode\dokuku.sales.paymentmode.csproj">
       <Project>{596F49BE-C0F4-437F-B927-94E946EC0C38}</Project>
       <Name>dokuku.sales.paymentmode</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
-      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
-      <Name>dokuku.sales.payment</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.taxes\dokuku.sales.taxes.csproj">
       <Project>{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}</Project>

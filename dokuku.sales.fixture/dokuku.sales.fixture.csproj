@@ -150,10 +150,6 @@
       <Project>{596F49BE-C0F4-437F-B927-94E946EC0C38}</Project>
       <Name>dokuku.sales.paymentmode</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
-      <Project>{6E5D0D64-62F2-4420-9DF0-F83D57678293}</Project>
-      <Name>dokuku.sales.payment</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.taxes.messages\dokuku.sales.taxes.messages.csproj">
       <Project>{F00FF317-256F-4BAA-BB72-939B2C9E3AAF}</Project>
       <Name>dokuku.sales.taxes.messages</Name>
