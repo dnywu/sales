@@ -644,6 +644,7 @@
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.html" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.js" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\list\ApproveConfirmBox.css" />
     <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
@@ -682,6 +683,15 @@
     <Content Include="webclient\sales\controllers\nav\nav.js" />
     <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
     <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\find.png" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\setting.png" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode.css" />
+    <Content Include="webclient\sales\controllers\paymentmode\funcunit.html" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode.html" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode.js" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode_test.js" />
     <Content Include="webclient\sales\controllers\paymentreceived\funcunit.html" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.css" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.html" />
@@ -717,6 +727,21 @@
     <Content Include="webclient\sales\controllers\tax\tax.html" />
     <Content Include="webclient\sales\controllers\tax\tax.js" />
     <Content Include="webclient\sales\controllers\tax\tax_test.js" />
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmRecordPaymentBox.ejs" />
+    <None Include="webclient\sales\controllers\paymentmode\views\init.ejs" />
+    <None Include="webclient\sales\controllers\paymentmode\views\addpaymentmode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentmode\views\contextMenuPaymentMode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentmode\views\editpaymentmode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentmode\views\listpaymentmode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\payment\views\confirmPaymentBox.ejs" />
     <None Include="webclient\sales\controllers\tax\views\contextMenuTax.ejs">
       <SubType>Designer</SubType>
     </None>
@@ -729,7 +754,8 @@
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
-    <Content Include="webclient\sales\repository\PaymentRepository.js" />
+    <Content Include="webclient\sales\repository\PaymentModeRepository.js" />
+    <Content Include="webclient\sales\repository\InvoicePaymentRepository.js" />
     <Content Include="webclient\sales\repository\CurrencyandTaxRepository.js" />
     <Content Include="webclient\sales\repository\CustomerRepository.js" />
     <Content Include="webclient\sales\repository\InvoiceRepository.js" />
@@ -968,6 +994,7 @@
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\InvoicePaymentModule.cs" />
     <Compile Include="modules\CurrencyModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
     <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />

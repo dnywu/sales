@@ -5,14 +5,14 @@ steal('jquery/controller',
        'sales/scripts/stringformat.js',
        'sales/controllers/invoices/create',
        'sales/controllers/invoices/edit',
-       'sales/controllers/invoices/invoicedetail',
+       'sales/controllers/invoices/invoicedetail',       
        'sales/repository/InvoiceRepository.js',
-       'sales/repository/PaymentRepository.js',
+       'sales/repository/InvoicePaymentRepository.js',
        './listinvoice.css',
        './DeleteConfirmBox.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
-       './views/confirmDeleteInvoice.ejs', 'sales/controllers/payment/views/recordpayment.ejs',
+       './views/confirmDeleteInvoice.ejs',
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
@@ -24,7 +24,7 @@ steal('jquery/controller',
                 start = 1,
                 page = 1,
                 totalPage = 1) */
-                defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null, inv = null, invRepo = null)
+                defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null, inv = null, invRepo = null, invId = 0, Pay = null)
             },
             {
                 init: function () {
@@ -176,21 +176,29 @@ steal('jquery/controller',
                     var id = el.attr('id');
                     result = inv.ApproveInvoiceByID(id);
                     if (result.error == false) {
-                        sales_payment('load');
+                        $this.load();
                     } else {
                         $("#errorListInv").text(result.message).show("slow");
                     }
                 },
                 '.RecordPaymentContextMenuInvoive click': function (el) {
-                    var Pay = new PaymentRepository();
-                    var id = el.attr('id');
-                    var invoice = invRepo.GetInvoiceById(id);                 
-                    result = Pay.PaymentByIdInvoice(id);
-                    //                    if (result.error == false) {
-                    $('#body').sales_payment('load',invoice);
-                    //                    } else {
-                    //                        $("#errorListInv").text(result.message).show("slow");
-                    //                    }
+                    invId = el.attr('id');
+                    if (invId != 0) {
+
+                        this.setInvoiceId(invId)
+                    }
+                    var message = $("<div class='deleteConfirmMessage'>Pada rekap pembayaran, status pembayaran berubah dari draft ke open  ?</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm YesPayment'>Ya</div>" +
+                                    "<div class='ButtonConfirm No' id='Close'>Tidak</div><input type='hidden' value=" + invId + " id='inv-id'/></div>");
+                    $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                    $(".BodyConfirmMassage").append(message);
+
+                },
+                setInvoiceId: function (id) {
+                    this.invId = id;
+                },
+                getInvoiceId: function () {
+                    return this.invId;
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
@@ -207,6 +215,14 @@ steal('jquery/controller',
                                     "<div class='ButtonConfirm No' id='Close'>Tidak</div></div>");
                         $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
                         $(".BodyConfirmMassage").append(message);
+                    }
+                },
+
+                ".YesPayment click": function () {
+                    var id = $('#inv-id').val();
+                    if (id != " ") {
+                        $('#body').sales_payment('init', id);
+                        $('#vAmountReceived').focus();
                     }
                 },
                 '.Yes click': function () {

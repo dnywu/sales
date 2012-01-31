@@ -94,11 +94,10 @@ div.textDeleteConfirmHeader
 	padding-left:5px;
 	padding-right:5px;
 }
-.Yes, .No, .YesPayment
+.Yes, .No
 {
 	width:55px;
 }
-
 .Close
 {
 	width:100px;
