@@ -104,6 +104,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_revise_payment.cs" />
     <Compile Include="When_pay_invoice_full.cs" />
     <Compile Include="When_pay_invoice.cs" />
     <Compile Include="SetUp.cs" />

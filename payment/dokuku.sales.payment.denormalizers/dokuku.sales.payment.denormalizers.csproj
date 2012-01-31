@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PaymentRevisedEventHandler.cs" />
     <Compile Include="InvoicePaidEventHandler.cs" />
     <Compile Include="paymentresource.Designer.cs">
       <AutoGen>True</AutoGen>
