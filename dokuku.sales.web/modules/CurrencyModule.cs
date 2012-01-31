@@ -52,7 +52,7 @@ namespace dokuku.sales.web.modules
                 string Data = this.Request.Form.data;
                 try
                 {
-                    this.CurrencyService().UpdateCurrency(Data,this.CurrentAccount()._id);
+                    this.CurrencyService().UpdateCurrency(Data,this.CurrentAccount().OwnerId);
                 }
                 catch (Exception ex)
                 {

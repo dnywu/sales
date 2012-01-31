@@ -131,9 +131,9 @@ namespace dokuku.sales.invoices.service
         {
             Invoices invoice = invRepo.Get(id, ownerId);
             if (invoice == null)
-                throw new Exception("Invoice tidak ditemukan dalam database");
-            if (forceCancel && invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
-                throw new Exception(String.Format("Status invoice {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
+                throw new Exception("Faktur tidak ditemukan dalam database");
+            if (forceCancel && invoice.Status != InvoiceStatus.BELUM_LUNAS && invoice.Status != InvoiceStatus.BELUM_BAYAR && invoice.Status != InvoiceStatus.BATAL && invoice.Status != InvoiceStatus.DRAFT)
+                throw new Exception(String.Format("Status faktur {0} ({1}) tidak dapat di batalkan", invoice.InvoiceNo, invoice.Status));
             if (String.IsNullOrWhiteSpace(cancelNote))
                 throw new Exception("Mohon catatan untuk membatalkan invoice ini diisi terlebih dahulu.");
             invoice.InvoiceStatusBatal(cancelNote);

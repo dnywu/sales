@@ -9,45 +9,56 @@
         <div id="details">        
             <header class="paddingleft height">Detail Pelanggan</header>
             <customer class="paddingleft ">Pelanggan</customer>           
-            <vCustomer class="paddingleft height" >Doni</vCustomer>            
-            <creditAvailable class="paddingleft ">Credit Available</creditAvailable>            
+            <vCustomer class="paddingleft height" ><%=this.Customer%></vCustomer>            
+            <creditAvailable class="paddingleft ">Kredit tersedia</creditAvailable>            
             <vCreditAvailable class="paddingleft height">Rp. 0.00</vCreditAvailable>
           <hr class="paddingleft right"></hr>
             <header class="paddingleft height">Invoice Details</header>
             <invoice class="paddingleft ">Faktur#</invoice>
-            <vInvoice class="paddingleft height" >INV-1</vInvoice>
-            <balanceDue class="paddingleft ">Balance Due</balanceDue>
-            <vBalancedue class="paddingleft height">Rp.9900</vBalancedue>        
+            <vInvoice class="paddingleft height" >
+              <%=this.InvoiceNo%>
+            </vInvoice>
+            <balanceDue class="paddingleft ">Saldo</balanceDue>
+            <vBalancedue class="paddingleft height">Rp<%=this.Total%></vBalancedue>        
         </div>
       </td>
       <td>
         <div id="formNewIvoice">
-          <div class='newInvoiceContain' id='paymentForm'>
-            <table>
+          <form class='newInvoiceContain' id='paymentForm'>
+            <input type='hidden' InvoiceId='Id' value="<%=this._id%>" />
+            <input type='hidden' id='Status' value="<%=this.Status%>" />
+              <input type='hidden' id='CustomerId' value="<%=this.CustomerId%>" />
+              <table>
               <tr>
                 <td>
-                  <AmountReceived>Jumlah yang diterima (<required>IDR</required>)</AmountReceived>
+                  <AmountReceived>
+                    Jumlah yang diterima (<required>
+                      <Currency> <%=this.Currency%></Currency>
+                    </required>)
+                  </AmountReceived>
                 </td>
                 <td>
-                  <BankCharges>Biaya Bank(<required>if any</required>)</BankCharges>
+                  <BankCharges>
+                    Biaya Bank(<required>if any</required>)
+                  </BankCharges>
                 </td>
               </tr>
               <tr>
                 <td>
                   <vAmountReceived class='height'>
-                    <input type='text' id='vAmountReceived'></input>
+                    <input type='text' id='vAmountReceived' value="<%=this.Total%>">
                   </vAmountReceived>
                 </td>
                 <td>
                   <vBankCharges class='height'>
-                    <input type='text' id='vBankCharges'></input>
+                    <input type='text' id='valueBankCharges'></input>
                   </vBankCharges>
                 </td>
               </tr>
             </table>
-            <p>
+            <!--<p>
               <input type='checkbox'> 
-            </p>
+            </p>-->
             <table>
               <tr>
                 <td>
@@ -66,10 +77,10 @@
                 <td>
                   <vPaymentMethod class='height'>
                     <select id='vPaymentMethod'>
-                      <option value=''>Cash</option>
-                      <option>Kredit</option>
-                      <option></option>
-                      <option></option>
+                      <%for(var i=0; i<5; i++){%>                 
+                       <option value=''><%=i%></option>
+                     
+                        <%}%>
                     </select>
                   </vPaymentMethod>
                 </td>
@@ -86,10 +97,10 @@
                 </td>
               </tr>
               <tr>
-                <td>                  
+                <td>
                   <notes>Catatan</notes>
                   <vnotes class='height'>
-                    <input type='text'>
+                    <input type='text' id='valueNotes'>
                 </vnotes>
                   <email class='height'> </email>
                 </td>
@@ -105,25 +116,27 @@
               </tr>
               <tr>
                 <td>
-                  <vreference class='height'> </vreference>                 
+                  <vreference class='height'> </vreference>
                   <email class='height'>
-                    <input type='checkbox' id='vEmail'> 
-                  putra - <vEmail>doni@inforsys.co.id</vEmail>
-                </email>
+                    <input type='checkbox' id='vEmail'>
+                      <vEmail>
+                        <%=this.OwnerId%>
+                      </vEmail>
+                    </email>
                 </td>
               </tr>
             </table>
             <p>&nbsp;</p>
-            <p>&nbsp;</p>                 
+            <p>&nbsp;</p>
 
             <div style="margin-top:30px">
               <p align="center" style="font-size:11px">
-                <input id="PayButton" type="button" name="save" value="Simpan"/>
+                <input id="PayButton" type="button" name="save" value="Bayar"/>
                 atau
                 <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Batal</span>
               </p>
             </div>
-          </div>
+          </form>
         </div>
       </td>
     </tr>
