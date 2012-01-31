@@ -6,10 +6,9 @@ using Ncqrs.Eventing.Sourcing;
 namespace dokuku.sales.invoices.events
 {
     [Serializable]
-    public class InvoiceRevised
+    public class InvoiceCreated
     {
-        public string Customer { get; set; }
-        public string CustomerId { get; set; }
+        public Customer Customer { get; set; }
         public string InvoiceNo { get; set; }
         public string PONo { get; set; }
         public DateTime InvoiceDate { get; set; }
@@ -20,13 +19,14 @@ namespace dokuku.sales.invoices.events
         public string TermCondition { get; set; }
         public decimal ExchangeRate { get; set; }
         public string BaseCcy { get; set; }
-        public string Currency { get; set; }
+        public string TransCcyCode { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Total { get; set; }
-        public InvoiceItem[] Items { get; set; }
-        public Guid _id { get; set; }
+        public InvoiceItem Item { get; set; }       //use this for reports: public InvoiceItem[] Items { get; set; }
+        public Guid InvoiceId { get; set; }
         public string OwnerId { get; set; }
         public string Status { get; set; }
         public string CancelNote { get; set; }
+        public string UserName { get; set; }
     }
 }

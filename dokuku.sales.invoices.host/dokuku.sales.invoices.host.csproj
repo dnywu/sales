@@ -90,6 +90,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.currency.messages\dokuku.sales.currency.messages.csproj">
+      <Project>{8B2DDB22-5A9B-44B5-8BF3-E97787507886}</Project>
+      <Name>dokuku.sales.currency.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.command.csproj">
+      <Project>{90BD0A87-C459-44E9-8E22-07712962C2EB}</Project>
+      <Name>dokuku.sales.invoices.command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.domain\dokuku.sales.invoices.domain.csproj">
+      <Project>{14617206-BC85-4AD3-A798-F5CD40A53369}</Project>
+      <Name>dokuku.sales.invoices.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.events\dokuku.sales.invoices.events.csproj">
+      <Project>{1BD6AA4F-B5C8-4183-AC7A-16C15016C9AF}</Project>
+      <Name>dokuku.sales.invoices.events</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
       <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
       <Name>dokuku.sales.invoices</Name>

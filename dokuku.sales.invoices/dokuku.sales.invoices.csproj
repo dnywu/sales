@@ -57,17 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="command\ApproveInvoice.cs" />
-    <Compile Include="command\ReviseInvoice.cs" />
-    <Compile Include="command\CreateInvoice.cs" />
     <Compile Include="command\IInvoicesRepository.cs" />
-    <Compile Include="domain\Invoices.cs" />
-    <Compile Include="events\InvoiceApproved.cs" />
-    <Compile Include="events\InvoiceRevised.cs" />
-    <Compile Include="events\InvoiceCreated.cs" />
-    <Compile Include="events\InvoiceItem.cs" />
-    <Compile Include="events\Tax.cs" />
-    <Compile Include="events\Term.cs" />
     <Compile Include="model\DateFormatter.cs" />
     <Compile Include="model\InvoiceAutoNumberDraft.cs" />
     <Compile Include="model\InvoiceAutoNumberMonthly.cs" />
@@ -98,6 +88,14 @@
     <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.command.csproj">
+      <Project>{90BD0A87-C459-44E9-8E22-07712962C2EB}</Project>
+      <Name>dokuku.sales.invoices.command</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.domain\dokuku.sales.invoices.domain.csproj">
+      <Project>{14617206-BC85-4AD3-A798-F5CD40A53369}</Project>
+      <Name>dokuku.sales.invoices.domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
       <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>

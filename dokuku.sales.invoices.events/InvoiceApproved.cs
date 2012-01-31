@@ -12,5 +12,6 @@ namespace dokuku.sales.invoices.events
         public string InvoiceNo { get; set; }
         public string OwnerId { get; set; }
         public string Status { get; set; }
+        public string UserName { get; set; }
     }
 }
