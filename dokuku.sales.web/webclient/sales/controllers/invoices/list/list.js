@@ -163,9 +163,9 @@ steal('jquery/controller',
                 },
                 HideList: function (Status, index) {
                     if (Status == "Draft") {
-                        this.HideActionList("fffttt", index);
+                        this.HideActionList("fffftt", index);
                     } else if (Status == "Belum Bayar") {
-                        this.HideActionList("ftfttt", index);
+                        this.HideActionList("ftfftt", index);
                     } else if (Status == "Belum Lunas") {
                         this.HideActionList("ttfttt", index);
                     } else if (Status == "Sudah Lunas") {
@@ -395,14 +395,22 @@ steal('jquery/controller',
                     $(".BodyConfirmMassage").remove();
                     if (checkList != 0) {
                         var message = $("<div>Apakah anda yakin akan membatalkan paksa faktur ini</div>" +
+                                    "<div><br><br>Catatan: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm forceCancelYes'>Ya</div>" +
                                     "<div class='ButtonConfirm forceCancelNo' id='Close'>Tidak</div></div>");
-                        $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                        $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
                         $(".BodyConfirmMassage").append(message);
                     }
                 },
                 '.forceCancelYes click': function () {
                     var result;
+                    var Note = $("#NoteCancel").val().trim();
+
+                    if (Note.length < 1) {
+                        $("#errorCancelInv").text("Catatan Batal harus diisi").show();
+                        return false;
+                    }
+
                     $(".selectInvoice:checked").each(function (index) {
                         var index = $(this).attr("id");
                         var no = $("#invoiceId_" + index).val();
