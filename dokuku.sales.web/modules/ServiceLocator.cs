@@ -22,6 +22,8 @@ using dokuku.sales.currency.service;
 using dokuku.sales.currency.report;
 using dokuku.sales.paymentmode.query;
 using dokuku.sales.paymentmode.service;
+using NServiceBus;
+using dokuku.sales.payment.readmodel;
 
 namespace dokuku.sales.web.modules
 {
@@ -103,6 +105,14 @@ namespace dokuku.sales.web.modules
         public static IPaymentModeService PaymentModeService(this NancyModule module)
         {
             return ObjectFactory.GetInstance<IPaymentModeService>();
+        }
+        public static IBus Bus(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IBus>();
+        }
+        public static IPaymentRepository PaymentRepository(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IPaymentRepository>();
         }
     }
 }

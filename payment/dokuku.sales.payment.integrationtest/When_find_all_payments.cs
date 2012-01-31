@@ -14,7 +14,7 @@ namespace dokuku.sales.payment.integrationtest
         static IPaymentRepository paymentRepository;
         
         Establish context = () => {
-            paymentRepository = new PaymentRepository() { Mongo = new MongoConfig() };
+            paymentRepository = new PaymentRepository(new MongoConfig());
         };
 
         Because of = () => {

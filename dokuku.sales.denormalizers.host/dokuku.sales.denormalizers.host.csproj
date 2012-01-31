@@ -68,6 +68,9 @@
     <Reference Include="Ncqrs.NServiceBus">
       <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\Ncqrs.NServiceBus.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu">
+      <HintPath>..\packages\NServiceBus\depedencies\NHibernate.ByteCode.LinFu.dll</HintPath>
+    </Reference>
     <Reference Include="NServiceBus">
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>

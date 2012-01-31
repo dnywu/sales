@@ -75,6 +75,13 @@
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.9.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Ncqrs, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.NServiceBus">
+      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\Ncqrs.NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Dokuku\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -636,12 +643,13 @@
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.html" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.js" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail_test.js" />
+    <Content Include="webclient\sales\controllers\invoices\list\ApproveConfirmBox.css" />
+    <Content Include="webclient\sales\controllers\invoices\list\DeleteConfirmBox.css" />
     <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
     <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
-    <Content Include="webclient\sales\controllers\invoices\list\DeleteConfirmBox.css" />
     <Content Include="webclient\sales\controllers\items\edit\edit.js" />
     <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
@@ -674,6 +682,15 @@
     <Content Include="webclient\sales\controllers\nav\nav.js" />
     <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
     <Content Include="webclient\sales\controllers\nav\nav_test.js" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\find.png" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\paymentmode\images\setting.png" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode.css" />
+    <Content Include="webclient\sales\controllers\paymentmode\funcunit.html" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode.html" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode.js" />
+    <Content Include="webclient\sales\controllers\paymentmode\paymentmode_test.js" />
     <Content Include="webclient\sales\controllers\paymentreceived\funcunit.html" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.css" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.html" />
@@ -709,6 +726,21 @@
     <Content Include="webclient\sales\controllers\tax\tax.html" />
     <Content Include="webclient\sales\controllers\tax\tax.js" />
     <Content Include="webclient\sales\controllers\tax\tax_test.js" />
+    <None Include="webclient\sales\controllers\invoices\list\views\confirmRecordPaymentBox.ejs" />
+    <None Include="webclient\sales\controllers\paymentmode\views\init.ejs" />
+    <None Include="webclient\sales\controllers\paymentmode\views\addpaymentmode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentmode\views\contextMenuPaymentMode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentmode\views\editpaymentmode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentmode\views\listpaymentmode.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\payment\views\confirmPaymentBox.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\ConfirmWithNote.ejs" />
     <None Include="webclient\sales\controllers\tax\views\contextMenuTax.ejs">
       <SubType>Designer</SubType>
@@ -722,7 +754,8 @@
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
-    <Content Include="webclient\sales\repository\PaymentRepository.js" />
+    <Content Include="webclient\sales\repository\PaymentModeRepository.js" />
+    <Content Include="webclient\sales\repository\InvoicePaymentRepository.js" />
     <Content Include="webclient\sales\repository\CurrencyandTaxRepository.js" />
     <Content Include="webclient\sales\repository\CustomerRepository.js" />
     <Content Include="webclient\sales\repository\InvoiceRepository.js" />
@@ -958,9 +991,11 @@
     <Content Include="webclient\steal\test\two.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="models\InvoicePayment.cs" />
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\InvoicePaymentModule.cs" />
     <Compile Include="modules\CurrencyModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
     <Compile Include="modules\DokukuSalesAppBootstrapper.cs" />
@@ -1253,6 +1288,18 @@
     <ProjectReference Include="..\dokuku.security\dokuku.security.csproj">
       <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>
       <Name>dokuku.security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.commands\dokuku.sales.payment.commands.csproj">
+      <Project>{A6BCEA92-7141-4D33-92C0-BE5A778CE8FD}</Project>
+      <Name>dokuku.sales.payment.commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
+      <Project>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</Project>
+      <Name>dokuku.sales.payment.events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.readmodel\dokuku.sales.payment.readmodel.csproj">
+      <Project>{185B8C2C-5DE3-42CC-B484-BA008EA911DF}</Project>
+      <Name>dokuku.sales.payment.readmodel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

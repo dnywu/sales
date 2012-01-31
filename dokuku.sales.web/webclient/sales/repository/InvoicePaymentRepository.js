@@ -1,5 +1,5 @@
 ﻿steal('jquery/class', function () {
-    $.Class('PaymentRepository',
+    $.Class('InvoicePaymentRepository',
 {
 },
 {
@@ -39,36 +39,22 @@
         });
         return null;
     },
-    SendRecordPayment: function (payment) {
-        _payment = new Array();
-        $.ajax({
-            type: 'POST',
-            url: '/sendRecorPayment',
-            dataType: 'json',
-            data: { 'payment': JSON.stringify(payment) },
-            async: false,
-            success: function (data) {
-                _payment = data;
-            }
-        });
-        return _payment;
-    },
-    PaymentByIdInvoice: function (id) {
+//    PaymentByIdInvoice: function (id) {
 
-        _payment = new Array();
-        $.ajax({
-            type: 'POST',
-            url: '/Save/' + id,
-            dataType: 'json',
-            data: { 'data': JSON.stringify(_payment) },
-            async: false,
-            success: function (data) {
-                _payment = data;
-            }
-        });
-        return _payment;
-    }, 
-    GetAllPaymentMode: function () {
+//        _payment = new Array();
+//        $.ajax({
+//            type: 'POST',
+//            url: '/Save/' + id,
+//            dataType: 'json',
+//            data: { 'data': JSON.stringify(_payment) },
+//            async: false,
+//            success: function (data) {
+//                _payment = data;
+//            }
+//        });
+//        return _payment;
+//    }, 
+    getAllPaymentMode: function () {
 
         _paymentMode = new Array();
         $.ajax({
@@ -82,6 +68,30 @@
         });
         return _paymentMode;
     },
+    pay: function (invoicepayment) {
+        _paymentMode = new Array();
+        $.ajax({
+            type: 'POST',
+            url: '/pay',
+            dataType: 'json',
+            data:{'invoicepayment':JSON.stringify(invoicepayment)},           
+            async: false,
+            success: function (data) {
+                _paymentMode = data;
+            }
+        });
+        return _paymentMode;
+    },
+     sendToEmail: function (emailTo) {
+        $.ajax({
+            type: 'POST',
+            url: '/SendToEmail/'+emailTo,
+            dataType: 'json',          
+            async: false,
+            success: function (data) {              
+            }
+        });
+    }
 
    
 })
