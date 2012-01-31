@@ -14,7 +14,7 @@ using dokuku.sales.invoices.query;
 using dokuku.sales.item.service;
 using dokuku.sales.invoices.service;
 using dokuku.sales.customer.Service;
-using dokuku.sales.payment.service;
+//using dokuku.sales.payment.service;
 using Nancy;
 using dokuku.sales.taxes.service;
 using dokuku.sales.taxes.query;

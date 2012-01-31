@@ -102,7 +102,7 @@ SetDefaultDate: function () {
     $("AmountWithheld").empty();
     var checked = $('#tax').is(':checked');
     if (checked) {
-        $("AmountWithheld").append("<label id='lbl-withheld' class='cls-withheld' >Jumlah yang dirahasiakan</label><br><input type='text' name='AmountWittheld' id='vAmountWittheld' class='cls-withheld'/>");
+        $("AmountWithheld").append("<label id='lbl-withheld' class='cls-withheld' >Jumlah yang ditanggung</label><br><input type='text' name='AmountWittheld' id='vAmountWittheld' class='cls-withheld'/>");
 
     };
 },
