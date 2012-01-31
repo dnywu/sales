@@ -27,7 +27,7 @@ namespace dokuku.sales.payment.host
             };
             MongoServer mongo = MongoServer.Create(settings);
 
-            NcqrsEnvironment.SetDefault<IEventStore>(new MongoDBEventStore(mongo, SafeMode.True, "test"));
+            NcqrsEnvironment.SetDefault<IEventStore>(new MongoDBEventStore(mongo, SafeMode.True, "Payment"));
             return cfg;
         }
     }

@@ -8,6 +8,7 @@ namespace dokuku.sales.payment.events
     public class InvoicePaid
     {
         public Guid InvoiceId { get; set; }
+        public Guid PaymentId { get; set; }
         public string OwnerId { get; set; }
         public decimal AmountPaid { get; set; }
         public decimal BankCharge { get; set; }
@@ -17,6 +18,5 @@ namespace dokuku.sales.payment.events
         public string Notes { get; set; }
         public decimal BalanceDue { get; set; }
         public bool PaidOff { get; set; }
-        public Guid Id { get; set; }
     }
 }

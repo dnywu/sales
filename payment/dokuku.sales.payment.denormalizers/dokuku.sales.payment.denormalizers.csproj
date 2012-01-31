@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{185B8C2C-5DE3-42CC-B484-BA008EA911DF}</ProjectGuid>
+    <ProjectGuid>{B96606C4-22D7-47CA-899D-BCBFEB36C1D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.payment.readmodel</RootNamespace>
-    <AssemblyName>dokuku.sales.payment.readmodel</AssemblyName>
+    <RootNamespace>dokuku.sales.payment.denormalizers</RootNamespace>
+    <AssemblyName>dokuku.sales.payment.denormalizers</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -37,6 +37,15 @@
     <Reference Include="MongoDB.Driver">
       <HintPath>..\..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="Ncqrs">
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.NServiceBus">
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\Ncqrs.NServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\..\packages\NServiceBus\NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,9 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPaymentRepository.cs" />
-    <Compile Include="Payment.cs" />
-    <Compile Include="PaymentRepository.cs" />
+    <Compile Include="InvoicePaidEventHandler.cs" />
     <Compile Include="paymentresource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -61,15 +68,19 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
+      <Project>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</Project>
+      <Name>dokuku.sales.payment.events</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="paymentresource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>paymentresource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

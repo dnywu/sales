@@ -10,8 +10,8 @@ namespace dokuku.sales.payment.commands
     public class PayInvoice : Ncqrs.Commanding.CommandBase 
     {
         [AggregateRootId]
-        public Guid Id { get; set; }
         public Guid InvoiceId { get; set; }
+        public Guid PaymentId { get; set; }
         public decimal AmountPaid { get; set; }
         public decimal BankCharge { get; set; }
         public DateTime PaymentDate { get; set; }

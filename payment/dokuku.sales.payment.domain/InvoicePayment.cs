@@ -15,7 +15,7 @@ namespace dokuku.sales.payment.domain
         private DateTime _invoiceDate;
         private string _ownerId;
 
-        public InvoicePayment(string ownerId, Guid invoiceId, string invoiceNumber, DateTime invoiceDate, decimal amount)
+        public InvoicePayment(string ownerId, Guid invoiceId, string invoiceNumber, DateTime invoiceDate, decimal amount) : base(invoiceId)
         {
             ApplyEvent(new InvoicePaymentCreated() {
                  InvoiceId = invoiceId,
@@ -24,11 +24,10 @@ namespace dokuku.sales.payment.domain
                  Amount = amount,
                  BalanceDue = amount,
                  PaidOff = false,
-                 OwnerId = ownerId,
-                 Id = this.EventSourceId
+                 OwnerId = ownerId
             });
         }
-        public void PayInvoice(Guid invoiceId, decimal amountPaid, decimal bankCharge, DateTime paymentDate, Guid paymentMode, string reference, string notes)
+        public void PayInvoice(Guid paymentId, decimal amountPaid, decimal bankCharge, DateTime paymentDate, Guid paymentMode, string reference, string notes)
         {
             Contract.Requires(paymentDate.Date >= InvoiceDate, "Pembayaran hanya bisa dilakukan setelah atau pada hari yang bersamaan dengan tanggal invoice");
             Contract.Requires(amountPaid <= BalanceDue, "Jumlah yang dibayarkan melebihi sisa hutang yang harus dibayarkan");
@@ -38,7 +37,8 @@ namespace dokuku.sales.payment.domain
 
             ApplyEvent(new InvoicePaid
             {
-                InvoiceId = invoiceId,
+                InvoiceId = this.EventSourceId,
+                PaymentId = paymentId,
                 PaymentDate = paymentDate,
                 AmountPaid = amountPaid,
                 BankCharge = bankCharge,
@@ -47,8 +47,7 @@ namespace dokuku.sales.payment.domain
                 Notes = notes,
                 BalanceDue = balDue,
                 PaidOff = paidOff,
-                OwnerId = _ownerId,
-                Id= this.EventSourceId
+                OwnerId = _ownerId
             });
         }
 

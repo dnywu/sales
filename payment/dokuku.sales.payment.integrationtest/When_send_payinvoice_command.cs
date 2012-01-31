@@ -8,8 +8,8 @@ using dokuku.sales.payment.commands;
 using Ncqrs.NServiceBus;
 namespace dokuku.sales.payment.integrationtest
 {
-    [Subject("Send create invoice payment command")]
-    public class When_send_create_invoice_payment_command
+    [Subject("Send pay invoice command")]
+    public class When_send_pay_invoice_command
     {
         static IBus bus;
         static Guid invoiceId;
@@ -36,18 +36,21 @@ namespace dokuku.sales.payment.integrationtest
         {
             bus.Send("dokukuPaymentDistributorDataBus", new CommandMessage
             {
-                Payload = new CreateInvoicePayment
+                Payload = new PayInvoice
                 {
                     InvoiceId = invoiceId,
-                    InvoiceNumber = "INV-1",
-                    InvoiceDate = new DateTime(2012, 1, 30),
-                    OwnerId = "oetawan@inforsys.co.id",
-                    Amount = 10000000
+                    PaymentId = Guid.NewGuid(),
+                    AmountPaid = 5000000,
+                    BankCharge = 0,
+                    PaymentDate = DateTime.Now.Date,
+                    PaymentMode = Guid.NewGuid(),
+                    Reference = "123",
+                    Notes = "First payment"
                 }
             });
         };
 
-        It should_publish_invoicepayment_created_event = () =>
+        It should_publish_invoicepaid_event = () =>
         {
         };
     }

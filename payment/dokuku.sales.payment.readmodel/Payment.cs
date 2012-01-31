@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 namespace dokuku.sales.payment.readmodel
 {
+    [Serializable]
     public class Payment
     {
         public Guid InvoiceId { get; set; }
+        public Guid PaymentId { get; set; }
         public string OwnerId { get; set; }
         public decimal AmountPaid { get; set; }
         public decimal BankCharge { get; set; }
@@ -16,6 +18,6 @@ namespace dokuku.sales.payment.readmodel
         public string Notes { get; set; }
         public decimal BalanceDue { get; set; }
         public bool PaidOff { get; set; }
-        public Guid Id { get; set; }
+        public Guid _id { get; set; }
     }
 }
