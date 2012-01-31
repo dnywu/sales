@@ -6,6 +6,6 @@ namespace dokuku.sales.payment.readmodel
 {
     public interface IPaymentRepository
     {
-        IEnumerable<Payment> FindAll();
+        IEnumerable<Payment> FindAll(string ownerId);
     }
 }
