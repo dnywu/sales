@@ -86,10 +86,6 @@
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
-      <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
-      <Name>dokuku.sales.payment.events</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

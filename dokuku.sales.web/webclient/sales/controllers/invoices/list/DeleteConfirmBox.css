@@ -1,4 +1,6 @@
 ﻿div.DeleteConfirmation{
+	/*width : 30%;*/
+	/*width:385px;*/
 	border : 1px solid #ECECEC;
 	border-radius: 6px;
 	-moz-box-shadow: 0 0 4px 0 #999;
@@ -99,7 +101,48 @@ div.textDeleteConfirmHeader
 	width:55px;
 }
 
+<<<<<<< HEAD
+=======
+.ApproveYes, .ApproveNo
+{
+    width:55px;
+}
+
+.CancelYes, .CancelNo
+{
+    width:55px;
+}
+
+.forceCancelYes, .forceCancelNo, .CancelOneYes
+{
+    width:55px;
+}
+ 
+.CancelYesDetail, .CancelNoDetail
+{
+    width:55px;
+}
+
+.ForceCancelYesDetail, .ForceCancelNoDetail
+{
+    width:55px;
+}
+
+.DeleteYesDetail, .DeleteNoDetail
+{
+    width:55px;
+}
+ 
+>>>>>>> 4a22afdc1af31312000fb82259a1b1709a27ed19
 .Close
 {
 	width:100px;
+}
+
+.NoteCancelTxtArea {
+    width: 96%;
+    height: 86px;
+    padding: 5px;
+    border: 1px solid #ACD2E7;
+    border-image: initial;
 }
