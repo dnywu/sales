@@ -14,6 +14,5 @@ namespace dokuku.sales.payment.events
         public decimal Amount { get; set; }
         public decimal BalanceDue { get; set; }
         public bool PaidOff { get; set; }
-        public Guid Id { get; set; }
     }
 }
