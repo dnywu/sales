@@ -49,8 +49,12 @@
     <Content Include="Antlr3.Runtime.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Common.Logging.dll" />
-    <Content Include="Common.Logging.Log4Net.dll" />
+    <Content Include="Common.Logging.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common.Logging.Log4Net.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Interop.MSMQ.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
