@@ -29,6 +29,7 @@
     using NServiceBus;
     using StructureMap;
     using TinyIoC;
+    using dokuku.sales.payment.readmodel;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -118,6 +119,7 @@
                     x.For<ICurrencyQueryRepository>().Use<CurrencyQueryRepository>();
                     x.For<IPaymentModeQuery>().Use<PaymentModeQuery>();
                     x.For<IPaymentModeService>().Use<PaymentModeService>();
+                    x.For<IPaymentRepository>().Use<PaymentRepository>();
                 });
 
                 structureMapBootstrapped = true;

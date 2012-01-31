@@ -187,7 +187,7 @@ steal('jquery/controller',
 
                         this.setInvoiceId(invId)
                     }
-                    var message = $("<div class='deleteConfirmMessage'>Apakah anda yakin akan menghapus pelanggan ini</div>" +
+                    var message = $("<div class='deleteConfirmMessage'>Faktur ini akan dirubah dari draft ke open...?</div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm YesPayment'>Ya</div>" +
                                     "<div class='ButtonConfirm No' id='Close'>Tidak</div><input type='hidden' value=" + invId + " id='inv-id'/></div>");
                     $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));

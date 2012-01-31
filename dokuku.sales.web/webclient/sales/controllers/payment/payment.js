@@ -40,7 +40,7 @@ load: function (id) {
 },
 SetPaymentMode: function (PaymentModeData) {
     $.each(PaymentModeData, function (item) {
-        $("#vPaymentMethod").append("<option value=" + PaymentModeData[item].Code + ">" +
+        $("#vPaymentMethod").append("<option value=" + PaymentModeData[item]._id + ">" +
         " " + PaymentModeData[item].Name + "</option>");
     });
 },

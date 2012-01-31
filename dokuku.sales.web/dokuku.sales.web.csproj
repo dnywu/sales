@@ -75,6 +75,13 @@
     <Reference Include="Nancy.ViewEngines.Razor">
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.9.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Ncqrs, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.NServiceBus">
+      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\Ncqrs.NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\Dokuku\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -984,6 +991,7 @@
     <Content Include="webclient\steal\test\two.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="models\InvoicePayment.cs" />
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
@@ -1281,9 +1289,17 @@
       <Project>{AB8DD020-FA42-4D68-A4C4-66DDD1A3B9B7}</Project>
       <Name>dokuku.security</Name>
     </ProjectReference>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.commands\dokuku.sales.payment.commands.csproj">
+      <Project>{A6BCEA92-7141-4D33-92C0-BE5A778CE8FD}</Project>
+      <Name>dokuku.sales.payment.commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\payment\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
       <Project>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</Project>
       <Name>dokuku.sales.payment.events</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.readmodel\dokuku.sales.payment.readmodel.csproj">
+      <Project>{185B8C2C-5DE3-42CC-B484-BA008EA911DF}</Project>
+      <Name>dokuku.sales.payment.readmodel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

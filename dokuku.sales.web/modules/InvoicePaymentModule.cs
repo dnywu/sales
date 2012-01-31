@@ -7,7 +7,12 @@ using dokuku.sales.invoices.model;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
-
+using dokuku.sales.payment.commands;
+using dokuku.sales.payment.readmodel;
+using StructureMap;
+using NServiceBus;
+using Ncqrs.NServiceBus;
+using dokuku.sales.web.models;
 namespace dokuku.sales.web.modules
 {
     public class InvoicePaymentModule : Nancy.NancyModule
@@ -19,9 +24,22 @@ namespace dokuku.sales.web.modules
             {
                 try
                 {
-                    var invoicePayment = this.Request.Form.invoicepayment;
-                    object result = null;
-                    return Response.AsJson(result);
+                    var invoicepayment = this.Request.Form.invoicepayment;
+                    InvoicePayment dataPayment = JsonConvert.DeserializeObject<InvoicePayment>(invoicepayment);
+                    PayInvoice cmd = new PayInvoice
+                    {
+                        InvoiceId = dataPayment.InvoiceId,
+                         PaymentId= Guid.NewGuid(),
+                        AmountPaid = dataPayment.AmountReceived,
+                        BankCharge = dataPayment.BankChanges,
+                        Notes = dataPayment.Notes,
+                        PaymentDate = dataPayment.Date,
+                        PaymentMode = dataPayment.PaymentMethod,
+                        Reference = dataPayment.Reference   
+                    };
+
+                    this.Bus().Send("dokukuPaymentDistributorDataBus", new CommandMessage{Payload = cmd});
+                    return Response.AsJson(new { error = false, message = "OK" });
                 }
                 catch (Exception ex)
                 {
