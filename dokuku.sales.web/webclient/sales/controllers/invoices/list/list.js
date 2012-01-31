@@ -159,49 +159,7 @@ steal('jquery/controller',
                     var invoiceId = id;
                     var invoice = invRepo.GetInvoiceById(invoiceId);
 
-                    this.HideList(invoice.Status, index);
-                },
-                HideList: function (Status, index) {
-                    if (Status == "Draft") {
-                        this.HideActionList("fffftt", index);
-                    } else if (Status == "Belum Bayar") {
-                        this.HideActionList("ftfftt", index);
-                    } else if (Status == "Belum Lunas") {
-                        this.HideActionList("ttfttt", index);
-                    } else if (Status == "Sudah Lunas") {
-                        this.HideActionList("tttftt", index);
-                    } else if (Status == "Batal") {
-                        this.HideActionList("tttttf", index);
-                    }
-                },
-                HideActionList: function (srcPattern, index) {
-                    var str = srcPattern;
-
-                    if (str.substring(0, 1) == "t") {
-                        this.Menu("div#actionEdit", index);
-                    }
-
-                    if (str.substring(1, 2) == "t") {
-                        this.Menu("div#actionApprove", index);
-                    }
-
-                    if (str.substring(3, 4) == "t") {
-                        this.Menu("div#actionCancel", index);
-                    }
-
-                    if (str.substring(4, 5) == "t") {
-                        this.Menu("div#actionForceCancel", index);
-                    }
-
-                    if (str.substring(5, 6) == "t") {
-                        this.Menu("div#actionUndo", index);
-                    }
-                },
-                Menu: function (Name, index) {
-                    var result;
-                    var Menu = "tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice";
-
-                    result = $(Menu + " " + Name).remove();
+                    inv.HideList(invoice.Status, index);
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
@@ -426,6 +384,41 @@ steal('jquery/controller',
                     });
 
                     if (result.error == false) {
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
+                    }
+                },
+                '.ForceCancelContextMenuInvoive click': function (el) {
+                    var id = el.attr('id');
+                    $(".BodyConfirmMassage").remove();
+
+                    var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
+                                    "<div><input type='hidden' id='invoID' value='" + id + "'></div>" +
+                                    "<div>Note: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm ForceCancelOneYes'>Ya</div>" +
+                                    "<div class='ButtonConfirm CancelNo' id='Close'>Tidak</div></div>");
+                    $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
+                    $(".BodyConfirmMassage").append(message);
+                },
+                '.ForceCancelOneYes click': function () {
+                    var result;
+                    var Note = $("#NoteCancel").val().trim();
+                    var no = $("#invoID").val();
+
+                    if (Note.length < 1) {
+                        $("#errorCancelInv").text("Catatan Batal harus diisi").show();
+                        return false;
+                    }
+
+                    result = inv.ForceCancelInvoiceByID(no, Note);
+
+                    if (result.error == true) {
+                        $(".BodyConfirmMassage").empty();
+                        var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
+                        $(".BodyConfirmMassage").append(message);
+                        return false;
+                    } else {
                         $(".DeleteConfirmation").remove();
                         $this.load();
                     }
