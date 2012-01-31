@@ -18,7 +18,7 @@ namespace dokuku.sales.payment.integrationtest
         };
 
         Because of = () => {
-            result = paymentRepository.FindAll();
+            result = paymentRepository.FindAll("oetawan@inforsys.co.id");
         };
 
         It should_return_all_payments = () => {

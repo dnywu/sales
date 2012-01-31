@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using dokuku.sales.config;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
 namespace dokuku.sales.payment.readmodel
 {
     public class PaymentRepository : IPaymentRepository
     {
         public MongoConfig Mongo { get; set; }
         
-        public IEnumerable<Payment> FindAll()
+        public IEnumerable<Payment> FindAll(string ownerId)
         {
-            return Collection.FindAllAs<Payment>();
+            return Collection.FindAs<Payment>(Query.EQ("OwnerId", ownerId));
         }
 
         private MongoCollection Collection
