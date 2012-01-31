@@ -29,7 +29,7 @@ namespace dokuku.sales.payment.fixture
                 new CreateInvoicePayment
                 {
                     OwnerId = "oetawan@inforsys.co.id",
-                    InvoiceId = EventSourceId,
+                    InvoiceId = Guid.NewGuid(),
                     InvoiceDate = new DateTime(2012, 1, 28),
                     InvoiceNumber = "INV-1",
                     Amount = 10000000

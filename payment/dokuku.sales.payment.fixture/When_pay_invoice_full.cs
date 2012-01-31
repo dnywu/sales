@@ -34,7 +34,8 @@ namespace dokuku.sales.payment.fixture
                     InvoiceDate = new DateTime(2012,1,28),
                     Amount = 10000000,
                     BalanceDue = 10000000,
-                    PaidOff = false
+                    PaidOff = false,
+                    Id = EventSourceId
                 }
             };
         }
@@ -49,7 +50,8 @@ namespace dokuku.sales.payment.fixture
                 PaymentDate = new DateTime(2012, 1, 28),
                 PaymentMode = Guid.NewGuid(),
                 Reference = "",
-                Notes = ""
+                Notes = "",
+                Id = EventSourceId
             };
         }
 

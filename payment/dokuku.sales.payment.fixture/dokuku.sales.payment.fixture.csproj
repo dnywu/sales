@@ -65,25 +65,35 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ncqrs">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
+    <Reference Include="Ncqrs, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs.CommandService">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.CommandService\Ncqrs.CommandService.dll</HintPath>
+    <Reference Include="Ncqrs.CommandService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.CommandService\Ncqrs.CommandService.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs.Config.StructureMap">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.Config.StructureMap\Ncqrs.Config.StructureMap.dll</HintPath>
+    <Reference Include="Ncqrs.Config.StructureMap, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.Config.StructureMap\Ncqrs.Config.StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="Ncqrs.Spec, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ncqrs.0.8.0.0\Spec\Ncqrs.Spec.dll</HintPath>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Spec\Ncqrs.Spec.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.Spec\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=2.5.10.11092, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="pnunit.framework">
+      <HintPath>..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\StructureMap.2.6.10\StructureMap.dll</HintPath>
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -101,6 +111,9 @@
     <Compile Include="When_create_invoicepayment.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +127,7 @@
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
       <Project>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</Project>
-      <Name>dokuku.sales.payment.event</Name>
+      <Name>dokuku.sales.payment.events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
