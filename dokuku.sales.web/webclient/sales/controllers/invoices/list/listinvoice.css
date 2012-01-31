@@ -146,12 +146,22 @@ margin-bottom: 0px;
 }
 .menuDelete
 {
-	width:60px;
+	width:70px;
 	float:left;
 }
 .menuApproveInvoice
 {
-	width:95px;
+    width:70px;
+	float:left;
+}
+.menuCancelInvoice
+{
+    width:70px;
+	float:left;
+}
+.menuForceCancelInvoice
+{
+    width:90px;
 	float:left;
 }
 .PaggingInvoice 
@@ -224,4 +234,17 @@ margin-bottom: 0px;
 .lastDisableInvoice{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -383px -265px;
+}
+.iconHapusinvoice
+{
+	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background-position: -332px -29px;
+	height: 16px;
+	width: 17px;
+	float: left;
+}
+.hapusCaption
+{
+	float: right;
+	padding-right: 7px;
 }

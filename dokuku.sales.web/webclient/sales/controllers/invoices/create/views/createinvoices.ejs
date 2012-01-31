@@ -8,8 +8,8 @@
         <table width='100%'>
           <tbody>
             <tr>
-              <td class="labelLeft">
-                <div class="mandatoryTxt">Pilih Pelanggan</div>
+              <td class="labelLeftCreateInvoice">
+                <div class="mandatoryTxt" style="width:146px">Pilih Pelanggan</div>
               </td>
               <td class="td_field">
                 <input type="hidden" id="CustomerId" value="<%=this._id%>"/>
@@ -40,53 +40,54 @@
         <table width='100%'>
           <tbody>
             <tr>
-              <td class="labelLeft">
+              <td class="labelLeftCreateInvoice">
                 <div class="mandatoryTxt">Nomor Faktur</div>
               </td>
               <td class="td_field">
-                <input type='text' readonly='' value='Will be auto generated'/>
+                <input type='text' readonly='' value='Nomor akan diberi secara otomatis'/>
               </td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Nomor PO</td>
+              <td class="labelLeftCreateInvoice">Nomor PO</td>
               <td class="td_field">
                 <input type='text' name='po' id='po'/></td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Tanggal Pembuatan Faktur</td>
+              <td class="labelLeftCreateInvoice">Tanggal Pembuatan Faktur</td>
               <td class="td_field">
                 <input type="date" name='invoiceDate' class='datepicker' id='invDate' readonly/>
               </td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Termin</td>
+              <td class="labelLeftCreateInvoice">Termin</td>
               <td class="td_field">
                 <select name='terms' id='terms'>
-                  <option value="15">15</option>
-                  <option value="30">30</option>
-                  <option value="45">45</option>
-                  <option value="60">60</option>
-                  <option value="0" selected>Due On Receipt</option>
-                  <option value="-1">Due on the specified date</option>
+                  <option value="15">15 hari</option>
+                  <option value="30">30 hari</option>
+                  <option value="45">45 hari</option>
+                  <option value="60">60 hari</option>
+                  <option value="90">90 hari</option>
+                  <option value="0" selected>Saat barang diterima</option>
+                  <option value="-1">Pada tanggal tertentu</option>
                 </select>
               </td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Tanggal Jatuh Tempo</td>
+              <td class="labelLeftCreateInvoice">Tanggal Jatuh Tempo</td>
               <td class="td_field">
                 <input type='date' name='dueDate' class='datepicker' id='dueDate' readonly/>
               </td>
               <td class='error'></td>
             </tr>
             <tr>
-              <td class="labelLeft">Denda Keterlambatan</td>
+              <td class="labelLeftCreateInvoice">Denda Keterlambatan</td>
               <td class="td_field">
                 <select name='latefee' id='latefee'>
-                  <option value="15">No Late Fee</option>
+                  <option value="15">Tidak ada denda</option>
                 </select>
               </td>
               <td class='error'></td>
@@ -97,7 +98,7 @@
       <div class='divInvoiceGroup' id='divExchangeRate'>
         <table>
           <tr>
-            <td class="labelLeft">Nilai Tukar Mata Uang</td>
+            <td class="labelLeftCreateInvoice">Nilai Tukar Mata Uang</td>
             <td width='272px'>
               <div style="float: left; display: block; ">
                 <input type="hidden" id="custCcyCode"/>
@@ -136,17 +137,17 @@
               <span id='subtotaltext'></span>
               <input type='hidden' id='subtotal'/>
             </td>
-            <td></td>
+            <td>&nbsp;</td>
           </tr>
           <tr>
             <td colspan='4'></td>
-            <td colspan='2' class='right bold borderbottom graybgcolor'>Total (<span id='curr'></span>)</td>
+            <td colspan='2' class='right bold borderbottom graybgcolor'>Total  ( <span id='curr'></span> ) </td>
             <td class='right bold borderbottom graybgcolor'>
               <span id='totaltext'></span>
               <br/>
-              <input type='text' id='total'/>
+              <input type='hidden' id='total'/>
             </td>
-            <td></td>
+            <td>&nbsp;</td>
           </tr>
         </tfoot>
       </table>

@@ -10,6 +10,6 @@ namespace dokuku.sales.currency.service
     {
         Currencies Create(string data, string ownerId);
         void Delete(Guid id);
-        void UpdateCurrency(string currenciesJson);
+        void UpdateCurrency(string currenciesJson, string ownerId);
     }
 }

@@ -15,7 +15,7 @@ steal('jquery/controller',
                 else if (item.mode == "2") {
                     $('input:radio[class=monthly]').attr('checked', 'checked');
                 }
-                else if (item.mode == "0"){
+                else if (item.mode == "0") {
                     $('input:radio[class=default]').attr('checked', 'checked');
                 }
 
@@ -56,7 +56,6 @@ steal('jquery/controller',
                 var form = $('#autoNumberForm').formParams();
                 var prefix = $('#input-prefix').val();
                 var mode = $('input:radio[name=Mode]:checked').val();
-
                 var item = new Object;
                 item.prefix = prefix;
                 item.mode = mode;

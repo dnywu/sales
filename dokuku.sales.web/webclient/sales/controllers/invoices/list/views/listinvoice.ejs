@@ -13,11 +13,21 @@
                 <tr id ="trMenuInvoice">
                   <td id="tdMenuInvoiceLeft" width="700px">
                     <div class="leftMenu menuDelete" id="deleteinvoice">
-                      <div class="floatLeft">Hapus</div>
-                      <div class="iconHapus"></div>
+                      <div class="hapusCaption">Hapus</div>
+                      <div class="iconHapusinvoice"></div>
                     </div>
-                    <div class="leftMenu menuApproveInvoice" id="approveinvoice">Terbitkan Faktur</div>
-                    <!--<input type="button" id="approveinvoice" value="Terbitkan Faktur" style="height:20px;" />-->
+                    <div class="leftMenu menuApproveInvoice" id="approveinvoice">
+                      <div class="hapusCaption">Setujui</div>
+                      <div class="iconSetujuiinvoice"></div>
+                    </div>
+                    <div class="leftMenu menuCancelInvoice" id="cancelinvoice">
+                      <div class="hapusCaption">Batal</div>
+                      <div class="iconBatalinvoice"></div>
+                    </div>
+                    <div class="leftMenu menuForceCancelInvoice" id="forceCancelinvoice">
+                      <div class="hapusCaption">Batal Paksa</div>
+                      <div class="iconBatalPaksainvoice"></div>
+                    </div>
                   </td>
                   <td id="tdMenuInvoiceRight" width="300px">
                     <table id="subMenuInvoiceRight" width="100%">
@@ -76,9 +86,26 @@
                           <span class="ApproveContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Setujui</span>
                         </div>
 
-                        <div class="itemContextMenuInvoice" id="actionDelete">
-                          <div class="DeleteImagContextMenu invoiceImgContextMenu"></div>
-                          <span class="DeleteContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Hapus</span>
+                        <div class="itemContextMenuInvoice" id="actionCancel">
+                          <div class="CancelImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="CancelContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Cancel</span>
+                        </div>
+                        
+                        <div class="itemContextMenuInvoice" id="actionForceCancel">
+                          <div class="ForceCancelImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="ForceCancelContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Force Cancel
+                          </span>
+                        </div>
+
+                        <div class="itemContextMenuInvoice" id="actionUndo">
+                          <div class="UndoImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="UndoContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Undo
+                          </span>
+                        </div>
+                        <div class="itemContextMenuInvoice">
+                          <div class="RecordPaymentImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="RecordPaymentContextMenuInvoive spanContextMenuListInvoice" id="<%=this[i]._id%>">Catat Pembayaran
+                          </span>
                         </div>
                       </div>
                     </td>
@@ -107,7 +134,7 @@
               <img class ='prevDisableInvoice pagingSizeInvoice'></img>
             </div>
             <div class ='DivPageInvoice'>
-              Page <input type='text' id='idInputPageInvoice' style="width:20px; height:14px"/> of <span id="totalPageInvoice"></span>
+              Halaman <input type='text' id='idInputPageInvoice' style="width:20px; height:14px"/> dari <span id="totalPageInvoice"></span>
             </div>
             <div class='DivNextInvoice'>
               <img class ='nextInvoice pagingSizeInvoice'></img>

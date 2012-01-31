@@ -90,13 +90,12 @@ namespace dokuku.sales.web.modules
 
             Get["/getorganization"] = p =>
             {
-                Account acc = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
-                return Response.AsJson(this.OrganizationReportRepository().FindByOwnerId(acc.OwnerId));
+                return Response.AsJson(this.OrganizationReportRepository().FindByOwnerId(this.CurrentAccount().OwnerId));
             };
 
             Get["/validatesetuporganization"] = p =>
             {
-                Account acc = this.AccountRepository().FindAccountByName(this.Context.CurrentUser.UserName);
+                Account acc = this.CurrentAccount();
                 return Response.AsJson(new { IsValid = acc.IsOwner() });
             };
         }

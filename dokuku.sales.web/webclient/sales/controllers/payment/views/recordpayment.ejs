@@ -1,0 +1,145 @@
+<div class="divcontainerFormInvoice">
+  <div class="topBandHeaderDIV">
+    <div id="TitleSpan" class="HeaderDIVLeft">Pembayaran</div>
+  </div>
+  
+  <table>
+    <tr>
+      <td class="vertical-align">
+        <div id="details">        
+            <header class="paddingleft height">Detail Pelanggan</header>
+            <customer class="paddingleft ">Pelanggan</customer>           
+            <vCustomer class="paddingleft height" ><%=this.Customer%></vCustomer>            
+            <creditAvailable class="paddingleft ">Kredit tersedia</creditAvailable>            
+            <vCreditAvailable class="paddingleft height">Rp. 0.00</vCreditAvailable>
+          <hr class="paddingleft right"></hr>
+            <header class="paddingleft height">Invoice Details</header>
+            <invoice class="paddingleft ">Faktur#</invoice>
+            <vInvoice class="paddingleft height" >
+              <%=this.InvoiceNo%>
+            </vInvoice>
+            <balanceDue class="paddingleft ">Saldo</balanceDue>
+            <vBalancedue class="paddingleft height">Rp<%=this.Total%></vBalancedue>        
+        </div>
+      </td>
+      <td>
+        <div id="formNewIvoice">
+          <form class='newInvoiceContain' id='paymentForm'>
+            <input type='hidden' InvoiceId='Id' value="<%=this._id%>" />
+            <input type='hidden' id='Status' value="<%=this.Status%>" />
+              <input type='hidden' id='CustomerId' value="<%=this.CustomerId%>" />
+              <table>
+              <tr>
+                <td>
+                  <AmountReceived>
+                    Jumlah yang diterima (<required>
+                      <Currency> <%=this.Currency%></Currency>
+                    </required>)
+                  </AmountReceived>
+                </td>
+                <td>
+                  <BankCharges>
+                    Biaya Bank(<required>if any</required>)
+                  </BankCharges>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <vAmountReceived class='height'>
+                    <input type='text' id='vAmountReceived' value="<%=this.Total%>">
+                  </vAmountReceived>
+                </td>
+                <td>
+                  <vBankCharges class='height'>
+                    <input type='text' id='valueBankCharges'></input>
+                  </vBankCharges>
+                </td>
+              </tr>
+            </table>
+            <!--<p>
+              <input type='checkbox'> 
+            </p>-->
+            <table>
+              <tr>
+                <td>
+                  <PaymentDate>Tanggal Pembayaran</PaymentDate>
+                </td>
+                <td>
+                  <PaymentMethod>Jenis Pembayaran</PaymentMethod>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <vPaymentDate class='height'>
+                    <input type='date' name='invoiceDate' class='datepicker' id='PayDate'/>
+                  </vPaymentDate>
+                </td>
+                <td>
+                  <vPaymentMethod class='height'>
+                    <select id='vPaymentMethod'>
+                      <%for(var i=0; i<5; i++){%>                 
+                       <option value=''><%=i%></option>
+                     
+                        <%}%>
+                    </select>
+                  </vPaymentMethod>
+                </td>
+              </tr>
+            </table>
+
+            <table>
+              <tr>
+                <td>
+                  <reference>Referensi</reference>
+                  <vreference class='height'>
+                    <input type='text' id='vReference'>
+                </vreference>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <notes>Catatan</notes>
+                  <vnotes class='height'>
+                    <input type='text' id='valueNotes'>
+                </vnotes>
+                  <email class='height'> </email>
+                </td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+            <table id='tblemail'>
+              <tr>
+                <td>
+                  <reference>Terkirim &quot;Terima Kasih&quot; catatan untuk pembayaran ini </reference>
+                  <vreference class='height'>                </vreference>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <vreference class='height'> </vreference>
+                  <email class='height'>
+                    <input type='checkbox' id='vEmail'>
+                      <vEmail>
+                        <%=this.OwnerId%>
+                      </vEmail>
+                    </email>
+                </td>
+              </tr>
+            </table>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+
+            <div style="margin-top:30px">
+              <p align="center" style="font-size:11px">
+                <input id="PayButton" type="button" name="save" value="Bayar"/>
+                atau
+                <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Batal</span>
+              </p>
+            </div>
+          </form>
+        </div>
+      </td>
+    </tr>
+  </table>
+  <div class="error" id="errorCreateInv"></div>
+</div>
