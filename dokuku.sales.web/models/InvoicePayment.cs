@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using dokuku.sales.payment.commands;
 namespace dokuku.sales.web.models
 {
     public class InvoicePayment
@@ -12,7 +13,7 @@ namespace dokuku.sales.web.models
         public string Reference { get; set; }
         public string Notes { get; set; }
         public string OwnerId { get; set; }
-        public Guid PaymentMethod { get; set; }
+        public PaymentMode PaymentMethod { get; set; }
         public string Invoice { get; set; }
         public string Customer{ get; set; }
         public string CreditAvailable { get; set; }

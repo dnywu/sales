@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</ProjectGuid>
+    <ProjectGuid>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.payment.events</RootNamespace>
-    <AssemblyName>dokuku.sales.payment.events</AssemblyName>
+    <RootNamespace>dokuku.sales.payment.common</RootNamespace>
+    <AssemblyName>dokuku.sales.payment.common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ncqrs, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,16 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PaymentRevised.cs" />
-    <Compile Include="InvoicePaid.cs" />
-    <Compile Include="InvoicePaymentCreated.cs" />
+    <Compile Include="PaymentMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj">
-      <Project>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</Project>
-      <Name>dokuku.sales.payment.common</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

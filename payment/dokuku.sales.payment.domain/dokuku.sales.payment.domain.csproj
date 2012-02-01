@@ -82,6 +82,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj">
+      <Project>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</Project>
+      <Name>dokuku.sales.payment.common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
       <Project>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</Project>
       <Name>dokuku.sales.payment.events</Name>
