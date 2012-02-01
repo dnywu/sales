@@ -161,9 +161,7 @@ steal('jquery/controller',
                 LoadActionList: function (id, index) {
                     var invoiceId = id;
                     var invoice = invRepo.GetInvoiceById(invoiceId);
-                    if (invoice.Status != "Draft") {
-                        $("tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice div#actionApprove").remove()
-                    }
+                    inv.HideList(invoice.Status, index);
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
@@ -285,6 +283,41 @@ steal('jquery/controller',
                     });
 
                     if (result.error == false) {
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
+                    }
+                },
+                '.ForceCancelContextMenuInvoive click': function (el) {
+                    var id = el.attr('id');
+                    $(".BodyConfirmMassage").remove();
+
+                    var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
+                                    "<div><input type='hidden' id='invoID' value='" + id + "'></div>" +
+                                    "<div>Note: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm ForceCancelOneYes'>Ya</div>" +
+                                    "<div class='ButtonConfirm CancelNo' id='Close'>Tidak</div></div>");
+                    $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
+                    $(".BodyConfirmMassage").append(message);
+                },
+                '.ForceCancelOneYes click': function () {
+                    var result;
+                    var Note = $("#NoteCancel").val().trim();
+                    var no = $("#invoID").val();
+
+                    if (Note.length < 1) {
+                        $("#errorCancelInv").text("Catatan Batal harus diisi").show();
+                        return false;
+                    }
+
+                    result = inv.ForceCancelInvoiceByID(no, Note);
+
+                    if (result.error == true) {
+                        $(".BodyConfirmMassage").empty();
+                        var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
+                        $(".BodyConfirmMassage").append(message);
+                        return false;
+                    } else {
                         $(".DeleteConfirmation").remove();
                         $this.load();
                     }
