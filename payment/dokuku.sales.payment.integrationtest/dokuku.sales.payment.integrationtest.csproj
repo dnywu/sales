@@ -123,6 +123,10 @@
       <Project>{185B8C2C-5DE3-42CC-B484-BA008EA911DF}</Project>
       <Name>dokuku.sales.payment.readmodel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment\dokuku.sales.payment.csproj">
+      <Project>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</Project>
+      <Name>dokuku.sales.payment</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

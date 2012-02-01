@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ncqrs.Domain;
-using dokuku.sales.payment.events;
 using System.Diagnostics.Contracts;
 using Ncqrs;
+using dokuku.sales.payment.events;
 namespace dokuku.sales.payment.domain
 {
     public class InvoicePayment : AggregateRootMappedByConvention
@@ -31,7 +31,10 @@ namespace dokuku.sales.payment.domain
                  OwnerId = ownerId
             });
         }
-        public void PayInvoice(Guid paymentId, decimal amountPaid, decimal bankCharge, DateTime paymentDate, Guid paymentMode, string reference, string notes)
+        public void PayInvoice(Guid paymentId, 
+            decimal amountPaid, decimal bankCharge, 
+            DateTime paymentDate, PaymentMode paymentMode, 
+            string reference, string notes)
         {
             Contract.Requires(paymentDate.Date >= InvoiceDate, "Pembayaran hanya bisa dilakukan setelah atau pada hari yang bersamaan dengan tanggal invoice");
             Contract.Requires(amountPaid <= BalanceDue, "Jumlah yang dibayarkan melebihi sisa hutang yang harus dibayarkan");
@@ -56,7 +59,7 @@ namespace dokuku.sales.payment.domain
         }
         public void RevisePayment(Guid paymentId, 
             decimal amountPaid, decimal bankCharge, 
-            DateTime paymentDate, Guid paymentMode, 
+            DateTime paymentDate, PaymentMode paymentMode, 
             string reference, string notes)
         {
             Contract.Requires(RevisedPaymentExist(paymentId), "Pembayaran yang anda edit tidak ditemukan");

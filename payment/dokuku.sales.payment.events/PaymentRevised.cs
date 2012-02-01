@@ -13,7 +13,7 @@ namespace dokuku.sales.payment.events
         public decimal AmountPaid { get; set; }
         public decimal BankCharge { get; set; }
         public DateTime PaymentDate { get; set; }
-        public Guid PaymentMode { get; set; }
+        public PaymentMode PaymentMode { get; set; }
         public string Reference { get; set; }
         public string Notes { get; set; }
         public decimal BalanceDue { get; set; }
