@@ -5,7 +5,7 @@ steal('jquery/controller',
        'sales/scripts/stringformat.js',
        'sales/controllers/invoices/create',
        'sales/controllers/invoices/edit',
-       'sales/controllers/invoices/invoicedetail',       
+       'sales/controllers/invoices/invoicedetail',
        'sales/repository/InvoiceRepository.js',
        'sales/repository/InvoicePaymentRepository.js',
        './listinvoice.css',
@@ -186,6 +186,7 @@ steal('jquery/controller',
                     if (invId != 0) {
 
                         this.setInvoiceId(invId)
+                        $("#body").sales_payment();
                     }
                     var message = $("<div class='deleteConfirmMessage'>Faktur ini akan dirubah dari draft ke open...?</div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm YesPayment'>Ya</div>" +
@@ -221,6 +222,7 @@ steal('jquery/controller',
                 ".YesPayment click": function () {
                     var id = $('#inv-id').val();
                     if (id != " ") {
+
                         $('#body').sales_payment('init', id);
                         $('#vAmountReceived').focus();
                     }
