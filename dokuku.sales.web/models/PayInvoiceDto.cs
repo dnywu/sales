@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using dokuku.sales.payment;
+using dokuku.sales.payment.common;
 namespace dokuku.sales.web.models
 {
     [Serializable]

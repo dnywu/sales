@@ -991,9 +991,9 @@
     <Content Include="webclient\steal\test\two.css" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\InvoicePayment.cs" />
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
+    <Compile Include="models\PayInvoiceDto.cs" />
     <Compile Include="modules\AuthModule.cs" />
     <Compile Include="modules\InvoicePaymentModule.cs" />
     <Compile Include="modules\CurrencyModule.cs" />
@@ -1292,6 +1292,10 @@
     <ProjectReference Include="..\payment\dokuku.sales.payment.commands\dokuku.sales.payment.commands.csproj">
       <Project>{A6BCEA92-7141-4D33-92C0-BE5A778CE8FD}</Project>
       <Name>dokuku.sales.payment.commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj">
+      <Project>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</Project>
+      <Name>dokuku.sales.payment.common</Name>
     </ProjectReference>
     <ProjectReference Include="..\payment\dokuku.sales.payment.readmodel\dokuku.sales.payment.readmodel.csproj">
       <Project>{185B8C2C-5DE3-42CC-B484-BA008EA911DF}</Project>
