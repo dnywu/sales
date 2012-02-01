@@ -8,8 +8,8 @@
     <ProjectGuid>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.payment</RootNamespace>
-    <AssemblyName>dokuku.sales.payment</AssemblyName>
+    <RootNamespace>dokuku.sales.payment.common</RootNamespace>
+    <AssemblyName>dokuku.sales.payment.common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

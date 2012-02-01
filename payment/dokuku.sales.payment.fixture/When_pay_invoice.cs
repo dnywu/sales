@@ -13,6 +13,7 @@ using StructureMap;
 using Ncqrs.Commanding.ServiceModel;
 using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
 using Ncqrs.CommandService.Infrastructure;
+using dokuku.sales.payment.common;
 namespace dokuku.sales.payment.fixture
 {
     [Specification]
