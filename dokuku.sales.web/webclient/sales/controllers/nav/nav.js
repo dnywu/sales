@@ -10,7 +10,8 @@ steal('jquery/controller', 'jquery/view/ejs',
         'sales/controllers/setupautonumbering',
         'sales/controllers/currencyandtax',
         'sales/controllers/payment',
-        'sales/controllers/paymentreceived'
+        'sales/controllers/paymentreceived',
+        'sales/controllers/paymentmode'
      )
 	.then('./views/nav.ejs', function ($) {
 	    $.Controller('sales.controllers.nav',
@@ -75,6 +76,12 @@ steal('jquery/controller', 'jquery/view/ejs',
                 this.SetBoldActivePage(el);
                 $("#body").sales_currencyandtax('load');
             },
+            '#paymentmode click': function (el) {
+                this.ClearContain();
+                this.SetBoldActivePage(el);
+                $("#body").sales_paymentmode('load');
+                $("#kode").focus();
+            },
             '#paymentreceived click': function (el) {
                 this.ClearContain();
                 this.SetBoldActivePage(el);
@@ -119,11 +126,13 @@ steal('jquery/controller', 'jquery/view/ejs',
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
                     setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Penomoran Otomatis' });
                 currencyandtax = $('<li>', { 'class': 'lisubtabs', id: 'currencyandtax', text: 'Mata Uang & Pajak' });
+                paymentmode = $('<li>', { 'class': 'lisubtabs', id: 'paymentmode', text: 'Jenis Pembayaran' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);
                 ul.appendTo(container);
                 setupautonumbering.appendTo(ul);
                 currencyandtax.insertAfter(setupautonumbering);
+                paymentmode.insertAfter(currencyandtax);
             },
             ClearContain: function () {
                 $("#body").empty();

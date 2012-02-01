@@ -96,11 +96,13 @@ div.textDeleteConfirmHeader
 	padding-left:5px;
 	padding-right:5px;
 }
-.Yes, .No
+.Yes, .No, .YesPayment
 {
 	width:55px;
 }
 
+<<<<<<< HEAD
+=======
 .ApproveYes, .ApproveNo
 {
     width:55px;
@@ -131,6 +133,7 @@ div.textDeleteConfirmHeader
     width:55px;
 }
  
+>>>>>>> 4a22afdc1af31312000fb82259a1b1709a27ed19
 .Close
 {
 	width:100px;
