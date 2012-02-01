@@ -119,12 +119,9 @@
                     x.For<ICurrencyQueryRepository>().Use<CurrencyQueryRepository>();
                     x.For<IPaymentModeQuery>().Use<PaymentModeQuery>();
                     x.For<IPaymentModeService>().Use<PaymentModeService>();
-<<<<<<< HEAD
                     x.For<ILogoOrganizationQuery>().Use<LogoOrganizationQuery>();
                     x.For<ILogoOrganizationCommand>().Use<LogoOrganizationCommand>();
-=======
                     x.For<IPaymentRepository>().Use<PaymentRepository>();
->>>>>>> e4732616b087af63775180a24e53c01aee51d876
                 });
 
                 structureMapBootstrapped = true;

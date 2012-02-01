@@ -106,7 +106,6 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IPaymentModeService>();
         }
-<<<<<<< HEAD
         public static ILogoOrganizationCommand LogoOrganizationCommand(this NancyModule module)
         {
             return ObjectFactory.GetInstance<ILogoOrganizationCommand>();
@@ -114,7 +113,7 @@ namespace dokuku.sales.web.modules
         public static ILogoOrganizationQuery LogoOrganizationQuery(this NancyModule module)
         {
             return ObjectFactory.GetInstance<ILogoOrganizationQuery>();
-=======
+        }
         public static IBus Bus(this NancyModule mod)
         {
             return ObjectFactory.GetInstance<IBus>();
@@ -122,7 +121,6 @@ namespace dokuku.sales.web.modules
         public static IPaymentRepository PaymentRepository(this NancyModule mod)
         {
             return ObjectFactory.GetInstance<IPaymentRepository>();
->>>>>>> e4732616b087af63775180a24e53c01aee51d876
         }
     }
 }
