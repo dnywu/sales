@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices.comma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices.distributor", "dokuku.sales.invoices.distributor\dokuku.sales.invoices.distributor.csproj", "{8632E80B-BC9E-4644-8359-20A310CE9F40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment", "payment\dokuku.sales.payment\dokuku.sales.payment.csproj", "{1838F788-9F1F-4E44-91B2-A9F809B34F36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -215,6 +217,10 @@ Global
 		{8632E80B-BC9E-4644-8359-20A310CE9F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8632E80B-BC9E-4644-8359-20A310CE9F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8632E80B-BC9E-4644-8359-20A310CE9F40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -236,5 +242,6 @@ Global
 		{185B8C2C-5DE3-42CC-B484-BA008EA911DF} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
 		{2F70E826-B450-4F8A-800E-CB52E5FD45D5} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
 		{B96606C4-22D7-47CA-899D-BCBFEB36C1D4} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
 	EndGlobalSection
 EndGlobal

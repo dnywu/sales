@@ -25,18 +25,7 @@ namespace dokuku.sales.web.modules
                 try
                 {
                     var invoicepayment = this.Request.Form.invoicepayment;
-                    InvoicePayment dataPayment = JsonConvert.DeserializeObject<InvoicePayment>(invoicepayment);
-                    PayInvoice cmd = new PayInvoice
-                    {
-                        InvoiceId = dataPayment.InvoiceId,
-                         PaymentId= Guid.NewGuid(),
-                        AmountPaid = dataPayment.AmountReceived,
-                        BankCharge = dataPayment.BankChanges,
-                        Notes = dataPayment.Notes,
-                        PaymentDate = dataPayment.Date,
-                        PaymentMode = dataPayment.PaymentMethod,
-                        Reference = dataPayment.Reference   
-                    };
+                    PayInvoice cmd = JsonConvert.DeserializeObject<InvoicePayment>(invoicepayment);
 
                     this.Bus().Send("dokukuPaymentDistributorDataBus", new CommandMessage{Payload = cmd});
                     return Response.AsJson(new { error = false, message = "OK" });

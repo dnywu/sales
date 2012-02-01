@@ -43,7 +43,7 @@ namespace dokuku.sales.payment.integrationtest
                     AmountPaid = 5000000,
                     BankCharge = 0,
                     PaymentDate = DateTime.Now.Date,
-                    PaymentMode = Guid.NewGuid(),
+                    PaymentMode = new PaymentMode { Id = Guid.NewGuid() },
                     Reference = "123",
                     Notes = "First payment"
                 }

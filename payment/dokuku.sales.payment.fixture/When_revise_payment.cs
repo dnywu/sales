@@ -44,7 +44,7 @@ namespace dokuku.sales.payment.fixture
                     AmountPaid = 5000000,
                     BankCharge = 0,
                     PaymentDate = new DateTime(2012,1,31),
-                    PaymentMode = Guid.NewGuid(),
+                    PaymentMode = new PaymentMode{ Id = Guid.NewGuid() },
                     Reference = "123",
                     Notes = "Revise payment test",
                     BalanceDue = 5000000,
@@ -62,7 +62,7 @@ namespace dokuku.sales.payment.fixture
                 AmountPaid = 10000000,
                 BankCharge = 0,
                 PaymentDate = new DateTime(2012, 1, 28),
-                PaymentMode = Guid.NewGuid(),
+                PaymentMode = new PaymentMode() { Id = Guid.NewGuid() },
                 Reference = "",
                 Notes = ""
             };
