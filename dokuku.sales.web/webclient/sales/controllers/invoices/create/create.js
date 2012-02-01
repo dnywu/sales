@@ -35,19 +35,19 @@ steal('jquery/controller',
                 custRepo = new CustomerRepository();
                 curTaxRepo = new CurrencyandTaxRepository();
                 this.load(customer);
+<<<<<<< HEAD
+=======
                 this.SetCurrency();
                 this.load(customer);
                 //this.loadDataTax();
+>>>>>>> e4732616b087af63775180a24e53c01aee51d876
             },
             load: function (customer) {
                 tabIndexTr = 0;
-                inv = new Invoice();
-                itmRepo = new ItemRepository();
-                custRepo = new CustomerRepository();
-                curTaxRepo = new CurrencyandTaxRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
                 if (customer != null)
                     $("#currency").text(customer.Currency).show();
+                this.SetCurrency();
                 this.CreateListItem(3);
                 this.SetDatePicker();
                 this.SetDefaultDate();

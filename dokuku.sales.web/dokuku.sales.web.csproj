@@ -709,9 +709,11 @@
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.js" />
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering_test.js" />
     <Content Include="webclient\sales\controllers\setupautonumbering\autonumbering.css" />
+    <Content Include="webclient\sales\controllers\setuporganization\settingorganization.css" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
+    <Content Include="webclient\sales\controllers\setuporganization\settingorganization.js" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.css" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.html" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
@@ -742,10 +744,18 @@
     </None>
     <None Include="webclient\sales\controllers\payment\views\confirmPaymentBox.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\ConfirmWithNote.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\settingorganization.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\tax\views\contextMenuTax.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\edittax.ejs" />
+    <Content Include="webclient\sales\controllers\uploadlogo\funcunit.html" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.css" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.html" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.js" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
@@ -1199,6 +1209,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\uploadlogo\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\sales.md" />

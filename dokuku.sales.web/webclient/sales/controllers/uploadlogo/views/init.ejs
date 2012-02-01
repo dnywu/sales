@@ -1,0 +1,37 @@
+<div class='mainFrame'>
+  <div class="topBandHeaderDIV">
+    <div class="HeaderDIVLeft" id="TitleSpan">Upload Logo</div>
+  </div>
+  <div class="mainDivWidth">
+    <form id="uploadlogo" action="/uploadlogo" method="POST" enctype="multipart/form-data">
+      <div class="divInvoiceGroup">
+        <table width="75%">
+          <tbody>
+            <tr>
+              <td>
+                <div class="uploadlogoleft">
+                  <img class="logo" id="logoOrganization" src="../logoOrganization"></img>
+                </div>
+                <div class="uploadlogoright">
+                  <div class="labelLogoUpload">Logo perusahaan anda</div>
+                  <div class="divchooselogo">
+                    <input type="file" name="Filename" id="filelogo"/>
+                    <br/>
+                    <span class="typefile">JPG,GIF,PNG.</span>
+                  </div>
+                  <div>
+                    <span class="typefile">Diutamakan Ukuran Logo : 140px  x  60px.</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submitFormDiv">
+        <input type="submit" id="submituploadlogo" value="Simpan" />
+        <input type="button" value="Batal" id="canceluploadlogo" />
+      </div>
+    </form>
+  </div>
+</div>
