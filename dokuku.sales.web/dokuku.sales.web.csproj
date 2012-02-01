@@ -753,6 +753,7 @@
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
+    <Content Include="webclient\sales\repository\PaymentReceivedRepository.js" />
     <Content Include="webclient\sales\repository\PaymentModeRepository.js" />
     <Content Include="webclient\sales\repository\InvoicePaymentRepository.js" />
     <Content Include="webclient\sales\repository\CurrencyandTaxRepository.js" />
@@ -994,6 +995,7 @@
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\PaymentReceivedModule.cs" />
     <Compile Include="modules\InvoicePaymentModule.cs" />
     <Compile Include="modules\CurrencyModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
