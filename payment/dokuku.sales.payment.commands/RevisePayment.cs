@@ -19,5 +19,6 @@ namespace dokuku.sales.payment.commands
         public PaymentMode PaymentMode { get; set; }
         public string Reference { get; set; }
         public string Notes { get; set; }
+        public string Username { get; set; }
     }
 }

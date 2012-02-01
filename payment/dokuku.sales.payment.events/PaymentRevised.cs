@@ -19,5 +19,6 @@ namespace dokuku.sales.payment.events
         public string Notes { get; set; }
         public decimal BalanceDue { get; set; }
         public bool PaidOff { get; set; }
+        public string Username { get; set; }
     }
 }
