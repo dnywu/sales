@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ncqrs.Domain;
-using dokuku.sales.payment.events;
 using System.Diagnostics.Contracts;
 using Ncqrs;
+using dokuku.sales.payment.events;
+using dokuku.sales.payment.common;
 namespace dokuku.sales.payment.domain
 {
     public class InvoicePayment : AggregateRootMappedByConvention
@@ -19,7 +20,7 @@ namespace dokuku.sales.payment.domain
         // Temporary calculation
         private decimal _balanceDueCalculationResult;
 
-        public InvoicePayment(string ownerId, Guid invoiceId, string invoiceNumber, DateTime invoiceDate, decimal amount) : base(invoiceId)
+        public InvoicePayment(string ownerId, Guid invoiceId, string invoiceNumber, DateTime invoiceDate, decimal amount, string username) : base(invoiceId)
         {
             ApplyEvent(new InvoicePaymentCreated() {
                  InvoiceId = invoiceId,
@@ -28,10 +29,14 @@ namespace dokuku.sales.payment.domain
                  Amount = amount,
                  BalanceDue = amount,
                  PaidOff = false,
-                 OwnerId = ownerId
+                 OwnerId = ownerId,
+                 Username = username
             });
         }
-        public void PayInvoice(Guid paymentId, decimal amountPaid, decimal bankCharge, DateTime paymentDate, Guid paymentMode, string reference, string notes)
+        public void PayInvoice(Guid paymentId, 
+            decimal amountPaid, decimal bankCharge, 
+            DateTime paymentDate, PaymentMode paymentMode, 
+            string reference, string notes, string username)
         {
             Contract.Requires(paymentDate.Date >= InvoiceDate, "Pembayaran hanya bisa dilakukan setelah atau pada hari yang bersamaan dengan tanggal invoice");
             Contract.Requires(amountPaid <= BalanceDue, "Jumlah yang dibayarkan melebihi sisa hutang yang harus dibayarkan");
@@ -51,13 +56,14 @@ namespace dokuku.sales.payment.domain
                 Notes = notes,
                 BalanceDue = balDue,
                 PaidOff = paidOff,
-                OwnerId = _ownerId
+                OwnerId = _ownerId,
+                Username = username
             });
         }
         public void RevisePayment(Guid paymentId, 
             decimal amountPaid, decimal bankCharge, 
-            DateTime paymentDate, Guid paymentMode, 
-            string reference, string notes)
+            DateTime paymentDate, PaymentMode paymentMode, 
+            string reference, string notes, string username)
         {
             Contract.Requires(RevisedPaymentExist(paymentId), "Pembayaran yang anda edit tidak ditemukan");
             Contract.Ensures(_balanceDueCalculationResult >= 0, "Jumlah yang dibayarkan melebihi sisa hutang yang harus dibayarkan");
@@ -79,7 +85,8 @@ namespace dokuku.sales.payment.domain
                 Notes = notes,
                 BalanceDue = _balanceDueCalculationResult,
                 PaidOff = paidOff,
-                OwnerId = _ownerId
+                OwnerId = _ownerId,
+                Username = username
             });
         }
 

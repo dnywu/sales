@@ -566,6 +566,7 @@ div.DivSearch{
 
 div.mainFrame
 {
+    float:left;
 	width:75%;
 	border-color:#999;
 	-moz-border-radius: 6px;

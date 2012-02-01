@@ -61,6 +61,10 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj">
+      <Project>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</Project>
+      <Name>dokuku.sales.payment.common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="paymentresource.resx">

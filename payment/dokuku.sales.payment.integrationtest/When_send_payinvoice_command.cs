@@ -6,6 +6,7 @@ using Machine.Specifications;
 using NServiceBus;
 using dokuku.sales.payment.commands;
 using Ncqrs.NServiceBus;
+using dokuku.sales.payment.common;
 namespace dokuku.sales.payment.integrationtest
 {
     [Subject("Send pay invoice command")]
@@ -43,7 +44,7 @@ namespace dokuku.sales.payment.integrationtest
                     AmountPaid = 5000000,
                     BankCharge = 0,
                     PaymentDate = DateTime.Now.Date,
-                    PaymentMode = Guid.NewGuid(),
+                    PaymentMode = new PaymentMode { Id = Guid.NewGuid() },
                     Reference = "123",
                     Notes = "First payment"
                 }
