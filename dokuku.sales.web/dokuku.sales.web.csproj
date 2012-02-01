@@ -726,6 +726,7 @@
     <Content Include="webclient\sales\controllers\tax\tax.js" />
     <Content Include="webclient\sales\controllers\tax\tax_test.js" />
     <None Include="webclient\sales\controllers\invoices\list\views\confirmRecordPaymentBox.ejs" />
+    <None Include="webclient\sales\controllers\invoices\list\views\loading.ejs" />
     <None Include="webclient\sales\controllers\paymentmode\views\init.ejs" />
     <None Include="webclient\sales\controllers\paymentmode\views\addpaymentmode.ejs">
       <SubType>Designer</SubType>

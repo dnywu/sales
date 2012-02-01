@@ -71,26 +71,33 @@ SetDefaultDate: function () {
 },
 '#PayButton click': function () {
     Payment = new Object();
-    Payment.AmountReceived = $('#vAmountReceived').val();
+    Payment.AmountPaid = $('#vAmountReceived').val();
     if ($('#valueBankCharges').val() == "") {
-        Payment.BankChanges = 0;
+        Payment.BankCharge = 0;
     }
     else {
-        Payment.BankChanges = $('#valueBankCharges').val();
+        Payment.BankCharge = $('#valueBankCharges').val();
     }
-    Payment.Date = $('#PayDate').val();
-    Payment.Reference = $('#vReference').val();
-    Payment.Notes = $('#valueNotes').val();
-    Payment.OwnerId = $('vEmail').text().trim();
-    Payment.PaymentMethod = $('#vPaymentMethod').val();
-    Payment.Invoice = $('vInvoice').text().trim();
-    Payment.Customer = $('vCustomer').text();
-    Payment.CreditAvailable = $('vCreditAvailable').text();
-    Payment.Currency = $('Currency').text();
-    Payment.Status = $('#Status').val();
-    Payment.CustomerId = $('#CustomerId').val();
-    Payment.InvoiceId = $('#InvoiceId').val();
-    Payment.Tax = $('#vAmountWittheld').val();
+
+        Payment.InvoiceId=$('#InvoiceId').val();
+        Payment.PaymentDate= $('#PayDate').val();
+        Payment.PaymentMode= $('#vPaymentMethod').val();
+        Payment.Reference= $('#vReference').val();
+        Payment.Notes= $('#valueNotes').val();
+//    Payment.Date 
+//    Payment.Reference 
+//    Payment.Notes = $('#valueNotes').val();
+//    Payment.InvoiceId = $('#InvoiceId').val();
+//    Payment.PaymentMode 
+//    Payment.OwnerId = $('vEmail').text().trim();    
+//    Payment.Invoice = $('vInvoice').text().trim();
+//    Payment.Customer = $('vCustomer').text();
+//    Payment.CreditAvailable = $('vCreditAvailable').text();
+//    Payment.Currency = $('Currency').text();
+//    Payment.Status = $('#Status').val();
+//    Payment.CustomerId = $('#CustomerId').val();
+    
+//    Payment.Tax = $('#vAmountWittheld').val();
     var PaymentRepo = new InvoicePaymentRepository();
     var dataRepo = PaymentRepo.pay(Payment);
     if ($('#checkEmail').is(':checked')) {
@@ -116,7 +123,9 @@ SetDefaultDate: function () {
     $("#body").append(this.view("//sales/controllers/payment/views/confirmPaymentBox.ejs"));
 },
 "#confirmPaymentYes click": function () {
+
     $(".ModalDialog").remove();
+    $("#body").sales_invoices_list()
     //$(".checkBoxItem")
     $('#body').sales_invoices_list('load')
     // $this.ChangePage();

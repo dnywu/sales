@@ -220,7 +220,8 @@ steal('jquery/controller',
                 ".YesPayment click": function () {
                     var id = $('#inv-id').val();
                     if (id != " ") {
-                        $('#body').sales_payment('init', id);
+                       // $("#loading-overlay").remove();
+                        $('#body').sales_payment('init', id);       
                         $('#vAmountReceived').focus();
                     }
                 },
@@ -441,4 +442,4 @@ steal('jquery/controller',
 
 
             });
-        });
+       });
