@@ -56,10 +56,15 @@ div.ProductFormDiv
 {
 	color: #9C0000;
 }
-.field
+td.itemfield
 {
 	width: 350px;
 }
+td.taxfield
+{
+	width: 350px;
+}
+
 
 .field input[type="text"], .field textarea, .field select
 {

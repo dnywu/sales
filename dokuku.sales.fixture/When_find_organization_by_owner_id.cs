@@ -29,7 +29,14 @@ namespace dokuku.sales.fixture
 
         Because of = () =>
             {
-                orgRepo.Save(new Organization(email, email, "Inforsys Indonesia, PT", "IDR", 1));
+                orgRepo.Save(new Organization()
+                {
+                    _id = email,
+                    OwnerId = email,
+                    FiscalYearPeriod = 1,
+                    Currency = "IDR",
+                    Name = "Inforsys"
+                });
             };
 
         It should_return_organization = () =>

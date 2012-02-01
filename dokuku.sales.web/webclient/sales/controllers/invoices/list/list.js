@@ -12,7 +12,7 @@ steal('jquery/controller',
        './DeleteConfirmBox.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
-       './views/confirmDeleteInvoice.ejs',
+       './views/confirmDeleteInvoice.ejs',      
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
@@ -189,8 +189,9 @@ steal('jquery/controller',
                     var message = $("<div class='deleteConfirmMessage'>Faktur ini akan dirubah dari draft ke open...?</div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm YesPayment'>Ya</div>" +
                                     "<div class='ButtonConfirm No' id='Close'>Tidak</div><input type='hidden' value=" + invId + " id='inv-id'/></div>");
-                    $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
-                    $(".BodyConfirmMassage").append(message);
+                     $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                     $(".BodyConfirmMassage").append(message);
+                  
 
                 },
                 setInvoiceId: function (id) {
@@ -220,9 +221,13 @@ steal('jquery/controller',
                 ".YesPayment click": function () {
                     var id = $('#inv-id').val();
                     if (id != " ") {
+
                         $('#body').sales_payment('init', id);
                         $('#vAmountReceived').focus();
                     }
+                },
+                    "#confirmPaymentNo click": function () {
+                        $('.ModalDialog').remove();
                 },
                 '.Yes click': function () {
                     var result;
@@ -441,4 +446,4 @@ steal('jquery/controller',
 
 
             });
-        });
+       });

@@ -53,6 +53,8 @@
                 var index = $('#itemInvoice tbody tr').get(i).id;
                 var index = index.split('_')[1];
                 $this.CalculateItemOnChangeRate(index, rate);
+                //$this.RecalculateTax(index);
+                $this.RecalculateTaxOnChangeRate(index);
             }
         });
     },
@@ -322,6 +324,48 @@
         var Menu = "tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice";
 
         result = $(Menu + " " + Name).remove();
+    },
+    CalculateByTax: function () {
+        var optClear = $('.taxed').get(0).id;
+        $('#' + optClear + ' option').each(function (n) {
+            $('#' + $('#' + optClear + ' option').get(n).text).val(0);
+        });
+
+        $('.taxed').each(function (i) {
+            if ($('.amount').get(i).value != "") {
+                var namapajak = $('.taxed :selected').get(i).text;
+                var nilaipajak = $("#" + namapajak).val();
+                var nilaiygditambah = $('.taxedAmt').get(i).value == "" ? 0 : $('.taxedAmt').get(i).value; //$('.taxedAmt').get(i).value;
+                var total = parseFloat(nilaipajak) + parseFloat(nilaiygditambah);
+                $("#" + namapajak).val(total);
+            }
+        });
+    },
+    RecalculateTax: function (element) {
+        var index = element.attr("id").split('_')[1];
+        res = this.SetTaxAmount(index);
+        $("#taxedAmt_" + index).val(res);
+        this.CalculateByTax();
+    },
+    RecalculateTaxOnChangeRate: function (index) {
+        res = this.SetTaxAmount(index);
+        $("#taxedAmt_" + index).val(res);
+        this.CalculateByTax();
+    },
+    SetTaxAmount: function (index) {
+        var NilaiTax = $("#taxed_" + index).val();
+        var NamaTax = $("#taxed_" + index + " :selected").text();
+        var Jumlah = $("#amount_" + index).val();
+        var JumlahTax = (Jumlah * NilaiTax) / 100;
+        var cek = "#amount_" + index;
+        var result;
+
+        if ($(cek).val().length < 1) {
+            result = 0;
+        } else {
+            result = JumlahTax;
+        }
+        return result;
     }
 
 })
