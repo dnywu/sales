@@ -11,11 +11,8 @@ steal('jquery/controller', 'jquery/view/ejs',
         'sales/controllers/currencyandtax',
         'sales/controllers/payment',
         'sales/controllers/paymentreceived',
-<<<<<<< HEAD
-        'sales/controllers/setuporganization/settingorganization.js'
-=======
+        'sales/controllers/setuporganization/settingorganization.js',
         'sales/controllers/paymentmode'
->>>>>>> e4732616b087af63775180a24e53c01aee51d876
      )
 	.then('./views/nav.ejs', function ($) {
 	    $.Controller('sales.controllers.nav',
@@ -135,21 +132,20 @@ steal('jquery/controller', 'jquery/view/ejs',
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
                     setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Penomoran Otomatis' });
                 currencyandtax = $('<li>', { 'class': 'lisubtabs', id: 'currencyandtax', text: 'Mata Uang & Pajak' });
-<<<<<<< HEAD
+
                 settingOrganization = $('<li>', { 'class': 'lisubtabs', id: 'settingorganization', text: 'Informasi Perusahaan' });
-=======
+
                 paymentmode = $('<li>', { 'class': 'lisubtabs', id: 'paymentmode', text: 'Jenis Pembayaran' });
->>>>>>> e4732616b087af63775180a24e53c01aee51d876
+
                 $("#subtabs").empty();
                 container.appendTo(submenu);
                 ul.appendTo(container);
                 setupautonumbering.appendTo(ul);
                 currencyandtax.insertAfter(setupautonumbering);
-<<<<<<< HEAD
+
                 settingOrganization.insertAfter(currencyandtax);
-=======
+
                 paymentmode.insertAfter(currencyandtax);
->>>>>>> e4732616b087af63775180a24e53c01aee51d876
             },
             ClearContain: function () {
                 $("#body").empty();

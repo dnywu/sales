@@ -285,9 +285,11 @@ PaymentDate{color:#9C0000}
 required{color:Black;}
 #vAmountReceived{ width:160px;}
 #vBankCharges{width:130px;}
-#valueBankCharges{width:90px;}
+#valueBankCharges{width:120px;}
 #lbl-withheld{color:#9C0000;}
 .cls-withheld{margin-left:40px; }
 #vAmountWittheld{width:90px;}
 #p-amount-withheld{ background-color:#F7F7F7; padding:5px;}
 .cls-bankCharges{ margin-left:30px;}
+invoiceDate{text-align:left;color:Gray;display:inherit;}
+vInvoiceDate{text-align:left; vertical-align:text-top; display:inherit;color:Black;}
