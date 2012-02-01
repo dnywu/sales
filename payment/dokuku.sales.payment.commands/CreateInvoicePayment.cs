@@ -14,5 +14,6 @@ namespace dokuku.sales.payment.commands
         public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }
         public decimal Amount { get; set; }
+        public string Username { get; set; }
     }
 }
