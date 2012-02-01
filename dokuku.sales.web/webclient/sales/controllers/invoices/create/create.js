@@ -207,6 +207,135 @@ steal('jquery/controller',
             '#custRate change': function () {
                 inv.CalculateByRate($("#custRate").val());
             },
+
+            CalculateByTax: function (rate) {
+                var subtotal = 0;
+                /*$('#itemInvoice tbody tr').each(function (i) {
+                //if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
+                //    var index = $('#itemInvoice tbody tr').get(i).id;
+                //    var index = index.split('_')[1];
+                //    $this.CalculateItemOnChangeRate(index, rate);
+                //}
+
+
+
+                $('#itemInvoice tbody tr').each(function (i) {
+                if ($('.partname').get(i).value != "" && $('.amount').get(i).value != "") {
+                var index = $('#itemInvoice tbody tr').get(i).id;
+                var index = index.split('_')[1];
+                $this.CalculateItemOnChangeRate(index, rate);
+                }
+                });
+
+
+
+                //$('#itemInvoice tfoot tr td input').attr("id")
+
+                if ($("#taxed_" + i + " :selected").text() == "PPH") {
+                var b = $("#taxedAmt_" + i).vsal();
+                $("#PPN").val(b);
+                }
+                });*/
+
+                /*
+                $('#taxed_0 option').each(function (i) {
+                //$('#itemInvoice tbody tr #taxed option').each(function (i) {
+                $('#' + $("#taxed_0 option").get(i).text).val('0');
+                });
+                */
+
+                $('#itemInvoice tbody tr .taxed option').each(function (i) {
+                    $('#' + $("#taxed_0 option").get(i).text).val('0');
+                });
+
+                $('.taxed').each(function (i) {
+                    if ($('.amount').get(i).value != "") {
+                        var namapajak = $('.taxed :selected').get(i).text;
+                        //var nilaipajak = $(namapajak).value();
+                        var nilaipajak = $("#" + namapajak).val();
+                        var nilaiygditambah = $('.taxedAmt').get(i).value;
+                        var total = parseFloat(nilaipajak) + parseFloat(nilaiygditambah);
+                        //$(namapajak).value(total);
+                        $("#" + namapajak).val(total);
+                    }
+                });
+
+
+                /*
+                $('select#selectid option').length;
+                var i = $('.taxed').get(0).length;
+
+
+                $('.taxed').each(function (i) {
+                alert(i);
+                });
+                $('.taxedAmt').each(function (i) {
+                alert(i);
+                });
+                */
+            },
+            Calc: function () {
+
+                $('.taxedAmt').each(function (index) {
+                    tmpval = parseFloat($(this).val());
+                    //                    if (!isNaN(tmpval))
+                    //                        //subtotal += tmpval;
+
+                    //                });
+
+
+                    //                $.each(tax, function (i) {
+                    //                    //$("#taxed_" + index).append("<option value='" + tax[i].Value + "'>" + tax[i].Name + "</option>");
+
+                });
+            },
+            CalculateTaxTotal: function (Destination, taxValue) {
+                var c;
+                var b = this.GetValue(Destination);
+                if (b.length == 0) {
+                    c = parseFloat(taxValue);
+                }
+                else {
+                    c = parseFloat(b) + parseFloat(taxValue);
+                }
+                return c;
+            },
+            GetValue: function (abc) {
+                var res = $("#" + abc).val();
+                return res;
+            },
+            '.taxed change': function (el) {
+                var index = el.attr("id").split('_')[1];
+                var NilaiTax = $("#taxed_" + index).val();
+                var NamaTax = $("#taxed_" + index + " :selected").text();
+                var Jumlah = $("#amount_" + index).val();
+                var JumlahTax = (Jumlah * NilaiTax) / 100;
+
+                var cek = "#amount_" + index;
+
+                if ($(cek).val().length < 1)
+                    return false;
+
+                $("#taxedAmt_" + index).val(JumlahTax);
+
+                this.CalculateByTax();
+
+
+
+
+
+                /*
+                //var DestValueOfTax = "taxValue" + $("#taxed_" + index + " :selected").text(); //$("#taxed_" + index).text();
+                //var DestValueOfTax2 = $("#taxed_" + index + " :selected").text(); //$("#taxed_" + index).text();
+                
+                var g = this.CalculateTaxTotal(DestValueOfTax2, ValueOfTax);
+                var gg = parseFloat(g);
+
+                $("#" + DestValueOfTax).text(gg);
+                $("#" + DestValueOfTax2).val(gg);
+                */
+
+            },
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
                 var qty = $("#qty_" + index).val();
@@ -246,8 +375,8 @@ steal('jquery/controller',
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
                                     "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
-                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
-                                    "</select></td>" +
+                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'></select>" +
+                                    "<input type='text' class='taxedAmt' id='taxedAmt_" + tabIndexTr + "'/></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
@@ -264,10 +393,10 @@ steal('jquery/controller',
                 $.each(tax, function (i) {
                     pos = i + 1;
                     $("#itemInvoice tfoot tr:nth-child(" + pos + ")").after("<tr><td colspan='4'></td>" +
-                    "<td colspan='2' class='right borderbottom'>" + tax[i].Name + "</td>" +
+                    "<td colspan='2' class='right borderbottom'>" + tax[i].Name + "(" + tax[i].Value + "%)</td>" +
                     "<td class='right borderbottom'>" +
                     "<span id='taxValue" + tax[i].Name + "'></span>" +
-                    "<input type='hidden' id='" + tax[i].Name + "'/></td>" +
+                    "<input type='text' id='" + tax[i].Name + "'/></td>" +
                     "<td>&nbsp;</td>" +
                     "</tr>");
                 });

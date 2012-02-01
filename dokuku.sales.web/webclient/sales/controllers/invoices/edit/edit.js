@@ -252,7 +252,7 @@ steal('jquery/controller',
             loadDataEditTax: function (index, TaxValue) {
                 var tax = curTaxRepo.getAllTax();
                 $.each(tax, function (i) {
-                    if (TaxValue==tax[i].Name) {
+                    if (TaxValue == tax[i].Name) {
                         $("#taxed_" + index).append("<option value='" + tax[i].Value + "' selected>" + tax[i].Name + "</option>");
                     }
                     else {
@@ -312,6 +312,21 @@ steal('jquery/controller',
                 }
                 inv.GetSubTotal();
                 inv.GetTotal();
+                this.CreateRowEditTax();
+            },
+            CreateRowEditTax: function () {
+                var tax = curTaxRepo.getAllTax();
+                var pos;
+                $.each(tax, function (i) {
+                    pos = i + 1;
+                    $("#itemInvoice tfoot tr:nth-child(" + pos + ")").after("<tr><td colspan='4'></td>" +
+                    "<td colspan='2' class='right borderbottom'>" + tax[i].Name + "</td>" +
+                    "<td class='right borderbottom'>" +
+                    "<span id='taxValue" + tax[i].Name + "'></span>" +
+                    "<input type='hidden' id='" + tax[i].Name + "'/></td>" +
+                    "<td>&nbsp;</td>" +
+                    "</tr>");
+                });
             },
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();
