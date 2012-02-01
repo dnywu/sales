@@ -179,7 +179,7 @@
         var dataInvoice = new Array();
         $.ajax({
             type: 'GET',
-            url: '/GetDataInvoiceToPaging/'+ start +'/'+ limit +'',
+            url: '/GetDataInvoiceToPaging/' + start + '/' + limit + '',
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -285,6 +285,44 @@
         });
         return result;
     },
+    HideList: function (Status, index) {
+        if (Status == "Draft") {
+            this.HideActionList("ffftt", index);
+        } else if (Status == "Belum Bayar") {
+            this.HideActionList("ftfft", index);
+        } else if (Status == "Belum Lunas") {
+            this.HideActionList("ttftt", index);
+        } else if (Status == "Sudah Lunas") {
+            this.HideActionList("tttft", index);
+        } else if (Status == "Batal") {
+            this.HideActionList("ttttt", index);
+        }
+    },
+    HideActionList: function (srcPattern, index) {
+        var str = srcPattern;
+
+        if (str.substring(0, 1) == "t") {
+            this.Menu("div#actionEdit", index);
+        }
+
+        if (str.substring(1, 2) == "t") {
+            this.Menu("div#actionApprove", index);
+        }
+
+        if (str.substring(3, 4) == "t") {
+            this.Menu("div#actionCancel", index);
+        }
+
+        if (str.substring(4, 5) == "t") {
+            this.Menu("div#actionForceCancel", index);
+        }
+    },
+    Menu: function (Name, index) {
+        var result;
+        var Menu = "tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice";
+
+        result = $(Menu + " " + Name).remove();
+    }
 
 })
     });

@@ -24,8 +24,8 @@
       </td>
       <td>
         <div id="formNewIvoice">
-          <form class='newInvoiceContain' id='paymentForm'>
-            <input type='hidden' InvoiceId='Id' value="<%=this._id%>" />
+          <div class='newInvoiceContain' id='paymentForm'>
+            <input type='hidden' id='InvoiceId' value="<%=this._id%>" />
             <input type='hidden' id='Status' value="<%=this.Status%>" />
               <input type='hidden' id='CustomerId' value="<%=this.CustomerId%>" />
               <table>
@@ -33,12 +33,12 @@
                 <td>
                   <AmountReceived>
                     Jumlah yang diterima (<required>
-                      <Currency> <%=this.Currency%></Currency>
+                      <Currency><%=this.Currency%></Currency>
                     </required>)
                   </AmountReceived>
                 </td>
                 <td>
-                  <BankCharges>
+                  <BankCharges class="cls-bankCharges">
                     Biaya Bank(<required>if any</required>)
                   </BankCharges>
                 </td>
@@ -50,15 +50,17 @@
                   </vAmountReceived>
                 </td>
                 <td>
-                  <vBankCharges class='height'>
+                  <vBankCharges class='height cls-bankCharges'>
                     <input type='text' id='valueBankCharges'></input>
                   </vBankCharges>
                 </td>
               </tr>
             </table>
-            <!--<p>
-              <input type='checkbox'> 
-            </p>-->
+            <p id='p-amount-withheld'>
+              <input type='checkbox' id='tax'> Apakah Customer di kenakan Pajak ? <br>
+                <AmountWithheld></AmountWithheld>
+              
+            </p>
             <table>
               <tr>
                 <td>
@@ -76,11 +78,7 @@
                 </td>
                 <td>
                   <vPaymentMethod class='height'>
-                    <select id='vPaymentMethod'>
-                      <%for(var i=0; i<5; i++){%>                 
-                       <option value=''><%=i%></option>
-                     
-                        <%}%>
+                    <select id='vPaymentMethod'>                     
                     </select>
                   </vPaymentMethod>
                 </td>
@@ -90,7 +88,7 @@
             <table>
               <tr>
                 <td>
-                  <reference>Referensi</reference>
+                  <reference>#Referensi</reference>
                   <vreference class='height'>
                     <input type='text' id='vReference'>
                 </vreference>
@@ -100,7 +98,7 @@
                 <td>
                   <notes>Catatan</notes>
                   <vnotes class='height'>
-                    <input type='text' id='valueNotes'>
+                    <textarea id='valueNotes' rows='3'></textarea>
                 </vnotes>
                   <email class='height'> </email>
                 </td>
@@ -110,7 +108,7 @@
             <table id='tblemail'>
               <tr>
                 <td>
-                  <reference>Terkirim &quot;Terima Kasih&quot; catatan untuk pembayaran ini </reference>
+                  <reference>Kirim Ucapan&quot;Terima Kasih&quot; Nota untuk pembayaran ini </reference>
                   <vreference class='height'>                </vreference>
                 </td>
               </tr>
@@ -118,7 +116,7 @@
                 <td>
                   <vreference class='height'> </vreference>
                   <email class='height'>
-                    <input type='checkbox' id='vEmail'>
+                    <input type='checkbox' id='checkEmail' value='<%=this.OwnerId%>'>
                       <vEmail>
                         <%=this.OwnerId%>
                       </vEmail>
@@ -131,12 +129,12 @@
 
             <div style="margin-top:30px">
               <p align="center" style="font-size:11px">
-                <input id="PayButton" type="button" name="save" value="Bayar"/>
+                <input id="PayButton" type="button" name="PayButton" value="Bayar"/>
                 atau
                 <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="btnCancelInvoice">Batal</span>
               </p>
             </div>
-          </form>
+          </div>
         </div>
       </td>
     </tr>

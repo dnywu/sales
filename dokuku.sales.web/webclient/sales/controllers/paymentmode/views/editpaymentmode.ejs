@@ -1,0 +1,48 @@
+﻿<div class='mainFrame'>
+  <div class="topBandHeaderDIV">
+    <div class="HeaderDIVLeft" id="TambahMU">Ubah Jenis Pembayaran</div>
+  </div>
+  <div class="error" id="errorCreateItemDiv"></div>
+  <div class="mainDivWidth">
+    <div id="editCurrencyForm">
+      <div class="ie-form AddCurrencyFormDiv">
+        <table>
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Kode </span>
+              </td>
+              <td class="field">
+                <input type="hidden" name="_id" id="_id" hidden="hidden" value="<%= this._id %>"/>
+                <input type="text" name="kode" id="kode" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode Jenis Pembayaran tidak boleh kosong')" required="required" value="<%= this.Code %>"/>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Nama </span>
+              </td>
+              <td class="field">               
+                <input type="text" name="nama" id="nama" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Jenis Pembayaran tidak boleh kosong')" required="required" value="<%= this.Name %>"/>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+       
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:30px">
+      <p align="center" style="font-size:11px">
+        <input type="hidden" id="keywords" name="keywords"></input>
+        <input id="UpdatePaymentMode" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
+        atau
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="CancelPaymentMode">Batal</span>
+      </p>
+    </div>
+  </div>
+</div>
