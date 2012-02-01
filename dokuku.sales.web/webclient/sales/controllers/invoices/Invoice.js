@@ -42,8 +42,15 @@
         $("#qty_" + index).val('1.00');
         $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
+
+        $("#taxed_" + index + " option").each(function (i) {
+            if ($(this).text() == part.Tax.Name)
+                $(this).attr('selected', true);
+        });
+        
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#amount_" + index).val(part.Rate);
+        $this.RecalculateTaxOnChangeRate(index);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CalculateByRate: function (rate) {
