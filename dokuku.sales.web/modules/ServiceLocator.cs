@@ -104,5 +104,13 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IPaymentModeService>();
         }
+        public static ILogoOrganizationCommand LogoOrganizationCommand(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<ILogoOrganizationCommand>();
+        }
+        public static ILogoOrganizationQuery LogoOrganizationQuery(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<ILogoOrganizationQuery>();
+        }
     }
 }
