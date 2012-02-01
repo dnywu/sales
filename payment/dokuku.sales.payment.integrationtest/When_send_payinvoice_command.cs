@@ -6,6 +6,7 @@ using Machine.Specifications;
 using NServiceBus;
 using dokuku.sales.payment.commands;
 using Ncqrs.NServiceBus;
+using dokuku.sales.payment.common;
 namespace dokuku.sales.payment.integrationtest
 {
     [Subject("Send pay invoice command")]

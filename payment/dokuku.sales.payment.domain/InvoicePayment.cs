@@ -6,6 +6,7 @@ using Ncqrs.Domain;
 using System.Diagnostics.Contracts;
 using Ncqrs;
 using dokuku.sales.payment.events;
+using dokuku.sales.payment.common;
 namespace dokuku.sales.payment.domain
 {
     public class InvoicePayment : AggregateRootMappedByConvention

@@ -73,7 +73,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices.comma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices.distributor", "dokuku.sales.invoices.distributor\dokuku.sales.invoices.distributor.csproj", "{8632E80B-BC9E-4644-8359-20A310CE9F40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment", "payment\dokuku.sales.payment\dokuku.sales.payment.csproj", "{1838F788-9F1F-4E44-91B2-A9F809B34F36}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.common", "payment\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj", "{1838F788-9F1F-4E44-91B2-A9F809B34F36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
