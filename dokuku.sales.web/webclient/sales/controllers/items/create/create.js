@@ -3,7 +3,8 @@ steal('jquery/controller',
       'jquery/controller/view',
       './ItemsCreate.css',
       'sales/scripts/ModalDialog.js',
-      'sales/styles/ModalDialog.css')
+      'sales/styles/ModalDialog.css',
+      'sales/repository/CurrencyandTaxRepository.js')
 
 .then('./views/createTaxDialog.ejs',
       './views/init.ejs', function ($) {
@@ -14,12 +15,22 @@ steal('jquery/controller',
         {
             init: function () {
                 $this = this;
+                curTaxRepo = new CurrencyandTaxRepository();
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
+                this.loadDataTax();
 
             },
             load: function () {
                 $this = this;
+                curTaxRepo = new CurrencyandTaxRepository();
                 this.element.html(this.view("//sales/controllers/items/create/views/init.ejs"));
+                this.loadDataTax();
+            },
+            loadDataTax: function () {
+                var tax = curTaxRepo.getAllTax();
+                $.each(tax, function (i) {
+                    $("#tax").append("<option value='" + tax[i].Value + "'>" + tax[i].Name + "</option>");
+                });
             },
             "#createTaxLink click": function (el, ev) {
                 this.createTaxDialog();
@@ -85,16 +96,22 @@ steal('jquery/controller',
                     name: $("#taxName").val(),
                     percent: $("#percentTax").val()
                 };
+                var tax = new Object();
+                tax.Name = defaults.name;
+                tax.Value = defaults.percent;
+                
                 err.empty();
                 if (defaults.name !== "" && defaults.percent != 0)
-                    form.submit();
+                    curTaxRepo.SaveTax(tax);
+                    $("#tax").append("<option value='" + defaults.percent + "'>" + defaults.name + "</option>");
+                    $(".ModalDialog").remove();
+
                 if (defaults.name == "")
                     $('<li>', { 'class': 'name', text: "Nama Pajak harus di isi" }).appendTo(err.show());
                 if (defaults.percent == "")
-                    $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus di diisi" }).appendTo(err.show());
+                    $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus yydiisi" }).appendTo(err.show());
                 if (defaults.percent <= 0)
-                    $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus lebih besar dari nol" }).appendTo(err.show());
-                ev.preventDefault();
+                    $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus lebih besar dari nol" }).appendTo(err.show());              
                 return;
             },
             taxNameKeypress: function () {

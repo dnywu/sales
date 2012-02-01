@@ -643,7 +643,6 @@
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.html" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.js" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail_test.js" />
-    <Content Include="webclient\sales\controllers\invoices\list\ApproveConfirmBox.css" />
     <Content Include="webclient\sales\controllers\invoices\list\DeleteConfirmBox.css" />
     <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
@@ -710,9 +709,11 @@
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.js" />
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering_test.js" />
     <Content Include="webclient\sales\controllers\setupautonumbering\autonumbering.css" />
+    <Content Include="webclient\sales\controllers\setuporganization\settingorganization.css" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
     <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
+    <Content Include="webclient\sales\controllers\setuporganization\settingorganization.js" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.css" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.html" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
@@ -727,6 +728,7 @@
     <Content Include="webclient\sales\controllers\tax\tax.js" />
     <Content Include="webclient\sales\controllers\tax\tax_test.js" />
     <None Include="webclient\sales\controllers\invoices\list\views\confirmRecordPaymentBox.ejs" />
+    <None Include="webclient\sales\controllers\invoices\list\views\loading.ejs" />
     <None Include="webclient\sales\controllers\paymentmode\views\init.ejs" />
     <None Include="webclient\sales\controllers\paymentmode\views\addpaymentmode.ejs">
       <SubType>Designer</SubType>
@@ -742,10 +744,18 @@
     </None>
     <None Include="webclient\sales\controllers\payment\views\confirmPaymentBox.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\ConfirmWithNote.ejs" />
+    <None Include="webclient\sales\controllers\setuporganization\views\settingorganization.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\tax\views\contextMenuTax.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\edittax.ejs" />
+    <Content Include="webclient\sales\controllers\uploadlogo\funcunit.html" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.css" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.html" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.js" />
+    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
@@ -991,9 +1001,9 @@
     <Content Include="webclient\steal\test\two.css" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="models\InvoicePayment.cs" />
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
+    <Compile Include="models\PayInvoiceDto.cs" />
     <Compile Include="modules\AuthModule.cs" />
     <Compile Include="modules\InvoicePaymentModule.cs" />
     <Compile Include="modules\CurrencyModule.cs" />
@@ -1201,6 +1211,9 @@
     <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\uploadlogo\views\init.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
@@ -1293,16 +1306,18 @@
       <Project>{A6BCEA92-7141-4D33-92C0-BE5A778CE8FD}</Project>
       <Name>dokuku.sales.payment.commands</Name>
     </ProjectReference>
-    <ProjectReference Include="..\payment\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
-      <Project>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</Project>
-      <Name>dokuku.sales.payment.events</Name>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj">
+      <Project>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</Project>
+      <Name>dokuku.sales.payment.common</Name>
     </ProjectReference>
     <ProjectReference Include="..\payment\dokuku.sales.payment.readmodel\dokuku.sales.payment.readmodel.csproj">
       <Project>{185B8C2C-5DE3-42CC-B484-BA008EA911DF}</Project>
       <Name>dokuku.sales.payment.readmodel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

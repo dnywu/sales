@@ -13,6 +13,7 @@ using StructureMap;
 using NServiceBus;
 using Ncqrs.NServiceBus;
 using dokuku.sales.web.models;
+using dokuku.sales.payment;
 namespace dokuku.sales.web.modules
 {
     public class InvoicePaymentModule : Nancy.NancyModule
@@ -25,19 +26,18 @@ namespace dokuku.sales.web.modules
                 try
                 {
                     var invoicepayment = this.Request.Form.invoicepayment;
-                    InvoicePayment dataPayment = JsonConvert.DeserializeObject<InvoicePayment>(invoicepayment);
-                    PayInvoice cmd = new PayInvoice
+                    PayInvoiceDto paydto = JsonConvert.DeserializeObject<PayInvoiceDto>(invoicepayment);
+                    PayInvoice cmd = new PayInvoice()
                     {
-                        InvoiceId = dataPayment.InvoiceId,
-                         PaymentId= Guid.NewGuid(),
-                        AmountPaid = dataPayment.AmountReceived,
-                        BankCharge = dataPayment.BankChanges,
-                        Notes = dataPayment.Notes,
-                        PaymentDate = dataPayment.Date,
-                        PaymentMode = dataPayment.PaymentMethod,
-                        Reference = dataPayment.Reference   
+                        AmountPaid = paydto.AmountPaid,
+                        BankCharge = paydto.BankCharge,
+                        InvoiceId = paydto.InvoiceId,
+                        PaymentId = Guid.NewGuid(),
+                        Notes = paydto.Notes,
+                        PaymentDate = paydto.PaymentDate,
+                        Reference = paydto.Reference,
+                        PaymentMode = paydto.PaymentMode
                     };
-
                     this.Bus().Send("dokukuPaymentDistributorDataBus", new CommandMessage{Payload = cmd});
                     return Response.AsJson(new { error = false, message = "OK" });
                 }

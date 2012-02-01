@@ -1,5 +1,6 @@
 steal('jquery/controller', 'sales/controllers/payment/payment.css',
     'sales/repository/InvoiceRepository.js',
+    'sales/repository/PaymentModeRepository.js',
        'sales/controllers/invoices/list',
        'sales/scripts/jquery-ui-1.8.11.min.js',
        'sales/styles/jquery-ui-1.8.14.custom.css', 'jquery/view/ejs', 'sales/repository/InvoicePaymentRepository.js')
@@ -16,8 +17,8 @@ defaults: (payRepo = null, invRepo = null)
 	    /** @Prototype */
 {
 init: function (id) {
-  
-    if (typeof id != "object") {       
+
+    if (typeof id != "object") {
 
         this.load(id);
     }
@@ -71,26 +72,21 @@ SetDefaultDate: function () {
 },
 '#PayButton click': function () {
     Payment = new Object();
-    Payment.AmountReceived = $('#vAmountReceived').val();
+
     if ($('#valueBankCharges').val() == "") {
-        Payment.BankChanges = 0;
+        Payment.BankCharge = 0;
     }
     else {
-        Payment.BankChanges = $('#valueBankCharges').val();
+        Payment.BankCharge = $('#valueBankCharges').val();
     }
-    Payment.Date = $('#PayDate').val();
-    Payment.Reference = $('#vReference').val();
-    Payment.Notes = $('#valueNotes').val();
-    Payment.OwnerId = $('vEmail').text().trim();
-    Payment.PaymentMethod = $('#vPaymentMethod').val();
-    Payment.Invoice = $('vInvoice').text().trim();
-    Payment.Customer = $('vCustomer').text();
-    Payment.CreditAvailable = $('vCreditAvailable').text();
-    Payment.Currency = $('Currency').text();
-    Payment.Status = $('#Status').val();
-    Payment.CustomerId = $('#CustomerId').val();
+    var _id = $('#vPaymentMethod').val();
+
+    Payment.AmountPaid = $('#vAmountReceived').val();
     Payment.InvoiceId = $('#InvoiceId').val();
-    Payment.Tax = $('#vAmountWittheld').val();
+    Payment.PaymentDate = $('#PayDate').val();
+    Payment.PaymentMode = this.createObjectPaymentMode(this.getPaymentModeData(_id));
+    Payment.Reference = $('#vReference').val();
+    Payment.Notes = $('#valueNotes').val();   
     var PaymentRepo = new InvoicePaymentRepository();
     var dataRepo = PaymentRepo.pay(Payment);
     if ($('#checkEmail').is(':checked')) {
@@ -98,12 +94,21 @@ SetDefaultDate: function () {
     }
     $('#body').sales_invoices_list('load')
 },
+createObjectPaymentMode: function (dataPaymentMode) {
+    var PaymentMode = new Object();
+    PaymentMode.Id = $('#vPaymentMethod').val().trim();
+    PaymentMode.Code = dataPaymentMode.Code;
+    PaymentMode.Name = dataPaymentMode.Name;
+    return PaymentMode;
+},
+getPaymentModeData: function (paymentmodeid) {
+    return new PaymentModeRepository().getPaymentModeById(paymentmodeid);
+},
 '#tax click': function () {
     $("AmountWithheld").empty();
     var checked = $('#tax').is(':checked');
     if (checked) {
         $("AmountWithheld").append("<label id='lbl-withheld' class='cls-withheld' >Jumlah yang ditanggung</label><br><input type='text' name='AmountWittheld' id='vAmountWittheld' class='cls-withheld'/>");
-
     };
 },
 '#checkEmail click': function () {
@@ -116,7 +121,9 @@ SetDefaultDate: function () {
     $("#body").append(this.view("//sales/controllers/payment/views/confirmPaymentBox.ejs"));
 },
 "#confirmPaymentYes click": function () {
+
     $(".ModalDialog").remove();
+    $("#body").sales_invoices_list()
     //$(".checkBoxItem")
     $('#body').sales_invoices_list('load')
     // $this.ChangePage();

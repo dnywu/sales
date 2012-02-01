@@ -119,6 +119,8 @@
                     x.For<ICurrencyQueryRepository>().Use<CurrencyQueryRepository>();
                     x.For<IPaymentModeQuery>().Use<PaymentModeQuery>();
                     x.For<IPaymentModeService>().Use<PaymentModeService>();
+                    x.For<ILogoOrganizationQuery>().Use<LogoOrganizationQuery>();
+                    x.For<ILogoOrganizationCommand>().Use<LogoOrganizationCommand>();
                     x.For<IPaymentRepository>().Use<PaymentRepository>();
                 });
 
