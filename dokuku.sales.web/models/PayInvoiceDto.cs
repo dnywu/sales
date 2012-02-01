@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
+using System.Web;
+using dokuku.sales.payment;
 using dokuku.sales.payment.common;
-namespace dokuku.sales.payment.commands
+namespace dokuku.sales.web.models
 {
     [Serializable]
-    [MapsToAggregateRootMethod("dokuku.sales.payment.domain.InvoicePayment, dokuku.sales.payment.domain", "PayInvoice")]
-    public class PayInvoice : Ncqrs.Commanding.CommandBase 
+    public class PayInvoiceDto
     {
-        [AggregateRootId]
         public Guid InvoiceId { get; set; }
         public Guid PaymentId { get; set; }
         public decimal AmountPaid { get; set; }
@@ -19,6 +17,5 @@ namespace dokuku.sales.payment.commands
         public PaymentMode PaymentMode { get; set; }
         public string Reference { get; set; }
         public string Notes { get; set; }
-        public string Username { get; set; }
     }
 }
