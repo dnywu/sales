@@ -178,6 +178,7 @@ steal('jquery/controller',
 
                 $('#part_' + fieldIndex).val(partName);
                 this.FillItemAtribut(partName, fieldIndex);
+
                 $(".resultItemDiv").remove();
             },
             '.quantity focus': function (el) {
@@ -433,6 +434,7 @@ steal('jquery/controller',
                 var part = itmRepo.GetItemByName(name);
                 if (part != null) {
                     inv.ShowListItem(part, index);
+                    inv.RecalculateTaxOnChangeRate(index);
                     this.GetSubTotal();
                     this.GetTotal();
                     $("#additem_" + index).hide();

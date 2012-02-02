@@ -50,7 +50,6 @@
         
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#amount_" + index).val(part.Rate);
-        $this.RecalculateTaxOnChangeRate(index);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CalculateByRate: function (rate) {
