@@ -36,7 +36,6 @@ namespace dokuku.sales.invoices.model
         public void InvoiceStatusBelumBayar()
         {
             this.Status = InvoiceStatus.BELUM_BAYAR;
-            //TotalTaxItem = new Dictionary<string, decimal>();
         }
         public void InvoiceStatusBelumLunas()
         {
