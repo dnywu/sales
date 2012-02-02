@@ -178,7 +178,6 @@ steal('jquery/controller',
 
                 $('#part_' + fieldIndex).val(partName);
                 this.FillItemAtribut(partName, fieldIndex);
-
                 $(".resultItemDiv").remove();
             },
             '.quantity focus': function (el) {
@@ -244,7 +243,7 @@ steal('jquery/controller',
                 var tax = curTaxRepo.getAllTax();
 
                 $.each(tax, function (i) {
-                    $("#taxed_" + index).append("<option value='" + tax[i].Value + "'>" + tax[i].Name + "</option>");
+                    $("#taxed_" + index).append("<option value='" + tax[i].Value + "'>" + tax[i].Code + "</option>");
                 });
             },
             CreateListItem: function (count) {
@@ -274,10 +273,10 @@ steal('jquery/controller',
                 $.each(tax, function (i) {
                     pos = i + 1;
                     $("#itemInvoice tfoot tr:nth-child(" + pos + ")").after("<tr><td colspan='4'></td>" +
-                    "<td colspan='2' class='right borderbottom'>" + tax[i].Name + "(" + tax[i].Value + "%)</td>" +
+                    "<td colspan='2' class='right borderbottom'>" + tax[i].Code + "(" + tax[i].Value + "%)</td>" +
                     "<td class='right borderbottom'>" +
-                    "<span id='taxValue" + tax[i].Name + "'></span>" +
-                    "<input type='text' id='" + tax[i].Name + "'/></td>" +
+                    "<span id='taxValue" + tax[i].Code + "'></span>" +
+                    "<input type='text' class='TotalTaxAmt' id='" + tax[i].Code + "'/></td>" +
                     "<td>&nbsp;</td>" +
                     "</tr>");
                 });
@@ -434,7 +433,7 @@ steal('jquery/controller',
                 var part = itmRepo.GetItemByName(name);
                 if (part != null) {
                     inv.ShowListItem(part, index);
-                    inv.RecalculateTaxOnChangeRate(index);
+                    inv.RecalculateTaxOnChangeItem(index);
                     this.GetSubTotal();
                     this.GetTotal();
                     $("#additem_" + index).hide();

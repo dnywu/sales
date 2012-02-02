@@ -44,10 +44,10 @@
         $("#disc_" + index).val('0.00');
 
         $("#taxed_" + index + " option").each(function (i) {
-            if ($(this).text() == part.Tax.Name)
+            if ($(this).text() == part.Tax.Code)
                 $(this).attr('selected', true);
         });
-        
+
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#amount_" + index).val(part.Rate);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
@@ -59,7 +59,6 @@
                 var index = $('#itemInvoice tbody tr').get(i).id;
                 var index = index.split('_')[1];
                 $this.CalculateItemOnChangeRate(index, rate);
-                //$this.RecalculateTax(index);
                 $this.RecalculateTaxOnChangeRate(index);
             }
         });
@@ -159,11 +158,20 @@
                     objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
                     objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
                     objInv.Items[i].Amount = $('.amount').get(i).value;
+                    objInv.Items[i].TaxAmount = $('.taxedAmt').get(i).value;
                 }
             } else {
                 return;
             }
         });
+
+        objInv.TotalTaxItem = new Array;
+        $('.TotalTaxAmt').each(function (i) {
+            objInv.TotalTaxItem[i] = new Object;
+            objInv.TotalTaxItem[i].NameTaxAmount = $('.TotalTaxAmt').get(i).id;
+            objInv.TotalTaxItem[i].TaxAmount = $('.TotalTaxAmt').get(i).value;
+        });
+
         if (objInv.CustomerId == 0) {
             $("#errorCreateInv").text("Silahkan masukkan Nama Pelanggan dengan benar").show();
             return;
@@ -354,6 +362,11 @@
         this.CalculateByTax();
     },
     RecalculateTaxOnChangeRate: function (index) {
+        res = this.SetTaxAmount(index);
+        $("#taxedAmt_" + index).val(res);
+        this.CalculateByTax();
+    },
+    RecalculateTaxOnChangeItem: function (index) {
         res = this.SetTaxAmount(index);
         $("#taxedAmt_" + index).val(res);
         this.CalculateByTax();
