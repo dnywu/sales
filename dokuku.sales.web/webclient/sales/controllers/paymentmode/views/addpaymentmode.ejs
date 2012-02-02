@@ -1,0 +1,46 @@
+﻿<div class='mainFrame'>
+  <div class="topBandHeaderDIV">
+    <div class="HeaderDIVLeft" id="TambahMU">Tambah Jenis Pembayaran</div>
+  </div>
+  <div class="error" id="errorCreateItemDiv"></div>
+  <div class="mainDivWidth">
+    <div id="addPaymentModeForm">
+      <div class="ie-form AddPaymentModeFormDiv">
+        <table>
+          <tbody>       
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Kode</span>
+              </td>
+              <td class="field">
+                <input type="text" name="Kode" id="kode" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode jenis pembayaran tidak boleh kosong')" required="required"/>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Nama </span>
+              </td>
+              <td class="field">
+                <input type="text" name="Nama" id="nama" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama jenis pembayaran tidak boleh kosong')" required="required"/>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:30px">
+      <p align="center" style="font-size:11px">
+        <input type="hidden" id="keywords" name="keywords"></input>
+        <input id="PaymentModeSave" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
+        atau
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="CancelPaymentMode">Batal</span>
+      </p>
+    </div>
+  </div>
+</div>

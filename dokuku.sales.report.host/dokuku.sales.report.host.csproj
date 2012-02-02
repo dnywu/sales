@@ -75,7 +75,9 @@
       <HintPath>..\packages\NServiceBus\Spring.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -112,13 +114,13 @@
       <Project>{CC7B4BC5-85DC-470C-9531-D2B0FE5EB4D8}</Project>
       <Name>dokuku.sales.item.messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
-      <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
-      <Name>dokuku.sales.payment.events</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.report\dokuku.sales.report.csproj">
       <Project>{DFC91C58-F8C4-47AB-9253-257AE0DF3498}</Project>
       <Name>dokuku.sales.report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\payment\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
+      <Project>{ADC1BC26-30EC-4CA4-932E-87DB4AF3F850}</Project>
+      <Name>dokuku.sales.payment.events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

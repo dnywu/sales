@@ -42,8 +42,15 @@
         $("#qty_" + index).val('1.00');
         $("#rate_" + index).val(part.Rate);
         $("#disc_" + index).val('0.00');
+
+        $("#taxed_" + index + " option").each(function (i) {
+            if ($(this).text() == part.Tax.Name)
+                $(this).attr('selected', true);
+        });
+        
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#amount_" + index).val(part.Rate);
+        $this.RecalculateTaxOnChangeRate(index);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
     CalculateByRate: function (rate) {
@@ -53,6 +60,8 @@
                 var index = $('#itemInvoice tbody tr').get(i).id;
                 var index = index.split('_')[1];
                 $this.CalculateItemOnChangeRate(index, rate);
+                //$this.RecalculateTax(index);
+                $this.RecalculateTaxOnChangeRate(index);
             }
         });
     },
@@ -179,7 +188,7 @@
         var dataInvoice = new Array();
         $.ajax({
             type: 'GET',
-            url: '/GetDataInvoiceToPaging/'+ start +'/'+ limit +'',
+            url: '/GetDataInvoiceToPaging/' + start + '/' + limit + '',
             dataType: 'json',
             async: false,
             success: function (data) {
@@ -239,11 +248,6 @@
             async: false,
             success: function (data) {
                 result = data;
-                //if (data.error == true) {
-                //    $("#errorListInv").text(data.message).show("slow");
-                //    return;
-                //}
-
             }
         });
         return result;
@@ -262,6 +266,115 @@
         });
         return listCustomer;
     },
+    CancelInvoiceByID: function (invoiceID, Note) {
+        var result;
+        $.ajax({
+            type: 'POST',
+            url: '/cancelinvoice/' + invoiceID,
+            data: { 'Note': Note },
+            dataType: 'json',
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    },
+    ForceCancelInvoiceByID: function (invoiceID, Note) {
+        var result;
+        $.ajax({
+            type: 'POST',
+            url: '/forcecancelinvoice/' + invoiceID,
+            dataType: 'json',
+            data: { 'Note': Note },
+            async: false,
+            success: function (data) {
+                result = data;
+            }
+        });
+        return result;
+    },
+    HideList: function (Status, index) {
+        if (Status == "Draft") {
+            this.HideActionList("ffftt", index);
+        } else if (Status == "Belum Bayar") {
+            this.HideActionList("ftfft", index);
+        } else if (Status == "Belum Lunas") {
+            this.HideActionList("ttftt", index);
+        } else if (Status == "Sudah Lunas") {
+            this.HideActionList("tttft", index);
+        } else if (Status == "Batal") {
+            this.HideActionList("ttttt", index);
+        }
+    },
+    HideActionList: function (srcPattern, index) {
+        var str = srcPattern;
+
+        if (str.substring(0, 1) == "t") {
+            this.Menu("div#actionEdit", index);
+        }
+
+        if (str.substring(1, 2) == "t") {
+            this.Menu("div#actionApprove", index);
+        }
+
+        if (str.substring(3, 4) == "t") {
+            this.Menu("div#actionCancel", index);
+        }
+
+        if (str.substring(4, 5) == "t") {
+            this.Menu("div#actionForceCancel", index);
+        }
+    },
+    Menu: function (Name, index) {
+        var result;
+        var Menu = "tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice";
+
+        result = $(Menu + " " + Name).remove();
+    },
+    CalculateByTax: function () {
+        var optClear = $('.taxed').get(0).id;
+        $('#' + optClear + ' option').each(function (n) {
+            $('#' + $('#' + optClear + ' option').get(n).text).val(0);
+        });
+
+        $('.taxed').each(function (i) {
+            if ($('.amount').get(i).value != "") {
+                var namapajak = $('.taxed :selected').get(i).text;
+                var nilaipajak = $("#" + namapajak).val();
+                var nilaiygditambah = $('.taxedAmt').get(i).value == "" ? 0 : $('.taxedAmt').get(i).value; //$('.taxedAmt').get(i).value;
+                var total = parseFloat(nilaipajak) + parseFloat(nilaiygditambah);
+                $("#" + namapajak).val(total);
+            }
+        });
+    },
+    RecalculateTax: function (element) {
+        var index = element.attr("id").split('_')[1];
+        res = this.SetTaxAmount(index);
+        $("#taxedAmt_" + index).val(res);
+        this.CalculateByTax();
+    },
+    RecalculateTaxOnChangeRate: function (index) {
+        res = this.SetTaxAmount(index);
+        $("#taxedAmt_" + index).val(res);
+        this.CalculateByTax();
+    },
+    SetTaxAmount: function (index) {
+        var NilaiTax = $("#taxed_" + index).val();
+        var NamaTax = $("#taxed_" + index + " :selected").text();
+        var Jumlah = $("#amount_" + index).val();
+        var JumlahTax = (Jumlah * NilaiTax) / 100;
+        var cek = "#amount_" + index;
+        var result;
+
+        if ($(cek).val().length < 1) {
+            result = 0;
+        } else {
+            result = JumlahTax;
+        }
+        return result;
+    }
+
 })
     });
  

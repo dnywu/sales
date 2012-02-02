@@ -14,7 +14,7 @@
     using dokuku.sales.item.service;
     using dokuku.sales.organization.report;
     using dokuku.sales.organization.repository;
-    using dokuku.sales.payment.service;
+    //using dokuku.sales.payment.service;
     using dokuku.sales.paymentmode.query;
     using dokuku.sales.paymentmode.service;
     using dokuku.sales.taxes.query;
@@ -29,6 +29,7 @@
     using NServiceBus;
     using StructureMap;
     using TinyIoC;
+    using dokuku.sales.payment.readmodel;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -118,6 +119,9 @@
                     x.For<ICurrencyQueryRepository>().Use<CurrencyQueryRepository>();
                     x.For<IPaymentModeQuery>().Use<PaymentModeQuery>();
                     x.For<IPaymentModeService>().Use<PaymentModeService>();
+                    x.For<ILogoOrganizationQuery>().Use<LogoOrganizationQuery>();
+                    x.For<ILogoOrganizationCommand>().Use<LogoOrganizationCommand>();
+                    x.For<IPaymentRepository>().Use<PaymentRepository>();
                 });
 
                 structureMapBootstrapped = true;
