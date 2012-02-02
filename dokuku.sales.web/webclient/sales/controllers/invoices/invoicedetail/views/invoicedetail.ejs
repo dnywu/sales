@@ -62,6 +62,7 @@
         <td class="txt-rgh">Total</td>
         <td width="10px"></td>
       </tr>
+      <tbody></tbody>
       <%for(var i =0; i<this.Items.length; i++){%>
       <tr class="borderbottom">
         <td class="txt-ctr"><%=(i + 1) %></td>
@@ -70,7 +71,7 @@
         <td class="txt-rgh"><%=this.Items[i].Qty %></td>
         <td class="txt-rgh"><%=this.Items[i].Rate %></td>
         <td class="txt-rgh"><%=this.Items[i].Discount %></td>
-        <td  style="padding-left:25px"><%=this.Items[i].Tax.Name %></td>
+        <td  style="padding-left:25px"><%=this.Items[i].Tax.Code %></td>
         <td id="amountItem" class="txt-rgh"><%=this.Items[i].Amount %></td>
         <td width="10px"></td>
       </tr>
