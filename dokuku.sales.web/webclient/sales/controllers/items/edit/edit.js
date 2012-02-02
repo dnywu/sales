@@ -1,7 +1,8 @@
 steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
-      './ItemEdit.css')
+      './ItemEdit.css',
+      'sales/repository/CurrencyandTaxRepository.js')
 	.then('./views/editItem.ejs', function ($) {
 
 	    $.Controller('sales.Controllers.items.edit',
@@ -14,8 +15,17 @@ steal('jquery/controller',
                 },
                 load: function (id) {
                     $this = this;
+                    curTaxRepo = new CurrencyandTaxRepository();
                     var item = this.getItem(id);
                     this.element.html("//sales/controllers/items/edit/views/editItem.ejs", item);
+                    this.loadDataTax();
+                    $('#tax option[name="' + item.Tax.Name + '"]').attr('selected', 'selected');
+                },
+                loadDataTax: function () {
+                    var tax = curTaxRepo.getAllTax();
+                    $.each(tax, function (i) {
+                        $("#tax").append("<option value='" + tax[i].Value + "' name='" + tax[i].Name + "'>" + tax[i].Name + "</option>");
+                    });
                 },
                 getItem: function (id) {
                     var item = null;
@@ -38,7 +48,7 @@ steal('jquery/controller',
                     var name = $("#itemName").val();
                     var harga = $("#itemPrice").val();
                     var description = $("#description").val();
-                    var taxName = $("#tax").text();
+                    var taxName = $("#tax option:selected").text();
                     var taxValue = $("#tax").val();
 
                     var item = new Object;

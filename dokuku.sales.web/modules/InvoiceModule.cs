@@ -7,7 +7,14 @@ using dokuku.sales.invoices.model;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
-
+using Nancy.ViewEngines;
+using System.IO;
+using System.Dynamic;
+using Nancy.ViewEngines.Razor;
+using Nancy.Extensions;
+using Antlr3.ST;
+using dokuku.sales.invoices.viewtemplating;
+using EO.Pdf;
 namespace dokuku.sales.web.modules
 {
     public class InvoiceModule : Nancy.NancyModule
@@ -39,6 +46,20 @@ namespace dokuku.sales.web.modules
                   IEnumerable<Invoices>  invoices = this.InvoicesQueryRepository().GetDataInvoiceToPaging(this.CurrentAccount().OwnerId, start,limit);
                   return Response.AsJson(invoices);
               };
+            Get["/GetDataInvoiceToPDF/{id}"] = p =>
+            {
+                Guid invoiceId = p.id;
+                Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, this.CurrentAccount().OwnerId);
+                Customer customer = this.CustomerReportRepository().GetCustomerById(Guid.Parse(invoice.CustomerId));
+
+                DefaultTemplate template = new DefaultTemplate();
+                string html = template.GetInvoiceDefaultTemplate(invoice, customer);
+                EO.Pdf.HtmlToPdf.Options.OutputArea = new System.Drawing.RectangleF(0.5f, 0.5f, 7.5f, 10f);
+                MemoryStream memStream = new MemoryStream();
+                HtmlToPdf.ConvertHtml(html, memStream);
+                MemoryStream resultStream = new MemoryStream(memStream.GetBuffer());
+                return Response.FromStream(resultStream, "application/pdf");
+            };
             Delete["/deleteInvoice/{invoiceId}"] = p =>
                 {
                     try
