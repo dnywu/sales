@@ -1,0 +1,105 @@
+﻿div.mainFrame {
+    margin: auto;
+    width: 50%;
+    border-color: #999;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -moz-box-shadow: 0 0 4px 0 #999;
+    -webkit-box-shadow: 0 0 4px 0 #999;
+    box-shadow: 0 0 4px 0 #999;
+    padding-bottom: 15px;
+}
+div.topBandHeaderDIV {
+    padding: 20px 25px;
+    margin: 0;
+    background: #F7F7F7;
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+.HeaderDIVLeft {
+    font-size: 21px;
+}
+div.mainDivWidth {
+    margin: 0 25px 15px 25px;
+    padding-top: 35px;
+    text-align: left;
+}
+div.submitFormDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+input[type="submit"], input[type="button"], button {
+    display: inline-block;
+    height: 34px;
+    padding: 0;
+    position: relative;
+    top: 1px;
+    margin-left: 10px;
+    font-family: helvetica,arial,freesans,clean,sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #333;
+    text-shadow: 1px 1px 0 white;
+    white-space: nowrap;
+    border: none;
+    overflow: visible;
+    background: #DDD;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff',endColorstr='#e1e1e1');
+    background: -webkit-gradient(linear,0% 0,0% 100%,from(white),to(#E1E1E1));
+    background: -moz-linear-gradient(-90deg,white,#E1E1E1);
+    border-bottom: 1px solid #EBEBEB;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    cursor: pointer;
+    margin-left: 1px;
+    padding: 0 13px;
+    -webkit-font-smoothing: subpixel-antialiased!important;
+    border-image: initial;
+}
+div.uploadlogoleft
+{
+    float:left;
+    width: 150px;
+}
+div.uploadlogoright
+{
+    width: 400px;
+    float:right;
+}
+div.labelLogoUpload
+{
+    font-size:18px;
+    font-weight:normal;
+    margin-bottom:5px;
+}
+div.divchooselogo
+{
+    border: 1px Solid #CCC;
+    padding: 7px;
+}
+span.typefile
+{
+    font-size:11px;
+    color:#666;
+}
+input[type="file"]
+{
+    border:1px Solid #A2DDFF;
+    background-color:White;
+    padding:2px;
+    width:300px;
+}
+img.logo
+{
+    width:140px;
+    height: 100px;
+    border:1px dashed #CCC;
+    background-color:White;
+    vertical-align:bottom;
+}

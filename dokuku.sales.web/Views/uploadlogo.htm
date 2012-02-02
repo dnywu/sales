@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../css/uploadlogo.css" rel="stylesheet" type="text/css" />
+    <title>Upload Logo Perusahaan Anda</title>
+</head>
+<body>
+    <div class='mainFrame'>
+        <div class="topBandHeaderDIV">
+            <div class="HeaderDIVLeft" id="TitleSpan">
+                Unggah Logo Perusahaan</div>
+        </div>
+        <div class="mainDivWidth">
+            <form name="uploadlogo" action="/uploadlogoorg" method="POST" enctype="multipart/form-data" oncomplete="javascript:self.close();">
+            <div class="divInvoiceGroup">
+                <table width="100%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="uploadlogoleft">
+                                    <img class="logo" id="logoOrganization" src="../logoOrganization"></img>
+                                </div>
+                                <div class="uploadlogoright">
+                                    <div class="labelLogoUpload">
+                                        Logo perusahaan anda</div>
+                                    <div class="divchooselogo">
+                                        <input type="file" name="Filename" id="filelogo" />
+                                        <br />
+                                        <span class="typefile">JPG,GIF,PNG.</span>
+                                    </div>
+                                    <div>
+                                        <span class="typefile">Diutamakan Ukuran Logo : 140px x 60px.</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="submitFormDiv">
+                <input type="submit" id="submituploadlogo" value="Simpan" />
+                <input type="button" value="Tutup Dialog" onclick='javascript:self.close();' />
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
