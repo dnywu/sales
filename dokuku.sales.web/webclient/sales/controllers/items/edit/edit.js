@@ -19,8 +19,7 @@ steal('jquery/controller',
                     var item = this.getItem(id);
                     this.element.html("//sales/controllers/items/edit/views/editItem.ejs", item);
                     this.loadDataTax();
-                        $('#tax option[name="' + item.Tax.Name + '"]').attr('selected', 'selected'));
-                    }
+                    $('#tax option[name="' + item.Tax.Name + '"]').attr('selected', 'selected');
                 },
                 loadDataTax: function () {
                     var tax = curTaxRepo.getAllTax();
