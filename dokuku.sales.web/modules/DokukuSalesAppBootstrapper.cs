@@ -29,6 +29,9 @@
     using NServiceBus;
     using StructureMap;
     using TinyIoC;
+    using System.Linq;
+    using Nancy.ViewEngines;
+    using Nancy.ViewEngines.Razor;
     using dokuku.sales.payment.readmodel;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
@@ -74,10 +77,11 @@
                     RedirectUrl = System.Configuration.ConfigurationManager.AppSettings["LoginUrl"],
                     UserMapper = requestContainer.Resolve<IUserMapper>(),
                 };
-
+            
             FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
             Jsonp.Enable(pipelines);
             pipelines.AfterRequest.AddItemToEndOfPipeline(SetCookieDomain);
+            requestContainer.Register<RazorViewEngine>();
         }
 
         private void SetCookieDomain(Nancy.NancyContext ctx)
