@@ -2,3 +2,27 @@ td.labelLeft
 {
     width:180px;
 }
+img.logo
+{
+    float:right;
+    width:140px;
+    height: 100px;
+    border:1px dashed #CCC;
+    background-color:White;
+    vertical-align:bottom;
+    display:block;
+}
+span#uploadLogo
+{
+    width: 140px;
+    float:right;
+    text-align:center;
+    font-size:11px;
+    color:Blue;
+    margin-top:2px;
+    cursor:pointer;
+}
+span#uploadLogo:hover
+{
+    color:#4183C4;
+}
