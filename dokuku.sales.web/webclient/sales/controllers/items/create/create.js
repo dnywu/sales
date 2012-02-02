@@ -53,7 +53,7 @@ steal('jquery/controller',
                 var name = $("#itemName").val();
                 var harga = $("#itemPrice").val();
                 var description = $("#description").val();
-                var taxName = $("#tax").text();
+                var taxName = $("#tax option:selected").text();
                 var taxValue = $("#tax").val();
 
                 var item = new Object;
