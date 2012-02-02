@@ -91,7 +91,7 @@ namespace dokuku.sales.invoices.viewtemplating
 							<td width='15%' align='right' style='background-color:#ebebeb; border-right:solid 1px black; border-bottom:solid 1px black; padding:0px 5px 1px 0;'>Diskon</td>
 							<td width='15%' align='right' style='background-color:#ebebeb; border-bottom:solid 1px black; padding:0px 5px 1px 0;'>Total</td>
 						</tr>
-                        <tr height='10px' border='1'>
+                        <tr height='5px' border='1'>
 							<td colspan='5' style='border-bottom:solid 1px black'></td>
 						</tr>
 					</thead>
