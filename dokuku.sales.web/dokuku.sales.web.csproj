@@ -1191,7 +1191,9 @@
     </None>
     <None Include="webclient\sales\controllers\invoices\create\views\AddCustomer.ejs" />
     <None Include="webclient\sales\controllers\items\edit\views\editItem.ejs" />
-    <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs" />
+    <None Include="webclient\sales\controllers\items\list\views\confirmBox.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\items\list\views\ItemList.ejs">
       <SubType>Designer</SubType>
     </None>
