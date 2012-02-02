@@ -31,10 +31,12 @@ namespace dokuku.sales.invoices.model
         public string OwnerId { get; set; }
         public string Status { get; private set; }
         public string CancelNote { get; private set; }
+        public TaxSummary[] TaxSummary { get; set; }
 
         public void InvoiceStatusBelumBayar()
         {
             this.Status = InvoiceStatus.BELUM_BAYAR;
+            //TotalTaxItem = new Dictionary<string, decimal>();
         }
         public void InvoiceStatusBelumLunas()
         {

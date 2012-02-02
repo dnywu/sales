@@ -15,5 +15,6 @@ namespace dokuku.sales.invoices.model
         public decimal Discount { get; set; }
         public Tax Tax { get; set; }
         public decimal Amount { get; set; }
+        public decimal TaxAmount { get; set; }
     }
 }

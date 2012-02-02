@@ -38,7 +38,7 @@ steal('jquery/controller',
                     var name = $("#itemName").val();
                     var harga = $("#itemPrice").val();
                     var description = $("#description").val();
-                    var taxName = $("#tax").text();
+                    var taxCode = $("#tax").text();
                     var taxValue = $("#tax").val();
 
                     var item = new Object;
@@ -50,7 +50,7 @@ steal('jquery/controller',
                     item.Description = description;
 
                     item.Tax = new Object();
-                    item.Tax.Name = taxName.trim();
+                    item.Tax.Code = taxCode.trim();
                     item.Tax.Value = taxValue;
                     $.ajax({
                         type: "POST",
