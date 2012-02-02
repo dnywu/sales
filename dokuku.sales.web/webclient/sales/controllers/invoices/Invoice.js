@@ -156,7 +156,8 @@
                     objInv.Items[i].Discount = $('.discount').get(i).value;
                     objInv.Items[i].Tax = new Object();
                     objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
-                    objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
+                    objInv.Items[i].Tax.Code = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
+                    objInv.Items[i].Tax.Amount = $('.taxedAmt').get(i).value;
                     objInv.Items[i].Amount = $('.amount').get(i).value;
                     objInv.Items[i].TaxAmount = $('.taxedAmt').get(i).value;
                 }
@@ -165,11 +166,11 @@
             }
         });
 
-        objInv.TotalTaxItem = new Array;
+        objInv.TaxSummary = new Array;
         $('.TotalTaxAmt').each(function (i) {
-            objInv.TotalTaxItem[i] = new Object;
-            objInv.TotalTaxItem[i].NameTaxAmount = $('.TotalTaxAmt').get(i).id;
-            objInv.TotalTaxItem[i].TaxAmount = $('.TotalTaxAmt').get(i).value;
+            objInv.TaxSummary[i] = new Object;
+            objInv.TaxSummary[i].Code = $('.TotalTaxAmt').get(i).id;
+            objInv.TaxSummary[i].Amount = $('.TotalTaxAmt').get(i).value;
         });
 
         if (objInv.CustomerId == 0) {
