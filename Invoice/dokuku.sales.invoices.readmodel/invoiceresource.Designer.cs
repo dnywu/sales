@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace dokuku.sales.invoices.denormalizers {
+namespace dokuku.sales.invoices.readmodel {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace dokuku.sales.invoices.denormalizers {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class invoiceresources {
+    internal class invoiceresource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal invoiceresources() {
+        internal invoiceresource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace dokuku.sales.invoices.denormalizers {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("dokuku.sales.invoices.denormalizers.invoiceresources", typeof(invoiceresources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("dokuku.sales.invoices.readmodel.invoiceresource", typeof(invoiceresource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace dokuku.sales.invoices.denormalizers {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InvoiceIndex.
+        /// </summary>
+        internal static string InvoiceIndexCollectionName {
+            get {
+                return ResourceManager.GetString("InvoiceIndexCollectionName", resourceCulture);
             }
         }
         

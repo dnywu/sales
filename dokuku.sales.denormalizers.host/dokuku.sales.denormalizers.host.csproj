@@ -97,13 +97,9 @@
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices.denormalizers\dokuku.sales.invoices.denormalizers.csproj">
+    <ProjectReference Include="..\Invoice\dokuku.sales.invoices.denormalizers\dokuku.sales.invoices.denormalizers.csproj">
       <Project>{10F1A134-D385-4F73-8C7B-F338B860935E}</Project>
       <Name>dokuku.sales.invoices.denormalizers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices.events\dokuku.sales.invoices.events.csproj">
-      <Project>{1BD6AA4F-B5C8-4183-AC7A-16C15016C9AF}</Project>
-      <Name>dokuku.sales.invoices.events</Name>
     </ProjectReference>
     <ProjectReference Include="..\payment\dokuku.sales.payment.denormalizers\dokuku.sales.payment.denormalizers.csproj">
       <Project>{B96606C4-22D7-47CA-899D-BCBFEB36C1D4}</Project>

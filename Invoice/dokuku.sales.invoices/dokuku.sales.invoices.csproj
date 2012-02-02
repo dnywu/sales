@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{10F1A134-D385-4F73-8C7B-F338B860935E}</ProjectGuid>
+    <ProjectGuid>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>dokuku.sales.invoices.denormalizers</RootNamespace>
-    <AssemblyName>dokuku.sales.invoices.denormalizers</AssemblyName>
+    <RootNamespace>dokuku.sales.invoices</RootNamespace>
+    <AssemblyName>dokuku.sales.invoices</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,13 +40,15 @@
     <Reference Include="Ncqrs">
       <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs.NServiceBus">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\Ncqrs.NServiceBus.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus">
+    <Reference Include="NServiceBus, Version=2.6.0.1504, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,31 +57,55 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InvoiceCreatedEventHandler.cs" />
-    <Compile Include="invoiceresources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>invoiceresources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceUpdateEventHandler.cs" />
+    <Compile Include="command\IInvoicesRepository.cs" />
+    <Compile Include="model\DateFormatter.cs" />
+    <Compile Include="model\IInvoiceAutoNumberGenerator.cs" />
+    <Compile Include="model\InvoiceAutoNumberDraft.cs" />
+    <Compile Include="model\InvoiceAutoNumberGenerator.cs" />
+    <Compile Include="model\InvoiceAutoNumberMonthly.cs" />
+    <Compile Include="model\InvoiceAutoNumberDefault.cs" />
+    <Compile Include="model\InvoiceAutoNumberYearly.cs" />
+    <Compile Include="model\InvoiceAutoNumberConfig.cs" />
+    <Compile Include="model\InvoiceItem.cs" />
+    <Compile Include="model\InvoiceReports.cs" />
+    <Compile Include="model\Invoices.cs" />
+    <Compile Include="command\InvoicesRepository.cs" />
+    <Compile Include="model\InvoiceStatus.cs" />
+    <Compile Include="model\Tax.cs" />
+    <Compile Include="model\Term.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="query\IInvoicesQueryRepository.cs" />
+    <Compile Include="query\InvoicesQueryRepository.cs" />
+    <Compile Include="service\InvoicePaidHandler.cs" />
+    <Compile Include="service\IInvoiceService.cs" />
+    <Compile Include="service\InvoiceService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+    <ProjectReference Include="..\..\dokuku.sales.config\dokuku.sales.config.csproj">
       <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
       <Name>dokuku.sales.config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices.events\dokuku.sales.invoices.events.csproj">
-      <Project>{1BD6AA4F-B5C8-4183-AC7A-16C15016C9AF}</Project>
-      <Name>dokuku.sales.invoices.events</Name>
+    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
+      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
+      <Name>dokuku.sales.invoice.messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.commands.csproj">
+      <Project>{90BD0A87-C459-44E9-8E22-07712962C2EB}</Project>
+      <Name>dokuku.sales.invoices.commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.domain\dokuku.sales.invoices.domain.csproj">
+      <Project>{14617206-BC85-4AD3-A798-F5CD40A53369}</Project>
+      <Name>dokuku.sales.invoices.domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.events\dokuku.sales.payment.events.csproj">
+      <Project>{249D137E-0806-4171-9864-3019FD32E075}</Project>
+      <Name>dokuku.sales.payment.events</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="invoiceresources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>invoiceresources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
