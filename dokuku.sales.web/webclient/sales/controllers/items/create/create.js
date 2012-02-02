@@ -53,7 +53,7 @@ steal('jquery/controller',
                 var name = $("#itemName").val();
                 var harga = $("#itemPrice").val();
                 var description = $("#description").val();
-                var taxName = $("#tax option:selected").text();
+                var taxName = $("#tax option:selected").text(); //$("#tax").text();
                 var taxValue = $("#tax").val();
 
                 var item = new Object;
@@ -99,19 +99,19 @@ steal('jquery/controller',
                 var tax = new Object();
                 tax.Name = defaults.name;
                 tax.Value = defaults.percent;
-                
+
                 err.empty();
                 if (defaults.name !== "" && defaults.percent != 0)
                     curTaxRepo.SaveTax(tax);
-                    $("#tax").append("<option value='" + defaults.percent + "'>" + defaults.name + "</option>");
-                    $(".ModalDialog").remove();
+                $("#tax").append("<option value='" + defaults.percent + "'>" + defaults.name + "</option>");
+                $(".ModalDialog").remove();
 
                 if (defaults.name == "")
                     $('<li>', { 'class': 'name', text: "Nama Pajak harus di isi" }).appendTo(err.show());
                 if (defaults.percent == "")
                     $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus yydiisi" }).appendTo(err.show());
                 if (defaults.percent <= 0)
-                    $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus lebih besar dari nol" }).appendTo(err.show());              
+                    $('<li>', { 'class': 'percenttax', text: "Persentase Pajak harus lebih besar dari nol" }).appendTo(err.show());
                 return;
             },
             taxNameKeypress: function () {

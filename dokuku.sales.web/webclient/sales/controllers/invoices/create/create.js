@@ -117,7 +117,7 @@ steal('jquery/controller',
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
                 this.GetSubTotal();
                 this.GetTotal();
-                this.CalculateByTax();
+                inv.CalculateByTax();
             },
             //            '.partname change': function (el) {
             //                var partName = el.val();
@@ -132,6 +132,7 @@ steal('jquery/controller',
                         el.val(partName);
                         var index = el.attr("id").split('_')[1];
                         this.FillItemAtribut(partName, index);
+
                         $(".resultItemDiv").remove();
                         el.trigger("blur");
                         $("#qty_" + index).trigger("focus");

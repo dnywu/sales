@@ -13,7 +13,11 @@
             <creditAvailable class="paddingleft ">Kredit tersedia</creditAvailable>            
             <vCreditAvailable class="paddingleft height">Rp. 0.00</vCreditAvailable>
           <hr class="paddingleft right"></hr>
-            <header class="paddingleft height">Invoice Details</header>
+            <header class="paddingleft height">Detail Faktur</header>
+            <invoiceDate class="paddingleft ">Tanggal Faktur</invoiceDate>
+            <vInvoiceDate class="paddingleft height" >
+            <%=this.InvoiceDate%>
+            </vInvoiceDate>
             <invoice class="paddingleft ">Faktur#</invoice>
             <vInvoice class="paddingleft height" >
               <%=this.InvoiceNo%>
@@ -39,7 +43,7 @@
                 </td>
                 <td>
                   <BankCharges class="cls-bankCharges">
-                    Biaya Bank(<required>if any</required>)
+                    Biaya Bank(<required>Jika ada</required>)
                   </BankCharges>
                 </td>
               </tr>
