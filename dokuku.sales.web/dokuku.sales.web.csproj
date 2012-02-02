@@ -119,9 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\css\login.css" />
+    <Content Include="Views\css\uploadlogo.css" />
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
+    <Content Include="Views\uploadlogo.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -751,11 +753,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\edittax.ejs" />
-    <Content Include="webclient\sales\controllers\uploadlogo\funcunit.html" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.css" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.html" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.js" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
@@ -1209,9 +1206,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="webclient\sales\controllers\uploadlogo\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\sales.md" />
