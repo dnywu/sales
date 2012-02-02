@@ -59,7 +59,9 @@
   <ItemGroup>
     <Compile Include="command\IInvoicesRepository.cs" />
     <Compile Include="model\DateFormatter.cs" />
+    <Compile Include="model\IInvoiceAutoNumberGenerator.cs" />
     <Compile Include="model\InvoiceAutoNumberDraft.cs" />
+    <Compile Include="model\InvoiceAutoNumberGenerator.cs" />
     <Compile Include="model\InvoiceAutoNumberMonthly.cs" />
     <Compile Include="model\InvoiceAutoNumberDefault.cs" />
     <Compile Include="model\InvoiceAutoNumberYearly.cs" />
@@ -75,9 +77,7 @@
     <Compile Include="query\IInvoicesQueryRepository.cs" />
     <Compile Include="query\InvoicesQueryRepository.cs" />
     <Compile Include="service\InvoicePaidHandler.cs" />
-    <Compile Include="service\IInvoiceAutoNumberGenerator.cs" />
     <Compile Include="service\IInvoiceService.cs" />
-    <Compile Include="service\InvoiceAutoNumberGenerator.cs" />
     <Compile Include="service\InvoiceService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,9 +89,9 @@
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.command.csproj">
+    <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.commands.csproj">
       <Project>{90BD0A87-C459-44E9-8E22-07712962C2EB}</Project>
-      <Name>dokuku.sales.invoices.command</Name>
+      <Name>dokuku.sales.invoices.commands</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices.domain\dokuku.sales.invoices.domain.csproj">
       <Project>{14617206-BC85-4AD3-A798-F5CD40A53369}</Project>

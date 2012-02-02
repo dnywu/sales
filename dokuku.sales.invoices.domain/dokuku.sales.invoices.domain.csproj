@@ -31,15 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="Ncqrs">
       <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,11 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Invoices.cs" />
+    <Compile Include="DateFormatter.cs" />
+    <Compile Include="IInvoiceAutoNumberGenerator.cs" />
+    <Compile Include="Invoice.cs" />
     <Compile Include="InvoiceStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.invoices.common\dokuku.sales.invoices.common.csproj">
+      <Project>{BCD17827-66E7-4E7B-8DAE-485D05A0F493}</Project>
+      <Name>dokuku.sales.invoices.common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices.events\dokuku.sales.invoices.events.csproj">
       <Project>{1BD6AA4F-B5C8-4183-AC7A-16C15016C9AF}</Project>
       <Name>dokuku.sales.invoices.events</Name>

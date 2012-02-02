@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
 using Ncqrs.Commanding;
-namespace dokuku.sales.invoices.command
+namespace dokuku.sales.invoices.commands
 {
     [Serializable]
     [MapsToAggregateRootMethod("dokuku.sales.invoices.domain.Invoices,dokuku.sales.invoices.domain","DeleteInvoice")]

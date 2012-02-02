@@ -43,24 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customer.cs" />
-    <Compile Include="DescriptionInvoiceItemChanged.cs" />
-    <Compile Include="InvoiceApproved.cs" />
-    <Compile Include="InvoiceCanceled.cs" />
+    <Compile Include="futurerelease\DescriptionInvoiceItemChanged.cs" />
+    <Compile Include="futurerelease\InvoiceApproved.cs" />
+    <Compile Include="futurerelease\InvoiceCanceled.cs" />
     <Compile Include="InvoiceCreated.cs" />
-    <Compile Include="InvoiceDeleted.cs" />
-    <Compile Include="InvoiceItem.cs" />
-    <Compile Include="InvoiceItemAdded.cs" />
-    <Compile Include="InvoiceItemChanged.cs" />
-    <Compile Include="InvoicePONoChanged.cs" />
-    <Compile Include="InvoiceExchangeRateChanged.cs" />
-    <Compile Include="InvoiceTermChanged.cs" />
+    <Compile Include="futurerelease\InvoiceDeleted.cs" />
+    <Compile Include="futurerelease\InvoiceItemAdded.cs" />
+    <Compile Include="futurerelease\InvoiceItemChanged.cs" />
+    <Compile Include="futurerelease\InvoicePONoChanged.cs" />
+    <Compile Include="futurerelease\InvoiceExchangeRateChanged.cs" />
+    <Compile Include="futurerelease\InvoiceTermChanged.cs" />
+    <Compile Include="InvoiceUpdated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QtyInvoiceItemChanged.cs" />
-    <Compile Include="Tax.cs" />
-    <Compile Include="Term.cs" />
-    <Compile Include="InvoiceDateChanged.cs" />
-    <Compile Include="PriceInvoiceItemChanged.cs" />
+    <Compile Include="futurerelease\QtyInvoiceItemChanged.cs" />
+    <Compile Include="futurerelease\InvoiceDateChanged.cs" />
+    <Compile Include="futurerelease\PriceInvoiceItemChanged.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dokuku.sales.invoices.common\dokuku.sales.invoices.common.csproj">
+      <Project>{BCD17827-66E7-4E7B-8DAE-485D05A0F493}</Project>
+      <Name>dokuku.sales.invoices.common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

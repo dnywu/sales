@@ -4,7 +4,7 @@
 //using System.Text;
 //using Machine.Specifications;
 //using dokuku.sales.invoices;
-//using dokuku.sales.invoices.command;
+//using dokuku.sales.invoices.commands;
 //using dokuku.sales.invoices.model;
 //using dokuku.sales.invoices.query;
 //using dokuku.sales.config;

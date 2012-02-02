@@ -31,13 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="antlr.runtime, Version=2.7.6.2, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NServiceBus\antlr.runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\packages\NServiceBus\Antlr3.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NServiceBus\Common.Logging.dll</HintPath>
@@ -46,39 +39,68 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NServiceBus\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.MSMQ, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\NServiceBus\depedencies\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\NServiceBus\depedencies\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSMQ">
       <HintPath>..\packages\NServiceBus\Interop.MSMQ.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\log4net.dll</HintPath>
+      <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\Ncqrs.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=1.3.1.4349, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="Ncqrs.NServiceBus">
+    <Reference Include="MongoDB.Driver, Version=1.3.1.4349, Culture=neutral, PublicKeyToken=f686731cfb9cc103, processorArchitecture=MSIL">
+      <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.Config.StructureMap">
+      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.Config.StructureMap\Ncqrs.Config.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.Eventing.Storage.MongoDB, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.Eventing.Storage.MongoDB\Ncqrs.Eventing.Storage.MongoDB.dll</HintPath>
+    </Reference>
+    <Reference Include="Ncqrs.NServiceBus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.NServiceBus\Ncqrs.NServiceBus.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus">
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus, Version=2.6.0.1504, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Core">
+    <Reference Include="NServiceBus.Core, Version=2.6.0.1504, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NServiceBus\NServiceBus.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Host">
+    <Reference Include="NServiceBus.Host, Version=2.6.0.1504, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
       <HintPath>..\packages\NServiceBus\NServiceBus.Host.exe</HintPath>
     </Reference>
     <Reference Include="Spring.Core, Version=1.2.0.20313, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NServiceBus\Spring.Core.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -88,15 +110,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dokuku.sales.currency.messages\dokuku.sales.currency.messages.csproj">
-      <Project>{8B2DDB22-5A9B-44B5-8BF3-E97787507886}</Project>
-      <Name>dokuku.sales.currency.messages</Name>
+    <ProjectReference Include="..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.command.csproj">
+    <ProjectReference Include="..\dokuku.sales.invoices.autonumbergenerator\dokuku.sales.invoices.autonumbergenerator.csproj">
+      <Project>{38C9BEFC-1410-4383-84BE-C37DD655CDB7}</Project>
+      <Name>dokuku.sales.invoices.autonumbergenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.commands.csproj">
       <Project>{90BD0A87-C459-44E9-8E22-07712962C2EB}</Project>
-      <Name>dokuku.sales.invoices.command</Name>
+      <Name>dokuku.sales.invoices.commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.common\dokuku.sales.invoices.common.csproj">
+      <Project>{BCD17827-66E7-4E7B-8DAE-485D05A0F493}</Project>
+      <Name>dokuku.sales.invoices.common</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices.domain\dokuku.sales.invoices.domain.csproj">
       <Project>{14617206-BC85-4AD3-A798-F5CD40A53369}</Project>
@@ -105,10 +139,6 @@
     <ProjectReference Include="..\dokuku.sales.invoices.events\dokuku.sales.invoices.events.csproj">
       <Project>{1BD6AA4F-B5C8-4183-AC7A-16C15016C9AF}</Project>
       <Name>dokuku.sales.invoices.events</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
-      <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
-      <Name>dokuku.sales.invoices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
