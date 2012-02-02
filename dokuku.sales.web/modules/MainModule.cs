@@ -13,6 +13,11 @@ namespace dokuku.sales.web.modules
                 return View["webclient/sales/index"];
             };
 
+            Get["/uploadlogo"] = p =>
+            {
+                return View["/uploadlogo"];
+            };
+
             Get["/getuser"] = p =>
             {
                 return Response.AsJson(this.Context.CurrentUser.UserName);

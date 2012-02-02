@@ -36,14 +36,24 @@
     <Reference Include="antlr.runtime">
       <HintPath>..\packages\NServiceBus\antlr.runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <HintPath>..\packages\NServiceBus\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.3.0.7239, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAct.Antlr3.StringTemplate.0.1.2\lib\net35-Client\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime.Debug, Version=3.3.0.7239, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAct.Antlr3.StringTemplate.0.1.2\lib\net35-Client\Antlr3.Runtime.Debug.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.StringTemplate, Version=3.3.0.7239, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAct.Antlr3.StringTemplate.0.1.2\lib\net35-Client\Antlr3.StringTemplate.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging.Log4Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="EO.Pdf, Version=3.0.104.2, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EO.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="FluentMongo">
       <HintPath>..\packages\FluentMongo.1.3.1\lib\FluentMongo.dll</HintPath>
@@ -57,6 +67,9 @@
       <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\mongocsharpdriver.1.3.1\lib\net35\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -118,10 +131,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Views\test.cshtml" />
     <Content Include="Views\css\login.css" />
+    <Content Include="Views\css\uploadlogo.css" />
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
+    <Content Include="Views\uploadlogo.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -751,11 +767,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\edittax.ejs" />
-    <Content Include="webclient\sales\controllers\uploadlogo\funcunit.html" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.css" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.html" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.js" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\funcunit.html" />
     <Content Include="webclient\sales\index.html" />
@@ -1213,9 +1224,6 @@
     <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\uploadlogo\views\init.ejs">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
@@ -1276,6 +1284,10 @@
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.viewtemplating\dokuku.sales.invoices.viewtemplating.csproj">
+      <Project>{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}</Project>
+      <Name>dokuku.sales.invoices.viewtemplating</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
       <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
       <Name>dokuku.sales.invoices</Name>
@@ -1319,6 +1331,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controller\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

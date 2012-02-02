@@ -58,11 +58,9 @@ namespace dokuku.sales.web.modules
                     return Response.AsJson("success");
                 };
 
-            Post["/uploadlogo"] = p =>
+            Post["/uploadlogoorg"] = p =>
             {
                 Stream stream = this.Request.Files.FirstOrDefault().Value;
-                //Image img = Image.FromStream(stream);
-                //img.Size.
                 byte[] logoData = ReadFile(stream);
                 long size = logoData.LongLength / 1024;
                 if (size > 1024)
@@ -71,13 +69,14 @@ namespace dokuku.sales.web.modules
                 }
                 LogoOrganization logoOrganization = new LogoOrganization { _id = this.CurrentAccount().OwnerId, ImageData = logoData, OwnerId = this.CurrentAccount().OwnerId };
                 this.LogoOrganizationCommand().Save(logoOrganization);
-
-                return Response.AsRedirect("/");
+                return Response.AsRedirect("/uploadlogo");
             };
 
             Get["/logoOrganization"] = p =>
             {
                 LogoOrganization logo = this.LogoOrganizationQuery().GetLogo(this.CurrentAccount().OwnerId);
+                if (logo == null)
+                    return null;
                 MemoryStream stream = new MemoryStream(logo.ImageData);
                 return Response.FromStream(stream, "image/png");
             };
