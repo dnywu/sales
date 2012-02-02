@@ -30,21 +30,13 @@ steal('jquery/controller', 'jquery/view/ejs',
     '#menuItemRightCetakKePDF click': function () {
         var id = $(".invoiceDetail").attr("id");
         window.open("/GetDataInvoiceToPDF/" + id, 'Invoice', null, null);
-        //        $.ajax({
-        //            type: 'GET',
-        //            url: '/GetDataInvoiceToPDF/' + id,
-        //            dataType: 'json',
-        //            async: false,
-        //            success: function (data) {
-        //            }
-        //        });
-        //        return invoice;
     },
     GetStatusInvoice: function (status) {
         var IsStatus = status;
         if (IsStatus != "Draft") {
             $("#menuItemRightSetujui").remove();
         }
+    },
     '#menuItemRightBatal click': function () {
         var InvID = $(".idIvoDetil").attr("id");
         $(".BodyConfirmMassage").remove();
@@ -75,8 +67,6 @@ steal('jquery/controller', 'jquery/view/ejs',
             $(".BodyConfirmMassage").append(message);
             return false;
         }
-
-
         if (result.error == false) {
             $(".DeleteConfirmation").remove();
             $("#body").sales_invoices_list('load');
@@ -151,18 +141,18 @@ steal('jquery/controller', 'jquery/view/ejs',
     },
     GetStatusInvoice: function (status) {
         var IsStatus = status;
-                if (IsStatus != "Draft") {
-                    $("#menuItemRightSetujui").remove();
-                    $("#menuItemRightHapus").remove();
-                    $("#menuItemRightUbah").remove();
-                }
-                if (IsStatus != "Belum Bayar") {
-                    $("#menuItemRightBatal").remove();
-                    $("#menuItemRightUbah").remove();
-                }
-                if (IsStatus != "Belum Lunas") {
-                    $("#menuItemRightBatalPaksa").remove();
-                }
+        if (IsStatus != "Draft") {
+            $("#menuItemRightSetujui").remove();
+            $("#menuItemRightHapus").remove();
+            $("#menuItemRightUbah").remove();
+        }
+        if (IsStatus != "Belum Bayar") {
+            $("#menuItemRightBatal").remove();
+            $("#menuItemRightUbah").remove();
+        }
+        if (IsStatus != "Belum Lunas") {
+            $("#menuItemRightBatalPaksa").remove();
+        }
     },
     GetDetailCustomer: function (invoice) {
         $.ajax({
