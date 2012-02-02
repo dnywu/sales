@@ -11,14 +11,13 @@ namespace dokuku.sales.organization.model
         public string Name { get; set; }
         public string Currency { get; set; }
         public int FiscalYearPeriod { get; set; }
-
-        public Organization(string id, string ownerId, string name, string ccy, int fiscalYearPeriod)
-        {
-            _id = id;
-            OwnerId = ownerId;
-            Name = name;
-            Currency = ccy;
-            FiscalYearPeriod = fiscalYearPeriod;
-        }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Province { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+        public string Website { get; set; }
     }
 }

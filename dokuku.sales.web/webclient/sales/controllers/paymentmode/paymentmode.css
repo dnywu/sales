@@ -1,0 +1,700 @@
+﻿div.FormNewPaymentMode{
+	font-family:"Lucida Grande",Arial,Verdana,Helvetica,sans-serif;
+	height : 100%;
+	width : 75%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}
+div.ListPaymentModeDiv{
+	width : 100%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
+}
+.topBandHeaderListPaymentModeDIV{
+	width: 100%;
+	margin: 0;
+	background: #F7F7F7;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+	padding: 20px 25px;
+}
+div.settingPaymentMode
+{
+	display:none;
+	cursor:pointer;
+}
+div.ContextMenuPaymentMode
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 145px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+.EditImageContextPaymentMode{
+	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background-position: -382px -53px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
+div.itemContextMenuPaymentMode{
+	padding: 7px 5px 5px 7px;
+	color: #457BD9;
+	cursor: pointer;
+	white-space: normal;
+	text-decoration: none;
+}
+div.itemContextMenuPaymentMode span
+{
+	cursor:pointer;
+}
+div.itemContextMenuPaymentMode span:hover{
+	color:Red;
+	text-decoration:underline;
+}
+div.CreateNewPaymentMode{
+	margin:20px;
+	padding:20px;
+	border-top : 1px solid #ECECEC;
+	border-bottom : 1px solid #ECECEC;
+	background: #F7F7F7;
+}
+div.topBandHeaderDIV {
+padding: 20px 25px;
+background: #F7F7F7;
+
+}
+div.mandatoryTxt{
+	color: #9C0000;
+	font-size : 12px;
+	font-weight:bold;
+	text-align : right;
+}
+.HeaderDIVLeft{
+	font-size: 21px;
+	font-family: arial, verdana;
+}
+
+td.td_field{
+	width:30%;
+}
+td.labelLeft{
+	width:18%;
+}
+td.error{
+	width:52%;
+}
+.labelLeft{
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+	padding-right : 10px;
+	color: #666;
+}
+input[type="checkbox"]{
+	display: inline-block;
+	font-size: 15px;
+	padding: 0;
+	width: 1.05em;
+	height: 1.05em;
+	-webkit-border-radius: 0.25em;
+	vertical-align: text-top;
+	-webkit-appearance: none;
+	background: url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -126px -453px;
+	margin-top: 2px;
+}
+input[type="checkbox"]:checked{
+	display: inline-block;
+	font-size: 15px;
+	padding: 0;
+	width: 1.05em;
+	height: 1.05em;
+	-webkit-border-radius: 0.25em;
+	vertical-align: text-top;
+	-webkit-appearance: none;
+	background: url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -141px -453px;
+	margin-top: 2px;
+}
+.checkboxLabelDiv {
+	float: left;
+	margin: 5px 0 0 2px;
+}
+.checkboxLabelDiv label{
+	font-size:12px;
+}
+label.labelStyle{
+	margin-left: 3px;
+	margin-bottom : 2px;
+}
+.text{
+	width:73% ! important;
+}
+table.FormNewCuscotmer{
+	width:100%;
+	border:0px solid black;
+}
+table.PaymentModeTable{
+	width:100%;
+	border:0px solid black;
+}
+table.PaymentModeTable tbody{
+	border:0px solid black;
+}
+table.PaymentModeTable tbody tr td#formListPaymentMode{
+	border:0px solid black;
+	width:75%;
+}
+table.PaymentModeTable tbody tr td#MenuFormListPaymentMode{
+	border:0px solid black;
+	width:25%;
+}
+table.Field{
+	width : 40%;
+}
+td.fieldCustom{
+	width:13.5%;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	color: #666;
+}
+td.value{
+	width:14.5%;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	color: #666;
+}
+td.space{
+	width:0.5%;
+}
+#address{
+	display:none;
+}
+.add{
+	background: url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -194px -110px;
+	width: 12px;
+	height: 12px;
+	border: 0px;
+	cursor: pointer;
+	margin-top:7px;
+	vertical-align: top;
+}
+.copyField{
+	background: url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -389px -166px;
+	width: 8px;
+	height: 11px;
+}
+
+#CustomField{
+	display:none;
+}
+.CreatePaymentModeBtn{
+	background: transparent url("/sales/controllers/PaymentMode/images/Actions.png") repeat-x;
+	background-position: -0px -1458px;
+	border-color: #CFCECE #CFCECE #B5B4B4;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-style: solid;
+	border-width: 1px;
+	color: #444;
+	font: bold 11px Arial,Helvetica,sans-serif;
+	margin: 0;
+	padding: 5px 15px;
+	cursor:pointer;
+}
+.field_select{
+	width: 63px ! important;
+}
+.td_field_PaymentMode{
+	width:100%;
+}
+
+.classPesan{
+	height:35px;
+}
+
+.HeaderDIVListPaymentMode{
+	font-size: 21px;
+	font-family: arial, verdana;
+	background: #F7F7F7;
+	height: 34px;
+	padding: 20px;
+}
+
+.ClassListPaymentMode {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 30px;
+}
+.ClassSubMenuDataPaymentMode {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 12px;
+}
+
+.thDataPaymentMode
+{
+	padding: 6px 10px 6px 0;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	color: #999;
+	font-weight: normal;
+	height: 32px;
+	border-image: initial;
+}
+.tdDataPaymentModeRight{
+	text-align:right;
+	padding: 6px 10px 6px 0;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	font-weight: normal;
+	height: 32px;
+}
+.tdDataPaymentModeLeft{
+	text-align:left;
+	padding: 6px 10px 6px 10;
+	border: solid 0 #EBEBEB;
+	border-width: 1px 0;
+	vertical-align: middle;
+	font-weight: normal;
+	height: 32px;
+}
+.tdDataPaymentModeCenter{
+	border-bottom: solid 1px #EBEBEB;
+}
+div.menuLeft{
+	list-style: none;
+	margin: 0 3px 2px 0;
+	padding: 5px 10px 5px 10px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font: 11px verdana;
+	background: #F3F3F3;
+	border: solid 1px gainsboro;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	cursor: pointer;
+	height: 15px;
+}
+
+.MenuFormListPaymentMode {
+	padding: 40px 0 20px 20px;
+	vertical-align: top;
+}
+.BtnTambahPaymentMode{
+	background: transparent url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -16px -226px;
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	padding: 9px 5px 4px 35px;
+	height: 26px;
+	width: 154px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	font-size:11.5px;
+	cursor: pointer;
+}
+
+.floatLeft{
+	float: right;
+	padding-right: 5px;
+}
+.floatRight{
+	float: left;
+}
+.Pagging 
+{
+	display:none;
+	padding: 7px 12px 25px 35px;
+	border: solid 1px #EBEBEB;
+	background: #EBEBEB;
+}
+.DivNext{
+	float:left;
+	margin-right:5px
+}
+.DivPrev{
+	float:left;
+	margin-right:5px
+}
+.disableNext{
+	float:left;
+	margin-right:5px
+}
+.disablePrev{
+	float:left;
+	margin-right:5px
+}
+.DivlimitData{
+	float:left;
+}
+.DivPage{
+	float:left;
+	padding-right: 4px;
+	padding-left: 4px;
+	margin-left:5px;
+	margin-right:5px;
+}
+.pagingSize{
+	height: 21px;
+	width: 19px;
+	cursor: pointer;
+}
+.BodyDataPaymentMode{
+	overflow : auto;
+	height : 280px;
+}
+
+.odd {
+	background: #F8F8F8;
+}
+div.settingListPaymentMode
+{
+	display:none;
+}
+div.ConfirmationPaymentMode{
+	width : 20%;
+	border : 1px solid #ECECEC;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	margin-bottom:25px;
+	position: absolute;
+	top: 245px;
+	left: 337px;
+	display:none;
+}
+.imagesConfirm{
+	background: url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -273px -1025px;
+	margin: 10px 15px 10px 5px;
+	height: 34px;
+	width: 38px;
+	float : left;
+}
+div.isiConfirmationHeaderPaymentMode{
+	margin: 20px 5px 10px 5px;
+}
+.ConfirmationHeaderPaymentMode{
+	font-size: 18px;
+	font-family: arial, verdana;
+	background: #F0F0F0;
+	height: 52px;
+	padding: 2px;
+}
+.BodyConfirmationPaymentMode{
+	font-size: 14px;
+	background: #F8F8F8;
+	height: 81px;
+	padding: 8px;
+}
+.ButtonConfirmationPaymentModeYa{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 72px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	
+}
+.ButtonConfirmationPaymentModeTidak{
+	color: #6F6F6F;
+	font-family: arial, verdana;
+	font-size: 14px;
+	margin: 20px 5px 4px 4px;
+	height: 23px;
+	width: 55px;
+	text-decoration: none;
+	white-space: nowrap;
+	font-weight: bold;
+	cursor: pointer;
+	background: #E0E0E0;
+	float: left;
+	text-align: center;
+	padding-top: 7px;
+	border : 1px solid #BBBBBB;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+}
+
+.textAlignRight{
+	text-align:right !important;
+	margin-right:0px !important;
+	padding-right:5px;
+}
+
+div.ContextMenuPaymentMode
+{
+	display:none;
+	background-color: white;
+	position: absolute;
+	white-space: normal;
+	width: 145px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	color: #457BD9;
+	padding: 8px;
+}
+div.itemContextMenuPaymentMode{
+	padding: 7px 5px 5px 7px;
+	color: #457BD9;
+	cursor: pointer;
+	white-space: normal;
+	text-decoration: none;
+}
+div.itemContextMenuPaymentMode span
+{
+	cursor:pointer;
+}
+div.itemContextMenuPaymentMode span:hover{
+	color:Red;
+	text-decoration:underline;
+}
+.EditImagContextMenu{
+	background: transparent url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -382px -53px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
+.CreateInvoiceContextMenuPaymentMode{
+	background: transparent url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -50px -79px;
+	height: 21px;
+	width: 19px;
+	float:left;
+	margin-right:20px;
+	margin-top: 1px;
+}
+.judulAlamatPengiriman
+{
+	font-size: 15px;
+	font-weight: bold;
+	padding: 5px 10px 5px 29px;
+	color: #666;
+}
+.iconHapus{
+	background: transparent url("/sales/controllers/PaymentMode/images/Actions.png") no-repeat;
+	background-position: -332px -29px;
+	height: 16px;
+	width: 17px;
+	float:right;
+}
+div.DivSearch{
+	list-style: none;
+	margin: 0 0 2px 0;
+	padding: 4px 10px 5px 10px;
+	display: block;
+	text-decoration: none;
+	color: black;
+	font: 11px verdana;
+	background: #F3F3F3;
+	border: solid 1px gainsboro;
+	-moz-border-radius: 18px;
+	-webkit-border-radius: 18px;
+	cursor: pointer;
+	width: 280px;
+	height: 17px;
+}
+#SearchPaymentMode{
+	border: none;
+	margin-left: 18px;
+	height: 16px;
+	width: 254px;
+	background: #F3F3F3;
+}
+.imgSearch{
+	background: transparent url("/sales/controllers/PaymentMode/images/find.png") no-repeat;
+	height: 16px;
+	width: 17px;
+	float:left;
+}
+.PaymentMode{ color:Black; font-weight:bolder; font-size:14px;}
+.atributDataPaymentMode{ color:#A5A2A2; font-size:11px;}
+.tdDataPaymentMode{padding-bottom:5px; padding-top:5px;}
+
+
+div.mainFrame
+{
+	width:75%;
+	border-color:#999;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 0 4px 0 #999;
+	-webkit-box-shadow: 0 0 4px 0 #999;
+	box-shadow: 0 0 4px 0 #999;
+	padding-bottom:15px;
+}
+
+div.topBandHeaderDIV {
+	padding: 20px 25px;
+	margin: 0;
+	background: #F7F7F7;
+	-moz-border-radius: 6px 6px 0 0;
+	-webkit-border-radius: 6px 6px 0 0;
+	border-radius: 6px 6px 0 0;
+}
+
+.HeaderDIVLeft {
+	font-size: 21px;
+}
+
+div.mainDivWidth
+{
+	margin: 0 25px 30px 25px;
+	padding-top: 35px;
+	text-align: left;
+}
+
+div.AddPaymentModeFormDiv
+{
+	background-color: #F7F7F7;
+	margin: 0;
+	padding: 17px 0;
+	margin-bottom: 25px;
+	border-top: 1px solid #ECECEC;
+	border-bottom: 1px solid #ECECEC;
+}
+.labelLeft
+{
+	font-size: 11px;
+	font-weight: bold;
+	text-align: right;
+	padding: 5px 10px 5px 10px;
+	white-space: nowrap;
+	color: #666;
+	width: 152px;
+	vertical-align: top;
+}
+
+.requiredFieldLabel
+{
+	color: #9C0000;
+}
+.field
+{
+	width: 350px;
+}
+
+.field input[type="text"], .field textarea, .field select
+{
+	width:50%;
+	margin-bottom: 15px;
+	border: 1px solid #ACD2E7;
+	border-image: initial;
+}
+
+div.submitFormDiv
+{
+	margin-top: 20px;
+	text-align: -webkit-center;
+}
+#submitTaxForm
+{
+	padding-top:10px;
+	border-top: 1px dashed #DBDBDB;
+}
+div.submitFormDiv span
+{
+	height: 20px;
+	position: relative;
+	top: 1px;
+}
+
+div.submitFormDiv a.cancelSubmitLink
+{
+	cursor: pointer;
+	text-decoration: underline;
+	color: red;
+}
+
+div.mainCreateTaxDialog
+{
+	padding-top:10px;
+}
+
+div.error{
+	display:none;
+	color:#fff;
+	padding: 2px;
+	padding-left: 10px;
+	background-color:#FF6A6A;
+	border: 1px Solid #E00;
+	margin:0 10px 0 10px;
+}
+
+.messageVerify
+{
+	margin-bottom:10px;
+	width:250px;
+}
+.messageVerify span
+{
+	margin-left:10px;
+}
+.messageVerify div
+{
+	width:15px;
+	height:15px;
+	float:left;
+}
+#nama 
+{
+    width:90%;
+}
+#kode
+{
+    width:20%;
+}

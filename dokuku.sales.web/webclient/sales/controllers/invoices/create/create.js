@@ -11,6 +11,7 @@ steal('jquery/controller',
        'sales/styles/jquery-ui-1.8.14.custom.css',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
+       'sales/repository/CurrencyandTaxRepository.js',
 	   'sales/models')
 	.then('./views/createinvoices.ejs',
           './views/AddCustomer.ejs',
@@ -22,6 +23,7 @@ steal('jquery/controller',
                         inv = null,
                         itmRepo = null,
                         custRepo = null,
+                        curTaxRepo = null,
                         baseCcy = null,
                         isDifferentCcy = true)
         },
@@ -31,19 +33,19 @@ steal('jquery/controller',
                 inv = new Invoice();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
+                curTaxRepo = new CurrencyandTaxRepository();
                 this.load(customer);
                 this.SetCurrency();
                 this.load(customer);
             },
             load: function (customer) {
                 tabIndexTr = 0;
-                inv = new Invoice();
-                itmRepo = new ItemRepository();
-                custRepo = new CustomerRepository();
                 this.element.html(this.view("//sales/controllers/invoices/create/views/createinvoices.ejs", customer));
                 if (customer != null)
                     $("#currency").text(customer.Currency).show();
+                this.SetCurrency();
                 this.CreateListItem(3);
+                this.CreateRowTax();
                 this.SetDatePicker();
                 this.SetDefaultDate();
             },
@@ -115,6 +117,7 @@ steal('jquery/controller',
                 $("#itemInvoice tbody tr#tr_" + index + "").remove();
                 this.GetSubTotal();
                 this.GetTotal();
+                inv.CalculateByTax();
             },
             //            '.partname change': function (el) {
             //                var partName = el.val();
@@ -129,6 +132,7 @@ steal('jquery/controller',
                         el.val(partName);
                         var index = el.attr("id").split('_')[1];
                         this.FillItemAtribut(partName, index);
+
                         $(".resultItemDiv").remove();
                         el.trigger("blur");
                         $("#qty_" + index).trigger("focus");
@@ -181,12 +185,18 @@ steal('jquery/controller',
             },
             '.quantity change': function (el) {
                 this.CalculateItem(el);
+
+                inv.RecalculateTax(el);
             },
             '.price change': function (el) {
                 this.CalculateItem(el);
+
+                inv.RecalculateTax(el);
             },
             '.discount change': function (el) {
                 this.CalculateItem(el);
+
+                inv.RecalculateTax(el);
             },
             //            '#formNewIvoice submit': function (el, ev) {
             //                ev.preventDefault();
@@ -200,6 +210,15 @@ steal('jquery/controller',
             },
             '#custRate change': function () {
                 inv.CalculateByRate($("#custRate").val());
+            },
+            '.taxed change': function (el) {
+                var index = el.attr("id").split('_')[1];
+                var res;
+
+                res = inv.SetTaxAmount(index);
+                $("#taxedAmt_" + index).val(res);
+
+                inv.CalculateByTax();
             },
             CalculateItem: function (element) {
                 var index = element.attr("id").split('_')[1];
@@ -220,8 +239,12 @@ steal('jquery/controller',
                 $("#amounttext_" + index).empty();
                 $("#amount_" + index).val('');
             },
-            LoadTax: function (index) {
-                $("#taxed_" + index).append("<option value='0'>None</option><option value='1'>A</option>");
+            loadDataTax: function (index) {
+                var tax = curTaxRepo.getAllTax();
+
+                $.each(tax, function (i) {
+                    $("#taxed_" + index).append("<option value='" + tax[i].Value + "'>" + tax[i].Name + "</option>");
+                });
             },
             CreateListItem: function (count) {
                 while (count > 0) {
@@ -234,15 +257,29 @@ steal('jquery/controller',
                                     "<td><input type='text' name='price' class='price right' id='rate_" + tabIndexTr + "'></input>" +
                                     "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
-                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
-                                    "</select></td>" +
+                                    "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'><option value='0'>NONE</option></select>" +
+                                    "<input type='text' class='taxedAmt' id='taxedAmt_" + tabIndexTr + "'/></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
-                    this.LoadTax(tabIndexTr);
+                    this.loadDataTax(tabIndexTr);
                     count--;
                     tabIndexTr++;
                 }
+            },
+            CreateRowTax: function () {
+                var tax = curTaxRepo.getAllTax();
+                var pos;
+                $.each(tax, function (i) {
+                    pos = i + 1;
+                    $("#itemInvoice tfoot tr:nth-child(" + pos + ")").after("<tr><td colspan='4'></td>" +
+                    "<td colspan='2' class='right borderbottom'>" + tax[i].Name + "(" + tax[i].Value + "%)</td>" +
+                    "<td class='right borderbottom'>" +
+                    "<span id='taxValue" + tax[i].Name + "'></span>" +
+                    "<input type='text' id='" + tax[i].Name + "'/></td>" +
+                    "<td>&nbsp;</td>" +
+                    "</tr>");
+                });
             },
             GetSubTotal: function () {
                 var subtotal = inv.CalculateSubTotal();

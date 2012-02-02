@@ -14,7 +14,7 @@ using dokuku.sales.invoices.query;
 using dokuku.sales.item.service;
 using dokuku.sales.invoices.service;
 using dokuku.sales.customer.Service;
-using dokuku.sales.payment.service;
+//using dokuku.sales.payment.service;
 using Nancy;
 using dokuku.sales.taxes.service;
 using dokuku.sales.taxes.query;
@@ -22,6 +22,8 @@ using dokuku.sales.currency.service;
 using dokuku.sales.currency.report;
 using dokuku.sales.paymentmode.query;
 using dokuku.sales.paymentmode.service;
+using NServiceBus;
+using dokuku.sales.payment.readmodel;
 
 namespace dokuku.sales.web.modules
 {
@@ -103,6 +105,22 @@ namespace dokuku.sales.web.modules
         public static IPaymentModeService PaymentModeService(this NancyModule module)
         {
             return ObjectFactory.GetInstance<IPaymentModeService>();
+        }
+        public static ILogoOrganizationCommand LogoOrganizationCommand(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<ILogoOrganizationCommand>();
+        }
+        public static ILogoOrganizationQuery LogoOrganizationQuery(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<ILogoOrganizationQuery>();
+        }
+        public static IBus Bus(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IBus>();
+        }
+        public static IPaymentRepository PaymentRepository(this NancyModule mod)
+        {
+            return ObjectFactory.GetInstance<IPaymentRepository>();
         }
     }
 }
