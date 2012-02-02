@@ -22,10 +22,23 @@ steal('jquery/controller', 'jquery/view/ejs',
         var id = $(".idIvoDetil").attr("id");
         $('#body').sales_invoices_edit('load', id);
     },
+    '#menuItemRightCetakKePDF click': function () {
+        var id = $(".invoiceDetail").attr("id");
+        window.open("/GetDataInvoiceToPDF/" + id, 'Invoice', null, null);
+        //        $.ajax({
+        //            type: 'GET',
+        //            url: '/GetDataInvoiceToPDF/' + id,
+        //            dataType: 'json',
+        //            async: false,
+        //            success: function (data) {
+        //            }
+        //        });
+        //        return invoice;
+    },
     GetStatusInvoice: function (status) {
         var IsStatus = status;
         if (IsStatus != "Draft") {
-            $("#menuItemRightSetujui").remove();            
+            $("#menuItemRightSetujui").remove();
         }
     },
     GetDetailCustomer: function (invoice) {
