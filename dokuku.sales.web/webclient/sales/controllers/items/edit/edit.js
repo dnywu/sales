@@ -19,12 +19,12 @@ steal('jquery/controller',
                     var item = this.getItem(id);
                     this.element.html("//sales/controllers/items/edit/views/editItem.ejs", item);
                     this.loadDataTax();
-                    $('#tax option[name="' + item.Tax.Name + '"]').attr('selected', 'selected');
+                    $('#tax option[name="' + item.Tax.Code + '"]').attr('selected', 'selected');
                 },
                 loadDataTax: function () {
                     var tax = curTaxRepo.getAllTax();
                     $.each(tax, function (i) {
-                        $("#tax").append("<option value='" + tax[i].Value + "' name='" + tax[i].Name + "'>" + tax[i].Name + "</option>");
+                        $("#tax").append("<option value='" + tax[i].Value + "' name='" + tax[i].Code + "'>" + tax[i].Code + "</option>");
                     });
                 },
                 getItem: function (id) {
