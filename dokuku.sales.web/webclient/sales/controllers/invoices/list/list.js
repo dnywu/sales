@@ -203,8 +203,11 @@ steal('jquery/controller',
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
                     var invoice = invRepo.GetInvoiceById(invoiceId);
-                    if (invoice != null)
+
+                    if (invoice != null) {
                         $("#body").sales_invoices_invoicedetail('load', invoice);
+                    }
+                    
                 },
                 '#deleteinvoice click': function () {
                     var checkList = $this.IsCheckListNull();
