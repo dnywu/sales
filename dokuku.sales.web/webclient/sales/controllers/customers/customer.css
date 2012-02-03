@@ -219,8 +219,8 @@ td.space{
 	border: solid 0 #EBEBEB;
 	border-width: 1px 0;
 	vertical-align: middle;
-	color: #999;
-	font-weight: normal;
+	color: #666;
+	font-weight: bolder;
 	height: 32px;
 	border-image: initial;
 }

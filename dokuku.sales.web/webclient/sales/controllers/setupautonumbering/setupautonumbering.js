@@ -15,7 +15,9 @@ steal('jquery',
         'sales/controllers/setuporganization/settingorganization.js',
         'sales/controllers/currencyandtax/currencyandtax.js',
         'sales/controllers/paymentmode/paymentmode.js',
+        'sales/controllers/paymentterms/paymentterms.js',
         'sales/sales.css',
+        'sales/controllers/paymentterms/paymentterms.css',
 	function () {
 	    $.ajax({
 	        type: 'GET',

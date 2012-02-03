@@ -9,6 +9,7 @@
     -webkit-box-shadow: 0 0 4px 0 #999;
     box-shadow: 0 0 4px 0 #999;
     padding-bottom: 15px;
+    font-family: arial, verdana;
 }
 div.topBandHeaderDIV {
     padding: 20px 25px;
@@ -20,6 +21,7 @@ div.topBandHeaderDIV {
 }
 .HeaderDIVLeft {
     font-size: 21px;
+    font-family: arial, verdana;
 }
 div.mainDivWidth {
     margin: 0 25px 15px 25px;
@@ -66,6 +68,11 @@ div.uploadlogoleft
 {
     float:left;
     width: 150px;
+    height: 100px;
+    vertical-align:middle;
+    background-color:#f7f7f7;
+    border:1px dashed #666;
+    display:table;
 }
 div.uploadlogoright
 {
@@ -97,9 +104,17 @@ input[type="file"]
 }
 img.logo
 {
-    width:140px;
-    height: 100px;
-    border:1px dashed #CCC;
-    background-color:White;
-    vertical-align:bottom;
+    display:block;
+    margin:auto;
+}
+div#errorMsg
+{
+    display:none;
+	color:#fff;
+	font-size:12px;
+	padding: 2px;
+	padding-left: 10px;
+	width: 100%;
+	background-color:#FF6A6A;
+	border: 1px Solid #E00;
 }
