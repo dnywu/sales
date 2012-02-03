@@ -203,7 +203,7 @@ steal('jquery/controller',
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
                     var invoice = invRepo.GetInvoiceById(invoiceId);
-                    var dataInvoice = new Array();
+
                     if (invoice != null) {
                         $.each(invoice.Items, function (i) {
                             invoice.Items[i].Rate = String.format("{0:C}", invoice.Items[i].Rate); //String.format("{0:C}", parseFloat(invoice.Items[i].Rate)); // invoice.Items[i].Rate;
@@ -225,6 +225,10 @@ steal('jquery/controller',
                         invoice.SubTotal = String.format("{0:C}", parseFloat(invoice.SubTotal));
                         invoice.Total = String.format("{0:C}", parseFloat(invoice.Total));
                         //Total All Tax Amount
+                        $("#body").sales_invoices_invoicedetail('load', invoice);
+                    }
+
+                    if (invoice != null) {
                         $("#body").sales_invoices_invoicedetail('load', invoice);
                     }
                 },
