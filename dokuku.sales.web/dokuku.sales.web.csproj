@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\test.cshtml" />
+    <Content Include="Content\images\default-logo-organization.png" />
     <Content Include="Views\css\login.css" />
     <Content Include="Views\css\uploadlogo.css" />
     <Content Include="Views\scripts\GetParameter.js" />
@@ -1012,6 +1013,20 @@
     <Content Include="webclient\steal\test\two.css" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lzma\Common\CommandLineParser.cs" />
+    <Compile Include="Lzma\Common\CRC.cs" />
+    <Compile Include="Lzma\Compress\LZMA\LzmaBase.cs" />
+    <Compile Include="Lzma\Compress\LZMA\LzmaDecoder.cs" />
+    <Compile Include="Lzma\Compress\LZMA\LzmaEncoder.cs" />
+    <Compile Include="Lzma\Compress\LZ\IMatchFinder.cs" />
+    <Compile Include="Lzma\Compress\LZ\LzBinTree.cs" />
+    <Compile Include="Lzma\Compress\LZ\LzInWindow.cs" />
+    <Compile Include="Lzma\Compress\LZ\LzOutWindow.cs" />
+    <Compile Include="Lzma\Compress\RangeCoder\RangeCoder.cs" />
+    <Compile Include="Lzma\Compress\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="Lzma\Compress\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="Lzma\ICoder.cs" />
+    <Compile Include="Lzma\Zip7.cs" />
     <Compile Include="models\LogHelper.cs" />
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="models\PayInvoiceDto.cs" />
@@ -1356,6 +1371,10 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
