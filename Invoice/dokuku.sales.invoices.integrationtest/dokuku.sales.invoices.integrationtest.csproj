@@ -51,7 +51,6 @@
       <HintPath>..\..\packages\NServiceBus\Interop.MSMQ.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-<<<<<<< HEAD:Invoice/dokuku.sales.invoices.integrationtest/dokuku.sales.invoices.integrationtest.csproj
     <Reference Include="log4net, Version=1.2.9.0, Culture=neutral, PublicKeyToken=b32731d11ce58905">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\log4net.1.2.10\log4net.dll</HintPath>
@@ -68,13 +67,12 @@
     <Reference Include="Ncqrs, Version=0.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
-=======
+	  </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.10\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Ncqrs">
       <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
->>>>>>> c8f3adc65bbe621db5edd5333a3087688199c9ad:dokuku.sales.invoices.host/dokuku.sales.invoices.host.csproj
     </Reference>
     <Reference Include="Ncqrs.NServiceBus, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
