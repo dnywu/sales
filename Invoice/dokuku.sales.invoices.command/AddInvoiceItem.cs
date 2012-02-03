@@ -10,8 +10,15 @@ namespace dokuku.sales.invoices.commands
     [Serializable]
     public class AddInvoiceItem : CommandBase
     {
+        [AggregateRootId]
         public Guid InvoiceId { get; set; }
-        public InvoiceItem Item { get; set; }
-        public string UserName { get; set; }
+        public string OwnerId {get;set;}
+        public string UserName {get;set;}
+        public Guid ItemId {get;set;}
+        public string Description {get;set;}
+        public int Quantity {get;set;}
+        public decimal Price { get; set; }
+        public decimal DiscountInPercent { get; set; }
+        public Guid TaxId { get; set; }
     }
 }

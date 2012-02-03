@@ -40,6 +40,7 @@ namespace dokuku.sales.invoices.fixture
             var service = new CommandService();
             service.RegisterExecutorsInAssembly(typeof(CreateInvoice).Assembly);
             service.RegisterExecutor(new CreateInvoiceService());
+            service.RegisterExecutor(new AddInvoiceItemService());
             service.AddInterceptor(new ThrowOnExceptionInterceptor());
             return service;
         }

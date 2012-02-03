@@ -61,6 +61,7 @@
     <Compile Include="FakeExchangeRateRepository.cs" />
     <Compile Include="FakeCustomerRepository.cs" />
     <Compile Include="FakeOrganizationRepository.cs" />
+    <Compile Include="When_add_item_with_discount.cs" />
     <Compile Include="When_update_invoice.cs" />
     <Compile Include="FakeInvoiceNumberGenerator.cs" />
     <Compile Include="Setup.cs" />
