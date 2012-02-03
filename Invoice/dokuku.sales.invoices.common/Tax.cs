@@ -8,7 +8,8 @@ namespace dokuku.sales.invoices.common
     [Serializable]
     public class Tax
     {
-        public string Name { get; set; }
+        public string Code { get; set; }
         public decimal Value { get; set; }
+
     }
 }

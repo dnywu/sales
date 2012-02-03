@@ -9,13 +9,8 @@ namespace dokuku.sales.invoices.commands
     [MapsToAggregateRootMethod("dokuku.sales.invoices.Invoices,dokuku.sales.invoices","ApproveInvoice")]
     public class ApproveInvoice : CommandBase
     {
-        [Parameter(1)]
+        [AggregateRootId]
         public Guid InvoiceId { get; set; }
-        [Parameter(2)]
-        public string InvoiceNo { get; set; }
-        [Parameter(3)]
         public string OwnerId { get; set; }
-        [Parameter(4)]
-        public string UserName { get; set; }
     }
 }

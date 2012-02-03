@@ -10,6 +10,11 @@ using Ncqrs.CommandService.Infrastructure;
 using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
 using Ncqrs;
 using Ncqrs.Config.StructureMap;
+using dokuku.sales.invoice.services;
+using dokuku.sales.invoices.domain;
+using dokuku.sales.config;
+using dokuku.sales.invoices.repository;
+using dokuku.sales.invoices.repository.impl;
 namespace dokuku.sales.invoices.fixture
 {
     public static class Setup
@@ -23,6 +28,7 @@ namespace dokuku.sales.invoices.fixture
                    x =>
                    {
                        x.For<ICommandService>().Use(InitCommandService());
+                       x.For<ICustomerRepository>().Use(new CustomerRepository());
                    }
                 ));
                 initialized = true;
@@ -33,6 +39,7 @@ namespace dokuku.sales.invoices.fixture
         {
             var service = new CommandService();
             service.RegisterExecutorsInAssembly(typeof(CreateInvoice).Assembly);
+            service.RegisterExecutor(new CreateInvoiceService());
             service.AddInterceptor(new ThrowOnExceptionInterceptor());
             return service;
         }

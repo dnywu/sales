@@ -8,14 +8,12 @@ using dokuku.sales.invoices.common;
 namespace dokuku.sales.invoices.commands
 {
     [Serializable]
-    [MapsToAggregateRootMethod("dokuku.sales.invoices.Invoices,dokuku.sales.invoices", "AddInvoiceItem")]
-    public class AddInvoiceItem : CommandBase
+    [MapsToAggregateRootConstructor("dokuku.sales.invoices.domain.Invoice, dokuku.sales.invoices.domain")]
+    public class CreateInvoice : CommandBase
     {
-        [Parameter(1)]
-        public Guid InvoiceId { get; set; }
-        [Parameter(2)]
-        public InvoiceItem Item { get; set; }
-        [Parameter(3)]
+        public Guid CustomerId { get; set; }
+        public string PONo { get; set; }
+        public string OwnerId { get; set; }
         public string UserName { get; set; }
     }
 }

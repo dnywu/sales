@@ -43,47 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CancelInvoice.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="CreateInvoice.cs" />
-    <Compile Include="DeleteInvoice.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\AddInvoiceItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ApproveInvoice.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangeDescriptionInvoiceItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangeInvoiceDate.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangeInvoiceExchangeRate.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangeInvoiceItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangeInvoicePONo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangeInvoiceTerm.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangePriceInvoiceItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="futurerelease\ChangeQtyInvoiceItem.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateInvoice.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\dokuku.sales.invoices.common\dokuku.sales.invoices.common.csproj">

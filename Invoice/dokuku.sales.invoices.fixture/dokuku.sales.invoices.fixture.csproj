@@ -32,22 +32,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ncqrs">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Framework\Ncqrs.dll</HintPath>
     </Reference>
     <Reference Include="Ncqrs.CommandService">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.CommandService\Ncqrs.CommandService.dll</HintPath>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.CommandService\Ncqrs.CommandService.dll</HintPath>
     </Reference>
     <Reference Include="Ncqrs.Config.StructureMap">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.Config.StructureMap\Ncqrs.Config.StructureMap.dll</HintPath>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Extensions\Ncqrs.Config.StructureMap\Ncqrs.Config.StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="Ncqrs.Spec">
-      <HintPath>..\packages\ncqrs.0.8.0.0\Spec\Ncqrs.Spec.dll</HintPath>
+      <HintPath>..\..\packages\ncqrs.0.8.0.0\Spec\Ncqrs.Spec.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\packages\NUnitLib.2.5.10.11092\lib\net\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="StructureMap">
-      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+      <HintPath>..\..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeExchangeRateRepository.cs" />
+    <Compile Include="FakeCustomerRepository.cs" />
+    <Compile Include="FakeOrganizationRepository.cs" />
     <Compile Include="When_update_invoice.cs" />
     <Compile Include="FakeInvoiceNumberGenerator.cs" />
     <Compile Include="Setup.cs" />
@@ -65,13 +68,21 @@
     <Compile Include="When_create_invoice.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\dokuku.sales.config\dokuku.sales.config.csproj">
+      <Project>{C1E3A522-9F44-48ED-8855-B78EC12A6C17}</Project>
+      <Name>dokuku.sales.config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\dokuku.sales.invoice.services\dokuku.sales.invoice.services.csproj">
+      <Project>{EDB44027-B179-4AEC-88E2-C90577516A77}</Project>
+      <Name>dokuku.sales.invoice.services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\dokuku.sales.invoices.repository.impl\dokuku.sales.invoices.repository.impl.csproj">
+      <Project>{E5E84121-B8D9-492E-9464-0C953EC12F5E}</Project>
+      <Name>dokuku.sales.invoices.repository.impl</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices.command\dokuku.sales.invoices.commands.csproj">
       <Project>{90BD0A87-C459-44E9-8E22-07712962C2EB}</Project>
       <Name>dokuku.sales.invoices.commands</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices.common\dokuku.sales.invoices.common.csproj">
-      <Project>{BCD17827-66E7-4E7B-8DAE-485D05A0F493}</Project>
-      <Name>dokuku.sales.invoices.common</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.invoices.domain\dokuku.sales.invoices.domain.csproj">
       <Project>{14617206-BC85-4AD3-A798-F5CD40A53369}</Project>
@@ -81,11 +92,16 @@
       <Project>{1BD6AA4F-B5C8-4183-AC7A-16C15016C9AF}</Project>
       <Name>dokuku.sales.invoices.events</Name>
     </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.invoices.repository\dokuku.sales.invoices.repository.csproj">
+      <Project>{5324FEB6-929F-4D41-B354-FA38D2EBBF5C}</Project>
+      <Name>dokuku.sales.invoices.repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

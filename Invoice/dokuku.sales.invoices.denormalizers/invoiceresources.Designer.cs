@@ -61,6 +61,15 @@ namespace dokuku.sales.invoices.denormalizers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer.
+        /// </summary>
+        internal static string InvoiceCustomerCollectionName {
+            get {
+                return ResourceManager.GetString("InvoiceCustomerCollectionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to InvoiceIndex.
         /// </summary>
         internal static string InvoiceIndexCollectionName {

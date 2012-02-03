@@ -9,6 +9,7 @@ namespace dokuku.sales.taxes.model
     {
         public Guid _id { get; set; }
         public string OwnerId { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
         public decimal Value { get; set; }
     }

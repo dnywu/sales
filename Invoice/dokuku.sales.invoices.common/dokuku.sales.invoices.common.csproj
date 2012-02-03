@@ -40,9 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Currency.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="ExchangeRate.cs" />
     <Compile Include="InvoiceItem.cs" />
+    <Compile Include="Organization.cs" />
     <Compile Include="Tax.cs" />
+    <Compile Include="TaxSummary.cs" />
     <Compile Include="Term.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

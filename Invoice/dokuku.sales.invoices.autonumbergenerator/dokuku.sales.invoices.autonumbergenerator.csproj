@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateFormatter.cs" />
     <Compile Include="InvoiceAutoNumberConfig.cs" />
     <Compile Include="InvoiceAutoNumberDefault.cs" />
     <Compile Include="InvoiceAutoNumberDraft.cs" />

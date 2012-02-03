@@ -8,18 +8,11 @@ namespace dokuku.sales.invoices.common
     [Serializable]
     public class Customer
     {
-        public Guid Id { get; private set; }
-        public string Email { get; private set; }
-        public string Name { get; private set; }
-        public string BillingAddress { get; private set; }
-        public string CityAddress { get; private set; }
-        public Customer(Guid id, string email, string name, string billingAddress, string cityAddress)
-        {
-            this.Id = id;
-            this.Email = email;
-            this.Name = name;
-            this.BillingAddress = billingAddress;
-            this.CityAddress = cityAddress;
-        }
+        public string Email { get; set; }
+        public string Name { get; set; }
+        public string BillingAddress { get; set; }
+        public string CityAddress { get; set; }
+        public Term Term { get; set; }
+        public Currency Currency { get; set; }
     }
 }

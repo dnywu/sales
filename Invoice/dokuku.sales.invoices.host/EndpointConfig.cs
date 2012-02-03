@@ -9,6 +9,8 @@ using Ncqrs.Eventing.Storage;
 using Ncqrs.Eventing.Storage.MongoDB;
 using Ncqrs;
 using dokuku.sales.config;
+using Ncqrs.Commanding.ServiceModel;
+using dokuku.sales.invoices.commands;
 namespace dokuku.sales.invoices.host
 {
     public class EndpointConfig : IConfigureThisEndpoint, AsA_Server, IWantCustomInitialization, IWantToRunAtStartup
@@ -42,6 +44,8 @@ namespace dokuku.sales.invoices.host
             MongoServer mongo = MongoServer.Create(settings);
 
             NcqrsEnvironment.SetDefault<IEventStore>(new MongoDBEventStore(mongo, SafeMode.True, "Invoice"));
+           // NcqrsEnvironment.Get<CommandService>().RegisterExecutor<Ncqrs.Commanding.CommandExecution.ICommandExecutor<CreateInvoice>>(
+
         }
 
 

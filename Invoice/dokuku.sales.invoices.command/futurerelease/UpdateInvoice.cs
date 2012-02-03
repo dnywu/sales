@@ -30,6 +30,7 @@ namespace dokuku.sales.invoices.commands
         public string OwnerId { get; set; }
         public string UserName { get; set; }
         public string TermCondition { get; set; }
+        public TaxSummary[] taxSummary { get; set; }
         public UpdateInvoice()
         {
         }
