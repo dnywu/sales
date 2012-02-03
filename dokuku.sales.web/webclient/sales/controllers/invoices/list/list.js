@@ -206,14 +206,14 @@ steal('jquery/controller',
                     var dataInvoice = new Array();
                     if (invoice != null) {
                         $.each(invoice.Items, function (i) {
-                            invoice.Items[i].Rate = String.format("{0:C}", parseFloat(invoice.Items[i].Rate)); // invoice.Items[i].Rate;
-                            invoice.Items[i].Amount = String.format("{0:C}", parseFloat(invoice.Items[i].Amount)); // invoice.Items[i].Rate;
-                            invoice.Items[i].TaxAmount = String.format("{0:C}", parseFloat(invoice.Items[i].TaxAmount));
+                            invoice.Items[i].Rate = String.format("{0:C}", invoice.Items[i].Rate); //String.format("{0:C}", parseFloat(invoice.Items[i].Rate)); // invoice.Items[i].Rate;
+                            invoice.Items[i].Amount = String.format("{0:C}", invoice.Items[i].Amount); //String.format("{0:C}", parseFloat(invoice.Items[i].Amount)); // invoice.Items[i].Rate;
+                            invoice.Items[i].TaxAmount = String.format("{0:C}", invoice.Items[i].TaxAmount); //String.format("{0:C}", parseFloat(invoice.Items[i].TaxAmount));
 
                             $.each(invoice.Items[i].Tax, function (n) {
                                 //invoice.Items[i].Tax.Code = invoice.Items[i].Tax.Code;
                                 //invoice.Items[i].Tax.Value = invoice.Items[i].Tax.Value;
-                                invoice.Items[i].Tax.Amount = String.format("{0:C}", parseFloat(invoice.Items[i].Tax.Amount)); //invoice.Items[i].Tax.Amount;
+                                invoice.Items[i].Tax.Amount = String.format("{0:C}", invoice.Items[i].Tax.Amount); //String.format("{0:C}", parseFloat(invoice.Items[i].Tax.Amount)); //invoice.Items[i].Tax.Amount;
                             });
                         });
 
