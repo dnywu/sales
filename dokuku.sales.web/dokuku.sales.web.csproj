@@ -51,8 +51,9 @@
     <Reference Include="Common.Logging.Log4Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Log4Net.2.0.0\lib\2.0\Common.Logging.Log4Net.dll</HintPath>
     </Reference>
-    <Reference Include="EO.Pdf">
-      <HintPath>C:\Program Files\Essential Objects\EO.Pdf 2011.2\EO.Pdf.dll</HintPath>
+    <Reference Include="EO.Pdf, Version=3.0.104.2, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EO.Pdf.dll</HintPath>
     </Reference>
     <Reference Include="FluentMongo">
       <HintPath>..\packages\FluentMongo.1.3.1\lib\FluentMongo.dll</HintPath>
@@ -132,9 +133,11 @@
   <ItemGroup>
     <None Include="Views\test.cshtml" />
     <Content Include="Views\css\login.css" />
+
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
+    <Content Include="Views\uploadlogo.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -684,6 +687,15 @@
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.html" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.js" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived_test.js" />
+    <Content Include="webclient\sales\controllers\paymentterms\funcunit.html" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\find.png" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\setting.png" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms.css" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms.html" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms.js" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms_test.js" />
     <Content Include="webclient\sales\controllers\payment\payment.css" />
     <Content Include="webclient\sales\controllers\payment\funcunit.html" />
     <Content Include="webclient\sales\controllers\payment\payment.html" />
@@ -725,6 +737,19 @@
     <None Include="webclient\sales\controllers\paymentmode\views\listpaymentmode.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\addpaymentterms.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\contextMenuPaymentTerms.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\editpaymentterms.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\init.ejs" />
+    <None Include="webclient\sales\controllers\paymentterms\views\listpaymentterms.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\payment\views\confirmPaymentBox.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\ConfirmWithNote.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\settingorganization.ejs">
@@ -734,11 +759,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\tax\views\edittax.ejs" />
-    <Content Include="webclient\sales\controllers\uploadlogo\funcunit.html" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.css" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.html" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.js" />
-    <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
     <Content Include="webclient\sales\images\find.png" />
     <Content Include="webclient\sales\images\pointerballoon.gif" />
@@ -750,6 +770,7 @@
     <Content Include="webclient\sales\models\currency.js" />
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
+    <Content Include="webclient\sales\repository\PaymentTermsRepository.js" />
     <Content Include="webclient\sales\repository\PaymentReceivedRepository.js" />
     <Content Include="webclient\sales\repository\PaymentModeRepository.js" />
     <Content Include="webclient\sales\repository\InvoicePaymentRepository.js" />
@@ -988,6 +1009,7 @@
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="models\PayInvoiceDto.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\PaymentTermsModule.cs" />
     <Compile Include="modules\PaymentReceivedModule.cs" />
     <Compile Include="modules\InvoicePaymentModule.cs" />
     <Compile Include="modules\CurrencyModule.cs" />
@@ -1197,9 +1219,6 @@
     <None Include="webclient\sales\controllers\tax\views\listtax.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\uploadlogo\views\init.ejs">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="webclient\sales\sales.md" />
     <None Include="webclient\steal\buildjs" />
     <None Include="webclient\steal\build\pluginify\test\app\template.ejs" />
@@ -1283,6 +1302,10 @@
     <ProjectReference Include="..\dokuku.sales.paymentmode\dokuku.sales.paymentmode.csproj">
       <Project>{596F49BE-C0F4-437F-B927-94E946EC0C38}</Project>
       <Name>dokuku.sales.paymentmode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.paymentterms\dokuku.sales.paymentterms.csproj">
+      <Project>{A233B4C8-3D33-467F-813A-3DAB65B5841C}</Project>
+      <Name>dokuku.sales.paymentterms</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.taxes\dokuku.sales.taxes.csproj">
       <Project>{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}</Project>

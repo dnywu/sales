@@ -1,7 +1,6 @@
 ﻿steal('jquery/controller', 'jquery/view/ejs',
 		'jquery/controller/view',
-        'sales/controllers/setuporganization/settingorganization.css',
-        'sales/controllers/uploadlogo'
+        'sales/controllers/setuporganization/settingorganization.css'
 	)
 	.then('./views/settingorganization.ejs', function ($) {
 	    $.Controller('sales.Controllers.settingorganization',
@@ -57,7 +56,7 @@
 	            });
 	        },
 	        '#uploadLogo click': function () {
-	            $("#body").sales_uploadlogo('load');
+	            window.open("/uploadlogo", "Upload Logo Perusahaan Anda", null, null);
 	        }
 	    })
 	});

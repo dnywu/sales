@@ -11,6 +11,7 @@ steal('jquery/controller',
         'sales/repository/ItemRepository.js',
         'sales/repository/CustomerRepository.js',
         'sales/repository/InvoiceRepository.js',
+        'sales/repository/CurrencyandTaxRepository.js',
         'sales/models')
 	.then('./views/editinvoices.ejs',
             '../create/views/AddCustomer.ejs',
@@ -263,6 +264,15 @@ steal('jquery/controller',
             LoadTax: function (index) {
                 $("#taxed_" + index).append("<option value=1>None</option>");
             },
+            '.taxed change': function (el) {
+                var index = el.attr("id").split('_')[1];
+                var res;
+
+                res = inv.SetTaxAmount(index);
+                $("#taxedAmt_" + index).val(res);
+
+                inv.CalculateByTax();
+            },
             CreateListItem: function (count) {
                 var i = 0;
                 while (count > 0) {
@@ -276,7 +286,8 @@ steal('jquery/controller',
                                     "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
-                                    "</select></td>" +
+                                    "</select>" +
+                                    "<input type='text' class='taxedAmt' id='taxedAmt_" + tabIndexTr + "'/></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
@@ -300,7 +311,8 @@ steal('jquery/controller',
                                     "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "' value='" + item[i].BaseRate + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "' value='" + item[i].Discount + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'>" +
-                                    "</select></td>" +
+                                    "</select>" +
+                                    "<input type='text' class='taxedAmt' id='taxedAmt_" + tabIndexTr + "'/></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'>" + String.format("{0:C}", item[i].Amount) + "</span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "' value='" + item[i].Amount + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
@@ -323,7 +335,7 @@ steal('jquery/controller',
                     "<td colspan='2' class='right borderbottom'>" + tax[i].Name + "</td>" +
                     "<td class='right borderbottom'>" +
                     "<span id='taxValue" + tax[i].Name + "'></span>" +
-                    "<input type='hidden' id='" + tax[i].Name + "'/></td>" +
+                    "<input type='text' id='" + tax[i].Name + "'/></td>" +
                     "<td>&nbsp;</td>" +
                     "</tr>");
                 });

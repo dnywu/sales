@@ -35,7 +35,7 @@
         item.Rate = harga;
         item.Description = description;
         item.Tax = new Object();
-        item.Tax.Name = taxName.trim();
+        item.Tax.Code = taxName.trim();
         item.Tax.Value = taxValue;
 
         $.ajax({

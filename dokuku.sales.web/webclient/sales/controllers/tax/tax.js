@@ -30,9 +30,11 @@ steal('jquery/controller',
     "#TaxSave click": function (el, ev) {
         ev.preventDefault();
         var currandtaxRepo = new CurrencyandTaxRepository()
+        var code = $("#inputText_PajakKode").val();
         var name = $("#inputText_PajakName").val();
         var persentase = $("#inputText_Persentage").val();
         var tax = new Object();
+        tax.Code = code;
         tax.Name = name;
         tax.Value = persentase;
         if (currandtaxRepo.SaveTax(tax)) {
@@ -88,10 +90,12 @@ steal('jquery/controller',
     },
     '#EditTax click': function (el, ev) {
         ev.preventDefault();
+        var code = $("#inputText_PajakKode").val();
         var name = $("#inputText_PajakName").val();
         var persentase = $("#inputText_Persentage").val();
         var id = $("#_id").val();
         var tax = new Object();
+        tax.Code = code;
         tax.Name = name;
         tax.Value = persentase;
         tax._id = id;
@@ -110,6 +114,9 @@ steal('jquery/controller',
                         "<tr class='trDataTax' id='trTaxList" + item + "' tabindex='" + item + "'>" +
                         "<td class='thDataTax tdDataTax tdDataTaxCenter textAlignRight' style='text-align:center'><input type='checkbox' class='SelectTax' id='CheckboxTax' value='" + data[item]._id + "'/></td>" +
                         "<td class='tdDataTaxCenter tdDataTax' id='tdDataTax" + item + "'><div class='settingListTax' id='settingListTax" + item + "' tabindex='" + item + "'><img class='' src='/sales/images/setting.png'/></div></td>" +
+                        "<td class='tdDataTaxLeft tdDataTax'>" +
+                            "<div class='tax' width = '100%'>" + data[item].Code + "</div>" +
+                        "</td>" +
                         "<td class='tdDataTaxLeft tdDataTax'>" +
                             "<div class='tax' width = '100%'>" + data[item].Name + "</div>" +
                         "</td>" +
