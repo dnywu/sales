@@ -276,7 +276,7 @@ steal('jquery/controller',
                     "<td colspan='2' class='right borderbottom'>" + tax[i].Code + "(" + tax[i].Value + "%)</td>" +
                     "<td class='right borderbottom'>" +
                     "<span id='taxValue" + tax[i].Code + "'></span>" +
-                    "<input type='hidden' class='TotalTaxAmt' id='" + tax[i].Code + "'/></td>" +
+                    "<input type='text' class='TotalTaxAmt' id='" + tax[i].Code + "'/></td>" +
                     "<td>&nbsp;</td>" +
                     "</tr>");
                 });

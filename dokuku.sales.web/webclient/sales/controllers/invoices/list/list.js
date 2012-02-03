@@ -210,25 +210,21 @@ steal('jquery/controller',
                             invoice.Items[i].Amount = String.format("{0:C}", invoice.Items[i].Amount); //String.format("{0:C}", parseFloat(invoice.Items[i].Amount)); // invoice.Items[i].Rate;
                             invoice.Items[i].TaxAmount = String.format("{0:C}", invoice.Items[i].TaxAmount); //String.format("{0:C}", parseFloat(invoice.Items[i].TaxAmount));
 
-                            $.each(invoice.Items[i].Tax, function (n) {
+                            //$.each(invoice.Items[i].Tax, function (n) {
                                 //invoice.Items[i].Tax.Code = invoice.Items[i].Tax.Code;
                                 //invoice.Items[i].Tax.Value = invoice.Items[i].Tax.Value;
                                 invoice.Items[i].Tax.Amount = String.format("{0:C}", invoice.Items[i].Tax.Amount); //String.format("{0:C}", parseFloat(invoice.Items[i].Tax.Amount)); //invoice.Items[i].Tax.Amount;
-                            });
+                            //});
                         });
 
                         $.each(invoice.TaxSummary, function (i) {
                             //invoice.TaxSummary[i].Code = invoice.TaxSummary[i].Code; // invoice.Items[i].Rate;
-                            invoice.TaxSummary[i].Amount = String.format("{0:C}", this.Amount); //String.format("{0:C}", parseFloat(invoice.TaxSummary[0].Amount)); //invoice.TaxSummary[i].Amount); // invoice.Items[i].Rate;
+                            invoice.TaxSummary[i].Amount = String.format("{0:C}", parseFloat(this.Amount)); //String.format("{0:C}", parseFloat(invoice.TaxSummary[0].Amount)); //invoice.TaxSummary[i].Amount); // invoice.Items[i].Rate;
                         });
 
                         invoice.SubTotal = String.format("{0:C}", parseFloat(invoice.SubTotal));
                         invoice.Total = String.format("{0:C}", parseFloat(invoice.Total));
                         //Total All Tax Amount
-                        $("#body").sales_invoices_invoicedetail('load', invoice);
-                    }
-
-                    if (invoice != null) {
                         $("#body").sales_invoices_invoicedetail('load', invoice);
                     }
                 },

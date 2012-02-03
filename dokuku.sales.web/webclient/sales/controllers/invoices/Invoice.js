@@ -345,6 +345,7 @@
         var optClear = $('.taxed').get(0).id;
         $('#' + optClear + ' option').each(function (n) {
             $('#' + $('#' + optClear + ' option').get(n).text).val(0);
+            //$('#' + $('#taxValue' + optClear + ' option').get(n).text).text(0);
         });
 
         $('.taxed').each(function (i) {
