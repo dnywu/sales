@@ -19,14 +19,14 @@ init: function () {
 load: function () {
     var PaymentReceivedData = payReceivedRepo.getAllPaymentReceived();
     this.element.html(this.view("//sales/controllers/paymentreceived/views/paymentreceivedlist.ejs"));
-    var LimitInvoices = this.LimitGetPaymentReceived(PaymentReceivedData);
+   // var LimitInvoices = this.LimitGetPaymentReceived(PaymentReceivedData);
 },
 LimitGetPaymentReceived: function (data) {
     jumlahdata = data;
     limit = $('#limitDataInvoice').val();
     var startPageInvoice = (start - 1) * limit;
     var dataPaymentReceived = payReceivedRepo.getDataPaymentReceivedByLimit(startPageInvoice, limit);
-    this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', dataPaymentReceived));
+    this.element.html(this.view('//sales/controllers/paymentreceived/views/paymentreceivedlist.ejs', dataPaymentReceived));
     $this.initPagination();
     $('#idInputPageInvoice').val(1);
     $this.CheckButtonPaging();
@@ -41,7 +41,7 @@ ChangePage: function () {
         var startPageInvoice = (startPage - 1) * $('#limitDataInvoice').val();
         var limitInvoice = $('#limitDataInvoice').val();
         var invoice = inv.GetDataInvoice(startPageInvoice, limitInvoice);
-        this.element.html(this.view('//sales/controllers/invoices/list/views/listinvoice.ejs', invoice));
+        this.element.html(this.view('//sales/controllers/paymentreceived/views/paymentreceivedlist.ejs', invoice));
         limit = $('#limitDataInvoice').val();
         var startPage = parseInt($('#idInputPageInvoice').val(startPage));
         $this.initPagination();

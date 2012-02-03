@@ -17,6 +17,8 @@
     //using dokuku.sales.payment.service;
     using dokuku.sales.paymentmode.query;
     using dokuku.sales.paymentmode.service;
+    using dokuku.sales.paymentterms.query;
+    using dokuku.sales.paymentterms.service;
     using dokuku.sales.taxes.query;
     using dokuku.sales.taxes.service;
     using dokuku.security.model;
@@ -126,6 +128,8 @@
                     x.For<ILogoOrganizationQuery>().Use<LogoOrganizationQuery>();
                     x.For<ILogoOrganizationCommand>().Use<LogoOrganizationCommand>();
                     x.For<IPaymentRepository>().Use<PaymentRepository>();
+                    x.For<IPaymentTermsService>().Use<PaymentTermsService>();
+                    x.For<IPaymentTermsQuery>().Use<PaymentTermsQuery>();
                 });
 
                 structureMapBootstrapped = true;
