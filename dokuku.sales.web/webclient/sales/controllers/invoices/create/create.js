@@ -258,7 +258,7 @@ steal('jquery/controller',
                                     "<input type='hidden' class='baseprice' id='baseprice_" + tabIndexTr + "'/></td>" +
                                     "<td><input type='text' name='discount' class='discount right' id='disc_" + tabIndexTr + "'></input></td>" +
                                     "<td><select name='taxed' class='taxed' id='taxed_" + tabIndexTr + "'><option value='0'>NONE</option></select>" +
-                                    "<input type='text' class='taxedAmt' id='taxedAmt_" + tabIndexTr + "'/></td>" +
+                                    "<input type='hidden' class='taxedAmt' id='taxedAmt_" + tabIndexTr + "'/></td>" +
                                     "<td class='right'><span class='amounttext' id='amounttext_" + tabIndexTr + "'></span>" +
                                     "<input type='hidden' class='amount' id='amount_" + tabIndexTr + "'/></td>" +
                                     "<td valign='middle'><div class='clsDeleteItem' id='deleteItem_" + tabIndexTr + "'>X</div></td></tr>");
@@ -276,7 +276,7 @@ steal('jquery/controller',
                     "<td colspan='2' class='right borderbottom'>" + tax[i].Code + "(" + tax[i].Value + "%)</td>" +
                     "<td class='right borderbottom'>" +
                     "<span id='taxValue" + tax[i].Code + "'></span>" +
-                    "<input type='text' class='TotalTaxAmt' id='" + tax[i].Code + "'/></td>" +
+                    "<input type='hidden' class='TotalTaxAmt' id='" + tax[i].Code + "'/></td>" +
                     "<td>&nbsp;</td>" +
                     "</tr>");
                 });
@@ -287,9 +287,16 @@ steal('jquery/controller',
                 $("#subtotal").val(subtotal.toFixed(2));
             },
             GetTotal: function () {
+                var totalClean = 0;
                 var total = inv.CalculateTotal();
-                $("#totaltext").text(String.format("{0:C}", total));
-                $("#total").val(total.toFixed(2));
+                var totaltax = inv.CalculateTotalTaxAmount();
+                totalClean = parseFloat(total) + parseFloat(totaltax);
+
+                $("#totaltext").text(String.format("{0:C}", totalClean));
+                $("#total").val(totalClean.toFixed(2));
+
+                //$("#totaltext").text(String.format("{0:C}", total));
+                //$("#total").val(total.toFixed(2));
             },
             SetDatePicker: function () {
                 var dates = $("#invDate, #dueDate").datepicker({ dateFormat: 'dd M yy',
