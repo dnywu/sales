@@ -44,9 +44,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RevisePayment.cs" />
+    <Compile Include="ChangeAmountPaid.cs" />
+    <Compile Include="ChangeBankCharge.cs" />
+    <Compile Include="ChangePaymentMode.cs" />
+    <Compile Include="ChangePaymentDate.cs" />
+    <Compile Include="CorrectNotes.cs" />
+    <Compile Include="CorrectReference.cs" />
     <Compile Include="CreateInvoicePayment.cs" />
     <Compile Include="PayInvoice.cs" />
+    <Compile Include="PaymentCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

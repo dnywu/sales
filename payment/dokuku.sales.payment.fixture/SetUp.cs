@@ -10,6 +10,7 @@ using Ncqrs.CommandService.Infrastructure;
 using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
 using Ncqrs;
 using Ncqrs.Config.StructureMap;
+using Ncqrs.Eventing.Storage;
 namespace dokuku.sales.payment.fixture
 {
     public static class SetUp

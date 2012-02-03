@@ -8,17 +8,13 @@ namespace dokuku.sales.payment.commands
 {
     [Serializable]
     [MapsToAggregateRootMethod("dokuku.sales.payment.domain.InvoicePayment, dokuku.sales.payment.domain", "PayInvoice")]
-    public class PayInvoice : Ncqrs.Commanding.CommandBase 
+    public class PayInvoice : PaymentCommand
     {
-        [AggregateRootId]
-        public Guid InvoiceId { get; set; }
-        public Guid PaymentId { get; set; }
         public decimal AmountPaid { get; set; }
         public decimal BankCharge { get; set; }
         public DateTime PaymentDate { get; set; }
         public PaymentMode PaymentMode { get; set; }
         public string Reference { get; set; }
         public string Notes { get; set; }
-        public string Username { get; set; }
     }
 }

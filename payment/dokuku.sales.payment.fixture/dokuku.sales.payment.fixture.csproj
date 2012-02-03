@@ -104,7 +104,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="When_revise_payment.cs" />
+    <Compile Include="When_correct_notes.cs" />
+    <Compile Include="When_correct_reference.cs" />
+    <Compile Include="When_change_paymentdate.cs" />
+    <Compile Include="When_change_paymentmode.cs" />
+    <Compile Include="When_change_bank_charge.cs" />
+    <Compile Include="When_change_amount_paid.cs" />
     <Compile Include="When_pay_invoice_full.cs" />
     <Compile Include="When_pay_invoice.cs" />
     <Compile Include="SetUp.cs" />

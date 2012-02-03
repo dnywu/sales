@@ -6,11 +6,8 @@ using dokuku.sales.payment.common;
 namespace dokuku.sales.payment.events
 {
     [Serializable]
-    public class InvoicePaid
+    public class InvoicePaid : PaymentEvent
     {
-        public Guid InvoiceId { get; set; }
-        public Guid PaymentId { get; set; }
-        public string OwnerId { get; set; }
         public decimal AmountPaid { get; set; }
         public decimal BankCharge { get; set; }
         public DateTime PaymentDate { get; set; }
@@ -19,6 +16,5 @@ namespace dokuku.sales.payment.events
         public string Notes { get; set; }
         public decimal BalanceDue { get; set; }
         public bool PaidOff { get; set; }
-        public string Username { get; set; }
     }
 }

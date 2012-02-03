@@ -1,26 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Ncqrs.Spec;
-using Ncqrs.Spec.Fakes;
-using NUnit.Framework;
-using dokuku.sales.payment.commands;
 using dokuku.sales.payment.events;
-using Ncqrs.Config.StructureMap;
-using Ncqrs;
-using StructureMap;
-using Ncqrs.Commanding.ServiceModel;
-using Ncqrs.Commanding.CommandExecution.Mapping.Attributes;
-using Ncqrs.CommandService.Infrastructure;
+using dokuku.sales.payment.commands;
 using dokuku.sales.payment.common;
+using NUnit.Framework;
 namespace dokuku.sales.payment.fixture
 {
     [Specification]
-    public class when_revise_payment : OneEventTestFixture<RevisePayment, PaymentRevised>
+    public class When_change_payment_mode : OneEventTestFixture<ChangePaymentMode, PaymentModeChanged>
     {
         static Guid paymentId = Guid.NewGuid();
-        public when_revise_payment()
+        static Guid paymentModeId = Guid.NewGuid();
+        public When_change_payment_mode()
         {
             this.SetupInvoicePaymentFixture();
         }
@@ -54,31 +46,20 @@ namespace dokuku.sales.payment.fixture
             };
         }
 
-        protected override RevisePayment WhenExecuting()
+        protected override ChangePaymentMode WhenExecuting()
         {
-            return new RevisePayment
+            return new ChangePaymentMode
             {
-                InvoiceId = EventSourceId,
+                InvoiceId = this.EventSourceId,
                 PaymentId = paymentId,
-                AmountPaid = 10000000,
-                BankCharge = 0,
-                PaymentDate = new DateTime(2012, 1, 28),
-                PaymentMode = new PaymentMode() { Id = Guid.NewGuid() },
-                Reference = "",
-                Notes = ""
+                PaymentMode = new PaymentMode { Id = paymentModeId }
             };
         }
 
         [Then]
-        public void the_invoice_payment_should_have_the_correct_balancedue()
+        public void the_invoice_payment_should_have_the_correct_payment_mode()
         {
-            Assert.That(TheEvent.BalanceDue, Is.EqualTo(0m));
-        }
-
-        [Then]
-        public void the_invoice_payment_should_have_the_correct_paidoff()
-        {
-            Assert.That(TheEvent.PaidOff, Is.True);
+            Assert.That(TheEvent.PaymentMode.Id, Is.EqualTo(paymentModeId));
         }
     }
 }
