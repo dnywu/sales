@@ -94,7 +94,7 @@ div#error{
     I must do a bg image, too!  So I'm duplicating the pointer.gif
     image, and positioning it so that it doesn't show up
     within the box */
-    background: #ffc url(images/pointerballoon.gif) no-repeat -10px 5px;
+    background: #ffc url(/sales/images/pointerballoon.gif) no-repeat -10px 5px;
 }
 
 /* The pointer image is hadded by using another span */
@@ -104,5 +104,21 @@ div#error{
     top: 5px;
     width: 10px;
     height: 19px;
-    background: url(images/pointerballoon.gif) left top no-repeat;
+    background: url(/sales/images/pointerballoon.gif) left top no-repeat;
+}
+
+
+.divInvoiceDetailRightMenu div:hover {
+background-color: #E9E9E9;
+cursor: pointer;
+}
+
+.divInvoiceDetailRightMenu div {
+padding: 4px;
+}
+
+div.divcontainerRightFormInvoice {
+float: right;
+width: 17%;
+padding: 20px 0px 20px 10px;
 }

@@ -1,7 +1,8 @@
-steal('jquery/controller', 'jquery/view/ejs',
-      'jquery/controller/view',
+steal(
       'sales/controllers/invoices/list/DeleteConfirmBox.css',
-      'sales/controllers/invoices/invoicedetail/invoicedetail.css')
+      'sales/controllers/invoices/invoicedetail/invoicedetail.css',
+      'jquery/controller', 'jquery/view/ejs',
+      'jquery/controller/view')
 	.then('./views/invoicedetail.ejs', 'sales/controllers/invoices/list/views/ConfirmWithNote.ejs', function ($) {
 	    $.Controller('sales.Controllers.invoices.invoicedetail',
 {
@@ -11,12 +12,12 @@ steal('jquery/controller', 'jquery/view/ejs',
     init: function (el, ev, invoice) {
         this.load(invoice);
         $this = this;
-        invo = new Invoice();
+        invo = new Invoiceclass();
         invRepo = new InvoiceRepository();
     },
     load: function (invoice) {
         var inv = this.GetDetailCustomer(invoice);
-        invo = new Invoice();
+        invo = new Invoiceclass();
         this.element.html(this.view("//sales/controllers/invoices/invoicedetail/views/invoicedetail.ejs", inv));
         this.GetStatusInvoice(inv.Status);
     },
