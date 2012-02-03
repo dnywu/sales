@@ -1,12 +1,14 @@
 steal(
-	'./sales.css', 			// application CSS file
-	'./models/models.js', 	// steals all your models
-	'./fixtures/fixtures.js', // sets up fixtures for your models
+	'./sales.css',
+	'./models/models.js',
+	'./fixtures/fixtures.js',
     'jquery',
     'sales/controllers/nav',
+    'sales/controllers/nav/navtab.js',
+    'sales/controllers/nav/navsubtab.js',
     'sales/controllers/setuporganization',
     'sales/controllers/restrictuser',
-	function () {					// configure your application
+	function () {
 
 	    $.ajax({
 	        type: 'GET',
@@ -38,7 +40,11 @@ steal(
 	                id: '1',
 	                curr: data.Currency
 	            }).save();
-	            $('body').sales_nav();
+	            $('#LoadingElment').remove();
+	            $('#header').sales_nav();
+	            $('#tabs .containertabs').sales_navtab();
+	            $('#subtabs .container').sales_navsubtab();
+	            $('#subtabs .container').sales_navsubtab("empty");
 	        }
 	    }
 	    function GetUserCallback(data) {
@@ -55,4 +61,3 @@ steal(
 	    }
 	    $("#LoadingElment").remove();
 	})
-

@@ -108,7 +108,7 @@ requestAllPaymentModeSuccess: function (data) {
         $("table.dataPaymentMode tbody.BodyDataPaymentMode").append(
             "<tr class='trDataPaymentMode' id='trPaymentModeList" + item + "' tabindexPaymentMode='" + item + "'>" +
             "<td class='thDataPaymentMode tdDataPaymentMode tdDataPaymentModeCenter textAlignRight' style='text-align:center'><input type='checkbox' class='checkboxPaymentMode' id='checkboxPaymentMode'value='" + data[item]._id + "'/></td>" +
-            "<td class='tdDataPaymentModeCenter tdDataPaymentMode' id='tdDataPaymentMode" + item + "'><div class='settingPaymentMode' id='settingListPaymentMode" + item + "' tabindexPaymentMode='" + item + "'><img class='' src='/sales/controllers/PaymentMode/images/setting.png'/></div></td>" +
+            "<td class='tdDataPaymentModeCenter tdDataPaymentMode' id='tdDataPaymentMode" + item + "'><div class='settingPaymentMode' id='settingListPaymentMode" + item + "' tabindexPaymentMode='" + item + "'><img class='' src='/sales/images/setting.png'/></div></td>" +
             "<td class='tdDataPaymentModeLeft tdDataPaymentMode'>" +
                 "<div width = '100%'>" + data[item].Code + "</div>" +
             "</td>" +

@@ -61,7 +61,7 @@ ul#setting li {
 ul#setting .iconaccount {
     display: inline-block;
     margin: 0;
-    background: url('images/icon.png') 0 0 no-repeat;
+    background: url('/sales/images/icon.png') 0 0 no-repeat;
     background-position:-90px 0px;
     text-indent: -9999px;
     width: 18px;
@@ -69,13 +69,13 @@ ul#setting .iconaccount {
 }
 ul#setting .iconaccount:hover 
 {
-    background: url('images/icon.png') 0 0 no-repeat;
+    background: url('/sales/images/icon.png') 0 0 no-repeat;
     background-position:-90px -40px;
 }
 ul#setting .iconlogout {
     display: inline-block;
     margin: 0;
-    background: url('images/icon.png') 0 0 no-repeat;
+    background: url('/sales/images/icon.png') 0 0 no-repeat;
     background-position:-65px -1px;
     text-indent: -9999px;
     width: 18px;
@@ -83,7 +83,7 @@ ul#setting .iconlogout {
 }
 ul#setting .iconlogout:hover 
 {
-    background: url('images/icon.png') 0 0 no-repeat;
+    background: url('/sales/images/icon.png') 0 0 no-repeat;
     background-position:-65px -38px;
 }
 
@@ -102,7 +102,7 @@ ul.ultabs
     height: 34px;
     font-size: 12px;
     font-weight: bold;
-    background: url('images/bar_background.png') 0 0 repeat-x;
+    background: url('/sales/images/bar_background.png') 0 0 repeat-x;
     border: 1px solid #EAEAEA;
     border-bottom-color: #CACACA;
     -webkit-border-radius: 3px;
@@ -141,4 +141,68 @@ ul.ultabs li span:hover
     background:#f1f1f1;
     color:#4183C4;
     font-weight:bold;
+}
+
+#subtabs
+{
+    display:block;
+    margin-top:-10px;
+    margin-bottom:50px;
+}
+ul.ulsubtabs
+{
+    list-style:none;
+    position:relative;
+    padding:0px;
+    margin:0px;
+    color:#666;
+}
+li.lisubtabs
+{
+    position:relative;
+    float:left;
+    margin-right:20px;
+    cursor:pointer;
+}
+li.lisubtabs:hover
+{
+    color: #4183C4;
+}
+.bold
+{
+    font-weight:bold;
+    color:#000;
+}
+
+
+
+#subtabs
+{
+    display:block;
+    margin-top:-10px;
+    margin-bottom:50px;
+}
+ul.ulsubtabs
+{
+    list-style:none;
+    position:relative;
+    padding:0px;
+    margin:0px;
+    color:#666;
+}
+li.lisubtabs
+{
+    position:relative;
+    float:left;
+    margin-right:20px;
+    cursor:pointer;
+}
+li.lisubtabs:hover
+{
+    color: #4183C4;
+}
+.bold
+{
+    font-weight:bold;
+    color:#000;
 }

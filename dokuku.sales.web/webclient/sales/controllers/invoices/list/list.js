@@ -1,15 +1,19 @@
-steal('jquery/controller',
+steal( './listinvoice.css',
+       './DeleteConfirmBox.css',
+       'sales/styles/jquery-ui-1.8.14.custom.css',
+       'jquery',
+       'jquery/controller',
 	   'jquery/view/ejs',
 	   'jquery/controller/view',
 	   'sales/models',
        'sales/scripts/stringformat.js',
-       'sales/controllers/invoices/create',
-       'sales/controllers/invoices/edit',
+'sales/controllers/invoices/create',
+/*'sales/controllers/invoices/edit',*/
+       'sales/controllers/invoices/InvoiceClass.js',
        'sales/controllers/invoices/invoicedetail',
        'sales/repository/InvoiceRepository.js',
        'sales/repository/InvoicePaymentRepository.js',
-       './listinvoice.css',
-       './DeleteConfirmBox.css')
+       'sales/scripts/jquery-ui-1.8.11.min.js')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
        './views/confirmDeleteInvoice.ejs',
@@ -29,7 +33,7 @@ steal('jquery/controller',
             {
                 init: function () {
                     $this = this;
-                    inv = new Invoice();
+                    inv = new Invoiceclass();
                     invRepo = new InvoiceRepository();
                     this.load();
                 },
@@ -464,7 +468,5 @@ steal('jquery/controller',
                         $this.load();
                     }
                 }
-
-
-            });
-       });
+    });
+});

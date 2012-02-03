@@ -1,13 +1,13 @@
-steal('jquery/controller',
+steal(  'sales/styles/jquery-ui-1.8.14.custom.css',
+        './editinvoices.css',
+        'jquery/controller',
         'jquery/view/ejs',
 	    'jquery/dom/form_params',
         'jquery/controller/view',
-        './editinvoices.css',
-        'sales/controllers/invoices/Invoice.js',
+        'sales/controllers/invoices/InvoiceClass.js',
         'sales/controllers/invoices/AddCustomer.js',
         'sales/controllers/invoices/AddItem.js',
         'sales/scripts/jquery-ui-1.8.11.min.js',
-        'sales/styles/jquery-ui-1.8.14.custom.css',
         'sales/repository/ItemRepository.js',
         'sales/repository/CustomerRepository.js',
         'sales/repository/InvoiceRepository.js',
@@ -36,7 +36,7 @@ steal('jquery/controller',
                 custRepo = new CustomerRepository();
                 invRepo = new InvoiceRepository();
                 curTaxRepo = new CurrencyandTaxRepository();
-                inv = new Invoice();
+                inv = new Invoiceclass();
                 this.load(id);
                 this.SetCurrency();
             },
