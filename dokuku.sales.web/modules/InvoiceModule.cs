@@ -15,6 +15,9 @@ using Nancy.Extensions;
 using Antlr3.ST;
 using dokuku.sales.invoices.viewtemplating;
 using EO.Pdf;
+using dokuku.sales.organization.model;
+using System.Drawing;
+using dokuku.sales.web.models;
 namespace dokuku.sales.web.modules
 {
     public class InvoiceModule : Nancy.NancyModule
@@ -50,11 +53,21 @@ namespace dokuku.sales.web.modules
             {
                 Guid invoiceId = p.id;
                 Invoices invoice = this.InvoicesQueryRepository().FindById(invoiceId, this.CurrentAccount().OwnerId);
+                InvoiceReport invoiceReport = new InvoiceReport(invoice);
                 Customer customer = this.CustomerReportRepository().GetCustomerById(Guid.Parse(invoice.CustomerId));
+                Organization organization = this.OrganizationReportRepository().FindByOwnerId(this.CurrentAccount().OwnerId);
 
+                LogoOrganization logo = this.LogoOrganizationQuery().GetLogo(this.CurrentAccount().OwnerId);                               
                 DefaultTemplate template = new DefaultTemplate();
-                string html = template.GetInvoiceDefaultTemplate(invoice, customer);
-                EO.Pdf.HtmlToPdf.Options.OutputArea = new System.Drawing.RectangleF(0.5f, 0.5f, 7.5f, 10f);
+
+                string html = template.GetInvoiceDefaultTemplate(invoiceReport, customer, organization, logo);
+                EO.Pdf.Runtime.AddLicense("aP0BELxbvNO/++OfmaQHEPGs4PP/6KFspbSzy653hI6xy59Zs7PyF+uo7sKe" +
+                                        "tZ9Zl6TNGvGd3PbaGeWol+jyH+R2mbbA3a5rp7XDzZ+v3PYEFO6ntKbEzZ9o" +
+                                        "tZGby59Zl8AEFOan2PgGHeR3q9bF266OzffU8MOSwdXjFvlww7vSIrx2s7ME" +
+                                        "FOan2PgGHeR3hI7N2uui2un/HuR3hI514+30EO2s3MKetZ9Zl6TNF+ic3PIE" +
+                                        "EMidtbjC4K9qq73K47J1pvD6DuSn6unaD71GgaSxy5914+30EO2s3OnP566l" +
+                                        "4Of2GfKe3MKetZ9Zl6TNDOul5vvPuIlZl6Sxy59Zl8DyD+NZ6w==");
+                EO.Pdf.HtmlToPdf.Options.OutputArea = new System.Drawing.RectangleF(0.5f, 0.3f, 7.5f, 10f);
                 MemoryStream memStream = new MemoryStream();
                 HtmlToPdf.ConvertHtml(html, memStream);
                 MemoryStream resultStream = new MemoryStream(memStream.GetBuffer());
