@@ -84,6 +84,16 @@
           <td class="txt-rgh borderbottom"><%=this.SubTotal%></td>
           <td width="10px"></td>
         </tr>
+        <%for(var i =0; i<this.TaxSummary.length; i++){%>
+        <tr height="35">
+          <td class="txt-lft" colspan="6"></td>
+          <td class="txt-rgh borderbottom">
+            <b><%=this.TaxSummary[i].Code%></b>
+          </td>
+          <td class="txt-rgh borderbottom"><%=this.TaxSummary[i].Amount%></td>
+          <td width="10px"></td>
+        </tr>
+        <%}%>  
         <tr height="40">
           <td class="txt-lft" colspan="6"></td>
           <td class="txt-rgh">
