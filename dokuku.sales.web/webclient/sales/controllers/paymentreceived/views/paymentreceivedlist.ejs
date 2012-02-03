@@ -1,109 +1,159 @@
-<table style="width:100%; margin-bottom:25px">
-  <tr>
-    <td>
-      <div class="ListItemDiv">
-        <div class="HeaderListDiv">Terima Pembayaran</div>
-        <div class="ItemListContentDiv">
-          <div class="ActionButtonDiv">
-            <table width="100%">
-              <tr>
-                <td>
-                  <!--<table>
-                    <tr>
-                      <td>
-                        <div class="menuLeft" id="deleteItem">
-                          <div class="floatLeft">Hapus</div>
-                          <div class="iconHapus"></div>
-                        </div>
-                      </td>
-                    </tr>
-                  </table>-->
-                </td>
-                <td style="float: right;">
-                  <table>
-                    <tr>
-                      <td>
-                        <div style="color:grey;">Tampilkan :</div>
-                      </td>
-                      <td>
-                        <div>
-                          <div class=" floatRight menuLeft">
-                            <div class="floatRight" id="showAllItem">Semua</div>
-                            <div class="imgFilter floatRight"></div>
+<table width="100%" cellpadding="0" border="0" id="tbllistinvoice">
+  <tbody>
+    <tr>
+      <td valign="top" class="bodyBgCenter">
+        <div class="invoicesContainer">
+          <div class="topBandHeaderDIV">
+            <div id="TitleSpan" class="HeaderDIVLeft">Terima Pembayaran</div>
+          </div>
+          <div class="error" id="errorListInv"></div>
+          <div class="invoiceContain">
+            <div class="ActionButtonDiv">
+              <table id ="tblMenuInvoice" width="1000px">
+                <tr id ="trMenuInvoice">
+                  <td id="tdMenuInvoiceLeft" width="700px">                    
+                  </td>
+                  <td id="tdMenuInvoiceRight" width="300px">
+                    <table id="subMenuInvoiceRight" width="100%">
+                      <tr id="trsubMenuInvoiceRight">
+                        <td id="tdsubMenuInvoiceRight" width="30%">
+                          <div class="floatLeft" id="titelMenuInvoice"></div>
+                        </td>
+                        <td id="tdsubMenuInvoiceRight" width="70%">
+                          <div class=" floatLeft">
+                            <div class="DivSearch">
+                              <div class="imgSearch">
+                                <input type="input" id="SearchInvoice" placeholder="Cari"/>
+                              </div>
+                            </div>
                           </div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <table width="100%" cellpadding="5px" id="tblListInvoice">
+              <thead>
+                <tr>
+                  <td class="tblCheck">
+                    <input type="checkbox" id="selectall"></input>
+                  </td>
+                  <td class="" style="width:30px"></td>
+                  <td class="tblNoInv">Tanggal</td>
+                  <td class="tblPO">Nama Pelanggan</td>
+                  <td class="tblNamaPelanggan">Jenis Pembayaran</td>
+                  <td class="tblTanggal center">Saldo</td>
+                  <td class="tblTotal right">jumlah pembayaran</td>                  
+                </tr>
+              </thead>
+              <tbody class ="bodyDataInvoice">
+                <%for(var i="0"; i=<this.length ; i++){%>
+                  <tr class="trbodyDataInvoice" id="trbodyDataInvoice"
+                    <%= i%>" tabindex ="<%= i%>">
+                    <td>
+                      <input type="checkbox" class="selectInvoice" id=""
+                        <%= i%>">
+                      </input>
+                    </td>
+                    <td id="tdDataInvoice"
+                      <%= i%>">
+                      <div class="settingListInvoice" id="settingListInvoice"
+                        <%= i%>" tabindex="<%= i%>">
+                        <img class='' src='/sales/controllers/customers/images/setting.png'/>
+                      </div>
+                      <div class="ContextMenuInvoice" id="ContextMenuInvoice"
+                        <%= i%>">
+                        <div class="itemContextMenuInvoice" id="actionEdit">
+                          <div class="EditImagContextMenu_ListInvoice invoiceImgContextMenu"></div>
+                          <span class="EditContextMenuInvoive spanContextMenuListInvoice" id="
+                            <%=this[i]._id%>">Ubah
+                          </span>
                         </div>
-                      </td>
-                      <td>
-                        <div class=" floatLeft">
-                          <!--<div class="DivSearch">
-                            <div class="imgSearch">
-                              <input type="input" id="searchItem" placeholder="Cari"/>
-                            </div>-->
-                          </div>
-                          <div class="searchOption">
-                            <table id="autoCompleteItems" style="width:100%"></table>
-                          </div>
+
+                        <div class="itemContextMenuInvoice" id="actionApprove">
+                          <div class="ApproveImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="ApproveContextMenuInvoive spanContextMenuListInvoice" id="
+                            <%=this[i]._id%>">Setujui
+                          </span>
                         </div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
+
+                        <div class="itemContextMenuInvoice" id="actionCancel">
+                          <div class="CancelImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="CancelContextMenuInvoive spanContextMenuListInvoice" id="
+                            <%=this[i]._id%>">Batal
+                          </span>
+                        </div>
+
+                        <div class="itemContextMenuInvoice" id="actionForceCancel">
+                          <div class="CancelImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="ForceCancelContextMenuInvoive spanContextMenuListInvoice" id="
+                            <%=this[i]._id%>">Batal Paksa
+                          </span>
+                        </div>
+                        <div class="itemContextMenuInvoice">
+                          <div class="RecordPaymentImagContextMenu invoiceImgContextMenu"></div>
+                          <span class="RecordPaymentContextMenuInvoive spanContextMenuListInvoice" id="
+                            <%=this[i]._id%>">Catat Pembayaran
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="invNo" id="<%=i%>"><input type="hidden" id='invoiceId_'<%=i%>' value="<%=this[i]._id %>"/><%=this[i].Date%>
+                      </span>
+                    </td>
+                    <td>
+                      <%=this[i].CustomerName%>
+                    </td>
+                    <td>
+                      <%=this[i].PaymentMode%>
+                    </td>
+                    <td class="center">
+                      <%=this[i].Reference%>
+                    </td>
+                    <td class="right">
+                      <%=this[i].AmountPaid%>
+                    </td>                
+                  </tr>
+                  <%}%></tbody>
             </table>
           </div>
-          <table class="ItemList">
-            <thead>
-              <tr style="background:#F0F0F0;">
-                <th class="headerList headerMark">
-                  <input type="checkbox" id="checkBoxAllList" value="" />
-                </th>
-                <td class="tblCheck" style="width:30px"></td>
-                <td class="tblNoInv">Tanggal</td>
-                <td class="tblPO">Nama Pelanggan</td>
-                <td class="tblNamaPelanggan">Tipe</td>
-                <td class="tblTanggal center">Reference#</td>
-                <td class="tblTotal right">Balance</td>
-                <td class="tblDue center">Jumlah</td>
-              </tr>
-            </thead>
-            <tbody class="BodyDataItem">
-
-            </tbody>
-          </table>
+          <div class ='PaggingInvoice'>
+            <div class ='DivPrevInvoice'>
+              <img class ='firstInvoice pagingSizeInvoice'></img>
+              <img class ='prevInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class ="disablePrevInvoice" style="display:none;">
+              <img class ='firstDisableInvoice pagingSizeInvoice'></img>
+              <img class ='prevDisableInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class ='DivPageInvoice'>
+              Halaman <input type='text' id='idInputPageInvoice' style="width:20px; height:14px"/> dari <span id="totalPageInvoice"></span>
+            </div>
+            <div class='DivNextInvoice'>
+              <img class ='nextInvoice pagingSizeInvoice'></img>
+              <img class ='lastInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class ="disableNextInvoice" style="display:none;">
+              <img class ='nextDisableInvoice pagingSizeInvoice'></img>
+              <img class ='lastDisableInvoice pagingSizeInvoice'></img>
+            </div>
+            <div class='DivlimitDataInvoice'>
+              <select class="limit" id="limitDataInvoice" style="width:50px; height:21px">
+                <option value="10" selected="selected"> 10 </option>
+                <option value="20"> 20 </option>
+                <option value="30"> 30 </option>
+                <option value="40"> 40 </option>
+              </select>
+            </div>
+          </div>
         </div>
-        <!--<div class ='PagingItems'>
-          <div class ='DivPrev'>
-            <img class ='first'></img>
-            <img class ='prev'></img>
-          </div>
-          <div class ="disablePrev" style="display:none;">
-            <img class ='firstDisable'></img>
-            <img class ='prevDisable'></img>
-          </div>
-          <div class ='DivPage'>
-            Halaman <input type='text' id='idInputPage' style="width:20px; height:14px"/> dari <span id="totalPage"></span>
-          </div>
-          <div class='DivNext'>
-            <img class ='next'></img>
-            <img class ='last'></img>
-          </div>
-          <div class ="disableNext" style="display:none;">
-            <img class ='nextDisable'></img>
-            <img class ='lastDisable'></img>
-          </div>
-          <div class='DivlimitData'>
-            <select class="limit" id="limitData" style="width:50px; height:21px">
-              <option value="10" selected="selected"> 10 </option>
-              <option value="20"> 20 </option>
-              <option value="30"> 30 </option>
-              <option value="40"> 40 </option>
-            </select>
-          </div>
-        </div>-->
-      </div>
-    </td>
-    <!--<td style="width:20%;vertical-align:top; padding:30px 0 0 10px;">
-      <div class='BtnNew'  id="gotoCreateItem">Tambah Barang</div>
-    </td>-->
-  </tr>
+      </td>
+      <td class="bodyBgRight" valign='top'>
+        <!--<div class='BtnNew' id='newinvoices'>Faktur Baru</div>-->
+      </td>
+    </tr>
+  </tbody>
 </table>

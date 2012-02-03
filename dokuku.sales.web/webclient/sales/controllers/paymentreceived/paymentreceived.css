@@ -128,6 +128,16 @@ margin-bottom: 0px;
     margin-right: 20px;
     margin-top: 4px;
 }
+.CancelImagContextMenu{
+    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+    background-position: -203px -74px;
+    height: 17px;
+    width: 19px;
+    float: left;
+    margin-right: 20px;
+    margin-top: 4px;
+    background-size: 267px 936px;
+}
 .leftMenu
 {
 	list-style: none;
@@ -146,12 +156,22 @@ margin-bottom: 0px;
 }
 .menuDelete
 {
-	width:60px;
+	width:70px;
 	float:left;
 }
 .menuApproveInvoice
 {
-	width:95px;
+    width:70px;
+	float:left;
+}
+.menuCancelInvoice
+{
+    width:70px;
+	float:left;
+}
+.menuForceCancelInvoice
+{
+    width:100px;
 	float:left;
 }
 .PaggingInvoice 
@@ -224,4 +244,49 @@ margin-bottom: 0px;
 .lastDisableInvoice{
 	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
 	background-position: -383px -265px;
+}
+.iconHapusinvoice
+{
+	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background-position: -332px -29px;
+	height: 16px;
+	width: 17px;
+	float: left;
+}
+.iconSetujuiinvoice
+{
+	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background-position: -226px -3px;
+	height: 16px;
+	width: 17px;
+	float: left;
+}
+.iconSetujuiinvoice
+{
+	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background-position: -226px -3px;
+	height: 16px;
+	width: 17px;
+	float: left;
+}
+.iconBatalinvoice
+{
+	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background-position: -148px -109px;
+	height: 16px;
+	width: 17px;
+	float: left;
+}
+.iconBatalPaksainvoice
+{
+	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background-position: -148px -109px;
+	height: 16px;
+	width: 17px;
+	float: left;
+}
+.hapusCaption
+{
+	float: right;
+	padding-right: 7px;
 }

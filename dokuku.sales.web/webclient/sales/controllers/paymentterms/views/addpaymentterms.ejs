@@ -1,0 +1,63 @@
+﻿<div class='mainFrame'>
+  <div class="topBandHeaderDIV">
+    <div class="HeaderDIVLeft" id="TambahMU">Tambah Term Pembayaran</div>
+  </div>
+  <div class="error" id="errorCreateItemDiv"></div>
+  <div class="mainDivWidth">
+    <div id="addPaymentTermsForm">
+      <div class="ie-form AddPaymentTermsFormDiv">
+        <table>
+          <tbody>       
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Kode</span>
+              </td>
+              <td class="field">
+                <input type="text" name="Kode" id="kode" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode  tidak boleh kosong')" required="required"/>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Nama </span>
+              </td>
+              <td class="field">
+              <select name="nama" id="nama">
+                <option value="hari">Hari</option>
+                <option value="minggu"> Minggu</option>
+                <option value="bulan">Bulan</option>
+                <option value="default">Saat Menerima Kwitansi</option>
+              </select>
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel" id="label-jk-waktu">Jangka Waktu </span>
+              </td>
+              <td class="field">
+                <input type="text" name="JangkaWaktu" id="jangka-waktu" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Jangka waktu tidak boleh kosong')" required="required"/>
+                <span id="ket"></span>             
+              </td>
+              <td>
+                <div class="messageVerify "></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div style="margin-top:30px">
+      <p align="center" style="font-size:11px">
+        <input type="hidden" id="keywords" name="keywords"></input>
+        <input id="PaymentTermsSave" type="submit" class="CreateCustomerBtn" name="save" value="Simpan"/>
+        atau
+        <span style="text-decoration:underline; cursor:pointer; color:red; font-size : 11px" id="CancelPaymentTerms">Batal</span>
+      </p>
+    </div>
+  </div>
+</div>
