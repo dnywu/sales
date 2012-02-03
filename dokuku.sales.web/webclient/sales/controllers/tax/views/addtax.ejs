@@ -8,8 +8,16 @@
         <tbody>
           <tr>
             <td>
+              <div class="mandatoryTxt">Kode Pajak</div>
+            </td>
+            <td class="td_field">
+              <input type="text" name="KodePajak" id="inputText_PajakKode" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode Pajak tidak Boleh Kosong')"/>
+            </td>
+            <td class="error"></td>
+          </tr>
+          <tr>
+            <td>
               <div class="mandatoryTxt">Nama Pajak</div>
-
             </td>
             <td class="td_field">
               <input type="text" name="Pajak" id="inputText_PajakName" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Pajak tidak Boleh Kosong')"/>

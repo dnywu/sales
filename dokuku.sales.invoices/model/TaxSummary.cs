@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 namespace dokuku.sales.invoices.model
 {
-    public class Tax
+    public class TaxSummary
     {
         public string Code { get; set; }
-        public decimal Value { get; set; }
-        public decimal Amount { get; set; }
+        public string Amount { get; set; }
     }
 }

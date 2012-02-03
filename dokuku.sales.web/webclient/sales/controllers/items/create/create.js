@@ -29,7 +29,7 @@ steal('jquery/controller',
             loadDataTax: function () {
                 var tax = curTaxRepo.getAllTax();
                 $.each(tax, function (i) {
-                    $("#tax").append("<option value='" + tax[i].Value + "'>" + tax[i].Name + "</option>");
+                    $("#tax").append("<option value='" + tax[i].Value + "'>" + tax[i].Code + "</option>");
                 });
             },
             "#createTaxLink click": function (el, ev) {
@@ -64,7 +64,7 @@ steal('jquery/controller',
                 item.Description = description;
 
                 item.Tax = new Object();
-                item.Tax.Name = taxName.trim();
+                item.Tax.Code = taxName.trim();
                 item.Tax.Value = taxValue;
 
                 $.ajax({
