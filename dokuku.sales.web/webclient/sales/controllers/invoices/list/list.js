@@ -1,15 +1,19 @@
-steal('jquery/controller',
+steal( 'jquery',
+       'jquery/controller',
 	   'jquery/view/ejs',
 	   'jquery/controller/view',
 	   'sales/models',
        'sales/scripts/stringformat.js',
-       'sales/controllers/invoices/create',
-       'sales/controllers/invoices/edit',
+'sales/controllers/invoices/create',
+/*'sales/controllers/invoices/edit',*/
+       'sales/controllers/invoices/InvoiceClass.js',
        'sales/controllers/invoices/invoicedetail',
        'sales/repository/InvoiceRepository.js',
        'sales/repository/InvoicePaymentRepository.js',
+       'sales/scripts/jquery-ui-1.8.11.min.js',
        './listinvoice.css',
-       './DeleteConfirmBox.css')
+       './DeleteConfirmBox.css',
+       'sales/styles/jquery-ui-1.8.14.custom.css')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
        './views/confirmDeleteInvoice.ejs',      
@@ -29,7 +33,7 @@ steal('jquery/controller',
             {
                 init: function () {
                     $this = this;
-                    inv = new Invoice();
+                    inv = new Invoiceclass();
                     invRepo = new InvoiceRepository();
                     this.load();
                 },
@@ -189,9 +193,9 @@ steal('jquery/controller',
                     var message = $("<div class='deleteConfirmMessage'>Faktur ini akan dirubah dari draft ke open...?</div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm YesPayment'>Ya</div>" +
                                     "<div class='ButtonConfirm No' id='Close'>Tidak</div><input type='hidden' value=" + invId + " id='inv-id'/></div>");
-                     $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
-                     $(".BodyConfirmMassage").append(message);
-                  
+                    $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                    $(".BodyConfirmMassage").append(message);
+
 
                 },
                 setInvoiceId: function (id) {
@@ -226,8 +230,8 @@ steal('jquery/controller',
                         $('#vAmountReceived').focus();
                     }
                 },
-                    "#confirmPaymentNo click": function () {
-                        $('.ModalDialog').remove();
+                "#confirmPaymentNo click": function () {
+                    $('.ModalDialog').remove();
                 },
                 '.Yes click': function () {
                     var result;
@@ -443,7 +447,5 @@ steal('jquery/controller',
                         $this.load();
                     }
                 }
-
-
-            });
-       });
+    });
+});

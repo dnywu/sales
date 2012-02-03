@@ -54,7 +54,7 @@ input.datepicker
 }
 div.BtnNew
 {
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -16px -226px;
 	color: #6F6F6F;
 	font-family: arial, verdana;

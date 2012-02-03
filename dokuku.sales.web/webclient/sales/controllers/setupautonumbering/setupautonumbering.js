@@ -1,79 +1,72 @@
-steal('jquery/controller',
-      'jquery/view/ejs',
-      'jquery/controller/view',
-      './autonumbering.css')
-	.then('./views/setupautonumbering.ejs', function ($) {
-	    $.Controller('Sales.Controllers.Setupautonumbering',
-        {
-            init: function (el, ev) {
-                var item = this.getAutoNumber();
-                this.element.html('//sales/controllers/setupautonumbering/views/setupautonumbering.ejs', { 'item': item });
+steal('jquery',
+        'jquery/controller',
+        'jquery/view/ejs',
+        'jquery/controller/view',
+        'sales/models/models.js',
+        'sales/fixtures/fixtures.js',
+        'sales/controllers/nav/nav.js',
+        'sales/controllers/nav/navtab.js',
+        'sales/controllers/nav/navsubtab.js',
+        'sales/scripts/stringformat.js',
+        'sales/controllers/restrictuser',
+        'sales/controllers/setuporganization',
+        'sales/controllers/setupautonumbering/setupautonumberingControl.js',
+        'sales/controllers/setuporganization/setuporganization.js',
+        'sales/controllers/setuporganization/settingorganization.js',
+        'sales/controllers/currencyandtax/currencyandtax.js',
+        'sales/controllers/paymentmode/paymentmode.js',
+        'sales/sales.css',
+	function () {
+	    $.ajax({
+	        type: 'GET',
+	        url: '/getuser',
+	        dataType: 'json',
+	        async: false,
+	        success: GetUserCallback
+	    });
+	    $.ajax({
+	        type: 'GET',
+	        url: '/getorganization',
+	        dataType: 'json',
+	        async: false,
+	        success: GetOrganizationCallback
+	    });
+	    function GetOrganizationCallback(data) {
 
-                if (item.mode == "1") {
-                    $('input:radio[class=yearly]').attr('checked', 'checked');
-                }
-                else if (item.mode == "2") {
-                    $('input:radio[class=monthly]').attr('checked', 'checked');
-                }
-                else if (item.mode == "0") {
-                    $('input:radio[class=default]').attr('checked', 'checked');
-                }
-
-            },
-
-            load: function () {
-                var item = this.getAutoNumber();
-                this.element.html('//sales/controllers/setupautonumbering/views/setupautonumbering.ejs', { 'item': item });
-                if (item.mode == "1") {
-                    $('input:radio[class=yearly]').attr('checked', 'checked');
-                }
-                else if (item.mode == "2") {
-                    $('input:radio[class=monthly]').attr('checked', 'checked');
-                }
-                else if (item.mode == "0") {
-                    $('input:radio[class=default]').attr('checked', 'checked');
-                }
-            },
-            getAutoNumber: function () {
-                var item = null;
-                $.ajax({
-                    type: 'GET',
-                    url: '/InvoiceAutoNumber',
-                    dataType: 'json',
-                    async: false,
-                    success: function (data) {
-                        item = data;
-                    }
-                });
-                return item;
-            },
-            '#cancelAutoNumber click': function () {
-                $("#body").empty();
-                $("#subtabs").empty();
-                $("ul.ultabs li").removeClass('active');
-            },
-            '#autoNumberForm submit': function (el, ev) {
-                var form = $('#autoNumberForm').formParams();
-                var prefix = $('#input-prefix').val();
-                var mode = $('input:radio[name=Mode]:checked').val();
-                var item = new Object;
-                item.prefix = prefix;
-                item.mode = mode;
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/SetupInvoiceAutoNumber',
-                    data: { 'data': JSON.stringify(item) },
-                    datatype: 'json',
-                    success: function (data) {
-                        $("div#successMessage").empty();
-                        $("#body").sales_setupautonumbering('load');
-                        $("div#successMessage").append("Data telah tersimpan");
-
-                    }
-                });
-                ev.preventDefault();
-            }
-        })
-
-	});
+	        if (data == null) {
+	            $.ajax({
+	                type: 'GET',
+	                url: '/validatesetuporganization',
+	                dataType: 'json',
+	                async: false,
+	                success: ValidateSetupOrganizationCallback
+	            });
+	        }
+	        else {
+	            new Sales.Models.Currency({
+	                id: '1',
+	                curr: data.Currency
+	            }).save();
+	            $('#LoadingElment').remove();
+	            $('#header').sales_nav();
+	            $('#tabs .containertabs').sales_navtab();
+	            $('#subtabs .container').sales_navsubtab(); //register controller to this ids
+	            $('#subtabs .container').sales_navsubtab("SettingSubMenu"); //load subitem without binding event attached
+	            $('#subtabs .container').sales_navsubtab(); //used for rebind event onclick, do not delete if know what u do
+	            $("#body").sales_setupautonumberingcontrol('load');
+	        }
+	    }
+	    function GetUserCallback(data) {
+	        new Sales.Models.Companyprofile({
+	            id: '1',
+	            name: data
+	        }).save();
+	    }
+	    function ValidateSetupOrganizationCallback(data) {
+	        if (data.IsValid)
+	            $(document.body).sales_setuporganization();
+	        else
+	            $(document.body).sales_restrictuser();
+	    }
+	    $("#LoadingElment").remove();
+	})

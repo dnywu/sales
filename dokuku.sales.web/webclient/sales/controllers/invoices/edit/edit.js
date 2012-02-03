@@ -3,7 +3,7 @@ steal('jquery/controller',
 	    'jquery/dom/form_params',
         'jquery/controller/view',
         './editinvoices.css',
-        'sales/controllers/invoices/Invoice.js',
+        'sales/controllers/invoices/InvoiceClass.js',
         'sales/controllers/invoices/AddCustomer.js',
         'sales/controllers/invoices/AddItem.js',
         'sales/scripts/jquery-ui-1.8.11.min.js',
@@ -35,7 +35,7 @@ steal('jquery/controller',
                 custRepo = new CustomerRepository();
                 invRepo = new InvoiceRepository();
                 curTaxRepo = new CurrencyandTaxRepository();
-                inv = new Invoice();
+                inv = new Invoiceclass();
                 this.load(id);
                 this.SetCurrency();
             },

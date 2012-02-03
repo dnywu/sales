@@ -24,7 +24,7 @@ steal('jquery/controller',
                     url: '/UpdateDataCustomer/data',
                     data: { 'data': data },
                     datatype: 'json',
-                    success: function (data) { $("#body").sales_customers('load') }
+                    success: function (data) { $("#body").sales_customerscontrol('load') }
                 });
             },
              "input keypress": function (el, ev) {

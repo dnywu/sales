@@ -1,10 +1,11 @@
-steal('jquery/controller',
+steal('jquery',
+       'jquery/controller',
        'jquery/view/ejs',
 	   'jquery/dom/form_params',
 	   'jquery/controller/view',
        './createinvoices.css',
        'sales/scripts/stringformat.js',
-       'sales/controllers/invoices/Invoice.js',
+       'sales/controllers/invoices/InvoiceClass.js',
        'sales/controllers/invoices/AddCustomer.js',
        'sales/controllers/invoices/AddItem.js',
        'sales/scripts/jquery-ui-1.8.11.min.js',
@@ -12,6 +13,8 @@ steal('jquery/controller',
        'sales/repository/ItemRepository.js',
        'sales/repository/CustomerRepository.js',
        'sales/repository/CurrencyandTaxRepository.js',
+       'sales/scripts/ModalDialog.js',
+       'sales/styles/ModalDialog.css',
 	   'sales/models')
 	.then('./views/createinvoices.ejs',
           './views/AddCustomer.ejs',
@@ -30,7 +33,7 @@ steal('jquery/controller',
         {
             init: function (ev, el, customer) {
                 $this = this;
-                inv = new Invoice();
+                inv = new Invoiceclass();
                 itmRepo = new ItemRepository();
                 custRepo = new CustomerRepository();
                 curTaxRepo = new CurrencyandTaxRepository();

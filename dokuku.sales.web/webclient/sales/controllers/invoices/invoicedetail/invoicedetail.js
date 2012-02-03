@@ -11,12 +11,12 @@ steal('jquery/controller', 'jquery/view/ejs',
     init: function (el, ev, invoice) {
         this.load(invoice);
         $this = this;
-        invo = new Invoice();
+        invo = new Invoiceclass();
         invRepo = new InvoiceRepository();
     },
     load: function (invoice) {
         var inv = this.GetDetailCustomer(invoice);
-        invo = new Invoice();
+        invo = new Invoiceclass();
         this.element.html(this.view("//sales/controllers/invoices/invoicedetail/views/invoicedetail.ejs", inv));
         this.GetStatusInvoice(inv.Status);
     },

@@ -572,13 +572,26 @@
     <Content Include="webclient\jquery\view\view.html" />
     <Content Include="webclient\jquery\view\view.js" />
     <Content Include="Views\login.html" />
+    <Content Include="webclient\sales\controllers\customers\customersControl.js" />
+    <Content Include="webclient\sales\controllers\customers\index.html" />
+    <Content Include="webclient\sales\controllers\home\homecontrol.js" />
+    <Content Include="webclient\sales\controllers\home\index.html" />
+    <Content Include="webclient\sales\controllers\invoices\InvoiceClass.js" />
+    <Content Include="webclient\sales\controllers\invoices\index.html" />
     <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.css" />
     <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.html" />
     <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.js" />
     <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax_test.js" />
     <Content Include="webclient\sales\controllers\currencyandtax\funcunit.html" />
-    <Content Include="webclient\sales\controllers\currencyandtax\image\currency.gif" />
-    <Content Include="webclient\sales\controllers\currencyandtax\image\taxes.gif" />
+    <Content Include="webclient\sales\images\add.png" />
+    <Content Include="webclient\sales\images\bar_background.png" />
+    <Content Include="webclient\sales\images\currency.gif" />
+    <Content Include="webclient\sales\images\Dokuku-Logo.gif" />
+    <Content Include="webclient\sales\images\icon.png" />
+    <Content Include="webclient\sales\images\LOGO-DOKUKU.jpg" />
+    <Content Include="webclient\sales\images\LOGO-DOKUKU.png" />
+    <Content Include="webclient\sales\images\search.png" />
+    <Content Include="webclient\sales\images\taxes.gif" />
     <None Include="webclient\funcunit\dependencies.json" />
     <None Include="webclient\funcunit\pages\actions.md" />
     <None Include="webclient\funcunit\pages\assertions.md" />
@@ -613,31 +626,17 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="webclient\sales\controllers\currency\currency.css" />
-    <Content Include="webclient\sales\controllers\currency\images\Actions.png" />
-    <Content Include="webclient\sales\controllers\currency\images\find.png" />
-    <Content Include="webclient\sales\controllers\currency\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\currency\images\setting.png" />
     <None Include="webclient\sales\controllers\currency\views\EditCurrency.ejs">
       <SubType>Designer</SubType>
     </None>
     <Content Include="webclient\sales\controllers\customers\customer.css" />
-    <Content Include="webclient\sales\controllers\customers\customers.html" />
     <Content Include="webclient\sales\controllers\customers\customers.js" />
-    <Content Include="webclient\sales\controllers\customers\customers_test.js" />
     <Content Include="webclient\sales\controllers\customers\edit\edit.html" />
     <Content Include="webclient\sales\controllers\customers\edit\edit.js" />
     <Content Include="webclient\sales\controllers\customers\edit\edit_test.js" />
     <Content Include="webclient\sales\controllers\customers\edit\funcunit.html" />
-    <Content Include="webclient\sales\controllers\customers\funcunit.html" />
-    <Content Include="webclient\sales\controllers\customers\images\Actions.png" />
-    <Content Include="webclient\sales\controllers\customers\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\customers\images\setting.png" />
-    <Content Include="webclient\sales\controllers\customers\images\find.png" />
-    <Content Include="webclient\sales\controllers\home\funcunit.html" />
     <Content Include="webclient\sales\controllers\home\home.css" />
-    <Content Include="webclient\sales\controllers\home\home.html" />
     <Content Include="webclient\sales\controllers\home\home.js" />
-    <Content Include="webclient\sales\controllers\home\home_test.js" />
     <Content Include="webclient\sales\controllers\invoices\AddCustomer.js" />
     <Content Include="webclient\sales\controllers\invoices\AddItem.js" />
     <Content Include="webclient\sales\controllers\invoices\create\create.html" />
@@ -648,7 +647,6 @@
     <Content Include="webclient\sales\controllers\invoices\edit\edit.html" />
     <Content Include="webclient\sales\controllers\invoices\edit\edit.js" />
     <Content Include="webclient\sales\controllers\invoices\edit\editinvoices.css" />
-    <Content Include="webclient\sales\controllers\invoices\edit\edit_test.js" />
     <Content Include="webclient\sales\controllers\invoices\edit\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\Invoice.js" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\funcunit.html" />
@@ -657,47 +655,25 @@
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail.js" />
     <Content Include="webclient\sales\controllers\invoices\invoicedetail\invoicedetail_test.js" />
     <Content Include="webclient\sales\controllers\invoices\list\DeleteConfirmBox.css" />
-    <Content Include="webclient\sales\controllers\invoices\list\funcunit.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.html" />
     <Content Include="webclient\sales\controllers\invoices\list\list.js" />
     <Content Include="webclient\sales\controllers\invoices\list\listinvoice.css" />
-    <Content Include="webclient\sales\controllers\invoices\list\list_test.js" />
     <Content Include="webclient\sales\controllers\items\edit\edit.js" />
     <Content Include="webclient\sales\controllers\items\edit\ItemEdit.css" />
     <Content Include="webclient\sales\controllers\items\list\funcunit.html" />
-    <Content Include="webclient\sales\controllers\items\list\images\Actions.png" />
-    <Content Include="webclient\sales\controllers\items\list\images\add.png" />
-    <Content Include="webclient\sales\controllers\items\list\images\find.png" />
-    <Content Include="webclient\sales\controllers\items\list\images\search.png" />
-    <Content Include="webclient\sales\controllers\items\list\images\setting.png" />
     <Content Include="webclient\sales\controllers\items\list\ItemList.css" />
     <Content Include="webclient\sales\controllers\items\list\list.html" />
     <Content Include="webclient\sales\controllers\items\list\list.js" />
     <Content Include="webclient\sales\controllers\items\list\list_test.js" />
-    <Content Include="webclient\sales\controllers\items\list\test\qunit\items_test.js" />
-    <Content Include="webclient\sales\controllers\items\list\test\qunit\qunit.js" />
     <Content Include="webclient\sales\controllers\items\create\create.html" />
     <Content Include="webclient\sales\controllers\items\create\create.js" />
     <Content Include="webclient\sales\controllers\items\create\create_test.js" />
     <Content Include="webclient\sales\controllers\items\create\funcunit.html" />
     <Content Include="webclient\sales\controllers\items\create\ItemsCreate.css" />
-    <Content Include="webclient\sales\controllers\nav\funcunit.html" />
-    <Content Include="webclient\sales\controllers\nav\images\bar_background.png" />
-    <Content Include="webclient\sales\controllers\nav\images\Dokuku-Logo.gif" />
-    <Content Include="webclient\sales\controllers\nav\images\icon.png" />
-    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.jpg" />
-    <Content Include="webclient\sales\controllers\nav\images\LOGO-DOKUKU.png" />
-    <Content Include="webclient\sales\controllers\nav\images\uknown-person.gif" />
-    <Content Include="webclient\sales\controllers\nav\images\userlogo.png" />
-    <Content Include="webclient\sales\controllers\nav\Nav.css" />
-    <Content Include="webclient\sales\controllers\nav\nav.html" />
+    <Content Include="webclient\sales\controllers\nav\nav.css" />
     <Content Include="webclient\sales\controllers\nav\nav.js" />
-    <Content Include="webclient\sales\controllers\nav\NavSubMenu.css" />
-    <Content Include="webclient\sales\controllers\nav\nav_test.js" />
-    <Content Include="webclient\sales\controllers\paymentmode\images\Actions.png" />
-    <Content Include="webclient\sales\controllers\paymentmode\images\find.png" />
-    <Content Include="webclient\sales\controllers\paymentmode\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\paymentmode\images\setting.png" />
+    <Content Include="webclient\sales\controllers\nav\navsubtab.js" />
+    <Content Include="webclient\sales\controllers\nav\navtab.js" />
     <Content Include="webclient\sales\controllers\paymentmode\paymentmode.css" />
     <Content Include="webclient\sales\controllers\paymentmode\funcunit.html" />
     <Content Include="webclient\sales\controllers\paymentmode\paymentmode.html" />
@@ -717,14 +693,12 @@
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.html" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.js" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser_test.js" />
-    <Content Include="webclient\sales\controllers\setupautonumbering\funcunit.html" />
-    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.html" />
     <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering.js" />
-    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumbering_test.js" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\index.html" />
+    <Content Include="webclient\sales\controllers\setupautonumbering\setupautonumberingControl.js" />
     <Content Include="webclient\sales\controllers\setupautonumbering\autonumbering.css" />
     <Content Include="webclient\sales\controllers\setuporganization\settingorganization.css" />
     <Content Include="webclient\sales\controllers\setuporganization\funcunit.html" />
-    <Content Include="webclient\sales\controllers\setuporganization\images\pointerballoon.gif" />
     <Content Include="webclient\sales\controllers\setuporganization\scripts\BalloonTips.js" />
     <Content Include="webclient\sales\controllers\setuporganization\settingorganization.js" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.css" />
@@ -732,10 +706,6 @@
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization.js" />
     <Content Include="webclient\sales\controllers\setuporganization\setuporganization_test.js" />
     <Content Include="webclient\sales\controllers\tax\funcunit.html" />
-    <Content Include="webclient\sales\controllers\tax\images\Actions.png" />
-    <Content Include="webclient\sales\controllers\tax\images\find.png" />
-    <Content Include="webclient\sales\controllers\tax\images\pointerballoon.gif" />
-    <Content Include="webclient\sales\controllers\tax\images\setting.png" />
     <Content Include="webclient\sales\controllers\tax\tax.css" />
     <Content Include="webclient\sales\controllers\tax\tax.html" />
     <Content Include="webclient\sales\controllers\tax\tax.js" />
@@ -770,13 +740,16 @@
     <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo.js" />
     <Content Include="webclient\sales\controllers\uploadlogo\uploadlogo_test.js" />
     <Content Include="webclient\sales\fixtures\fixtures.js" />
-    <Content Include="webclient\sales\funcunit.html" />
+    <Content Include="webclient\sales\images\find.png" />
+    <Content Include="webclient\sales\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\images\setting.png" />
+    <Content Include="webclient\sales\images\uknown-person.gif" />
+    <Content Include="webclient\sales\images\userlogo.png" />
     <Content Include="webclient\sales\index.html" />
     <Content Include="webclient\sales\models\companyprofile.js" />
     <Content Include="webclient\sales\models\currency.js" />
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
-    <Content Include="webclient\sales\qunit.html" />
     <Content Include="webclient\sales\repository\PaymentReceivedRepository.js" />
     <Content Include="webclient\sales\repository\PaymentModeRepository.js" />
     <Content Include="webclient\sales\repository\InvoicePaymentRepository.js" />
@@ -795,21 +768,17 @@
     <Content Include="webclient\sales\scripts\jquery-ui-1.8.11.min.js" />
     <Content Include="webclient\sales\scripts\ModalDialog.js" />
     <Content Include="webclient\sales\scripts\stringformat.js" />
-    <Content Include="webclient\sales\styles\images\Actions.png" />
-    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_e4f1fb_1x400.png" />
-    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_f6f6f6_1x400.png" />
-    <Content Include="webclient\sales\styles\images\ui-bg_glass_100_fdf5ce_1x400.png" />
-    <Content Include="webclient\sales\styles\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
-    <Content Include="webclient\sales\styles\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-    <Content Include="webclient\sales\styles\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-    <Content Include="webclient\sales\styles\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="webclient\sales\images\Actions.png" />
+    <Content Include="webclient\sales\images\jquery-ui\ui-bg_glass_100_e4f1fb_1x400.png" />
+    <Content Include="webclient\sales\images\jquery-ui\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="webclient\sales\images\jquery-ui\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="webclient\sales\images\jquery-ui\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="webclient\sales\images\jquery-ui\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="webclient\sales\images\jquery-ui\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="webclient\sales\images\jquery-ui\ui-icons_ffffff_256x240.png" />
     <Content Include="webclient\sales\styles\jquery-ui-1.8.14.custom.css" />
     <Content Include="webclient\sales\styles\ModalDialog.css" />
     <Content Include="webclient\sales\scripts\GetParameter.js" />
-    <Content Include="webclient\sales\test\funcunit\funcunit.js" />
-    <Content Include="webclient\sales\test\funcunit\sales_test.js" />
-    <Content Include="webclient\sales\test\qunit\qunit.js" />
-    <Content Include="webclient\sales\test\qunit\sales_test.js" />
     <Content Include="webclient\steal\browser\browser.js" />
     <Content Include="webclient\steal\browser\client.js" />
     <Content Include="webclient\steal\browser\envjs\client.js" />
@@ -1203,7 +1172,7 @@
     <None Include="webclient\sales\controllers\items\create\views\init.ejs">
       <SubType>Designer</SubType>
     </None>
-    <None Include="webclient\sales\controllers\nav\views\nav.ejs">
+    <None Include="webclient\sales\controllers\nav\views\navheader.ejs">
       <SubType>Designer</SubType>
     </None>
     <None Include="webclient\sales\controllers\paymentreceived\views\init.ejs" />
@@ -1350,7 +1319,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54153</DevelopmentServerPort>
+          <DevelopmentServerPort>63542</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

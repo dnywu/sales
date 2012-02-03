@@ -109,7 +109,7 @@ steal('jquery/controller',
             $("table.dataTax tbody.BodyDataTax").append(
                         "<tr class='trDataTax' id='trTaxList" + item + "' tabindex='" + item + "'>" +
                         "<td class='thDataTax tdDataTax tdDataTaxCenter textAlignRight' style='text-align:center'><input type='checkbox' class='SelectTax' id='CheckboxTax' value='" + data[item]._id + "'/></td>" +
-                        "<td class='tdDataTaxCenter tdDataTax' id='tdDataTax" + item + "'><div class='settingListTax' id='settingListTax" + item + "' tabindex='" + item + "'><img class='' src='/sales/controllers/tax/images/setting.png'/></div></td>" +
+                        "<td class='tdDataTaxCenter tdDataTax' id='tdDataTax" + item + "'><div class='settingListTax' id='settingListTax" + item + "' tabindex='" + item + "'><img class='' src='/sales/images/setting.png'/></div></td>" +
                         "<td class='tdDataTaxLeft tdDataTax'>" +
                             "<div class='tax' width = '100%'>" + data[item].Name + "</div>" +
                         "</td>" +

@@ -1,6 +1,7 @@
-steal('jquery/controller',
-      'jquery/view/ejs',
-       './currency.css',
+steal(
+        'jquery/controller',
+        'jquery/view/ejs',
+        './currency.css',
         'sales/repository/CurrencyandTaxRepository.js')
 	.then('./views/listcurrency.ejs', './views/AddCurrency.ejs', './views/EditCurrency.ejs', function ($) {
 	    $.Controller('Sales.Controllers.Currency',
@@ -115,7 +116,7 @@ steal('jquery/controller',
             $("table.dataCurrency tbody.BodyDataCurrency").append(
             "<tr class='trDataCurrency' id='trCurrencyList" + item + "' tabindexCurrency='" + item + "'>" +
             "<td class='thDataCurrency tdDataCurrency tdDataCurrencyCenter textAlignRight' style='text-align:center'><input type='checkbox' class='checkboxCurrency' id='checkboxCurrency'value='" + data[item]._id + "'/></td>" +
-            "<td class='tdDataCurrencyCenter tdDataCurrency' id='tdDataCurrency" + item + "'><div class='settingCurrency' id='settingListCurrency" + item + "' tabindexCurrency='" + item + "'><img class='' src='/sales/controllers/currency/images/setting.png'/></div></td>" +
+            "<td class='tdDataCurrencyCenter tdDataCurrency' id='tdDataCurrency" + item + "'><div class='settingCurrency' id='settingListCurrency" + item + "' tabindexCurrency='" + item + "'><img class='' src='/sales/images/setting.png'/></div></td>" +
             "<td class='tdDataCurrencyLeft tdDataCurrency'>" +
                 "<div width = '100%'>" + data[item].Name + "</div>" +
             "</td>" +
