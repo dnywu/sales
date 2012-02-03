@@ -1,7 +1,7 @@
 steal('jquery/controller',
         'jquery/view/ejs',
         'jquery/controller/view',
-        'sales/models'
+        'sales/models'        
      )
 	.then(function ($) {
 	    $.Controller('sales.controllers.navsubtab',
@@ -57,16 +57,15 @@ steal('jquery/controller',
                 settingOrganization = $('<li>', { 'class': 'lisubtabs', id: 'settingorganization', text: 'Informasi Perusahaan' });
 
                 paymentmode = $('<li>', { 'class': 'lisubtabs', id: 'paymentmode', text: 'Jenis Pembayaran' });
-
+                paymentterms = $('<li>', { 'class': 'lisubtabs', id: 'paymentterm', text: 'Termin Pembayaran' });
                 $("#subtabs").empty();
                 container.appendTo(submenu);
                 ul.appendTo(container);
                 setupautonumbering.appendTo(ul);
                 currencyandtax.insertAfter(setupautonumbering);
-
                 settingOrganization.insertAfter(currencyandtax);
-
                 paymentmode.insertAfter(currencyandtax);
+                paymentterms.insertAfter(currencyandtax);
             },
             '#invoices click': function (el) {
                 this.ClearContain();
@@ -108,6 +107,11 @@ steal('jquery/controller',
                 this.ClearContain();
                 this.SetBoldActivePage(el);
                 $("#body").sales_paymentreceived();
+            },
+            '#paymentterm click':function(el){
+                this.ClearContain();
+                this.SetBoldActivePage(el);
+                $("#body").sales_paymentterms('load');
             },
             '#settingorganization click': function (el) {
                 this.ClearContain();

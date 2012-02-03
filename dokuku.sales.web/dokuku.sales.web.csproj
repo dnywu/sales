@@ -583,8 +583,6 @@
     <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.css" />
     <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.html" />
     <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax.js" />
-    <Content Include="webclient\sales\controllers\currencyandtax\currencyandtax_test.js" />
-    <Content Include="webclient\sales\controllers\currencyandtax\funcunit.html" />
     <Content Include="webclient\sales\images\add.png" />
     <Content Include="webclient\sales\images\bar_background.png" />
     <Content Include="webclient\sales\images\currency.gif" />
@@ -681,11 +679,9 @@
     <Content Include="webclient\sales\controllers\paymentmode\paymentmode.html" />
     <Content Include="webclient\sales\controllers\paymentmode\paymentmode.js" />
     <Content Include="webclient\sales\controllers\paymentmode\paymentmode_test.js" />
-    <Content Include="webclient\sales\controllers\paymentreceived\funcunit.html" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.css" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.html" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.js" />
-    <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived_test.js" />
     <Content Include="webclient\sales\controllers\paymentterms\funcunit.html" />
     <Content Include="webclient\sales\controllers\paymentterms\images\Actions.png" />
     <Content Include="webclient\sales\controllers\paymentterms\images\find.png" />
@@ -696,10 +692,8 @@
     <Content Include="webclient\sales\controllers\paymentterms\paymentterms.js" />
     <Content Include="webclient\sales\controllers\paymentterms\paymentterms_test.js" />
     <Content Include="webclient\sales\controllers\payment\payment.css" />
-    <Content Include="webclient\sales\controllers\payment\funcunit.html" />
     <Content Include="webclient\sales\controllers\payment\payment.html" />
     <Content Include="webclient\sales\controllers\payment\payment.js" />
-    <Content Include="webclient\sales\controllers\payment\payment_test.js" />
     <Content Include="webclient\sales\controllers\restrictuser\funcunit.html" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.html" />
     <Content Include="webclient\sales\controllers\restrictuser\restrictuser.js" />
