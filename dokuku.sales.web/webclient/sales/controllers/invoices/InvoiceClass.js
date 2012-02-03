@@ -47,7 +47,7 @@
             if ($(this).text() == part.Tax.Name)
                 $(this).attr('selected', true);
         });
-        
+
         $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
         $("#amount_" + index).val(part.Rate);
         $this.RecalculateTaxOnChangeRate(index);
@@ -60,7 +60,6 @@
                 var index = $('#itemInvoice tbody tr').get(i).id;
                 var index = index.split('_')[1];
                 $this.CalculateItemOnChangeRate(index, rate);
-                //$this.RecalculateTax(index);
                 $this.RecalculateTaxOnChangeRate(index);
             }
         });
@@ -158,13 +157,23 @@
                     objInv.Items[i].Discount = $('.discount').get(i).value;
                     objInv.Items[i].Tax = new Object();
                     objInv.Items[i].Tax.Value = $('.taxed').get(i).value;
-                    objInv.Items[i].Tax.Name = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
+                    objInv.Items[i].Tax.Code = $('.taxed option[value=' + objInv.Items[i].Tax.Value + ']').get(i).text;
+                    objInv.Items[i].Tax.Amount = $('.taxedAmt').get(i).value;
                     objInv.Items[i].Amount = $('.amount').get(i).value;
+                    objInv.Items[i].TaxAmount = $('.taxedAmt').get(i).value;
                 }
             } else {
                 return;
             }
         });
+
+        objInv.TaxSummary = new Array;
+        $('.TotalTaxAmt').each(function (i) {
+            objInv.TaxSummary[i] = new Object;
+            objInv.TaxSummary[i].Code = $('.TotalTaxAmt').get(i).id;
+            objInv.TaxSummary[i].Amount = $('.TotalTaxAmt').get(i).value;
+        });
+
         if (objInv.CustomerId == 0) {
             $("#errorCreateInv").text("Silahkan masukkan Nama Pelanggan dengan benar").show();
             return;
@@ -215,12 +224,12 @@
             async: false,
             success: function (data) {
                 $.each(data, function (i) {
-                    dataInvoice[i] = data[i];
-                    var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                    var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
-                    dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
-                    dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
-                    dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
+                        dataInvoice[i] = data[i];
+                        var InvoiceDate = new Date(parseInt(dataInvoice[i].InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                        var DueDate = new Date(parseInt(dataInvoice[i].DueDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                        dataInvoice[i].InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
+                        dataInvoice[i].DueDate = $.datepicker.formatDate('dd M yy', DueDate);
+                        dataInvoice[i].Total = String.format("{0:C}", dataInvoice[i].Total);
                 });
             }
         });
@@ -336,6 +345,8 @@
         var optClear = $('.taxed').get(0).id;
         $('#' + optClear + ' option').each(function (n) {
             $('#' + $('#' + optClear + ' option').get(n).text).val(0);
+            //$('#' + $('#taxValue' + optClear + ' option').get(n).text).text(0);
+            $('#taxValue' + $('#' + optClear + ' option').get(n).text).text(0);
         });
 
         $('.taxed').each(function (i) {
@@ -345,6 +356,9 @@
                 var nilaiygditambah = $('.taxedAmt').get(i).value == "" ? 0 : $('.taxedAmt').get(i).value; //$('.taxedAmt').get(i).value;
                 var total = parseFloat(nilaipajak) + parseFloat(nilaiygditambah);
                 $("#" + namapajak).val(total);
+                //String.format("{0:C}", dataInvoice[i].Total);
+                //String.format("{0:C}", total)
+                $("#taxValue" + namapajak).text(String.format("{0:C}", total));
             }
         });
     },
@@ -358,6 +372,21 @@
         res = this.SetTaxAmount(index);
         $("#taxedAmt_" + index).val(res);
         this.CalculateByTax();
+    },
+    RecalculateTaxOnChangeItem: function (index) {
+        res = this.SetTaxAmount(index);
+        $("#taxedAmt_" + index).val(res);
+        this.CalculateByTax();
+    },
+    CalculateTotalTaxAmount: function () {
+        var TotalTax = 0;
+        var tmpval = 0;
+        $('.TotalTaxAmt').each(function (i) {
+            tmpval = parseFloat($(this).val());
+            if (!isNaN(tmpval))
+                TotalTax += tmpval;
+        });
+        return TotalTax;
     },
     SetTaxAmount: function (index) {
         var NilaiTax = $("#taxed_" + index).val();

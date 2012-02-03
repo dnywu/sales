@@ -133,7 +133,6 @@
   <ItemGroup>
     <None Include="Views\test.cshtml" />
     <Content Include="Views\css\login.css" />
-
     <Content Include="Views\scripts\GetParameter.js" />
     <Content Include="Views\scripts\jquery-1.7.1.min.js" />
     <Content Include="Views\scripts\login.js" />
@@ -1342,7 +1341,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63542</DevelopmentServerPort>
+          <DevelopmentServerPort>52150</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

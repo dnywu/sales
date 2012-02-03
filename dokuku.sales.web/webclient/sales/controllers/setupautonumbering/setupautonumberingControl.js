@@ -1,6 +1,7 @@
 steal('jquery/controller',
       'jquery/view/ejs',
       'jquery/controller/view',
+      'jquery/dom/form_params/form_params.js',
       './autonumbering.css')
 	.then('./views/setupautonumbering.ejs', function ($) {
 	    $.Controller('Sales.Controllers.Setupautonumberingcontrol',
@@ -53,6 +54,7 @@ steal('jquery/controller',
                 $("ul.ultabs li").removeClass('active');
             },
             '#autoNumberForm submit': function (el, ev) {
+                ev.preventDefault();
                 var form = $('#autoNumberForm').formParams();
                 var prefix = $('#input-prefix').val();
                 var mode = $('input:radio[name=Mode]:checked').val();

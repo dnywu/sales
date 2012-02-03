@@ -1,4 +1,7 @@
-﻿steal('jquery',
+﻿steal(  'sales/styles/ModalDialog.css',
+        'sales/sales.css',
+        'sales/styles/jquery-ui-1.8.14.custom.css',
+        'jquery',
         'jquery/controller',
         'jquery/view/ejs',
         'jquery/controller/view',
@@ -19,9 +22,6 @@
         'sales/controllers/paymentmode',
         'sales/controllers/items/list',
         'sales/scripts/ModalDialog.js',
-        'sales/styles/ModalDialog.css',
-        'sales/sales.css',
-        'sales/styles/jquery-ui-1.8.14.custom.css',
 	function () {
 	    $.ajax({
 	        type: 'GET',

@@ -1,7 +1,8 @@
-steal('jquery/controller', 'jquery/view/ejs',
-      'jquery/controller/view',
+steal(
       'sales/controllers/invoices/list/DeleteConfirmBox.css',
-      'sales/controllers/invoices/invoicedetail/invoicedetail.css')
+      'sales/controllers/invoices/invoicedetail/invoicedetail.css',
+      'jquery/controller', 'jquery/view/ejs',
+      'jquery/controller/view')
 	.then('./views/invoicedetail.ejs', 'sales/controllers/invoices/list/views/ConfirmWithNote.ejs', function ($) {
 	    $.Controller('sales.Controllers.invoices.invoicedetail',
 {
