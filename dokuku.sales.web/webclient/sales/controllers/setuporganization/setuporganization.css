@@ -106,3 +106,19 @@ div#error{
     height: 19px;
     background: url(/sales/images/pointerballoon.gif) left top no-repeat;
 }
+
+
+.divInvoiceDetailRightMenu div:hover {
+background-color: #E9E9E9;
+cursor: pointer;
+}
+
+.divInvoiceDetailRightMenu div {
+padding: 4px;
+}
+
+div.divcontainerRightFormInvoice {
+float: right;
+width: 17%;
+padding: 20px 0px 20px 10px;
+}
