@@ -10,6 +10,10 @@ namespace dokuku.sales.payment.readmodel
     public class PaymentRepository : IPaymentRepository
     {
         public MongoConfig Mongo { get; set; }
+        public PaymentRepository(MongoConfig mongo)
+        {
+            this.Mongo = mongo;
+        }
         
         public IEnumerable<Payment> FindAll(string ownerId)
         {

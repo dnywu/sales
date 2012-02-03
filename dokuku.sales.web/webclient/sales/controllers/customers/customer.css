@@ -76,7 +76,7 @@ input[type="checkbox"]{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -126px -453px;
 	margin-top: 2px;
 }
@@ -89,7 +89,7 @@ input[type="checkbox"]:checked{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -141px -453px;
 	margin-top: 2px;
 }
@@ -150,7 +150,7 @@ td.space{
 	display:none;
 }
 .add{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -194px -110px;
 	width: 12px;
 	height: 12px;
@@ -160,7 +160,7 @@ td.space{
 	vertical-align: top;
 }
 .copyField{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -389px -166px;
 	width: 8px;
 	height: 11px;
@@ -170,7 +170,7 @@ td.space{
 	display:none;
 }
 .CreateCustomerBtn{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") repeat-x;
+	background: transparent url("/sales/images/Actions.png") repeat-x;
 	background-position: -0px -1458px;
 	border-color: #CFCECE #CFCECE #B5B4B4;
 	-moz-border-radius: 3px;
@@ -219,8 +219,8 @@ td.space{
 	border: solid 0 #EBEBEB;
 	border-width: 1px 0;
 	vertical-align: middle;
-	color: #999;
-	font-weight: normal;
+	color: #666;
+	font-weight: bolder;
 	height: 32px;
 	border-image: initial;
 }
@@ -266,7 +266,7 @@ div.menuLeft{
 	vertical-align: top;
 }
 .BtnTambahCustomer{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -16px -226px;
 	color: #6F6F6F;
 	font-family: arial, verdana;
@@ -280,14 +280,14 @@ div.menuLeft{
 	cursor: pointer;
 }
 .imgCari{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -332px -82px;
 	height: 15px;
 	width: 15px;
 
 }
 .imgFilter{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -230px -139px;
 	height: 4px;
 	width: 11px;
@@ -340,37 +340,37 @@ div.menuLeft{
 	cursor: pointer;
 }
 .prev{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -233px -265px;
 }
 .next{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -257px -265px;
 }
 .first
 {
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -209px -265px;
 }
 .last{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -283px -265px;
 }
 .prevDisable{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -334px -265px;
 }
 .nextDisable{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -359px -265px;
 }
 .firstDisable
 {
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -309px -265px;
 }
 .lastDisable{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -383px -265px;
 }
 .BodyDataCustomer{
@@ -399,7 +399,7 @@ div.MessageConfirmation{
 	display:none;
 }
 .imagesConfirm{
-	background: url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -273px -1025px;
 	margin: 10px 15px 10px 5px;
 	height: 34px;
@@ -504,7 +504,7 @@ div.itemContextMenuCustomer span:hover{
 	text-decoration:underline;
 }
 .EditImagContextMenu{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -382px -53px;
 	height: 21px;
 	width: 19px;
@@ -513,7 +513,7 @@ div.itemContextMenuCustomer span:hover{
 	margin-top: 1px;
 }
 .ApproveImagContextMenu{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -78px -107px;
 	height: 21px;
 	width: 19px;
@@ -522,7 +522,7 @@ div.itemContextMenuCustomer span:hover{
 	margin-top: 1px;
 }
 .DeleteImagContextMenu{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -372px -125px;
 	height: 21px;
 	width: 19px;
@@ -532,7 +532,7 @@ div.itemContextMenuCustomer span:hover{
 	background-size: 643px 1989px;
 }
 .RecordPaymentImagContextMenu{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -300px -32px;
 	height: 21px;
 	width: 19px;
@@ -542,7 +542,7 @@ div.itemContextMenuCustomer span:hover{
 	background-size: 643px 1989px;
 }
 .CreateInvoiceContextMenuCustomer{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -50px -79px;
 	height: 21px;
 	width: 19px;
@@ -558,7 +558,7 @@ div.itemContextMenuCustomer span:hover{
 	color: #666;
 }
 .iconHapus{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -332px -29px;
 	height: 16px;
 	width: 17px;
@@ -588,7 +588,7 @@ div.DivSearch{
 	background: #F3F3F3;
 }
 .imgSearch{
-	background: transparent url("/sales/controllers/customers/images/find.png") no-repeat;
+	background: transparent url("/sales/images/find.png") no-repeat;
 	height: 16px;
 	width: 17px;
 	float:left;

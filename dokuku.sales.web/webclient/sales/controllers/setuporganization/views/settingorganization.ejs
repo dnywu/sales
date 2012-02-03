@@ -1,0 +1,120 @@
+﻿<div class='mainFrame'>
+  <div class="topBandHeaderDIV">
+    <div class="HeaderDIVLeft" id="TitleSpan">Informasi Perusahaan</div>
+  </div>
+  <div class="mainDivWidth">
+    <form id="settingOrg">
+      <div class="divInvoiceGroup">
+        <table width="100%">
+          <tbody>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Nama Perusahaan</span>
+              </td>
+              <td>
+                <input type="text" name="Name" value="<%= this.Name%>" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Perusahaan tidak boleh kosong')" required="required"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span class="requiredFieldLabel">Email</span>
+              </td>
+              <td>
+                <input type="text" name="OwnerId" value="<%= this.OwnerId%>" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama Kontak tidak boleh kosong')" required="required"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">
+                <span>Bulan Pembukuan</span>
+              </td>
+              <td>
+                <select name='FiscalYearPeriod'>
+                  <option value='1' class='periode'>Januari</option>
+                  <option value='2' class='periode'>Febuari</option>
+                  <option value='3' class='periode'>Maret</option>
+                  <option value='4' class='periode'>April</option>
+                  <option value='5' class='periode'>Mei</option>
+                  <option value='6' class='periode'>Juni</option>
+                  <option value='7' class='periode'>Juli</option>
+                  <option value='8' class='periode'>Agustus</option>
+                  <option value='9' class='periode'>September</option>
+                  <option value='10' class='periode'>Oktober</option>
+                  <option value='11' class='periode'>November</option>
+                  <option value='12' class='periode'>Desember</option>
+                </select>
+                <input type='hidden' name='currency' readonly value='<%=this.Currency%>'/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="divInvoiceGroup">
+        <table width="100%">
+          <tbody>
+            <tr>
+              <td class="labelLeft"  width="180px">Alamat</td>
+              <td>
+                <textarea name="Address"><%=this.Address%></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Kota</td>
+              <td>
+                <input type="text" name="City" value="<%=this.City%>"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Provinsi</td>
+              <td>
+                <input type="text" name="Province" value="<%=this.Province%>"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Kode Pos</td>
+              <td>
+                <input type="text" name="PostalCode" value="<%=this.PostalCode%>"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Negara</td>
+              <td>
+                <input type="text" value="Indonesia" name="Country" value="<%=this.Country%>"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Telpon</td>
+              <td>
+                <input type="text" name="Phone" value="<%=this.Phone%>"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Fax</td>
+              <td>
+                <input type="text" name="Fax" value="<%=this.Fax%>"/>
+              </td>
+            </tr>
+            <tr>
+              <td class="labelLeft">Website</td>
+              <td>
+                <input type="text" name="Website" value="<%=this.Website%>"/>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submitFormDiv">
+        <input type="submit" id="submitSettingOrganization" value="Simpan" />
+        <input type="button" value="Batal" id="cancelSettingOrg" />
+      </div>
+    </form>
+  </div>
+</div>
+<div class="divcontainerRightFormInvoice">
+  <div class="divcontainerRightFormInvoiceContain">
+    <div class="divInvoiceDetailRightMenu">
+      <div id="uploadLogo">
+        Logo Perusahaan
+      </div>
+    </div>
+  </div>
+</div>

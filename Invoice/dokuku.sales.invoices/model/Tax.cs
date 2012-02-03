@@ -6,7 +6,8 @@ namespace dokuku.sales.invoices.model
 {
     public class Tax
     {
-        public string Name { get; set; }
+        public string Code { get; set; }
         public decimal Value { get; set; }
+        public decimal Amount { get; set; }
     }
 }

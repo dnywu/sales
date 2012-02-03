@@ -1,7 +1,8 @@
-steal('jquery/controller', 'jquery/view/ejs',
-      'jquery/controller/view',
+steal(
       'sales/controllers/invoices/list/DeleteConfirmBox.css',
-      'sales/controllers/invoices/invoicedetail/invoicedetail.css')
+      'sales/controllers/invoices/invoicedetail/invoicedetail.css',
+      'jquery/controller', 'jquery/view/ejs',
+      'jquery/controller/view')
 	.then('./views/invoicedetail.ejs', 'sales/controllers/invoices/list/views/ConfirmWithNote.ejs', function ($) {
 	    $.Controller('sales.Controllers.invoices.invoicedetail',
 {
@@ -11,12 +12,12 @@ steal('jquery/controller', 'jquery/view/ejs',
     init: function (el, ev, invoice) {
         this.load(invoice);
         $this = this;
-        invo = new Invoice();
+        invo = new Invoiceclass();
         invRepo = new InvoiceRepository();
     },
     load: function (invoice) {
         var inv = this.GetDetailCustomer(invoice);
-        invo = new Invoice();
+        invo = new Invoiceclass();
         this.element.html(this.view("//sales/controllers/invoices/invoicedetail/views/invoicedetail.ejs", inv));
         this.GetStatusInvoice(inv.Status);
     },
@@ -26,6 +27,16 @@ steal('jquery/controller', 'jquery/view/ejs',
     '#menuItemRightUbah click': function () {
         var id = $(".idIvoDetil").attr("id");
         $('#body').sales_invoices_edit('load', id);
+    },
+    '#menuItemRightCetakKePDF click': function () {
+        var id = $(".invoiceDetail").attr("id");
+        window.open("/GetDataInvoiceToPDF/" + id, 'Invoice', null, null);
+    },
+    GetStatusInvoice: function (status) {
+        var IsStatus = status;
+        if (IsStatus != "Draft") {
+            $("#menuItemRightSetujui").remove();
+        }
     },
     '#menuItemRightBatal click': function () {
         var InvID = $(".idIvoDetil").attr("id");
@@ -57,8 +68,6 @@ steal('jquery/controller', 'jquery/view/ejs',
             $(".BodyConfirmMassage").append(message);
             return false;
         }
-
-
         if (result.error == false) {
             $(".DeleteConfirmation").remove();
             $("#body").sales_invoices_list('load');
@@ -133,18 +142,18 @@ steal('jquery/controller', 'jquery/view/ejs',
     },
     GetStatusInvoice: function (status) {
         var IsStatus = status;
-                if (IsStatus != "Draft") {
-                    $("#menuItemRightSetujui").remove();
-                    $("#menuItemRightHapus").remove();
-                    $("#menuItemRightUbah").remove();
-                }
-                if (IsStatus != "Belum Bayar") {
-                    $("#menuItemRightBatal").remove();
-                    $("#menuItemRightUbah").remove();
-                }
-                if (IsStatus != "Belum Lunas") {
-                    $("#menuItemRightBatalPaksa").remove();
-                }
+        if (IsStatus != "Draft") {
+            $("#menuItemRightSetujui").remove();
+            $("#menuItemRightHapus").remove();
+            $("#menuItemRightUbah").remove();
+        }
+        if (IsStatus != "Belum Bayar") {
+            $("#menuItemRightBatal").remove();
+            $("#menuItemRightUbah").remove();
+        }
+        if (IsStatus != "Belum Lunas") {
+            $("#menuItemRightBatalPaksa").remove();
+        }
     },
     GetDetailCustomer: function (invoice) {
         $.ajax({

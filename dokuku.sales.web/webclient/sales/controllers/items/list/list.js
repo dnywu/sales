@@ -78,6 +78,7 @@ steal('jquery/controller',
             "#gotoCreateItem click": function () {
                 $('#body').empty();
                 $('#body').sales_items_create('load');
+               
             },
             ".settingButton click": function (el) {
                 var index = el.attr("tabindex");

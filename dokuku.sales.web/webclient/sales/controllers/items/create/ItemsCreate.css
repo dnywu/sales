@@ -56,10 +56,15 @@ div.ProductFormDiv
 {
 	color: #9C0000;
 }
-.field
+td.itemfield
 {
 	width: 350px;
 }
+td.taxfield
+{
+	width: 350px;
+}
+
 
 .field input[type="text"], .field textarea, .field select
 {
@@ -140,7 +145,7 @@ div.error{
 }
 div.notExist
 {
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position:-80px -108px;
 }
 span.notExistMessage
@@ -149,7 +154,7 @@ span.notExistMessage
 }
 div.exist
 {
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position:-40px -108px;
 }
 span.existMessage

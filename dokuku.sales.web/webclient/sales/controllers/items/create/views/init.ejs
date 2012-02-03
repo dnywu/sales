@@ -10,25 +10,25 @@
 					<tbody>
             <tr>
               <td class="labelLeft">
-                <span class="requiredFieldLabel">Kode Barang</span>
+                <span class="requireditemfieldLabel">Kode Barang</span>
               </td>
-              <td class="field">
+              <td class="itemfield">
                 <input type="text" id="itemCode" name="itemCode" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Kode barang tidak boleh kosong')" />
               </td>
               <td><div class="messageVerify Code"></div></td>
             </tr>
             <tr>
               <td class="labelLeft">
-                <span class="requiredFieldLabel">Barcode</span>
+                <span class="requireditemfieldLabel">Barcode</span>
               </td>
-              <td class="field">
+              <td class="itemfield">
                 <input type="text" id="barcode" name="barcode" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Barcode barang tidak koleh kosong')" />
               </td>
               <td><div class="messageVerify Barcode"></div></td>
             </tr>
 						<tr>
-							<td class="labelLeft"><span class="requiredFieldLabel">Nama Barang</span></td>
-							<td class="field"><input type="text" id="itemName" name="itemName" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama barang tidak boleh kosong')" /></td>
+							<td class="labelLeft"><span class="requireditemfieldLabel">Nama Barang</span></td>
+							<td class="itemfield"><input type="text" id="itemName" name="itemName" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Nama barang tidak boleh kosong')" /></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">
@@ -36,15 +36,19 @@
 							<br />
 							<span class="f11 ffva lightGrey  lineHeight" style="font-weight:normal;">(Maks 500 karakter)</span>
 							</td>
-							<td class="field"><textarea class="textAreaField" row="4" style="height:80px;" id="description" name="description" /></td>
+							<td class="itemfield"><textarea class="textAreaitemfield" row="4" style="height:80px;" id="description" name="description" /></td>
 						</tr>
 						<tr>
-							<td class="labelLeft"><span class="requiredFieldLabel">Harga(Rp.)</span></td>
-							<td class="field"><input type="text" id="itemPrice" name="itemPrice" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Harga barang tidak boleh kosong')" /></td>
+							<td class="labelLeft"><span class="requireditemfieldLabel">Harga(Rp.)</span></td>
+							<td class="itemfield"><input type="text" id="itemPrice" name="itemPrice" required="required" oninput="setCustomValidity('')" oninvalid="setCustomValidity('Harga barang tidak boleh kosong')" /></td>
 						</tr>
 						<tr>
 							<td class="labelLeft">Pajak</td>
-							<td class="field"><select id="tax" style="margin-bottom:0;" name="tax"><option value="0.1">PPn</option></select></td>
+							<td class="itemfield">
+								<select id="tax" style="margin-bottom:0;" name="tax">
+								  <option value="0">NONE</option>
+								</select>
+							</td>
 						</tr>
 						<tr>
 							<td class="labelLeft" height="5"> </td>

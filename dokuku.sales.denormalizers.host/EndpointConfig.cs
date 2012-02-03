@@ -13,7 +13,6 @@ namespace dokuku.sales.report
             NServiceBus.Configure.With()
                 .DefaultBuilder()
                 .BinarySerializer();
-
             NServiceBus.Configure.Instance.Configurer.ConfigureComponent<MongoConfig>(
                                     NServiceBus.ObjectBuilder.ComponentCallModelEnum.Singleton);
         }

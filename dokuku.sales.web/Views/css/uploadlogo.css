@@ -1,0 +1,120 @@
+﻿div.mainFrame {
+    margin: auto;
+    width: 50%;
+    border-color: #999;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -moz-box-shadow: 0 0 4px 0 #999;
+    -webkit-box-shadow: 0 0 4px 0 #999;
+    box-shadow: 0 0 4px 0 #999;
+    padding-bottom: 15px;
+    font-family: arial, verdana;
+}
+div.topBandHeaderDIV {
+    padding: 20px 25px;
+    margin: 0;
+    background: #F7F7F7;
+    -moz-border-radius: 6px 6px 0 0;
+    -webkit-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+}
+.HeaderDIVLeft {
+    font-size: 21px;
+    font-family: arial, verdana;
+}
+div.mainDivWidth {
+    margin: 0 25px 15px 25px;
+    padding-top: 35px;
+    text-align: left;
+}
+div.submitFormDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+input[type="submit"], input[type="button"], button {
+    display: inline-block;
+    height: 34px;
+    padding: 0;
+    position: relative;
+    top: 1px;
+    margin-left: 10px;
+    font-family: helvetica,arial,freesans,clean,sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    color: #333;
+    text-shadow: 1px 1px 0 white;
+    white-space: nowrap;
+    border: none;
+    overflow: visible;
+    background: #DDD;
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffffff',endColorstr='#e1e1e1');
+    background: -webkit-gradient(linear,0% 0,0% 100%,from(white),to(#E1E1E1));
+    background: -moz-linear-gradient(-90deg,white,#E1E1E1);
+    border-bottom: 1px solid #EBEBEB;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    cursor: pointer;
+    margin-left: 1px;
+    padding: 0 13px;
+    -webkit-font-smoothing: subpixel-antialiased!important;
+    border-image: initial;
+}
+div.uploadlogoleft
+{
+    float:left;
+    width: 150px;
+    height: 100px;
+    vertical-align:middle;
+    background-color:#f7f7f7;
+    border:1px dashed #666;
+    display:table;
+}
+div.uploadlogoright
+{
+    width: 400px;
+    float:right;
+}
+div.labelLogoUpload
+{
+    font-size:18px;
+    font-weight:normal;
+    margin-bottom:5px;
+}
+div.divchooselogo
+{
+    border: 1px Solid #CCC;
+    padding: 7px;
+}
+span.typefile
+{
+    font-size:11px;
+    color:#666;
+}
+input[type="file"]
+{
+    border:1px Solid #A2DDFF;
+    background-color:White;
+    padding:2px;
+    width:300px;
+}
+img.logo
+{
+    display:block;
+    margin:auto;
+}
+div#errorMsg
+{
+    display:none;
+	color:#fff;
+	font-size:12px;
+	padding: 2px;
+	padding-left: 10px;
+	width: 100%;
+	background-color:#FF6A6A;
+	border: 1px Solid #E00;
+}

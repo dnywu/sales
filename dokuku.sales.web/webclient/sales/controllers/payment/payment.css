@@ -17,7 +17,7 @@ div.divheaderFormInvoice
     background:#F7F7F7;
     padding: 20px;
 }
-div.newInvoiceContain{padding: 0 25px;}
+div.newInvoiceContain{padding: 0 25px 0 40px;}
 div.divInvoiceGroup
 {
 	margin:20px;
@@ -240,7 +240,22 @@ header
 {
     margin-right:20px;    
 }
-
+.confirmPaymentDialogDetail
+{
+	background-color:#FFFFFF;
+	margin-bottom:20px;
+	overflow:hidden;
+	resize: none;
+	-webkit-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 17px rgba(0, 0, 0, 0.3);
+	position:absolute;
+	z-index:750;
+	top: 50%;
+	left:38%;
+	margin:auto;
+	width:315px;
+	height:150px;
+}
 customer{text-align:left;color:Gray;display:inherit;}
 vCustomer{ text-align:left; vertical-align:text-top; display:inherit;color:Black;} 
 creditAvailable{ text-align:left;color:Gray; vertical-align:text-top; display:inherit;} 
@@ -257,9 +272,8 @@ hr{ border :1px Inside #F7F7F7; border-color:#F7F7F7}
     border :1px Inside #F7F7F7;
     display:block;
     margin-top:20px;
+    margin-left:30px;
 }
-
-
 groupAmount{display:inherit;}
 Reference{display:inherit;}
 Notes{display:inherit;}
@@ -271,3 +285,11 @@ PaymentDate{color:#9C0000}
 required{color:Black;}
 #vAmountReceived{ width:160px;}
 #vBankCharges{width:130px;}
+#valueBankCharges{width:120px;}
+#lbl-withheld{color:#9C0000;}
+.cls-withheld{margin-left:40px; }
+#vAmountWittheld{width:90px;}
+#p-amount-withheld{ background-color:#F7F7F7; padding:5px;}
+.cls-bankCharges{ margin-left:30px;}
+invoiceDate{text-align:left;color:Gray;display:inherit;}
+vInvoiceDate{text-align:left; vertical-align:text-top; display:inherit;color:Black;}

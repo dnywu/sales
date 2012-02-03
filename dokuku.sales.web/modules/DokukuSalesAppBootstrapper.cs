@@ -14,9 +14,11 @@
     using dokuku.sales.item.service;
     using dokuku.sales.organization.report;
     using dokuku.sales.organization.repository;
-    using dokuku.sales.payment.service;
+    //using dokuku.sales.payment.service;
     using dokuku.sales.paymentmode.query;
     using dokuku.sales.paymentmode.service;
+    using dokuku.sales.paymentterms.query;
+    using dokuku.sales.paymentterms.service;
     using dokuku.sales.taxes.query;
     using dokuku.sales.taxes.service;
     using dokuku.security.model;
@@ -29,6 +31,10 @@
     using NServiceBus;
     using StructureMap;
     using TinyIoC;
+    using System.Linq;
+    using Nancy.ViewEngines;
+    using Nancy.ViewEngines.Razor;
+    using dokuku.sales.payment.readmodel;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -73,10 +79,11 @@
                     RedirectUrl = System.Configuration.ConfigurationManager.AppSettings["LoginUrl"],
                     UserMapper = requestContainer.Resolve<IUserMapper>(),
                 };
-
+            
             FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
             Jsonp.Enable(pipelines);
             pipelines.AfterRequest.AddItemToEndOfPipeline(SetCookieDomain);
+            requestContainer.Register<RazorViewEngine>();
         }
 
         private void SetCookieDomain(Nancy.NancyContext ctx)
@@ -118,6 +125,11 @@
                     x.For<ICurrencyQueryRepository>().Use<CurrencyQueryRepository>();
                     x.For<IPaymentModeQuery>().Use<PaymentModeQuery>();
                     x.For<IPaymentModeService>().Use<PaymentModeService>();
+                    x.For<ILogoOrganizationQuery>().Use<LogoOrganizationQuery>();
+                    x.For<ILogoOrganizationCommand>().Use<LogoOrganizationCommand>();
+                    x.For<IPaymentRepository>().Use<PaymentRepository>();
+                    x.For<IPaymentTermsService>().Use<PaymentTermsService>();
+                    x.For<IPaymentTermsQuery>().Use<PaymentTermsQuery>();
                 });
 
                 structureMapBootstrapped = true;

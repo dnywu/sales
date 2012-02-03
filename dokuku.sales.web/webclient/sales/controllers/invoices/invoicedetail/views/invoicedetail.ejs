@@ -2,7 +2,8 @@
   <div class="topBandHeaderDIV">
     <div id="TitleSpan" class="HeaderDIVLeft">Rincian Faktur</div>
   </div>
-  <div class="invoiceDetail">
+  <div class="invoiceDetail" id="<%= this._id%>">
+  </div>
   <div class="InvoiceNoRpt">Nomor Faktur <b><%=this.InvoiceNo%></b>
   </div>
   <div class="billingDetailRpt">
@@ -53,12 +54,15 @@
       <tr class="curveLGrnLBg headerTableItem" height="30" valign="middle">
         <td width="3%" class="txt-ctr">#</td>
         <td width="20%">Barang</td>
-        <td width="45%">Deskripsi</td>
-        <td width="8%" class="txt-rgh">Kuantitas</td>
+        <td width="30%">Deskripsi</td>        
+        <td width="6%" class="txt-rgh">Kuantitas</td>
         <td width="12%" class="txt-rgh">Harga</td>
+        <td width="8%" class="txt-rgh">Diskon(%)</td>
+        <td width="8%" style="padding-left:25px">Pajak</td>
         <td class="txt-rgh">Total</td>
         <td width="10px"></td>
       </tr>
+      <tbody></tbody>
       <%for(var i =0; i<this.Items.length; i++){%>
       <tr class="borderbottom">
         <td class="txt-ctr"><%=(i + 1) %></td>
@@ -66,20 +70,32 @@
         <td><%=this.Items[i].Description %></td>
         <td class="txt-rgh"><%=this.Items[i].Qty %></td>
         <td class="txt-rgh"><%=this.Items[i].Rate %></td>
-        <td class="txt-rgh"><%=this.Items[i].Amount %></td>
+        <td class="txt-rgh"><%=this.Items[i].Discount %></td>
+        <td  style="padding-left:25px"><%=this.Items[i].Tax.Code %></td>
+        <td id="amountItem" class="txt-rgh"><%=this.Items[i].Amount %></td>
         <td width="10px"></td>
       </tr>
       <%}%>
         <tr height="35">
-          <td class="txt-lft" colspan="4"><%=this.Note%></td>
+          <td class="txt-lft" colspan="6"><%=this.Note%></td>
           <td class="txt-rgh borderbottom">
             <b>Sub Total</b>
           </td>
           <td class="txt-rgh borderbottom"><%=this.SubTotal%></td>
           <td width="10px"></td>
         </tr>
+        <%for(var i =0; i<this.TaxSummary.length; i++){%>
+        <tr height="35">
+          <td class="txt-lft" colspan="6"></td>
+          <td class="txt-rgh borderbottom">
+            <b><%=this.TaxSummary[i].Code%></b>
+          </td>
+          <td class="txt-rgh borderbottom"><%=this.TaxSummary[i].Amount%></td>
+          <td width="10px"></td>
+        </tr>
+        <%}%>  
         <tr height="40">
-          <td class="txt-lft" colspan="4"></td>
+          <td class="txt-lft" colspan="6"></td>
           <td class="txt-rgh">
             <b>Total</b>
           </td>
@@ -90,7 +106,7 @@
           <td width="10px"></td>
         </tr>
         <tr height="40">
-          <td class="txt-lft" colspan="4"></td>
+          <td class="txt-lft" colspan="6"></td>
           <td class="txt-rgh">
             <b>Sisa Tagihan</b>
           </td>

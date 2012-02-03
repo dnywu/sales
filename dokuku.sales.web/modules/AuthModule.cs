@@ -26,6 +26,12 @@ namespace dokuku.sales.web.modules
                 return Response.AsJs("webclient/steal/" + filename);
             };
 
+            Get["/Content/{file}"] = p =>
+            {
+                string filename = p.file.ToString();
+                return Response.AsJs("Content/" + filename);
+            };
+
             Get["/jquery/{path}"] = p =>
             {
                 string path = p.path.ToString();
@@ -43,6 +49,12 @@ namespace dokuku.sales.web.modules
                 string path = p.path.ToString();
                 return Response.AsJs("webclient/funcunit/" + path);
             };
+
+            Get["/Views/Image"] = p =>
+                {
+                    string filename = p.file.ToString();
+                    return Response.AsImage("Views/Image/" + filename);
+                };
 
             Get["/css/{file}"] = p =>
             {

@@ -1,4 +1,4 @@
-﻿steal('jquery/class', function () {
+﻿steal('jquery/class','sales/scripts/stringformat.js', function () {
     $.Class('InvoiceRepository',
 {
 },
@@ -13,6 +13,8 @@
             dataType: 'json',
             async: false,
             success: function (data) {
+                var InvoiceDate = new Date(parseInt(data.InvoiceDate.replace(/\/Date\((-?\d+)\)\//, '$1')));
+                data.InvoiceDate = $.datepicker.formatDate('dd M yy', InvoiceDate);
                 invoice = data;
             }
         });

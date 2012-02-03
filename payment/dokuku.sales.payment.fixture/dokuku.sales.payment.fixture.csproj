@@ -104,6 +104,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="When_revise_payment.cs" />
     <Compile Include="When_pay_invoice_full.cs" />
     <Compile Include="When_pay_invoice.cs" />
     <Compile Include="SetUp.cs" />
@@ -120,6 +121,10 @@
     <ProjectReference Include="..\dokuku.sales.payment.commands\dokuku.sales.payment.commands.csproj">
       <Project>{A6BCEA92-7141-4D33-92C0-BE5A778CE8FD}</Project>
       <Name>dokuku.sales.payment.commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj">
+      <Project>{1838F788-9F1F-4E44-91B2-A9F809B34F36}</Project>
+      <Name>dokuku.sales.payment.common</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.payment.domain\dokuku.sales.payment.domain.csproj">
       <Project>{2E7A5580-EBBA-4962-97A8-6C85BF097D1C}</Project>

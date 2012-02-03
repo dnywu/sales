@@ -1,18 +1,22 @@
-steal('jquery/controller',
+steal( './listinvoice.css',
+       './DeleteConfirmBox.css',
+       'sales/styles/jquery-ui-1.8.14.custom.css',
+       'jquery',
+       'jquery/controller',
 	   'jquery/view/ejs',
 	   'jquery/controller/view',
 	   'sales/models',
        'sales/scripts/stringformat.js',
-       'sales/controllers/invoices/create',
-       'sales/controllers/invoices/edit',
+'sales/controllers/invoices/create',
+/*'sales/controllers/invoices/edit',*/
+       'sales/controllers/invoices/InvoiceClass.js',
        'sales/controllers/invoices/invoicedetail',
        'sales/repository/InvoiceRepository.js',
-       'sales/repository/PaymentRepository.js',
-       './listinvoice.css',
-       './DeleteConfirmBox.css')
+       'sales/repository/InvoicePaymentRepository.js',
+       'sales/scripts/jquery-ui-1.8.11.min.js')
 .then('./views/listinvoice.ejs',
        './views/invoices.ejs',
-       './views/confirmDeleteInvoice.ejs', './views/ConfirmWithNote.ejs', 'sales/controllers/payment/views/recordpayment.ejs',
+       './views/confirmDeleteInvoice.ejs',
        function ($) {
 
            $.Controller('Sales.Controllers.Invoices.List',
@@ -24,12 +28,12 @@ steal('jquery/controller',
                 start = 1,
                 page = 1,
                 totalPage = 1) */
-                defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null, inv = null, invRepo = null)
+                defaults: (jumlahdata = 0, start = 1, page = 1, totalPage = 1, $this = null, inv = null, invRepo = null, invId = 0, Pay = null)
             },
             {
                 init: function () {
                     $this = this;
-                    inv = new Invoice();
+                    inv = new Invoiceclass();
                     invRepo = new InvoiceRepository();
                     this.load();
                 },
@@ -49,10 +53,12 @@ steal('jquery/controller',
                     $('#idInputPageInvoice').val(1);
                     $this.CheckButtonPaging();
                 },
+
                 initPagination: function () {
                     totalPage = Math.ceil(jumlahdata / limit);
                     $('#totalPageInvoice').text(totalPage);
                 },
+
                 CheckButtonPaging: function () {
                     var startPage = parseInt($('#idInputPageInvoice').val());
                     if (isNaN(startPage) || startPage <= 1) {
@@ -106,6 +112,7 @@ steal('jquery/controller',
                 '#limitDataInvoice change': function () {
                     $this.ChangePage();
                 },
+
                 ChangePage: function () {
                     $this.initPagination();
                     var startPage = parseInt($('#idInputPageInvoice').val());
@@ -158,46 +165,7 @@ steal('jquery/controller',
                 LoadActionList: function (id, index) {
                     var invoiceId = id;
                     var invoice = invRepo.GetInvoiceById(invoiceId);
-
-                    this.HideList(invoice.Status, index);
-                },
-                HideList: function (Status, index) {
-                    if (Status == "Draft") {
-                        this.HideActionList("fffft", index);
-                    } else if (Status == "Belum Bayar") {
-                        this.HideActionList("ftfft", index);
-                    } else if (Status == "Belum Lunas") {
-                        this.HideActionList("ttftt", index);
-                    } else if (Status == "Sudah Lunas") {
-                        this.HideActionList("tttft", index);
-                    } else if (Status == "Batal") {
-                        this.HideActionList("ttttt", index);
-                    }
-                },
-                HideActionList: function (srcPattern, index) {
-                    var str = srcPattern;
-
-                    if (str.substring(0, 1) == "t") {
-                        this.Menu("div#actionEdit", index);
-                    }
-
-                    if (str.substring(1, 2) == "t") {
-                        this.Menu("div#actionApprove", index);
-                    }
-
-                    if (str.substring(3, 4) == "t") {
-                        this.Menu("div#actionCancel", index);
-                    }
-
-                    if (str.substring(4, 5) == "t") {
-                        this.Menu("div#actionForceCancel", index);
-                    }
-                },
-                Menu: function (Name, index) {
-                    var result;
-                    var Menu = "tr#trbodyDataInvoice" + index + " td#tdDataInvoice" + index + " div.ContextMenuInvoice";
-
-                    result = $(Menu + " " + Name).remove();
+                    inv.HideList(invoice.Status, index);
                 },
                 '#newinvoices click': function () {
                     $("#body").sales_invoices_create("load");
@@ -210,40 +178,81 @@ steal('jquery/controller',
                     var id = el.attr('id');
                     result = inv.ApproveInvoiceByID(id);
                     if (result.error == false) {
-                        //sales_payment('load');
-                        this.load();
+                        $this.load();
                     } else {
                         $("#errorListInv").text(result.message).show("slow");
                     }
                 },
                 '.RecordPaymentContextMenuInvoive click': function (el) {
-                    var Pay = new PaymentRepository();
-                    var id = el.attr('id');
-                    var invoice = invRepo.GetInvoiceById(id);
-                    result = Pay.PaymentByIdInvoice(id);
-                    //                    if (result.error == false) {
-                    $('#body').sales_payment('load', invoice);
-                    //                    } else {
-                    //                        $("#errorListInv").text(result.message).show("slow");
-                    //                    }
+                    invId = el.attr('id');
+                    if (invId != 0) {
+
+                        this.setInvoiceId(invId)
+                        $("#body").sales_payment();
+                    }
+                    var message = $("<div class='deleteConfirmMessage'>Faktur ini akan dirubah dari draft ke open...?</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm YesPayment'>Ya</div>" +
+                                    "<div class='ButtonConfirm No' id='Close'>Tidak</div><input type='hidden' value=" + invId + " id='inv-id'/></div>");
+                    $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
+                    $(".BodyConfirmMassage").append(message);
+
+
+                },
+                setInvoiceId: function (id) {
+                    this.invId = id;
+                },
+                getInvoiceId: function () {
+                    return this.invId;
                 },
                 '.invNo click': function (el, ev) {
                     var invoiceId = $("#invoiceId_" + el.attr("id")).val();
                     var invoice = invRepo.GetInvoiceById(invoiceId);
-                    if (invoice != null)
-                        $("#body").sales_invoices_invoicedetail('load', invoice);
 
+                    if (invoice != null) {
+                        $.each(invoice.Items, function (i) {
+                            invoice.Items[i].Rate = String.format("{0:C}", invoice.Items[i].Rate); //String.format("{0:C}", parseFloat(invoice.Items[i].Rate)); // invoice.Items[i].Rate;
+                            invoice.Items[i].Amount = String.format("{0:C}", invoice.Items[i].Amount); //String.format("{0:C}", parseFloat(invoice.Items[i].Amount)); // invoice.Items[i].Rate;
+                            invoice.Items[i].TaxAmount = String.format("{0:C}", invoice.Items[i].TaxAmount); //String.format("{0:C}", parseFloat(invoice.Items[i].TaxAmount));
+
+                            //$.each(invoice.Items[i].Tax, function (n) {
+                                //invoice.Items[i].Tax.Code = invoice.Items[i].Tax.Code;
+                                //invoice.Items[i].Tax.Value = invoice.Items[i].Tax.Value;
+                                invoice.Items[i].Tax.Amount = String.format("{0:C}", invoice.Items[i].Tax.Amount); //String.format("{0:C}", parseFloat(invoice.Items[i].Tax.Amount)); //invoice.Items[i].Tax.Amount;
+                            //});
+                        });
+
+                        $.each(invoice.TaxSummary, function (i) {
+                            //invoice.TaxSummary[i].Code = invoice.TaxSummary[i].Code; // invoice.Items[i].Rate;
+                            invoice.TaxSummary[i].Amount = String.format("{0:C}", parseFloat(this.Amount)); //String.format("{0:C}", parseFloat(invoice.TaxSummary[0].Amount)); //invoice.TaxSummary[i].Amount); // invoice.Items[i].Rate;
+                        });
+
+                        invoice.SubTotal = String.format("{0:C}", parseFloat(invoice.SubTotal));
+                        invoice.Total = String.format("{0:C}", parseFloat(invoice.Total));
+                        //Total All Tax Amount
+                        $("#body").sales_invoices_invoicedetail('load', invoice);
+                    }
                 },
                 '#deleteinvoice click': function () {
                     var checkList = $this.IsCheckListNull();
-                    $(".BodyConfirmMassage").remove();
                     if (checkList != 0) {
-                        var message = $("<div class='deleteConfirmMessage'>Apakah anda yakin akan menghapus faktur ini</div>" +
+                        var message = $("<div class='deleteConfirmMessage'>Apakah anda yakin akan menghapus pelanggan ini</div>" +
                                     "<div class='buttonDIV'><div class='ButtonConfirm Yes'>Ya</div>" +
                                     "<div class='ButtonConfirm No' id='Close'>Tidak</div></div>");
                         $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
                         $(".BodyConfirmMassage").append(message);
                     }
+                },
+
+                ".YesPayment click": function () {
+                    var id = $('#inv-id').val();
+                    if (id != " ") {
+
+                        $('#body').sales_payment('init', id);
+                        $('#vAmountReceived').focus();
+                    }
+                },
+                "#confirmPaymentNo click": function () {
+                    $('.ModalDialog').remove();
                 },
                 '.Yes click': function () {
                     var result;
@@ -281,26 +290,24 @@ steal('jquery/controller',
                 },
                 '#approveinvoice click': function () {
                     var checkList = $this.IsCheckListNull();
-                    $(".BodyConfirmMassage").remove();
                     if (checkList != 0) {
-                        var message = $("<div>Apakah anda yakin akan menyetujui faktur ini</div>" +
-                                    "<div class='buttonDIV'><div class='ButtonConfirm ApproveYes'>Ya</div>" +
-                                    "<div class='ButtonConfirm ApproveNo' id='Close'>Tidak</div></div>");
+                        var message = $("<div>Apakah anda yakin akan menerbitkan faktur ini</div>" +
+                                    "<div class='ButtonApproveYes'>Ya</div>" +
+                                    "<div class='ButtonConfirmClose'>Tidak</div>");
                         $("#body").append(this.view("//sales/controllers/invoices/list/views/confirmDeleteInvoice.ejs"));
                         $(".BodyConfirmMassage").append(message);
                     }
                 },
-                '.ApproveYes click': function () {
+                '.ButtonApproveYes click': function () {
                     var result;
                     $(".selectInvoice:checked").each(function (index) {
                         var index = $(this).attr("id");
                         var no = $("#invoiceId_" + index).val();
                         result = inv.ApproveInvoiceByID(no);
-
                         if (result.error == true) {
                             $(".BodyConfirmMassage").empty();
-                            var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
-                                    "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
+                            var message = $("<div>" + result.message + "</div>" +
+                                    "<div class='ButtonConfirmClose'>Tutup Pesan</div>");
                             $(".BodyConfirmMassage").append(message);
                             return false;
                         }
@@ -425,8 +432,41 @@ steal('jquery/controller',
                         $(".DeleteConfirmation").remove();
                         $this.load();
                     }
+                },
+                '.ForceCancelContextMenuInvoive click': function (el) {
+                    var id = el.attr('id');
+                    $(".BodyConfirmMassage").remove();
+
+                    var message = $("<div>Apakah anda yakin akan membatalkan faktur ini</div>" +
+                                    "<div><input type='hidden' id='invoID' value='" + id + "'></div>" +
+                                    "<div>Note: <textarea name='NoteCancel' id='NoteCancel' class='NoteCancelTxtArea'></textarea></div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm ForceCancelOneYes'>Ya</div>" +
+                                    "<div class='ButtonConfirm CancelNo' id='Close'>Tidak</div></div>");
+                    $("#body").append(this.view("//sales/controllers/invoices/list/views/ConfirmWithNote.ejs"));
+                    $(".BodyConfirmMassage").append(message);
+                },
+                '.ForceCancelOneYes click': function () {
+                    var result;
+                    var Note = $("#NoteCancel").val().trim();
+                    var no = $("#invoID").val();
+
+                    if (Note.length < 1) {
+                        $("#errorCancelInv").text("Catatan Batal harus diisi").show();
+                        return false;
+                    }
+
+                    result = inv.ForceCancelInvoiceByID(no, Note);
+
+                    if (result.error == true) {
+                        $(".BodyConfirmMassage").empty();
+                        var message = $("<div class='deleteConfirmMessage'>" + result.message + "</div>" +
+                                    "<div class='buttonDIV'><div class='ButtonConfirm Close' id='Close'>Tutup Pesan</div></div>");
+                        $(".BodyConfirmMassage").append(message);
+                        return false;
+                    } else {
+                        $(".DeleteConfirmation").remove();
+                        $this.load();
+                    }
                 }
-
-
-            });
-       });
+    });
+});

@@ -1,4 +1,4 @@
-﻿steal('jquery/class', 'sales/controllers/invoices/Invoice.js', function () {
+﻿steal('jquery/class', 'sales/controllers/invoices/Invoiceclass.js', function () {
     $.Class('AddItem',
 {
     defaults: ($this = null, index = null, inv = null)
@@ -7,7 +7,7 @@
     init: function (i) {
         $this = this;
         index = i;
-        inv = new Invoice();
+        inv = new Invoiceclass();
     },
     TriggerEvent: function () {
         $("#btnCancelAddItem").click(this.CloseAddItemDialog);
@@ -35,7 +35,7 @@
         item.Rate = harga;
         item.Description = description;
         item.Tax = new Object();
-        item.Tax.Name = taxName.trim();
+        item.Tax.Code = taxName.trim();
         item.Tax.Value = taxValue;
 
         $.ajax({
