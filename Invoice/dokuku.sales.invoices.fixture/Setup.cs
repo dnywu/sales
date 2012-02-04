@@ -14,7 +14,7 @@ using dokuku.sales.invoice.services;
 using dokuku.sales.invoices.domain;
 using dokuku.sales.config;
 using dokuku.sales.invoices.repository;
-using dokuku.sales.invoices.repository.impl;
+using dokuku.sales.invoices.fixture.fakes;
 namespace dokuku.sales.invoices.fixture
 {
     public static class Setup
@@ -28,7 +28,8 @@ namespace dokuku.sales.invoices.fixture
                    x =>
                    {
                        x.For<ICommandService>().Use(InitCommandService());
-                       x.For<ICustomerRepository>().Use(new CustomerRepository());
+                       x.For<ICustomerRepository>().Use(new FakeCustomerRepository());
+                       x.For<ITaxRepository>().Use(new FakeTaxRepository());
                    }
                 ));
                 initialized = true;

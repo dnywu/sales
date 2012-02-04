@@ -1283,7 +1283,7 @@
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
+    <ProjectReference Include="..\Invoice\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
       <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
       <Name>dokuku.sales.invoice.messages</Name>
     </ProjectReference>
@@ -1291,7 +1291,7 @@
       <Project>{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}</Project>
       <Name>dokuku.sales.invoices.viewtemplating</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
+    <ProjectReference Include="..\Invoice\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
       <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
       <Name>dokuku.sales.invoices</Name>
     </ProjectReference>

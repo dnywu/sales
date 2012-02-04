@@ -16,9 +16,13 @@ namespace dokuku.sales.invoices.events
         public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal DiscountInPercent { get; set; }
+        public decimal DiscountAmount { get; set; }
         public decimal Total { get; set; }
         public string TaxCode { get; set; }
+        public decimal TaxAmount { get; set; }
         public Summary Summary { get; set; }
+        public int ItemNumber { get; set; }
+        public DateTime Timestamp { get; set; }
         public override bool Equals(object obj)
         {
             if (object.ReferenceEquals(this, obj))
@@ -35,9 +39,12 @@ namespace dokuku.sales.invoices.events
                    this.Quantity == e.Quantity &&
                    this.Price == e.Price &&
                    this.DiscountInPercent == e.DiscountInPercent &&
+                   this.DiscountAmount == e.DiscountAmount &&
                    this.Total == e.Total &&
                    this.TaxCode == e.TaxCode &&
-                   this.Summary.Equals(e.Summary);
+                   this.TaxAmount == e.TaxAmount &&
+                   this.Summary.Equals(e.Summary) &&
+                   this.ItemNumber == e.ItemNumber;
         }
         public override int GetHashCode()
         {

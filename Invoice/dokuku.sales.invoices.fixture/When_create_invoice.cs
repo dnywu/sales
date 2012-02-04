@@ -14,13 +14,9 @@ namespace dokuku.sales.invoices.fixture
     [Specification]
     public class When_create_invoice : OneEventTestFixture<CreateInvoice, InvoiceCreated>
     {
-        Guid _invoiceid;
-        Guid _customerId;
         public When_create_invoice()
         {
             this.SetupInvoiceFixture();
-            _customerId = new Guid("DCCD617E-6083-4FAA-A328-15ADD3771DBC");
-            _invoiceid = new Guid("AD4DB777-3329-46E9-9712-04465DED0722");
         }
 
         protected override void RegisterFakesInConfiguration(EnvironmentConfigurationWrapper configuration)
@@ -35,8 +31,8 @@ namespace dokuku.sales.invoices.fixture
         {
             return new CreateInvoice
             {
-                InvoiceId = _invoiceid,
-                CustomerId = _customerId,
+                InvoiceId = new Guid("AD4DB777-3329-46E9-9712-04465DED0722"),
+                CustomerId = new Guid("DCCD617E-6083-4FAA-A328-15ADD3771DBC"),
                 PONumber = "PO-001",
                 OwnerId = "mart@y.c",
                 UserName = "marthin"
@@ -48,8 +44,8 @@ namespace dokuku.sales.invoices.fixture
         {
             Assert.That(TheEvent, Is.EqualTo(new InvoiceCreated
             {
-                InvoiceId = _invoiceid,
-                CustomerId = _customerId,
+                InvoiceId = new Guid("AD4DB777-3329-46E9-9712-04465DED0722"),
+                CustomerId = new Guid("DCCD617E-6083-4FAA-A328-15ADD3771DBC"),
                 DecimalPlace = 2,
                 BaseCurrency = "IDR",
                 PONo = "PO-001",

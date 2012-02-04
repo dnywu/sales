@@ -21,6 +21,8 @@ namespace dokuku.sales.invoices.events
         public string BaseCurrency { get; set; }
         public decimal Rate { get; set; }
         public string Status { get; set; }
+        public string TaxCode { get; set; }
+        public DateTime Timestamp { get; set; }
 
         public override bool Equals(object obj)
         {
@@ -43,7 +45,8 @@ namespace dokuku.sales.invoices.events
                    this.Status == e.Status &&
                    this.TermCode == e.TermCode &&
                    this.TransactionCurrency == e.TransactionCurrency &&
-                   this.UserName == e.UserName;
+                   this.UserName == e.UserName &&
+                   this.TaxCode == e.TaxCode; 
         }
         public override int GetHashCode()
         {

@@ -11,11 +11,11 @@ using NUnit.Framework;
 namespace dokuku.sales.invoices.fixture
 {
     [Specification]
-    public class When_add_item_with_discount : OneEventTestFixture<AddInvoiceItem, InvoiceItemAdded>
+    public class When_add_multiple_items_with_discount_and_tax : OneEventTestFixture<AddInvoiceItem, InvoiceItemAdded>
     {
         Guid _customerId;
         Guid _invoiceItemId;
-        public When_add_item_with_discount()
+        public When_add_multiple_items_with_discount_and_tax()
         {
             this.SetupInvoiceFixture();
             _customerId = new Guid("DCCD617E-6083-4FAA-A328-15ADD3771DBC");
@@ -23,7 +23,8 @@ namespace dokuku.sales.invoices.fixture
         }
         protected override IEnumerable<object> GivenEvents()
         {
-            return new GivenEvents_InvoiceCreated().Events;
+            IList<object> events = new GivenEvents_First_ItemAdded().Events;
+            return events;
         }
         protected override AddInvoiceItem WhenExecuting()
         {
@@ -33,11 +34,11 @@ namespace dokuku.sales.invoices.fixture
                 UserName = "marthin",
                 InvoiceId = EventSourceId,
                 ItemId = _invoiceItemId,
-                Description = "untuk beli hp samsung",
+                Description = "untuk beli hp nokia",
                 Quantity = 10,
                 Price = 500000,
                 DiscountInPercent = 10,
-                TaxCode = "NONE"
+                TaxCode = "PPN"
             };
         }
 
@@ -50,21 +51,22 @@ namespace dokuku.sales.invoices.fixture
                 UserName = "marthin",
                 InvoiceId = EventSourceId,
                 ItemId = _invoiceItemId,
-                Description = "untuk beli hp samsung",
+                Description = "untuk beli hp nokia",
                 Quantity = 10,
                 Price = 500000,
                 DiscountInPercent = 10,
                 DiscountAmount = 500000,
-                TaxCode = "NONE",
+                TaxCode = "PPN",
+                TaxAmount = 450000,
                 Summary = new Summary()
                 {
-                    SubTotal = 4500000,
+                    SubTotal = 9000000,
                     DiscountTotal = 0,
-                    NetTotal = 4500000,
-                    Taxes = new TaxSummary[1] { new TaxSummary{TaxCode="NONE", TaxAmount=0} }
+                    NetTotal = 9450000,
+                    Taxes = new TaxSummary[1] { new TaxSummary{ TaxCode = "PPN", TaxAmount = 450000 } }
                 },
                 Total = 4500000,
-                ItemNumber = 1
+                ItemNumber = 2
             }));
         }
     }

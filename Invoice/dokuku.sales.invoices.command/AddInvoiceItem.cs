@@ -19,6 +19,6 @@ namespace dokuku.sales.invoices.commands
         public int Quantity {get;set;}
         public decimal Price { get; set; }
         public decimal DiscountInPercent { get; set; }
-        public Guid TaxId { get; set; }
+        public string TaxCode { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace dokuku.sales.invoices.events
     {
         public decimal SubTotal { get; set; }
         public decimal DiscountTotal { get; set; }
-        public Tax[] Taxes { get; set; }
+        public TaxSummary[] Taxes { get; set; }
         public decimal Charge { get; set; }
         public decimal NetTotal { get; set; }
 
@@ -39,7 +39,7 @@ namespace dokuku.sales.invoices.events
             bool areEqual = true;
             for (int i = 0; i < this.Taxes.Length; i++)
             {
-                areEqual = this.Taxes[i] == that.Taxes[i];
+                areEqual = this.Taxes[i].Equals(that.Taxes[i]);
                 if (!areEqual)
                     break;
             }

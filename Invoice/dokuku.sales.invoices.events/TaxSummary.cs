@@ -5,7 +5,7 @@ using System.Text;
 
 namespace dokuku.sales.invoices.events
 {
-    public class Tax
+    public class TaxSummary
     {
         public string TaxCode { get; set; }
         public decimal TaxAmount { get; set; }
@@ -14,10 +14,10 @@ namespace dokuku.sales.invoices.events
         {
             if (object.ReferenceEquals(this, obj))
                 return true;
-            if (!(obj is Tax))
+            if (!(obj is TaxSummary))
                 return false;
 
-            Tax e = (Tax)obj;
+            TaxSummary e = (TaxSummary)obj;
             return this.TaxCode == e.TaxCode &&
                    this.TaxAmount == e.TaxAmount;
         }

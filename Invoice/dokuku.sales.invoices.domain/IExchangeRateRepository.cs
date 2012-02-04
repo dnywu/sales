@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using dokuku.sales.invoices.domain;
 
-namespace dokuku.sales.invoices.repository
+namespace dokuku.sales.invoices.domain
 {
     public interface IExchangeRateRepository
     {
