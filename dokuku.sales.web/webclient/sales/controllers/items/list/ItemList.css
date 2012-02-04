@@ -152,14 +152,14 @@ div.itempopup label
 	margin-right:5px;
 }
 .prev{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -233px -265px;
 	height: 21px;
 	width: 19px;
 	cursor: pointer;
 }
 .next{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -257px -265px;
 	height: 21px;
 	width: 19px;
@@ -167,40 +167,40 @@ div.itempopup label
 }
 .first
 {
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -209px -265px;
 	height: 21px;
 	width: 19px;
 	cursor: pointer;
 }
 .last{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -283px -265px;
 	height: 21px;
 	width: 19px;
 	cursor: pointer;
 }
 .prevDisable{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -334px -265px;
 	height: 21px;
 	width: 19px;
 }
 .nextDisable{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -359px -265px;
 	height: 21px;
 	width: 19px;
 }
 .firstDisable
 {
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -309px -265px;
 	height: 21px;
 	width: 19px;
 }
 .lastDisable{
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -383px -265px;
 	height: 21px;
 	width: 19px;
@@ -230,7 +230,7 @@ div.itempopup label
 }
 .warningIcon
 {
-	background: transparent url("/sales/controllers/items/list/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position:-273px -1025px;
 	height:34px;
 	width:38px;
@@ -316,14 +316,14 @@ div.searchOption
 	padding: 4px;
 }
 .iconHapus{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -332px -29px;
 	height: 16px;
 	width: 17px;
 	float:right;
 }
 .imgFilter{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -230px -139px;
 	height: 4px;
 	width: 11px;
@@ -377,7 +377,7 @@ div.DivSearch{
 	background: #F3F3F3;
 }
 .imgSearch{
-	background: transparent url("/sales/controllers/items/list/images/find.png") no-repeat;
+	background: transparent url("/sales/images/find.png") no-repeat;
 	height: 16px;
 	width: 17px;
 	float:left;

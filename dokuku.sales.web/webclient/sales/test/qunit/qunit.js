@@ -1,1 +1,0 @@
-steal("funcunit/qunit", "./sales_test.js", './companyprofile_test.js', './model_test.js', './items_test.js', './currency_test.js', './currency_test.js');

@@ -48,7 +48,7 @@ div.ContextMenuCurrency
 	padding: 8px;
 }
 .EditImageContextCurrency{
-	background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -382px -53px;
 	height: 21px;
 	width: 19px;
@@ -119,7 +119,7 @@ input[type="checkbox"]{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -126px -453px;
 	margin-top: 2px;
 }
@@ -132,7 +132,7 @@ input[type="checkbox"]:checked{
 	-webkit-border-radius: 0.25em;
 	vertical-align: text-top;
 	-webkit-appearance: none;
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -141px -453px;
 	margin-top: 2px;
 }
@@ -193,7 +193,7 @@ td.space{
 	display:none;
 }
 .add{
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -194px -110px;
 	width: 12px;
 	height: 12px;
@@ -203,7 +203,7 @@ td.space{
 	vertical-align: top;
 }
 .copyField{
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -389px -166px;
 	width: 8px;
 	height: 11px;
@@ -213,7 +213,7 @@ td.space{
 	display:none;
 }
 .CreateCurrencyBtn{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") repeat-x;
+	background: transparent url("/sales/images/Actions.png") repeat-x;
 	background-position: -0px -1458px;
 	border-color: #CFCECE #CFCECE #B5B4B4;
 	-moz-border-radius: 3px;
@@ -309,7 +309,7 @@ div.menuLeft{
 	vertical-align: top;
 }
 .BtnTambahCurrency{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -16px -226px;
 	color: #6F6F6F;
 	font-family: arial, verdana;
@@ -394,7 +394,7 @@ div.ConfirmationCurrency{
 	display:none;
 }
 .imagesConfirm{
-	background: url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: url("/sales/images/Actions.png") no-repeat;
 	background-position: -273px -1025px;
 	margin: 10px 15px 10px 5px;
 	height: 34px;
@@ -499,7 +499,7 @@ div.itemContextMenuCurrency span:hover{
 	text-decoration:underline;
 }
 .EditImagContextMenu{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -382px -53px;
 	height: 21px;
 	width: 19px;
@@ -508,7 +508,7 @@ div.itemContextMenuCurrency span:hover{
 	margin-top: 1px;
 }
 .CreateInvoiceContextMenuCurrency{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -50px -79px;
 	height: 21px;
 	width: 19px;
@@ -524,7 +524,7 @@ div.itemContextMenuCurrency span:hover{
 	color: #666;
 }
 .iconHapus{
-	background: transparent url("/sales/controllers/currency/images/Actions.png") no-repeat;
+	background: transparent url("/sales/images/Actions.png") no-repeat;
 	background-position: -332px -29px;
 	height: 16px;
 	width: 17px;
@@ -554,7 +554,7 @@ div.DivSearch{
 	background: #F3F3F3;
 }
 .imgSearch{
-	background: transparent url("/sales/controllers/currency/images/find.png") no-repeat;
+	background: transparent url("/sales/images/find.png") no-repeat;
 	height: 16px;
 	width: 17px;
 	float:left;

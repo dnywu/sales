@@ -32,28 +32,28 @@ table tr.headerTableItem{font-weight:bold;}
 .divInvoiceDetailRightMenu div:hover{background-color:#E9E9E9;cursor:pointer;}
 .divInvoiceDetailRightMenuUbah
 {
-    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+    background: transparent url("/sales/images/Actions.png") no-repeat;
     background-position: -386px -59px;
 }
 .divInvoiceDetailRightMenuDisetujui
 {
-    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+    background: transparent url("/sales/images/Actions.png") no-repeat;
     background-position: -81px -110px;
 }
 .divInvoiceDetailRightMenuVoidFaktur
 {
-    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+    background: transparent url("/sales/images/Actions.png") no-repeat;
     background-position: -286px -111px;
 }
 .divInvoiceDetailRightMenuBatalFaktur
 {
-    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+    background: transparent url("/sales/images/Actions.png") no-repeat;
     background-position: -205px -75px;
     background-size: 267px 936px;
 }
 .divInvoiceDetailRightMenuPrintKePDF
 {
-    background: transparent url("/sales/controllers/customers/images/Actions.png") no-repeat;
+    background: transparent url("/sales/images/Actions.png") no-repeat;
     background-position: -18px -203px;
     background-size: 255px 864px;
 }
