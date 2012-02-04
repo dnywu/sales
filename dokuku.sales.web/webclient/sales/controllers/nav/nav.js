@@ -10,7 +10,7 @@ steal('jquery/controller', 'jquery/view/ejs',
         'sales/controllers/setupautonumbering',
         'sales/controllers/currencyandtax',
         'sales/controllers/payment',
-        'sales/controllers/paymentreceived',
+        'sales/controllers/paymentreceived', 'sales/controllers/paymentterms',
         'sales/controllers/setuporganization/settingorganization.js',
         'sales/controllers/paymentmode'
      )
@@ -86,8 +86,14 @@ steal('jquery/controller', 'jquery/view/ejs',
             '#paymentreceived click': function (el) {
                 this.ClearContain();
                 this.SetBoldActivePage(el);
-                $("#body").sales_paymentreceived('load');
+                $("#body").sales_paymentreceived();
             },
+            '#paymentterms click': function (el) {
+                this.ClearContain();
+                this.SetBoldActivePage(el);
+                $("#body").sales_paymentterms('load');
+            },
+
             '#settingorganization click': function (el) {
                 this.ClearContain();
                 this.SetBoldActivePage(el);
@@ -132,10 +138,9 @@ steal('jquery/controller', 'jquery/view/ejs',
                     ul = $('<ul>', { 'class': 'ulsubtabs' }),
                     setupautonumbering = $('<li>', { 'class': 'bold lisubtabs', id: 'setupautonumbering', text: 'Penomoran Otomatis' });
                 currencyandtax = $('<li>', { 'class': 'lisubtabs', id: 'currencyandtax', text: 'Mata Uang & Pajak' });
-
                 settingOrganization = $('<li>', { 'class': 'lisubtabs', id: 'settingorganization', text: 'Informasi Perusahaan' });
-
                 paymentmode = $('<li>', { 'class': 'lisubtabs', id: 'paymentmode', text: 'Jenis Pembayaran' });
+                paymentterms = $('<li>', { 'class': 'lisubtabs', id: 'paymentterms', text: 'Termin Pembayaran' });
 
                 $("#subtabs").empty();
                 container.appendTo(submenu);
@@ -146,6 +151,7 @@ steal('jquery/controller', 'jquery/view/ejs',
                 settingOrganization.insertAfter(currencyandtax);
 
                 paymentmode.insertAfter(currencyandtax);
+                paymentterms.insertAfter(currencyandtax);
             },
             ClearContain: function () {
                 $("#body").empty();

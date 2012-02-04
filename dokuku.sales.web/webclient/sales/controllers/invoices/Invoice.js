@@ -33,6 +33,7 @@
         return total;
     },
     ShowListItem: function (part, index) {
+        var Oriprice = part.Rate;
         $("#baseprice_" + index).val(part.Rate);
         part.Rate = part.Rate / $("#custRate").val();
         part.Rate = part.Rate.toFixed(2)
@@ -40,7 +41,7 @@
         $("#part_" + index).val(part.Name);
         $("#desc_" + index).text(part.Description);
         $("#qty_" + index).val('1.00');
-        $("#rate_" + index).val(part.Rate);
+        $("#rate_" + index).val(Oriprice);
         $("#disc_" + index).val('0.00');
 
         $("#taxed_" + index + " option").each(function (i) {
@@ -48,7 +49,7 @@
                 $(this).attr('selected', true);
         });
 
-        $("#amounttext_" + index).text(String.format("{0:C}", part.Rate));
+        $("#amounttext_" + index).text(String.format("{0:C}", Oriprice));
         $("#amount_" + index).val(part.Rate);
         $("#itemInvoice tbody tr#tr_" + index).removeClass('errItemNotFound');
     },
@@ -344,6 +345,7 @@
         var optClear = $('.taxed').get(0).id;
         $('#' + optClear + ' option').each(function (n) {
             $('#' + $('#' + optClear + ' option').get(n).text).val(0);
+            //$('#' + $('#taxValue' + optClear + ' option').get(n).text).text(0);
         });
 
         $('.taxed').each(function (i) {
@@ -353,6 +355,9 @@
                 var nilaiygditambah = $('.taxedAmt').get(i).value == "" ? 0 : $('.taxedAmt').get(i).value; //$('.taxedAmt').get(i).value;
                 var total = parseFloat(nilaipajak) + parseFloat(nilaiygditambah);
                 $("#" + namapajak).val(total);
+                //String.format("{0:C}", dataInvoice[i].Total);
+                //String.format("{0:C}", total)
+                $("#taxValue" + namapajak).text(String.format("{0:C}", total));
             }
         });
     },
@@ -371,6 +376,16 @@
         res = this.SetTaxAmount(index);
         $("#taxedAmt_" + index).val(res);
         this.CalculateByTax();
+    },
+    CalculateTotalTaxAmount: function () {
+        var TotalTax = 0; 
+        var tmpval = 0;
+        $('.TotalTaxAmt').each(function (i) {
+            tmpval = parseFloat($(this).val());
+            if (!isNaN(tmpval))
+                TotalTax += tmpval;
+        });
+        return TotalTax;
     },
     SetTaxAmount: function (index) {
         var NilaiTax = $("#taxed_" + index).val();

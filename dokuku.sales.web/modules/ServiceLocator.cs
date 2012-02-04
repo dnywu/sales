@@ -24,6 +24,8 @@ using dokuku.sales.paymentmode.query;
 using dokuku.sales.paymentmode.service;
 using NServiceBus;
 using dokuku.sales.payment.readmodel;
+using dokuku.sales.paymentterms.query;
+using dokuku.sales.paymentterms.service;
 
 namespace dokuku.sales.web.modules
 {
@@ -106,6 +108,15 @@ namespace dokuku.sales.web.modules
         {
             return ObjectFactory.GetInstance<IPaymentModeService>();
         }
+        public static IPaymentTermsQuery PaymentTermsQuery(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<IPaymentTermsQuery>();
+        }
+        public static IPaymentTermsService PaymentTermsService(this NancyModule module)
+        {
+            return ObjectFactory.GetInstance<IPaymentTermsService>();
+        }
+
         public static ILogoOrganizationCommand LogoOrganizationCommand(this NancyModule module)
         {
             return ObjectFactory.GetInstance<ILogoOrganizationCommand>();

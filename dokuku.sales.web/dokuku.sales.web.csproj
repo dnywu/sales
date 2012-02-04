@@ -711,6 +711,15 @@
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.html" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived.js" />
     <Content Include="webclient\sales\controllers\paymentreceived\paymentreceived_test.js" />
+    <Content Include="webclient\sales\controllers\paymentterms\funcunit.html" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\Actions.png" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\find.png" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\pointerballoon.gif" />
+    <Content Include="webclient\sales\controllers\paymentterms\images\setting.png" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms.css" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms.html" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms.js" />
+    <Content Include="webclient\sales\controllers\paymentterms\paymentterms_test.js" />
     <Content Include="webclient\sales\controllers\payment\payment.css" />
     <Content Include="webclient\sales\controllers\payment\funcunit.html" />
     <Content Include="webclient\sales\controllers\payment\payment.html" />
@@ -758,6 +767,19 @@
     <None Include="webclient\sales\controllers\paymentmode\views\listpaymentmode.ejs">
       <SubType>Designer</SubType>
     </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\addpaymentterms.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\contextMenuPaymentTerms.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\editpaymentterms.ejs">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="webclient\sales\controllers\paymentterms\views\init.ejs" />
+    <None Include="webclient\sales\controllers\paymentterms\views\listpaymentterms.ejs">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="webclient\sales\controllers\payment\views\confirmPaymentBox.ejs" />
     <None Include="webclient\sales\controllers\invoices\list\views\ConfirmWithNote.ejs" />
     <None Include="webclient\sales\controllers\setuporganization\views\settingorganization.ejs">
@@ -775,6 +797,8 @@
     <Content Include="webclient\sales\models\invoices.js" />
     <Content Include="webclient\sales\models\models.js" />
     <Content Include="webclient\sales\qunit.html" />
+    <Content Include="webclient\sales\repository\PaymentTermsRepository.js" />
+    <Content Include="webclient\sales\repository\PaymentReceivedRepository.js" />
     <Content Include="webclient\sales\repository\PaymentModeRepository.js" />
     <Content Include="webclient\sales\repository\InvoicePaymentRepository.js" />
     <Content Include="webclient\sales\repository\CurrencyandTaxRepository.js" />
@@ -1016,6 +1040,8 @@
     <Compile Include="models\LoginResponse.cs" />
     <Compile Include="models\PayInvoiceDto.cs" />
     <Compile Include="modules\AuthModule.cs" />
+    <Compile Include="modules\PaymentTermsModule.cs" />
+    <Compile Include="modules\PaymentReceivedModule.cs" />
     <Compile Include="modules\InvoicePaymentModule.cs" />
     <Compile Include="modules\CurrencyModule.cs" />
     <Compile Include="modules\CustomerModule.cs" />
@@ -1307,6 +1333,10 @@
     <ProjectReference Include="..\dokuku.sales.paymentmode\dokuku.sales.paymentmode.csproj">
       <Project>{596F49BE-C0F4-437F-B927-94E946EC0C38}</Project>
       <Name>dokuku.sales.paymentmode</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dokuku.sales.paymentterms\dokuku.sales.paymentterms.csproj">
+      <Project>{A233B4C8-3D33-467F-813A-3DAB65B5841C}</Project>
+      <Name>dokuku.sales.paymentterms</Name>
     </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.taxes\dokuku.sales.taxes.csproj">
       <Project>{A2A87C17-6A3B-4F43-9A8F-C1416DDB4E68}</Project>
