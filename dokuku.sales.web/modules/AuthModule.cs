@@ -26,6 +26,12 @@ namespace dokuku.sales.web.modules
                 return Response.AsJs("webclient/steal/" + filename);
             };
 
+            Get["/Content/{file}"] = p =>
+            {
+                string filename = p.file.ToString();
+                return Response.AsJs("Content/" + filename);
+            };
+
             Get["/jquery/{path}"] = p =>
             {
                 string path = p.path.ToString();

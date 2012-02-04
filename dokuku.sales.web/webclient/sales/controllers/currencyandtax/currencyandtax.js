@@ -24,7 +24,6 @@ load: function () {
 '#currencyLink click': function () {
     this.ClearContain();
     $("#body").sales_currency('load');
-
 },
 '#img-tax click': function () {
     this.ClearContain();
@@ -45,6 +44,5 @@ load: function () {
 ClearContain: function () {
     $("#body").empty();
 }
-
 })
-	});
+});

@@ -37,7 +37,7 @@ namespace dokuku.sales.fixture
                 Name = "Honda Jazz",
                 Description = "All new honda jazz",
                 Rate = 200000000,
-                Tax = new Tax() { Name = "PPN", Value = 0.1m }
+                Tax = new Tax() { Code = "PPN", Value = 0.1m }
             });
             itemCmd.Save(new Item()
             {
@@ -46,7 +46,7 @@ namespace dokuku.sales.fixture
                 Name = "Honda Jazz",
                 Description = "All new honda jazz",
                 Rate = 200000000,
-                Tax = new Tax() { Name = "PPN", Value = 0.1m }
+                Tax = new Tax() { Code = "PPN", Value = 0.1m }
             });
             itemCmd.Save(new Item()
             {
@@ -55,7 +55,7 @@ namespace dokuku.sales.fixture
                 Name = "Honda Pop",
                 Description = "All new honda pop",
                 Rate = 200000000,
-                Tax = new Tax() { Name = "PPN", Value = 0.1m }
+                Tax = new Tax() { Code = "PPN", Value = 0.1m }
             });
         };
         It should_create_item_index = () =>

@@ -3,6 +3,27 @@
 <head>
     <link href="../css/uploadlogo.css" rel="stylesheet" type="text/css" />
     <title>Upload Logo Perusahaan Anda</title>
+    <script src="scripts/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#filelogo").change(function () {
+                var _1mb = 1048576;
+                var fileSize = $("#filelogo")[0].files[0].fileSize;
+                if (fileSize > _1mb) {
+                    $("#errorMsg").text("Ukuran file anda '" + ConvertToMb(fileSize) + " Mb' tidak diperbolehkan.").show();
+                    $("#submituploadlogo").attr('disabled');
+                }
+                else {
+                    $("#errorMsg").hide();
+                    $("#submituploadlogo").removeAttr('disabled');
+                }
+            });
+            function ConvertToMb(byte) {
+                var result = byte / 1048576;
+                return result.toFixed(2);
+            }
+        });
+    </script>
 </head>
 <body>
     <div class='mainFrame'>
@@ -11,34 +32,38 @@
                 Unggah Logo Perusahaan</div>
         </div>
         <div class="mainDivWidth">
-            <form name="uploadlogo" action="/uploadlogoorg" method="POST" enctype="multipart/form-data" oncomplete="javascript:self.close();">
+            <form name="uploadlogo" action="/uploadlogoorg" method="POST" enctype="multipart/form-data">
             <div class="divInvoiceGroup">
                 <table width="100%">
                     <tbody>
                         <tr>
                             <td>
                                 <div class="uploadlogoleft">
-                                    <img class="logo" id="logoOrganization" src="../logoOrganization"></img>
+                                    <div style="display:table-cell;vertical-align:middle;">
+                                    <img class="logo" id="logoOrganization" src="../logoOrganization" />
+                                    </div>
                                 </div>
                                 <div class="uploadlogoright">
                                     <div class="labelLogoUpload">
                                         Logo perusahaan anda</div>
                                     <div class="divchooselogo">
-                                        <input type="file" name="Filename" id="filelogo" />
+                                        <input type="file" name="Filename" id="filelogo" accept="image/*" />
                                         <br />
-                                        <span class="typefile">JPG,GIF,PNG.</span>
+                                        <span class="typefile">JPG,JPEG,GIF,PNG.</span>
                                     </div>
                                     <div>
-                                        <span class="typefile">Diutamakan Ukuran Logo : 140px x 60px.</span>
+                                        <span class="typefile">Diutamakan Ukuran Logo : <b style='color:Black'>140px x 60px</b>. Ukuran Maksimal <b style='color:Black'>1MB</b></span>
                                     </div>
+                                    <div id="errorMsg"></div>
                                 </div>
+                                
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="submitFormDiv">
-                <input type="submit" id="submituploadlogo" value="Simpan" />
+                <input type="submit" id="submituploadlogo" value="Simpan" disabled="disabled"/>
                 <input type="button" value="Tutup Dialog" onclick='javascript:self.close();' />
             </div>
             </form>

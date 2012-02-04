@@ -130,14 +130,6 @@
       <Project>{F5C9F94E-C7E1-4B16-ACA6-819CAC3B4819}</Project>
       <Name>dokuku.sales.customer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoice.messages\dokuku.sales.invoice.messages.csproj">
-      <Project>{EA041C37-0229-4188-ACB0-9F684C17F029}</Project>
-      <Name>dokuku.sales.invoice.messages</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dokuku.sales.invoices\dokuku.sales.invoices.csproj">
-      <Project>{1003F280-9DFA-4D08-AB9B-771815BCE5B1}</Project>
-      <Name>dokuku.sales.invoices</Name>
-    </ProjectReference>
     <ProjectReference Include="..\dokuku.sales.item\dokuku.sales.item.csproj">
       <Project>{5E69D5E7-0DC2-4F7C-94B2-38BB7658FD88}</Project>
       <Name>dokuku.sales.item</Name>

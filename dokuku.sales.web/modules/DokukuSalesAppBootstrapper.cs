@@ -17,6 +17,8 @@
     //using dokuku.sales.payment.service;
     using dokuku.sales.paymentmode.query;
     using dokuku.sales.paymentmode.service;
+    using dokuku.sales.paymentterms.query;
+    using dokuku.sales.paymentterms.service;
     using dokuku.sales.taxes.query;
     using dokuku.sales.taxes.service;
     using dokuku.security.model;
@@ -110,11 +112,11 @@
                     x.For<IOrganizationReportRepository>().Use<OrganizationReportRepository>();
                     x.For<IAuthService>().Use<AuthService>();
                     x.ForSingletonOf<MongoConfig>().Use<MongoConfig>();
-                    x.For<IInvoicesRepository>().Use<InvoicesRepository>();
-                    x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
+                    //x.For<IInvoicesRepository>().Use<InvoicesRepository>();
+                    //x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
                     x.For<IItemService>().Use<ItemService>();
-                    x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
-                    x.For<IInvoiceService>().Use<InvoiceService>();
+                    //x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
+                    //x.For<IInvoiceService>().Use<InvoiceService>();
                     x.ForSingletonOf<IBus>().Use(bus);
                     x.For<ICustomerService>().Use<CustomerService>();
                     x.For<IServiceTax>().Use<ServiceTax>();
@@ -126,6 +128,8 @@
                     x.For<ILogoOrganizationQuery>().Use<LogoOrganizationQuery>();
                     x.For<ILogoOrganizationCommand>().Use<LogoOrganizationCommand>();
                     x.For<IPaymentRepository>().Use<PaymentRepository>();
+                    x.For<IPaymentTermsService>().Use<PaymentTermsService>();
+                    x.For<IPaymentTermsQuery>().Use<PaymentTermsQuery>();
                 });
 
                 structureMapBootstrapped = true;
@@ -148,7 +152,7 @@
                         .ImpersonateSender(true)
                     .CreateBus()
                     .Start();
-                Configure.Instance.Configurer.ConfigureComponent<InvoiceService>(NServiceBus.ObjectBuilder.ComponentCallModelEnum.Singlecall);
+                //Configure.Instance.Configurer.ConfigureComponent<InvoiceService>(NServiceBus.ObjectBuilder.ComponentCallModelEnum.Singlecall);
             }
         }
     }
