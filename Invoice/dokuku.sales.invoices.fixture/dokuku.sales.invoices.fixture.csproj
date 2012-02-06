@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="fakes\FakeTaxRepository.cs" />
+    <Compile Include="GivenEvents_Second_ItemAdded.cs" />
     <Compile Include="When_add_multiple_items_with_discount_and_tax.cs" />
     <Compile Include="GivenEvents_First_ItemAdded.cs" />
     <Compile Include="GivenEvents_InvoiceCreated.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="fakes\FakeInvoiceNumberGenerator.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="When_add_multiple_items_with_discount_item_discount_total_and_tax.cs" />
     <Compile Include="When_create_invoice.cs" />
   </ItemGroup>
   <ItemGroup>

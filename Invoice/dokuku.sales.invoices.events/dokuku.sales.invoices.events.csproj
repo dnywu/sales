@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InvoiceDiscountAdded.cs" />
     <Compile Include="InvoiceItemAdded.cs" />
     <Compile Include="InvoiceCreated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
