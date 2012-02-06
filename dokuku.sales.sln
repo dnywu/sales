@@ -89,6 +89,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoice.servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices.repository", "Invoice\dokuku.sales.invoices.repository\dokuku.sales.invoices.repository.csproj", "{5324FEB6-929F-4D41-B354-FA38D2EBBF5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.payment.common", "payment\dokuku.sales.payment.common\dokuku.sales.payment.common.csproj", "{1838F788-9F1F-4E44-91B2-A9F809B34F36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.paymentterms", "dokuku.sales.paymentterms\dokuku.sales.paymentterms.csproj", "{A233B4C8-3D33-467F-813A-3DAB65B5841C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices.viewtemplating", "dokuku.sales.invoices.viewtemplating\dokuku.sales.invoices.viewtemplating.csproj", "{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -263,6 +269,18 @@ Global
 		{5324FEB6-929F-4D41-B354-FA38D2EBBF5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5324FEB6-929F-4D41-B354-FA38D2EBBF5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5324FEB6-929F-4D41-B354-FA38D2EBBF5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A233B4C8-3D33-467F-813A-3DAB65B5841C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A233B4C8-3D33-467F-813A-3DAB65B5841C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A233B4C8-3D33-467F-813A-3DAB65B5841C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A233B4C8-3D33-467F-813A-3DAB65B5841C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -277,6 +295,7 @@ Global
 		{185B8C2C-5DE3-42CC-B484-BA008EA911DF} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
 		{2F70E826-B450-4F8A-800E-CB52E5FD45D5} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
 		{B96606C4-22D7-47CA-899D-BCBFEB36C1D4} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
+		{1838F788-9F1F-4E44-91B2-A9F809B34F36} = {13B3A2CC-C795-4C9B-81AF-8BC36441EA84}
 		{EA041C37-0229-4188-ACB0-9F684C17F029} = {21751650-8E6A-45AE-94F0-D55DAF405C63}
 		{1003F280-9DFA-4D08-AB9B-771815BCE5B1} = {21751650-8E6A-45AE-94F0-D55DAF405C63}
 		{38C9BEFC-1410-4383-84BE-C37DD655CDB7} = {21751650-8E6A-45AE-94F0-D55DAF405C63}
