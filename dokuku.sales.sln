@@ -95,6 +95,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.paymentterms",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.invoices.viewtemplating", "dokuku.sales.invoices.viewtemplating\dokuku.sales.invoices.viewtemplating.csproj", "{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dokuku.sales.group", "dokuku.sales.group\dokuku.sales.group.csproj", "{A7D7A201-0969-4827-8F5B-4A21D451BBF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -281,6 +283,10 @@ Global
 		{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35526CD9-9AD1-40DD-9FB0-54D3EB3414CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7D7A201-0969-4827-8F5B-4A21D451BBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7D7A201-0969-4827-8F5B-4A21D451BBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7D7A201-0969-4827-8F5B-4A21D451BBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7D7A201-0969-4827-8F5B-4A21D451BBF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

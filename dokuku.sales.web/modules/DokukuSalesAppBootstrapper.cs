@@ -35,6 +35,7 @@
     using Nancy.ViewEngines;
     using Nancy.ViewEngines.Razor;
     using dokuku.sales.payment.readmodel;
+    using dokuku.sales.invoices.model;
 
     public class DokukuSalesAppBootstrapper : DefaultNancyBootstrapper
     {
@@ -115,7 +116,7 @@
                     //x.For<IInvoicesRepository>().Use<InvoicesRepository>();
                     //x.For<IInvoicesQueryRepository>().Use<InvoicesQueryRepository>();
                     x.For<IItemService>().Use<ItemService>();
-                    //x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
+                    x.For<IInvoiceAutoNumberGenerator>().Use<InvoiceAutoNumberGenerator>();
                     //x.For<IInvoiceService>().Use<InvoiceService>();
                     x.ForSingletonOf<IBus>().Use(bus);
                     x.For<ICustomerService>().Use<CustomerService>();
