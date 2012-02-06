@@ -355,6 +355,22 @@
     <Content Include="webclient\funcunit\test\protodrag\scriptaculous.js" />
     <Content Include="webclient\funcunit\test\qunit\qunit.js" />
     <Content Include="webclient\funcunit\test\run.js" />
+    <Content Include="webclient\invoice\fixtures\fixtures.js" />
+    <Content Include="webclient\invoice\funcunit.html" />
+    <Content Include="webclient\invoice\invoice.css" />
+    <Content Include="webclient\invoice\invoice.html" />
+    <Content Include="webclient\invoice\invoice.js" />
+    <Content Include="webclient\invoice\models\models.js" />
+    <Content Include="webclient\invoice\qunit.html" />
+    <Content Include="webclient\invoice\scripts\build.html" />
+    <Content Include="webclient\invoice\scripts\build.js" />
+    <Content Include="webclient\invoice\scripts\clean.js" />
+    <Content Include="webclient\invoice\scripts\crawl.js" />
+    <Content Include="webclient\invoice\scripts\docs.js" />
+    <Content Include="webclient\invoice\test\funcunit\funcunit.js" />
+    <Content Include="webclient\invoice\test\funcunit\invoice_test.js" />
+    <Content Include="webclient\invoice\test\qunit\invoice_test.js" />
+    <Content Include="webclient\invoice\test\qunit\qunit.js" />
     <Content Include="webclient\jquery\build.js" />
     <Content Include="webclient\jquery\buildAll.js" />
     <Content Include="webclient\jquery\class\class.html" />
@@ -612,6 +628,7 @@
     <None Include="webclient\funcunit\syn\dist\.tmp_test.html.60900~" />
     <None Include="webclient\funcunit\syn\README" />
     <None Include="webclient\funcunit\update" />
+    <None Include="webclient\invoice\invoice.md" />
     <None Include="webclient\sales\controllers\currencyandtax\views\listcurrencyandtax.ejs" />
     <Content Include="webclient\sales\controllers\currency\currency.html" />
     <Content Include="webclient\sales\controllers\currency\currency.js" />
@@ -1341,6 +1358,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
+    <Folder Include="webclient\invoice\docs\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
