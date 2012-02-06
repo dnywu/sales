@@ -8,6 +8,7 @@ namespace dokuku.sales.invoices.events
     public class Summary
     {
         public decimal SubTotal { get; set; }
+        public decimal DiscountInPercent { get; set; }
         public decimal DiscountTotal { get; set; }
         public TaxSummary[] Taxes { get; set; }
         public decimal Charge { get; set; }
@@ -22,6 +23,7 @@ namespace dokuku.sales.invoices.events
 
             Summary e = (Summary)obj;
             return this.SubTotal == e.SubTotal &&
+                   this.DiscountInPercent == e.DiscountInPercent &&
                    this.DiscountTotal == e.DiscountTotal &&
                    this.Charge == e.Charge &&
                    this.NetTotal == e.NetTotal &&

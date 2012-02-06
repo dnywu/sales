@@ -114,5 +114,10 @@ namespace dokuku.sales.invoices.domain
                 result += taxSummay.TaxAmount;
             return result;
         }
+
+        public void GiveDiscount(decimal discountInPercent)
+        {
+            
+        }
     }
 }

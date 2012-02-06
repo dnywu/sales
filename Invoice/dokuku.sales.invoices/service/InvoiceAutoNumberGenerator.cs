@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using dokuku.sales.config;
+using dokuku.sales.invoices.model;
 using MongoDB.Driver.Builders;
 using MongoDB.Driver;
 using MongoDB.Bson;
-using dokuku.sales.invoices.domain;
-namespace dokuku.sales.invoices.autonumbergenerator
+namespace dokuku.sales.invoices.model
 {
     public class InvoiceAutoNumberGenerator : IInvoiceAutoNumberGenerator
     {
@@ -41,21 +41,6 @@ namespace dokuku.sales.invoices.autonumbergenerator
                     return mongo.Save(GetInvoiceAutoNumberDefault().Next()).InvoiceNumberInStringFormat(cfg.Prefix);
             }
         }
-        public InvoiceAutoNumberConfig GetInvoiceAutoNumberConfig(string companyId)
-        {
-            MongoCollection<InvoiceAutoNumberConfig> collection = mongo.MongoDatabase.GetCollection<InvoiceAutoNumberConfig>(typeof(InvoiceAutoNumberConfig).Name);
-            InvoiceAutoNumberConfig cfg = collection.FindOneAs<InvoiceAutoNumberConfig>(Query.And(
-                Query.EQ("_id", typeof(InvoiceAutoNumberConfig).Name),
-                Query.EQ(COMPANY_ID_FIELD, BsonValue.Create(companyId))));
-
-            if (cfg == null)
-            {
-                cfg = new InvoiceAutoNumberConfig(typeof(InvoiceAutoNumberConfig).Name, AutoNumberMode.Default, DEFAULT_PREFIX, companyId);
-                collection.Save<InvoiceAutoNumberConfig>(cfg);
-            }
-
-            return cfg;
-        }
 
         private InvoiceAutoNumberDraft GetInvoiceAutoNumberDraft()
         {
@@ -71,6 +56,21 @@ namespace dokuku.sales.invoices.autonumbergenerator
             }
 
             return invoiceAutoNumber;
+        }
+        public InvoiceAutoNumberConfig GetInvoiceAutoNumberConfig(string companyId)
+        {
+            MongoCollection<InvoiceAutoNumberConfig> collection =  mongo.MongoDatabase.GetCollection<InvoiceAutoNumberConfig>(typeof(InvoiceAutoNumberConfig).Name);
+            InvoiceAutoNumberConfig cfg = collection.FindOneAs<InvoiceAutoNumberConfig>(Query.And(
+                Query.EQ("_id", typeof(InvoiceAutoNumberConfig).Name),
+                Query.EQ(COMPANY_ID_FIELD, BsonValue.Create(companyId))));
+            
+            if (cfg == null)
+            {
+                cfg = new InvoiceAutoNumberConfig(typeof(InvoiceAutoNumberConfig).Name, AutoNumberMode.Default, DEFAULT_PREFIX, companyId);
+                collection.Save<InvoiceAutoNumberConfig>(cfg);
+            }
+
+            return cfg;
         }
         private InvoiceAutoNumberDefault GetInvoiceAutoNumberDefault()
         {
@@ -117,6 +117,14 @@ namespace dokuku.sales.invoices.autonumbergenerator
             }
 
             return invoiceAutoNumber;
+        }
+
+        public void SetupInvoiceAutoMumber(AutoNumberMode mode, string prefix, string companyId)
+        {
+           var config = GetInvoiceAutoNumberConfig(companyId);
+           config.SetupAutoNumber(mode, prefix);
+           MongoCollection<InvoiceAutoNumberConfig> collection = mongo.MongoDatabase.GetCollection<InvoiceAutoNumberConfig>(typeof(InvoiceAutoNumberConfig).Name);
+           collection.Save<InvoiceAutoNumberConfig>(config);
         }
     }
 

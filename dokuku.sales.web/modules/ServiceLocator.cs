@@ -26,6 +26,7 @@ using NServiceBus;
 using dokuku.sales.payment.readmodel;
 using dokuku.sales.paymentterms.query;
 using dokuku.sales.paymentterms.service;
+using dokuku.sales.invoices.model;
 
 namespace dokuku.sales.web.modules
 {
